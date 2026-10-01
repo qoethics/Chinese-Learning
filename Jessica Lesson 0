@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中文学习整理</title>
+<style>
+  * { box-sizing: border-box; }
+
+  :root {
+    --pink:   #ef9cb4;
+    --mint:   #6fc7ab;
+    --sky:    #7ea9e0;
+    --lav:    #a793e6;
+    --peach:  #f2a882;
+    --ink:    #3f3d4d;
+    --ink-2:  #6f6a86;
+    --ink-3:  #a49dba;
+    --line:   rgba(160,140,200,.16);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                 "Noto Sans SC", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background-color: #fdfbff;
+    background-image:
+      radial-gradient(circle at 6% -4%,   #ffe3ee 0%, transparent 42%),
+      radial-gradient(circle at 96% 4%,   #e7e1ff 0%, transparent 40%),
+      radial-gradient(circle at 50% 104%, #ddfaf0 0%, transparent 46%);
+    background-attachment: fixed;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.menu-open { overflow: hidden; }
+
+  /* ================= ruby 注音（更大字号 + 更宽字距） ================= */
+  ruby {
+    ruby-position: over;
+    ruby-align: center;
+    margin: 0 .1em;
+  }
+  rt {
+    font-size: .86em;            /* ← 拼音明显放大 */
+    letter-spacing: .07em;       /* ← 拼音字距拉开 */
+    line-height: 1.45;
+    font-weight: 500;
+    color: #8f83cc;
+    font-family: "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  /* ================= 折叠通用 ================= */
+  summary {
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::marker { content: ""; }
+
+  details[open] > *:not(summary) { animation: reveal .26s ease both; }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ================= 汉堡按钮 ================= */
+  .menu-btn {
+    position: fixed;
+    top: .85rem;
+    left: .85rem;
+    z-index: 60;
+    width: 44px; height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(160,140,200,.22);
+    border-radius: 14px;
+    background: rgba(255,255,255,.84);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 24px -18px rgba(120,100,170,.95);
+    cursor: pointer;
+    transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .menu-btn:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px -18px rgba(120,100,170,1);
+  }
+  .menu-btn .bars {
+    display: block;
+    width: 19px;
+    height: 13px;
+    position: relative;
+  }
+  .menu-btn .bars i {
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--pink), var(--lav));
+    transition: transform .28s ease, opacity .2s ease, top .28s ease;
+  }
+  .menu-btn .bars i:nth-child(1) { top: 0; }
+  .menu-btn .bars i:nth-child(2) { top: 5.5px; }
+  .menu-btn .bars i:nth-child(3) { top: 11px; }
+
+  body.menu-open .menu-btn { opacity: 0; pointer-events: none; }
+
+  /* ================= 侧边抽屉 ================= */
+  .drawer {
+    position: fixed;
+    top: 0; left: 0;
+    height: 100%;
+    width: min(310px, 85vw);
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    padding: 1.05rem .6rem 1.6rem;
+    overflow-y: auto;
+    background: linear-gradient(168deg, #fff6fa 0%, #f8f4ff 42%, #eefaf5 100%);
+    border-right: 1px solid rgba(160,140,200,.18);
+    box-shadow: 20px 0 50px -34px rgba(120,100,170,1);
+    transform: translateX(-102%);
+    transition: transform .34s cubic-bezier(.4,.02,.2,1);
+  }
+  body.menu-open .drawer { transform: translateX(0); }
+
+  .drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .15rem .55rem 1rem;
+    border-bottom: 1px solid rgba(160,140,200,.16);
+    margin-bottom: .55rem;
+  }
+  .drawer-head .t {
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .32em;
+    text-indent: .32em;
+    color: #a99ecb;
+  }
+  .close-btn {
+    width: 32px; height: 32px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,.8);
+    color: #a99ecb;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease;
+  }
+  .close-btn:hover { background: #fff; color: #ef9cb4; }
+
+  .drawer nav { display: flex; flex-direction: column; gap: .1rem; }
+
+  .drawer .grp {
+    margin: .7rem .55rem .25rem;
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: #c3bad8;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  .drawer a {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+    padding: .5rem .7rem;
+    border-radius: 11px;
+    text-decoration: none;
+    color: #55516b;
+    font-size: .88rem;
+    letter-spacing: .05em;
+    transition: background .16s ease, color .16s ease, transform .16s ease;
+  }
+  .drawer a:hover {
+    background: rgba(255,255,255,.9);
+    color: #7b6bc4;
+    transform: translateX(2px);
+  }
+  .drawer a .en {
+    margin-left: auto;
+    font-size: .66rem;
+    letter-spacing: .12em;
+    color: #c3bad8;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .drawer a.sub {
+    padding-left: 1.5rem;
+    font-size: .82rem;
+    color: #726c8c;
+  }
+  .drawer a.sub .en { font-size: .62rem; }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 65;
+    background: rgba(96,74,140,.22);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  body.menu-open .overlay { opacity: 1; pointer-events: auto; }
+
+  /* ================= 页面容器 ================= */
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 1.15rem 5rem;
+    counter-reset: ex;
+  }
+
+  /* ================= 顶部 ================= */
+  .hero { text-align: center; padding: 3.6rem 1rem 1rem; }
+  .hero h1 {
+    margin: 0 0 .7rem;
+    font-size: clamp(1.9rem, 6vw, 2.7rem);
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-indent: .18em;
+    background: linear-gradient(100deg, #ef9cb4 0%, #a793e6 48%, #6fc7ab 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .hero .sub {
+    margin: 0;
+    font-size: .72rem;
+    letter-spacing: .34em;
+    text-indent: .34em;
+    text-transform: uppercase;
+    color: #b3aac9;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .ribbon {
+    display: flex;
+    height: 6px;
+    width: 260px;
+    max-width: 70%;
+    margin: 1.5rem auto 0;
+    border-radius: 99px;
+    overflow: hidden;
+    opacity: .85;
+  }
+  .ribbon span { flex: 1; }
+
+  /* ================= 一级模块（可折叠） ================= */
+  .section {
+    margin-top: 2.6rem;
+    scroll-margin-top: 1rem;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .45rem .7rem .45rem .45rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.55);
+    border: 1px solid transparent;
+    transition: background .18s ease, border-color .18s ease;
+    scroll-margin-top: 1rem;
+  }
+  .section-head:hover {
+    background: #fff;
+    border-color: rgba(167,147,230,.28);
+  }
+  details.section[open] > .section-head { margin-bottom: 1.05rem; }
+
+  .section-num {
+    flex: none;
+    width: 34px; height: 34px;
+    border-radius: 12px;
+    display: grid; place-items: center;
+    font-size: .86rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--c);
+    box-shadow: 0 8px 16px -8px var(--c);
+  }
+  .section-head h2 {
+    margin: 0;
+    font-size: 1.22rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+  }
+  .section-head .en {
+    margin-left: auto;
+    font-size: .68rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #b8b0cc;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .section-head::after {
+    content: "";
+    flex: none;
+    width: .46rem;
+    height: .46rem;
+    margin: -.26rem .35rem 0 .55rem;
+    border-right: 2px solid #c9c1dd;
+    border-bottom: 2px solid #c9c1dd;
+    border-radius: 1px;
+    transform: rotate(45deg);
+    transition: transform .25s ease, border-color .2s ease;
+  }
+  details.section[open] > .section-head::after {
+    transform: rotate(-135deg);
+    margin-top: .1rem;
+    border-color: var(--lav);
+  }
+
+  .section-body { padding-top: .1rem; }
+
+  /* ================= 卡片（二级折叠） ================= */
+  .card {
+    background: rgba(255,255,255,.88);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 1.1rem 1.35rem 1.25rem;
+    margin-bottom: 1.05rem;
+    box-shadow: 0 12px 32px -24px rgba(120,100,170,.6);
+    scroll-margin-top: 1.1rem;
+    transition: box-shadow .2s ease, border-color .2s ease;
+  }
+  .card[open] { box-shadow: 0 16px 38px -26px rgba(120,100,170,.75); }
+  .card:hover { border-color: rgba(167,147,230,.3); }
+
+  .cat {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    margin: 0;
+    padding: .1rem 1.7rem .1rem 0;
+    font-size: .98rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    color: #54506a;
+  }
+  .cat::before {
+    content: "";
+    flex: none;
+    width: 5px;
+    height: 1.05em;
+    border-radius: 3px;
+    background: var(--accent, #c9a7e8);
+  }
+  .cat .en {
+    font-size: .68rem;
+    font-weight: 400;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #b8b0cc;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  .cat::after,
+  .gram-title::after {
+    content: "";
+    position: absolute;
+    right: .5rem;
+    top: 50%;
+    width: .42rem;
+    height: .42rem;
+    margin-top: -.28rem;
+    border-right: 2px solid #c9c1dd;
+    border-bottom: 2px solid #c9c1dd;
+    border-radius: 1px;
+    transform: rotate(45deg);
+    transition: transform .25s ease, border-color .2s ease;
+  }
+  details[open] > summary.cat::after,
+  details[open] > summary.gram-title::after {
+    transform: rotate(-135deg);
+    margin-top: -.08rem;
+    border-color: var(--accent, #c9a7e8);
+  }
+
+  /* ================= 单词（右侧显示英文） ================= */
+  .words {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    gap: .5rem .65rem;
+    margin-top: .95rem;
+  }
+
+  .word {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    width: 100%;
+    padding: .5rem .8rem .55rem;
+    border-radius: 13px;
+    background: #fcfbff;
+    border: 1px solid var(--line);
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background .18s ease, border-color .18s ease, box-shadow .18s ease;
+  }
+  .word:hover {
+    background: #fff;
+    box-shadow: 0 10px 20px -17px rgba(120,100,170,.9);
+  }
+  .word.open {
+    background: #fff;
+    border-color: rgba(167,147,230,.42);
+    box-shadow: 0 12px 22px -17px rgba(120,100,170,.95);
+  }
+
+  .word .zh {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 1.02rem;
+    line-height: 2.45;
+    letter-spacing: .02em;
+  }
+  .word .en {
+    flex: 0 1 44%;
+    opacity: 0;
+    transform: translateX(-6px);
+    font-size: .73rem;
+    line-height: 1.35;
+    text-align: right;
+    color: #9d94b8;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    transition: opacity .24s ease, transform .24s ease, color .2s ease;
+    pointer-events: none;
+  }
+  .word.open .en {
+    opacity: 1;
+    transform: none;
+    color: #7b6bc4;
+  }
+
+  .word-hint {
+    margin: .9rem 0 0;
+    font-size: .7rem;
+    letter-spacing: .12em;
+    color: #c3bad8;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 语法 ================= */
+  .gram { border-left: 4px solid var(--accent, #c9a7e8); }
+
+  .gram-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    margin: 0;
+    padding: .1rem 1.7rem .1rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: #4a4661;
+  }
+  .gram-title .num {
+    flex: none;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: .74rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--accent, #c9a7e8);
+  }
+
+  .gram-body { padding-top: .85rem; }
+
+  .gram p {
+    margin: .4rem 0;
+    font-size: .92rem;
+    line-height: 2.15;
+    color: #55516b;
+  }
+  .gram p .lbl {
+    font-weight: 600;
+    color: #4a4661;
+  }
+  .gram .tip {
+    margin-top: .9rem;
+    padding: .65rem .9rem;
+    border-radius: 12px;
+    background: #f7f4ff;
+    border: 1px dashed rgba(167,147,230,.38);
+    font-size: .87rem;
+    line-height: 2.1;
+    color: #6a6488;
+  }
+  .gram .tip::before {
+    content: "TIP";
+    display: inline-block;
+    margin-right: .5rem;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: var(--lav);
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  .samples {
+    list-style: none;
+    margin: .85rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: .45rem;
+  }
+  .sample {
+    padding: .55rem .85rem .6rem;
+    border-radius: 13px;
+    background: #fbf9ff;
+    border: 1px solid rgba(160,140,200,.13);
+  }
+  .sample .zh {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 2.5;
+  }
+  .sample .en {
+    margin: .1rem 0 0;
+    font-size: .78rem;
+    color: var(--ink-3);
+    line-height: 1.5;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 例句 ================= */
+  .ex-list {
+    list-style: none;
+    margin: .95rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: .5rem;
+  }
+  .ex {
+    position: relative;
+    padding: .7rem .95rem .7rem 2.9rem;
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 8px 20px -19px rgba(120,100,170,.95);
+    transition: background .16s ease, border-color .16s ease;
+  }
+  .ex:hover { background: #fdfbff; border-color: rgba(167,147,230,.28); }
+  .ex::before {
+    counter-increment: ex;
+    content: counter(ex);
+    position: absolute;
+    left: 0;
+    top: .9rem;
+    width: 2.35rem;
+    text-align: right;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: #c8c1dc;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .ex .zh {
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 2.5;
+    letter-spacing: .02em;
+  }
+  .ex .en {
+    margin: .1rem 0 0;
+    font-size: .78rem;
+    color: var(--ink-3);
+    line-height: 1.5;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 页脚 ================= */
+  .footer {
+    margin-top: 3.5rem;
+    text-align: center;
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #c4bcd8;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 响应式 ================= */
+  @media (max-width: 620px) {
+    .card { padding: 1rem 1rem 1.1rem; border-radius: 17px; }
+    .words { grid-template-columns: 1fr; gap: .42rem; }
+    .word { padding: .45rem .6rem .5rem; }
+    .word .zh { font-size: .98rem; }
+    .word .en { font-size: .7rem; }
+    .ex { padding-left: 2.5rem; }
+    .ex::before { width: 2rem; }
+    .hero { padding-top: 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== 汉堡按钮 ==================== -->
+<button class="menu-btn" id="menuBtn" aria-label="打开目录" aria-expanded="false" aria-controls="drawer">
+  <span class="bars"><i></i><i></i><i></i></span>
+</button>
+
+<!-- ==================== 侧边目录 ==================== -->
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="t">目录 MENU</span>
+    <button class="close-btn" id="closeBtn" aria-label="关闭目录">✕</button>
+  </div>
+  <nav>
+    <p class="grp">1 · 单词</p>
+    <a href="#sec-vocab">总览 <span class="en">Vocabulary</span></a>
+    <a class="sub" href="#vocab-places">地点 <span class="en">Places</span></a>
+    <a class="sub" href="#vocab-actions">动作 <span class="en">Actions</span></a>
+    <a class="sub" href="#vocab-time">时间 <span class="en">Time</span></a>
+
+    <p class="grp">2 · 语法点</p>
+    <a href="#sec-gram">总览 <span class="en">Grammar</span></a>
+    <a class="sub" href="#gram-1">能 vs. 可以 <span class="en">can</span></a>
+    <a class="sub" href="#gram-2">在 + 动词 <span class="en">doing</span></a>
+    <a class="sub" href="#gram-3">了 <span class="en">completed</span></a>
+    <a class="sub" href="#gram-4">给 + 人 + 动词 <span class="en">for sb.</span></a>
+    <a class="sub" href="#gram-5">时间词位置 <span class="en">word order</span></a>
+    <a class="sub" href="#gram-6">怎么样 <span class="en">how about</span></a>
+    <a class="sub" href="#gram-7">一般 <span class="en">usually</span></a>
+
+    <p class="grp">3 · 例句</p>
+    <a href="#sec-ex">总览 <span class="en">Sentences</span></a>
+    <a class="sub" href="#ex-plans">约时间 <span class="en">plans</span></a>
+    <a class="sub" href="#ex-doing">在做什么 <span class="en">doing</span></a>
+    <a class="sub" href="#ex-past">过去与现在 <span class="en">past/present</span></a>
+    <a class="sub" href="#ex-phone">打电话 <span class="en">calls</span></a>
+    <a class="sub" href="#ex-reading">看书 <span class="en">reading</span></a>
+    <a class="sub" href="#ex-cooking">做饭学习 <span class="en">cooking</span></a>
+  </nav>
+</aside>
+<div class="overlay" id="overlay"></div>
+
+<!-- ==================== 内容 ==================== -->
+<div class="page">
+
+  <header class="hero">
+    <h1>中文学习整理</h1>
+    <p class="sub">Vocabulary · Grammar · Sentences</p>
+    <div class="ribbon">
+      <span style="background:#ef9cb4"></span>
+      <span style="background:#f2a882"></span>
+      <span style="background:#f7d98a"></span>
+      <span style="background:#8fd8bd"></span>
+      <span style="background:#8fb6e8"></span>
+      <span style="background:#a793e6"></span>
+    </div>
+  </header>
+
+  <!-- ==================== 1. 单词 ==================== -->
+  <details class="section" id="sec-vocab" open>
+    <summary class="section-head">
+      <span class="section-num" style="--c:#a793e6">1</span>
+      <h2>单词</h2>
+      <span class="en">Vocabulary</span>
+    </summary>
+    <div class="section-body">
+
+      <!-- 地点 -->
+      <details class="card" id="vocab-places" open>
+        <summary class="cat" style="--accent:#ef9cb4">地点 <span class="en">Places</span></summary>
+        <div class="words">
+          <button class="word" type="button"><span class="zh"><ruby>商场<rt>shāngchǎng</rt></ruby></span><span class="en">mall</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>餐馆<rt>cānguǎn</rt></ruby></span><span class="en">restaurant</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>学校<rt>xuéxiào</rt></ruby></span><span class="en">school</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>公司<rt>gōngsī</rt></ruby></span><span class="en">company</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>车站<rt>chēzhàn</rt></ruby></span><span class="en">station</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>商店<rt>shāngdiàn</rt></ruby></span><span class="en">store</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>银行<rt>yínháng</rt></ruby></span><span class="en">bank</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>公园<rt>gōngyuán</rt></ruby></span><span class="en">park</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>家<rt>jiā</rt></ruby></span><span class="en">home</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>书店<rt>shūdiàn</rt></ruby></span><span class="en">book store</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>香港<rt>Xiānggǎng</rt></ruby></span><span class="en">Hong Kong</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>悉尼<rt>Xīní</rt></ruby></span><span class="en">Sydney</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>纽约<rt>Niǔyuē</rt></ruby></span><span class="en">New York</span></button>
+        </div>
+        <p class="word-hint">▸ 点击任意单词，英文释义显示在右侧</p>
+      </details>
+
+      <!-- 动作 -->
+      <details class="card" id="vocab-actions" open>
+        <summary class="cat" style="--accent:#6fc7ab">动作 <span class="en">Actions</span></summary>
+        <div class="words">
+          <button class="word" type="button"><span class="zh"><ruby>看电视<rt>kàn diànshì</rt></ruby></span><span class="en">watch TV</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>看书<rt>kàn shū</rt></ruby></span><span class="en">read a book</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>睡觉<rt>shuìjiào</rt></ruby></span><span class="en">sleep</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>打电话<rt>dǎ diànhuà</rt></ruby></span><span class="en">make a phone call</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>做饭<rt>zuòfàn</rt></ruby></span><span class="en">cook</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>学习<rt>xuéxí</rt></ruby></span><span class="en">study</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>努力<rt>nǔlì</rt></ruby></span><span class="en">work hard</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>考试<rt>kǎoshì</rt></ruby></span><span class="en">exam / take an exam</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>散步<rt>sànbù</rt></ruby></span><span class="en">take a walk</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>写字<rt>xiě zì</rt></ruby></span><span class="en">write</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>游泳<rt>yóuyǒng</rt></ruby></span><span class="en">swim</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>拍照<rt>pāizhào</rt></ruby></span><span class="en">take photos</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>唱歌<rt>chànggē</rt></ruby></span><span class="en">sing</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>跳舞<rt>tiàowǔ</rt></ruby></span><span class="en">dance</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>打篮球<rt>dǎ lánqiú</rt></ruby></span><span class="en">play basketball</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>踢足球<rt>tī zúqiú</rt></ruby></span><span class="en">play soccer</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>旅游<rt>lǚyóu</rt></ruby></span><span class="en">travel</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>给<rt>gěi</rt></ruby></span><span class="en">to / for / give</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>玩<rt>wán</rt></ruby></span><span class="en">play</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>玩游戏<rt>wán yóuxì</rt></ruby></span><span class="en">play games</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>玩手机<rt>wán shǒujī</rt></ruby></span><span class="en">play with a phone</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>玩电脑<rt>wán diànnǎo</rt></ruby></span><span class="en">use a computer</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>玩猫<rt>wán māo</rt></ruby></span><span class="en">play with a cat</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>好玩<rt>hǎowán</rt></ruby></span><span class="en">fun</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>视频<rt>shìpín</rt></ruby></span><span class="en">video</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>读大学<rt>dú dàxué</rt></ruby></span><span class="en">attend university</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>上班<rt>shàngbān</rt></ruby></span><span class="en">go to work</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>上学<rt>shàngxué</rt></ruby></span><span class="en">go to school</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>面条<rt>miàntiáo</rt></ruby></span><span class="en">noodles</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>干什么<rt>gàn shénme</rt></ruby> / <ruby>做什么<rt>zuò shénme</rt></ruby></span><span class="en">doing what</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>对象<rt>duìxiàng</rt></ruby></span><span class="en">partner</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>到<rt>dào</rt></ruby></span><span class="en">arrive</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>一般<rt>yìbān</rt></ruby></span><span class="en">usually</span></button>
+        </div>
+        <p class="word-hint">▸ 点击任意单词，英文释义显示在右侧</p>
+      </details>
+
+      <!-- 时间 -->
+      <details class="card" id="vocab-time" open>
+        <summary class="cat" style="--accent:#7ea9e0">时间 <span class="en">Time</span></summary>
+        <div class="words">
+          <button class="word" type="button"><span class="zh"><ruby>周末<rt>zhōumò</rt></ruby></span><span class="en">weekend</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>这周末<rt>zhè zhōumò</rt></ruby></span><span class="en">this weekend</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>上周末<rt>shàng zhōumò</rt></ruby></span><span class="en">last weekend</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>上周五<rt>shàng zhōuwǔ</rt></ruby> / <ruby>上个<rt>shàng ge</rt></ruby><ruby>星期五<rt>xīngqīwǔ</rt></ruby></span><span class="en">last Friday</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>这<rt>zhè</rt></ruby><ruby>周二<rt>zhōu'èr</rt></ruby></span><span class="en">this Tuesday</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>上周六<rt>shàng zhōuliù</rt></ruby></span><span class="en">last Saturday</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>上周一<rt>shàng zhōuyī</rt></ruby></span><span class="en">last Monday</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>上周<rt>shàng zhōu</rt></ruby></span><span class="en">last week</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>上个月<rt>shàng ge yuè</rt></ruby></span><span class="en">last month</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>5点前<rt>wǔ diǎn qián</rt></ruby></span><span class="en">before 5 o'clock</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>上午<rt>shàngwǔ</rt></ruby></span><span class="en">morning</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>下午<rt>xiàwǔ</rt></ruby></span><span class="en">afternoon</span></button>
+          <button class="word" type="button"><span class="zh"><ruby>晚上<rt>wǎnshang</rt></ruby></span><span class="en">evening</span></button>
+        </div>
+        <p class="word-hint">▸ 点击任意单词，英文释义显示在右侧</p>
+      </details>
+
+    </div>
+  </details>
+
+  <!-- ==================== 2. 语法 ==================== -->
+  <details class="section" id="sec-gram" open>
+    <summary class="section-head">
+      <span class="section-num" style="--c:#a793e6">2</span>
+      <h2>语法点</h2>
+      <span class="en">Grammar</span>
+    </summary>
+    <div class="section-body">
+
+      <!-- ① -->
+      <details class="card gram" id="gram-1" style="--accent:#a793e6" open>
+        <summary class="gram-title"><span class="num">①</span>能 vs. 可以 (can)</summary>
+        <div class="gram-body">
+          <p><span class="lbl"><ruby>能<rt>néng</rt></ruby></span> means "be able to". It covers ability, or whether your situation or time allows it. It is used to ask about availability.</p>
+          <ul class="samples">
+            <li class="sample">
+              <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>下午<rt>xiàwǔ</rt></ruby><ruby>三点<rt>sān diǎn</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>去<rt>qù</rt></ruby>。</p>
+              <p class="en">I can go at 3 pm. My schedule is free.</p>
+            </li>
+            <li class="sample">
+              <p class="zh"><ruby>他<rt>tā</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>游<rt>yóu</rt></ruby><ruby>一千米<rt>yìqiān mǐ</rt></ruby>。</p>
+              <p class="en">He can swim 1000 m. Ability.</p>
+            </li>
+          </ul>
+          <p style="margin-top:1rem"><span class="lbl"><ruby>可以<rt>kěyǐ</rt></ruby></span> means "be allowed to". It is used for permission, or for "it's OK to".</p>
+          <ul class="samples">
+            <li class="sample">
+              <p class="zh"><ruby>这里<rt>zhèlǐ</rt></ruby><ruby>可以<rt>kěyǐ</rt></ruby><ruby>拍照<rt>pāizhào</rt></ruby><ruby>吗<rt>ma</rt></ruby>？</p>
+              <p class="en">May I take photos here? Permission.</p>
+            </li>
+            <li class="sample">
+              <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>可以<rt>kěyǐ</rt></ruby><ruby>坐<rt>zuò</rt></ruby><ruby>这儿<rt>zhèr</rt></ruby>。</p>
+              <p class="en">You may sit here.</p>
+            </li>
+          </ul>
+          <div class="tip">
+            Ask about time or schedule with <ruby>能<rt>néng</rt></ruby>. Ask for permission with <ruby>可以<rt>kěyǐ</rt></ruby>. For a "yes" answer, both can be used in many cases, e.g.
+            <ruby>你<rt>nǐ</rt></ruby><ruby>能<rt>néng</rt></ruby>／<ruby>可以<rt>kěyǐ</rt></ruby><ruby>来<rt>lái</rt></ruby><ruby>吗<rt>ma</rt></ruby>？
+          </div>
+        </div>
+      </details>
+
+      <!-- ② -->
+      <details class="card gram" id="gram-2" style="--accent:#8fb6e8" open>
+        <summary class="gram-title"><span class="num">②</span>在 + Verb = am / is / are doing</summary>
+        <div class="gram-body">
+          <p>Pattern: <span class="lbl">Subject + 在 + Verb</span>. Add time words to show past or present.</p>
+          <ul class="samples">
+            <li class="sample">
+              <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>什么<rt>shénme</rt></ruby>？</p>
+              <p class="en">What are you doing?</p>
+            </li>
+            <li class="sample">
+              <p class="zh"><ruby>昨天<rt>zuótiān</rt></ruby><ruby>晚上<rt>wǎnshang</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>什么<rt>shénme</rt></ruby>？</p>
+              <p class="en">What were you doing last night?</p>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- ③ -->
+      <details class="card gram" id="gram-3" style="--accent:#6fc7ab" open>
+        <summary class="gram-title"><span class="num">③</span>了 = completed action (past)</summary>
+        <div class="gram-body">
+          <p>Pattern: <span class="lbl">Subject + Verb + 了 + Object</span>.</p>
+          <ul class="samples">
+            <li class="sample">
+              <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby>《<ruby>哈利波特<rt>Hālì Bōtè</rt></ruby>》。</p>
+              <p class="en">I read Harry Potter.</p>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- ④ -->
+      <details class="card gram" id="gram-4" style="--accent:#f2a882" open>
+        <summary class="gram-title"><span class="num">④</span>给 + person + Verb (do sth. for / to someone)</summary>
+        <div class="gram-body">
+          <ul class="samples">
+            <li class="sample">
+              <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>给<rt>gěi</rt></ruby><ruby>妹妹<rt>mèimei</rt></ruby><ruby>打电话<rt>dǎ diànhuà</rt></ruby>。</p>
+              <p class="en">I call my younger sister. Literally: I "to" sister make a call.</p>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- ⑤ -->
+      <details class="card gram" id="gram-5" style="--accent:#ef9cb4" open>
+        <summary class="gram-title"><span class="num">⑤</span>Time words before the verb; "when" uses 什么时候</summary>
+        <div class="gram-body">
+          <p>Order: <span class="lbl">Subject + Time + Place + Verb</span>.</p>
+          <ul class="samples">
+            <li class="sample">
+              <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>上周一<rt>shàng zhōuyī</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>看书<rt>kàn shū</rt></ruby>。</p>
+              <p class="en">Last Monday, I read at home.</p>
+            </li>
+            <li class="sample">
+              <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>什么时候<rt>shénme shíhou</rt></ruby><ruby>给<rt>gěi</rt></ruby><ruby>妹妹<rt>mèimei</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>电话<rt>diànhuà</rt></ruby>？</p>
+              <p class="en">When did you call your sister?</p>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- ⑥ -->
+      <details class="card gram" id="gram-6" style="--accent:#8fd8bd" open>
+        <summary class="gram-title"><span class="num">⑥</span>怎么样 = How about…?</summary>
+        <div class="gram-body">
+          <ul class="samples">
+            <li class="sample">
+              <p class="zh"><ruby>星期<rt>xīngqī</rt></ruby>X<ruby>下午<rt>xiàwǔ</rt></ruby><ruby>怎么样<rt>zěnmeyàng</rt></ruby>？</p>
+              <p class="en">How about Xday afternoon?</p>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- ⑦ -->
+      <details class="card gram" id="gram-7" style="--accent:#c9b6ec" open>
+        <summary class="gram-title"><span class="num">⑦</span>一般 = usually</summary>
+        <div class="gram-body">
+          <ul class="samples">
+            <li class="sample">
+              <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>一般<rt>yìbān</rt></ruby><ruby>晚上<rt>wǎnshang</rt></ruby><ruby>五点<rt>wǔ diǎn</rt></ruby><ruby>做饭<rt>zuòfàn</rt></ruby>。</p>
+              <p class="en">I usually cook at 5 pm.</p>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+    </div>
+  </details>
+
+  <!-- ==================== 3. 例句 ==================== -->
+  <details class="section" id="sec-ex" open>
+    <summary class="section-head">
+      <span class="section-num" style="--c:#ef9cb4">3</span>
+      <h2>例句</h2>
+      <span class="en">Example Sentences</span>
+    </summary>
+    <div class="section-body">
+
+      <!-- 约时间 -->
+      <details class="card" id="ex-plans" style="--accent:#ef9cb4" open>
+        <summary class="cat">约时间 <span class="en">Making plans</span></summary>
+        <ol class="ex-list">
+          <li class="ex">
+            <p class="zh"><ruby>星期<rt>xīngqī</rt></ruby>X<ruby>下午<rt>xiàwǔ</rt></ruby><ruby>怎么样<rt>zěnmeyàng</rt></ruby>？</p>
+            <p class="en">How about Xday afternoon?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>星期<rt>xīngqī</rt></ruby>X<ruby>下午<rt>xiàwǔ</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>去<rt>qù</rt></ruby>xx<ruby>吗<rt>ma</rt></ruby>？</p>
+            <p class="en">Can you go to xx on Xday afternoon?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>你<rt>nǐ</rt></ruby>X<ruby>号<rt>hào</rt></ruby><ruby>几点<rt>jǐ diǎn</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>去<rt>qù</rt></ruby>xx？</p>
+            <p class="en">What time can you go to xx on the Xth?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>23号<rt>èrshísān hào</rt></ruby><ruby>几点<rt>jǐ diǎn</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>车站<rt>chēzhàn</rt></ruby>？</p>
+            <p class="en">What time can you go to the station on the 23rd?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>23号<rt>èrshísān hào</rt></ruby><ruby>九点半<rt>jiǔ diǎn bàn</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>车站<rt>chēzhàn</rt></ruby>。</p>
+            <p class="en">I can go to the station at 9:30 on the 23rd.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>太好了<rt>tài hǎo le</rt></ruby>，<ruby>那<rt>nà</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>九点半<rt>jiǔ diǎn bàn</rt></ruby><ruby>到<rt>dào</rt></ruby>。</p>
+            <p class="en">Great, then I'll arrive at 9:30.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>麦克<rt>Màikè</rt></ruby><ruby>9月30号<rt>jiǔ yuè sānshí hào</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>悉尼<rt>Xīní</rt></ruby><ruby>吗<rt>ma</rt></ruby>？</p>
+            <p class="en">Can Mike arrive in Sydney on September 30th?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>麦克<rt>Màikè</rt></ruby><ruby>10月1号<rt>shí yuè yī hào</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>纽约<rt>Niǔyuē</rt></ruby>。</p>
+            <p class="en">Mike arrives in New York on October 1st.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>太可惜了<rt>tài kěxī le</rt></ruby>，<ruby>我<rt>wǒ</rt></ruby><ruby>10月1号<rt>shí yuè yī hào</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>悉尼<rt>Xīní</rt></ruby>。</p>
+            <p class="en">That's a shame, I'm in Sydney on October 1st.</p>
+          </li>
+        </ol>
+      </details>
+
+      <!-- 在做什么 -->
+      <details class="card" id="ex-doing" style="--accent:#8fb6e8" open>
+        <summary class="cat">在做什么 <span class="en">What are / were you doing</span></summary>
+        <ol class="ex-list">
+          <li class="ex">
+            <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>什么<rt>shénme</rt></ruby>？</p>
+            <p class="en">What are you doing?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>昨天<rt>zuótiān</rt></ruby><ruby>晚上<rt>wǎnshang</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>什么<rt>shénme</rt></ruby>？</p>
+            <p class="en">What were you doing last night?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>昨天<rt>zuótiān</rt></ruby><ruby>早上<rt>zǎoshang</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>对象<rt>duìxiàng</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>学校<rt>xuéxiào</rt></ruby>。</p>
+            <p class="en">Yesterday morning my partner was at school.</p>
+          </li>
+        </ol>
+      </details>
+
+      <!-- 过去与现在 -->
+      <details class="card" id="ex-past" style="--accent:#6fc7ab" open>
+        <summary class="cat">过去与现在 <span class="en">Past and present activities</span></summary>
+        <ol class="ex-list">
+          <li class="ex">
+            <p class="zh"><ruby>上周末<rt>shàng zhōumò</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>看电视<rt>kàn diànshì</rt></ruby>。</p>
+            <p class="en">Last weekend I watched TV at home.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>这周末<rt>zhè zhōumò</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>看电视<rt>kàn diànshì</rt></ruby>。</p>
+            <p class="en">This weekend I will watch TV at home.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>上周一<rt>shàng zhōuyī</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>看书<rt>kàn shū</rt></ruby>。</p>
+            <p class="en">Last Monday I read at home.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>上个<rt>shàng ge</rt></ruby><ruby>星期五<rt>xīngqīwǔ</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>书店<rt>shūdiàn</rt></ruby><ruby>看书<rt>kàn shū</rt></ruby>。</p>
+            <p class="en">Last Friday I read at the book store.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>这<rt>zhè</rt></ruby><ruby>周二<rt>zhōu'èr</rt></ruby><ruby>晚上<rt>wǎnshang</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>家<rt>jiā</rt></ruby><ruby>睡觉<rt>shuìjiào</rt></ruby>。</p>
+            <p class="en">This Tuesday evening I will sleep at home.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>10点<rt>shí diǎn</rt></ruby><ruby>睡觉<rt>shuìjiào</rt></ruby>。</p>
+            <p class="en">I go to sleep at 10 o'clock.</p>
+          </li>
+        </ol>
+      </details>
+
+      <!-- 打电话 -->
+      <details class="card" id="ex-phone" style="--accent:#f2a882" open>
+        <summary class="cat">打电话 <span class="en">Phone calls</span></summary>
+        <ol class="ex-list">
+          <li class="ex">
+            <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>给<rt>gěi</rt></ruby><ruby>谁<rt>shéi</rt></ruby><ruby>打电话<rt>dǎ diànhuà</rt></ruby>？</p>
+            <p class="en">Who are you calling?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>下午<rt>xiàwǔ</rt></ruby><ruby>5点<rt>wǔ diǎn</rt></ruby><ruby>给<rt>gěi</rt></ruby><ruby>我<rt>wǒ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>妹妹<rt>mèimei</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>电话<rt>diànhuà</rt></ruby>。</p>
+            <p class="en">I called my younger sister at 5 pm.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>什么时候<rt>shénme shíhou</rt></ruby><ruby>给<rt>gěi</rt></ruby><ruby>妹妹<rt>mèimei</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>电话<rt>diànhuà</rt></ruby>？</p>
+            <p class="en">When did you call your sister?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>星期二<rt>xīngqī'èr</rt></ruby><ruby>给<rt>gěi</rt></ruby><ruby>妹妹<rt>mèimei</rt></ruby><ruby>打<rt>dǎ</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>电话<rt>diànhuà</rt></ruby>。</p>
+            <p class="en">I called my sister on Tuesday.</p>
+          </li>
+        </ol>
+      </details>
+
+      <!-- 看书 -->
+      <details class="card" id="ex-reading" style="--accent:#a793e6" open>
+        <summary class="cat">看书 <span class="en">Reading</span></summary>
+        <ol class="ex-list">
+          <li class="ex">
+            <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>什么<rt>shénme</rt></ruby><ruby>书<rt>shū</rt></ruby>？</p>
+            <p class="en">What book did you read?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>看<rt>kàn</rt></ruby><ruby>了<rt>le</rt></ruby>《<ruby>哈利波特<rt>Hālì Bōtè</rt></ruby>》。</p>
+            <p class="en">I read Harry Potter.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>哈利波特<rt>Hālì Bōtè</rt></ruby><ruby>好看<rt>hǎokàn</rt></ruby><ruby>吗<rt>ma</rt></ruby>？</p>
+            <p class="en">Is Harry Potter good?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>好看<rt>hǎokàn</rt></ruby>。</p>
+            <p class="en">Yes, it's good.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>哪<rt>nǎ</rt></ruby><ruby>本<rt>běn</rt></ruby><ruby>哈利波特<rt>Hālì Bōtè</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>好看<rt>hǎokàn</rt></ruby>？</p>
+            <p class="en">Which Harry Potter is the best?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>第<rt>dì</rt></ruby><ruby>3本<rt>sān běn</rt></ruby>。</p>
+            <p class="en">The third one.</p>
+          </li>
+        </ol>
+      </details>
+
+      <!-- 做饭、学习、努力 -->
+      <details class="card" id="ex-cooking" style="--accent:#8fd8bd" open>
+        <summary class="cat">做饭、学习、努力 <span class="en">Cooking, studying, working hard</span></summary>
+        <ol class="ex-list">
+          <li class="ex">
+            <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>一般<rt>yìbān</rt></ruby><ruby>几点<rt>jǐ diǎn</rt></ruby><ruby>做饭<rt>zuòfàn</rt></ruby>？</p>
+            <p class="en">What time do you usually cook?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>一般<rt>yìbān</rt></ruby><ruby>晚上<rt>wǎnshang</rt></ruby><ruby>五点<rt>wǔ diǎn</rt></ruby><ruby>做饭<rt>zuòfàn</rt></ruby>。</p>
+            <p class="en">I usually cook at 5 pm.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>上个月<rt>shàng ge yuè</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>学习<rt>xuéxí</rt></ruby><ruby>什么<rt>shénme</rt></ruby>？</p>
+            <p class="en">What were you studying last month?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>上个月<rt>shàng ge yuè</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>学习<rt>xuéxí</rt></ruby><ruby>中文<rt>Zhōngwén</rt></ruby>。</p>
+            <p class="en">Last month I was studying Chinese.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>努力<rt>nǔlì</rt></ruby><ruby>上班<rt>shàngbān</rt></ruby>。</p>
+            <p class="en">I'm working hard at my job.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>努力<rt>nǔlì</rt></ruby><ruby>学习<rt>xuéxí</rt></ruby>。</p>
+            <p class="en">I'm studying hard.</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>你<rt>nǐ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>努力<rt>nǔlì</rt></ruby><ruby>做<rt>zuò</rt></ruby><ruby>什么<rt>shénme</rt></ruby><ruby>呢<rt>ne</rt></ruby>？</p>
+            <p class="en">What are you working hard on?</p>
+          </li>
+          <li class="ex">
+            <p class="zh"><ruby>我<rt>wǒ</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>努力<rt>nǔlì</rt></ruby><ruby>学习<rt>xuéxí</rt></ruby>。</p>
+            <p class="en">I'm studying hard.</p>
+          </li>
+        </ol>
+      </details>
+
+    </div>
+  </details>
+
+  <p class="footer">中文学习整理 · Ruby Annotated</p>
+</div>
+
+<script>
+(function () {
+  var body     = document.body;
+  var menuBtn  = document.getElementById('menuBtn');
+  var closeBtn = document.getElementById('closeBtn');
+  var overlay  = document.getElementById('overlay');
+  var drawer   = document.getElementById('drawer');
+
+  /* ---------- 抽屉开关 ---------- */
+  function openMenu() {
+    body.classList.add('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+  }
+  function closeMenu() {
+    body.classList.remove('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  /* ---------- 目录跳转（修复：手动 scrollIntoView） ---------- */
+  drawer.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();                       // 不用 hash 跳转，避免 overflow:hidden 吞掉滚动
+      var id = a.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+
+      // 1. 展开目标本身
+      if (target.tagName === 'DETAILS') target.open = true;
+
+      // 2. 展开所有祖先折叠块（否则内容不可见）
+      var p = target.parentElement;
+      while (p) {
+        if (p.tagName === 'DETAILS') p.open = true;
+        p = p.parentElement;
+      }
+
+      // 3. 先关菜单，等 overflow 恢复后再滚动
+      closeMenu();
+      setTimeout(function () {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 90);
+    });
+  });
+
+  /* ---------- 单词点击：英文显示在右侧 ---------- */
+  document.querySelectorAll('.word').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var isOpen = btn.classList.toggle('open');
+      btn.setAttribute('aria-pressed', isOpen ? 'true' : 'false');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
