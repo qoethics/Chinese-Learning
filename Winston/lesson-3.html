@@ -377,7 +377,7 @@
     border-color: #5c6472;
   }
 
-  /* 全体展开/折叠 按钮 */
+  /* 控制按钮行（展开 / 折叠 / 复制） */
   .controls {
     display: flex;
     gap: .5rem;
@@ -402,6 +402,15 @@
     border-color: var(--line-2);
     color: #2c2c34;
     transform: translateY(-1px);
+  }
+  .ctrl-btn.copied {
+    background: #2c2c34;
+    border-color: #2c2c34;
+    color: #fff;
+  }
+  .ctrl-btn.copied:hover {
+    background: #2c2c34;
+    color: #fff;
   }
 
   /* ================= 单词分组 ================= */
@@ -714,6 +723,7 @@
     <div class="controls">
       <button class="ctrl-btn" id="expandAll">全部展开</button>
       <button class="ctrl-btn" id="collapseAll">全部折叠</button>
+      <button class="ctrl-btn" id="copyWordsBtn">复制单词 · Copy</button>
     </div>
 
     <!-- 事件背景 -->
@@ -1652,6 +1662,60 @@
   document.getElementById('collapseAll').addEventListener('click', function () {
     groups.forEach(function (g) { g.open = false; });
   });
+
+  /* ---------- 复制全部单词 ---------- */
+  var copyBtn = document.getElementById('copyWordsBtn');
+
+  function buildWordText() {
+    var lines = [];
+    document.querySelectorAll('#sec-vocab .group').forEach(function (group) {
+      var h3 = group.querySelector('.group-head h3');
+      if (h3) lines.push(h3.textContent.trim());
+
+      var words = [];
+      group.querySelectorAll('.word .zh').forEach(function (zh) {
+        var clone = zh.cloneNode(true);
+        clone.querySelectorAll('rt, rp').forEach(function (n) { n.remove(); });
+        var text = clone.textContent.replace(/\s+/g, '').trim();
+        if (text) words.push(text);
+      });
+      lines.push(words.join('　'));
+      lines.push('');
+    });
+    return lines.join('\n').trim();
+  }
+
+  copyBtn.addEventListener('click', function () {
+    var text = buildWordText();
+
+    function done() {
+      copyBtn.classList.add('copied');
+      copyBtn.textContent = '已复制 ✓';
+      setTimeout(function () {
+        copyBtn.classList.remove('copied');
+        copyBtn.textContent = '复制单词 · Copy';
+      }, 1800);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () {
+        fallbackCopy(text, done);
+      });
+    } else {
+      fallbackCopy(text, done);
+    }
+  });
+
+  function fallbackCopy(text, cb) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); cb(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
 })();
 </script>
 
