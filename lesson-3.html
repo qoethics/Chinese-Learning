@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>健身房跑路 · 单词</title>
+<style>
+  * { box-sizing: border-box; }
+
+  :root {
+    --ink:     #2c2c34;
+    --ink-2:   #55555f;
+    --ink-3:   #8a8a99;
+    --line:    rgba(150,160,180,.28);
+    --line-2:  rgba(150,160,180,.45);
+
+    /* 声调颜色（固定） */
+    --tone1: #d94a4a;   /* 一声 红 */
+    --tone2: #cf8500;   /* 二声 橙 */
+    --tone3: #189a58;   /* 三声 绿 */
+    --tone4: #2563d4;   /* 四声 蓝 */
+    --tone5: #8a8a99;   /* 轻声 灰 */
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                 "Noto Sans SC", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background-color: #eef0f4;
+    background-image:
+      radial-gradient(circle at 18% -6%,  #ffffff 0%, transparent 44%),
+      radial-gradient(circle at 88% 6%,   #f4f6f9 0%, transparent 40%),
+      radial-gradient(circle at 50% 108%, #e6e9ef 0%, transparent 52%),
+      linear-gradient(180deg, #f8f9fb 0%, #e9ecf1 100%);
+    background-attachment: fixed;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ================= ruby 注音 ================= */
+  ruby {
+    ruby-position: over;
+    ruby-align: center;
+    margin: 0 .1em;
+  }
+  rt {
+    font-size: .8em;
+    letter-spacing: .05em;
+    line-height: 1.45;
+    font-weight: 600;
+    font-family: "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+    color: var(--tone5);
+  }
+  /* 声调着色 */
+  rt .tone-1 { color: var(--tone1); }
+  rt .tone-2 { color: var(--tone2); }
+  rt .tone-3 { color: var(--tone3); }
+  rt .tone-4 { color: var(--tone4); }
+  rt .tone-5 { color: var(--tone5); }
+
+  /* ================= 页面容器 ================= */
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 1.1rem 5rem;
+  }
+
+  /* ================= 顶部 ================= */
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem 1.4rem;
+  }
+  .hero h1 {
+    margin: 0 0 .75rem;
+    font-size: clamp(1.9rem, 6vw, 2.7rem);
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-indent: .16em;
+    background: linear-gradient(115deg,
+      #7d8494 0%, #c3cad6 22%, #5c6472 46%,
+      #c3cad6 70%, #7d8494 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 0 1px 0 rgba(255,255,255,.6);
+  }
+  .hero .sub {
+    margin: 0;
+    font-size: .72rem;
+    letter-spacing: .34em;
+    text-indent: .34em;
+    text-transform: uppercase;
+    color: #9aa1b0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .ribbon {
+    display: flex;
+    height: 5px;
+    width: 260px;
+    max-width: 70%;
+    margin: 1.5rem auto 0;
+    border-radius: 99px;
+    overflow: hidden;
+    opacity: .9;
+  }
+  .ribbon span { flex: 1; }
+
+  /* 声调图例 */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .45rem .95rem;
+    margin: 1.7rem auto 0;
+    padding: .7rem 1.1rem;
+    max-width: 560px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: .76rem;
+    color: var(--ink-2);
+  }
+  .legend b {
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    margin-right: .25rem;
+  }
+  .legend .l1 b { color: var(--tone1); }
+  .legend .l2 b { color: var(--tone2); }
+  .legend .l3 b { color: var(--tone3); }
+  .legend .l4 b { color: var(--tone4); }
+  .legend .l5 b { color: var(--tone5); }
+
+  /* ================= 分组 ================= */
+  .group { margin-top: 2.9rem; }
+
+  .group-head {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    margin-bottom: 1rem;
+    padding-bottom: .55rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .group-head .bar {
+    flex: none;
+    width: 5px;
+    height: 1.15em;
+    border-radius: 3px;
+    background: linear-gradient(180deg, var(--g1, #b8c0cc), var(--g2, #8a93a3));
+    box-shadow: 0 2px 6px -2px rgba(120,130,150,.6);
+  }
+  .group-head h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: #3a3a44;
+  }
+  .group-head .en {
+    margin-left: auto;
+    font-size: .66rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #a8aeba;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 单词卡 ================= */
+  .words {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: .6rem .7rem;
+  }
+
+  .word {
+    border-radius: 14px;
+    background: rgba(255,255,255,.92);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 26px -22px rgba(90,100,120,.9),
+                inset 0 1px 0 #fff;
+    overflow: hidden;
+    transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+  }
+  .word:hover {
+    border-color: var(--line-2);
+    box-shadow: 0 14px 30px -20px rgba(90,100,120,.95),
+                inset 0 1px 0 #fff;
+    transform: translateY(-1px);
+  }
+  .word[open] {
+    border-color: rgba(160,170,190,.6);
+    box-shadow: 0 16px 34px -22px rgba(90,100,120,1),
+                inset 0 1px 0 #fff;
+  }
+
+  .word > summary {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .6rem .85rem;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .16s ease;
+  }
+  .word > summary:hover { background: rgba(246,248,251,.9); }
+  .word > summary::-webkit-details-marker { display: none; }
+  .word > summary::marker { content: ""; }
+
+  .word .zh {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 1.06rem;
+    font-weight: 600;
+    line-height: 2.6;
+    letter-spacing: .02em;
+  }
+  /* 小 + / − 指示 */
+  .word > summary .sign {
+    flex: none;
+    width: 20px; height: 20px;
+    display: grid;
+    place-items: center;
+    border-radius: 7px;
+    background: #f0f2f6;
+    border: 1px solid var(--line);
+    color: #9aa1b0;
+    font-size: .82rem;
+    line-height: 1;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    transition: background .18s ease, color .18s ease,
+                transform .22s ease, border-color .18s ease;
+  }
+  .word > summary .sign::before { content: "+"; }
+  .word[open] > summary .sign {
+    background: #2c2c34;
+    border-color: #2c2c34;
+    color: #fff;
+    transform: rotate(180deg);
+  }
+  .word[open] > summary .sign::before { content: "−"; }
+
+  /* 展开内容 */
+  .word-body {
+    padding: .15rem .9rem .8rem;
+    border-top: 1px dashed var(--line);
+    animation: reveal .24s ease both;
+  }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(-3px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .word-en {
+    margin: .55rem 0 .35rem;
+    font-size: .78rem;
+    line-height: 1.5;
+    color: #6a7280;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    letter-spacing: .01em;
+  }
+  .word-en .tag {
+    display: inline-block;
+    margin-right: .45rem;
+    padding: .05rem .45rem;
+    border-radius: 6px;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    font-size: .66rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #8a93a3;
+  }
+
+  .word-ex {
+    margin: .5rem 0 0;
+    padding: .6rem .8rem .65rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+  }
+  .word-ex .ex-zh {
+    margin: 0;
+    font-size: .98rem;
+    line-height: 2.65;
+    color: #34343e;
+  }
+  .word-ex .ex-en {
+    margin: .15rem 0 0;
+    font-size: .75rem;
+    line-height: 1.5;
+    color: #8a93a3;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .word-ex::before {
+    content: "例";
+    display: inline-block;
+    margin-right: .5rem;
+    font-size: .62rem;
+    font-weight: 700;
+    color: #b0b7c2;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 页脚 ================= */
+  .footer {
+    margin-top: 3.6rem;
+    text-align: center;
+    font-size: .7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #b0b7c2;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 响应式 ================= */
+  @media (max-width: 620px) {
+    .hero { padding-top: 3.2rem; }
+    .words { grid-template-columns: 1fr; gap: .5rem; }
+    .word .zh { font-size: 1rem; line-height: 2.55; }
+    .word-ex .ex-zh { font-size: .94rem; }
+    rt { font-size: .78em; letter-spacing: .04em; }
+    .legend { font-size: .7rem; gap: .35rem .7rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ==================== 顶部 ==================== -->
+  <header class="hero">
+    <h1>健身房跑路</h1>
+    <p class="sub">Vocabulary · 单词表</p>
+    <div class="ribbon">
+      <span style="background:#d94a4a"></span>
+      <span style="background:#cf8500"></span>
+      <span style="background:#189a58"></span>
+      <span style="background:#2563d4"></span>
+      <span style="background:#8a8a99"></span>
+    </div>
+
+    <div class="legend">
+      <span class="l1"><b>一声 ˉ</b>阴平</span>
+      <span class="l2"><b>二声 ˊ</b>阳平</span>
+      <span class="l3"><b>三声 ˇ</b>上声</span>
+      <span class="l4"><b>四声 ˋ</b>去声</span>
+      <span class="l5"><b>轻声</b>无标记</span>
+    </div>
+  </header>
+
+  <!-- ==================== 事件背景 ==================== -->
+  <section class="group">
+    <div class="group-head" style="--g1:#dfe4ec;--g2:#98a2b3">
+      <span class="bar"></span>
+      <h2>事件背景</h2>
+      <span class="en">Background</span>
+    </div>
+
+    <div class="words">
+
+      <details class="word">
+        <summary><span class="zh"><ruby>店庆<rt>diàn qìng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>store anniversary</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>这家<rt>zhè jiā</rt></ruby><ruby>健身房<rt>jiàn shēn fáng</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>店庆<rt>diàn qìng</rt></ruby><ruby>时<rt>shí</rt></ruby><ruby>搞<rt>gǎo</rt></ruby><ruby>促销<rt>cù xiāo</rt></ruby>。</p>
+            <p class="ex-en">This gym held a promotion during its anniversary.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>促销<rt>cù xiāo</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n./v.</span>promotion / promote</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他们<rt>tā men</rt></ruby><ruby>用<rt>yòng</rt></ruby><ruby>促销<rt>cù xiāo</rt></ruby><ruby>吸引<rt>xī yǐn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>很多<rt>hěn duō</rt></ruby><ruby>顾客<rt>gù kè</rt></ruby>。</p>
+            <p class="ex-en">They used promotions to attract many customers.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>深夜<rt>shēn yè</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>late at night</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>健身房<rt>jiàn shēn fáng</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>深夜<rt>shēn yè</rt></ruby><ruby>突然<rt>tū rán</rt></ruby><ruby>关门<rt>guān mén</rt></ruby>。</p>
+            <p class="ex-en">The gym suddenly closed late at night.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>往常<rt>wǎng cháng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>as usual / in the past</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>往常<rt>wǎng cháng</rt></ruby><ruby>这里<rt>zhè lǐ</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>很多<rt>hěn duō</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>锻炼<rt>duàn liàn</rt></ruby>。</p>
+            <p class="ex-en">Usually there were many people exercising here.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>锻炼<rt>duàn liàn</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>exercise / work out</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>我<rt>wǒ</rt></ruby><ruby>每天<rt>měi tiān</rt></ruby><ruby>来<rt>lái</rt></ruby><ruby>健身房<rt>jiàn shēn fáng</rt></ruby><ruby>锻炼<rt>duàn liàn</rt></ruby>。</p>
+            <p class="ex-en">I come to the gym to work out every day.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>紧闭<rt>jǐn bì</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>tightly closed</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>大门<rt>dà mén</rt></ruby><ruby>紧闭<rt>jǐn bì</rt></ruby>，<ruby>里面<rt>lǐ miàn</rt></ruby><ruby>没有<rt>méi yǒu</rt></ruby><ruby>人<rt>rén</rt></ruby>。</p>
+            <p class="ex-en">The door was tightly shut, no one inside.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>空空荡荡<rt>kōng kōng dàng dàng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">adj.</span>empty / deserted</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>场地<rt>chǎng dì</rt></ruby><ruby>空空荡荡<rt>kōng kōng dàng dàng</rt></ruby>，<ruby>什么<rt>shén me</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>没有<rt>méi yǒu</rt></ruby>。</p>
+            <p class="ex-en">The venue was completely empty — nothing left.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>场地<rt>chǎng dì</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>venue / site</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他们<rt>tā men</rt></ruby><ruby>租<rt>zū</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>这个<rt>zhè ge</rt></ruby><ruby>场地<rt>chǎng dì</rt></ruby><ruby>开<rt>kāi</rt></ruby><ruby>健身房<rt>jiàn shēn fáng</rt></ruby>。</p>
+            <p class="ex-en">They rented this venue to open a gym.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>张贴<rt>zhāng tiē</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>post / put up (a notice)</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>门上<rt>mén shàng</rt></ruby><ruby>张贴<rt>zhāng tiē</rt></ruby><ruby>着<rt>zhe</rt></ruby><ruby>一张<rt>yì zhāng</rt></ruby><ruby>通知<rt>tōng zhī</rt></ruby>。</p>
+            <p class="ex-en">A notice was posted on the door.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>拖欠<rt>tuō qiàn</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>be in arrears / default on payment</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>公司<rt>gōng sī</rt></ruby><ruby>拖欠<rt>tuō qiàn</rt></ruby><ruby>员工<rt>yuán gōng</rt></ruby><ruby>工资<rt>gōng zī</rt></ruby>。</p>
+            <p class="ex-en">The company defaulted on its employees' wages.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>限期<rt>xiàn qī</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>deadline / within a time limit</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>法院<rt>fǎ yuàn</rt></ruby><ruby>限期内<rt>xiàn qī nèi</rt></ruby><ruby>要求<rt>yāo qiú</rt></ruby><ruby>他们<rt>tā men</rt></ruby><ruby>退款<rt>tuì kuǎn</rt></ruby>。</p>
+            <p class="ex-en">The court ordered them to refund within a time limit.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>愤怒<rt>fèn nù</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">adj.</span>angry / furious</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>会员们<rt>huì yuán men</rt></ruby><ruby>非常<rt>fēi cháng</rt></ruby><ruby>愤怒<rt>fèn nù</rt></ruby>。</p>
+            <p class="ex-en">The members were furious.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>明知<rt>míng zhī</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>knowingly / be fully aware</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他<rt>tā</rt></ruby><ruby>明知<rt>míng zhī</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>跑路<rt>pǎo lù</rt></ruby>，<ruby>还<rt>hái</rt></ruby><ruby>继续<rt>jì xù</rt></ruby><ruby>卖<rt>mài</rt></ruby><ruby>卡<rt>kǎ</rt></ruby>。</p>
+            <p class="ex-en">He knew they were going to flee, yet kept selling cards.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>骗取<rt>piàn qǔ</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>obtain by fraud</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他们<rt>tā men</rt></ruby><ruby>骗取<rt>piàn qǔ</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>会员<rt>huì yuán</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>预付款<rt>yù fù kuǎn</rt></ruby>。</p>
+            <p class="ex-en">They fraudulently obtained the members' prepayments.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>预付<rt>yù fù</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>prepay &nbsp;·&nbsp; 预先 (pre) + 付款 (pay)</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>我<rt>wǒ</rt></ruby><ruby>预付<rt>yù fù</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一年<rt>yì nián</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>会员费<rt>huì yuán fèi</rt></ruby>。</p>
+            <p class="ex-en">I prepaid a full year's membership fee.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>维权<rt>wéi quán</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>defend one's rights</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>会员们<rt>huì yuán men</rt></ruby><ruby>决定<rt>jué dìng</rt></ruby><ruby>联合<rt>lián hé</rt></ruby><ruby>起来<rt>qǐ lái</rt></ruby><ruby>维权<rt>wéi quán</rt></ruby>。</p>
+            <p class="ex-en">The members decided to unite and defend their rights.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>涉及<rt>shè jí</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>involve / concern</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>这个<rt>zhè ge</rt></ruby><ruby>案子<rt>àn zi</rt></ruby><ruby>涉及<rt>shè jí</rt></ruby><ruby>上百名<rt>shàng bǎi míng</rt></ruby><ruby>消费者<rt>xiāo fèi zhě</rt></ruby>。</p>
+            <p class="ex-en">This case involves over a hundred consumers.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>共享文档<rt>gòng xiǎng wén dàng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>shared document</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>大家<rt>dà jiā</rt></ruby><ruby>用<rt>yòng</rt></ruby><ruby>共享文档<rt>gòng xiǎng wén dàng</rt></ruby><ruby>统计<rt>tǒng jì</rt></ruby><ruby>损失<rt>sǔn shī</rt></ruby>。</p>
+            <p class="ex-en">Everyone used a shared document to tally the losses.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>统计<rt>tǒng jì</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v./n.</span>count / tally / statistics</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>我们<rt>wǒ men</rt></ruby><ruby>统计<rt>tǒng jì</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>所有<rt>suǒ yǒu</rt></ruby><ruby>受害<rt>shòu hài</rt></ruby><ruby>会员<rt>huì yuán</rt></ruby>。</p>
+            <p class="ex-en">We tallied all the affected members.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>途径<rt>tú jìng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>channel / way / means</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>投诉<rt>tóu sù</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>维权<rt>wéi quán</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>重要<rt>zhòng yào</rt></ruby><ruby>途径<rt>tú jìng</rt></ruby>。</p>
+            <p class="ex-en">Complaining is an important channel for defending rights.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>投诉<rt>tóu sù</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v./n.</span>complain / complaint</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他们<rt>tā men</rt></ruby><ruby>已经<rt>yǐ jīng</rt></ruby><ruby>向<rt>xiàng</rt></ruby><ruby>消协<rt>xiāo xié</rt></ruby><ruby>投诉<rt>tóu sù</rt></ruby><ruby>了<rt>le</rt></ruby>。</p>
+            <p class="ex-en">They have already complained to the consumers' association.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>维护权益<rt>wéi hù quán yì</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>safeguard one's rights and interests</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>消费者<rt>xiāo fèi zhě</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>懂得<rt>dǒng de</rt></ruby><ruby>维护权益<rt>wéi hù quán yì</rt></ruby>。</p>
+            <p class="ex-en">Consumers should know how to safeguard their rights.</p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ==================== 法律词汇 ==================== -->
+  <section class="group">
+    <div class="group-head" style="--g1:#cfd6e2;--g2:#7e8b9e">
+      <span class="bar"></span>
+      <h2>法律词汇</h2>
+      <span class="en">Legal Terms</span>
+    </div>
+
+    <div class="words">
+
+      <details class="word">
+        <summary><span class="zh"><ruby>法院<rt>fǎ yuàn</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>court</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>这个<rt>zhè ge</rt></ruby><ruby>案子<rt>àn zi</rt></ruby><ruby>已经<rt>yǐ jīng</rt></ruby><ruby>交给<rt>jiāo gěi</rt></ruby><ruby>法院<rt>fǎ yuàn</rt></ruby><ruby>审理<rt>shěn lǐ</rt></ruby>。</p>
+            <p class="ex-en">The case has been handed to the court for hearing.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>审理<rt>shěn lǐ</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>judge / hear a case</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>法院<rt>fǎ yuàn</rt></ruby><ruby>正在<rt>zhèng zài</rt></ruby><ruby>审理<rt>shěn lǐ</rt></ruby><ruby>这起<rt>zhè qǐ</rt></ruby><ruby>案件<rt>àn jiàn</rt></ruby>。</p>
+            <p class="ex-en">The court is hearing this case.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>判决<rt>pàn jué</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v./n.</span>deliver a verdict / judgment</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>法院<rt>fǎ yuàn</rt></ruby><ruby>判决<rt>pàn jué</rt></ruby><ruby>健身房<rt>jiàn shēn fáng</rt></ruby><ruby>赔偿<rt>péi cháng</rt></ruby><ruby>会员<rt>huì yuán</rt></ruby>。</p>
+            <p class="ex-en">The court ruled that the gym must compensate the members.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>认定<rt>rèn dìng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>determine / affirm</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>法院<rt>fǎ yuàn</rt></ruby><ruby>认定<rt>rèn dìng</rt></ruby><ruby>该<rt>gāi</rt></ruby><ruby>行为<rt>xíng wéi</rt></ruby><ruby>构成<rt>gòu chéng</rt></ruby><ruby>欺诈<rt>qī zhà</rt></ruby>。</p>
+            <p class="ex-en">The court determined that the act constituted fraud.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>案例<rt>àn lì</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>case / precedent</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>这<rt>zhè</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>一个<rt>yí gè</rt></ruby><ruby>典型<rt>diǎn xíng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>消费<rt>xiāo fèi</rt></ruby><ruby>维权<rt>wéi quán</rt></ruby><ruby>案例<rt>àn lì</rt></ruby>。</p>
+            <p class="ex-en">This is a typical consumer rights case.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>解除<rt>jiě chú</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>rescind / terminate</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>会员<rt>huì yuán</rt></ruby><ruby>可以<rt>kě yǐ</rt></ruby><ruby>要求<rt>yāo qiú</rt></ruby><ruby>解除<rt>jiě chú</rt></ruby><ruby>合同<rt>hé tong</rt></ruby>。</p>
+            <p class="ex-en">Members can demand that the contract be rescinded.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>构成<rt>gòu chéng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>constitute &nbsp;·&nbsp; 在法律上构成</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>健身房<rt>jiàn shēn fáng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>行为<rt>xíng wéi</rt></ruby><ruby>构成<rt>gòu chéng</rt></ruby><ruby>欺诈<rt>qī zhà</rt></ruby>。</p>
+            <p class="ex-en">The gym's conduct constitutes fraud.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>行为<rt>xíng wéi</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>action / conduct &nbsp;·&nbsp; 行为构成某某罪名</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>这种<rt>zhè zhǒng</rt></ruby><ruby>行为<rt>xíng wéi</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>法律<rt>fǎ lǜ</rt></ruby><ruby>上<rt>shàng</rt></ruby><ruby>构成<rt>gòu chéng</rt></ruby><ruby>欺诈<rt>qī zhà</rt></ruby>。</p>
+            <p class="ex-en">This conduct legally constitutes fraud.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>主体<rt>zhǔ tǐ</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>agent / legal subject</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>该<rt>gāi</rt></ruby><ruby>健身房<rt>jiàn shēn fáng</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>本案<rt>běn àn</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>主体<rt>zhǔ tǐ</rt></ruby>。</p>
+            <p class="ex-en">The gym is the subject of this case.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>欺诈<rt>qī zhà</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n./v.</span>fraud / defraud</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>该<rt>gāi</rt></ruby><ruby>健身房<rt>jiàn shēn fáng</rt></ruby><ruby>构成<rt>gòu chéng</rt></ruby><ruby>欺诈<rt>qī zhà</rt></ruby>。</p>
+            <p class="ex-en">The gym constitutes fraud.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>采信<rt>cǎi xìn</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>accept (evidence) &nbsp;·&nbsp; 采用 + 相信</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>法院<rt>fǎ yuàn</rt></ruby><ruby>采信<rt>cǎi xìn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>会员<rt>huì yuán</rt></ruby><ruby>提供<rt>tí gōng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>证据<rt>zhèng jù</rt></ruby>。</p>
+            <p class="ex-en">The court accepted the evidence provided by the members.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>拒不<rt>jù bù</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>refuse to &nbsp;·&nbsp; 拒不 + 动词</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>罪犯<rt>zuì fàn</rt></ruby><ruby>拒不<rt>jù bù</rt></ruby><ruby>承认<rt>chéng rèn</rt></ruby><ruby>自己<rt>zì jǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>罪行<rt>zuì xíng</rt></ruby>。</p>
+            <p class="ex-en">The criminal refused to admit his crime.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>一起案例<rt>yì qǐ àn lì</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>a case</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>这<rt>zhè</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>一起<rt>yì qǐ</rt></ruby><ruby>典型<rt>diǎn xíng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>欺诈<rt>qī zhà</rt></ruby><ruby>案例<rt>àn lì</rt></ruby>。</p>
+            <p class="ex-en">This is a typical fraud case.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>实施<rt>shí shī</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>implement / carry out</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他们<rt>tā men</rt></ruby><ruby>实施<rt>shí shī</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>诈骗<rt>zhà piàn</rt></ruby><ruby>计划<rt>jì huà</rt></ruby>。</p>
+            <p class="ex-en">They carried out a fraud scheme.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>强有力<rt>qiáng yǒu lì</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">adj.</span>strong / powerful</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他们<rt>tā men</rt></ruby><ruby>需要<rt>xū yào</rt></ruby><ruby>强有力<rt>qiáng yǒu lì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>证据<rt>zhèng jù</rt></ruby>。</p>
+            <p class="ex-en">They need strong evidence.</p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ==================== 租 · 兜售 ==================== -->
+  <section class="group">
+    <div class="group-head" style="--g1:#d8dde6;--g2:#8b95a6">
+      <span class="bar"></span>
+      <h2>租 · 兜售</h2>
+      <span class="en">Rent · Peddle</span>
+    </div>
+
+    <div class="words">
+
+      <details class="word">
+        <summary><span class="zh"><ruby>租赁<rt>zū lìn</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v./n.</span>rent / lease</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他们<rt>tā men</rt></ruby><ruby>租赁<rt>zū lìn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>这个<rt>zhè ge</rt></ruby><ruby>场地<rt>chǎng dì</rt></ruby>。</p>
+            <p class="ex-en">They leased this venue.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>租<rt>zū</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>rent from / rent</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>我们<rt>wǒ men</rt></ruby><ruby>从<rt>cóng</rt></ruby><ruby>房东<rt>fáng dōng</rt></ruby><ruby>那里<rt>nà lǐ</rt></ruby><ruby>租<rt>zū</rt></ruby><ruby>房子<rt>fáng zi</rt></ruby>。</p>
+            <p class="ex-en">We rent a place from the landlord.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>租给<rt>zū gěi</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>rent to</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>房东<rt>fáng dōng</rt></ruby><ruby>把<rt>bǎ</rt></ruby><ruby>场地<rt>chǎng dì</rt></ruby><ruby>租给<rt>zū gěi</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>健身房<rt>jiàn shēn fáng</rt></ruby>。</p>
+            <p class="ex-en">The landlord rented the venue to the gym.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>赁<rt>lìn</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>rent to（多与“租”连用成“租赁”）</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>“赁”<rt>lìn</rt></ruby><ruby>这个<rt>zhè ge</rt></ruby><ruby>字<rt>zì</rt></ruby><ruby>常<rt>cháng</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>“租”<rt>zū</rt></ruby><ruby>一起<rt>yì qǐ</rt></ruby><ruby>用<rt>yòng</rt></ruby>。</p>
+            <p class="ex-en">The character 赁 is often used together with 租.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>租约<rt>zū yuē</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>rental agreement</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>租约<rt>zū yuē</rt></ruby><ruby>还<rt>hái</rt></ruby><ruby>没<rt>méi</rt></ruby><ruby>到期<rt>dào qī</rt></ruby>，<ruby>他们<rt>tā men</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>了<rt>le</rt></ruby>。</p>
+            <p class="ex-en">The lease hadn't expired, yet they fled.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>兜售<rt>dōu shòu</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>peddle / hawk</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他们<rt>tā men</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>街上<rt>jiē shàng</rt></ruby><ruby>兜售<rt>dōu shòu</rt></ruby><ruby>会员卡<rt>huì yuán kǎ</rt></ruby>。</p>
+            <p class="ex-en">They peddled membership cards on the street.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>吉凶<rt>jí xiōng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>good luck / bad luck</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>开店<rt>kāi diàn</rt></ruby><ruby>之前<rt>zhī qián</rt></ruby>，<ruby>谁<rt>shéi</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>知道<rt>zhī dào</rt></ruby><ruby>吉凶<rt>jí xiōng</rt></ruby>。</p>
+            <p class="ex-en">Before opening, no one knows good or bad fortune.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>关门大吉<rt>guān mén dà jí</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>euphemism for closing down（关门的委婉说法）</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>“关门大吉”<rt>guān mén dà jí</rt></ruby><ruby>其实<rt>qí shí</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>关门<rt>guān mén</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>委婉<rt>wěi wǎn</rt></ruby><ruby>说法<rt>shuō fa</rt></ruby>。</p>
+            <p class="ex-en">"关门大吉" is actually a euphemism for closing down.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>恶意销售<rt>è yì xiāo shòu</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>malicious sales</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>跑路<rt>pǎo lù</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>促销<rt>cù xiāo</rt></ruby><ruby>其实<rt>qí shí</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>恶意销售<rt>è yì xiāo shòu</rt></ruby>。</p>
+            <p class="ex-en">The pre-fleeing promotion was actually malicious selling.</p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ==================== 虚词 · 副词 ==================== -->
+  <section class="group">
+    <div class="group-head" style="--g1:#e2e6ee;--g2:#98a2b3">
+      <span class="bar"></span>
+      <h2>虚词 · 副词</h2>
+      <span class="en">Function Words</span>
+    </div>
+
+    <div class="words">
+
+      <details class="word">
+        <summary><span class="zh"><ruby>仍<rt>réng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">adv.</span>still = 还</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他<rt>tā</rt></ruby><ruby>仍<rt>réng</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>承认<rt>chéng rèn</rt></ruby><ruby>自己<rt>zì jǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>错误<rt>cuò wù</rt></ruby>。</p>
+            <p class="ex-en">He still won't admit his mistake.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>仍然<rt>réng rán</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">adv.</span>still = 依然</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>公司<rt>gōng sī</rt></ruby><ruby>仍然<rt>réng rán</rt></ruby><ruby>没有<rt>méi yǒu</rt></ruby><ruby>退款<rt>tuì kuǎn</rt></ruby>。</p>
+            <p class="ex-en">The company still hasn't refunded.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>曾<rt>céng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">adv.</span>has done in the past（正式）</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他<rt>tā</rt></ruby><ruby>曾<rt>céng</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>这家<rt>zhè jiā</rt></ruby><ruby>健身房<rt>jiàn shēn fáng</rt></ruby><ruby>锻炼<rt>duàn liàn</rt></ruby>。</p>
+            <p class="ex-en">He once worked out at this gym.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>仅<rt>jǐn</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">adv.</span>only = 只</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>仅<rt>jǐn</rt></ruby><ruby>一个月<rt>yí gè yuè</rt></ruby>，<ruby>他们<rt>tā men</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>了<rt>le</rt></ruby>。</p>
+            <p class="ex-en">In just one month, they fled.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>仅仅<rt>jǐn jǐn</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">adv.</span>merely / only</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>这<rt>zhè</rt></ruby><ruby>仅仅<rt>jǐn jǐn</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>个<rt>gè</rt></ruby><ruby>开始<rt>kāi shǐ</rt></ruby>。</p>
+            <p class="ex-en">This is merely the beginning.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>该<rt>gāi</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">pron.</span>this / the said = 这个 = 此</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>该<rt>gāi</rt></ruby><ruby>健身房<rt>jiàn shēn fáng</rt></ruby><ruby>已<rt>yǐ</rt></ruby><ruby>被<rt>bèi</rt></ruby><ruby>起诉<rt>qǐ sù</rt></ruby>。</p>
+            <p class="ex-en">The said gym has been sued.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>该健身房<rt>gāi jiàn shēn fáng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>the said gym</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>该健身房<rt>gāi jiàn shēn fáng</rt></ruby><ruby>突然<rt>tū rán</rt></ruby><ruby>关门<rt>guān mén</rt></ruby>。</p>
+            <p class="ex-en">The said gym suddenly closed.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>该公司<rt>gāi gōng sī</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>the said company</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>该公司<rt>gāi gōng sī</rt></ruby><ruby>拖欠<rt>tuō qiàn</rt></ruby><ruby>员工<rt>yuán gōng</rt></ruby><ruby>工资<rt>gōng zī</rt></ruby>。</p>
+            <p class="ex-en">The said company defaulted on wages.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>该客户<rt>gāi kè hù</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>the said client</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>该客户<rt>gāi kè hù</rt></ruby><ruby>已经<rt>yǐ jīng</rt></ruby><ruby>投诉<rt>tóu sù</rt></ruby><ruby>了<rt>le</rt></ruby>。</p>
+            <p class="ex-en">The said client has already complained.</p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ==================== 常用搭配 ==================== -->
+  <section class="group">
+    <div class="group-head" style="--g1:#dfe3eb;--g2:#8e98a9">
+      <span class="bar"></span>
+      <h2>常用搭配</h2>
+      <span class="en">Patterns</span>
+    </div>
+
+    <div class="words">
+
+      <details class="word">
+        <summary><span class="zh"><ruby>在<rt>zài</rt></ruby>…<ruby>的情况下<rt>de qíng kuàng xià</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>under the circumstance of…</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>在<rt>zài</rt></ruby><ruby>明知<rt>míng zhī</rt></ruby><ruby>要<rt>yào</rt></ruby><ruby>关门<rt>guān mén</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>情况下<rt>qíng kuàng xià</rt></ruby>，<ruby>他们<rt>tā men</rt></ruby><ruby>还<rt>hái</rt></ruby><ruby>卖<rt>mài</rt></ruby><ruby>卡<rt>kǎ</rt></ruby>。</p>
+            <p class="ex-en">Knowing they would close, they still sold cards.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>在<rt>zài</rt></ruby>…<ruby>的影响下<rt>de yǐng xiǎng xià</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>under the influence of…</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>在<rt>zài</rt></ruby><ruby>促销<rt>cù xiāo</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>影响下<rt>yǐng xiǎng xià</rt></ruby>，<ruby>很多<rt>hěn duō</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>办<rt>bàn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>卡<rt>kǎ</rt></ruby>。</p>
+            <p class="ex-en">Influenced by the promotion, many bought cards.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>在<rt>zài</rt></ruby>…<ruby>的帮助下<rt>de bāng zhù xià</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>with the help of…</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>在<rt>zài</rt></ruby><ruby>律师<rt>lǜ shī</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>帮助下<rt>bāng zhù xià</rt></ruby>，<ruby>他们<rt>tā men</rt></ruby><ruby>赢<rt>yíng</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>官司<rt>guān si</rt></ruby>。</p>
+            <p class="ex-en">With a lawyer's help, they won the lawsuit.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>在<rt>zài</rt></ruby>…<ruby>的环境下<rt>de huán jìng xià</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>in the environment of…</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>在<rt>zài</rt></ruby><ruby>这样<rt>zhè yàng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>环境下<rt>huán jìng xià</rt></ruby>，<ruby>维权<rt>wéi quán</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>难<rt>nán</rt></ruby>。</p>
+            <p class="ex-en">Under such conditions, defending rights is hard.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>为<rt>wèi</rt></ruby>…<ruby>提供<rt>tí gōng</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>provide … for …</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>健身房<rt>jiàn shēn fáng</rt></ruby><ruby>为<rt>wèi</rt></ruby><ruby>会员<rt>huì yuán</rt></ruby><ruby>提供<rt>tí gōng</rt></ruby><ruby>免费<rt>miǎn fèi</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>毛巾<rt>máo jīn</rt></ruby>。</p>
+            <p class="ex-en">The gym provides free towels for members.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>为<rt>wèi</rt></ruby><ruby>饥饿<rt>jī è</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>提供<rt>tí gōng</rt></ruby><ruby>粮食<rt>liáng shi</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>provide food for the hungry</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>志愿者<rt>zhì yuàn zhě</rt></ruby><ruby>为<rt>wèi</rt></ruby><ruby>饥饿<rt>jī è</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>人<rt>rén</rt></ruby><ruby>提供<rt>tí gōng</rt></ruby><ruby>粮食<rt>liáng shi</rt></ruby>。</p>
+            <p class="ex-en">Volunteers provide food for the hungry.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>马甲<rt>mǎ jiǎ</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">n.</span>alt account = 账号（网络用语）</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他<rt>tā</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>网上<rt>wǎng shàng</rt></ruby><ruby>用<rt>yòng</rt></ruby><ruby>马甲<rt>mǎ jiǎ</rt></ruby><ruby>发帖<rt>fā tiě</rt></ruby>。</p>
+            <p class="ex-en">He posted online using an alt account.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>更换<rt>gēng huàn</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">v.</span>replace = 更新 + 换</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他们<rt>tā men</rt></ruby><ruby>更换<rt>gēng huàn</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>公司<rt>gōng sī</rt></ruby><ruby>法人<rt>fǎ rén</rt></ruby>。</p>
+            <p class="ex-en">They replaced the company's legal representative.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>无门<rt>wú mén</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">adj.</span>no way / no channel = 没办法</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>会员们<rt>huì yuán men</rt></ruby><ruby>求助<rt>qiú zhù</rt></ruby><ruby>无门<rt>wú mén</rt></ruby>，<ruby>只好<rt>zhǐ hǎo</rt></ruby><ruby>报警<rt>bào jǐng</rt></ruby>。</p>
+            <p class="ex-en">With no channel to seek help, they had to call the police.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>求助无门<rt>qiú zhù wú mén</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>have nowhere to turn for help</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>会员们<rt>huì yuán men</rt></ruby><ruby>求助无门<rt>qiú zhù wú mén</rt></ruby>，<ruby>非常<rt>fēi cháng</rt></ruby><ruby>无助<rt>wú zhù</rt></ruby>。</p>
+            <p class="ex-en">The members had nowhere to turn and felt helpless.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="word">
+        <summary><span class="zh"><ruby>投诉无门<rt>tóu sù wú mén</rt></ruby></span><span class="sign"></span></summary>
+        <div class="word-body">
+          <p class="word-en"><span class="tag">phr.</span>have no channel to complain</p>
+          <div class="word-ex">
+            <p class="ex-zh"><ruby>他们<rt>tā men</rt></ruby><ruby>投诉无门<rt>tóu sù wú mén</rt></ruby>，<ruby>只好<rt>zhǐ hǎo</rt></ruby><ruby>上网<rt>shàng wǎng</rt></ruby><ruby>发帖<rt>fā tiě</rt></ruby>。</p>
+            <p class="ex-en">With no channel to complain, they turned to posting online.</p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <p class="footer">健身房跑路 · Vocabulary</p>
+</div>
+
+<script>
+(function () {
+  /* ---------- 声调着色 ---------- */
+  var toneChars = {
+    '1': 'āēīōūǖĀĒĪŌŪǕ',
+    '2': 'áéíóúǘÁÉÍÓÚǗ',
+    '3': 'ǎěǐǒǔǚǍĚǏǑǓǙ',
+    '4': 'àèìòùǜÀÈÌÒÙǛ'
+  };
+
+  function detectTone(syllable) {
+    // 不含字母的片段（如 "..."、"/"）不上色
+    if (!/[a-zA-ZüÜ]/.test(syllable)) return null;
+    for (var t in toneChars) {
+      var chars = toneChars[t];
+      for (var i = 0; i < syllable.length; i++) {
+        if (chars.indexOf(syllable[i]) !== -1) return t;
+      }
+    }
+    return '5'; // 轻声
+  }
+
+  document.querySelectorAll('rt').forEach(function (rt) {
+    if (rt.dataset.toneDone) return;
+    rt.dataset.toneDone = '1';
+
+    var text = rt.textContent;
+    var parts = text.split(/(\s+)/);   // 保留空白
+    rt.textContent = '';
+
+    parts.forEach(function (part) {
+      if (part === '') return;
+      if (/^\s+$/.test(part)) {
+        rt.appendChild(document.createTextNode(part));
+        return;
+      }
+      var tone = detectTone(part);
+      if (tone === null) {
+        rt.appendChild(document.createTextNode(part));
+      } else {
+        var span = document.createElement('span');
+        span.className = 'tone-' + tone;
+        span.textContent = part;
+        rt.appendChild(span);
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

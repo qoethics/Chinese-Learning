@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Winston · 学习笔记</title>
+<style>
+  * { box-sizing: border-box; }
+
+  :root {
+    --pink:   #ef9cb4;
+    --mint:   #6fc7ab;
+    --sky:    #7ea9e0;
+    --lav:    #a793e6;
+    --peach:  #f2a882;
+    --ink:    #3f3d4d;
+    --ink-3:  #a49dba;
+    --line:   rgba(160,140,200,.16);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                 "Noto Sans SC", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background-color: #fdfbff;
+    background-image:
+      radial-gradient(circle at 6% -4%,   #ffe3ee 0%, transparent 42%),
+      radial-gradient(circle at 96% 4%,   #e7e1ff 0%, transparent 40%),
+      radial-gradient(circle at 50% 104%, #ddfaf0 0%, transparent 46%);
+    background-attachment: fixed;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ================= 页面容器 ================= */
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 1.15rem 5rem;
+  }
+
+  /* ================= 顶部 ================= */
+  .hero {
+    text-align: center;
+    padding: 4.2rem 1rem 1rem;
+  }
+  .hero h1 {
+    margin: 0 0 .7rem;
+    font-size: clamp(1.9rem, 6vw, 2.7rem);
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-indent: .18em;
+    background: linear-gradient(100deg, #ef9cb4 0%, #a793e6 48%, #6fc7ab 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .hero .sub {
+    margin: 0;
+    font-size: .72rem;
+    letter-spacing: .34em;
+    text-indent: .34em;
+    text-transform: uppercase;
+    color: #b3aac9;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .ribbon {
+    display: flex;
+    height: 6px;
+    width: 260px;
+    max-width: 70%;
+    margin: 1.5rem auto 0;
+    border-radius: 99px;
+    overflow: hidden;
+    opacity: .85;
+  }
+  .ribbon span { flex: 1; }
+
+  /* ================= 章节标题 ================= */
+  .section { margin-top: 2.8rem; }
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1.15rem;
+  }
+  .section-num {
+    flex: none;
+    width: 34px; height: 34px;
+    border-radius: 12px;
+    display: grid; place-items: center;
+    font-size: .86rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--c, #a793e6);
+    box-shadow: 0 8px 16px -8px var(--c, #a793e6);
+  }
+  .section-head h2 {
+    margin: 0;
+    font-size: 1.22rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+  }
+  .section-head .en {
+    margin-left: auto;
+    font-size: .68rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #b8b0cc;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 笔记卡片 ================= */
+  .notes {
+    display: grid;
+    gap: .85rem;
+  }
+
+  .note {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.05rem 1.25rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,.88);
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 32px -24px rgba(120,100,170,.6);
+    text-decoration: none;
+    color: inherit;
+    transition: transform .18s ease, box-shadow .18s ease,
+                border-color .18s ease, background .18s ease;
+  }
+  .note:hover {
+    transform: translateY(-3px);
+    background: #fff;
+    border-color: rgba(167,147,230,.35);
+    box-shadow: 0 18px 36px -24px rgba(120,100,170,.85);
+  }
+  .note:active { transform: translateY(-1px); }
+
+  .note-icon {
+    flex: none;
+    width: 46px; height: 46px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    font-size: .95rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: #fff;
+    background: linear-gradient(135deg, var(--pink), var(--lav));
+    box-shadow: 0 10px 20px -12px rgba(167,147,230,.95);
+  }
+  .note-icon.mint {
+    background: linear-gradient(135deg, #8fd8bd, #6fc7ab);
+    box-shadow: 0 10px 20px -12px rgba(111,199,171,.95);
+  }
+  .note-icon.sky {
+    background: linear-gradient(135deg, #9cc2f0, #7ea9e0);
+    box-shadow: 0 10px 20px -12px rgba(126,169,224,.95);
+  }
+
+  .note-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .08rem;
+  }
+  .note-title {
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: .03em;
+    color: #4a4661;
+    line-height: 1.6;
+  }
+  .note-desc {
+    font-size: .78rem;
+    line-height: 1.5;
+    color: var(--ink-3);
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  .note-arrow {
+    flex: none;
+    font-size: 1.1rem;
+    color: #c9c1dd;
+    transition: transform .2s ease, color .2s ease;
+  }
+  .note:hover .note-arrow {
+    transform: translateX(4px);
+    color: var(--lav);
+  }
+
+  /* ================= 页脚 ================= */
+  .footer {
+    margin-top: 3.5rem;
+    text-align: center;
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #c4bcd8;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 响应式 ================= */
+  @media (max-width: 560px) {
+    .hero { padding-top: 3.4rem; }
+    .note { padding: .9rem 1rem; gap: .8rem; border-radius: 16px; }
+    .note-icon { width: 40px; height: 40px; font-size: .86rem; border-radius: 12px; }
+    .note-title { font-size: .96rem; }
+    .note-desc { font-size: .74rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ==================== 顶部 ==================== -->
+  <header class="hero">
+    <h1>Winston</h1>
+    <p class="sub">Chinese Study Notes</p>
+    <div class="ribbon">
+      <span style="background:#ef9cb4"></span>
+      <span style="background:#f2a882"></span>
+      <span style="background:#f7d98a"></span>
+      <span style="background:#8fd8bd"></span>
+      <span style="background:#8fb6e8"></span>
+      <span style="background:#a793e6"></span>
+    </div>
+  </header>
+
+  <!-- ==================== 课程列表 ==================== -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num" style="--c:#a793e6">1</span>
+      <h2>课程笔记</h2>
+      <span class="en">Lessons</span>
+    </div>
+
+    <div class="notes">
+
+      <!-- 第三课 -->
+      <a class="note" href="lesson-3.html">
+        <span class="note-icon">3</span>
+        <span class="note-body">
+          <span class="note-title">第三课《健身房跑路》</span>
+          <span class="note-desc">单词 · 声调着色 · 例句 · 法律词汇</span>
+        </span>
+        <span class="note-arrow">→</span>
+      </a>
+
+      <!-- 复制上面整段 <a class="note">…</a> 即可添加新课程 -->
+
+    </div>
+  </section>
+
+  <p class="footer">Winston · Study Notes</p>
+</div>
+
+</body>
+</html>
