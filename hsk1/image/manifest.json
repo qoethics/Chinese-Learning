@@ -1,0 +1,874 @@
+{
+ "一": {
+  "file": "一.jpg",
+  "level": "HSK1"
+ },
+ "一定": {
+  "file": "一定.jpg",
+  "level": "HSK3"
+ },
+ "一般": {
+  "file": "一般.jpg",
+  "level": "HSK3"
+ },
+ "一起": {
+  "file": "一起.jpg",
+  "level": "HSK2"
+ },
+ "七": {
+  "file": "七.jpg",
+  "level": "HSK1"
+ },
+ "三": {
+  "file": "三.jpg",
+  "level": "HSK1"
+ },
+ "上": {
+  "file": "上.jpg",
+  "level": "HSK1"
+ },
+ "上午": {
+  "file": "上午.jpg",
+  "level": "HSK1"
+ },
+ "上班": {
+  "file": "上班.jpg",
+  "level": "HSK2"
+ },
+ "下": {
+  "file": "下.jpg",
+  "level": "HSK1"
+ },
+ "下午": {
+  "file": "下午.jpg",
+  "level": "HSK1"
+ },
+ "下雨": {
+  "file": "下雨.jpg",
+  "level": "HSK1"
+ },
+ "东西": {
+  "file": "东西.jpg",
+  "level": "HSK1"
+ },
+ "个": {
+  "file": "个.jpg",
+  "level": "HSK1"
+ },
+ "中国": {
+  "file": "中国.jpg",
+  "level": "HSK1"
+ },
+ "九": {
+  "file": "九.jpg",
+  "level": "HSK1"
+ },
+ "也": {
+  "file": "也.jpg",
+  "level": "HSK2"
+ },
+ "书": {
+  "file": "书.jpg",
+  "level": "HSK1"
+ },
+ "买": {
+  "file": "买.jpg",
+  "level": "HSK1"
+ },
+ "了": {
+  "file": "了.jpg",
+  "level": "HSK1"
+ },
+ "二": {
+  "file": "二.jpg",
+  "level": "HSK1"
+ },
+ "五": {
+  "file": "五.jpg",
+  "level": "HSK1"
+ },
+ "些": {
+  "file": "些.jpg",
+  "level": "HSK1"
+ },
+ "什么": {
+  "file": "什么.jpg",
+  "level": "HSK1"
+ },
+ "今天": {
+  "file": "今天.jpg",
+  "level": "HSK1"
+ },
+ "他": {
+  "file": "他.jpg",
+  "level": "HSK1"
+ },
+ "以后": {
+  "file": "以后.jpg",
+  "level": "HSK3"
+ },
+ "会": {
+  "file": "会.jpg",
+  "level": "HSK1"
+ },
+ "住": {
+  "file": "住.jpg",
+  "level": "HSK1"
+ },
+ "你": {
+  "file": "你.jpg",
+  "level": "HSK1"
+ },
+ "便宜": {
+  "file": "便宜.jpg",
+  "level": "HSK2"
+ },
+ "做": {
+  "file": "做.jpg",
+  "level": "HSK1"
+ },
+ "儿子": {
+  "file": "儿子.jpg",
+  "level": "HSK1"
+ },
+ "元": {
+  "file": "元.jpg",
+  "level": "HSK2"
+ },
+ "先生": {
+  "file": "先生.jpg",
+  "level": "HSK1"
+ },
+ "八": {
+  "file": "八.jpg",
+  "level": "HSK1"
+ },
+ "公司": {
+  "file": "公司.jpg",
+  "level": "HSK2"
+ },
+ "公园": {
+  "file": "公园.jpg",
+  "level": "HSK3"
+ },
+ "六": {
+  "file": "六.jpg",
+  "level": "HSK1"
+ },
+ "写": {
+  "file": "写.jpg",
+  "level": "HSK1"
+ },
+ "冷": {
+  "file": "冷.jpg",
+  "level": "HSK1"
+ },
+ "几": {
+  "file": "几.jpg",
+  "level": "HSK3"
+ },
+ "出生": {
+  "file": "出生.jpg",
+  "level": "HSK4"
+ },
+ "出租车": {
+  "file": "出租车.jpg",
+  "level": "HSK1"
+ },
+ "刀": {
+  "file": "刀.jpg",
+  "level": "HSK4"
+ },
+ "分钟": {
+  "file": "分钟.jpg",
+  "level": "HSK1"
+ },
+ "刚刚": {
+  "file": "刚刚.jpg",
+  "level": "HSK6"
+ },
+ "前面": {
+  "file": "前面.jpg",
+  "level": "HSK1"
+ },
+ "努力": {
+  "file": "努力.jpg",
+  "level": "HSK3"
+ },
+ "勺子": {
+  "file": "勺子.jpg",
+  "level": "HSK5"
+ },
+ "包": {
+  "file": "包.jpg",
+  "level": "HSK3"
+ },
+ "包子": {
+  "file": "包子.jpg",
+  "level": "HSK5"
+ },
+ "北京": {
+  "file": "北京.jpg",
+  "level": "HSK1"
+ },
+ "医生": {
+  "file": "医生.jpg",
+  "level": "HSK1"
+ },
+ "医院": {
+  "file": "医院.jpg",
+  "level": "HSK1"
+ },
+ "十": {
+  "file": "十.jpg",
+  "level": "HSK1"
+ },
+ "卖": {
+  "file": "卖.jpg",
+  "level": "HSK2"
+ },
+ "卧室": {
+  "file": "卧室.jpg",
+  "level": "HSK5"
+ },
+ "卫生间": {
+  "file": "卫生间.jpg",
+  "level": "HSK5"
+ },
+ "厉害": {
+  "file": "厉害.jpg",
+  "level": "HSK4"
+ },
+ "厨房": {
+  "file": "厨房.jpg",
+  "level": "HSK3"
+ },
+ "去": {
+  "file": "去.jpg",
+  "level": "HSK1"
+ },
+ "可以": {
+  "file": "可以.jpg",
+  "level": "HSK2"
+ },
+ "可爱": {
+  "file": "可爱.jpg",
+  "level": "HSK3"
+ },
+ "号": {
+  "file": "号.jpg",
+  "level": "HSK2"
+ },
+ "吃": {
+  "file": "吃.jpg",
+  "level": "HSK1"
+ },
+ "后面": {
+  "file": "后面.jpg",
+  "level": "HSK6"
+ },
+ "吗": {
+  "file": "吗.jpg",
+  "level": "HSK1"
+ },
+ "听": {
+  "file": "听.jpg",
+  "level": "HSK1"
+ },
+ "告诉": {
+  "file": "告诉.jpg",
+  "level": "HSK2"
+ },
+ "呢": {
+  "file": "呢.jpg",
+  "level": "HSK1"
+ },
+ "周末": {
+  "file": "周末.jpg",
+  "level": "HSK3"
+ },
+ "和": {
+  "file": "和.jpg",
+  "level": "HSK1"
+ },
+ "咖啡": {
+  "file": "咖啡.jpg",
+  "level": "HSK2"
+ },
+ "哥哥": {
+  "file": "哥哥.jpg",
+  "level": "HSK2"
+ },
+ "哪儿": {
+  "file": "哪儿.jpg",
+  "level": "HSK1"
+ },
+ "唱歌": {
+  "file": "唱歌.jpg",
+  "level": "HSK2"
+ },
+ "商店": {
+  "file": "商店.jpg",
+  "level": "HSK1"
+ },
+ "啊": {
+  "file": "啊.jpg",
+  "level": "HSK3"
+ },
+ "啤酒": {
+  "file": "啤酒.jpg",
+  "level": "HSK3"
+ },
+ "喜欢": {
+  "file": "喜欢.jpg",
+  "level": "HSK1"
+ },
+ "喝": {
+  "file": "喝.jpg",
+  "level": "HSK1"
+ },
+ "四": {
+  "file": "四.jpg",
+  "level": "HSK1"
+ },
+ "在": {
+  "file": "在.jpg",
+  "level": "HSK1"
+ },
+ "地铁": {
+  "file": "地铁.jpg",
+  "level": "HSK3"
+ },
+ "坐": {
+  "file": "坐.jpg",
+  "level": "HSK1"
+ },
+ "多": {
+  "file": "多.jpg",
+  "level": "HSK1"
+ },
+ "多少": {
+  "file": "多少.jpg",
+  "level": "HSK1"
+ },
+ "大": {
+  "file": "大.jpg",
+  "level": "HSK1"
+ },
+ "天气": {
+  "file": "天气.jpg",
+  "level": "HSK1"
+ },
+ "太": {
+  "file": "太.jpg",
+  "level": "HSK1"
+ },
+ "她": {
+  "file": "她.jpg",
+  "level": "HSK1"
+ },
+ "好": {
+  "file": "好.jpg",
+  "level": "HSK1"
+ },
+ "好吃": {
+  "file": "好吃.jpg",
+  "level": "HSK2"
+ },
+ "妈妈": {
+  "file": "妈妈.jpg",
+  "level": "HSK1"
+ },
+ "妹妹": {
+  "file": "妹妹.jpg",
+  "level": "HSK2"
+ },
+ "姐姐": {
+  "file": "姐姐.jpg",
+  "level": "HSK2"
+ },
+ "学习": {
+  "file": "学习.jpg",
+  "level": "HSK1"
+ },
+ "学校": {
+  "file": "学校.jpg",
+  "level": "HSK1"
+ },
+ "学生": {
+  "file": "学生.jpg",
+  "level": "HSK1"
+ },
+ "它": {
+  "file": "它.jpg",
+  "level": "HSK2"
+ },
+ "客厅": {
+  "file": "客厅.jpg",
+  "level": "HSK5"
+ },
+ "家": {
+  "file": "家.jpg",
+  "level": "HSK1"
+ },
+ "对": {
+  "file": "对.jpg",
+  "level": "HSK2"
+ },
+ "小": {
+  "file": "小.jpg",
+  "level": "HSK1"
+ },
+ "小姐": {
+  "file": "小姐.jpg",
+  "level": "HSK1"
+ },
+ "少": {
+  "file": "少.jpg",
+  "level": "HSK1"
+ },
+ "岁": {
+  "file": "岁.jpg",
+  "level": "HSK1"
+ },
+ "工人": {
+  "file": "工人.jpg",
+  "level": "HSK5"
+ },
+ "工作": {
+  "file": "工作.jpg",
+  "level": "HSK1"
+ },
+ "干净": {
+  "file": "干净.jpg",
+  "level": "HSK3"
+ },
+ "年": {
+  "file": "年.jpg",
+  "level": "HSK1"
+ },
+ "弟弟": {
+  "file": "弟弟.jpg",
+  "level": "HSK2"
+ },
+ "张": {
+  "file": "张.jpg",
+  "level": "HSK2"
+ },
+ "很": {
+  "file": "很.jpg",
+  "level": "HSK1"
+ },
+ "忙": {
+  "file": "忙.jpg",
+  "level": "HSK2"
+ },
+ "怎么": {
+  "file": "怎么.jpg",
+  "level": "HSK1"
+ },
+ "怎么样": {
+  "file": "怎么样.jpg",
+  "level": "HSK1"
+ },
+ "想": {
+  "file": "想.jpg",
+  "level": "HSK1"
+ },
+ "感觉": {
+  "file": "感觉.jpg",
+  "level": "HSK4"
+ },
+ "懂": {
+  "file": "懂.jpg",
+  "level": "HSK2"
+ },
+ "我": {
+  "file": "我.jpg",
+  "level": "HSK1"
+ },
+ "房间": {
+  "file": "房间.jpg",
+  "level": "HSK2"
+ },
+ "手机": {
+  "file": "手机.jpg",
+  "level": "HSK2"
+ },
+ "打电话": {
+  "file": "打电话.jpg",
+  "level": "HSK1"
+ },
+ "打篮球": {
+  "file": "打篮球.jpg",
+  "level": "HSK2"
+ },
+ "挺": {
+  "file": "挺.jpg",
+  "level": "HSK4"
+ },
+ "散步": {
+  "file": "散步.jpg",
+  "level": "HSK4"
+ },
+ "旅游": {
+  "file": "旅游.jpg",
+  "level": "HSK2"
+ },
+ "时候": {
+  "file": "时候.jpg",
+  "level": "HSK1"
+ },
+ "时间": {
+  "file": "时间.jpg",
+  "level": "HSK2"
+ },
+ "明天": {
+  "file": "明天.jpg",
+  "level": "HSK1"
+ },
+ "昨天": {
+  "file": "昨天.jpg",
+  "level": "HSK1"
+ },
+ "是": {
+  "file": "是.jpg",
+  "level": "HSK1"
+ },
+ "晚上": {
+  "file": "晚上.jpg",
+  "level": "HSK2"
+ },
+ "普通话": {
+  "file": "普通话.jpg",
+  "level": "HSK3"
+ },
+ "月": {
+  "file": "月.jpg",
+  "level": "HSK1"
+ },
+ "朋友": {
+  "file": "朋友.jpg",
+  "level": "HSK1"
+ },
+ "机场": {
+  "file": "机场.jpg",
+  "level": "HSK2"
+ },
+ "来": {
+  "file": "来.jpg",
+  "level": "HSK1"
+ },
+ "来自": {
+  "file": "来自.jpg",
+  "level": "HSK5"
+ },
+ "杯子": {
+  "file": "杯子.jpg",
+  "level": "HSK1"
+ },
+ "桌子": {
+  "file": "桌子.jpg",
+  "level": "HSK1"
+ },
+ "椅子": {
+  "file": "椅子.jpg",
+  "level": "HSK1"
+ },
+ "毛巾": {
+  "file": "毛巾.jpg",
+  "level": "HSK4"
+ },
+ "水": {
+  "file": "水.jpg",
+  "level": "HSK1"
+ },
+ "水果": {
+  "file": "水果.jpg",
+  "level": "HSK1"
+ },
+ "汉语": {
+  "file": "汉语.jpg",
+  "level": "HSK1"
+ },
+ "沙发": {
+  "file": "沙发.jpg",
+  "level": "HSK4"
+ },
+ "洗手间": {
+  "file": "洗手间.jpg",
+  "level": "HSK3"
+ },
+ "渴": {
+  "file": "渴.jpg",
+  "level": "HSK3"
+ },
+ "游泳": {
+  "file": "游泳.jpg",
+  "level": "HSK2"
+ },
+ "漂亮": {
+  "file": "漂亮.jpg",
+  "level": "HSK1"
+ },
+ "灯": {
+  "file": "灯.jpg",
+  "level": "HSK3"
+ },
+ "热": {
+  "file": "热.jpg",
+  "level": "HSK1"
+ },
+ "爱": {
+  "file": "爱.jpg",
+  "level": "HSK1"
+ },
+ "爸爸": {
+  "file": "爸爸.jpg",
+  "level": "HSK1"
+ },
+ "特别": {
+  "file": "特别.jpg",
+  "level": "HSK3"
+ },
+ "狗": {
+  "file": "狗.jpg",
+  "level": "HSK1"
+ },
+ "猫": {
+  "file": "猫.jpg",
+  "level": "HSK1"
+ },
+ "玩": {
+  "file": "玩.jpg",
+  "level": "HSK2"
+ },
+ "现在": {
+  "file": "现在.jpg",
+  "level": "HSK1"
+ },
+ "甜": {
+  "file": "甜.jpg",
+  "level": "HSK3"
+ },
+ "生病": {
+  "file": "生病.jpg",
+  "level": "HSK2"
+ },
+ "用": {
+  "file": "用.jpg",
+  "level": "HSK3"
+ },
+ "电脑": {
+  "file": "电脑.jpg",
+  "level": "HSK1"
+ },
+ "看": {
+  "file": "看.jpg",
+  "level": "HSK1"
+ },
+ "看见": {
+  "file": "看见.jpg",
+  "level": "HSK1"
+ },
+ "眼镜": {
+  "file": "眼镜.jpg",
+  "level": "HSK3"
+ },
+ "睡觉": {
+  "file": "睡觉.jpg",
+  "level": "HSK1"
+ },
+ "碗": {
+  "file": "碗.jpg",
+  "level": "HSK3"
+ },
+ "筷子": {
+  "file": "筷子.jpg",
+  "level": "HSK3"
+ },
+ "米饭": {
+  "file": "米饭.jpg",
+  "level": "HSK1"
+ },
+ "累": {
+  "file": "累.jpg",
+  "level": "HSK2"
+ },
+ "经常": {
+  "file": "经常.jpg",
+  "level": "HSK3"
+ },
+ "给": {
+  "file": "给.jpg",
+  "level": "HSK2"
+ },
+ "老师": {
+  "file": "老师.jpg",
+  "level": "HSK1"
+ },
+ "考试": {
+  "file": "考试.jpg",
+  "level": "HSK2"
+ },
+ "能": {
+  "file": "能.jpg",
+  "level": "HSK1"
+ },
+ "舒服": {
+  "file": "舒服.jpg",
+  "level": "HSK3"
+ },
+ "花": {
+  "file": "花.jpg",
+  "level": "HSK3"
+ },
+ "苹果": {
+  "file": "苹果.jpg",
+  "level": "HSK1"
+ },
+ "茶": {
+  "file": "茶.jpg",
+  "level": "HSK1"
+ },
+ "行": {
+  "file": "行.jpg",
+  "level": "HSK4"
+ },
+ "衣服": {
+  "file": "衣服.jpg",
+  "level": "HSK1"
+ },
+ "要": {
+  "file": "要.jpg",
+  "level": "HSK2"
+ },
+ "认识": {
+  "file": "认识.jpg",
+  "level": "HSK1"
+ },
+ "说话": {
+  "file": "说话.jpg",
+  "level": "HSK1"
+ },
+ "读": {
+  "file": "读.jpg",
+  "level": "HSK1"
+ },
+ "贵": {
+  "file": "贵.jpg",
+  "level": "HSK2"
+ },
+ "走": {
+  "file": "走.jpg",
+  "level": "HSK2"
+ },
+ "起床": {
+  "file": "起床.jpg",
+  "level": "HSK2"
+ },
+ "超市": {
+  "file": "超市.jpg",
+  "level": "HSK3"
+ },
+ "跳舞": {
+  "file": "跳舞.jpg",
+  "level": "HSK2"
+ },
+ "踢足球": {
+  "file": "踢足球.jpg",
+  "level": "HSK2"
+ },
+ "身体": {
+  "file": "身体.jpg",
+  "level": "HSK2"
+ },
+ "辣": {
+  "file": "辣.jpg",
+  "level": "HSK4"
+ },
+ "这": {
+  "file": "这.jpg",
+  "level": "HSK1"
+ },
+ "这儿": {
+  "file": "这儿.jpg",
+  "level": "HSK1"
+ },
+ "那": {
+  "file": "那.jpg",
+  "level": "HSK1"
+ },
+ "都": {
+  "file": "都.jpg",
+  "level": "HSK1"
+ },
+ "里": {
+  "file": "里.jpg",
+  "level": "HSK1"
+ },
+ "钱": {
+  "file": "钱.jpg",
+  "level": "HSK1"
+ },
+ "银行": {
+  "file": "银行.jpg",
+  "level": "HSK3"
+ },
+ "锅": {
+  "file": "锅.jpg",
+  "level": "HSK5"
+ },
+ "附近": {
+  "file": "附近.jpg",
+  "level": "HSK3"
+ },
+ "零": {
+  "file": "零.jpg",
+  "level": "HSK1"
+ },
+ "非常": {
+  "file": "非常.jpg",
+  "level": "HSK2"
+ },
+ "面包": {
+  "file": "面包.jpg",
+  "level": "HSK3"
+ },
+ "面条": {
+  "file": "面条.jpg",
+  "level": "HSK3"
+ },
+ "音乐": {
+  "file": "音乐.jpg",
+  "level": "HSK3"
+ },
+ "风景": {
+  "file": "风景.jpg",
+  "level": "HSK4"
+ },
+ "飞机": {
+  "file": "飞机.jpg",
+  "level": "HSK1"
+ },
+ "饺子": {
+  "file": "饺子.jpg",
+  "level": "HSK4"
+ },
+ "饿": {
+  "file": "饿.jpg",
+  "level": "HSK3"
+ },
+ "高兴": {
+  "file": "高兴.jpg",
+  "level": "HSK1"
+ },
+ "鸟": {
+  "file": "鸟.jpg",
+  "level": "HSK3"
+ },
+ "鸡蛋": {
+  "file": "鸡蛋.jpg",
+  "level": "HSK2"
+ }
+}

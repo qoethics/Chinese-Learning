@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>课堂指令 · Classroom Instructions</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --theme-bg: #FCE7F3;
+    --theme-accent: #9D174D;
+    --theme-light: #FDF2F8;
+    --theme-mid: #F9A8D4;
+    --theme-text: #1e1e2a;
+  }
+  body {
+    background: var(--theme-bg);
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    transition: background 0.3s;
+  }
+  .hamburger {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1001;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: white;
+    border: 2px solid var(--theme-mid);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.2s;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2.5px;
+    background: var(--theme-accent);
+    border-radius: 2px;
+    transition: 0.2s;
+  }
+  .hamburger:hover { transform: scale(1.05); }
+  .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.12);
+    z-index: 1000;
+    transition: left 0.28s ease;
+    overflow-y: auto;
+    padding: 80px 16px 24px;
+  }
+  .sidebar.open { left: 0; }
+  .sidebar h2 {
+    font-size: 1rem;
+    color: var(--theme-text);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--theme-light);
+    font-weight: 600;
+  }
+  .sidebar .menu-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.82rem;
+    color: var(--theme-text);
+    transition: 0.15s;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .sidebar .menu-item:hover { background: var(--theme-light); }
+  .sidebar .menu-item.active {
+    background: var(--theme-accent);
+    color: white;
+  }
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+  .sidebar-overlay.open { opacity: 1; pointer-events: auto; }
+
+  .card {
+    max-width: 920px;
+    width: 100%;
+    background: white;
+    border-radius: 40px;
+    padding: 28px 26px 36px;
+    box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.18);
+    margin: 20px auto;
+  }
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--theme-text);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--theme-light);
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+    padding-left: 60px;
+  }
+  h1 small {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #6b6b7a;
+    background: var(--theme-light);
+    padding: 4px 16px;
+    border-radius: 40px;
+  }
+  .mode-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .mode-selector button {
+    padding: 8px 12px;
+    border-radius: 40px;
+    border: 2px solid var(--theme-mid);
+    background: white;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: 0.12s;
+    flex: 1 0 auto;
+    color: var(--theme-text);
+  }
+  .mode-selector button.active {
+    background: var(--theme-accent);
+    color: white;
+    border-color: var(--theme-accent);
+  }
+  .mode-selector button:hover:not(.active) { background: var(--theme-light); }
+  .top-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: var(--theme-light);
+    padding: 6px 16px;
+    border-radius: 60px;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+    color: var(--theme-text);
+  }
+  .score-display {
+    background: var(--theme-accent);
+    color: white;
+    padding: 3px 16px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .score-display span { color: #f5d742; }
+  .random-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .random-toggle input { width: 16px; height: 16px; cursor: pointer; }
+  .sentence-box {
+    background: var(--theme-light);
+    border-radius: 28px;
+    padding: 20px 18px 16px;
+    border: 1px solid var(--theme-mid);
+    margin-bottom: 16px;
+    min-height: 180px;
+  }
+  .question-area {
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 16px 0;
+    line-height: 2;
+    color: var(--theme-text);
+  }
+  .question-area .sound-btn {
+    background: none;
+    border: 2px solid var(--theme-mid);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: 0.12s;
+    margin: 0 8px;
+    background: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .question-area .sound-btn:hover { background: var(--theme-light); transform: scale(1.05); }
+  .options-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 14px 0 6px;
+  }
+  .options-grid .opt-btn {
+    background: white;
+    border: 2px solid var(--theme-mid);
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 1.35rem;
+    cursor: pointer;
+    transition: 0.12s;
+    min-width: 70px;
+    font-weight: 480;
+    color: var(--theme-text);
+  }
+  /* bigger ruby pinyin inside option buttons */
+  .options-grid .opt-btn ruby rt { font-size: 0.6em; }
+  .options-grid .opt-btn:hover:not(:disabled) {
+    background: var(--theme-light);
+    transform: scale(0.97);
+  }
+  .options-grid .opt-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .options-grid .opt-btn.correct { background: #b8e6c9; border-color: #0f7b3a; }
+  .options-grid .opt-btn.wrong { background: #fad1d1; border-color: #b33a3a; }
+  .flash-card {
+    text-align: center;
+    padding: 24px 16px;
+    cursor: pointer;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background: var(--theme-light);
+    transition: 0.2s;
+    border: 2px solid var(--theme-mid);
+  }
+  .flash-card:hover { background: #ece8e0; }
+  .flash-card .front {
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: var(--theme-text);
+  }
+  .flash-card .back {
+    font-size: 1.1rem;
+    color: var(--theme-text);
+  }
+  .flash-card .hint-text {
+    font-size: 0.85rem;
+    color: #7a7368;
+    margin-top: 8px;
+  }
+  .flash-sub-mode {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .flash-sub-mode button {
+    padding: 4px 16px;
+    border-radius: 30px;
+    border: 2px solid var(--theme-mid);
+    background: white;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: 0.12s;
+    color: var(--theme-text);
+  }
+  .flash-sub-mode button.active {
+    background: var(--theme-accent);
+    color: white;
+    border-color: var(--theme-accent);
+  }
+  .action-bar-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-between;
+    margin-top: 14px;
+    align-items: center;
+  }
+  .action-bar-top .left-group { display: flex; gap: 6px; align-items: center; }
+  .action-bar-top button {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 60px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: var(--theme-light);
+    border: 1px solid var(--theme-mid);
+    cursor: pointer;
+    transition: 0.12s;
+    color: var(--theme-text);
+  }
+  .action-bar-top button.primary {
+    background: var(--theme-accent);
+    color: white;
+    border-color: var(--theme-accent);
+  }
+  .action-bar-top button.primary:hover { opacity: 0.85; }
+  .action-bar-top .icon-btn {
+    padding: 8px 12px;
+    font-size: 1.1rem;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--theme-light);
+    border: 1px solid var(--theme-mid);
+    border-radius: 60px;
+    cursor: pointer;
+    transition: 0.12s;
+  }
+  .tone-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin: -4px 0 12px;
+  }
+  .tone-legend span { white-space: nowrap; }
+  .question-with-pinyin { font-size: 1.2rem; font-weight: 500; color: var(--theme-text); }
+  .fill-blank-area { font-size: 1.6rem; line-height: 2.3; text-align: center; padding: 8px 0; color: var(--theme-text); }
+  .fill-blank-area .blank {
+    display: inline-block;
+    line-height: 1.15;
+    vertical-align: baseline;
+    min-width: 2em;
+    border-bottom: 4px solid var(--theme-mid);
+    margin: 0 3px;
+    padding: 0 6px;
+    background: var(--theme-light);
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    color: var(--theme-text);
+    font-weight: 500;
+  }
+  .fill-blank-area .blank.filled { background: #ddf0e2; border-bottom-color: #1f6e3f; }
+  .fill-blank-area .blank.correct { background: #b8e6c9; border-bottom-color: #0f7b3a; }
+  .fill-blank-area .blank.wrong { background: #fad1d1; border-bottom-color: #b33a3a; }
+  .fill-blank-area .static-char { display: inline-block; margin: 0 1px; }
+  .fill-blank-area .answer-reveal {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: #e8f5ea;
+    padding: 2px 14px;
+    border-radius: 30px;
+    border: 1px solid #b8d9c4;
+  }
+
+  /* ---- Ruby pinyin (above each hanzi) + tone colours ---- */
+  ruby { ruby-position: over; ruby-align: center; }
+  ruby rt {
+    font-size: 0.42em;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    user-select: none;
+    -webkit-user-select: none;
+    padding: 0 1px;
+  }
+  /* 1st tone red · 2nd orange · 3rd green · 4th blue · neutral grey */
+  .tone-1 { color: #E53935; }
+  .tone-2 { color: #EF6C00; }
+  .tone-3 { color: #2E7D32; }
+  .tone-4 { color: #1565C0; }
+  .tone-5 { color: #9E9E9E; }
+
+  @media (max-width: 500px) {
+    .card { padding: 14px 10px; margin: 10px; }
+    h1 { padding-left: 56px; font-size: 1.2rem; }
+    .question-area { font-size: 1.3rem; }
+    .mode-selector button { font-size: 0.72rem; padding: 6px 8px; }
+    .action-bar-top button { padding: 6px 12px; font-size: 0.75rem; }
+    .fill-blank-area { font-size: 1.2rem; }
+    .options-grid .opt-btn { font-size: 1.1rem; padding: 8px 14px; }
+    .options-grid .opt-btn ruby rt { font-size: 0.55em; }
+  }
+</style>
+</head>
+<body>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <h2>📚 Lessons</h2>
+    <div id="lessonList"></div>
+  </aside>
+
+  <div class="card" id="app">
+    <h1>
+      <span>🏫 课堂指令练习</span>
+      <small id="lessonLabel">Classroom Instructions</small>
+    </h1>
+
+    <div class="mode-selector" id="modeSelector">
+      <button data-mode="pairs" class="active">🔤 Match</button>
+      <button data-mode="sentflash">📝 Sentence Cards</button>
+      <button data-mode="fill">✏️ Fill Blank</button>
+    </div>
+
+    <div class="top-bar">
+      <span id="counterDisplay">1 / 10</span>
+      <span id="statusBadge">🔤 Match</span>
+      <div class="random-toggle">
+        <input type="checkbox" id="randomToggle">
+        <label for="randomToggle">🎲 Random</label>
+      </div>
+      <div class="random-toggle">
+        <input type="checkbox" id="accumulativeToggle">
+        <label for="accumulativeToggle">📈 Accumulative</label>
+      </div>
+      <div class="random-toggle">
+        <input type="checkbox" id="autoSpeakToggle">
+        <label for="autoSpeakToggle">🔊 Auto</label>
+      </div>
+      <span class="score-display">🏆 <span id="scoreDisplay">0</span> / <span id="totalDisplay">0</span></span>
+    </div>
+
+    <div class="flash-sub-mode" id="subModeBar"></div>
+
+    <div class="tone-legend">
+      <span class="tone-1">● 一声 ā</span>
+      <span class="tone-2">● 二声 á</span>
+      <span class="tone-3">● 三声 ǎ</span>
+      <span class="tone-4">● 四声 à</span>
+      <span class="tone-5">● 轻声 a</span>
+    </div>
+
+    <div class="sentence-box" id="sentenceBox">
+      <div id="questionArea" class="question-area"></div>
+      <div id="fillContainer" style="display:none;"></div>
+      <div id="optionsContainer" class="options-grid"></div>
+      <div id="flashContainer" style="display:none;"></div>
+    </div>
+
+    <div class="action-bar-top">
+      <div class="left-group">
+        <button class="icon-btn" id="firstBtn" title="Go to first">⏮</button>
+        <button class="icon-btn" id="resetBtn" title="Reset this question">⟳</button>
+      </div>
+      <button class="primary" id="nextBtn">→ Next</button>
+      <button id="revealBtn">👁 Show Answer</button>
+    </div>
+  </div>
+
+<script>
+(function(){
+  // =====================================================================
+  // Lesson data — 课堂指令 · Classroom instructions
+  // =====================================================================
+  const LESSONS = [
+    {
+      name:'🏫 课堂指令 · Classroom Instructions',
+      core:[
+        {hanzi:'请',pinyin:'qǐng',en:'please'},
+        {hanzi:'站',pinyin:'zhàn',en:'stand'},
+        {hanzi:'起',pinyin:'qǐ',en:'get up'},
+        {hanzi:'坐',pinyin:'zuò',en:'sit'},
+        {hanzi:'下',pinyin:'xià',en:'down'},
+        {hanzi:'手',pinyin:'shǒu',en:'hand'},
+        {hanzi:'举',pinyin:'jǔ',en:'raise'},
+        {hanzi:'放',pinyin:'fàng',en:'put (down)'},
+        {hanzi:'过来',pinyin:'guò lái',en:'come here'},
+        {hanzi:'回',pinyin:'huí',en:'go back'},
+        {hanzi:'排队',pinyin:'pái duì',en:'line up'},
+        {hanzi:'打开',pinyin:'dǎ kāi',en:'open'},
+        {hanzi:'合上',pinyin:'hé shàng',en:'close'},
+        {hanzi:'书',pinyin:'shū',en:'book'},
+        {hanzi:'读',pinyin:'dú',en:'read'},
+        {hanzi:'说',pinyin:'shuō',en:'speak'},
+        {hanzi:'听',pinyin:'tīng',en:'listen'},
+        {hanzi:'看',pinyin:'kàn',en:'look'},
+        {hanzi:'停',pinyin:'tíng',en:'stop'},
+        {hanzi:'拿',pinyin:'ná',en:'take'},
+        {hanzi:'翻到',pinyin:'fān dào',en:'turn to'},
+        {hanzi:'写',pinyin:'xiě',en:'write'},
+        {hanzi:'画',pinyin:'huà',en:'draw'},
+        {hanzi:'涂',pinyin:'tú',en:'colour in'},
+        {hanzi:'圈',pinyin:'quān',en:'circle'},
+        {hanzi:'连',pinyin:'lián',en:'connect'},
+        {hanzi:'做',pinyin:'zuò',en:'do'},
+        {hanzi:'安静',pinyin:'ān jìng',en:'quiet'},
+        {hanzi:'坐好',pinyin:'zuò hǎo',en:'sit properly'},
+        {hanzi:'站好',pinyin:'zhàn hǎo',en:'stand properly'}
+      ],
+      extended:[
+        {hanzi:'老师',pinyin:'lǎo shī',en:'teacher'},
+        {hanzi:'眼睛',pinyin:'yǎn jing',en:'eyes'},
+        {hanzi:'耳朵',pinyin:'ěr duo',en:'ears'},
+        {hanzi:'座位',pinyin:'zuò wèi',en:'seat'},
+        {hanzi:'队',pinyin:'duì',en:'queue'},
+        {hanzi:'本子',pinyin:'běn zi',en:'notebook'},
+        {hanzi:'铅笔',pinyin:'qiān bǐ',en:'pencil'},
+        {hanzi:'桌子',pinyin:'zhuō zi',en:'table'},
+        {hanzi:'桌上',pinyin:'zhuō shàng',en:'on the table'},
+        {hanzi:'名字',pinyin:'míng zi',en:'name'},
+        {hanzi:'颜色',pinyin:'yán sè',en:'colour'},
+        {hanzi:'大声',pinyin:'dà shēng',en:'loud'},
+        {hanzi:'一点',pinyin:'yī diǎn',en:'a little'},
+        {hanzi:'一遍',pinyin:'yī biàn',en:'once'},
+        {hanzi:'再',pinyin:'zài',en:'again'},
+        {hanzi:'跟我',pinyin:'gēn wǒ',en:'with me'},
+        {hanzi:'拿出',pinyin:'ná chū',en:'take out'},
+        {hanzi:'放在',pinyin:'fàng zài',en:'put on'},
+        {hanzi:'出来',pinyin:'chū lái',en:'come out'},
+        {hanzi:'小',pinyin:'xiǎo',en:'little'},
+        {hanzi:'好',pinyin:'hǎo',en:'good'},
+        {hanzi:'第',pinyin:'dì',en:'(ordinal prefix)'},
+        {hanzi:'页',pinyin:'yè',en:'page'},
+        {hanzi:'把',pinyin:'bǎ',en:'(disposal particle)'},
+        {hanzi:'在',pinyin:'zài',en:'at / on'},
+        {hanzi:'上',pinyin:'shàng',en:'on / up'},
+        {hanzi:'到',pinyin:'dào',en:'to / arrive'},
+        {hanzi:'个',pinyin:'gè',en:'(measure word)'},
+        {hanzi:'我',pinyin:'wǒ',en:'I / me'},
+        {hanzi:'你',pinyin:'nǐ',en:'you'},
+        {hanzi:'了',pinyin:'le',en:'(particle)'}
+      ],
+      phrases:[
+        {cn:'请坐好。',en:'Please sit properly.'},
+        {cn:'请安静。',en:'Please be quiet.'},
+        {cn:'小眼睛，看老师。',en:'Little eyes, look at the teacher.'},
+        {cn:'小耳朵，听我说。',en:'Little ears, listen to me.'},
+        {cn:'站起来。',en:'Stand up.'},
+        {cn:'坐下。',en:'Sit down.'},
+        {cn:'举手。',en:'Raise your hand.'},
+        {cn:'放下手。',en:'Put your hand down.'},
+        {cn:'过来。',en:'Come here.'},
+        {cn:'回座位。',en:'Go back to your seat.'},
+        {cn:'排队。',en:'Line up.'},
+        {cn:'打开书。',en:'Open your book.'},
+        {cn:'合上书。',en:'Close your book.'},
+        {cn:'跟我读。',en:'Read after me.'},
+        {cn:'停。拿出书。',en:'Stop. Take out your book.'},
+        {cn:'拿出本子。',en:'Take out your notebook.'},
+        {cn:'拿出铅笔。',en:'Take out your pencil.'},
+        {cn:'翻到第___页。',en:'Turn to page ___.'},
+        {cn:'把书放在桌上。',en:'Put your book on the table.'},
+        {cn:'写名字。',en:'Write your name.'},
+        {cn:'画一画。',en:'Draw a picture.'},
+        {cn:'涂颜色。',en:'Colour it in.'},
+        {cn:'圈出来。',en:'Circle it.'},
+        {cn:'连一连。',en:'Connect the lines.'},
+        {cn:'请跟我做。',en:'Copy me, please.'},
+        {cn:'请大声一点。',en:'A little louder, please.'},
+        {cn:'请再说一遍。',en:'Please say it again.'},
+        {cn:'一个一个来。',en:'One at a time.'},
+        {cn:'到你了。',en:'It is your turn.'}
+      ]
+    }
+  ];
+
+  // =====================================================================
+  // Single-character pinyin (fallback for the ruby annotations)
+  // =====================================================================
+  const SINGLE_CHAR_PINYIN = {
+    '请':'qǐng','坐':'zuò','好':'hǎo','安':'ān','静':'jìng','小':'xiǎo','眼':'yǎn','睛':'jīng',
+    '看':'kàn','老':'lǎo','师':'shī','耳':'ěr','朵':'duǒ','听':'tīng','我':'wǒ','说':'shuō',
+    '站':'zhàn','起':'qǐ','来':'lái','下':'xià','手':'shǒu','举':'jǔ','放':'fàng','过':'guò',
+    '回':'huí','座':'zuò','位':'wèi','排':'pái','队':'duì','打':'dǎ','开':'kāi','书':'shū',
+    '合':'hé','跟':'gēn','读':'dú','停':'tíng','拿':'ná','出':'chū','本':'běn','子':'zi',
+    '铅':'qiān','笔':'bǐ','翻':'fān','到':'dào','第':'dì','页':'yè','把':'bǎ','桌':'zhuō',
+    '上':'shàng','写':'xiě','名':'míng','字':'zì','画':'huà','一':'yī','涂':'tú','颜':'yán',
+    '色':'sè','圈':'quān','连':'lián','做':'zuò','大':'dà','声':'shēng','点':'diǎn','再':'zài',
+    '遍':'biàn','个':'gè','你':'nǐ','了':'le','在':'zài'
+  };
+
+  // Words whose pinyin can't be derived reliably character-by-character.
+  const EXTRA_PINYIN_WORDS = {
+    '眼睛':'yǎn jing','耳朵':'ěr duo','本子':'běn zi','名字':'míng zi','桌子':'zhuō zi',
+    '座位':'zuò wèi','老师':'lǎo shī','铅笔':'qiān bǐ','颜色':'yán sè','大声':'dà shēng',
+    '一遍':'yī biàn','一点':'yī diǎn','桌上':'zhuō shàng'
+  };
+
+  function getCharPinyin(ch){
+    if (ch.match(/[a-zA-Z0-9]/)) return ch;
+    if (SINGLE_CHAR_PINYIN[ch]) return SINGLE_CHAR_PINYIN[ch];
+    return ch;
+  }
+  function getWordPinyin(word){
+    if (wordMap[word]) return wordMap[word].pinyin;
+    let r = '';
+    for (let ch of word) r += (getCharPinyin(ch) || ch) + ' ';
+    return r.trim();
+  }
+
+  const PINYIN_PUNCT = /[，。！？、；：""''（）《》·,.!?;:()]/;
+  // Compose pinyin for an arbitrary string (longest-match against the
+  // lesson vocabulary, then single characters).
+  function pinyinFor(text){
+    if (!text) return '';
+    const tokens = [];
+    let i = 0;
+    while (i < text.length){
+      const ch = text[i];
+      if (/[a-zA-Z0-9']/.test(ch)){
+        let j = i;
+        while (j < text.length && /[a-zA-Z0-9']/.test(text[j])) j++;
+        tokens.push({ t: text.slice(i, j), punct: false });
+        i = j;
+        continue;
+      }
+      if (PINYIN_PUNCT.test(ch)){ tokens.push({ t: ch, punct: true }); i++; continue; }
+      if (/\s/.test(ch)){ i++; continue; }
+      if (ch === '_'){ tokens.push({ t: ch, punct: false }); i++; continue; }
+      let hit = null, hitPy = null;
+      for (let len = Math.min(6, text.length - i); len > 0; len--){
+        const sub = text.slice(i, i + len);
+        if (wordMap[sub]){ hit = sub; hitPy = wordMap[sub].pinyin; break; }
+        if (EXTRA_PINYIN_WORDS[sub]){ hit = sub; hitPy = EXTRA_PINYIN_WORDS[sub]; break; }
+      }
+      if (hit){ tokens.push({ t: hitPy, punct: false }); i += hit.length; continue; }
+      if (SINGLE_CHAR_PINYIN[ch]){ tokens.push({ t: SINGLE_CHAR_PINYIN[ch], punct: false }); i++; continue; }
+      tokens.push({ t: ch, punct: false }); i++;
+    }
+    let res = '';
+    tokens.forEach(({ t, punct }) => {
+      if (punct){ res = res.replace(/\s+$/, '') + t; }
+      else { if (res && !/\s$/.test(res)) res += ' '; res += t; }
+    });
+    return res;
+  }
+  function phrasePinyin(p){ return (p && p.pinyin) || pinyinFor(p ? p.cn : ''); }
+
+  // =====================================================================
+  // Ruby pinyin (above every hanzi) + tone colours
+  //   1st red · 2nd orange · 3rd green · 4th blue · neutral grey
+  // =====================================================================
+  const TONE_RES = [
+    /[āēīōūǖĀĒĪŌŪǕ]/,
+    /[áéíóúǘÁÉÍÓÚǗ]/,
+    /[ǎěǐǒǔǚǍĚǏǑǓǙ]/,
+    /[àèìòùǜÀÈÌÒÙǛ]/
+  ];
+  function toneOf(syl){
+    if (!syl) return 5;
+    for (let i=0; i<4; i++) if (TONE_RES[i].test(syl)) return i+1;
+    return 5;
+  }
+  function escapeHtml(s){
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function colorPinyin(py){
+    if (!py) return '';
+    return py.split(/(\s+)/).map(tok => {
+      if (tok === '') return '';
+      if (/^\s+$/.test(tok)) return tok;
+      return `<span class="tone-${toneOf(tok)}">${escapeHtml(tok)}</span>`;
+    }).join('');
+  }
+  // Split a word's pinyin into one syllable per character.
+  function splitSyllables(py, word){
+    const chars = [...word];
+    const tokens = (py || '').split(/\s+/).filter(Boolean);
+    if (tokens.length === chars.length) return tokens;
+    if (tokens.length === 0) return chars.map(() => '');
+    if (tokens.length > chars.length){
+      const out = chars.map(() => '');
+      tokens.forEach((t, k) => { out[Math.min(k, chars.length-1)] += t; });
+      return out;
+    }
+    const target = tokens.join('').toLowerCase();
+    const n = chars.length;
+    const memo = new Map();
+    const go = (i, pos) => {
+      if (i === n) return pos === target.length ? [] : null;
+      const key = i + ':' + pos;
+      if (memo.has(key)) return memo.get(key);
+      const cands = [];
+      const c = chars[i];
+      if (wordMap[c] && wordMap[c].pinyin) cands.push(wordMap[c].pinyin.replace(/\s+/g, '').toLowerCase());
+      if (SINGLE_CHAR_PINYIN[c]) cands.push(SINGLE_CHAR_PINYIN[c].replace(/\s+/g, '').toLowerCase());
+      for (const cand of cands){
+        if (cand && target.startsWith(cand, pos)){
+          const rest = go(i+1, pos + cand.length);
+          if (rest){ const r = [cand, ...rest]; memo.set(key, r); return r; }
+        }
+      }
+      for (let L = 1; L <= 6 && pos + L <= target.length; L++){
+        const rest = go(i+1, pos + L);
+        if (rest){ const r = [target.slice(pos, pos+L), ...rest]; memo.set(key, r); return r; }
+      }
+      memo.set(key, null);
+      return null;
+    };
+    const parts = go(0, 0);
+    if (parts && parts.join('') === target) return parts;
+    return chars.map((c, k) => (parts && parts[k]) || SINGLE_CHAR_PINYIN[c] || '');
+  }
+  // Chinese text → <ruby> tags with tone-coloured pinyin above each character.
+  function rubyHtml(text){
+    if (!text) return '';
+    let out = '';
+    let i = 0;
+    while (i < text.length){
+      const ch = text[i];
+      if (!/[\u3400-\u9fff\uf900-\ufaff]/.test(ch)){
+        out += escapeHtml(ch);
+        i++;
+        continue;
+      }
+      let hit = null, py = null;
+      for (let len = Math.min(6, text.length - i); len > 0; len--){
+        const sub = text.slice(i, i + len);
+        if (wordMap[sub]){ hit = sub; py = wordMap[sub].pinyin; break; }
+        if (EXTRA_PINYIN_WORDS[sub]){ hit = sub; py = EXTRA_PINYIN_WORDS[sub]; break; }
+        if (len === 1 && SINGLE_CHAR_PINYIN[sub]){ hit = sub; py = SINGLE_CHAR_PINYIN[sub]; break; }
+      }
+      if (!hit){ hit = ch; py = SINGLE_CHAR_PINYIN[ch] || ''; }
+      const sylls = splitSyllables(py, hit);
+      for (let k = 0; k < hit.length; k++){
+        const s = sylls[k] || '';
+        out += `<ruby>${escapeHtml(hit[k])}<rt class="tone-${toneOf(s)}">${escapeHtml(s)}</rt></ruby>`;
+      }
+      i += hit.length;
+    }
+    return out;
+  }
+
+  function shuffle(a){
+    for (let i=a.length-1; i>0; i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]]=[a[j],a[i]];
+    }
+    return a;
+  }
+  function shuffleCopy(a){ return shuffle([...a]); }
+  function getUniqueId(item){ return item.id ? item.hanzi+'_'+item.id : item.hanzi; }
+
+  // =====================================================================
+  // Speech
+  // =====================================================================
+  let speakTimeout = null;
+  function speak(text, cb){
+    if (!window.speechSynthesis){ if (cb) cb(); return; }
+    window.speechSynthesis.cancel();
+    if (speakTimeout) clearTimeout(speakTimeout);
+    speakTimeout = setTimeout(()=>{
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang='zh-CN'; u.rate=0.8; u.pitch=1;
+      u.onend=()=>{ if(cb) cb(); };
+      u.onerror=()=>{ if(cb) cb(); };
+      window.speechSynthesis.speak(u);
+    }, 120);
+  }
+  function speakChinese(t){ speak(t); }
+
+  // =====================================================================
+  // State
+  // =====================================================================
+  let currentLesson=1;
+  let currentMode='pairs';
+  let currentIndex=0;
+  let score=0;
+  let isAnswered=false;
+  let isCorrect=false;
+  let userAnswer=null;
+  let answeredQuestions={};
+  let isRandom=false;
+  let autoSpeak=false;
+  let accumulative=false;
+  let subMode='core';
+
+  let words=[];
+  let phrases=[];
+  let lessonPhrases=[];
+  let lessonCoreWords=[];
+  let lessonExtendedWords=[];
+  let wordMap={};
+  let pairsItems=[];
+  let fillItems=[];
+  let pairsOptions=[];
+  let flashSpoken=false;
+
+  // Original (unshuffled) backups — applyRandomOrder() always rebuilds from these
+  let originalPairs=[];
+  let originalPhrases=[];
+  let originalFillItems=[];
+
+  // =====================================================================
+  // DOM
+  // =====================================================================
+  const $ = id => document.getElementById(id);
+  const lessonList = $('lessonList');
+  const lessonLabel = $('lessonLabel');
+  const questionArea = $('questionArea');
+  const subModeBar = $('subModeBar');
+  const optionsContainer = $('optionsContainer');
+  const flashContainer = $('flashContainer');
+  const fillContainer = $('fillContainer');
+  const counterDisplay = $('counterDisplay');
+  const statusBadge = $('statusBadge');
+  const scoreDisplay = $('scoreDisplay');
+  const totalDisplay = $('totalDisplay');
+  const randomToggle = $('randomToggle');
+  const accumulativeToggle = $('accumulativeToggle');
+  const autoSpeakToggle = $('autoSpeakToggle');
+  const hamburgerBtn = $('hamburgerBtn');
+  const sidebar = $('sidebar');
+  const sidebarOverlay = $('sidebarOverlay');
+
+  // =====================================================================
+  // Sidebar
+  // =====================================================================
+  function buildLessonMenu(){
+    lessonList.innerHTML = '';
+    LESSONS.forEach((L, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'menu-item' + (currentLesson === i+1 ? ' active' : '');
+      btn.textContent = L.name;
+      btn.addEventListener('click', () => {
+        setLesson(i+1);
+        closeSidebar();
+      });
+      lessonList.appendChild(btn);
+    });
+  }
+  function openSidebar(){
+    sidebar.classList.add('open');
+    sidebarOverlay.classList.add('open');
+    hamburgerBtn.classList.add('open');
+  }
+  function closeSidebar(){
+    sidebar.classList.remove('open');
+    sidebarOverlay.classList.remove('open');
+    hamburgerBtn.classList.remove('open');
+  }
+  hamburgerBtn.addEventListener('click', () => {
+    if (sidebar.classList.contains('open')) closeSidebar(); else openSidebar();
+  });
+  sidebarOverlay.addEventListener('click', closeSidebar);
+
+  // =====================================================================
+  // Lesson data
+  // =====================================================================
+  function getLessonData(lesson, includeAccumulative){
+    const L = LESSONS[lesson-1];
+    if (!includeAccumulative){
+      return { core: L.core || [], extended: L.extended || [], phrases: L.phrases || [], name: L.name };
+    }
+    let core=[], extended=[], phrasesOut=[];
+    const seenWord = new Set();
+    const seenPhr = new Set();
+    for (let i=1; i<=lesson; i++){
+      const Li = LESSONS[i-1];
+      (Li.core || []).forEach(w=>{
+        const k = getUniqueId(w);
+        if (!seenWord.has(k)){ seenWord.add(k); core.push(w); }
+      });
+      (Li.extended || []).forEach(w=>{
+        const k = getUniqueId(w);
+        if (!seenWord.has(k)){ seenWord.add(k); extended.push(w); }
+      });
+      (Li.phrases || []).forEach(p=>{
+        if (!seenPhr.has(p.cn)){ seenPhr.add(p.cn); phrasesOut.push(p); }
+      });
+    }
+    return { core, extended, phrases: phrasesOut, name: `📈 Cumulative · ${lesson} lesson${lesson>1?'s':''}` };
+  }
+  // Words currently in play: core only · extended only · core + extended.
+  function activeWords(){
+    if (subMode === 'all') return lessonCoreWords.concat(lessonExtendedWords);
+    if (subMode === 'ext') return lessonExtendedWords.slice();
+    return lessonCoreWords.slice();
+  }
+  // Human-readable name of the current word set.
+  function subModeLabel(){
+    if (subMode === 'all') return 'core + extended';
+    return subMode === 'ext' ? 'extended only' : 'core only';
+  }
+
+  function buildPairsItems(allWords){
+    return allWords.map(w => ({
+      ...w,
+      distractors: shuffleCopy(allWords.filter(d => getUniqueId(d) !== getUniqueId(w))).slice(0, 3)
+    }));
+  }
+
+  // Segment a sentence into whole vocabulary words (longest match first).
+  function segmentWords(text, vocab){
+    const tokens = [];
+    let i = 0;
+    while (i < text.length){
+      let hit = null;
+      for (let len = Math.min(6, text.length - i); len > 0; len--){
+        const sub = text.slice(i, i + len);
+        if (vocab[sub]){ hit = sub; break; }
+      }
+      if (hit){ tokens.push({ idx: i, word: hit, length: hit.length, isWord: true }); i += hit.length; }
+      else { tokens.push({ idx: i, word: text[i], length: 1, isWord: false }); i++; }
+    }
+    return tokens;
+  }
+
+  // Randomly pick ONE whole word from item.cands and build a fresh blank item.
+  function pickFillBlank(item, wordPool){
+    const p = item.phrase;
+    const cands = (item.cands && item.cands.length) ? item.cands : [{ idx: 0, word: p.cn[0], length: 1 }];
+    const chosen = cands[Math.floor(Math.random() * cands.length)];
+    const chars = p.cn.split('');
+    const answer = chosen.word;
+    const parts = [];
+    let i = 0;
+    while (i < chars.length){
+      if (i === chosen.idx){
+        const wc = [];
+        for (let j = 0; j < chosen.length && i + j < chars.length; j++) wc.push(chars[i + j]);
+        parts.push({ chars: wc, isBlank: true, fullWord: answer });
+        i += chosen.length;
+      } else {
+        parts.push({ chars: [chars[i]], isBlank: false, fullWord: null });
+        i++;
+      }
+    }
+    const pool = wordPool || words;
+    const dist = shuffleCopy(pool.filter(w => getUniqueId(w) !== getUniqueId({ hanzi: answer }))).slice(0, 3);
+    const options = shuffleCopy([answer, ...dist.map(w => w.hanzi)]);
+    return { phrase: p, cands, parts, answer, options };
+  }
+
+  // Whole dictionary of the lesson (used to find proper word boundaries).
+  let FULL_VOCAB = null;
+  function fullVocab(){
+    if (FULL_VOCAB) return FULL_VOCAB;
+    FULL_VOCAB = {};
+    LESSONS.forEach(L => {
+      (L.core || []).forEach(w => { FULL_VOCAB[w.hanzi] = true; });
+      (L.extended || []).forEach(w => { FULL_VOCAB[w.hanzi] = true; });
+    });
+    Object.keys(EXTRA_PINYIN_WORDS).forEach(k => { FULL_VOCAB[k] = true; });
+    return FULL_VOCAB;
+  }
+
+  function buildFillItems(pList, allWords){
+    const vocab = {};
+    allWords.forEach(w => { vocab[w.hanzi] = true; });
+    const dict = fullVocab();
+    return pList.map(p => {
+      const tokens = segmentWords(p.cn, dict).filter(t => t.isWord);
+      // If the sentence is just one word, blanking it would hide the whole
+      // sentence — blank individual characters instead.
+      if (tokens.length <= 1){
+        const chars = p.cn.split('');
+        const single = [];
+        chars.forEach((ch, idx) => {
+          if (/[\u3400-\u9fff]/.test(ch)) single.push({ idx, word: ch, length: 1 });
+        });
+        return pickFillBlank({ phrase: p, cands: single }, allWords);
+      }
+      const multi = tokens.filter(t => t.length > 1);
+      // 1) whole words that belong to the current lesson
+      let cands = multi.filter(t => vocab[t.word]);
+      // 2) otherwise any whole word in the sentence
+      if (cands.length < 2) cands = multi.slice();
+      // 3) otherwise single-character words, so the blank still varies
+      if (cands.length < 2) cands = tokens.slice();
+      return pickFillBlank({ phrase: p, cands }, allWords);
+    });
+  }
+
+  // Re-roll which word is blanked out (Reset / Next / First / mode switch).
+  function reseedFillBlank(){
+    if (currentMode !== 'fill') return;
+    const it = fillItems[currentIndex];
+    if (!it) return;
+    fillItems[currentIndex] = pickFillBlank({ phrase: it.phrase, cands: it.cands });
+  }
+
+  function initLessonData(){
+    const data = getLessonData(currentLesson, accumulative);
+    lessonCoreWords = data.core;
+    lessonExtendedWords = data.extended;
+    lessonPhrases = data.phrases;
+    lessonLabel.textContent = data.name;
+
+    rebuildSubModeData();
+
+    currentIndex=0; score=0; isAnswered=false; userAnswer=null; answeredQuestions={};
+    updateScore();
+  }
+
+  // Rebuild every module's dataset from the words of the current subMode.
+  function rebuildSubModeData(){
+    const allWords = activeWords();
+    words = allWords;
+    wordMap = {};
+    allWords.forEach(w => { wordMap[w.hanzi] = w; });
+
+    originalPairs = buildPairsItems(allWords);
+    originalPhrases = lessonPhrases;
+    originalFillItems = buildFillItems(lessonPhrases, allWords);
+
+    applyRandomOrder();
+  }
+
+  // Always rebuild from the *original* arrays so toggling Random on/off is
+  // deterministic and never loses the source order.
+  function applyRandomOrder(){
+    if (isRandom){
+      pairsItems = shuffleCopy(originalPairs);
+      fillItems = shuffleCopy(originalFillItems);
+      phrases = shuffleCopy(originalPhrases);
+    } else {
+      pairsItems = [...originalPairs];
+      fillItems = [...originalFillItems];
+      phrases = [...originalPhrases];
+    }
+  }
+
+  // Global Core / Extended switch — visible on every module.
+  function renderSubModeBar(){
+    subModeBar.innerHTML = `
+      <button class="${subMode==='core'?'active':''}" data-sub="core">📚 Core</button>
+      <button class="${subMode==='ext'?'active':''}" data-sub="ext">📖 Extended</button>
+      <button class="${subMode==='all'?'active':''}" data-sub="all">📚📖 All</button>
+    `;
+    subModeBar.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', function(){
+        if (this.dataset.sub === subMode) return;
+        subMode = this.dataset.sub;
+        currentIndex = 0;
+        isAnswered = false; userAnswer = null; pairsOptions = []; flashSpoken = false;
+        score = 0; answeredQuestions = {};
+        rebuildSubModeData();
+        render();
+        statusBadge.textContent = (subMode === 'all' ? '📚📖 ' : subMode === 'ext' ? '📖 ' : '📚 ') + subModeLabel();
+      });
+    });
+  }
+
+  // =====================================================================
+  // Render
+  // =====================================================================
+  function render(){
+    renderSubModeBar();
+    switch(currentMode){
+      case 'pairs': renderPairs(); break;
+      case 'sentflash': renderSentFlash(); break;
+      case 'fill': renderFill(); break;
+    }
+    updateCounter();
+    updateScore();
+  }
+
+  function getCurrentItem(arr){
+    if (arr.length === 0) return null;
+    if (currentIndex >= arr.length) currentIndex = 0;
+    return arr[currentIndex];
+  }
+
+  // Shown when the current Core / Extended / All set contains no words.
+  function renderEmptyState(){
+    questionArea.innerHTML = `<div style="font-size:1rem;color:#6b6154;">No ${subModeLabel()} words for this lesson.</div>`;
+    optionsContainer.innerHTML = '';
+    optionsContainer.style.display = 'none';
+    flashContainer.style.display = 'none';
+    fillContainer.style.display = 'none';
+  }
+
+  function showAutoSpeak(){
+    const el = autoSpeakToggle.closest('.random-toggle');
+    if (el) el.style.display = 'flex';
+  }
+
+  // ----- Match -----
+  function renderPairs(){
+    showAutoSpeak();
+    const item = getCurrentItem(pairsItems);
+    if (!item){ renderEmptyState(); return; }
+    if (!isAnswered && pairsOptions.length === 0){
+      pairsOptions = shuffleCopy([item, ...item.distractors]);
+    }
+    const options = pairsOptions.length > 0 ? pairsOptions : shuffleCopy([item, ...item.distractors]);
+
+    questionArea.innerHTML = `
+      <div style="font-size:1.1rem;color:#6b6154;margin-bottom:4px;">🔤 Match “${item.hanzi}” with its English meaning</div>
+      <div class="question-with-pinyin" style="font-size:2.2rem;">
+        ${rubyHtml(item.hanzi)}
+      </div>
+      <div style="margin-top:6px;">
+        <button class="sound-btn" id="pairsPlayBtn">🔊</button>
+      </div>
+    `;
+    optionsContainer.style.display = 'flex';
+    flashContainer.style.display = 'none';
+    fillContainer.style.display = 'none';
+
+    let html = '';
+    options.forEach(opt => {
+      let cls = 'opt-btn';
+      const isCorrectOpt = getUniqueId(opt) === getUniqueId(item);
+      if (isAnswered){
+        if (isCorrectOpt) cls += ' correct';
+        else if (getUniqueId({ hanzi: userAnswer }) === getUniqueId(opt)) cls += ' wrong';
+      }
+      html += `<button class="${cls}" data-word="${opt.hanzi}" data-id="${opt.id||''}" ${isAnswered?'disabled':''}>${opt.en}</button>`;
+    });
+    optionsContainer.innerHTML = html;
+
+    const playBtn = $('pairsPlayBtn');
+    if (playBtn) playBtn.addEventListener('click', () => speakChinese(item.hanzi));
+    if (!isAnswered && autoSpeak) setTimeout(() => speakChinese(item.hanzi), 300);
+
+    if (!isAnswered){
+      optionsContainer.querySelectorAll('.opt-btn').forEach(btn => {
+        btn.addEventListener('click', function(){
+          handlePairsAnswer(this.dataset.word, this.dataset.id, item);
+        });
+      });
+    }
+  }
+
+  function handlePairsAnswer(word, id, item){
+    if (isAnswered) return;
+    isAnswered = true;
+    userAnswer = word;
+    const match = getUniqueId({ hanzi: word, id }) === getUniqueId(item);
+    isCorrect = match;
+    if (match){
+      if (!answeredQuestions[`pairs-${currentIndex}`]){
+        score++; answeredQuestions[`pairs-${currentIndex}`] = true;
+      }
+      statusBadge.textContent = '⭐ Correct';
+      updateScore();
+      setTimeout(() => {
+        isAnswered = false; userAnswer = null; pairsOptions = [];
+        if (currentIndex < pairsItems.length - 1) currentIndex++;
+        else { currentIndex = 0; score = 0; answeredQuestions = {}; }
+        render();
+      }, 600);
+    } else {
+      statusBadge.textContent = '🔴 Wrong';
+      updateScore();
+      render();
+    }
+  }
+
+  // ----- Sentence Cards -----
+  function renderSentFlash(){
+    showAutoSpeak();
+    const item = getCurrentItem(phrases);
+    if (!item) return;
+    const isFlipped = userAnswer === 'flipped';
+
+    questionArea.innerHTML = `
+      <div style="font-size:0.9rem;color:#6b6154;margin-bottom:4px;">🃏 Tap card to flip</div>
+      <div style="margin-bottom:6px;"><button class="sound-btn" id="flashPlayBtn">🔊</button></div>
+    `;
+
+    optionsContainer.style.display = 'none';
+    flashContainer.style.display = 'block';
+    fillContainer.style.display = 'none';
+
+    let html = '';
+    if (isFlipped){
+      html = `<div class="flash-card" id="flashCard">
+        <div class="front" style="font-size:1.5rem;">${rubyHtml(item.cn)}</div>
+        <div class="back">
+          <div style="font-size:1.1rem;font-weight:500;">${item.en}</div>
+          <div class="hint-text">Tap to continue</div>
+        </div>
+      </div>`;
+    } else {
+      html = `<div class="flash-card" id="flashCard">
+        <div class="front" style="font-size:1.4rem;">${item.cn}</div>
+        <div class="hint-text">👆 Tap to flip</div>
+      </div>`;
+    }
+    flashContainer.innerHTML = html;
+
+    const playBtn = $('flashPlayBtn');
+    if (playBtn) playBtn.addEventListener('click', () => speakChinese(item.cn));
+    if (!isAnswered && autoSpeak) setTimeout(() => speakChinese(item.cn), 300);
+
+    const card = $('flashCard');
+    if (card){
+      card.addEventListener('click', function(){
+        if (userAnswer === 'flipped'){
+          userAnswer = null;
+          isAnswered = false;
+          flashSpoken = false;
+          if (currentIndex < phrases.length - 1) currentIndex++;
+          else currentIndex = 0;
+          render();
+          updateCounter();
+          updateScore();
+        } else {
+          userAnswer = 'flipped';
+          isAnswered = true;
+          flashSpoken = false;
+          if (!answeredQuestions[`sentflash-${currentIndex}`]){
+            score++;
+            answeredQuestions[`sentflash-${currentIndex}`] = true;
+          }
+          updateScore();
+          statusBadge.textContent = '🃏 Flipped';
+          render();
+          if (!flashSpoken){ flashSpoken = true; speakChinese(item.cn); }
+        }
+      });
+    }
+    if (isFlipped && !flashSpoken){
+      flashSpoken = true;
+      setTimeout(() => speakChinese(item.cn), 300);
+    }
+  }
+
+  // ----- Fill Blank -----
+  function renderFill(){
+    showAutoSpeak();
+    const item = getCurrentItem(fillItems);
+    if (!item){ renderEmptyState(); return; }
+    const parts = item.parts;
+
+    questionArea.innerHTML = `
+      <div style="font-size:1rem;color:#6b6154;margin-bottom:4px;">✏️ Fill in the blank</div>
+      <div style="font-size:0.9rem;color:#4d6b55;margin-bottom:4px;">📖 ${item.phrase.en}</div>
+      <div style="margin-top:6px;"><button class="sound-btn" id="fillPlayBtn">🔊</button></div>
+    `;
+
+    optionsContainer.style.display = 'flex';
+    flashContainer.style.display = 'none';
+    fillContainer.style.display = 'block';
+
+    let sentenceHtml = '<div class="fill-blank-area">';
+    for (let p of parts){
+      if (p.isBlank){
+        let cls = 'blank';
+        if (userAnswer){ cls += ' filled'; if (isAnswered) cls += (isCorrect ? ' correct' : ' wrong'); }
+        const display = userAnswer || '　'.repeat(Math.max(1, p.chars.length));
+        sentenceHtml += `<span class="${cls}">${display}</span>`;
+        if (isAnswered){
+          const ap = getWordPinyin(item.answer);
+          if (isCorrect) sentenceHtml += `<span class="answer-reveal">✓ Correct! <span style="font-size:0.6rem;color:#4d6b55;margin-left:4px;">${ap}</span></span>`;
+          else sentenceHtml += `<span class="answer-reveal">✓ ${item.answer} <span style="font-size:0.6rem;color:#4d6b55;margin-left:4px;">${ap}</span></span>`;
+        }
+      } else {
+        sentenceHtml += `<span class="static-char">${rubyHtml(p.chars.join(''))}</span>`;
+      }
+    }
+    sentenceHtml += '</div>';
+    fillContainer.innerHTML = sentenceHtml;
+
+    const fillBtn = $('fillPlayBtn');
+    if (fillBtn) fillBtn.addEventListener('click', () => speakChinese(item.phrase.cn));
+    if (!isAnswered && autoSpeak) setTimeout(() => speakChinese(item.phrase.cn), 300);
+
+    const options = shuffleCopy(item.options);
+    let optHtml = '';
+    options.forEach(opt => {
+      let cls = 'opt-btn';
+      if (isAnswered){
+        if (opt === item.answer) cls += ' correct';
+        else if (opt === userAnswer && userAnswer !== item.answer) cls += ' wrong';
+      }
+      optHtml += `<button class="${cls}" data-word="${opt}" ${isAnswered?'disabled':''}>${rubyHtml(opt)}</button>`;
+    });
+    optionsContainer.innerHTML = optHtml;
+
+    if (!isAnswered){
+      optionsContainer.querySelectorAll('.opt-btn').forEach(btn => {
+        btn.addEventListener('click', function(){ handleFillAnswer(this.dataset.word, item); });
+      });
+    }
+  }
+
+  function handleFillAnswer(word, item){
+    if (isAnswered) return;
+    isAnswered = true;
+    userAnswer = word;
+    isCorrect = (word === item.answer);
+    if (isCorrect){
+      if (!answeredQuestions[`fill-${currentIndex}`]){
+        score++; answeredQuestions[`fill-${currentIndex}`] = true;
+      }
+      statusBadge.textContent = '⭐ Correct';
+    } else {
+      statusBadge.textContent = '🔴 Wrong — ' + item.answer;
+    }
+    updateScore();
+    render();
+  }
+
+  // =====================================================================
+  // Common
+  // =====================================================================
+  function nextQuestion(){
+    const maxLen = getTotalQuestions();
+    if (currentIndex < maxLen - 1) currentIndex++;
+    else return;
+    resetCurrentQuestion();
+  }
+
+  function resetCurrentQuestion(){
+    isAnswered = false;
+    isCorrect = false;
+    userAnswer = null;
+    pairsOptions = [];
+    flashSpoken = false;
+    reseedFillBlank();
+    updateScore();
+    render();
+    statusBadge.textContent = '🔄 Reset';
+  }
+
+  function goToFirst(){
+    currentIndex = 0;
+    isAnswered = false;
+    userAnswer = null;
+    pairsOptions = [];
+    flashSpoken = false;
+    reseedFillBlank();
+    render();
+    statusBadge.textContent = '⏮ Back to first';
+  }
+
+  function revealAnswer(){
+    if (isAnswered){
+      statusBadge.textContent = '💡 Already answered';
+      return;
+    }
+    let txt = '', sp = '';
+    switch (currentMode){
+      case 'pairs': { const it = getCurrentItem(pairsItems); if (it){ txt = `${it.hanzi} = ${it.en} (${it.pinyin})`; sp = it.hanzi; } break; }
+      case 'sentflash': { const it = getCurrentItem(phrases); if (it){ txt = `${it.cn} = ${it.en} (${phrasePinyin(it)})`; sp = it.cn; } break; }
+      case 'fill': { const it = getCurrentItem(fillItems); if (it){ txt = `Answer: “${it.answer}”`; sp = it.answer; } break; }
+    }
+    statusBadge.textContent = `💡 ${txt}`;
+    if (sp) speakChinese(sp);
+  }
+
+  function updateCounter(){
+    const maxLen = getTotalQuestions();
+    counterDisplay.textContent = `${Math.min(currentIndex + 1, maxLen)} / ${maxLen}`;
+  }
+
+  function updateScore(){
+    let total = 0;
+    Object.keys(answeredQuestions).forEach(k => { if (answeredQuestions[k]) total++; });
+    scoreDisplay.textContent = total;
+    totalDisplay.textContent = getTotalQuestions();
+  }
+
+  function getTotalQuestions(){
+    switch (currentMode){
+      case 'pairs': return pairsItems.length || 1;
+      case 'sentflash': return phrases.length || 1;
+      case 'fill': return fillItems.length || 1;
+      default: return 0;
+    }
+  }
+
+  // =====================================================================
+  // Mode / Lesson
+  // =====================================================================
+  function setMode(mode){
+    currentMode = mode;
+    currentIndex = 0;
+    isAnswered = false;
+    userAnswer = null;
+    pairsOptions = [];
+    flashSpoken = false;
+    score = 0;
+    answeredQuestions = {};
+
+    document.querySelectorAll('.mode-selector button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === mode);
+    });
+
+    const names = {
+      pairs: '🔤 Match',
+      sentflash: '📝 Sentence Cards',
+      fill: '✏️ Fill Blank'
+    };
+    statusBadge.textContent = names[mode] || mode;
+    applyRandomOrder();
+    reseedFillBlank();
+    render();
+    updateScore();
+  }
+
+  function setLesson(lesson){
+    currentLesson = lesson;
+    currentIndex = 0;
+    isAnswered = false;
+    userAnswer = null;
+    pairsOptions = [];
+    flashSpoken = false;
+    score = 0;
+    answeredQuestions = {};
+    subMode = 'core';
+    buildLessonMenu();
+    initLessonData();
+    render();
+    updateScore();
+    statusBadge.textContent = '📚 Core only';
+  }
+
+  // =====================================================================
+  // Event listeners
+  // =====================================================================
+  document.querySelectorAll('.mode-selector button').forEach(btn => {
+    btn.addEventListener('click', () => setMode(btn.dataset.mode));
+  });
+
+  randomToggle.addEventListener('change', e => {
+    isRandom = e.target.checked;
+    applyRandomOrder();
+    currentIndex = 0;
+    isAnswered = false;
+    userAnswer = null;
+    pairsOptions = [];
+    flashSpoken = false;
+    reseedFillBlank();
+    render();
+  });
+
+  autoSpeakToggle.addEventListener('change', e => {
+    autoSpeak = e.target.checked;
+  });
+
+  accumulativeToggle.addEventListener('change', e => {
+    accumulative = e.target.checked;
+    const cur = currentLesson;
+    score = 0;
+    answeredQuestions = {};
+    setLesson(cur);
+    statusBadge.textContent = accumulative ? '📈 Accumulative ON' : '📚 Single-lesson mode';
+  });
+
+  $('resetBtn').addEventListener('click', resetCurrentQuestion);
+  $('firstBtn').addEventListener('click', goToFirst);
+  $('nextBtn').addEventListener('click', nextQuestion);
+  $('revealBtn').addEventListener('click', revealAnswer);
+
+  // =====================================================================
+  // Start
+  // =====================================================================
+  autoSpeak = false;
+  autoSpeakToggle.checked = false;
+  buildLessonMenu();
+  setLesson(1);
+})();
+</script>
+</body>
+</html>
