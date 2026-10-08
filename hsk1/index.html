@@ -25,7 +25,7 @@
     position: fixed;
     top: 16px;
     left: 16px;
-    z-index: 1001;
+    z-index: 2003;
     width: 48px;
     height: 48px;
     border-radius: 14px;
@@ -39,6 +39,29 @@
     gap: 5px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: 0.2s;
+  }
+  /* Welcome screen — shown by default on every load; click anywhere to enter. */
+  #welcomeOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: linear-gradient(160deg, var(--theme-bg), #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+  }
+  #welcomeOverlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .welcome-title {
+    font-size: clamp(2.4rem, 7vw, 4.2rem);
+    font-weight: 700;
+    color: var(--theme-accent);
+    letter-spacing: 0.02em;
+    user-select: none;
+    -webkit-user-select: none;
   }
   .hamburger span {
     display: block;
@@ -61,7 +84,7 @@
     height: 100vh;
     background: white;
     box-shadow: 4px 0 24px rgba(0,0,0,0.12);
-    z-index: 1000;
+    z-index: 2002;
     transition: left 0.28s ease;
     overflow-y: auto;
     padding: 80px 16px 24px;
@@ -99,7 +122,7 @@
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.25);
-    z-index: 999;
+    z-index: 2001;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s;
@@ -144,6 +167,12 @@
     flex-wrap: wrap;
     justify-content: flex-end;
   }
+  .font-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
   .mode-selector {
     display: flex;
     flex-wrap: wrap;
@@ -175,7 +204,7 @@
     align-items: center;
     gap: 10px;
     background: var(--theme-light);
-    border: 1px solid var(--theme-mid);
+    border: none;
     padding: 6px 16px;
     border-radius: 16px;
     margin-bottom: 16px;
@@ -224,8 +253,6 @@
     background: color-mix(in srgb, var(--theme-light) 62%, var(--theme-mid) 38%);
     color: var(--theme-text);
   }
-  /* Top bar: when the toggle pills wrap, show only the emoji. */
-  .top-bar.compact .random-toggle label .toggle-text { display: none; }
   /* ---- Font system ----
      'LatinSans' / 'LatinSerif' / 'KaiChinese' are @font-face aliases scoped by
      unicode-range, so the Aa toggle only changes Latin (English/pinyin) text and
@@ -505,8 +532,8 @@
   }
   .pick-btn.active small { color: rgba(255,255,255,0.8); }
   .sub-menu {
-    background: var(--theme-light);
-    border: 1px solid var(--theme-mid);
+    background: none;
+    border: none;
     border-radius: 16px;
     padding: 4px 16px;
     margin-bottom: 12px;
@@ -588,10 +615,16 @@
     font-size: 0.72rem;
     font-weight: 600;
     align-items: center;
-    justify-content: flex-start;
-    flex-basis: 100%;
-    order: 10;
-    padding: 0 0 2px 15px;
+    justify-content: center;
+    margin-top: 14px;
+  }
+  .copyright {
+    text-align: center;
+    font-size: 0.72rem;
+    color: #8f8578;
+    margin-top: 12px;
+    user-select: none;
+    -webkit-user-select: none;
   }
   .list-toggles {
     display: flex;
@@ -727,6 +760,7 @@
     color: white;
   }
   .sentence-list-item.reading { border-color: var(--theme-accent); background: var(--theme-light); }
+  .word-list-item.reading { border-color: var(--theme-accent); background: var(--theme-light); }
   .action-bar-top {
     display: flex;
     flex-wrap: wrap;
@@ -1016,9 +1050,17 @@
     .options-grid .opt-btn ruby rt { font-size: 0.55em; }
     .pic-options button { font-size: 1.05rem; padding: 8px 14px; }
   }
+  /* Measured: the top-bar toggle row wraps at 580px — below that, emoji only. */
+  @media (max-width: 580px) {
+    .top-bar .random-toggle label .toggle-text { display: none; }
+  }
 </style>
 </head>
 <body>
+  <div id="welcomeOverlay">
+    <div class="welcome-title">HSK 1 Practice</div>
+  </div>
+
   <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -1034,17 +1076,19 @@
       <span>🎯 HSK 综合练习</span>
       <div class="h1-right">
         <small id="lessonLabel">L1 · Greetings &amp; Countries</small>
-        <div class="random-toggle" id="kaitiToggleWrap">
-          <input type="checkbox" id="kaitiToggle" checked>
-          <label for="kaitiToggle" class="kaiti-label">楷</label>
-        </div>
-        <div class="random-toggle" id="latinFontToggleWrap">
-          <input type="checkbox" id="latinFontToggle" checked>
-          <label for="latinFontToggle" class="aa-label">Aa</label>
-        </div>
-        <div class="font-size-ctl" id="fontSizeCtl">
-          <button id="fontDownBtn" title="Shrink content text">−</button>
-          <button id="fontUpBtn" title="Enlarge content text">+</button>
+        <div class="font-group">
+          <div class="random-toggle" id="kaitiToggleWrap">
+            <input type="checkbox" id="kaitiToggle">
+            <label for="kaitiToggle" class="kaiti-label">楷</label>
+          </div>
+          <div class="random-toggle" id="latinFontToggleWrap">
+            <input type="checkbox" id="latinFontToggle">
+            <label for="latinFontToggle" class="aa-label">Aa</label>
+          </div>
+          <div class="font-size-ctl" id="fontSizeCtl">
+            <button id="fontDownBtn" title="Shrink content text">−</button>
+            <button id="fontUpBtn" title="Enlarge content text">+</button>
+          </div>
         </div>
       </div>
     </h1>
@@ -1079,13 +1123,6 @@
       <div class="top-spacer">
         <span id="counterDisplay">1 / 10</span>
         <span class="score-display">🏆 <span id="scoreDisplay">0</span> / <span id="totalDisplay">0</span></span>
-      </div>
-      <div class="tone-dots">
-        <span class="tone-1">● 一声 ā</span>
-        <span class="tone-2">● 二声 á</span>
-        <span class="tone-3">● 三声 ǎ</span>
-        <span class="tone-4">● 四声 à</span>
-        <span class="tone-5">● 轻声 a</span>
       </div>
     </div>
 
@@ -1134,12 +1171,21 @@
 
     <div class="action-bar-top">
       <div class="left-group">
-        <button class="icon-btn" id="firstBtn" title="Go to first">⏮</button>
-        <button class="icon-btn" id="resetBtn" title="Reset this question">⟳</button>
+        <button class="primary" id="firstBtn" title="Go to first">⏮</button>
+        <button class="primary" id="resetBtn" title="Reset this question">⟳</button>
       </div>
       <button class="primary" id="nextBtn">→ Next</button>
-      <button id="revealBtn">👁 Show Answer</button>
     </div>
+
+    <div class="tone-dots">
+      <span class="tone-1">● 一声 ā</span>
+      <span class="tone-2">● 二声 á</span>
+      <span class="tone-3">● 三声 ǎ</span>
+      <span class="tone-4">● 四声 à</span>
+      <span class="tone-5">● 轻声 a</span>
+    </div>
+
+    <div class="copyright">© Min Ren 2026</div>
   </div>
 
 <script>
@@ -3474,13 +3520,14 @@
   let autoSpeak=false;
   let muted=false;
   let showPicEnglish=false;    // Picture mode: show the English line by default
-  let kaitiMode=true;          // Kaiti font toggle — whole page switches to 楷体 (default ON)
+  let kaitiMode=false;         // Kaiti font toggle — whole page switches to 楷体 (default OFF)
   let contentZoomIdx=2;        // 0..5 → 0.8× … 1.3× zoom of the practice area (default 1×)
   let readRepeat=1;            // sentence-list read-aloud: times per sentence (1..5)
   let readTimer=null;
   let readActive=false;
   let readPaused=false;
   let readIndex=0;
+  let readList=[];             // texts to read in display order (word or sentence list)
   let accumulative=false;
   let subMode='all';
   let listMode=false;          // card vs list (wordflash / sentflash only)
@@ -3576,8 +3623,6 @@
   const sentenceBox = $('sentenceBox');
   const topBar = $('topBar');
   const subMenu = $('subMenu');
-  // Font defaults: kaiti + serif ON at load.
-  document.body.classList.add('kaiti', 'latin-serif');
   const picEnglishToggle = $('picEnglishToggle');
   const picEnglishToggleWrap = $('picEnglishToggleWrap');
   const accumulativeToggle = $('accumulativeToggle');
@@ -3595,6 +3640,7 @@
       btn.className = 'menu-item' + (currentLesson === i+1 ? ' active' : '');
       btn.textContent = L.name;
       btn.addEventListener('click', () => {
+        dismissWelcome();
         setLesson(i+1);
         closeSidebar();
       });
@@ -4072,7 +4118,9 @@
   }
 
   function render(){
-    if (readActive && !(currentMode === 'sentflash' && listMode)) stopSentenceRead();
+    // In sentence-list mode the question area is empty — hide it (no blank row).
+    questionArea.style.display = (currentMode === 'sentflash' && listMode) ? 'none' : '';
+    if (readActive && !(listMode && (currentMode === 'sentflash' || currentMode === 'wordflash'))) stopSentenceRead();
     renderPickButtons();
     renderStudyTabBar();
     renderSubModeBar();
@@ -4090,7 +4138,6 @@
     }
     updateCounter();
     updateScore();
-    updateTopBarCompact();
     updateMenuStack();
   }
 
@@ -4210,6 +4257,7 @@
 
   // ----- Word Flash -----
   function renderWordList(items){
+    readList = items.map(w => w.hanzi);
     questionArea.innerHTML = `
       <div style="font-size:0.9rem;color:#6b6154;margin-bottom:4px;">📋 Tap a word to reveal hidden pinyin / English · tap again to hide</div>
     `;
@@ -4220,19 +4268,21 @@
     memoryContainer.style.display = 'none';
     pictureContainer.style.display = 'none';
 
-    let html = '<div class="word-list">';
-    items.forEach(w => {
+    let html = readMenuHtml() + '<div class="word-list">';
+    items.forEach((w, i) => {
       const key = getUniqueId(w);
       const revealed = listRevealed.has(key);
       const showPy = showListPinyin || revealed;
       const showEn = showListEnglish || revealed;
-      html += `<button class="word-list-item" data-key="${key}">
+      html += `<button class="word-list-item" data-i="${i}" data-key="${key}">
         <div class="wl-hanzi">${showPy ? rubyHtml(w.hanzi) : w.hanzi}</div>
         ${showEn ? `<div class="wl-en">${w.en}</div>` : ''}
       </button>`;
     });
     html += '</div>';
     flashContainer.innerHTML = html;
+
+    bindReadMenu();
 
     flashContainer.querySelectorAll('.word-list-item').forEach(btn => {
       btn.addEventListener('click', function(){
@@ -4339,7 +4389,7 @@
   // ----- Sentence Flash -----
   function renderSentenceList(){
     if (phrases.length === 0){ renderEmptyState(); return; }
-    questionArea.innerHTML = '';
+    readList = phrases.map(p => p.cn);
     optionsContainer.style.display = 'none';
     flashContainer.style.display = 'block';
     fillContainer.style.display = 'none';
@@ -4347,16 +4397,8 @@
     memoryContainer.style.display = 'none';
     pictureContainer.style.display = 'none';
 
-    const playing = readActive && !readPaused;
-    let html = `
-      <div class="sentence-read-menu">
-        <button id="sentenceReadBtn" class="${readActive ? 'reading' : ''}">${playing ? '🔊 Reading…' : readActive ? '▶ Resume' : '🔊 Read'}</button>
-        <button id="sentencePauseBtn" ${playing ? '' : 'disabled'}>⏸ Pause</button>
-        <div class="read-repeat" id="readRepeatBar">
-          ${[1,2,3,4,5].map(r => `<button class="${readRepeat === r ? 'active' : ''}" data-r="${r}">${r}x</button>`).join('')}
-        </div>
-      </div>
-      <div class="sentence-list">`;
+    let html = readMenuHtml();
+    html += '<div class="sentence-list">';
     phrases.forEach((p, i) => {
       const sl = showListPinyin ? rubyHtml(p.cn) : escapeHtml(p.cn);
       const en = showListEnglish ? `<div class="sl-en">${p.en}</div>` : '';
@@ -4371,6 +4413,27 @@
     html += '</div>';
     flashContainer.innerHTML = html;
 
+    bindReadMenu();
+
+    flashContainer.querySelectorAll('.sentence-list-item').forEach(el => {
+      el.addEventListener('click', function(){ speakChinese(phrases[+this.dataset.i].cn); });
+    });
+    statusBadge.textContent = `📝 Sentence list · ${phrases.length} sentences`;
+  }
+
+  // ---- Read menu (shared by word list & sentence list) ----
+  function readMenuHtml(){
+    const playing = readActive && !readPaused;
+    return `
+      <div class="sentence-read-menu">
+        <button id="sentenceReadBtn" class="${readActive ? 'reading' : ''}">${playing ? '🔊 Reading…' : readActive ? '▶ Resume' : '🔊 Read'}</button>
+        <button id="sentencePauseBtn" ${playing ? '' : 'disabled'}>⏸ Pause</button>
+        <div class="read-repeat" id="readRepeatBar">
+          ${[1,2,3,4,5].map(r => `<button class="${readRepeat === r ? 'active' : ''}" data-r="${r}">${r}x</button>`).join('')}
+        </div>
+      </div>`;
+  }
+  function bindReadMenu(){
     const rb = $('sentenceReadBtn');
     if (rb) rb.addEventListener('click', () => {
       if (readActive && !readPaused) return;          // already playing
@@ -4388,14 +4451,9 @@
         });
       });
     }
-
-    flashContainer.querySelectorAll('.sentence-list-item').forEach(el => {
-      el.addEventListener('click', function(){ speakChinese(phrases[+this.dataset.i].cn); });
-    });
-    statusBadge.textContent = `📝 Sentence list · ${phrases.length} sentences`;
   }
 
-  // Sentence-list read-aloud: read each sentence readRepeat times, in display order.
+  // Read-aloud: read each item in readList readRepeat times, in display order.
   function stopSentenceRead(){
     readActive = false;
     readPaused = false;
@@ -4403,7 +4461,7 @@
     if (speakTimeout){ clearTimeout(speakTimeout); speakTimeout = null; }
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     updateReadButtons();
-    document.querySelectorAll('.sentence-list-item.reading').forEach(el => el.classList.remove('reading'));
+    document.querySelectorAll('.sentence-list-item.reading, .word-list-item.reading').forEach(el => el.classList.remove('reading'));
   }
   function pauseSentenceRead(){
     if (!readActive || readPaused) return;
@@ -4421,9 +4479,9 @@
   }
   function startSentenceRead(fromIndex){
     if (readActive && !readPaused) return;
-    if (!phrases.length) return;
+    if (!readList.length) return;
     if (typeof fromIndex === 'number'){
-      if (fromIndex < 0 || fromIndex >= phrases.length) return;
+      if (fromIndex < 0 || fromIndex >= readList.length) return;
       readIndex = fromIndex;
     } else if (!readActive){
       readIndex = 0;
@@ -4445,15 +4503,15 @@
   }
   function sentenceReadNext(){
     if (!readActive || readPaused) return;
-    if (readIndex >= phrases.length){ stopSentenceRead(); return; }
-    const p = phrases[readIndex];
+    if (readIndex >= readList.length){ stopSentenceRead(); return; }
+    const txt = readList[readIndex];
     let n = 0;
     const step = () => {
       if (!readActive || readPaused) return;
-      document.querySelectorAll('.sentence-list-item.reading').forEach(el => el.classList.remove('reading'));
-      const el = document.querySelector('.sentence-list-item[data-i="' + readIndex + '"]');
+      document.querySelectorAll('.sentence-list-item.reading, .word-list-item.reading').forEach(el => el.classList.remove('reading'));
+      const el = document.querySelector('.sentence-list-item[data-i="' + readIndex + '"]') || document.querySelector('.word-list-item[data-i="' + readIndex + '"]');
       if (el){ el.classList.add('reading'); el.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
-      speak(p.cn, () => {
+      speak(txt, () => {
         if (!readActive || readPaused) return;
         n++;
         if (n < readRepeat) readTimer = setTimeout(step, 700);
@@ -5034,34 +5092,6 @@
     messageArea.textContent = '⏮ Back to first';
   }
 
-  function revealAnswer(){
-    if (currentMode === 'memory'){
-      flashStatus('💡 Keep matching!');
-      return;
-    }
-    if (currentMode === 'mole'){
-      if (moleTarget){
-        flashStatus(`💡 ${moleTarget.pinyin}`);
-        speakChinese(moleTarget.hanzi);
-      }
-      return;
-    }
-    if (isAnswered){
-      flashStatus('💡 Already answered');
-      return;
-    }
-    let txt = '', sp = '';
-    switch (currentMode){
-      case 'pairs': { const it = getCurrentItem(pairsItems); if (it){ txt = `${it.hanzi} = ${it.en} (${it.pinyin})`; sp = it.hanzi; } break; }
-      case 'wordflash': { const items = flashItems; const it = getCurrentItem(items); if (it){ txt = `${it.hanzi} = ${it.en} (${it.pinyin})`; sp = it.hanzi; } break; }
-      case 'sentflash': { const it = getCurrentItem(phrases); if (it){ txt = `${it.cn} = ${it.en} (${phrasePinyin(it)})`; sp = it.cn; } break; }
-      case 'fill': { const it = getCurrentItem(fillItems); if (it){ txt = `Answer: “${it.answer}”`; sp = it.answer; } break; }
-      case 'picture': { const it = picItems[picIndex % picItems.length]; if (it){ txt = `Answer: “${it.pinyin}”`; sp = it.hanzi; } break; }
-    }
-    flashStatus(`💡 ${txt}`);
-    if (sp) speakChinese(sp);
-  }
-
   function updateCounter(){
     if (isListModeActive()){
       const n = currentMode === 'wordflash' ? flashItems.length : phrases.length;
@@ -5269,15 +5299,6 @@
   });
   applyContentZoom();
 
-  // Top bar: if the toggle pills wrap to a second line, show emoji only.
-  function updateTopBarCompact(){
-    const labels = [...topBar.querySelectorAll('.random-toggle label')]
-      .filter(l => l.getBoundingClientRect().height > 0);   // skip hidden ones
-    if (labels.length < 2){ topBar.classList.remove('compact'); return; }
-    const firstTop = labels[0].getBoundingClientRect().top;
-    const wrapped = labels.some(l => Math.abs(l.getBoundingClientRect().top - firstTop) > 4);
-    topBar.classList.toggle('compact', wrapped);
-  }
   // Study menu: when the Scope buttons drop below their label, stack every
   // setting row the same way (label on its own line above the chips).
   function updateMenuStack(){
@@ -5292,8 +5313,7 @@
     const wrapped = Math.abs(chipsTop - labelTop) > 6;
     subMenu.classList.toggle('stacked', wrapped);
   }
-  window.addEventListener('resize', () => { updateTopBarCompact(); updateMenuStack(); });
-  updateTopBarCompact();
+  window.addEventListener('resize', updateMenuStack);
   updateMenuStack();
 
   picEnglishToggle.addEventListener('change', e => {
@@ -5319,7 +5339,16 @@
   $('resetBtn').addEventListener('click', resetCurrentQuestion);
   $('firstBtn').addEventListener('click', goToFirst);
   $('nextBtn').addEventListener('click', nextQuestion);
-  $('revealBtn').addEventListener('click', revealAnswer);
+
+  // Welcome screen: only choosing a lesson from the hamburger menu dismisses it.
+  // Clicking the welcome screen itself does nothing.
+  let welcomeDismissed = false;
+  function dismissWelcome(){
+    if (welcomeDismissed) return;
+    welcomeDismissed = true;
+    const w = $('welcomeOverlay');
+    if (w){ w.classList.add('hidden'); setTimeout(() => w.remove(), 450); }
+  }
 
   // =====================================================================
   // Start
