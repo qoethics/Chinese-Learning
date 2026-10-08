@@ -626,6 +626,13 @@
     user-select: none;
     -webkit-user-select: none;
   }
+  .copyright .switch-account {
+    color: #b45309;
+    text-decoration: none;
+    border-bottom: 1px dashed currentColor;
+    cursor: pointer;
+  }
+  .copyright .switch-account:hover { color: #9D174D; }
   .list-toggles {
     display: flex;
     gap: 16px;
@@ -1185,7 +1192,7 @@
       <span class="tone-5">● 轻声 a</span>
     </div>
 
-    <div class="copyright">© Min Ren 2026</div>
+    <div class="copyright">© Min Ren 2026 · <a href="#" id="switchAccount" class="switch-account">Switch Account</a></div>
   </div>
 
 <script>
@@ -5360,6 +5367,15 @@
   messageArea.className = 'message info-msg';
   messageArea.textContent = 'Select a lesson and mode to start · Auto-pronounce is OFF by default';
 })();
+</script>
+<script>
+document.getElementById('switchAccount').addEventListener('click', function (e) {
+  e.preventDefault();
+  try { sessionStorage.removeItem('study_login'); } catch (err) {}
+  var p = location.pathname.split('/');
+  p.pop(); p.pop(); p.push('index.html');
+  location.href = p.join('/');
+});
 </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
   <base href="/Jessica/">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jessica · 学习笔记</title>
+<title>Chinese Practice</title>
 <style>
   * { box-sizing: border-box; }
   :root {
@@ -122,6 +122,12 @@
     text-transform: uppercase; color: #c4bcd8;
     font-family: "Segoe UI", system-ui, sans-serif;
   }
+  .footer .switch-account {
+    color: #a49dba; text-decoration: none;
+    border-bottom: 1px dashed #c9c1dd; cursor: pointer;
+    letter-spacing: .05em;
+  }
+  .footer .switch-account:hover { color: var(--lav); border-bottom-color: var(--lav); }
 
   @media (max-width: 560px) {
     .hero { padding-top: 3.4rem; }
@@ -137,7 +143,7 @@
 
   <header class="hero">
     <h1>Jessica</h1>
-    <p class="sub">Chinese Study Notes</p>
+    <p class="sub">Chinese Practice</p>
     <div class="ribbon">
       <span style="background:#ef9cb4"></span>
       <span style="background:#f2a882"></span>
@@ -170,7 +176,16 @@
     </div>
   </section>
 
-  <p class="footer">Jessica · Study Notes</p>
+  <p class="footer">Jessica · Chinese Practice · <a href="#" class="switch-account" id="switchAccount">Switch Account</a></p>
 </div>
+<script>
+document.getElementById('switchAccount').addEventListener('click', function (e) {
+  e.preventDefault();
+  try { sessionStorage.removeItem('study_login'); } catch (err) {}
+  var p = location.pathname.split('/');
+  p.pop(); p.pop(); p.push('index.html');
+  location.href = p.join('/');
+});
+</script>
 </body>
 </html>

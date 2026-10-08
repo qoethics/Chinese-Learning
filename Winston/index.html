@@ -4,7 +4,7 @@
   <base href="/Winston/">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Winston · 学习笔记</title>
+<title>Chinese Practice</title>
 <style>
   * { box-sizing: border-box; }
 
@@ -210,6 +210,17 @@
     color: #c4bcd8;
     font-family: "Segoe UI", system-ui, sans-serif;
   }
+  .footer .switch-account {
+    color: #a49dba;
+    text-decoration: none;
+    border-bottom: 1px dashed #c9c1dd;
+    cursor: pointer;
+    letter-spacing: .05em;
+  }
+  .footer .switch-account:hover {
+    color: var(--lav);
+    border-bottom-color: var(--lav);
+  }
 
   /* ================= 响应式 ================= */
   @media (max-width: 560px) {
@@ -228,7 +239,7 @@
   <!-- ==================== 顶部 ==================== -->
   <header class="hero">
     <h1>Winston</h1>
-    <p class="sub">Chinese Study Notes</p>
+    <p class="sub">Chinese Practice</p>
     <div class="ribbon">
       <span style="background:#ef9cb4"></span>
       <span style="background:#f2a882"></span>
@@ -253,8 +264,8 @@
       <a class="note" href="./lesson-3.html">
         <span class="note-icon">3</span>
         <span class="note-body">
-          <span class="note-title">第三课《健身房跑路》</span>
-          <span class="note-desc">单词 · 声调着色 · 例句 · 法律词汇</span>
+          <span class="note-title">第三、四课《健身房跑路》</span>
+          <span class="note-desc">单词 · 语法 · 口语 · 法律词汇</span>
         </span>
         <span class="note-arrow">→</span>
       </a>
@@ -264,8 +275,17 @@
     </div>
   </section>
 
-  <p class="footer">Winston · Study Notes</p>
+  <p class="footer">Winston · Chinese Practice · <a href="#" class="switch-account" id="switchAccount">Switch Account</a></p>
 </div>
 
+<script>
+document.getElementById('switchAccount').addEventListener('click', function (e) {
+  e.preventDefault();
+  try { sessionStorage.removeItem('study_login'); } catch (err) {}
+  var p = location.pathname.split('/');
+  p.pop(); p.pop(); p.push('index.html');
+  location.href = p.join('/');
+});
+</script>
 </body>
 </html>

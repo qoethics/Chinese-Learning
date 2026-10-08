@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Brad · Chinese Study Notes</title>
+<title>Chinese Practice</title>
 <style>
   * { box-sizing: border-box; }
   :root {
@@ -121,6 +121,12 @@
     text-transform: uppercase; color: #c4bcd8;
     font-family: "Segoe UI", system-ui, sans-serif;
   }
+  .footer .switch-account {
+    color: #a49dba; text-decoration: none;
+    border-bottom: 1px dashed #c9c1dd; cursor: pointer;
+    letter-spacing: .05em;
+  }
+  .footer .switch-account:hover { color: var(--lav); border-bottom-color: var(--lav); }
 
   .nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem; }
   .nav-item {
@@ -169,7 +175,7 @@
 
   <header class="hero">
     <h1>Brad</h1>
-    <p class="sub">Chinese study notes</p>
+    <p class="sub">Chinese Practice</p>
     <div class="ribbon">
       <span style="background:#ef9cb4"></span>
       <span style="background:#f2a882"></span>
@@ -224,7 +230,16 @@
     </div>
   </section>
 
-  <p class="footer">Brad · Classroom Chinese</p>
+  <p class="footer">Brad · Classroom Chinese · <a href="#" class="switch-account" id="switchAccount">Switch Account</a></p>
 </div>
+<script>
+document.getElementById('switchAccount').addEventListener('click', function (e) {
+  e.preventDefault();
+  try { sessionStorage.removeItem('study_login'); } catch (err) {}
+  var p = location.pathname.split('/');
+  p.pop(); p.pop(); p.push('index.html');
+  location.href = p.join('/');
+});
+</script>
 </body>
 </html>
