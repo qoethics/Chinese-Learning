@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉语拼音练习 · Unit 1-15</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f3f0fa;
+            min-height: 100vh; padding: 20px 16px;
+        }
+        .layout {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; gap: 18px; align-items: flex-start;
+            position: relative;
+        }
+
+        /* ---------- 侧边栏折叠按钮 ---------- */
+        .sidebar-toggle {
+            position: fixed;
+            top: 16px; left: 16px;
+            z-index: 200;
+            width: 46px; height: 46px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #b39ddb 0%, #9575cd 100%);
+            color: #ffffff;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(149, 117, 205, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .sidebar-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(149, 117, 205, 0.5);
+        }
+        .sidebar-toggle:active { transform: scale(0.95); }
+        .sidebar-toggle svg {
+            width: 22px; height: 22px;
+            stroke: #ffffff;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+        }
+
+        /* ---------- 侧边栏 ---------- */
+        .unit-sidebar {
+            flex: 0 0 210px;
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 14px 12px;
+            box-shadow: 0 16px 30px -12px rgba(90, 60, 140, 0.25);
+            border: 1px solid rgba(180, 160, 220, 0.3);
+            position: sticky; top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+        .unit-sidebar::-webkit-scrollbar { width: 6px; }
+        .unit-sidebar::-webkit-scrollbar-thumb {
+            background: #cdbce8; border-radius: 3px;
+        }
+        .unit-sidebar.collapsed {
+            transform: translateX(-120%);
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            left: 0; top: 0;
+            height: 0;
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+        }
+        .sidebar-title {
+            font-size: 0.7rem; font-weight: 700;
+            color: #9a8ab5; letter-spacing: 2px;
+            text-align: center; padding: 4px 0 10px;
+        }
+        .unit-list {
+            display: flex; flex-direction: column; gap: 5px;
+        }
+        .unit-tab {
+            padding: 9px 12px;
+            border: none;
+            border-radius: 14px;
+            background: transparent;
+            cursor: pointer;
+            font-family: inherit;
+            text-align: left;
+            transition: all 0.18s;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .unit-tab:hover { background: #f0e9fa; }
+        .unit-tab.active {
+            background: linear-gradient(135deg, #b39ddb 0%, #9575cd 100%);
+            box-shadow: 0 4px 10px rgba(149, 117, 205, 0.35);
+        }
+        .unit-tab .tab-label {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            color: #a394c0;
+            transition: color 0.18s;
+        }
+        .unit-tab.active .tab-label { color: rgba(255,255,255,0.85); }
+        .unit-tab .tab-content {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #6b5c8a;
+            transition: color 0.18s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .unit-tab.active .tab-content { color: #ffffff; }
+
+        /* ---------- 右侧内容 ---------- */
+        .content {
+            flex: 1;
+            min-width: 0;
+            display: flex; flex-direction: column; gap: 20px;
+        }
+        .unit-panel { display: none; }
+        .unit-panel.active { display: block; }
+        .unit-container {
+            width: 100%; background: #ffffff;
+            border-radius: 36px;
+            box-shadow: 0 20px 36px -12px rgba(90, 60, 140, 0.22);
+            padding: 24px 22px 26px;
+            border: 1px solid rgba(180, 160, 220, 0.25);
+        }
+        .subhead {
+            text-align: center; color: #7d6f99; font-size: 0.8rem;
+            margin-bottom: 16px; font-weight: 400;
+            border-bottom: 1px dashed #d8ccec; padding-bottom: 10px;
+        }
+        .legend {
+            display: flex; justify-content: center; gap: 14px;
+            margin-bottom: 14px; flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex; align-items: center; gap: 5px;
+            font-size: 0.72rem; color: #6b5c8a; font-weight: 500;
+        }
+        .legend-dot {
+            width: 13px; height: 13px; border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .legend-dot.t1 { background: #ffd966; }
+        .legend-dot.t2 { background: #6fa8dc; }
+        .legend-dot.t3 { background: #e06666; }
+        .legend-dot.t4 { background: #333333; }
+        .legend-dot.disabled {
+            background: #f5f5f5;
+            border: 1px dashed #d0d0d0;
+        }
+        .table-wrapper {
+            overflow-x: auto; border-radius: 18px;
+            border: 1px solid #e0d6f2;
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(90, 60, 140, 0.06);
+        }
+        table {
+            width: 100%; border-collapse: collapse; min-width: 460px;
+            font-size: 0.85rem; table-layout: fixed;
+        }
+        thead { background: #f0e9fa; border-bottom: 2px solid #cdbce8; }
+        thead th {
+            padding: 8px 3px; font-weight: 600; color: #4a3a6b;
+            font-size: 0.82rem; text-align: center; letter-spacing: 0.2px; white-space: nowrap;
+        }
+        thead th:first-child { border-top-left-radius: 16px; width: 52px; }
+        thead th:last-child { border-top-right-radius: 16px; }
+        thead th.final-head {
+            font-size: 1.1rem; color: #6a4fa3; font-weight: 700;
+            background: #e6dcf7; padding: 7px 3px;
+        }
+        tbody tr { border-bottom: 1px solid #f0eaf8; transition: background 0.15s; }
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: #faf7ff; }
+        tbody td {
+            padding: 5px 3px; text-align: center; vertical-align: middle;
+            border-right: 1px solid #f0eaf8;
+        }
+        tbody td:last-child { border-right: none; }
+        .initial-label {
+            font-weight: 700; font-size: 1.25rem; color: #4a3a6b;
+            background: #f6f1fd; vertical-align: middle; text-align: center;
+            min-width: 48px; padding: 8px 3px;
+        }
+        .syllable-cell { padding: 5px 3px; vertical-align: middle; }
+        .tone-grid {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 3px;
+            justify-content: center;
+        }
+        .tone-item {
+            display: flex;
+            align-items: stretch;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.15s, transform 0.1s;
+            min-height: 34px;
+            width: 76px;
+            border: 1px solid rgba(0,0,0,0.12);
+        }
+        .tone-item:not(.disabled):hover {
+            box-shadow: 0 2px 6px rgba(90, 60, 140, 0.22);
+            transform: scale(1.03);
+        }
+        .tone-item:not(.disabled):active { transform: scale(0.97); }
+
+        .tone-item[data-tone="1"] { background: #ffd966; border-color: #e0b800; }
+        .tone-item[data-tone="1"] .tone-pinyin { color: #7a5900; }
+        .tone-item[data-tone="1"] .tone-single:hover { background: #ffce33; }
+        .tone-item[data-tone="1"] .tone-word-btn {
+            background: #f5c94d; border-left-color: #e0b800; color: #7a5900;
+        }
+        .tone-item[data-tone="1"] .tone-word-btn:hover { background: #eabf3a; }
+
+        .tone-item[data-tone="2"] { background: #6fa8dc; border-color: #3d7fb8; }
+        .tone-item[data-tone="2"] .tone-pinyin { color: #ffffff; }
+        .tone-item[data-tone="2"] .tone-single:hover { background: #5a97cf; }
+        .tone-item[data-tone="2"] .tone-word-btn {
+            background: #5a97cf; border-left-color: #3d7fb8; color: #ffffff;
+        }
+        .tone-item[data-tone="2"] .tone-word-btn:hover { background: #4886be; }
+
+        .tone-item[data-tone="3"] { background: #e06666; border-color: #b03d3d; }
+        .tone-item[data-tone="3"] .tone-pinyin { color: #ffffff; }
+        .tone-item[data-tone="3"] .tone-single:hover { background: #d45252; }
+        .tone-item[data-tone="3"] .tone-word-btn {
+            background: #d45252; border-left-color: #b03d3d; color: #ffffff;
+        }
+        .tone-item[data-tone="3"] .tone-word-btn:hover { background: #c44242; }
+
+        .tone-item[data-tone="4"] { background: #333333; border-color: #000000; }
+        .tone-item[data-tone="4"] .tone-pinyin { color: #ffffff; }
+        .tone-item[data-tone="4"] .tone-single:hover { background: #4a4a4a; }
+        .tone-item[data-tone="4"] .tone-word-btn {
+            background: #4a4a4a; border-left-color: #000000; color: #ffffff;
+        }
+        .tone-item[data-tone="4"] .tone-word-btn:hover { background: #5a5a5a; }
+
+        .tone-item.disabled {
+            background: #fafafa;
+            border-color: #e8e8e8;
+        }
+        .tone-item.disabled .tone-pinyin { color: #c8c8c8; }
+        .tone-item.disabled .tone-single,
+        .tone-item.disabled .tone-word-btn {
+            cursor: default;
+            background: transparent;
+        }
+        .tone-item.disabled .tone-single:hover,
+        .tone-item.disabled .tone-word-btn:hover { background: transparent; }
+        .tone-item.disabled .tone-word-btn {
+            border-left-color: #e8e8e8;
+            color: #d0d0d0;
+        }
+        .tone-item.disabled:hover { transform: none; box-shadow: none; }
+
+        .tone-single {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 3px 2px;
+            transition: background 0.15s;
+        }
+        .tone-pinyin {
+            font-size: 0.95rem; font-weight: 700;
+            font-family: 'Times New Roman', 'PingFang SC', serif;
+            letter-spacing: 0.2px; line-height: 1.1;
+            white-space: nowrap;
+        }
+        .tone-word-btn {
+            width: 22px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-left: 1px solid;
+            transition: background 0.15s;
+            gap: 0;
+        }
+        .tone-word-btn:active { filter: brightness(0.9); }
+        .tone-word-btn .icon { font-size: 0.65rem; line-height: 1; }
+        .tone-word-btn .label {
+            font-size: 0.45rem; font-weight: 700; letter-spacing: 0.2px;
+        }
+        .no-syllable {
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; color: #c5b8dc; font-weight: 600;
+            min-height: 56px; background: #faf7ff; border-radius: 8px;
+            border: 1px dashed #ddd0f0; letter-spacing: 1.2px;
+            width: 100%;
+        }
+
+        /* ---------- Unit 15: 整体认读音节 ---------- */
+        .zhengti-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .zhengti-card {
+            background: #faf7ff;
+            border: 1px solid #e0d6f2;
+            border-radius: 16px;
+            padding: 12px 12px 14px;
+        }
+        .zhengti-card-title {
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #6a4fa3;
+            letter-spacing: 1px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #ddd0f0;
+            margin-bottom: 10px;
+        }
+        /* 复用和表格里一样的 tone-grid / tone-item */
+        .zhengti-card .tone-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            justify-content: center;
+        }
+        .zhengti-card .tone-item {
+            width: 100%;
+        }
+
+        .footer-note {
+            text-align: center; color: #9a8ab5;
+            font-size: 0.78rem; letter-spacing: 0.3px;
+        }
+        .footer-note span {
+            background: #f0e9fa; border-radius: 14px; padding: 3px 12px;
+        }
+
+        /* ---------- 移动端 ---------- */
+        @media (max-width: 900px) {
+            .layout { padding-top: 56px; }
+        }
+        @media (max-width: 760px) {
+            .unit-sidebar {
+                position: fixed;
+                top: 72px; left: 16px; right: 16px;
+                width: auto;
+                max-height: calc(100vh - 100px);
+                z-index: 150;
+                transform: none;
+                opacity: 1;
+                pointer-events: auto;
+                border-radius: 22px;
+                box-shadow: 0 20px 50px -10px rgba(90, 60, 140, 0.4);
+            }
+            .unit-sidebar.collapsed {
+                transform: translateY(-20px);
+                opacity: 0;
+                pointer-events: none;
+                height: 0;
+                max-height: 0;
+                overflow: hidden;
+                padding: 0;
+                border: none;
+            }
+            .unit-list {
+                flex-direction: column; gap: 5px;
+                min-width: 0;
+            }
+            .unit-tab {
+                min-width: 0;
+                padding: 10px 14px;
+                width: 100%;
+            }
+            .unit-tab .tab-content {
+                white-space: normal;
+                font-size: 0.75rem;
+                line-height: 1.2;
+            }
+            .layout { gap: 0; }
+            .content { width: 100%; }
+        }
+        @media (max-width: 520px) {
+            .unit-container { padding: 16px 10px 20px; border-radius: 24px; }
+            .tone-item { width: 66px; min-height: 30px; }
+            .tone-pinyin { font-size: 0.82rem; }
+            .tone-word-btn { width: 20px; }
+            .tone-word-btn .icon { font-size: 0.55rem; }
+            .tone-word-btn .label { font-size: 0.4rem; }
+            .initial-label { font-size: 1rem; }
+            thead th.final-head { font-size: 0.95rem; }
+            .legend { gap: 8px; }
+            .legend-item { font-size: 0.65rem; }
+            .zhengti-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 折叠按钮 -->
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="展开/收起单元列表">
+    <svg viewBox="0 0 24 24" fill="none">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+</button>
+
+<div class="layout">
+
+    <aside class="unit-sidebar" id="unitSidebar">
+        <div class="sidebar-title">UNITS</div>
+        <div class="unit-list">
+            <button class="unit-tab active" data-unit="1">
+                <span class="tab-label">UNIT 1</span>
+                <span class="tab-content">b p m f × a o e</span>
+            </button>
+            <button class="unit-tab" data-unit="2">
+                <span class="tab-label">UNIT 2</span>
+                <span class="tab-content">d t n l × i u ü</span>
+            </button>
+            <button class="unit-tab" data-unit="3">
+                <span class="tab-label">UNIT 3</span>
+                <span class="tab-content">g k h × ai ei ui</span>
+            </button>
+            <button class="unit-tab" data-unit="4">
+                <span class="tab-label">UNIT 4</span>
+                <span class="tab-content">j q x × ie üe iu</span>
+            </button>
+            <button class="unit-tab" data-unit="5">
+                <span class="tab-label">UNIT 5</span>
+                <span class="tab-content">d t n l b p m f × ao ou iu</span>
+            </button>
+            <button class="unit-tab" data-unit="6">
+                <span class="tab-label">UNIT 6</span>
+                <span class="tab-content">zh ch sh r × ai ui ao ou</span>
+            </button>
+            <button class="unit-tab" data-unit="7">
+                <span class="tab-label">UNIT 7</span>
+                <span class="tab-content">z c s × an en un</span>
+            </button>
+            <button class="unit-tab" data-unit="8">
+                <span class="tab-label">UNIT 8</span>
+                <span class="tab-content">z c s × ai ui ao</span>
+            </button>
+            <button class="unit-tab" data-unit="9">
+                <span class="tab-label">UNIT 9</span>
+                <span class="tab-content">y w zh ch sh r × ang eng ing ong</span>
+            </button>
+            <button class="unit-tab" data-unit="11">
+                <span class="tab-label">UNIT 11</span>
+                <span class="tab-content">j q x × ian iang iong</span>
+            </button>
+            <button class="unit-tab" data-unit="12">
+                <span class="tab-label">UNIT 12</span>
+                <span class="tab-content">d t n l z c s × uo uan</span>
+            </button>
+            <button class="unit-tab" data-unit="13">
+                <span class="tab-label">UNIT 13</span>
+                <span class="tab-content">j q x × uan</span>
+            </button>
+            <button class="unit-tab" data-unit="14">
+                <span class="tab-label">UNIT 14</span>
+                <span class="tab-content">g k h zh ch sh r × ua uo uai uang</span>
+            </button>
+            <button class="unit-tab" data-unit="15">
+                <span class="tab-label">UNIT 15</span>
+                <span class="tab-content">整体认读音节</span>
+            </button>
+        </div>
+    </aside>
+
+    <div class="content">
+
+        <!-- ================= UNIT 1 ================= -->
+        <div class="unit-panel active" id="panel1">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">a</th><th class="final-head">o</th><th class="final-head">e</th></tr></thead>
+                        <tbody id="body1"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 2 ================= -->
+        <div class="unit-panel" id="panel2">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">i</th><th class="final-head">u</th><th class="final-head">ü</th></tr></thead>
+                        <tbody id="body2"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 3 ================= -->
+        <div class="unit-panel" id="panel3">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">ai</th><th class="final-head">ei</th><th class="final-head">ui</th></tr></thead>
+                        <tbody id="body3"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 4 ================= -->
+        <div class="unit-panel" id="panel4">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">ie</th><th class="final-head">üe</th><th class="final-head">iu</th></tr></thead>
+                        <tbody id="body4"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 5 ================= -->
+        <div class="unit-panel" id="panel5">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">ao</th><th class="final-head">ou</th><th class="final-head">iu</th></tr></thead>
+                        <tbody id="body5"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 6 ================= -->
+        <div class="unit-panel" id="panel6">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">ai</th><th class="final-head">ui</th><th class="final-head">ao</th><th class="final-head">ou</th></tr></thead>
+                        <tbody id="body6"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 7 ================= -->
+        <div class="unit-panel" id="panel7">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">an</th><th class="final-head">en</th><th class="final-head">un</th></tr></thead>
+                        <tbody id="body7"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 8 ================= -->
+        <div class="unit-panel" id="panel8">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">ai</th><th class="final-head">ui</th><th class="final-head">ao</th></tr></thead>
+                        <tbody id="body8"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 9 ================= -->
+        <div class="unit-panel" id="panel9">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">ang</th><th class="final-head">eng</th><th class="final-head">ing</th><th class="final-head">ong</th></tr></thead>
+                        <tbody id="body9"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 11 ================= -->
+        <div class="unit-panel" id="panel11">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">ian</th><th class="final-head">iang</th><th class="final-head">iong</th></tr></thead>
+                        <tbody id="body11"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 12 ================= -->
+        <div class="unit-panel" id="panel12">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">uo</th><th class="final-head">uan</th></tr></thead>
+                        <tbody id="body12"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 13 ================= -->
+        <div class="unit-panel" id="panel13">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">uan</th></tr></thead>
+                        <tbody id="body13"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 14 ================= -->
+        <div class="unit-panel" id="panel14">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>声母 \ 韵母</th><th class="final-head">ua</th><th class="final-head">uo</th><th class="final-head">uai</th><th class="final-head">uang</th></tr></thead>
+                        <tbody id="body14"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 15: 整体认读音节 ================= -->
+        <div class="unit-panel" id="panel15">
+            <div class="unit-container">
+                <div class="subhead">🔊 点左边拼音读单字 · 点右边按钮读词语 · 整体认读音节</div>
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot t1"></span>1st tone</div>
+                    <div class="legend-item"><span class="legend-dot t2"></span>2nd tone</div>
+                    <div class="legend-item"><span class="legend-dot t3"></span>3rd tone</div>
+                    <div class="legend-item"><span class="legend-dot t4"></span>4th tone</div>
+                    <div class="legend-item"><span class="legend-dot disabled"></span>无</div>
+                </div>
+                <div class="zhengti-grid" id="zhengtiGrid"></div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span>左：单字发音 · 右：词语发音 · 不存在的音节标注“无”</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ============================================================
+    // UNIT 1: b p m f × a o e
+    // ============================================================
+    const unit1Data = {
+        b: {
+            a: [
+                { tone: 1, pinyin: 'bā', char: '八', word: '八个' },
+                { tone: 2, pinyin: 'bá', char: '拔', word: '拔草' },
+                { tone: 3, pinyin: 'bǎ', char: '把', word: '把手' },
+                { tone: 4, pinyin: 'bà', char: '爸', word: '爸爸' }
+            ],
+            o: [
+                { tone: 1, pinyin: 'bō', char: '波', word: '波浪' },
+                { tone: 2, pinyin: 'bó', char: '伯', word: '伯伯' },
+                { tone: 3, pinyin: 'bǒ', char: '跛', word: '跛脚' },
+                { tone: 4, pinyin: 'bò', char: '簸', word: '簸箕' }
+            ],
+            e: null
+        },
+        p: {
+            a: [
+                { tone: 1, pinyin: 'pā', char: '趴', word: '趴下' },
+                { tone: 2, pinyin: 'pá', char: '爬', word: '爬山' },
+                { tone: 3, pinyin: 'pǎ', char: null, word: null },
+                { tone: 4, pinyin: 'pà', char: '怕', word: '害怕' }
+            ],
+            o: [
+                { tone: 1, pinyin: 'pō', char: '坡', word: '山坡' },
+                { tone: 2, pinyin: 'pó', char: '婆', word: '婆婆' },
+                { tone: 3, pinyin: 'pǒ', char: '叵', word: '叵测' },
+                { tone: 4, pinyin: 'pò', char: '破', word: '打破' }
+            ],
+            e: null
+        },
+        m: {
+            a: [
+                { tone: 1, pinyin: 'mā', char: '妈', word: '妈妈' },
+                { tone: 2, pinyin: 'má', char: '麻', word: '麻烦' },
+                { tone: 3, pinyin: 'mǎ', char: '马', word: '骑马' },
+                { tone: 4, pinyin: 'mà', char: '骂', word: '骂人' }
+            ],
+            o: [
+                { tone: 1, pinyin: 'mō', char: '摸', word: '摸索' },
+                { tone: 2, pinyin: 'mó', char: '摩', word: '摩擦' },
+                { tone: 3, pinyin: 'mǒ', char: '抹', word: '涂抹' },
+                { tone: 4, pinyin: 'mò', char: '墨', word: '墨水' }
+            ],
+            e: [
+                { tone: 1, pinyin: 'mē', char: '么', word: '什么' },
+                { tone: 2, pinyin: 'mé', char: null, word: null },
+                { tone: 3, pinyin: 'mě', char: null, word: null },
+                { tone: 4, pinyin: 'mè', char: null, word: null }
+            ]
+        },
+        f: {
+            a: [
+                { tone: 1, pinyin: 'fā', char: '发', word: '沙发' },
+                { tone: 2, pinyin: 'fá', char: '罚', word: '罚款' },
+                { tone: 3, pinyin: 'fǎ', char: '法', word: '办法' },
+                { tone: 4, pinyin: 'fà', char: '发', word: '头发' }
+            ],
+            o: [
+                { tone: 1, pinyin: 'fō', char: null, word: null },
+                { tone: 2, pinyin: 'fó', char: '佛', word: '佛像' },
+                { tone: 3, pinyin: 'fǒ', char: null, word: null },
+                { tone: 4, pinyin: 'fò', char: null, word: null }
+            ],
+            e: null
+        }
+    };
+
+    // ============================================================
+    // UNIT 2: d t n l × i u ü
+    // ============================================================
+    const unit2Data = {
+        d: {
+            i: [
+                { tone: 1, pinyin: 'dī', char: '低', word: '低头' },
+                { tone: 2, pinyin: 'dí', char: '敌', word: '敌人' },
+                { tone: 3, pinyin: 'dǐ', char: '底', word: '底下' },
+                { tone: 4, pinyin: 'dì', char: '弟', word: '弟弟' }
+            ],
+            u: [
+                { tone: 1, pinyin: 'dū', char: '督', word: '督促' },
+                { tone: 2, pinyin: 'dú', char: '读', word: '读书' },
+                { tone: 3, pinyin: 'dǔ', char: '堵', word: '堵车' },
+                { tone: 4, pinyin: 'dù', char: '度', word: '度过' }
+            ],
+            ü: null
+        },
+        t: {
+            i: [
+                { tone: 1, pinyin: 'tī', char: '梯', word: '梯子' },
+                { tone: 2, pinyin: 'tí', char: '提', word: '提问' },
+                { tone: 3, pinyin: 'tǐ', char: '体', word: '身体' },
+                { tone: 4, pinyin: 'tì', char: '替', word: '代替' }
+            ],
+            u: [
+                { tone: 1, pinyin: 'tū', char: '突', word: '突然' },
+                { tone: 2, pinyin: 'tú', char: '图', word: '图画' },
+                { tone: 3, pinyin: 'tǔ', char: '土', word: '土地' },
+                { tone: 4, pinyin: 'tù', char: '兔', word: '兔子' }
+            ],
+            ü: null
+        },
+        n: {
+            i: [
+                { tone: 1, pinyin: 'nī', char: '妮', word: '妮' },
+                { tone: 2, pinyin: 'ní', char: '泥', word: '泥土' },
+                { tone: 3, pinyin: 'nǐ', char: '你', word: '你是' },
+                { tone: 4, pinyin: 'nì', char: '腻', word: '油腻' }
+            ],
+            u: [
+                { tone: 1, pinyin: 'nū', char: null, word: null },
+                { tone: 2, pinyin: 'nú', char: '奴', word: '奴仆' },
+                { tone: 3, pinyin: 'nǔ', char: '努', word: '努力' },
+                { tone: 4, pinyin: 'nù', char: '怒', word: '发怒' }
+            ],
+            ü: [
+                { tone: 1, pinyin: 'nǖ', char: null, word: null },
+                { tone: 2, pinyin: 'nǘ', char: null, word: null },
+                { tone: 3, pinyin: 'nǚ', char: '女', word: '女孩' },
+                { tone: 4, pinyin: 'nǜ', char: null, word: null }
+            ]
+        },
+        l: {
+            i: [
+                { tone: 1, pinyin: 'lī', char: null, word: null },
+                { tone: 2, pinyin: 'lí', char: '梨', word: '梨子' },
+                { tone: 3, pinyin: 'lǐ', char: '里', word: '里面' },
+                { tone: 4, pinyin: 'lì', char: '力', word: '力气' }
+            ],
+            u: [
+                { tone: 1, pinyin: 'lū', char: '撸', word: '撸串' },
+                { tone: 2, pinyin: 'lú', char: '炉', word: '炉子' },
+                { tone: 3, pinyin: 'lǔ', char: '鲁', word: '鲁莽' },
+                { tone: 4, pinyin: 'lù', char: '路', word: '马路' }
+            ],
+            ü: [
+                { tone: 1, pinyin: 'lǖ', char: null, word: null },
+                { tone: 2, pinyin: 'lǘ', char: '驴', word: '毛驴' },
+                { tone: 3, pinyin: 'lǚ', char: '旅', word: '旅行' },
+                { tone: 4, pinyin: 'lǜ', char: '绿', word: '绿色' }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 3: g k h × ai ei ui
+    // ============================================================
+    const unit3Data = {
+        g: {
+            ai: [
+                { tone: 1, pinyin: 'gāi', char: '该', word: '应该' },
+                { tone: 2, pinyin: 'gái', char: null, word: null },
+                { tone: 3, pinyin: 'gǎi', char: '改', word: '改变' },
+                { tone: 4, pinyin: 'gài', char: '盖', word: '盖住' }
+            ],
+            ei: [
+                { tone: 1, pinyin: 'gēi', char: null, word: null },
+                { tone: 2, pinyin: 'géi', char: null, word: null },
+                { tone: 3, pinyin: 'gěi', char: '给', word: '给你' },
+                { tone: 4, pinyin: 'gèi', char: null, word: null }
+            ],
+            ui: [
+                { tone: 1, pinyin: 'guī', char: '归', word: '归来' },
+                { tone: 2, pinyin: 'guí', char: null, word: null },
+                { tone: 3, pinyin: 'guǐ', char: '鬼', word: '鬼怪' },
+                { tone: 4, pinyin: 'guì', char: '贵', word: '贵重' }
+            ]
+        },
+        k: {
+            ai: [
+                { tone: 1, pinyin: 'kāi', char: '开', word: '开心' },
+                { tone: 2, pinyin: 'kái', char: null, word: null },
+                { tone: 3, pinyin: 'kǎi', char: '楷', word: '楷书' },
+                { tone: 4, pinyin: 'kài', char: '忾', word: '同仇敌忾' }
+            ],
+            ei: [
+                { tone: 1, pinyin: 'kēi', char: null, word: null },
+                { tone: 2, pinyin: 'kéi', char: null, word: null },
+                { tone: 3, pinyin: 'kěi', char: null, word: null },
+                { tone: 4, pinyin: 'kèi', char: null, word: null }
+            ],
+            ui: [
+                { tone: 1, pinyin: 'kuī', char: '亏', word: '亏本' },
+                { tone: 2, pinyin: 'kuí', char: '葵', word: '葵花' },
+                { tone: 3, pinyin: 'kuǐ', char: null, word: null },
+                { tone: 4, pinyin: 'kuì', char: '愧', word: '惭愧' }
+            ]
+        },
+        h: {
+            ai: [
+                { tone: 1, pinyin: 'hāi', char: '嗨', word: '嗨皮' },
+                { tone: 2, pinyin: 'hái', char: '还', word: '还有' },
+                { tone: 3, pinyin: 'hǎi', char: '海', word: '大海' },
+                { tone: 4, pinyin: 'hài', char: '害', word: '害怕' }
+            ],
+            ei: [
+                { tone: 1, pinyin: 'hēi', char: '黑', word: '黑色' },
+                { tone: 2, pinyin: 'héi', char: null, word: null },
+                { tone: 3, pinyin: 'hěi', char: null, word: null },
+                { tone: 4, pinyin: 'hèi', char: null, word: null }
+            ],
+            ui: [
+                { tone: 1, pinyin: 'huī', char: '灰', word: '灰色' },
+                { tone: 2, pinyin: 'huí', char: '回', word: '回家' },
+                { tone: 3, pinyin: 'huǐ', char: '悔', word: '后悔' },
+                { tone: 4, pinyin: 'huì', char: '会', word: '会议' }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 4: j q x × ie üe iu
+    // ============================================================
+    const unit4Data = {
+        j: {
+            ie: [
+                { tone: 1, pinyin: 'jiē', char: '街', word: '街道' },
+                { tone: 2, pinyin: 'jié', char: '节', word: '节日' },
+                { tone: 3, pinyin: 'jiě', char: '姐', word: '姐姐' },
+                { tone: 4, pinyin: 'jiè', char: '界', word: '世界' }
+            ],
+            üe: [
+                { tone: 1, pinyin: 'juē', char: '撅', word: '撅嘴' },
+                { tone: 2, pinyin: 'jué', char: '决', word: '决定' },
+                { tone: 3, pinyin: 'juě', char: null, word: null },
+                { tone: 4, pinyin: 'juè', char: '倔', word: '倔强' }
+            ],
+            iu: [
+                { tone: 1, pinyin: 'jiū', char: '纠', word: '纠正' },
+                { tone: 2, pinyin: 'jiú', char: null, word: null },
+                { tone: 3, pinyin: 'jiǔ', char: '九', word: '九个' },
+                { tone: 4, pinyin: 'jiù', char: '就', word: '就是' }
+            ]
+        },
+        q: {
+            ie: [
+                { tone: 1, pinyin: 'qiē', char: '切', word: '切菜' },
+                { tone: 2, pinyin: 'qié', char: '茄', word: '茄子' },
+                { tone: 3, pinyin: 'qiě', char: '且', word: '而且' },
+                { tone: 4, pinyin: 'qiè', char: '切', word: '亲切' }
+            ],
+            üe: [
+                { tone: 1, pinyin: 'quē', char: '缺', word: '缺少' },
+                { tone: 2, pinyin: 'qué', char: '瘸', word: '瘸腿' },
+                { tone: 3, pinyin: 'quě', char: null, word: null },
+                { tone: 4, pinyin: 'què', char: '确', word: '确实' }
+            ],
+            iu: [
+                { tone: 1, pinyin: 'qiū', char: '秋', word: '秋天' },
+                { tone: 2, pinyin: 'qiú', char: '球', word: '皮球' },
+                { tone: 3, pinyin: 'qiǔ', char: null, word: null },
+                { tone: 4, pinyin: 'qiù', char: null, word: null }
+            ]
+        },
+        x: {
+            ie: [
+                { tone: 1, pinyin: 'xiē', char: '些', word: '一些' },
+                { tone: 2, pinyin: 'xié', char: '鞋', word: '鞋子' },
+                { tone: 3, pinyin: 'xiě', char: '写', word: '写作' },
+                { tone: 4, pinyin: 'xiè', char: '谢', word: '谢谢' }
+            ],
+            üe: [
+                { tone: 1, pinyin: 'xuē', char: '靴', word: '靴子' },
+                { tone: 2, pinyin: 'xué', char: '学', word: '学习' },
+                { tone: 3, pinyin: 'xuě', char: '雪', word: '雪花' },
+                { tone: 4, pinyin: 'xuè', char: '血', word: '血液' }
+            ],
+            iu: [
+                { tone: 1, pinyin: 'xiū', char: '休', word: '休息' },
+                { tone: 2, pinyin: 'xiú', char: null, word: null },
+                { tone: 3, pinyin: 'xiǔ', char: '朽', word: '腐朽' },
+                { tone: 4, pinyin: 'xiù', char: '秀', word: '优秀' }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 5: d t n l b p m f × ao ou iu
+    // ============================================================
+    const unit5Data = {
+        d: {
+            ao: [
+                { tone: 1, pinyin: 'dāo', char: '刀', word: '刀子' },
+                { tone: 2, pinyin: 'dáo', char: null, word: null },
+                { tone: 3, pinyin: 'dǎo', char: '倒', word: '倒下' },
+                { tone: 4, pinyin: 'dào', char: '到', word: '到达' }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'dōu', char: '都', word: '都是' },
+                { tone: 2, pinyin: 'dóu', char: null, word: null },
+                { tone: 3, pinyin: 'dǒu', char: '抖', word: '发抖' },
+                { tone: 4, pinyin: 'dòu', char: '豆', word: '豆子' }
+            ],
+            iu: [
+                { tone: 1, pinyin: 'diū', char: '丢', word: '丢失' },
+                { tone: 2, pinyin: 'diú', char: null, word: null },
+                { tone: 3, pinyin: 'diǔ', char: null, word: null },
+                { tone: 4, pinyin: 'diù', char: null, word: null }
+            ]
+        },
+        t: {
+            ao: [
+                { tone: 1, pinyin: 'tāo', char: '涛', word: '波涛' },
+                { tone: 2, pinyin: 'táo', char: '桃', word: '桃子' },
+                { tone: 3, pinyin: 'tǎo', char: '讨', word: '讨论' },
+                { tone: 4, pinyin: 'tào', char: '套', word: '一套' }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'tōu', char: '偷', word: '偷偷' },
+                { tone: 2, pinyin: 'tóu', char: '头', word: '头发' },
+                { tone: 3, pinyin: 'tǒu', char: null, word: null },
+                { tone: 4, pinyin: 'tòu', char: '透', word: '透明' }
+            ],
+            iu: [
+                { tone: 1, pinyin: 'tiū', char: null, word: null },
+                { tone: 2, pinyin: 'tiú', char: null, word: null },
+                { tone: 3, pinyin: 'tiǔ', char: null, word: null },
+                { tone: 4, pinyin: 'tiù', char: null, word: null }
+            ]
+        },
+        n: {
+            ao: [
+                { tone: 1, pinyin: 'nāo', char: null, word: null },
+                { tone: 2, pinyin: 'náo', char: '挠', word: '挠痒' },
+                { tone: 3, pinyin: 'nǎo', char: '脑', word: '大脑' },
+                { tone: 4, pinyin: 'nào', char: '闹', word: '热闹' }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'nōu', char: null, word: null },
+                { tone: 2, pinyin: 'nóu', char: null, word: null },
+                { tone: 3, pinyin: 'nǒu', char: null, word: null },
+                { tone: 4, pinyin: 'nòu', char: null, word: null }
+            ],
+            iu: [
+                { tone: 1, pinyin: 'niū', char: '妞', word: '妞妞' },
+                { tone: 2, pinyin: 'niú', char: '牛', word: '牛奶' },
+                { tone: 3, pinyin: 'niǔ', char: '扭', word: '扭转' },
+                { tone: 4, pinyin: 'niù', char: null, word: null }
+            ]
+        },
+        l: {
+            ao: [
+                { tone: 1, pinyin: 'lāo', char: '捞', word: '捞鱼' },
+                { tone: 2, pinyin: 'láo', char: '劳', word: '劳动' },
+                { tone: 3, pinyin: 'lǎo', char: '老', word: '老师' },
+                { tone: 4, pinyin: 'lào', char: '涝', word: '水涝' }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'lōu', char: '喽', word: '喽喽' },
+                { tone: 2, pinyin: 'lóu', char: '楼', word: '楼房' },
+                { tone: 3, pinyin: 'lǒu', char: '搂', word: '搂抱' },
+                { tone: 4, pinyin: 'lòu', char: '漏', word: '漏雨' }
+            ],
+            iu: [
+                { tone: 1, pinyin: 'liū', char: '溜', word: '溜走' },
+                { tone: 2, pinyin: 'liú', char: '流', word: '流水' },
+                { tone: 3, pinyin: 'liǔ', char: '柳', word: '柳树' },
+                { tone: 4, pinyin: 'liù', char: '六', word: '六个' }
+            ]
+        },
+        b: {
+            ao: [
+                { tone: 1, pinyin: 'bāo', char: '包', word: '书包' },
+                { tone: 2, pinyin: 'báo', char: '薄', word: '薄片' },
+                { tone: 3, pinyin: 'bǎo', char: '宝', word: '宝贝' },
+                { tone: 4, pinyin: 'bào', char: '报', word: '报纸' }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'bōu', char: null, word: null },
+                { tone: 2, pinyin: 'bóu', char: null, word: null },
+                { tone: 3, pinyin: 'bǒu', char: null, word: null },
+                { tone: 4, pinyin: 'bòu', char: null, word: null }
+            ],
+            iu: [
+                { tone: 1, pinyin: 'biū', char: null, word: null },
+                { tone: 2, pinyin: 'biú', char: null, word: null },
+                { tone: 3, pinyin: 'biǔ', char: null, word: null },
+                { tone: 4, pinyin: 'biù', char: null, word: null }
+            ]
+        },
+        p: {
+            ao: [
+                { tone: 1, pinyin: 'pāo', char: '抛', word: '抛弃' },
+                { tone: 2, pinyin: 'páo', char: '袍', word: '长袍' },
+                { tone: 3, pinyin: 'pǎo', char: '跑', word: '跑步' },
+                { tone: 4, pinyin: 'pào', char: '泡', word: '泡泡' }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'pōu', char: '剖', word: '解剖' },
+                { tone: 2, pinyin: 'póu', char: null, word: null },
+                { tone: 3, pinyin: 'pǒu', char: '掊', word: '掊击' },
+                { tone: 4, pinyin: 'pòu', char: null, word: null }
+            ],
+            iu: [
+                { tone: 1, pinyin: 'piū', char: null, word: null },
+                { tone: 2, pinyin: 'piú', char: null, word: null },
+                { tone: 3, pinyin: 'piǔ', char: null, word: null },
+                { tone: 4, pinyin: 'più', char: null, word: null }
+            ]
+        },
+        m: {
+            ao: [
+                { tone: 1, pinyin: 'māo', char: '猫', word: '小猫' },
+                { tone: 2, pinyin: 'máo', char: '毛', word: '毛巾' },
+                { tone: 3, pinyin: 'mǎo', char: '卯', word: '卯时' },
+                { tone: 4, pinyin: 'mào', char: '帽', word: '帽子' }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'mōu', char: '哞', word: '哞哞' },
+                { tone: 2, pinyin: 'móu', char: '谋', word: '谋划' },
+                { tone: 3, pinyin: 'mǒu', char: '某', word: '某人' },
+                { tone: 4, pinyin: 'mòu', char: null, word: null }
+            ],
+            iu: [
+                { tone: 1, pinyin: 'miū', char: null, word: null },
+                { tone: 2, pinyin: 'miú', char: null, word: null },
+                { tone: 3, pinyin: 'miǔ', char: null, word: null },
+                { tone: 4, pinyin: 'miù', char: '谬', word: '谬论' }
+            ]
+        },
+        f: {
+            ao: [
+                { tone: 1, pinyin: 'fāo', char: null, word: null },
+                { tone: 2, pinyin: 'fáo', char: null, word: null },
+                { tone: 3, pinyin: 'fǎo', char: null, word: null },
+                { tone: 4, pinyin: 'fào', char: null, word: null }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'fōu', char: null, word: null },
+                { tone: 2, pinyin: 'fóu', char: null, word: null },
+                { tone: 3, pinyin: 'fǒu', char: '否', word: '否定' },
+                { tone: 4, pinyin: 'fòu', char: null, word: null }
+            ],
+            iu: [
+                { tone: 1, pinyin: 'fiū', char: null, word: null },
+                { tone: 2, pinyin: 'fiú', char: null, word: null },
+                { tone: 3, pinyin: 'fiǔ', char: null, word: null },
+                { tone: 4, pinyin: 'fiù', char: null, word: null }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 6: zh ch sh r × ai ui ao ou
+    // ============================================================
+    const unit6Data = {
+        zh: {
+            ai: [
+                { tone: 1, pinyin: 'zhāi', char: '摘', word: '摘花' },
+                { tone: 2, pinyin: 'zhái', char: '宅', word: '住宅' },
+                { tone: 3, pinyin: 'zhǎi', char: '窄', word: '狭窄' },
+                { tone: 4, pinyin: 'zhài', char: '债', word: '债务' }
+            ],
+            ui: [
+                { tone: 1, pinyin: 'zhuī', char: '追', word: '追赶' },
+                { tone: 2, pinyin: 'zhuí', char: null, word: null },
+                { tone: 3, pinyin: 'zhuǐ', char: null, word: null },
+                { tone: 4, pinyin: 'zhuì', char: '坠', word: '坠落' }
+            ],
+            ao: [
+                { tone: 1, pinyin: 'zhāo', char: '招', word: '招手' },
+                { tone: 2, pinyin: 'zháo', char: '着', word: '着急' },
+                { tone: 3, pinyin: 'zhǎo', char: '找', word: '寻找' },
+                { tone: 4, pinyin: 'zhào', char: '照', word: '照片' }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'zhōu', char: '周', word: '周末' },
+                { tone: 2, pinyin: 'zhóu', char: '轴', word: '轴心' },
+                { tone: 3, pinyin: 'zhǒu', char: '肘', word: '肘部' },
+                { tone: 4, pinyin: 'zhòu', char: '皱', word: '皱眉' }
+            ]
+        },
+        ch: {
+            ai: [
+                { tone: 1, pinyin: 'chāi', char: '拆', word: '拆开' },
+                { tone: 2, pinyin: 'chái', char: '柴', word: '柴火' },
+                { tone: 3, pinyin: 'chǎi', char: null, word: null },
+                { tone: 4, pinyin: 'chài', char: null, word: null }
+            ],
+            ui: [
+                { tone: 1, pinyin: 'chuī', char: '吹', word: '吹风' },
+                { tone: 2, pinyin: 'chuí', char: '垂', word: '垂直' },
+                { tone: 3, pinyin: 'chuǐ', char: null, word: null },
+                { tone: 4, pinyin: 'chuì', char: '锤', word: '锤子' }
+            ],
+            ao: [
+                { tone: 1, pinyin: 'chāo', char: '超', word: '超市' },
+                { tone: 2, pinyin: 'cháo', char: '朝', word: '朝代' },
+                { tone: 3, pinyin: 'chǎo', char: '吵', word: '吵架' },
+                { tone: 4, pinyin: 'chào', char: null, word: null }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'chōu', char: '抽', word: '抽烟' },
+                { tone: 2, pinyin: 'chóu', char: '愁', word: '发愁' },
+                { tone: 3, pinyin: 'chǒu', char: '丑', word: '丑陋' },
+                { tone: 4, pinyin: 'chòu', char: '臭', word: '臭气' }
+            ]
+        },
+        sh: {
+            ai: [
+                { tone: 1, pinyin: 'shāi', char: '筛', word: '筛选' },
+                { tone: 2, pinyin: 'shái', char: null, word: null },
+                { tone: 3, pinyin: 'shǎi', char: '色', word: '掉色' },
+                { tone: 4, pinyin: 'shài', char: '晒', word: '晒太阳' }
+            ],
+            ui: [
+                { tone: 1, pinyin: 'shuī', char: null, word: null },
+                { tone: 2, pinyin: 'shuí', char: '谁', word: '是谁' },
+                { tone: 3, pinyin: 'shuǐ', char: '水', word: '水果' },
+                { tone: 4, pinyin: 'shuì', char: '睡', word: '睡觉' }
+            ],
+            ao: [
+                { tone: 1, pinyin: 'shāo', char: '烧', word: '烧水' },
+                { tone: 2, pinyin: 'sháo', char: '勺', word: '勺子' },
+                { tone: 3, pinyin: 'shǎo', char: '少', word: '多少' },
+                { tone: 4, pinyin: 'shào', char: '少', word: '少年' }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'shōu', char: '收', word: '收到' },
+                { tone: 2, pinyin: 'shóu', char: '熟', word: '熟悉' },
+                { tone: 3, pinyin: 'shǒu', char: '手', word: '手机' },
+                { tone: 4, pinyin: 'shòu', char: '瘦', word: '瘦弱' }
+            ]
+        },
+        r: {
+            ai: [
+                { tone: 1, pinyin: 'rāi', char: null, word: null },
+                { tone: 2, pinyin: 'rái', char: null, word: null },
+                { tone: 3, pinyin: 'rǎi', char: null, word: null },
+                { tone: 4, pinyin: 'rài', char: null, word: null }
+            ],
+            ui: [
+                { tone: 1, pinyin: 'ruī', char: null, word: null },
+                { tone: 2, pinyin: 'ruí', char: '蕤', word: '葳蕤' },
+                { tone: 3, pinyin: 'ruǐ', char: '蕊', word: '花蕊' },
+                { tone: 4, pinyin: 'ruì', char: '锐', word: '锐利' }
+            ],
+            ao: [
+                { tone: 1, pinyin: 'rāo', char: null, word: null },
+                { tone: 2, pinyin: 'ráo', char: '饶', word: '饶恕' },
+                { tone: 3, pinyin: 'rǎo', char: '扰', word: '打扰' },
+                { tone: 4, pinyin: 'rào', char: '绕', word: '围绕' }
+            ],
+            ou: [
+                { tone: 1, pinyin: 'rōu', char: null, word: null },
+                { tone: 2, pinyin: 'róu', char: '柔', word: '柔软' },
+                { tone: 3, pinyin: 'rǒu', char: null, word: null },
+                { tone: 4, pinyin: 'ròu', char: '肉', word: '牛肉' }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 7: z c s × an en un
+    // ============================================================
+    const unit7Data = {
+        z: {
+            an: [
+                { tone: 1, pinyin: 'zān', char: '簪', word: '簪子' },
+                { tone: 2, pinyin: 'zán', char: '咱', word: '咱们' },
+                { tone: 3, pinyin: 'zǎn', char: '攒', word: '攒钱' },
+                { tone: 4, pinyin: 'zàn', char: '赞', word: '赞美' }
+            ],
+            en: [
+                { tone: 1, pinyin: 'zēn', char: null, word: null },
+                { tone: 2, pinyin: 'zén', char: null, word: null },
+                { tone: 3, pinyin: 'zěn', char: '怎', word: '怎么' },
+                { tone: 4, pinyin: 'zèn', char: null, word: null }
+            ],
+            un: [
+                { tone: 1, pinyin: 'zūn', char: '尊', word: '尊敬' },
+                { tone: 2, pinyin: 'zún', char: null, word: null },
+                { tone: 3, pinyin: 'zǔn', char: null, word: null },
+                { tone: 4, pinyin: 'zùn', char: null, word: null }
+            ]
+        },
+        c: {
+            an: [
+                { tone: 1, pinyin: 'cān', char: '参', word: '参加' },
+                { tone: 2, pinyin: 'cán', char: '蚕', word: '蚕丝' },
+                { tone: 3, pinyin: 'cǎn', char: '惨', word: '悲惨' },
+                { tone: 4, pinyin: 'càn', char: '灿', word: '灿烂' }
+            ],
+            en: [
+                { tone: 1, pinyin: 'cēn', char: null, word: null },
+                { tone: 2, pinyin: 'cén', char: null, word: null },
+                { tone: 3, pinyin: 'cěn', char: null, word: null },
+                { tone: 4, pinyin: 'cèn', char: null, word: null }
+            ],
+            un: [
+                { tone: 1, pinyin: 'cūn', char: '村', word: '村子' },
+                { tone: 2, pinyin: 'cún', char: '存', word: '存在' },
+                { tone: 3, pinyin: 'cǔn', char: '忖', word: '忖度' },
+                { tone: 4, pinyin: 'cùn', char: '寸', word: '尺寸' }
+            ]
+        },
+        s: {
+            an: [
+                { tone: 1, pinyin: 'sān', char: '三', word: '三个' },
+                { tone: 2, pinyin: 'sán', char: null, word: null },
+                { tone: 3, pinyin: 'sǎn', char: '伞', word: '雨伞' },
+                { tone: 4, pinyin: 'sàn', char: '散', word: '散步' }
+            ],
+            en: [
+                { tone: 1, pinyin: 'sēn', char: '森', word: '森林' },
+                { tone: 2, pinyin: 'sén', char: null, word: null },
+                { tone: 3, pinyin: 'sěn', char: null, word: null },
+                { tone: 4, pinyin: 'sèn', char: null, word: null }
+            ],
+            un: [
+                { tone: 1, pinyin: 'sūn', char: '孙', word: '孙子' },
+                { tone: 2, pinyin: 'sún', char: null, word: null },
+                { tone: 3, pinyin: 'sǔn', char: '损', word: '损坏' },
+                { tone: 4, pinyin: 'sùn', char: null, word: null }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 8: z c s × ai ui ao
+    // ============================================================
+    const unit8Data = {
+        z: {
+            ai: [
+                { tone: 1, pinyin: 'zāi', char: '灾', word: '灾难' },
+                { tone: 2, pinyin: 'zái', char: null, word: null },
+                { tone: 3, pinyin: 'zǎi', char: '宰', word: '宰割' },
+                { tone: 4, pinyin: 'zài', char: '在', word: '现在' }
+            ],
+            ui: [
+                { tone: 1, pinyin: 'zuī', char: null, word: null },
+                { tone: 2, pinyin: 'zuí', char: null, word: null },
+                { tone: 3, pinyin: 'zuǐ', char: '嘴', word: '嘴巴' },
+                { tone: 4, pinyin: 'zuì', char: '最', word: '最好' }
+            ],
+            ao: [
+                { tone: 1, pinyin: 'zāo', char: '遭', word: '遭遇' },
+                { tone: 2, pinyin: 'záo', char: '凿', word: '凿子' },
+                { tone: 3, pinyin: 'zǎo', char: '早', word: '早上' },
+                { tone: 4, pinyin: 'zào', char: '造', word: '创造' }
+            ]
+        },
+        c: {
+            ai: [
+                { tone: 1, pinyin: 'cāi', char: '猜', word: '猜测' },
+                { tone: 2, pinyin: 'cái', char: '才', word: '人才' },
+                { tone: 3, pinyin: 'cǎi', char: '彩', word: '彩色' },
+                { tone: 4, pinyin: 'cài', char: '菜', word: '蔬菜' }
+            ],
+            ui: [
+                { tone: 1, pinyin: 'cuī', char: '催', word: '催促' },
+                { tone: 2, pinyin: 'cuí', char: null, word: null },
+                { tone: 3, pinyin: 'cuǐ', char: '璀', word: '璀璨' },
+                { tone: 4, pinyin: 'cuì', char: '脆', word: '脆弱' }
+            ],
+            ao: [
+                { tone: 1, pinyin: 'cāo', char: '操', word: '操场' },
+                { tone: 2, pinyin: 'cáo', char: null, word: null },
+                { tone: 3, pinyin: 'cǎo', char: '草', word: '草地' },
+                { tone: 4, pinyin: 'cào', char: null, word: null }
+            ]
+        },
+        s: {
+            ai: [
+                { tone: 1, pinyin: 'sāi', char: '腮', word: '腮红' },
+                { tone: 2, pinyin: 'sái', char: null, word: null },
+                { tone: 3, pinyin: 'sǎi', char: null, word: null },
+                { tone: 4, pinyin: 'sài', char: '赛', word: '比赛' }
+            ],
+            ui: [
+                { tone: 1, pinyin: 'suī', char: '虽', word: '虽然' },
+                { tone: 2, pinyin: 'suí', char: '随', word: '随便' },
+                { tone: 3, pinyin: 'suǐ', char: '髓', word: '骨髓' },
+                { tone: 4, pinyin: 'suì', char: '岁', word: '岁月' }
+            ],
+            ao: [
+                { tone: 1, pinyin: 'sāo', char: '骚', word: '骚扰' },
+                { tone: 2, pinyin: 'sáo', char: null, word: null },
+                { tone: 3, pinyin: 'sǎo', char: '扫', word: '打扫' },
+                { tone: 4, pinyin: 'sào', char: '臊', word: '害臊' }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 9: y w zh ch sh r × ang eng ing ong
+    // ============================================================
+    const unit9Data = {
+        y: {
+            ang: [
+                { tone: 1, pinyin: 'yāng', char: '央', word: '中央' },
+                { tone: 2, pinyin: 'yáng', char: '羊', word: '山羊' },
+                { tone: 3, pinyin: 'yǎng', char: '养', word: '养育' },
+                { tone: 4, pinyin: 'yàng', char: '样', word: '样子' }
+            ],
+            eng: [
+                { tone: 1, pinyin: 'yēng', char: null, word: null },
+                { tone: 2, pinyin: 'yéng', char: null, word: null },
+                { tone: 3, pinyin: 'yěng', char: null, word: null },
+                { tone: 4, pinyin: 'yèng', char: null, word: null }
+            ],
+            ing: [
+                { tone: 1, pinyin: 'yīng', char: '英', word: '英雄' },
+                { tone: 2, pinyin: 'yíng', char: '赢', word: '赢了' },
+                { tone: 3, pinyin: 'yǐng', char: '影', word: '影子' },
+                { tone: 4, pinyin: 'yìng', char: '硬', word: '坚硬' }
+            ],
+            ong: [
+                { tone: 1, pinyin: 'yōng', char: '拥', word: '拥抱' },
+                { tone: 2, pinyin: 'yóng', char: null, word: null },
+                { tone: 3, pinyin: 'yǒng', char: '勇', word: '勇敢' },
+                { tone: 4, pinyin: 'yòng', char: '用', word: '使用' }
+            ]
+        },
+        w: {
+            ang: [
+                { tone: 1, pinyin: 'wāng', char: '汪', word: '汪汪' },
+                { tone: 2, pinyin: 'wáng', char: '王', word: '国王' },
+                { tone: 3, pinyin: 'wǎng', char: '网', word: '上网' },
+                { tone: 4, pinyin: 'wàng', char: '忘', word: '忘记' }
+            ],
+            eng: [
+                { tone: 1, pinyin: 'wēng', char: '翁', word: '老翁' },
+                { tone: 2, pinyin: 'wéng', char: null, word: null },
+                { tone: 3, pinyin: 'wěng', char: null, word: null },
+                { tone: 4, pinyin: 'wèng', char: null, word: null }
+            ],
+            ing: [
+                { tone: 1, pinyin: 'wīng', char: null, word: null },
+                { tone: 2, pinyin: 'wíng', char: null, word: null },
+                { tone: 3, pinyin: 'wǐng', char: null, word: null },
+                { tone: 4, pinyin: 'wìng', char: null, word: null }
+            ],
+            ong: [
+                { tone: 1, pinyin: 'wōng', char: null, word: null },
+                { tone: 2, pinyin: 'wóng', char: null, word: null },
+                { tone: 3, pinyin: 'wǒng', char: null, word: null },
+                { tone: 4, pinyin: 'wòng', char: null, word: null }
+            ]
+        },
+        zh: {
+            ang: [
+                { tone: 1, pinyin: 'zhāng', char: '张', word: '张开' },
+                { tone: 2, pinyin: 'zháng', char: null, word: null },
+                { tone: 3, pinyin: 'zhǎng', char: '涨', word: '涨幅' },
+                { tone: 4, pinyin: 'zhàng', char: '账', word: '账单' }
+            ],
+            eng: [
+                { tone: 1, pinyin: 'zhēng', char: '争', word: '争取' },
+                { tone: 2, pinyin: 'zhéng', char: null, word: null },
+                { tone: 3, pinyin: 'zhěng', char: '整', word: '整齐' },
+                { tone: 4, pinyin: 'zhèng', char: '正', word: '正确' }
+            ],
+            ing: null,
+            ong: [
+                { tone: 1, pinyin: 'zhōng', char: '中', word: '中国' },
+                { tone: 2, pinyin: 'zhóng', char: null, word: null },
+                { tone: 3, pinyin: 'zhǒng', char: '种', word: '种子' },
+                { tone: 4, pinyin: 'zhòng', char: '重', word: '重要' }
+            ]
+        },
+        ch: {
+            ang: [
+                { tone: 1, pinyin: 'chāng', char: '昌', word: '昌盛' },
+                { tone: 2, pinyin: 'cháng', char: '长', word: '很长' },
+                { tone: 3, pinyin: 'chǎng', char: '厂', word: '工厂' },
+                { tone: 4, pinyin: 'chàng', char: '唱', word: '唱歌' }
+            ],
+            eng: [
+                { tone: 1, pinyin: 'chēng', char: '称', word: '称呼' },
+                { tone: 2, pinyin: 'chéng', char: '城', word: '城市' },
+                { tone: 3, pinyin: 'chěng', char: '逞', word: '逞强' },
+                { tone: 4, pinyin: 'chèng', char: '秤', word: '杆秤' }
+            ],
+            ing: null,
+            ong: [
+                { tone: 1, pinyin: 'chōng', char: '冲', word: '冲锋' },
+                { tone: 2, pinyin: 'chóng', char: '虫', word: '虫子' },
+                { tone: 3, pinyin: 'chǒng', char: '宠', word: '宠物' },
+                { tone: 4, pinyin: 'chòng', char: null, word: null }
+            ]
+        },
+        sh: {
+            ang: [
+                { tone: 1, pinyin: 'shāng', char: '伤', word: '伤心' },
+                { tone: 2, pinyin: 'sháng', char: null, word: null },
+                { tone: 3, pinyin: 'shǎng', char: '赏', word: '欣赏' },
+                { tone: 4, pinyin: 'shàng', char: '上', word: '上面' }
+            ],
+            eng: [
+                { tone: 1, pinyin: 'shēng', char: '生', word: '生活' },
+                { tone: 2, pinyin: 'shéng', char: '绳', word: '绳子' },
+                { tone: 3, pinyin: 'shěng', char: '省', word: '省份' },
+                { tone: 4, pinyin: 'shèng', char: '胜', word: '胜利' }
+            ],
+            ing: null,
+            ong: [
+                { tone: 1, pinyin: 'shōng', char: null, word: null },
+                { tone: 2, pinyin: 'shóng', char: null, word: null },
+                { tone: 3, pinyin: 'shǒng', char: null, word: null },
+                { tone: 4, pinyin: 'shòng', char: null, word: null }
+            ]
+        },
+        r: {
+            ang: [
+                { tone: 1, pinyin: 'rāng', char: null, word: null },
+                { tone: 2, pinyin: 'ráng', char: '瓤', word: '瓜瓤' },
+                { tone: 3, pinyin: 'rǎng', char: '嚷', word: '嚷叫' },
+                { tone: 4, pinyin: 'ràng', char: '让', word: '让座' }
+            ],
+            eng: [
+                { tone: 1, pinyin: 'rēng', char: '扔', word: '扔掉' },
+                { tone: 2, pinyin: 'réng', char: '仍', word: '仍然' },
+                { tone: 3, pinyin: 'rěng', char: null, word: null },
+                { tone: 4, pinyin: 'rèng', char: null, word: null }
+            ],
+            ing: null,
+            ong: [
+                { tone: 1, pinyin: 'rōng', char: null, word: null },
+                { tone: 2, pinyin: 'róng', char: '容', word: '容易' },
+                { tone: 3, pinyin: 'rǒng', char: '冗', word: '冗长' },
+                { tone: 4, pinyin: 'ròng', char: null, word: null }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 11: j q x × ian iang iong
+    // ============================================================
+    const unit11Data = {
+        j: {
+            ian: [
+                { tone: 1, pinyin: 'jiān', char: '尖', word: '尖尖' },
+                { tone: 2, pinyin: 'jián', char: null, word: null },
+                { tone: 3, pinyin: 'jiǎn', char: '减', word: '减少' },
+                { tone: 4, pinyin: 'jiàn', char: '见', word: '见面' }
+            ],
+            iang: [
+                { tone: 1, pinyin: 'jiāng', char: '江', word: '长江' },
+                { tone: 2, pinyin: 'jiáng', char: null, word: null },
+                { tone: 3, pinyin: 'jiǎng', char: '讲', word: '讲话' },
+                { tone: 4, pinyin: 'jiàng', char: '酱', word: '酱油' }
+            ],
+            iong: [
+                { tone: 1, pinyin: 'jiōng', char: null, word: null },
+                { tone: 2, pinyin: 'jióng', char: null, word: null },
+                { tone: 3, pinyin: 'jiǒng', char: '窘', word: '窘迫' },
+                { tone: 4, pinyin: 'jiòng', char: null, word: null }
+            ]
+        },
+        q: {
+            ian: [
+                { tone: 1, pinyin: 'qiān', char: '千', word: '千万' },
+                { tone: 2, pinyin: 'qián', char: '钱', word: '钱包' },
+                { tone: 3, pinyin: 'qiǎn', char: '浅', word: '浅薄' },
+                { tone: 4, pinyin: 'qiàn', char: '欠', word: '欠债' }
+            ],
+            iang: [
+                { tone: 1, pinyin: 'qiāng', char: '枪', word: '手枪' },
+                { tone: 2, pinyin: 'qiáng', char: '强', word: '强大' },
+                { tone: 3, pinyin: 'qiǎng', char: '抢', word: '抢劫' },
+                { tone: 4, pinyin: 'qiàng', char: '呛', word: '呛水' }
+            ],
+            iong: [
+                { tone: 1, pinyin: 'qiōng', char: null, word: null },
+                { tone: 2, pinyin: 'qióng', char: '穷', word: '贫穷' },
+                { tone: 3, pinyin: 'qiǒng', char: null, word: null },
+                { tone: 4, pinyin: 'qiòng', char: null, word: null }
+            ]
+        },
+        x: {
+            ian: [
+                { tone: 1, pinyin: 'xiān', char: '先', word: '先生' },
+                { tone: 2, pinyin: 'xián', char: '闲', word: '休闲' },
+                { tone: 3, pinyin: 'xiǎn', char: '显', word: '显示' },
+                { tone: 4, pinyin: 'xiàn', char: '线', word: '线条' }
+            ],
+            iang: [
+                { tone: 1, pinyin: 'xiāng', char: '香', word: '香水' },
+                { tone: 2, pinyin: 'xiáng', char: '详', word: '详细' },
+                { tone: 3, pinyin: 'xiǎng', char: '想', word: '想念' },
+                { tone: 4, pinyin: 'xiàng', char: '像', word: '好像' }
+            ],
+            iong: [
+                { tone: 1, pinyin: 'xiōng', char: '兄', word: '兄弟' },
+                { tone: 2, pinyin: 'xióng', char: '熊', word: '熊猫' },
+                { tone: 3, pinyin: 'xiǒng', char: null, word: null },
+                { tone: 4, pinyin: 'xiòng', char: null, word: null }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 12: d t n l z c s × uo uan
+    // ============================================================
+    const unit12Data = {
+        d: {
+            uo: [
+                { tone: 1, pinyin: 'duō', char: '多', word: '多少' },
+                { tone: 2, pinyin: 'duó', char: '夺', word: '夺取' },
+                { tone: 3, pinyin: 'duǒ', char: '躲', word: '躲藏' },
+                { tone: 4, pinyin: 'duò', char: '舵', word: '舵手' }
+            ],
+            uan: [
+                { tone: 1, pinyin: 'duān', char: '端', word: '端正' },
+                { tone: 2, pinyin: 'duán', char: null, word: null },
+                { tone: 3, pinyin: 'duǎn', char: '短', word: '长短' },
+                { tone: 4, pinyin: 'duàn', char: '断', word: '打断' }
+            ]
+        },
+        t: {
+            uo: [
+                { tone: 1, pinyin: 'tuō', char: '托', word: '托付' },
+                { tone: 2, pinyin: 'tuó', char: '驼', word: '骆驼' },
+                { tone: 3, pinyin: 'tuǒ', char: '妥', word: '妥当' },
+                { tone: 4, pinyin: 'tuò', char: '拓', word: '开拓' }
+            ],
+            uan: [
+                { tone: 1, pinyin: 'tuān', char: null, word: null },
+                { tone: 2, pinyin: 'tuán', char: '团', word: '团圆' },
+                { tone: 3, pinyin: 'tuǎn', char: null, word: null },
+                { tone: 4, pinyin: 'tuàn', char: null, word: null }
+            ]
+        },
+        n: {
+            uo: [
+                { tone: 1, pinyin: 'nuō', char: null, word: null },
+                { tone: 2, pinyin: 'nuó', char: '挪', word: '挪动' },
+                { tone: 3, pinyin: 'nuǒ', char: null, word: null },
+                { tone: 4, pinyin: 'nuò', char: '诺', word: '承诺' }
+            ],
+            uan: [
+                { tone: 1, pinyin: 'nuān', char: null, word: null },
+                { tone: 2, pinyin: 'nuán', char: null, word: null },
+                { tone: 3, pinyin: 'nuǎn', char: '暖', word: '温暖' },
+                { tone: 4, pinyin: 'nuàn', char: null, word: null }
+            ]
+        },
+        l: {
+            uo: [
+                { tone: 1, pinyin: 'luō', char: '啰', word: '啰嗦' },
+                { tone: 2, pinyin: 'luó', char: '罗', word: '罗列' },
+                { tone: 3, pinyin: 'luǒ', char: '裸', word: '裸露' },
+                { tone: 4, pinyin: 'luò', char: '落', word: '落下' }
+            ],
+            uan: [
+                { tone: 1, pinyin: 'luān', char: null, word: null },
+                { tone: 2, pinyin: 'luán', char: '峦', word: '山峦' },
+                { tone: 3, pinyin: 'luǎn', char: '卵', word: '卵子' },
+                { tone: 4, pinyin: 'luàn', char: '乱', word: '混乱' }
+            ]
+        },
+        z: {
+            uo: [
+                { tone: 1, pinyin: 'zuō', char: '嘬', word: '嘬嘴' },
+                { tone: 2, pinyin: 'zuó', char: '昨', word: '昨天' },
+                { tone: 3, pinyin: 'zuǒ', char: '左', word: '左边' },
+                { tone: 4, pinyin: 'zuò', char: '做', word: '做事' }
+            ],
+            uan: [
+                { tone: 1, pinyin: 'zuān', char: '钻', word: '钻研' },
+                { tone: 2, pinyin: 'zuán', char: null, word: null },
+                { tone: 3, pinyin: 'zuǎn', char: '纂', word: '编纂' },
+                { tone: 4, pinyin: 'zuàn', char: null, word: null }
+            ]
+        },
+        c: {
+            uo: [
+                { tone: 1, pinyin: 'cuō', char: '搓', word: '搓手' },
+                { tone: 2, pinyin: 'cuó', char: '矬', word: '矬子' },
+                { tone: 3, pinyin: 'cuǒ', char: null, word: null },
+                { tone: 4, pinyin: 'cuò', char: '错', word: '错误' }
+            ],
+            uan: [
+                { tone: 1, pinyin: 'cuān', char: '撺', word: '撺掇' },
+                { tone: 2, pinyin: 'cuán', char: null, word: null },
+                { tone: 3, pinyin: 'cuǎn', char: null, word: null },
+                { tone: 4, pinyin: 'cuàn', char: '窜', word: '逃窜' }
+            ]
+        },
+        s: {
+            uo: [
+                { tone: 1, pinyin: 'suō', char: '缩', word: '缩小' },
+                { tone: 2, pinyin: 'suó', char: null, word: null },
+                { tone: 3, pinyin: 'suǒ', char: '所', word: '所以' },
+                { tone: 4, pinyin: 'suò', char: null, word: null }
+            ],
+            uan: [
+                { tone: 1, pinyin: 'suān', char: '酸', word: '酸奶' },
+                { tone: 2, pinyin: 'suán', char: null, word: null },
+                { tone: 3, pinyin: 'suǎn', char: null, word: null },
+                { tone: 4, pinyin: 'suàn', char: '算', word: '计算' }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 13: j q x × uan
+    // 修改: juǎn 改成 卷/卷笔刀
+    // ============================================================
+    const unit13Data = {
+        j: {
+            uan: [
+                { tone: 1, pinyin: 'juān', char: '捐', word: '捐款' },
+                { tone: 2, pinyin: 'juán', char: null, word: null },
+                { tone: 3, pinyin: 'juǎn', char: '卷', word: '卷笔刀' },   // ← 改卷笔刀
+                { tone: 4, pinyin: 'juàn', char: '倦', word: '疲倦' }
+            ]
+        },
+        q: {
+            uan: [
+                { tone: 1, pinyin: 'quān', char: '圈', word: '圆圈' },
+                { tone: 2, pinyin: 'quán', char: '全', word: '全部' },
+                { tone: 3, pinyin: 'quǎn', char: '犬', word: '警犬' },
+                { tone: 4, pinyin: 'quàn', char: '劝', word: '劝告' }
+            ]
+        },
+        x: {
+            uan: [
+                { tone: 1, pinyin: 'xuān', char: '宣', word: '宣布' },
+                { tone: 2, pinyin: 'xuán', char: '悬', word: '悬挂' },
+                { tone: 3, pinyin: 'xuǎn', char: '选', word: '选择' },
+                { tone: 4, pinyin: 'xuàn', char: '炫', word: '炫耀' }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 14: g k h zh ch sh r × ua uo uai uang
+    // 修改: chuā 改无
+    // ============================================================
+    const unit14Data = {
+        g: {
+            ua: [
+                { tone: 1, pinyin: 'guā', char: '瓜', word: '西瓜' },
+                { tone: 2, pinyin: 'guá', char: null, word: null },
+                { tone: 3, pinyin: 'guǎ', char: '寡', word: '寡妇' },
+                { tone: 4, pinyin: 'guà', char: '挂', word: '挂念' }
+            ],
+            uo: [
+                { tone: 1, pinyin: 'guō', char: '锅', word: '火锅' },
+                { tone: 2, pinyin: 'guó', char: '国', word: '国家' },
+                { tone: 3, pinyin: 'guǒ', char: '果', word: '水果' },
+                { tone: 4, pinyin: 'guò', char: '过', word: '过去' }
+            ],
+            uai: [
+                { tone: 1, pinyin: 'guāi', char: '乖', word: '乖乖' },
+                { tone: 2, pinyin: 'guái', char: null, word: null },
+                { tone: 3, pinyin: 'guǎi', char: '拐', word: '拐弯' },
+                { tone: 4, pinyin: 'guài', char: '怪', word: '奇怪' }
+            ],
+            uang: [
+                { tone: 1, pinyin: 'guāng', char: '光', word: '光明' },
+                { tone: 2, pinyin: 'guáng', char: null, word: null },
+                { tone: 3, pinyin: 'guǎng', char: '广', word: '广大' },
+                { tone: 4, pinyin: 'guàng', char: '逛', word: '逛街' }
+            ]
+        },
+        k: {
+            ua: [
+                { tone: 1, pinyin: 'kuā', char: '夸', word: '夸奖' },
+                { tone: 2, pinyin: 'kuá', char: null, word: null },
+                { tone: 3, pinyin: 'kuǎ', char: '垮', word: '垮台' },
+                { tone: 4, pinyin: 'kuà', char: '跨', word: '跨越' }
+            ],
+            uo: [
+                { tone: 1, pinyin: 'kuō', char: null, word: null },
+                { tone: 2, pinyin: 'kuó', char: null, word: null },
+                { tone: 3, pinyin: 'kuǒ', char: null, word: null },
+                { tone: 4, pinyin: 'kuò', char: '阔', word: '宽阔' }
+            ],
+            uai: [
+                { tone: 1, pinyin: 'kuāi', char: null, word: null },
+                { tone: 2, pinyin: 'kuái', char: null, word: null },
+                { tone: 3, pinyin: 'kuǎi', char: null, word: null },
+                { tone: 4, pinyin: 'kuài', char: '快', word: '快乐' }
+            ],
+            uang: [
+                { tone: 1, pinyin: 'kuāng', char: '筐', word: '箩筐' },
+                { tone: 2, pinyin: 'kuáng', char: '狂', word: '疯狂' },
+                { tone: 3, pinyin: 'kuǎng', char: null, word: null },
+                { tone: 4, pinyin: 'kuàng', char: '矿', word: '矿山' }
+            ]
+        },
+        h: {
+            ua: [
+                { tone: 1, pinyin: 'huā', char: '花', word: '花朵' },
+                { tone: 2, pinyin: 'huá', char: '华', word: '华丽' },
+                { tone: 3, pinyin: 'huǎ', char: null, word: null },
+                { tone: 4, pinyin: 'huà', char: '画', word: '画画' }
+            ],
+            uo: [
+                { tone: 1, pinyin: 'huō', char: '豁', word: '豁口' },
+                { tone: 2, pinyin: 'huó', char: '活', word: '生活' },
+                { tone: 3, pinyin: 'huǒ', char: '火', word: '火车' },
+                { tone: 4, pinyin: 'huò', char: '货', word: '货物' }
+            ],
+            uai: [
+                { tone: 1, pinyin: 'huāi', char: null, word: null },
+                { tone: 2, pinyin: 'huái', char: '怀', word: '怀念' },
+                { tone: 3, pinyin: 'huǎi', char: null, word: null },
+                { tone: 4, pinyin: 'huài', char: '坏', word: '坏人' }
+            ],
+            uang: [
+                { tone: 1, pinyin: 'huāng', char: '荒', word: '荒地' },
+                { tone: 2, pinyin: 'huáng', char: '黄', word: '黄色' },
+                { tone: 3, pinyin: 'huǎng', char: '谎', word: '说谎' },
+                { tone: 4, pinyin: 'huàng', char: null, word: null }
+            ]
+        },
+        zh: {
+            ua: [
+                { tone: 1, pinyin: 'zhuā', char: '抓', word: '抓住' },
+                { tone: 2, pinyin: 'zhuá', char: null, word: null },
+                { tone: 3, pinyin: 'zhuǎ', char: '爪子', word: '爪子' },
+                { tone: 4, pinyin: 'zhuà', char: null, word: null }
+            ],
+            uo: [
+                { tone: 1, pinyin: 'zhuō', char: '桌', word: '桌子' },
+                { tone: 2, pinyin: 'zhuó', char: '酌', word: '斟酌' },
+                { tone: 3, pinyin: 'zhuǒ', char: null, word: null },
+                { tone: 4, pinyin: 'zhuò', char: null, word: null }
+            ],
+            uai: [
+                { tone: 1, pinyin: 'zhuāi', char: null, word: null },
+                { tone: 2, pinyin: 'zhuái', char: null, word: null },
+                { tone: 3, pinyin: 'zhuǎi', char: null, word: null },
+                { tone: 4, pinyin: 'zhuài', char: '拽', word: '拽住' }
+            ],
+            uang: [
+                { tone: 1, pinyin: 'zhuāng', char: '装', word: '装下' },
+                { tone: 2, pinyin: 'zhuáng', char: null, word: null },
+                { tone: 3, pinyin: 'zhuǎng', char: null, word: null },
+                { tone: 4, pinyin: 'zhuàng', char: '壮', word: '强壮' }
+            ]
+        },
+        ch: {
+            ua: [
+                { tone: 1, pinyin: 'chuā', char: null, word: null },   // ← 改无
+                { tone: 2, pinyin: 'chuá', char: null, word: null },
+                { tone: 3, pinyin: 'chuǎ', char: null, word: null },
+                { tone: 4, pinyin: 'chuà', char: null, word: null }
+            ],
+            uo: [
+                { tone: 1, pinyin: 'chuō', char: '戳', word: '戳穿' },
+                { tone: 2, pinyin: 'chuó', char: null, word: null },
+                { tone: 3, pinyin: 'chuǒ', char: null, word: null },
+                { tone: 4, pinyin: 'chuò', char: '绰', word: '绰号' }
+            ],
+            uai: [
+                { tone: 1, pinyin: 'chuāi', char: null, word: null },
+                { tone: 2, pinyin: 'chuái', char: null, word: null },
+                { tone: 3, pinyin: 'chuǎi', char: '揣', word: '揣测' },
+                { tone: 4, pinyin: 'chuài', char: '踹', word: '踹开' }
+            ],
+            uang: [
+                { tone: 1, pinyin: 'chuāng', char: '窗', word: '窗户' },
+                { tone: 2, pinyin: 'chuáng', char: '床', word: '床单' },
+                { tone: 3, pinyin: 'chuǎng', char: '闯', word: '闯关' },
+                { tone: 4, pinyin: 'chuàng', char: '创', word: '创造' }
+            ]
+        },
+        sh: {
+            ua: [
+                { tone: 1, pinyin: 'shuā', char: '刷', word: '刷牙' },
+                { tone: 2, pinyin: 'shuá', char: null, word: null },
+                { tone: 3, pinyin: 'shuǎ', char: '耍', word: '玩耍' },
+                { tone: 4, pinyin: 'shuà', char: null, word: null }
+            ],
+            uo: [
+                { tone: 1, pinyin: 'shuō', char: '说', word: '说话' },
+                { tone: 2, pinyin: 'shuó', char: null, word: null },
+                { tone: 3, pinyin: 'shuǒ', char: null, word: null },
+                { tone: 4, pinyin: 'shuò', char: '硕', word: '硕大' }
+            ],
+            uai: [
+                { tone: 1, pinyin: 'shuāi', char: '衰', word: '衰老' },
+                { tone: 2, pinyin: 'shuái', char: null, word: null },
+                { tone: 3, pinyin: 'shuǎi', char: '甩', word: '甩开' },
+                { tone: 4, pinyin: 'shuài', char: '帅', word: '帅气' }
+            ],
+            uang: [
+                { tone: 1, pinyin: 'shuāng', char: '双', word: '双手' },
+                { tone: 2, pinyin: 'shuáng', char: null, word: null },
+                { tone: 3, pinyin: 'shuǎng', char: '爽', word: '爽快' },
+                { tone: 4, pinyin: 'shuàng', char: null, word: null }
+            ]
+        },
+        r: {
+            ua: [
+                { tone: 1, pinyin: 'ruā', char: null, word: null },
+                { tone: 2, pinyin: 'ruá', char: null, word: null },
+                { tone: 3, pinyin: 'ruǎ', char: null, word: null },
+                { tone: 4, pinyin: 'ruà', char: null, word: null }
+            ],
+            uo: [
+                { tone: 1, pinyin: 'ruō', char: null, word: null },
+                { tone: 2, pinyin: 'ruó', char: null, word: null },
+                { tone: 3, pinyin: 'ruǒ', char: null, word: null },
+                { tone: 4, pinyin: 'ruò', char: '弱', word: '弱小' }
+            ],
+            uai: [
+                { tone: 1, pinyin: 'ruāi', char: null, word: null },
+                { tone: 2, pinyin: 'ruái', char: null, word: null },
+                { tone: 3, pinyin: 'ruǎi', char: null, word: null },
+                { tone: 4, pinyin: 'ruài', char: null, word: null }
+            ],
+            uang: [
+                { tone: 1, pinyin: 'ruāng', char: null, word: null },
+                { tone: 2, pinyin: 'ruáng', char: null, word: null },
+                { tone: 3, pinyin: 'ruǎng', char: null, word: null },
+                { tone: 4, pinyin: 'ruàng', char: null, word: null }
+            ]
+        }
+    };
+
+    // ============================================================
+    // UNIT 15: 整体认读音节
+    // ============================================================
+    const unit15Data = [
+        {
+            label: 'zhi',
+            tones: [
+                { tone: 1, pinyin: 'zhī', char: '知', word: '知道' },
+                { tone: 2, pinyin: 'zhí', char: '直', word: '直接' },
+                { tone: 3, pinyin: 'zhǐ', char: '纸', word: '纸张' },
+                { tone: 4, pinyin: 'zhì', char: '志', word: '志气' }
+            ]
+        },
+        {
+            label: 'chi',
+            tones: [
+                { tone: 1, pinyin: 'chī', char: '吃', word: '吃饭' },
+                { tone: 2, pinyin: 'chí', char: '池', word: '池塘' },
+                { tone: 3, pinyin: 'chǐ', char: '尺', word: '尺子' },
+                { tone: 4, pinyin: 'chì', char: '翅', word: '翅膀' }
+            ]
+        },
+        {
+            label: 'shi',
+            tones: [
+                { tone: 1, pinyin: 'shī', char: '诗', word: '诗歌' },
+                { tone: 2, pinyin: 'shí', char: '十', word: '十个' },
+                { tone: 3, pinyin: 'shǐ', char: '史', word: '历史' },
+                { tone: 4, pinyin: 'shì', char: '是', word: '是不是' }
+            ]
+        },
+        {
+            label: 'ri',
+            tones: [
+                { tone: 1, pinyin: 'rī', char: null, word: null },
+                { tone: 2, pinyin: 'rí', char: null, word: null },
+                { tone: 3, pinyin: 'rǐ', char: null, word: null },
+                { tone: 4, pinyin: 'rì', char: '日', word: '日子' }
+            ]
+        },
+        {
+            label: 'zi',
+            tones: [
+                { tone: 1, pinyin: 'zī', char: '资', word: '资源' },
+                { tone: 2, pinyin: 'zí', char: null, word: null },
+                { tone: 3, pinyin: 'zǐ', char: '子', word: '子女' },
+                { tone: 4, pinyin: 'zì', char: '字', word: '字典' }
+            ]
+        },
+        {
+            label: 'ci',
+            tones: [
+                { tone: 1, pinyin: 'cī', char: '差', word: '参差' },
+                { tone: 2, pinyin: 'cí', char: '词', word: '词语' },
+                { tone: 3, pinyin: 'cǐ', char: '此', word: '因此' },
+                { tone: 4, pinyin: 'cì', char: '次', word: '次数' }
+            ]
+        },
+        {
+            label: 'si',
+            tones: [
+                { tone: 1, pinyin: 'sī', char: '思', word: '思考' },
+                { tone: 2, pinyin: 'sí', char: null, word: null },
+                { tone: 3, pinyin: 'sǐ', char: '死', word: '死亡' },
+                { tone: 4, pinyin: 'sì', char: '四', word: '四个' }
+            ]
+        },
+        {
+            label: 'yi',
+            tones: [
+                { tone: 1, pinyin: 'yī', char: '一', word: '一个' },
+                { tone: 2, pinyin: 'yí', char: '移', word: '移动' },
+                { tone: 3, pinyin: 'yǐ', char: '已', word: '已经' },
+                { tone: 4, pinyin: 'yì', char: '意', word: '意思' }
+            ]
+        },
+        {
+            label: 'wu',
+            tones: [
+                { tone: 1, pinyin: 'wū', char: '屋', word: '屋子' },
+                { tone: 2, pinyin: 'wú', char: '无', word: '无法' },
+                { tone: 3, pinyin: 'wǔ', char: '五', word: '五个' },
+                { tone: 4, pinyin: 'wù', char: '物', word: '物品' }
+            ]
+        },
+        {
+            label: 'yu',
+            tones: [
+                { tone: 1, pinyin: 'yū', char: '淤', word: '淤泥' },
+                { tone: 2, pinyin: 'yú', char: '鱼', word: '鱼儿' },
+                { tone: 3, pinyin: 'yǔ', char: '雨', word: '下雨' },
+                { tone: 4, pinyin: 'yù', char: '玉', word: '玉米' }
+            ]
+        },
+        {
+            label: 'ye',
+            tones: [
+                { tone: 1, pinyin: 'yē', char: '椰', word: '椰子' },
+                { tone: 2, pinyin: 'yé', char: '爷', word: '爷爷' },
+                { tone: 3, pinyin: 'yě', char: '也', word: '也是' },
+                { tone: 4, pinyin: 'yè', char: '夜', word: '夜晚' }
+            ]
+        },
+        {
+            label: 'yue',
+            tones: [
+                { tone: 1, pinyin: 'yuē', char: '约', word: '约会' },
+                { tone: 2, pinyin: 'yué', char: null, word: null },
+                { tone: 3, pinyin: 'yuě', char: '哕', word: '干哕' },
+                { tone: 4, pinyin: 'yuè', char: '月', word: '月亮' }
+            ]
+        },
+        {
+            label: 'yuan',
+            tones: [
+                { tone: 1, pinyin: 'yuān', char: '冤', word: '冤枉' },
+                { tone: 2, pinyin: 'yuán', char: '元', word: '元旦' },
+                { tone: 3, pinyin: 'yuǎn', char: '远', word: '远方' },
+                { tone: 4, pinyin: 'yuàn', char: '院', word: '院子' }
+            ]
+        },
+        {
+            label: 'yin',
+            tones: [
+                { tone: 1, pinyin: 'yīn', char: '音', word: '音乐' },
+                { tone: 2, pinyin: 'yín', char: '银', word: '银子' },
+                { tone: 3, pinyin: 'yǐn', char: '引', word: '引导' },
+                { tone: 4, pinyin: 'yìn', char: '印', word: '印章' }
+            ]
+        },
+        {
+            label: 'yun',
+            tones: [
+                { tone: 1, pinyin: 'yūn', char: '晕', word: '晕倒' },
+                { tone: 2, pinyin: 'yún', char: '云', word: '白云' },
+                { tone: 3, pinyin: 'yǔn', char: '允', word: '允许' },
+                { tone: 4, pinyin: 'yùn', char: '运', word: '运动' }
+            ]
+        },
+        {
+            label: 'ying',
+            tones: [
+                { tone: 1, pinyin: 'yīng', char: '英', word: '英雄' },
+                { tone: 2, pinyin: 'yíng', char: '赢', word: '赢了' },
+                { tone: 3, pinyin: 'yǐng', char: '影', word: '影子' },
+                { tone: 4, pinyin: 'yìng', char: '硬', word: '坚硬' }
+            ]
+        }
+    ];
+
+    // ---------- 语音合成 ----------
+    function speak(text) {
+        if (!text) return;
+        if (!window.speechSynthesis) {
+            alert('您的浏览器不支持语音合成，请使用新版 Chrome / Edge / Safari。');
+            return;
+        }
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-CN';
+        utterance.rate = 0.85;
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+        const voices = window.speechSynthesis.getVoices();
+        const chineseVoice = voices.find(v =>
+            v.lang.includes('zh') || v.lang.includes('CN')
+        );
+        if (chineseVoice) utterance.voice = chineseVoice;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function speakChar(char) { if (char) speak(char); }
+    function speakWord(word) { if (word) speak(word); }
+
+    // ---------- 通用渲染函数 ----------
+    function renderUnit(tbodyId, initials, finals, data) {
+        const tbody = document.getElementById(tbodyId);
+        if (!tbody) return;
+        let rowsHtml = '';
+
+        initials.forEach(initial => {
+            let rowHtml = `<tr><td class="initial-label">${initial}</td>`;
+
+            finals.forEach(final => {
+                const tones = data[initial] ? data[initial][final] : null;
+
+                if (!tones || tones.length === 0) {
+                    rowHtml += `<td class="syllable-cell"><div class="no-syllable">无</div></td>`;
+                } else {
+                    let toneItemsHtml = '';
+                    tones.forEach(t => {
+                        const hasChar = t.char !== null && t.char !== undefined;
+                        const hasWord = t.word !== null && t.word !== undefined;
+                        const disabled = !hasChar && !hasWord;
+                        const itemClass = disabled ? 'tone-item disabled' : 'tone-item';
+
+                        const charClick = hasChar ? `onclick="event.stopPropagation(); speakChar('${t.char}')"` : '';
+                        const charStyle = hasChar ? 'cursor:pointer;' : 'cursor:default;';
+
+                        const wordClick = hasWord ? `onclick="event.stopPropagation(); speakWord('${t.word}')"` : '';
+                        const wordBtn = hasWord
+                            ? `<div class="tone-word-btn" ${wordClick} title="读词语：${t.word}">
+                                   <span class="icon">🗣️</span>
+                                   <span class="label">词</span>
+                               </div>`
+                            : `<div class="tone-word-btn">
+                                   <span class="icon">—</span>
+                                   <span class="label">词</span>
+                               </div>`;
+
+                        toneItemsHtml += `
+                            <div class="${itemClass}" data-tone="${t.tone}">
+                                <div class="tone-single" ${charClick} style="${charStyle}">
+                                    <div class="tone-pinyin">${t.pinyin}</div>
+                                </div>
+                                ${wordBtn}
+                            </div>
+                        `;
+                    });
+
+                    rowHtml += `<td class="syllable-cell"><div class="tone-grid">${toneItemsHtml}</div></td>`;
+                }
+            });
+
+            rowHtml += `</tr>`;
+            rowsHtml += rowHtml;
+        });
+
+        tbody.innerHTML = rowsHtml;
+    }
+
+    // ---------- 整体认读音节渲染 ----------
+    function renderZhengti() {
+        const grid = document.getElementById('zhengtiGrid');
+        if (!grid) return;
+        let html = '';
+
+        unit15Data.forEach(item => {
+            let toneItemsHtml = '';
+            item.tones.forEach(t => {
+                const hasChar = t.char !== null && t.char !== undefined;
+                const hasWord = t.word !== null && t.word !== undefined;
+                const disabled = !hasChar && !hasWord;
+                const itemClass = disabled ? 'tone-item disabled' : 'tone-item';
+
+                const charClick = hasChar ? `onclick="event.stopPropagation(); speakChar('${t.char}')"` : '';
+                const charStyle = hasChar ? 'cursor:pointer;' : 'cursor:default;';
+
+                const wordClick = hasWord ? `onclick="event.stopPropagation(); speakWord('${t.word}')"` : '';
+                const wordBtn = hasWord
+                    ? `<div class="tone-word-btn" ${wordClick} title="读词语：${t.word}">
+                           <span class="icon">🗣️</span>
+                           <span class="label">词</span>
+                       </div>`
+                    : `<div class="tone-word-btn">
+                           <span class="icon">—</span>
+                           <span class="label">词</span>
+                       </div>`;
+
+                toneItemsHtml += `
+                    <div class="${itemClass}" data-tone="${t.tone}">
+                        <div class="tone-single" ${charClick} style="${charStyle}">
+                            <div class="tone-pinyin">${t.pinyin}</div>
+                        </div>
+                        ${wordBtn}
+                    </div>
+                `;
+            });
+
+            html += `
+                <div class="zhengti-card">
+                    <div class="zhengti-card-title">${item.label}</div>
+                    <div class="tone-grid">${toneItemsHtml}</div>
+                </div>
+            `;
+        });
+
+        grid.innerHTML = html;
+    }
+
+    // ---------- Unit 切换 ----------
+    function switchUnit(unitNum) {
+        document.querySelectorAll('.unit-tab').forEach(tab => {
+            tab.classList.toggle('active', tab.dataset.unit === String(unitNum));
+        });
+        document.querySelectorAll('.unit-panel').forEach(panel => {
+            panel.classList.toggle('active', panel.id === 'panel' + unitNum);
+        });
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+    }
+
+    // ---------- 侧边栏折叠 ----------
+    function setupSidebarToggle() {
+        const toggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('unitSidebar');
+        if (!toggle || !sidebar) return;
+
+        toggle.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        });
+
+        // 移动端默认收起
+        if (window.innerWidth <= 760) {
+            sidebar.classList.add('collapsed');
+        }
+
+        // 点击 sidebar 里的 unit 后，如果是移动端，自动收起
+        sidebar.querySelectorAll('.unit-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                if (window.innerWidth <= 760) {
+                    sidebar.classList.add('collapsed');
+                }
+            });
+        });
+    }
+
+    // 页面加载
+    window.addEventListener('DOMContentLoaded', () => {
+        renderUnit('body1', ['b', 'p', 'm', 'f'], ['a', 'o', 'e'], unit1Data);
+        renderUnit('body2', ['d', 't', 'n', 'l'], ['i', 'u', 'ü'], unit2Data);
+        renderUnit('body3', ['g', 'k', 'h'], ['ai', 'ei', 'ui'], unit3Data);
+        renderUnit('body4', ['j', 'q', 'x'], ['ie', 'üe', 'iu'], unit4Data);
+        renderUnit('body5', ['d', 't', 'n', 'l', 'b', 'p', 'm', 'f'], ['ao', 'ou', 'iu'], unit5Data);
+        renderUnit('body6', ['zh', 'ch', 'sh', 'r'], ['ai', 'ui', 'ao', 'ou'], unit6Data);
+        renderUnit('body7', ['z', 'c', 's'], ['an', 'en', 'un'], unit7Data);
+        renderUnit('body8', ['z', 'c', 's'], ['ai', 'ui', 'ao'], unit8Data);
+        renderUnit('body9', ['y', 'w', 'zh', 'ch', 'sh', 'r'], ['ang', 'eng', 'ing', 'ong'], unit9Data);
+        renderUnit('body11', ['j', 'q', 'x'], ['ian', 'iang', 'iong'], unit11Data);
+        renderUnit('body12', ['d', 't', 'n', 'l', 'z', 'c', 's'], ['uo', 'uan'], unit12Data);
+        renderUnit('body13', ['j', 'q', 'x'], ['uan'], unit13Data);
+        renderUnit('body14', ['g', 'k', 'h', 'zh', 'ch', 'sh', 'r'], ['ua', 'uo', 'uai', 'uang'], unit14Data);
+        renderZhengti();
+
+        document.querySelectorAll('.unit-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                switchUnit(tab.dataset.unit);
+            });
+        });
+
+        setupSidebarToggle();
+
+        if (window.speechSynthesis) {
+            window.speechSynthesis.getVoices();
+            window.speechSynthesis.onvoiceschanged = () => {};
+        }
+    });
+
+    window.speakChar = speakChar;
+    window.speakWord = speakWord;
+</script>
+</body>
+</html>

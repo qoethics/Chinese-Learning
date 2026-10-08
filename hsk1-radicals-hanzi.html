@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+    <title>识字 · 偏旁练习 · 1-15课</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background: #f5f1fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+        .app {
+            max-width: 560px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(4px);
+            border-radius: 48px;
+            padding: 24px 18px 32px;
+            box-shadow: 0 20px 60px rgba(80, 40, 100, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .menu-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 6px;
+            justify-content: center;
+        }
+        .menu-btn {
+            background: #f0ebf5;
+            border: 2px solid #ddd6e4;
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4a2d5e;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            touch-action: manipulation;
+            user-select: none;
+            white-space: nowrap;
+            box-shadow: 0 2px 0 #cdc0d8;
+        }
+        .menu-btn:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+        .menu-btn.active {
+            background: #6a3c7a;
+            border-color: #6a3c7a;
+            color: white;
+            box-shadow: 0 2px 0 #4a2a56;
+        }
+        .menu-btn.unit-btn {
+            background: #e8def0;
+            border-color: #d5c4de;
+        }
+        .menu-btn.unit-btn.active {
+            background: #6a3c7a;
+            border-color: #6a3c7a;
+            color: white;
+        }
+        .menu-btn.game-btn {
+            background: #dce8f5;
+            border-color: #c8d4e8;
+        }
+        .menu-btn.game-btn.active {
+            background: #2a5a7a;
+            border-color: #2a5a7a;
+            color: white;
+        }
+        .menu-btn.radical-btn {
+            background: #f0e8d8;
+            border-color: #d5c8b8;
+        }
+        .menu-btn.radical-btn.active {
+            background: #7a6a3a;
+            border-color: #7a6a3a;
+            color: white;
+            box-shadow: 0 2px 0 #5a4a2a;
+        }
+        .menu-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #7a5f8a;
+            letter-spacing: 0.5px;
+            padding: 4px 8px 0 4px;
+            display: flex;
+            align-items: center;
+        }
+        .menu-divider {
+            width: 100%;
+            height: 2px;
+            background: #ede6f5;
+            margin: 6px 0 10px;
+            border-radius: 4px;
+        }
+        .title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2d1a3a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 2px;
+        }
+        .sub {
+            color: #7a5f8a;
+            font-size: 14px;
+            margin-bottom: 14px;
+            border-left: 4px solid #b392c9;
+            padding-left: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .sub .controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .sub .controls label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            color: #4a2d5e;
+            cursor: pointer;
+        }
+        .sub .controls input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #6a3c7a;
+            cursor: pointer;
+        }
+        .game-area {
+            background: #fcfaff;
+            border-radius: 32px;
+            padding: 20px 14px 22px;
+            border: 1px solid #ede6f5;
+            min-height: 320px;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .pinyin-badge {
+            display: inline-block;
+            background: #6a3c7a;
+            color: #fff;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            padding: 6px 24px;
+            border-radius: 40px;
+            margin-bottom: 16px;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 14px 0;
+        }
+        .option-btn {
+            background: #fff;
+            border: 2.5px solid #d5c4de;
+            border-radius: 20px;
+            padding: 14px 6px;
+            font-size: 30px;
+            font-weight: 500;
+            color: #2d1a3a;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            box-shadow: 0 4px 0 #d5c4de;
+            touch-action: manipulation;
+            user-select: none;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.3;
+            min-height: 70px;
+            justify-content: center;
+        }
+        .option-btn:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+        .option-btn.correct {
+            background: #c6e6c0;
+            border-color: #3f7a3d;
+            box-shadow: 0 4px 0 #3f7a3d;
+        }
+        .option-btn.wrong {
+            background: #f8d0d0;
+            border-color: #b34a4a;
+            box-shadow: 0 4px 0 #b34a4a;
+        }
+        .option-btn:disabled {
+            opacity: 0.5;
+            transform: translateY(4px);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+        .option-btn .main-char {
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        .option-btn .sub-info {
+            font-size: 0.7rem;
+            color: #6b6154;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-top: 2px;
+        }
+        .option-btn .sub-info .sep {
+            color: #b8a8c0;
+            margin: 0 4px;
+        }
+        .option-btn .sub-info .en {
+            color: #8a7e6e;
+        }
+        .option-btn .sub-info .pinyin {
+            color: #6b6154;
+        }
+        .feedback {
+            font-size: 17px;
+            min-height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 6px 0 12px;
+            font-weight: 500;
+        }
+        .feedback.correct { color: #3a7a3a; }
+        .feedback.wrong { color: #b34a4a; }
+        .feedback.info { color: #4a2d5e; }
+        .action-btn {
+            background: #6a3c7a;
+            border: none;
+            border-radius: 40px;
+            padding: 14px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.15s;
+            box-shadow: 0 6px 0 #4a2a56;
+            touch-action: manipulation;
+            text-align: center;
+        }
+        .action-btn:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+        .action-btn:disabled {
+            opacity: 0.4;
+            transform: translateY(4px);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+        .score {
+            margin-top: 12px;
+            font-size: 15px;
+            color: #5f4a6a;
+            text-align: center;
+        }
+        .score span {
+            font-weight: 700;
+            color: #2d1a3a;
+        }
+        .pair-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #f8f4fc;
+            border-radius: 20px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border: 2px solid #e8def0;
+            flex-wrap: wrap;
+        }
+        .pair-row .english-word {
+            font-size: 30px;
+            font-weight: 700;
+            color: #2a1a4a;
+            background: #ede0f8;
+            padding: 6px 20px;
+            border-radius: 20px;
+            min-width: 70px;
+            text-align: center;
+        }
+        .pair-row .options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .pair-row .options button {
+            background: white;
+            border: 3px solid #cdc0d8;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 30px;
+            font-weight: 500;
+            color: #1a0a2a;
+            cursor: pointer;
+            transition: 0.1s;
+            touch-action: manipulation;
+            min-width: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.2;
+        }
+        .pair-row .options button:active { transform: scale(0.94); }
+        .pair-row .options button .pair-sub {
+            font-size: 0.6rem;
+            color: #8a7e6e;
+            font-weight: 400;
+        }
+        .pair-row .options button.selected { border-color: #7a4a9a; background: #ede0f8; }
+        .pair-row .options button.correct { border-color: #3a8a5a; background: #daf0e4; }
+        .pair-row .options button.wrong { border-color: #b04a4a; background: #f8d8d8; }
+        .pair-row .options button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .pair-result { font-size: 30px; min-width: 44px; text-align: center; }
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .char-grid .char-btn {
+            background: white;
+            border: 3px solid #ddd0e8;
+            border-radius: 16px;
+            padding: 12px 4px;
+            font-size: 30px;
+            font-weight: 500;
+            color: #1a0a2a;
+            cursor: pointer;
+            transition: 0.1s;
+            touch-action: manipulation;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.2;
+            min-height: 70px;
+            justify-content: center;
+        }
+        .char-grid .char-btn:active { transform: scale(0.94); }
+        .char-grid .char-btn .char-en {
+            font-size: 0.55rem;
+            color: #8a7e6e;
+            font-weight: 400;
+        }
+        .char-grid .char-btn .char-pinyin {
+            font-size: 0.6rem;
+            color: #6b6154;
+            font-weight: 400;
+        }
+        .char-grid .char-btn.selected-correct { border-color: #4a9a5a; background: #dff0e4; }
+        .char-grid .char-btn.selected-wrong { border-color: #c04a4a; background: #f8d8d8; }
+        .char-grid .char-btn.reveal-correct { border-color: #4a9a5a; background: #dff0e4; }
+        .char-grid .char-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .complete-banner {
+            background: #daf0e4;
+            border-radius: 20px;
+            padding: 18px;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .complete-banner .big-emoji { font-size: 44px; display: block; margin-bottom: 6px; }
+        .complete-banner h3 { color: #2a5a3a; margin-bottom: 4px; font-size: 18px; }
+        .complete-banner p { color: #3a6a4a; font-size: 15px; }
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #ede6f5;
+            border-radius: 10px;
+            margin: 10px 0 4px;
+            overflow: hidden;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            background: #6a3c7a;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        .hint-text {
+            text-align: center;
+            font-size: 17px;
+            color: #4a2a5a;
+            margin-bottom: 6px;
+        }
+        .hint-text strong {
+            color: #2d1a3a;
+            font-size: 22px;
+        }
+        .display-area {
+            text-align: center;
+            padding: 12px 0;
+        }
+        .display-area .big-radical {
+            font-size: 4rem;
+            font-weight: 600;
+            color: #1e1e2a;
+            background: #f4f1eb;
+            padding: 6px 24px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 2px dashed #cbd5e1;
+        }
+        .display-area .radical-name {
+            font-size: 1.1rem;
+            color: #6b6154;
+            margin-top: 6px;
+        }
+        .display-area .radical-meaning {
+            font-size: 0.95rem;
+            color: #8a7e6e;
+            margin-top: 4px;
+        }
+        .display-area .char-info {
+            font-size: 0.95rem;
+            color: #6b6154;
+            margin-top: 4px;
+        }
+        .display-area .sound-btn {
+            background: none;
+            border: 2px solid #b8a99a;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            background: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 6px;
+        }
+        .display-area .sound-btn:hover {
+            background: #f0ede8;
+            transform: scale(1.05);
+        }
+        .char-display-with-en {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .char-display-with-en .char-big {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #1e1e2a;
+            background: #f4f1eb;
+            padding: 6px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 2px dashed #cbd5e1;
+        }
+        .char-display-with-en .char-info-line {
+            font-size: 0.95rem;
+            color: #6b6154;
+            margin-top: 4px;
+        }
+        .match-area {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px 30px;
+            margin: 8px 0;
+        }
+        .match-col {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 80px;
+        }
+        .match-col .match-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #94a3b8;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        .match-item {
+            padding: 8px 14px;
+            border-radius: 30px;
+            border: 2px solid #d0c9be;
+            background: white;
+            text-align: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.1s;
+            font-weight: 500;
+            min-width: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.3;
+        }
+        .match-item:hover:not(.matched) {
+            background: #f0ede8;
+        }
+        .match-item.selected {
+            border-color: #3b82f6;
+            background: #dbeafe;
+        }
+        .match-item.matched {
+            border-color: #22c55e;
+            background: #dcfce7;
+            opacity: 0.6;
+            cursor: default;
+            pointer-events: none;
+        }
+        .match-item.matched::after {
+            content: " ✓";
+            color: #16a34a;
+        }
+        .match-item .match-en {
+            font-size: 0.55rem;
+            color: #8a7e6e;
+            font-weight: 400;
+        }
+        .match-item .match-pinyin {
+            font-size: 0.6rem;
+            color: #6b6154;
+            font-weight: 400;
+        }
+        .match-status {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #475569;
+            margin-top: 10px;
+        }
+        .flashcard-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px 0;
+        }
+        .flashcard {
+            width: 100%;
+            max-width: 280px;
+            aspect-ratio: 1.2/1;
+            background: #f4f1eb;
+            border-radius: 24px;
+            border: 2px solid #d0c9be;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            padding: 16px;
+            text-align: center;
+            user-select: none;
+        }
+        .flashcard:hover {
+            background: #ece8e0;
+        }
+        .flashcard .front-radical {
+            font-size: 4.5rem;
+            font-weight: 600;
+            color: #1e1e2a;
+        }
+        .flashcard .front-name {
+            font-size: 1.1rem;
+            color: #6b6154;
+            margin-top: 4px;
+        }
+        .flashcard .back-content {
+            font-size: 1.1rem;
+            color: #1e1e2a;
+        }
+        .flashcard .back-content .example-char {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1f6e3f;
+        }
+        .flashcard .back-content .example-list {
+            font-size: 0.9rem;
+            color: #4d6b55;
+            margin-top: 4px;
+        }
+        .flashcard-hint {
+            font-size: 0.8rem;
+            color: #7a7368;
+            margin-top: 8px;
+        }
+        .flash-progress {
+            font-size: 0.85rem;
+            color: #6b6154;
+            margin-top: 8px;
+        }
+        .fill-display {
+            font-size: 2.6rem;
+            text-align: center;
+            padding: 8px 0;
+            color: #1a1a26;
+            letter-spacing: 4px;
+        }
+        .fill-display .fill-blank {
+            display: inline-block;
+            min-width: 50px;
+            border-bottom: 4px solid #b8a99a;
+            margin: 0 4px;
+            padding: 0 6px;
+            background: #f4f0ea;
+            border-radius: 4px 4px 0 0;
+            color: #1e1e2a;
+            font-weight: 500;
+        }
+        .fill-display .fill-blank.filled-correct {
+            background: #b8e6c9;
+            border-bottom-color: #0f7b3a;
+        }
+        .fill-display .fill-blank.filled-wrong {
+            background: #fad1d1;
+            border-bottom-color: #b33a3a;
+        }
+        .fill-display .fill-char-info {
+            display: block;
+            font-size: 0.85rem;
+            color: #6b6154;
+            margin-top: 4px;
+        }
+        .action-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 12px;
+        }
+        .action-bar button {
+            padding: 6px 20px;
+            border-radius: 60px;
+            border: none;
+            background: #eae5dd;
+            border: 1px solid #d0c9be;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.12s;
+            font-size: 0.85rem;
+        }
+        .action-bar button.primary {
+            background: #1e1e2a;
+            color: white;
+            border-color: #1e1e2a;
+        }
+        .action-bar button.primary:hover {
+            background: #353545;
+        }
+        .action-bar button:active {
+            transform: scale(0.96);
+        }
+        @media (max-width: 460px) {
+            .app { padding: 16px 10px 22px; }
+            .menu-btn { font-size: 11px; padding: 5px 10px; }
+            .option-btn { font-size: 26px; padding: 10px 4px; min-height: 60px; }
+            .option-btn .main-char { font-size: 26px; }
+            .char-grid .char-btn { font-size: 24px; padding: 10px 2px; min-height: 60px; }
+            .pair-row .english-word { font-size: 24px; padding: 4px 14px; }
+            .pair-row .options button { font-size: 24px; padding: 8px 14px; min-width: 50px; }
+            .sub .controls label { font-size: 11px; }
+            .display-area .big-radical { font-size: 3rem; }
+            .match-item { font-size: 1rem; padding: 6px 10px; }
+            .flashcard .front-radical { font-size: 3.5rem; }
+            .fill-display { font-size: 2rem; }
+        }
+        @media (max-width: 380px) {
+            .menu-btn { font-size: 10px; padding: 4px 8px; }
+            .option-btn .sub-info { font-size: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="app" id="app">
+    <div class="menu-row" id="unitMenu">
+        <span class="menu-label">📘 Unit</span>
+    </div>
+    <div class="menu-row" id="gameMenu">
+        <span class="menu-label">🎮 Game</span>
+    </div>
+    <div class="menu-divider"></div>
+    <div class="title">✍️ Character Practice</div>
+    <div class="sub" id="unitSub">
+        <span id="unitLabel">Unit 6 · 东 我 西</span>
+        <span class="controls" id="gameControls"></span>
+    </div>
+    <div class="game-area" id="gameArea"></div>
+</div>
+
+<script>
+    // ========================================================
+    // 1. 课程数据：Unit 1–15 + Review
+    // ========================================================
+    const UNITS = {
+        '1': { label: 'Unit 1 · 一二三十八六', chars: ['一','二','三','十','八','六'] },
+        '2': { label: 'Unit 2 · 口见山小不', chars: ['口','见','山','小','不'] },
+        '3': { label: 'Unit 3 · 月心中人', chars: ['月','心','中','人'] },
+        '4': { label: 'Unit 4 · 七儿几九', chars: ['七','儿','几','九'] },
+        '5': { label: 'Unit 5 · 水女了大', chars: ['水','女','了','大'] },
+        '6': { label: 'Unit 6 · 东我西', chars: ['东','我','西'] },
+        '7': { label: 'Unit 7 · 四五书 (氵 讠)', chars: ['四','五','书'] },
+        '8': { label: 'Unit 8 · 少个 (钅 口)', chars: ['少','个'] },
+        '9': { label: 'Unit 9 · 在子工 (门 辶)', chars: ['在','子','工'] },
+        '10': { label: 'Unit 10 · 上下本末 (囗 礻)', chars: ['上','下','本','末'] },
+        '11': { label: 'Unit 11 · 午电 (阝 亻)', chars: ['午','电'] },
+        '12': { label: 'Unit 12 · 天气雨 (女 饣)', chars: ['天','气','雨'] },
+        '13': { label: 'Unit 13 · 日目习 (日 目)', chars: ['日','目','习'] },
+        '14': { label: 'Unit 14 · 开车回 (月 扌)', chars: ['开','车','回'] },
+        '15': { label: 'Unit 15 · 年出飞 (艹 宀)', chars: ['年','出','飞'] },
+        'review1_7': { label: '🔄 Review 1-7', chars: ['一','二','三','十','八','六','口','见','山','小','不','月','心','中','人','七','儿','几','九','水','女','了','大','东','我','西','四','五','书'] },
+        'review8_15': { label: '🔄 Review 8-15', chars: ['少','个','在','子','工','上','下','本','末','午','电','天','气','雨','日','目','习','开','车','回','年','出','飞'] },
+        'reviewAll': { label: '🔄 All Characters', chars: ['一','二','三','十','八','六','口','见','山','小','不','月','心','中','人','七','儿','几','九','水','女','了','大','东','我','西','四','五','书','少','个','在','子','工','上','下','本','末','午','电','天','气','雨','日','目','习','开','车','回','年','出','飞'] }
+    };
+    const UNIT_KEYS = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','review1_7','review8_15','reviewAll'];
+
+    // ========================================================
+    // 2. 课程偏旁部首映射
+    // ========================================================
+    const UNIT_RADICALS = {
+        '1': [], '2': [], '3': [], '4': [], '5': [], '6': [],
+        '7': ['氵', '讠'],
+        '8': ['钅', '口'],
+        '9': ['门', '辶'],
+        '10': ['囗', '礻'],
+        '11': ['阝', '亻'],
+        '12': ['女', '饣'],
+        '13': ['日', '目'],
+        '14': ['月', '扌'],
+        '15': ['艹', '宀'],
+        'review1_7': ['氵', '讠'],
+        'review8_15': ['钅','口','门','辶','囗','礻','阝','亻','女','饣','日','目','月','扌','艹','宀'],
+        'reviewAll': ['氵','讠','钅','口','门','辶','囗','礻','阝','亻','女','饣','日','目','月','扌','艹','宀']
+    };
+
+    // ========================================================
+    // 3. 偏旁部首详细数据
+    // ========================================================
+    const RADICAL_DETAILS = {
+        '氵': { name: '三点水', pinyin: 'sān diǎn shuǐ', meaning: 'water', emoji: '💧', examples: ['河','海','湖','流','洗','浪'] },
+        '讠': { name: '言字旁', pinyin: 'yán zì páng', meaning: 'speech', emoji: '💬', examples: ['说','话','讲','请','读','课'] },
+        '钅': { name: '金字旁', pinyin: 'jīn zì páng', meaning: 'metal/gold', emoji: '🔩', examples: ['银','铜','铁','钢','钱','针'] },
+        '口': { name: '口字旁', pinyin: 'kǒu zì páng', meaning: 'mouth', emoji: '👄', examples: ['吃','喝','唱','叫','喊','吹'] },
+        '门': { name: '门字框', pinyin: 'mén zì kuāng', meaning: 'door', emoji: '🚪', examples: ['问','间','闻','闷','闯','闲'] },
+        '辶': { name: '走之底', pinyin: 'zǒu zhī dǐ', meaning: 'walk', emoji: '🚶', examples: ['边','过','还','进','这','远'] },
+        '囗': { name: '国字框', pinyin: 'guó zì kuāng', meaning: 'enclosure', emoji: '📦', examples: ['国','园','圆','困','图','圈'] },
+        '礻': { name: '示字旁', pinyin: 'shì zì páng', meaning: 'spirit/ritual', emoji: '🙏', examples: ['礼','福','神','祖','祝','祥'] },
+        '阝': { name: '耳刀旁', pinyin: 'ěr dāo páng', meaning: 'hill/city', emoji: '⛰️', examples: ['那','都','阳','阴','阵','院'] },
+        '亻': { name: '单人旁', pinyin: 'dān rén páng', meaning: 'person', emoji: '🧑', examples: ['你','他','们','做','住','体'] },
+        '女': { name: '女字旁', pinyin: 'nǚ zì páng', meaning: 'woman', emoji: '👩', examples: ['好','妈','姐','妹','奶','她'] },
+        '饣': { name: '食字旁', pinyin: 'shí zì páng', meaning: 'food/eat', emoji: '🍜', examples: ['饭','饱','饿','饺','饼','饮'] },
+        '日': { name: '日字旁', pinyin: 'rì zì páng', meaning: 'sun/day', emoji: '☀️', examples: ['时','明','暗','早','春','晴'] },
+        '目': { name: '目字旁', pinyin: 'mù zì páng', meaning: 'eye', emoji: '👁️', examples: ['眼','睛','看','睡','盼','眉'] },
+        '月': { name: '肉月旁', pinyin: 'ròu yuè páng', meaning: 'flesh/body', emoji: '🥩', examples: ['肚','肺','肝','腿','脚','腰'] },
+        '扌': { name: '提手旁', pinyin: 'tí shǒu páng', meaning: 'hand', emoji: '✋', examples: ['打','拍','拉','找','把','拔'] },
+        '艹': { name: '草字头', pinyin: 'cǎo zì tóu', meaning: 'grass/plants', emoji: '🌿', examples: ['花','草','茶','菜','药','节'] },
+        '宀': { name: '宝盖头', pinyin: 'bǎo gài tóu', meaning: 'roof', emoji: '🏠', examples: ['家','安','字','室','宫','定'] }
+    };
+
+    // ========================================================
+    // 4. 汉字映射
+    // ========================================================
+    const ENGLISH_MAP = {
+        '东':'east','我':'I/me','西':'west',
+        '一':'one','二':'two','三':'three','十':'ten','八':'eight','六':'six',
+        '口':'mouth','见':'see','山':'mountain','小':'small','不':'no/not',
+        '月':'moon','心':'heart','中':'middle','人':'person',
+        '七':'seven','儿':'son/child','几':'several','九':'nine',
+        '水':'water','女':'woman','了':'(particle)','大':'big',
+        '四':'four','五':'five','书':'book',
+        '少':'few','个':'individual','在':'at','子':'child','工':'work',
+        '上':'up','下':'down','本':'root','末':'end','午':'noon','电':'electricity',
+        '天':'sky','气':'air','雨':'rain','日':'sun','目':'eye','习':'study',
+        '开':'open','车':'car','回':'return','年':'year','出':'out','飞':'fly',
+        '河':'river','海':'sea','湖':'lake','流':'flow','洗':'wash','浪':'wave',
+        '说':'speak','话':'speech','讲':'talk','请':'invite','读':'read','课':'lesson',
+        '银':'silver','铜':'copper','铁':'iron','钢':'steel','钱':'money','针':'needle',
+        '吃':'eat','喝':'drink','唱':'sing','叫':'call','喊':'shout','吹':'blow',
+        '问':'ask','间':'between','闻':'hear','闷':'bored','闯':'rush','闲':'idle',
+        '边':'side','过':'pass','还':'still','进':'enter','这':'this','远':'far',
+        '国':'country','园':'garden','圆':'round','困':'tired','图':'picture','圈':'circle',
+        '礼':'gift','福':'fortune','神':'god','祖':'ancestor','祝':'wish','祥':'auspicious',
+        '那':'that','都':'all','阳':'sunny','阴':'shady','阵':'array','院':'courtyard',
+        '你':'you','他':'he','们':'they','做':'do','住':'live','体':'body',
+        '好':'good','妈':'mother','姐':'sister','妹':'sister','奶':'milk','她':'she',
+        '饭':'rice','饱':'full','饿':'hungry','饺':'dumpling','饼':'cake','饮':'drink',
+        '时':'time','明':'bright','暗':'dark','早':'early','春':'spring','晴':'clear',
+        '眼':'eye','睛':'eye','看':'see','睡':'sleep','盼':'expect','眉':'eyebrow',
+        '肚':'belly','肺':'lung','肝':'liver','腿':'leg','脚':'foot','腰':'waist',
+        '打':'hit','拍':'clap','拉':'pull','找':'look','把':'hold','拔':'pull out',
+        '花':'flower','草':'grass','茶':'tea','菜':'vegetable','药':'medicine','节':'festival',
+        '家':'home','安':'safe','字':'character','室':'room','宫':'palace','定':'fixed'
+    };
+    const PINYIN_MAP = {
+        '东':'dōng','我':'wǒ','西':'xī',
+        '一':'yī','二':'èr','三':'sān','十':'shí','八':'bā','六':'liù',
+        '口':'kǒu','见':'jiàn','山':'shān','小':'xiǎo','不':'bù',
+        '月':'yuè','心':'xīn','中':'zhōng','人':'rén',
+        '七':'qī','儿':'ér','几':'jǐ','九':'jiǔ',
+        '水':'shuǐ','女':'nǚ','了':'le','大':'dà',
+        '四':'sì','五':'wǔ','书':'shū',
+        '少':'shǎo','个':'gè','在':'zài','子':'zǐ','工':'gōng',
+        '上':'shàng','下':'xià','本':'běn','末':'mò','午':'wǔ','电':'diàn',
+        '天':'tiān','气':'qì','雨':'yǔ','日':'rì','目':'mù','习':'xí',
+        '开':'kāi','车':'chē','回':'huí','年':'nián','出':'chū','飞':'fēi',
+        '河':'hé','海':'hǎi','湖':'hú','流':'liú','洗':'xǐ','浪':'làng',
+        '说':'shuō','话':'huà','讲':'jiǎng','请':'qǐng','读':'dú','课':'kè',
+        '银':'yín','铜':'tóng','铁':'tiě','钢':'gāng','钱':'qián','针':'zhēn',
+        '吃':'chī','喝':'hē','唱':'chàng','叫':'jiào','喊':'hǎn','吹':'chuī',
+        '问':'wèn','间':'jiān','闻':'wén','闷':'mèn','闯':'chuǎng','闲':'xián',
+        '边':'biān','过':'guò','还':'hái','进':'jìn','这':'zhè','远':'yuǎn',
+        '国':'guó','园':'yuán','圆':'yuán','困':'kùn','图':'tú','圈':'quān',
+        '礼':'lǐ','福':'fú','神':'shén','祖':'zǔ','祝':'zhù','祥':'xiáng',
+        '那':'nà','都':'dōu','阳':'yáng','阴':'yīn','阵':'zhèn','院':'yuàn',
+        '你':'nǐ','他':'tā','们':'men','做':'zuò','住':'zhù','体':'tǐ',
+        '好':'hǎo','妈':'mā','姐':'jiě','妹':'mèi','奶':'nǎi','她':'tā',
+        '饭':'fàn','饱':'bǎo','饿':'è','饺':'jiǎo','饼':'bǐng','饮':'yǐn',
+        '时':'shí','明':'míng','暗':'àn','早':'zǎo','春':'chūn','晴':'qíng',
+        '眼':'yǎn','睛':'jīng','看':'kàn','睡':'shuì','盼':'pàn','眉':'méi',
+        '肚':'dù','肺':'fèi','肝':'gān','腿':'tuǐ','脚':'jiǎo','腰':'yāo',
+        '打':'dǎ','拍':'pāi','拉':'lā','找':'zhǎo','把':'bǎ','拔':'bá',
+        '花':'huā','草':'cǎo','茶':'chá','菜':'cài','药':'yào','节':'jié',
+        '家':'jiā','安':'ān','字':'zì','室':'shì','宫':'gōng','定':'dìng'
+    };
+    const ALL_CHARS = Object.keys(PINYIN_MAP);
+
+    // ========================================================
+    // 5. 辅助函数
+    // ========================================================
+    function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+    function getPinyin(c) { return PINYIN_MAP[c] || c; }
+    function getEnglish(c) { return ENGLISH_MAP[c] || ''; }
+    function getCharInfo(char) { return { pinyin: PINYIN_MAP[char] || '', en: ENGLISH_MAP[char] || '' }; }
+    function getRadicalName(r) {
+        const d = RADICAL_DETAILS[r];
+        return d ? d.name : r;
+    }
+    function getRadicalMeaning(r) {
+        const d = RADICAL_DETAILS[r];
+        return d ? d.meaning : '';
+    }
+    function getRadicalEmoji(r) {
+        const d = RADICAL_DETAILS[r];
+        return d ? d.emoji : '🔤';
+    }
+    function getRadicalExamples(r) {
+        const d = RADICAL_DETAILS[r];
+        return d ? d.examples : [];
+    }
+    function getAllExampleChars() {
+        const chars = [];
+        Object.keys(RADICAL_DETAILS).forEach(key => {
+            RADICAL_DETAILS[key].examples.forEach(ex => {
+                if (!chars.includes(ex)) chars.push(ex);
+            });
+        });
+        return chars;
+    }
+    function speakCharacter(char, callback) {
+        if (!autoPronounce) { if (callback) callback(); return; }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(char);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 0.8;
+            utterance.onend = () => { if (callback) callback(); };
+            utterance.onerror = () => { if (callback) callback(); };
+            window.speechSynthesis.speak(utterance);
+        } else { if (callback) callback(); }
+    }
+    function speakChinese(text) {
+        if (!autoPronounce) return;
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 0.8;
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+
+    // ========================================================
+    // 6. 主应用状态
+    // ========================================================
+    let currentUnit = '6';
+    let currentGame = 'listen';
+    let isRandomOrder = true;
+    let autoPronounce = true;
+    let isAccumulative = false; // 新增：累积模式开关
+
+    const unitMenu = document.getElementById('unitMenu');
+    const gameMenu = document.getElementById('gameMenu');
+    const gameArea = document.getElementById('gameArea');
+    const unitSub = document.getElementById('unitSub');
+    const unitLabel = document.getElementById('unitLabel');
+    const gameControls = document.getElementById('gameControls');
+
+    // ========================================================
+    // 7. 菜单构建
+    // ========================================================
+    function buildUnitMenu() {
+        unitMenu.innerHTML = '<span class="menu-label">📘 Unit</span>';
+        UNIT_KEYS.forEach(key => {
+            const btn = document.createElement('button');
+            btn.className = `menu-btn unit-btn${key === currentUnit ? ' active' : ''}`;
+            const shortLabels = {
+                '1':'1','2':'2','3':'3','4':'4','5':'5','6':'6','7':'7',
+                '8':'8','9':'9','10':'10','11':'11','12':'12','13':'13','14':'14','15':'15',
+                'review1_7':'1-7','review8_15':'8-15','reviewAll':'All'
+            };
+            btn.textContent = shortLabels[key] || key;
+            btn.title = UNITS[key].label;
+            btn.dataset.unit = key;
+            btn.addEventListener('click', () => {
+                currentUnit = key;
+                buildUnitMenu();
+                renderGame();
+            });
+            unitMenu.appendChild(btn);
+        });
+    }
+
+    function buildGameMenu() {
+        gameMenu.innerHTML = '<span class="menu-label">🎮 Game</span>';
+        const charGames = [
+            { id: 'listen', label: '🔊 Pinyin→Char' },
+            { id: 'pair', label: '🐹 Whack-a-Char' },
+            { id: 'odd', label: '🕵️ Find Odd' },
+            { id: 'allchars', label: '🎯 Hunt' }
+        ];
+        const radicalGames = [
+            { id: 'radical_pick', label: '🎯 Pick Radical' },
+            { id: 'radical_identify', label: '🔍 Identify' },
+            { id: 'radical_match', label: '🔗 Match' },
+            { id: 'radical_flash', label: '🃏 Flashcards' },
+            { id: 'radical_fill', label: '✏️ Fill' }
+        ];
+
+        charGames.forEach(g => {
+            const btn = document.createElement('button');
+            btn.className = `menu-btn game-btn${g.id === currentGame ? ' active' : ''}`;
+            btn.textContent = g.label;
+            btn.dataset.game = g.id;
+            btn.addEventListener('click', () => {
+                currentGame = g.id;
+                buildGameMenu();
+                renderGame();
+            });
+            gameMenu.appendChild(btn);
+        });
+
+        const sep = document.createElement('span');
+        sep.style.cssText = 'font-size:11px;color:#b8a8c8;padding:0 4px;display:flex;align-items:center;';
+        sep.textContent = '|';
+        gameMenu.appendChild(sep);
+
+        radicalGames.forEach(g => {
+            const btn = document.createElement('button');
+            btn.className = `menu-btn radical-btn${g.id === currentGame ? ' active' : ''}`;
+            btn.textContent = g.label;
+            btn.dataset.game = g.id;
+            btn.addEventListener('click', () => {
+                currentGame = g.id;
+                buildGameMenu();
+                renderGame();
+            });
+            gameMenu.appendChild(btn);
+        });
+    }
+
+    // ========================================================
+    // 8. 获取字符/部首范围（支持累积模式）
+    // ========================================================
+    function getUnitChars(unitKey) {
+        const unit = UNITS[unitKey];
+        if (!unit) return [];
+        if (isAccumulative) {
+            // 累积模式：包含当前单元及之前所有单元的汉字
+            const unitKeys = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'];
+            const idx = unitKeys.indexOf(unitKey);
+            const allChars = [];
+            for (let i = 0; i <= idx && i < unitKeys.length; i++) {
+                const u = UNITS[unitKeys[i]];
+                if (u) {
+                    u.chars.forEach(c => { if (!allChars.includes(c)) allChars.push(c); });
+                }
+            }
+            // 如果是 review，使用其自身
+            if (unitKey === 'review1_7' || unitKey === 'review8_15' || unitKey === 'reviewAll') {
+                return unit.chars;
+            }
+            return allChars;
+        } else {
+            return unit.chars;
+        }
+    }
+
+    function getRadicalsForUnit(unitKey) {
+        // 先检查是否是 review
+        if (unitKey === 'review1_7') return ['氵', '讠'];
+        if (unitKey === 'review8_15') return ['钅','口','门','辶','囗','礻','阝','亻','女','饣','日','目','月','扌','艹','宀'];
+        if (unitKey === 'reviewAll') return ['氵','讠','钅','口','门','辶','囗','礻','阝','亻','女','饣','日','目','月','扌','艹','宀'];
+
+        const unitKeys = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'];
+        const idx = unitKeys.indexOf(unitKey);
+        const allRadicals = [];
+
+        if (isAccumulative) {
+            // 累积模式：从第7课开始累积
+            for (let i = 0; i <= idx && i < unitKeys.length; i++) {
+                const rads = UNIT_RADICALS[unitKeys[i]] || [];
+                rads.forEach(r => { if (!allRadicals.includes(r)) allRadicals.push(r); });
+            }
+        } else {
+            // 非累积：只取当前单元的部首
+            const rads = UNIT_RADICALS[unitKey] || [];
+            rads.forEach(r => { if (!allRadicals.includes(r)) allRadicals.push(r); });
+        }
+        return allRadicals;
+    }
+
+    // ========================================================
+    // 9. 渲染主入口
+    // ========================================================
+    function renderGame() {
+        const unit = UNITS[currentUnit];
+        unitLabel.textContent = unit.label;
+
+        let controlsHtml = '';
+        controlsHtml += `<label>🔊 <input type="checkbox" id="pronounceToggle" ${autoPronounce ? 'checked' : ''}> Auto</label>`;
+        controlsHtml += `<label>🎲 <input type="checkbox" id="randomToggle" ${isRandomOrder ? 'checked' : ''}> Random</label>`;
+        controlsHtml += `<label>📚 <input type="checkbox" id="accumulativeToggle" ${isAccumulative ? 'checked' : ''}> Accumulative</label>`;
+        gameControls.innerHTML = controlsHtml;
+
+        document.getElementById('randomToggle').addEventListener('change', (e) => {
+            isRandomOrder = e.target.checked;
+            renderGame();
+        });
+        document.getElementById('pronounceToggle').addEventListener('change', (e) => {
+            autoPronounce = e.target.checked;
+            renderGame();
+        });
+        document.getElementById('accumulativeToggle').addEventListener('change', (e) => {
+            isAccumulative = e.target.checked;
+            renderGame();
+        });
+
+        if (currentGame.startsWith('radical_')) {
+            renderRadicalGame(currentUnit);
+        } else {
+            const chars = getUnitChars(currentUnit);
+            renderCharGame(chars);
+        }
+    }
+
+    // ========================================================
+    // 10. 汉字练习
+    // ========================================================
+    function renderCharGame(chars) {
+        if (!chars || chars.length === 0) {
+            gameArea.innerHTML = `<div style="text-align:center;padding:40px 20px;color:#7a5f8a;"><div style="font-size:48px;margin-bottom:16px;">📚</div><h3 style="color:#4a2d5e;">No characters in this unit</h3></div>`;
+            return;
+        }
+        switch(currentGame) {
+            case 'listen': renderListen(chars); break;
+            case 'pair': renderPair(chars); break;
+            case 'odd': renderOdd(chars); break;
+            case 'allchars': renderAllChars(chars); break;
+            default: renderListen(chars);
+        }
+    }
+
+    // ---------- 1. listen ----------
+    function renderListen(chars) {
+        const allChars = Object.keys(PINYIN_MAP);
+        const uniqueAll = [...new Set(allChars)];
+        let html = `<div id="listenContainer">`;
+        html += `<div style="text-align:center;"><div class="pinyin-badge" id="listenPinyin">dōng</div></div>`;
+        html += `<div style="text-align:center;font-size:18px;margin-bottom:8px;">👆 Which character matches <strong id="listenTarget">dōng</strong> ?</div>`;
+        html += `<div class="options-grid" id="listenOptions"></div>`;
+        html += `<div class="feedback" id="listenFeedback">💡 Click a character</div>`;
+        html += `<div class="score">✅ Correct: <span id="listenScore">0</span> / <span id="listenTotal">${chars.length}</span></div>`;
+        html += `</div>`;
+        gameArea.innerHTML = html;
+
+        let correctCount = 0, answered = false, isComplete = false, queue = [], autoTimer = null;
+        const CORRECT_WAIT = 600, WRONG_WAIT = 2500;
+
+        function getNextTarget() {
+            if (queue.length === 0) queue = isRandomOrder ? shuffle(chars) : [...chars];
+            return queue.pop();
+        }
+        function loadQuestion() {
+            if (isComplete) return;
+            const target = getNextTarget();
+            if (!target) { showComplete(); return; }
+            let pool = uniqueAll.filter(c => c !== target);
+            pool = shuffle(pool);
+            let options = [target, ...pool.slice(0, 3)];
+            options = shuffle(options);
+            document.getElementById('listenPinyin').textContent = getPinyin(target);
+            document.getElementById('listenTarget').textContent = getPinyin(target);
+            speakCharacter(target);
+            const container = document.getElementById('listenOptions');
+            container.innerHTML = '';
+            options.forEach(ch => {
+                const info = getCharInfo(ch);
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span class="main-char">${ch}</span><span class="sub-info"><span class="en">${info.en}</span></span>`;
+                btn.dataset.char = ch;
+                btn.addEventListener('click', () => handleClick(btn, target));
+                container.appendChild(btn);
+            });
+            answered = false;
+            document.getElementById('listenFeedback').innerHTML = '💡 Click a character';
+            document.getElementById('listenFeedback').style.color = '#2d1a3a';
+            document.querySelectorAll('#listenOptions .option-btn').forEach(b => {
+                b.disabled = false;
+                b.classList.remove('correct','wrong');
+            });
+            document.getElementById('listenScore').textContent = correctCount;
+        }
+        function handleClick(btn, target) {
+            if (answered || isComplete) return;
+            if (autoTimer) clearTimeout(autoTimer);
+            const selected = btn.dataset.char;
+            const isCorrect = (selected === target);
+            const allBtns = document.querySelectorAll('#listenOptions .option-btn');
+            allBtns.forEach(b => b.disabled = true);
+            allBtns.forEach(b => {
+                if (b.dataset.char === target) b.classList.add('correct');
+                else if (b.dataset.char === selected && !isCorrect) b.classList.add('wrong');
+            });
+            const fb = document.getElementById('listenFeedback');
+            const scoreSpan = document.getElementById('listenScore');
+            if (isCorrect) {
+                correctCount++;
+                scoreSpan.textContent = correctCount;
+                const info = getCharInfo(target);
+                fb.innerHTML = `🎉 Correct! “${target}” means “${info.en}”`;
+                fb.style.color = '#3a7a3a';
+                autoTimer = setTimeout(() => { if (!isComplete) loadQuestion(); }, CORRECT_WAIT);
+            } else {
+                const info = getCharInfo(target);
+                fb.innerHTML = `❌ The correct answer is “${target}” (${info.en})`;
+                fb.style.color = '#b34a4a';
+                speakCharacter(target);
+                autoTimer = setTimeout(() => { if (!isComplete) loadQuestion(); }, WRONG_WAIT);
+            }
+            answered = true;
+        }
+        function showComplete() {
+            isComplete = true;
+            if (autoTimer) clearTimeout(autoTimer);
+            document.getElementById('listenContainer').innerHTML = `
+                <div class="complete-banner">
+                    <span class="big-emoji">🎉</span>
+                    <h3>All done! You've studied all ${chars.length} characters!</h3>
+                    <p>Correct: ${correctCount} / ${chars.length}</p>
+                    <button class="action-btn" id="restartListenBtn">🔄 Start Over</button>
+                </div>
+            `;
+            document.getElementById('restartListenBtn').addEventListener('click', () => {
+                correctCount = 0; isComplete = false; queue = [];
+                renderListen(getUnitChars(currentUnit));
+            });
+        }
+        loadQuestion();
+    }
+
+    // ---------- 2. pair ----------
+    function renderPair(chars) {
+        const allChars = Object.keys(ENGLISH_MAP);
+        let html = `<div id="pairContainer">`;
+        html += `<div class="pair-row"><span class="english-word" id="pairEnglish">east</span><span style="font-size:20px;font-weight:600;color:#4a2a5a;">→</span><div class="options" id="pairOptions"></div><span class="pair-result" id="pairResult"></span></div>`;
+        html += `<div style="text-align:center;font-size:16px;color:#5f4a6a;margin:4px 0 10px;">Which character means this?</div>`;
+        html += `<div class="feedback" id="pairFeedback">💡 Choose a character</div>`;
+        html += `<div class="score">✅ Correct: <span id="pairScore">0</span> / <span id="pairTotal">${chars.length}</span></div></div>`;
+        gameArea.innerHTML = html;
+
+        let correctCount = 0, answered = false, isComplete = false, queue = [], autoTimer = null;
+        const CORRECT_WAIT = 600, WRONG_WAIT = 2500;
+
+        function getNextTarget() {
+            if (queue.length === 0) queue = isRandomOrder ? shuffle(chars) : [...chars];
+            return queue.pop();
+        }
+        function loadQuestion() {
+            if (isComplete) return;
+            const target = getNextTarget();
+            if (!target) { showComplete(); return; }
+            const english = ENGLISH_MAP[target] || target;
+            let pool = allChars.filter(c => c !== target);
+            pool = shuffle(pool);
+            let options = [target, ...pool.slice(0, 3)];
+            options = shuffle(options);
+            document.getElementById('pairEnglish').textContent = english;
+            speakCharacter(target);
+            const container = document.getElementById('pairOptions');
+            container.innerHTML = '';
+            options.forEach(ch => {
+                const info = getCharInfo(ch);
+                const btn = document.createElement('button');
+                btn.innerHTML = `${ch}<span class="pair-sub">${info.en}</span>`;
+                btn.dataset.char = ch;
+                btn.addEventListener('click', () => handlePairClick(btn, target));
+                container.appendChild(btn);
+            });
+            answered = false;
+            document.getElementById('pairFeedback').innerHTML = '💡 Choose a character';
+            document.getElementById('pairFeedback').style.color = '#2d1a3a';
+            document.getElementById('pairResult').textContent = '';
+            document.querySelectorAll('#pairOptions button').forEach(b => {
+                b.disabled = false;
+                b.className = '';
+            });
+            document.getElementById('pairScore').textContent = correctCount;
+        }
+        function handlePairClick(btn, target) {
+            if (answered || isComplete) return;
+            if (autoTimer) clearTimeout(autoTimer);
+            const selected = btn.dataset.char;
+            const isCorrect = (selected === target);
+            const allBtns = document.querySelectorAll('#pairOptions button');
+            allBtns.forEach(b => b.disabled = true);
+            allBtns.forEach(b => {
+                if (b.dataset.char === target) b.classList.add('correct');
+                else if (b.dataset.char === selected && !isCorrect) b.classList.add('wrong');
+            });
+            const fb = document.getElementById('pairFeedback');
+            const scoreSpan = document.getElementById('pairScore');
+            const resultSpan = document.getElementById('pairResult');
+            if (isCorrect) {
+                correctCount++;
+                scoreSpan.textContent = correctCount;
+                const info = getCharInfo(target);
+                fb.innerHTML = `✅ Correct! “${target}” means “${info.en}”`;
+                fb.style.color = '#3a7a3a';
+                resultSpan.textContent = '✅';
+                autoTimer = setTimeout(() => { if (!isComplete) loadQuestion(); }, CORRECT_WAIT);
+            } else {
+                const info = getCharInfo(target);
+                fb.innerHTML = `❌ “${ENGLISH_MAP[target] || target}” → “${target}” (${info.en})`;
+                fb.style.color = '#b34a4a';
+                resultSpan.textContent = '❌';
+                speakCharacter(target);
+                autoTimer = setTimeout(() => { if (!isComplete) loadQuestion(); }, WRONG_WAIT);
+            }
+            answered = true;
+        }
+        function showComplete() {
+            isComplete = true;
+            if (autoTimer) clearTimeout(autoTimer);
+            document.getElementById('pairContainer').innerHTML = `
+                <div class="complete-banner">
+                    <span class="big-emoji">🎉</span>
+                    <h3>All whacked! You got ${correctCount} / ${chars.length}!</h3>
+                    <button class="action-btn" id="restartPairBtn">🔄 Start Over</button>
+                </div>
+            `;
+            document.getElementById('restartPairBtn').addEventListener('click', () => {
+                correctCount = 0; isComplete = false; queue = [];
+                renderPair(getUnitChars(currentUnit));
+            });
+        }
+        loadQuestion();
+    }
+
+    // ---------- 3. odd ----------
+    function renderOdd(chars) {
+        const allChars = Object.keys(ENGLISH_MAP);
+        let html = `<div id="oddContainer">`;
+        html += `<div style="font-size:16px;color:#4a2a5a;margin-bottom:8px;" id="oddHint">👀 Find the odd one out</div>`;
+        html += `<div class="char-grid" id="oddGrid"></div>`;
+        html += `<div class="feedback" id="oddFeedback">💡 Click the odd character</div>`;
+        html += `<div class="score">✅ Correct: <span id="oddScore">0</span> / <span id="oddTotal">${chars.length}</span></div></div>`;
+        gameArea.innerHTML = html;
+
+        let correctCount = 0, answered = false, isComplete = false, queue = [], autoTimer = null;
+        const CORRECT_WAIT = 600, WRONG_WAIT = 2500;
+
+        function getNextTarget() {
+            if (queue.length === 0) queue = isRandomOrder ? shuffle(chars) : [...chars];
+            return queue.pop();
+        }
+        function loadQuestion() {
+            if (isComplete) return;
+            const target = getNextTarget();
+            if (!target) { showComplete(); return; }
+            let pool = allChars.filter(c => c !== target);
+            pool = shuffle(pool);
+            const intruder = pool[0] || '?';
+            let items = [target, target, target, intruder];
+            items = shuffle(items);
+            document.getElementById('oddHint').textContent = `👀 Find the odd one out (not “${target}”)`;
+            speakCharacter(target);
+            const grid = document.getElementById('oddGrid');
+            grid.innerHTML = '';
+            items.forEach(ch => {
+                const info = getCharInfo(ch);
+                const btn = document.createElement('button');
+                btn.className = 'char-btn';
+                btn.innerHTML = `<span>${ch}</span><span class="char-pinyin">${info.pinyin}</span><span class="char-en">${info.en}</span>`;
+                btn.dataset.char = ch;
+                btn.dataset.isCorrect = (ch === target) ? 'true' : 'false';
+                btn.addEventListener('click', () => handleOddClick(btn, items, target));
+                grid.appendChild(btn);
+            });
+            answered = false;
+            document.getElementById('oddFeedback').innerHTML = '💡 Click the odd character';
+            document.getElementById('oddFeedback').style.color = '#2d1a3a';
+            document.querySelectorAll('#oddGrid .char-btn').forEach(b => {
+                b.disabled = false;
+                b.className = 'char-btn';
+            });
+            document.getElementById('oddScore').textContent = correctCount;
+        }
+        function handleOddClick(btn, items, target) {
+            if (answered || isComplete) return;
+            if (autoTimer) clearTimeout(autoTimer);
+            const isCorrect = (btn.dataset.isCorrect === 'false');
+            const allBtns = document.querySelectorAll('#oddGrid .char-btn');
+            allBtns.forEach(b => b.disabled = true);
+            allBtns.forEach(b => { if (b.dataset.isCorrect === 'true') b.classList.add('reveal-correct'); });
+            const fb = document.getElementById('oddFeedback');
+            const scoreSpan = document.getElementById('oddScore');
+            if (isCorrect) {
+                btn.classList.add('selected-correct');
+                correctCount++;
+                scoreSpan.textContent = correctCount;
+                const info = getCharInfo(btn.dataset.char);
+                fb.innerHTML = `🎉 Found it! “${btn.textContent.trim()}” (${info.en}) is the odd one!`;
+                fb.style.color = '#3a7a3a';
+                autoTimer = setTimeout(() => { if (!isComplete) loadQuestion(); }, CORRECT_WAIT);
+            } else {
+                btn.classList.add('selected-wrong');
+                const correctChar = items.find(c => c !== btn.textContent.trim());
+                const info = getCharInfo(correctChar || target);
+                fb.innerHTML = `❌ The odd one is “${correctChar || target}” (${info.en})`;
+                fb.style.color = '#b04a4a';
+                speakCharacter(target);
+                autoTimer = setTimeout(() => { if (!isComplete) loadQuestion(); }, WRONG_WAIT);
+            }
+            answered = true;
+        }
+        function showComplete() {
+            isComplete = true;
+            if (autoTimer) clearTimeout(autoTimer);
+            document.getElementById('oddContainer').innerHTML = `
+                <div class="complete-banner">
+                    <span class="big-emoji">🎉</span>
+                    <h3>All done! You found ${correctCount} / ${chars.length}!</h3>
+                    <button class="action-btn" id="restartOddBtn">🔄 Start Over</button>
+                </div>
+            `;
+            document.getElementById('restartOddBtn').addEventListener('click', () => {
+                correctCount = 0; isComplete = false; queue = [];
+                renderOdd(getUnitChars(currentUnit));
+            });
+        }
+        loadQuestion();
+    }
+
+    // ---------- 4. allchars ----------
+    function renderAllChars(chars) {
+        const allChars = Object.keys(ENGLISH_MAP);
+        let html = `<div id="allCharsContainer">`;
+        html += `<div style="text-align:center;font-size:18px;margin-bottom:8px;">🎯 Find the character: <strong id="allCharsTarget">东</strong></div>`;
+        html += `<div class="options-grid" id="allCharsOptions"></div>`;
+        html += `<div class="feedback" id="allCharsFeedback">💡 Click the correct character!</div>`;
+        html += `<div class="score">✅ Correct: <span id="allCharsScore">0</span> / <span id="allCharsTotal">${chars.length}</span></div></div>`;
+        gameArea.innerHTML = html;
+
+        let correctCount = 0, answered = false, isComplete = false, queue = [], autoTimer = null;
+        const CORRECT_WAIT = 600, WRONG_WAIT = 2500;
+
+        function getNextTarget() {
+            if (queue.length === 0) queue = isRandomOrder ? shuffle(chars) : [...chars];
+            return queue.pop();
+        }
+        function loadQuestion() {
+            if (isComplete) return;
+            const target = getNextTarget();
+            if (!target) { showComplete(); return; }
+            let pool = allChars.filter(c => c !== target);
+            pool = shuffle(pool);
+            let options = [target, ...pool.slice(0, 3)];
+            options = shuffle(options);
+            document.getElementById('allCharsTarget').textContent = target;
+            speakCharacter(target);
+            const container = document.getElementById('allCharsOptions');
+            container.innerHTML = '';
+            options.forEach(ch => {
+                const info = getCharInfo(ch);
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span class="main-char">${ch}</span><span class="sub-info"><span class="pinyin">${info.pinyin}</span><span class="sep">|</span><span class="en">${info.en}</span></span>`;
+                btn.dataset.char = ch;
+                btn.addEventListener('click', () => handleAllCharsClick(btn, target));
+                container.appendChild(btn);
+            });
+            answered = false;
+            document.getElementById('allCharsFeedback').innerHTML = '💡 Click the correct character!';
+            document.getElementById('allCharsFeedback').style.color = '#2d1a3a';
+            document.querySelectorAll('#allCharsOptions .option-btn').forEach(b => {
+                b.disabled = false;
+                b.classList.remove('correct','wrong');
+            });
+            document.getElementById('allCharsScore').textContent = correctCount;
+        }
+        function handleAllCharsClick(btn, target) {
+            if (answered || isComplete) return;
+            if (autoTimer) clearTimeout(autoTimer);
+            const selected = btn.dataset.char;
+            const isCorrect = (selected === target);
+            const allBtns = document.querySelectorAll('#allCharsOptions .option-btn');
+            allBtns.forEach(b => b.disabled = true);
+            allBtns.forEach(b => {
+                if (b.dataset.char === target) b.classList.add('correct');
+                else if (b.dataset.char === selected && !isCorrect) b.classList.add('wrong');
+            });
+            const fb = document.getElementById('allCharsFeedback');
+            const scoreSpan = document.getElementById('allCharsScore');
+            if (isCorrect) {
+                correctCount++;
+                scoreSpan.textContent = correctCount;
+                const info = getCharInfo(target);
+                fb.innerHTML = `🎯 Found it! “${target}” (${info.en}) 🎉`;
+                fb.style.color = '#3a7a3a';
+                autoTimer = setTimeout(() => { if (!isComplete) loadQuestion(); }, CORRECT_WAIT);
+            } else {
+                const info = getCharInfo(target);
+                fb.innerHTML = `❌ The correct answer is “${target}” (${info.en})`;
+                fb.style.color = '#b34a4a';
+                speakCharacter(target);
+                autoTimer = setTimeout(() => { if (!isComplete) loadQuestion(); }, WRONG_WAIT);
+            }
+            answered = true;
+        }
+        function showComplete() {
+            isComplete = true;
+            if (autoTimer) clearTimeout(autoTimer);
+            document.getElementById('allCharsContainer').innerHTML = `
+                <div class="complete-banner">
+                    <span class="big-emoji">🎯🎉</span>
+                    <h3>Hunt complete! You found ${correctCount} / ${chars.length}!</h3>
+                    <button class="action-btn" id="restartAllCharsBtn">🔄 Start Over</button>
+                </div>
+            `;
+            document.getElementById('restartAllCharsBtn').addEventListener('click', () => {
+                correctCount = 0; isComplete = false; queue = [];
+                renderAllChars(getUnitChars(currentUnit));
+            });
+        }
+        loadQuestion();
+    }
+
+    // ========================================================
+    // 11. 偏旁部首练习
+    // ========================================================
+    function addNextButton(containerId, nextFn) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        let nextBtn = document.getElementById('radicalNextBtn');
+        if (!nextBtn) {
+            nextBtn = document.createElement('button');
+            nextBtn.id = 'radicalNextBtn';
+            nextBtn.className = 'action-btn';
+            nextBtn.textContent = '→ Next';
+            nextBtn.style.marginTop = '12px';
+            nextBtn.style.padding = '10px 20px';
+            nextBtn.style.fontSize = '16px';
+            nextBtn.style.width = 'auto';
+            nextBtn.style.display = 'none';
+            container.appendChild(nextBtn);
+        }
+        nextBtn.onclick = nextFn;
+        return nextBtn;
+    }
+
+    function renderRadicalGame(unitKey) {
+        const radicals = getRadicalsForUnit(unitKey);
+        if (radicals.length === 0) {
+            gameArea.innerHTML = `
+                <div style="text-align:center;padding:40px 20px;color:#7a5f8a;">
+                    <div style="font-size:48px;margin-bottom:16px;">📚</div>
+                    <h3 style="color:#4a2d5e;">No radicals in this unit</h3>
+                    <p style="margin-top:8px;">${isAccumulative ? 'No radicals available yet. Try a later unit!' : 'This unit has no radicals. Try turning on Accumulative mode!'}</p>
+                </div>
+            `;
+            return;
+        }
+
+        switch(currentGame) {
+            case 'radical_pick': renderRadicalPick(radicals); break;
+            case 'radical_identify': renderRadicalIdentify(radicals); break;
+            case 'radical_match': renderRadicalMatch(radicals); break;
+            case 'radical_flash': renderRadicalFlash(radicals); break;
+            case 'radical_fill': renderRadicalFill(radicals); break;
+            default: renderRadicalPick(radicals);
+        }
+    }
+
+    // ---------- 偏旁：Pick Radical ----------
+    function renderRadicalPick(radicals) {
+        let html = `<div id="radPickContainer">`;
+        html += `<div id="radPickContent"></div>`;
+        html += `<div class="feedback" id="radPickFeedback">💡 Choose a character</div>`;
+        html += `<div class="score">✅ Correct: <span id="radPickScore">0</span></div>`;
+        html += `</div>`;
+        gameArea.innerHTML = html;
+
+        let score = 0, isAnswered = false, currentRadical = null, autoTimer = null;
+        const CORRECT_WAIT = 800, WRONG_WAIT = 2500;
+
+        function loadQuestion() {
+            if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+            isAnswered = false;
+
+            let radical, correct, options;
+            let attempts = 0;
+            while (attempts < 50) {
+                radical = radicals[Math.floor(Math.random() * radicals.length)];
+                const examples = getRadicalExamples(radical);
+                if (examples.length === 0) continue;
+                correct = examples[Math.floor(Math.random() * examples.length)];
+                const allExampleChars = getAllExampleChars();
+                const otherChars = allExampleChars.filter(c => !examples.includes(c));
+                if (otherChars.length < 3) continue;
+                const distractors = shuffle(otherChars).slice(0, 3);
+                options = shuffle([correct, ...distractors]);
+                const matchCount = options.filter(c => examples.includes(c)).length;
+                if (matchCount === 1) break;
+                attempts++;
+            }
+            if (!options) {
+                radical = radicals[0];
+                const examples = getRadicalExamples(radical);
+                correct = examples[0] || '?';
+                const allExampleChars = getAllExampleChars();
+                const otherChars = allExampleChars.filter(c => !examples.includes(c));
+                const distractors = shuffle(otherChars).slice(0, 3);
+                options = shuffle([correct, ...distractors]);
+            }
+            currentRadical = radical;
+
+            const content = document.getElementById('radPickContent');
+            content.innerHTML = `
+                <div class="question-text">Which character contains the radical <strong>${radical}</strong>?</div>
+                <div class="display-area">
+                    <span class="big-radical">${radical}</span>
+                    <div class="radical-name">${radical} · ${getRadicalName(radical)}</div>
+                    <div class="radical-meaning">${getRadicalEmoji(radical)} ${getRadicalMeaning(radical)}</div>
+                </div>
+                <div class="options-grid" id="radPickOptions"></div>
+            `;
+
+            const grid = document.getElementById('radPickOptions');
+            options.forEach(opt => {
+                const info = getCharInfo(opt);
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span class="main-char">${opt}</span><span class="sub-info"><span class="pinyin">${info.pinyin}</span><span class="sep">|</span><span class="en">${info.en}</span></span>`;
+                btn.dataset.char = opt;
+                btn.addEventListener('click', () => handlePick(btn));
+                grid.appendChild(btn);
+            });
+
+            document.getElementById('radPickFeedback').className = 'feedback info';
+            document.getElementById('radPickFeedback').textContent = '💡 Choose a character';
+            if (autoPronounce) speakChinese(getRadicalName(radical));
+
+            const nextBtn = document.getElementById('radicalNextBtn');
+            if (nextBtn) nextBtn.style.display = 'none';
+        }
+
+        function handlePick(btn) {
+            if (isAnswered) return;
+            if (autoTimer) clearTimeout(autoTimer);
+            isAnswered = true;
+            const selected = btn.dataset.char;
+            const examples = getRadicalExamples(currentRadical);
+            const isCorrect = examples.includes(selected);
+
+            const allBtns = document.querySelectorAll('#radPickOptions .option-btn');
+            allBtns.forEach(b => b.disabled = true);
+            allBtns.forEach(b => {
+                if (examples.includes(b.dataset.char)) b.classList.add('correct');
+                else if (b.dataset.char === selected && !isCorrect) b.classList.add('wrong');
+            });
+
+            const fb = document.getElementById('radPickFeedback');
+            if (isCorrect) {
+                score++;
+                document.getElementById('radPickScore').textContent = score;
+                const info = getCharInfo(selected);
+                fb.className = 'feedback correct';
+                fb.textContent = `✅ Correct! “${selected}” (${info.en}) contains ${currentRadical}`;
+                autoTimer = setTimeout(() => { loadQuestion(); }, CORRECT_WAIT);
+            } else {
+                fb.className = 'feedback wrong';
+                const correctChar = examples[0];
+                const info = getCharInfo(correctChar);
+                fb.textContent = `❌ Wrong. “${currentRadical}” examples: ${examples.map(c => `${c}(${getCharInfo(c).en})`).join('、')}`;
+                if (autoPronounce) speakChinese(getRadicalName(currentRadical));
+                autoTimer = setTimeout(() => { loadQuestion(); }, WRONG_WAIT);
+            }
+            const nextBtn = document.getElementById('radicalNextBtn');
+            if (nextBtn) {
+                nextBtn.style.display = 'inline-block';
+                nextBtn.onclick = () => { if (autoTimer) clearTimeout(autoTimer); loadQuestion(); };
+            }
+        }
+
+        loadQuestion();
+        addNextButton('radPickContainer', () => { if (autoTimer) clearTimeout(autoTimer); loadQuestion(); });
+    }
+
+    // ---------- 偏旁：Identify Radical ----------
+    function renderRadicalIdentify(radicals) {
+        let html = `<div id="radIdentifyContainer">`;
+        html += `<div id="radIdentifyContent"></div>`;
+        html += `<div class="feedback" id="radIdentifyFeedback">💡 Choose a radical</div>`;
+        html += `<div class="score">✅ Correct: <span id="radIdentifyScore">0</span></div>`;
+        html += `</div>`;
+        gameArea.innerHTML = html;
+
+        let score = 0, isAnswered = false, currentCorrect = null, currentChar = null, autoTimer = null;
+        const CORRECT_WAIT = 800, WRONG_WAIT = 2500;
+
+        function loadQuestion() {
+            if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+            isAnswered = false;
+
+            let radical, char;
+            let attempts = 0;
+            while (attempts < 30) {
+                radical = radicals[Math.floor(Math.random() * radicals.length)];
+                const examples = getRadicalExamples(radical);
+                if (examples.length > 0) { char = examples[Math.floor(Math.random() * examples.length)]; break; }
+                attempts++;
+            }
+            if (!char) { radical = radicals[0]; char = getRadicalExamples(radical)[0] || '?'; }
+            currentCorrect = radical;
+            currentChar = char;
+
+            const otherRadicals = radicals.filter(r => r !== radical);
+            const distractors = shuffle(otherRadicals).slice(0, 3);
+            const options = shuffle([radical, ...distractors]);
+            const info = getCharInfo(char);
+
+            const content = document.getElementById('radIdentifyContent');
+            content.innerHTML = `
+                <div class="question-text">Which radical does "<strong>${char}</strong>" belong to?</div>
+                <div class="display-area">
+                    <div class="char-display-with-en">
+                        <span class="char-big">${char}</span>
+                        <div class="char-info-line">${info.pinyin} · ${info.en}</div>
+                    </div>
+                    <div><button class="sound-btn" id="radIdentifySound">🔊</button></div>
+                </div>
+                <div class="options-grid" id="radIdentifyOptions"></div>
+            `;
+
+            document.getElementById('radIdentifySound').addEventListener('click', () => speakChinese(char));
+            if (autoPronounce) speakChinese(char);
+
+            const grid = document.getElementById('radIdentifyOptions');
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span class="main-char">${opt}</span><span class="sub-info"><span class="pinyin">${getRadicalName(opt)}</span><span class="sep">|</span><span class="en">${getRadicalMeaning(opt)}</span></span>`;
+                btn.dataset.radical = opt;
+                btn.addEventListener('click', () => handleIdentify(btn));
+                grid.appendChild(btn);
+            });
+
+            document.getElementById('radIdentifyFeedback').className = 'feedback info';
+            document.getElementById('radIdentifyFeedback').textContent = '💡 Choose a radical';
+
+            const nextBtn = document.getElementById('radicalNextBtn');
+            if (nextBtn) nextBtn.style.display = 'none';
+        }
+
+        function handleIdentify(btn) {
+            if (isAnswered) return;
+            if (autoTimer) clearTimeout(autoTimer);
+            isAnswered = true;
+            const selected = btn.dataset.radical;
+            const isCorrect = (selected === currentCorrect);
+
+            const allBtns = document.querySelectorAll('#radIdentifyOptions .option-btn');
+            allBtns.forEach(b => b.disabled = true);
+            allBtns.forEach(b => {
+                if (b.dataset.radical === currentCorrect) b.classList.add('correct');
+                else if (b.dataset.radical === selected && !isCorrect) b.classList.add('wrong');
+            });
+
+            const fb = document.getElementById('radIdentifyFeedback');
+            const info = getCharInfo(currentChar);
+            if (isCorrect) {
+                score++;
+                document.getElementById('radIdentifyScore').textContent = score;
+                fb.className = 'feedback correct';
+                fb.textContent = `✅ Correct! “${currentChar}” (${info.en}) belongs to ${currentCorrect} (${getRadicalName(currentCorrect)})`;
+                autoTimer = setTimeout(() => { loadQuestion(); }, CORRECT_WAIT);
+            } else {
+                fb.className = 'feedback wrong';
+                fb.textContent = `❌ Wrong. “${currentChar}” (${info.en}) belongs to ${currentCorrect} (${getRadicalName(currentCorrect)})`;
+                if (autoPronounce) speakChinese(getRadicalName(currentCorrect));
+                autoTimer = setTimeout(() => { loadQuestion(); }, WRONG_WAIT);
+            }
+            const nextBtn = document.getElementById('radicalNextBtn');
+            if (nextBtn) {
+                nextBtn.style.display = 'inline-block';
+                nextBtn.onclick = () => { if (autoTimer) clearTimeout(autoTimer); loadQuestion(); };
+            }
+        }
+
+        loadQuestion();
+        addNextButton('radIdentifyContainer', () => { if (autoTimer) clearTimeout(autoTimer); loadQuestion(); });
+    }
+
+    // ---------- 偏旁：Match ----------
+    function renderRadicalMatch(radicals) {
+        let html = `<div id="radMatchContainer">`;
+        html += `<div id="radMatchContent"></div>`;
+        html += `<div class="feedback" id="radMatchFeedback">💡 Click to match</div>`;
+        html += `</div>`;
+        gameArea.innerHTML = html;
+
+        let matchSelected = null, matchMatchedCount = 0, matchPairs = [];
+
+        function loadMatch() {
+            const shuffled = shuffle([...radicals]);
+            const selected = shuffled.slice(0, Math.min(4, shuffled.length));
+            matchPairs = selected.map(r => {
+                const examples = getRadicalExamples(r);
+                const ch = examples.length > 0 ? examples[Math.floor(Math.random() * examples.length)] : '?';
+                return { radical: r, char: ch, pairId: r };
+            });
+            const left = shuffle(matchPairs.map(p => ({ ...p, side: 'left' })));
+            const right = shuffle(matchPairs.map(p => ({ ...p, side: 'right' })));
+
+            const content = document.getElementById('radMatchContent');
+            content.innerHTML = `
+                <div class="question-text">🔗 Click a radical on the left, then its matching character on the right</div>
+                <div class="match-area" id="radMatchArea">
+                    <div class="match-col" id="radMatchLeft"><div class="match-label">🔊 Radical</div></div>
+                    <div class="match-col" id="radMatchRight"><div class="match-label">📝 Character</div></div>
+                </div>
+                <div class="match-status" id="radMatchStatus">Matched 0 / ${matchPairs.length}</div>
+            `;
+
+            const leftCol = document.getElementById('radMatchLeft');
+            const rightCol = document.getElementById('radMatchRight');
+
+            left.forEach(p => {
+                const el = document.createElement('div');
+                el.className = 'match-item';
+                el.innerHTML = `${p.radical}<span class="match-en">${getRadicalMeaning(p.radical)}</span>`;
+                el.dataset.pairId = p.pairId;
+                el.dataset.side = 'left';
+                el.addEventListener('click', () => {
+                    if (el.classList.contains('matched')) return;
+                    document.querySelectorAll('#radMatchLeft .match-item').forEach(e => e.classList.remove('selected'));
+                    el.classList.add('selected');
+                    matchSelected = el;
+                    if (autoPronounce) speakChinese(getRadicalName(p.radical));
+                });
+                leftCol.appendChild(el);
+            });
+
+            right.forEach(p => {
+                const info = getCharInfo(p.char);
+                const el = document.createElement('div');
+                el.className = 'match-item';
+                el.innerHTML = `${p.char}<span class="match-pinyin">${info.pinyin}</span><span class="match-en">${info.en}</span>`;
+                el.dataset.pairId = p.pairId;
+                el.dataset.side = 'right';
+                el.addEventListener('click', () => {
+                    if (el.classList.contains('matched')) return;
+                    if (!matchSelected) {
+                        document.getElementById('radMatchFeedback').textContent = '👈 First click a radical on the left';
+                        return;
+                    }
+                    const leftId = matchSelected.dataset.pairId;
+                    const rightId = el.dataset.pairId;
+                    if (leftId === rightId) {
+                        matchSelected.classList.remove('selected');
+                        matchSelected.classList.add('matched');
+                        el.classList.add('matched');
+                        matchMatchedCount++;
+                        matchSelected = null;
+                        document.getElementById('radMatchStatus').textContent = `Matched ${matchMatchedCount} / ${matchPairs.length}`;
+                        document.getElementById('radMatchFeedback').className = 'feedback correct';
+                        document.getElementById('radMatchFeedback').textContent = `✅ Matched! “${p.char}” (${info.en})`;
+                        if (matchMatchedCount === matchPairs.length) {
+                            document.getElementById('radMatchFeedback').textContent = '🎉 All matched! Great job!';
+                            setTimeout(() => { matchMatchedCount = 0; loadMatch(); }, 1500);
+                        }
+                    } else {
+                        el.style.background = '#fecaca';
+                        setTimeout(() => el.style.background = '', 300);
+                        if (matchSelected) {
+                            matchSelected.style.background = '#fecaca';
+                            setTimeout(() => { if (matchSelected) matchSelected.style.background = ''; }, 300);
+                        }
+                        document.getElementById('radMatchFeedback').className = 'feedback wrong';
+                        document.getElementById('radMatchFeedback').textContent = '❌ Not a match, try again';
+                    }
+                });
+                rightCol.appendChild(el);
+            });
+
+            matchSelected = null;
+            matchMatchedCount = 0;
+            document.getElementById('radMatchFeedback').className = 'feedback info';
+            document.getElementById('radMatchFeedback').textContent = '💡 Click to match';
+
+            const nextBtn = document.getElementById('radicalNextBtn');
+            if (nextBtn) nextBtn.style.display = 'none';
+            if (autoPronounce && left.length > 0) {
+                speakChinese(getRadicalName(left[0].radical));
+            }
+        }
+
+        loadMatch();
+        const container = document.getElementById('radMatchContainer');
+        let nextBtn = document.getElementById('radicalNextBtn');
+        if (!nextBtn) {
+            nextBtn = document.createElement('button');
+            nextBtn.id = 'radicalNextBtn';
+            nextBtn.className = 'action-btn';
+            nextBtn.textContent = '→ Next Round';
+            nextBtn.style.marginTop = '12px';
+            nextBtn.style.padding = '10px 20px';
+            nextBtn.style.fontSize = '16px';
+            nextBtn.style.width = 'auto';
+            container.appendChild(nextBtn);
+        }
+        nextBtn.onclick = () => { matchMatchedCount = 0; loadMatch(); };
+    }
+
+    // ---------- 偏旁：Flashcards ----------
+    function renderRadicalFlash(radicals) {
+        let html = `<div id="radFlashContainer">`;
+        html += `<div id="radFlashContent"></div>`;
+        html += `<div class="feedback" id="radFlashFeedback">🃏 Tap card</div>`;
+        html += `<div class="score">✅ Learned: <span id="radFlashScore">0</span></div>`;
+        html += `</div>`;
+        gameArea.innerHTML = html;
+
+        let flipped = false, score = 0;
+        let currentRadical = radicals[Math.floor(Math.random() * radicals.length)];
+
+        function renderCard() {
+            const content = document.getElementById('radFlashContent');
+            content.innerHTML = `
+                <div class="flashcard-area">
+                    <div class="flashcard" id="radFlashCard">
+                        ${flipped ? `
+                            <div class="back-content">
+                                <div style="font-size:1.8rem;font-weight:600;">${currentRadical}</div>
+                                <div style="font-size:1.1rem;">${getRadicalName(currentRadical)}</div>
+                                <div style="font-size:0.9rem;color:#6b6154;">${RADICAL_DETAILS[currentRadical]?.pinyin || ''}</div>
+                                <div style="font-size:0.9rem;color:#6b6154;">${getRadicalEmoji(currentRadical)} ${getRadicalMeaning(currentRadical)}</div>
+                                <div class="example-list">Examples: ${getRadicalExamples(currentRadical).map(c => `${c} (${getCharInfo(c).en})`).join('、')}</div>
+                            </div>
+                        ` : `
+                            <div class="front-radical">${currentRadical}</div>
+                            <div class="front-name">Tap to flip</div>
+                        `}
+                    </div>
+                    <div class="flashcard-hint">${flipped ? '👆 Tap for next card' : '👆 Tap to flip'}</div>
+                    <div class="flash-progress">${radicals.length} radicals available</div>
+                </div>
+            `;
+
+            const card = document.getElementById('radFlashCard');
+            card.addEventListener('click', function() {
+                if (!flipped) {
+                    flipped = true;
+                    renderCard();
+                    document.getElementById('radFlashFeedback').textContent = '📖 Tap to continue to next card';
+                    if (autoPronounce) speakChinese(getRadicalName(currentRadical));
+                } else {
+                    score++;
+                    document.getElementById('radFlashScore').textContent = score;
+                    currentRadical = radicals[Math.floor(Math.random() * radicals.length)];
+                    flipped = false;
+                    renderCard();
+                    document.getElementById('radFlashFeedback').textContent = '🃏 Tap card to flip';
+                    if (autoPronounce) speakChinese(getRadicalName(currentRadical));
+                }
+            });
+
+            if (!flipped && autoPronounce) {
+                setTimeout(() => speakChinese(getRadicalName(currentRadical)), 300);
+            }
+            document.getElementById('radFlashFeedback').className = 'feedback info';
+            document.getElementById('radFlashFeedback').textContent = flipped ? '📖 Tap to continue' : '🃏 Tap card to flip';
+        }
+
+        renderCard();
+        const container = document.getElementById('radFlashContainer');
+        let nextBtn = document.getElementById('radicalNextBtn');
+        if (!nextBtn) {
+            nextBtn = document.createElement('button');
+            nextBtn.id = 'radicalNextBtn';
+            nextBtn.className = 'action-btn';
+            nextBtn.textContent = '→ Next Card';
+            nextBtn.style.marginTop = '12px';
+            nextBtn.style.padding = '10px 20px';
+            nextBtn.style.fontSize = '16px';
+            nextBtn.style.width = 'auto';
+            container.appendChild(nextBtn);
+        }
+        nextBtn.onclick = () => {
+            if (flipped) {
+                score++;
+                document.getElementById('radFlashScore').textContent = score;
+            }
+            currentRadical = radicals[Math.floor(Math.random() * radicals.length)];
+            flipped = false;
+            renderCard();
+            document.getElementById('radFlashFeedback').textContent = '🃏 Tap card to flip';
+            if (autoPronounce) speakChinese(getRadicalName(currentRadical));
+        };
+    }
+
+    // ---------- 偏旁：Fill Radical ----------
+    function renderRadicalFill(radicals) {
+        let html = `<div id="radFillContainer">`;
+        html += `<div id="radFillContent"></div>`;
+        html += `<div class="feedback" id="radFillFeedback">💡 Choose a radical</div>`;
+        html += `<div class="score">✅ Correct: <span id="radFillScore">0</span></div>`;
+        html += `</div>`;
+        gameArea.innerHTML = html;
+
+        let score = 0, isAnswered = false, currentCorrect = null, currentChar = null, autoTimer = null;
+        const CORRECT_WAIT = 800, WRONG_WAIT = 2500;
+
+        function loadQuestion() {
+            if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+            isAnswered = false;
+
+            let radical, char;
+            let attempts = 0;
+            while (attempts < 30) {
+                radical = radicals[Math.floor(Math.random() * radicals.length)];
+                const examples = getRadicalExamples(radical);
+                if (examples.length > 0) { char = examples[Math.floor(Math.random() * examples.length)]; break; }
+                attempts++;
+            }
+            if (!char) { radical = radicals[0]; char = getRadicalExamples(radical)[0] || '?'; }
+            currentCorrect = radical;
+            currentChar = char;
+
+            const info = getCharInfo(char);
+            const otherRadicals = radicals.filter(r => r !== radical);
+            const distractors = shuffle(otherRadicals).slice(0, 3);
+            const options = shuffle([radical, ...distractors]);
+
+            const content = document.getElementById('radFillContent');
+            content.innerHTML = `
+                <div class="question-text">Choose the correct radical to complete "<strong>${char}</strong>"</div>
+                <div class="fill-display">
+                    <span class="fill-blank" id="radFillBlank">___</span>
+                    <span style="font-size:2.6rem;font-weight:600;">${char}</span>
+                    <span class="fill-char-info">${info.pinyin} · ${info.en}</span>
+                </div>
+                <div class="options-grid" id="radFillOptions"></div>
+            `;
+
+            const grid = document.getElementById('radFillOptions');
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span class="main-char">${opt}</span><span class="sub-info"><span class="pinyin">${getRadicalName(opt)}</span><span class="sep">|</span><span class="en">${getRadicalMeaning(opt)}</span></span>`;
+                btn.dataset.radical = opt;
+                btn.addEventListener('click', () => handleFill(btn));
+                grid.appendChild(btn);
+            });
+
+            document.getElementById('radFillFeedback').className = 'feedback info';
+            document.getElementById('radFillFeedback').textContent = '💡 Choose a radical';
+            if (autoPronounce) speakChinese(char);
+
+            const nextBtn = document.getElementById('radicalNextBtn');
+            if (nextBtn) nextBtn.style.display = 'none';
+        }
+
+        function handleFill(btn) {
+            if (isAnswered) return;
+            if (autoTimer) clearTimeout(autoTimer);
+            isAnswered = true;
+            const selected = btn.dataset.radical;
+            const isCorrect = (selected === currentCorrect);
+
+            const allBtns = document.querySelectorAll('#radFillOptions .option-btn');
+            allBtns.forEach(b => b.disabled = true);
+            allBtns.forEach(b => {
+                if (b.dataset.radical === currentCorrect) b.classList.add('correct');
+                else if (b.dataset.radical === selected && !isCorrect) b.classList.add('wrong');
+            });
+
+            const blank = document.getElementById('radFillBlank');
+            const fb = document.getElementById('radFillFeedback');
+            const info = getCharInfo(currentChar);
+            if (isCorrect) {
+                score++;
+                document.getElementById('radFillScore').textContent = score;
+                blank.textContent = currentCorrect;
+                blank.className = 'fill-blank filled-correct';
+                fb.className = 'feedback correct';
+                fb.textContent = `✅ Correct! ${currentCorrect} + ... = “${currentChar}” (${info.en})`;
+                autoTimer = setTimeout(() => { loadQuestion(); }, CORRECT_WAIT);
+            } else {
+                blank.textContent = currentCorrect;
+                blank.className = 'fill-blank filled-wrong';
+                fb.className = 'feedback wrong';
+                fb.textContent = `❌ Wrong. “${currentChar}” (${info.en}) uses ${currentCorrect} (${getRadicalName(currentCorrect)})`;
+                if (autoPronounce) speakChinese(getRadicalName(currentCorrect));
+                autoTimer = setTimeout(() => { loadQuestion(); }, WRONG_WAIT);
+            }
+            const nextBtn = document.getElementById('radicalNextBtn');
+            if (nextBtn) {
+                nextBtn.style.display = 'inline-block';
+                nextBtn.onclick = () => { if (autoTimer) clearTimeout(autoTimer); loadQuestion(); };
+            }
+        }
+
+        loadQuestion();
+        addNextButton('radFillContainer', () => { if (autoTimer) clearTimeout(autoTimer); loadQuestion(); });
+    }
+
+    // ========================================================
+    // 12. 初始化
+    // ========================================================
+    buildUnitMenu();
+    buildGameMenu();
+    renderGame();
+</script>
+</body>
+</html>

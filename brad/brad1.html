@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课堂指令 · 拼音点读</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 24px 16px 70px;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+    background: linear-gradient(180deg, #fff7ec 0%, #f1f7ff 100%);
+    min-height: 100vh;
+    color: #2b2b2b;
+  }
+
+  header {
+    max-width: 1000px;
+    margin: 0 auto 26px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 27px;
+    margin: 0 0 8px;
+    letter-spacing: 2px;
+    color: #33415c;
+  }
+
+  .sub {
+    color: #949494;
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .sub b { color: #ff8f00; }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: #666;
+  }
+
+  .legend span { display: inline-flex; align-items: center; }
+
+  .legend i {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+
+  main { max-width: 1000px; margin: 0 auto; }
+
+  h2 {
+    font-size: 17px;
+    margin: 34px 0 14px;
+    padding-left: 12px;
+    border-left: 5px solid #ffb74d;
+    color: #4a4a4a;
+    font-weight: 600;
+  }
+
+  /* ---------- 句子卡片 ---------- */
+  .phrase {
+    background: #fff;
+    border-radius: 16px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+    transition: box-shadow .2s, transform .2s, background .2s;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .phrase:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .09);
+    transform: translateY(-2px);
+  }
+
+  .phrase.speaking {
+    background: #fffaf0;
+    box-shadow: 0 0 0 2px #ffcc80, 0 6px 20px rgba(0, 0, 0, .09);
+  }
+
+  .num {
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    background: #ffe0b2;
+    color: #b26a00;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  .body { flex: 1 1 auto; min-width: 0; }
+
+  .chars {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    row-gap: 8px;
+  }
+
+  .char {
+    display: inline-flex;
+    cursor: pointer;
+    padding: 5px 6px 3px;
+    border-radius: 10px;
+    font-size: 30px;
+    line-height: 1;
+    transition: background .15s, transform .1s;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  .char:hover { background: #f0f6ff; }
+  .char:active { transform: scale(.9); }
+  .char.speaking { background: #fff3cd; }
+
+  ruby { ruby-position: over; }
+  rt { font-size: .42em; font-weight: 700; letter-spacing: .5px; }
+
+  /* 声调颜色 */
+  .t1 rt { color: #e53935; }   /* 一声 */
+  .t2 rt { color: #f57c00; }   /* 二声 */
+  .t3 rt { color: #2e7d32; }   /* 三声 */
+  .t4 rt { color: #1565c0; }   /* 四声 */
+  .t0 rt { color: #8d8d8d; }   /* 轻声 */
+
+  .punct {
+    font-size: 30px;
+    line-height: 1;
+    padding: 5px 2px 3px;
+    color: #c9c9c9;
+  }
+
+  /* ---------- 英语翻译 ---------- */
+  .en {
+    margin-top: 8px;
+    font-size: 15px;
+    color: #7a8ba6;
+    font-style: italic;
+    letter-spacing: .3px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 600px) {
+    .char, .punct { font-size: 25px; }
+    h1 { font-size: 22px; }
+    .phrase { padding: 12px 14px; gap: 10px; }
+    .en { font-size: 13.5px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>课堂中文指令 · 拼音点读</h1>
+  <p class="sub">
+    点<b>整句</b> → 读整句　·　点<b>单字</b> → 读单字
+  </p>
+  <div class="legend">
+    <span><i style="background:#e53935"></i>一声</span>
+    <span><i style="background:#f57c00"></i>二声</span>
+    <span><i style="background:#2e7d32"></i>三声</span>
+    <span><i style="background:#1565c0"></i>四声</span>
+    <span><i style="background:#8d8d8d"></i>轻声</span>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<script>
+/* ================= 数据 =================
+   每个句子: { en: 英文, chars: [ [汉字, 拼音, 声调] ] }
+   声调: 1/2/3/4/0，-1 表示标点
+========================================= */
+const groups = [
+  {
+    title: "第一组 · 称呼与基础指令",
+    items: [
+      { en: "Kids.", chars: [["小","xiǎo",3],["朋","péng",2],["友","yǒu",3],["。",null,-1]] },
+      { en: "Everyone.", chars: [["小","xiǎo",3],["朋","péng",2],["友","yǒu",3],["们","men",0],["。",null,-1]] },
+      { en: "Sit nicely.", chars: [["请","qǐng",3],["坐","zuò",4],["好","hǎo",3],["。",null,-1]] },
+      { en: "Be quiet, please.", chars: [["请","qǐng",3],["安","ān",1],["静","jìng",4],["。",null,-1]] },
+      { en: "Eyes on the teacher.", chars: [["小","xiǎo",3],["眼","yǎn",3],["睛","jing",0],["，",null,-1],["看","kàn",4],["老","lǎo",3],["师","shī",1],["。",null,-1]] },
+      { en: "Ears listening.", chars: [["小","xiǎo",3],["耳","ěr",3],["朵","duo",0],["，",null,-1],["听","tīng",1],["我","wǒ",3],["说","shuō",1],["。",null,-1]] },
+      { en: "Stand up.", chars: [["站","zhàn",4],["起","qǐ",3],["来","lái",2],["。",null,-1]] },
+      { en: "Sit down.", chars: [["坐","zuò",4],["下","xià",4],["。",null,-1]] },
+      { en: "Raise your hand.", chars: [["举","jǔ",3],["手","shǒu",3],["。",null,-1]] },
+      { en: "Come here.", chars: [["过","guò",4],["来","lái",2],["。",null,-1]] },
+      { en: "Go back to your seat.", chars: [["回","huí",2],["座","zuò",4],["位","wèi",4],["。",null,-1]] },
+      { en: "Line up.", chars: [["排","pái",2],["队","duì",4],["。",null,-1]] },
+      { en: "Read after me.", chars: [["跟","gēn",1],["我","wǒ",3],["读","dú",2],["。",null,-1]] },
+      { en: "Stop.", chars: [["停","tíng",2],["。",null,-1]] }
+    ]
+  },
+  {
+    title: "第二组 · 任务与互动",
+    items: [
+      { en: "Take out your book.", chars: [["拿","ná",2],["出","chū",1],["书","shū",1],["。",null,-1]] },
+      { en: "Take out your notebook.", chars: [["拿","ná",2],["出","chū",1],["本","běn",3],["子","zi",0],["。",null,-1]] },
+      { en: "Take out your pencil.", chars: [["拿","ná",2],["出","chū",1],["铅","qiān",1],["笔","bǐ",3],["。",null,-1]] },
+      { en: "Turn to page ___.", chars: [["翻","fān",1],["到","dào",4],["第","dì",4],["几","jǐ",3],["页","yè",4],["。",null,-1]] },
+      { en: "Match.", chars: [["连","lián",2],["一","yī",1],["连","lián",2],["。",null,-1]] },
+      { en: "Do as I do.", chars: [["请","qǐng",3],["跟","gēn",1],["我","wǒ",3],["做","zuò",4],["。",null,-1]] },
+      { en: "Louder, please.", chars: [["请","qǐng",3],["大","dà",4],["声","shēng",1],["一","yī",1],["点","diǎn",3],["。",null,-1]] },
+      { en: "Say it again, please.", chars: [["请","qǐng",3],["再","zài",4],["说","shuō",1],["一","yī",1],["遍","biàn",4],["。",null,-1]] },
+      { en: "One by one.", chars: [["一","yī",1],["个","gè",4],["一","yī",1],["个","gè",4],["来","lái",2],["。",null,-1]] },
+      { en: "It's your turn.", chars: [["到","dào",4],["你","nǐ",3],["了","le",0],["。",null,-1]] }
+    ]
+  }
+];
+
+/* ================= 语音 ================= */
+let zhVoice = null;
+
+function pickVoice() {
+  const vs = window.speechSynthesis.getVoices() || [];
+  return vs.find(v => /^zh[-_]CN/i.test(v.lang))
+      || vs.find(v => /^zh/i.test(v.lang))
+      || vs.find(v => /Chinese|中文|普通话/i.test(v.name))
+      || null;
+}
+
+if ('speechSynthesis' in window) {
+  zhVoice = pickVoice();
+  window.speechSynthesis.onvoiceschanged = () => { zhVoice = pickVoice(); };
+}
+
+/* 清除所有高亮 */
+function clearHighlight() {
+  document.querySelectorAll('.speaking')
+    .forEach(n => n.classList.remove('speaking'));
+}
+
+/**
+ * 朗读
+ * @param {string} text     要读的内容
+ * @param {HTMLElement} el  朗读时高亮的元素
+ * @param {number} rate     语速
+ */
+function speak(text, el, rate) {
+  if (!('speechSynthesis' in window)) {
+    alert('当前浏览器不支持语音朗读，请用 Chrome / Edge / Safari 打开');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  clearHighlight();
+
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'zh-CN';
+  u.rate = rate || 0.75;
+  u.pitch = 1.05;
+  if (zhVoice) u.voice = zhVoice;
+
+  if (el) {
+    el.classList.add('speaking');
+    const done = () => el.classList.remove('speaking');
+    u.onend = done;
+    u.onerror = done;
+  }
+
+  window.speechSynthesis.speak(u);
+}
+
+/* ================= 渲染 ================= */
+const app = document.getElementById('app');
+let counter = 0;
+
+groups.forEach(group => {
+  const h2 = document.createElement('h2');
+  h2.textContent = group.title;
+  app.appendChild(h2);
+
+  group.items.forEach(item => {
+    counter++;
+
+    /* --- 整句文本（去标点，语音更顺） --- */
+    const fullText = item.chars
+      .filter(c => c[2] !== -1)
+      .map(c => c[0])
+      .join('');
+
+    /* --- 卡片 --- */
+    const card = document.createElement('div');
+    card.className = 'phrase';
+    card.title = '点击朗读整句';
+
+    /* 序号 */
+    const num = document.createElement('span');
+    num.className = 'num';
+    num.textContent = counter;
+    card.appendChild(num);
+
+    /* 右侧主体 */
+    const body = document.createElement('div');
+    body.className = 'body';
+
+    /* 汉字 + 拼音 */
+    const charsEl = document.createElement('div');
+    charsEl.className = 'chars';
+
+    item.chars.forEach(([ch, py, tone]) => {
+      if (tone === -1) {                 // 标点
+        const p = document.createElement('span');
+        p.className = 'punct';
+        p.textContent = ch;
+        charsEl.appendChild(p);
+        return;
+      }
+
+      const wrap = document.createElement('span');
+      wrap.className = 'char t' + tone;
+
+      const ruby = document.createElement('ruby');
+      ruby.textContent = ch;
+
+      const rt = document.createElement('rt');
+      rt.textContent = py;
+      ruby.appendChild(rt);
+
+      wrap.appendChild(ruby);
+
+      /* 点单字 → 只读这个字，阻止冒泡到卡片 */
+      wrap.addEventListener('click', e => {
+        e.stopPropagation();
+        speak(ch, wrap, 0.6);
+      });
+
+      charsEl.appendChild(wrap);
+    });
+
+    body.appendChild(charsEl);
+
+    /* 英语翻译 */
+    const en = document.createElement('div');
+    en.className = 'en';
+    en.textContent = item.en;
+    body.appendChild(en);
+
+    card.appendChild(body);
+
+    /* 点整张卡片 → 读整句 */
+    card.addEventListener('click', () => {
+      speak(fullText, card, 0.75);
+    });
+
+    app.appendChild(card);
+  });
+});
+</script>
+
+</body>
+</html>
