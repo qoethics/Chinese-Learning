@@ -2,6 +2,20 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<script>
+// 部署环境：目录 URL 无尾斜杠时相对链接会丢目录，动态补一个目录 base；本地 file:// 不启用。
+if (location.protocol !== 'file:') {
+  (function () {
+    var p = location.pathname;
+    if (!/\/$/.test(p)) {
+      p = /\.[^\/]+$/.test(p) ? p.slice(0, p.lastIndexOf('/') + 1) : p + '/';
+    }
+    var b = document.createElement('base');
+    b.href = p;
+    document.head.appendChild(b);
+  })();
+}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chinese Practice</title>
 <style>
