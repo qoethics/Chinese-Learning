@@ -232,11 +232,14 @@
    * 在这里设置密码和跳转地址。
    * 左边是密码（区分大小写），右边是跳转到的页面。
    */
+  // 部署到 EdgeOne 后跳转到目录形式 URL（如 /Winston，地址栏不再出现 index.html）。
+  // 本地用 file:// 打开时退回带 index.html 的相对路径，方便本地测试。
+  var IS_FILE = location.protocol === 'file:';
   var ACCOUNTS = {
-    "jessica": "jessica/",
-    "winston": "winston/",
-    "brad": "brad/",
-    "hsk1": "hsk1/"
+    "jessica": IS_FILE ? "jessica/index.html" : "/Jessica",
+    "winston": IS_FILE ? "winston/index.html" : "/Winston",
+    "brad": IS_FILE ? "brad/index.html" : "/Brad",
+    "hsk1": IS_FILE ? "hsk1/index.html" : "/hsk1"
   };
 
   var form = document.getElementById('loginForm');
