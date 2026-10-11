@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>伊朗局势与石油 · 单词与语法</title>
+<style>
+  * { box-sizing: border-box; }
+
+  :root {
+    --ink:     #2c2c34;
+    --ink-2:   #55555f;
+    --ink-3:   #8a8a99;
+    --line:    rgba(150,160,180,.28);
+    --line-2:  rgba(150,160,180,.45);
+
+    --tone1: #d94a4a;
+    --tone2: #cf8500;
+    --tone3: #189a58;
+    --tone4: #2563d4;
+    --tone5: #8a8a99;
+  }
+
+  html { scroll-behavior: smooth; font-size: 18px; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                 "Noto Sans SC", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background-color: #eef0f4;
+    background-image:
+      radial-gradient(circle at 18% -6%,  #ffffff 0%, transparent 44%),
+      radial-gradient(circle at 88% 6%,   #f4f6f9 0%, transparent 40%),
+      radial-gradient(circle at 50% 108%, #e6e9ef 0%, transparent 52%),
+      linear-gradient(180deg, #f8f9fb 0%, #e9ecf1 100%);
+    background-attachment: fixed;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.menu-open { overflow: hidden; }
+
+  /* ================= ruby 注音 ================= */
+  ruby {
+    ruby-position: over;
+    ruby-align: center;
+    margin: 0 .1em;
+  }
+  rt {
+    font-size: .8em;
+    letter-spacing: .05em;
+    line-height: 1.45;
+    font-weight: 600;
+    font-family: "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+    color: var(--tone5);
+  }
+  rt .tone-1 { color: var(--tone1); }
+  rt .tone-2 { color: var(--tone2); }
+  rt .tone-3 { color: var(--tone3); }
+  rt .tone-4 { color: var(--tone4); }
+  rt .tone-5 { color: var(--tone5); }
+
+  /* ================= 汉堡按钮 ================= */
+  .menu-btn {
+    position: fixed;
+    top: .85rem;
+    left: .85rem;
+    z-index: 60;
+    width: 44px; height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 24px -18px rgba(90,100,120,.95);
+    cursor: pointer;
+    transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .menu-btn:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px -18px rgba(90,100,120,1);
+  }
+  .menu-btn .bars {
+    display: block;
+    width: 19px;
+    height: 13px;
+    position: relative;
+  }
+  .menu-btn .bars i {
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #7d8494, #5c6472);
+    transition: transform .28s ease, opacity .2s ease, top .28s ease;
+  }
+  .menu-btn .bars i:nth-child(1) { top: 0; }
+  .menu-btn .bars i:nth-child(2) { top: 5.5px; }
+  .menu-btn .bars i:nth-child(3) { top: 11px; }
+
+  body.menu-open .menu-btn { opacity: 0; pointer-events: none; }
+
+  /* ================= 侧边抽屉 ================= */
+  .drawer {
+    position: fixed;
+    top: 0; left: 0;
+    height: 100%;
+    width: min(300px, 82vw);
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    padding: 1.05rem .6rem 1.6rem;
+    overflow-y: auto;
+    background: linear-gradient(168deg, #f8f9fb 0%, #eef0f4 55%, #e6e9ef 100%);
+    border-right: 1px solid var(--line);
+    box-shadow: 20px 0 50px -34px rgba(90,100,120,1);
+    transform: translateX(-102%);
+    transition: transform .34s cubic-bezier(.4,.02,.2,1);
+  }
+  body.menu-open .drawer { transform: translateX(0); }
+
+  .drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .15rem .55rem 1rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: .55rem;
+  }
+  .drawer-head .t {
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .3em;
+    text-indent: .3em;
+    color: #7d8494;
+  }
+  .close-btn {
+    width: 32px; height: 32px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,.8);
+    color: #8a93a3;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease;
+  }
+  .close-btn:hover { background: #fff; color: #5c6472; }
+
+  .drawer nav { display: flex; flex-direction: column; gap: .1rem; }
+
+  .drawer .grp {
+    margin: .7rem .55rem .25rem;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #b0b7c2;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  .drawer a {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+    padding: .5rem .7rem;
+    border-radius: 11px;
+    text-decoration: none;
+    color: #55555f;
+    font-size: .87rem;
+    letter-spacing: .04em;
+    transition: background .16s ease, color .16s ease, transform .16s ease;
+  }
+  .drawer a:hover {
+    background: rgba(255,255,255,.9);
+    color: #2c2c34;
+    transform: translateX(2px);
+  }
+  .drawer a.sub {
+    padding-left: 1.5rem;
+    font-size: .82rem;
+    color: #6a7280;
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 65;
+    background: rgba(60,70,90,.22);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  body.menu-open .overlay { opacity: 1; pointer-events: auto; }
+
+  /* ================= 页面容器 ================= */
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 1.1rem 5rem;
+  }
+
+  /* ================= 顶部 ================= */
+  .hero {
+    text-align: center;
+    padding: 3.8rem 1rem 1.2rem;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-bottom: 1.4rem;
+    padding: .42rem .9rem;
+    border-radius: 99px;
+    background: rgba(255,255,255,.8);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    font-size: .78rem;
+    letter-spacing: .1em;
+    color: #55555f;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    transition: background .18s ease, transform .18s ease,
+                border-color .18s ease, color .18s ease;
+  }
+  .back-btn:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    border-color: var(--line-2);
+    color: #2c2c34;
+  }
+  .back-btn .arrow { font-size: .9rem; }
+
+  .hero h1 {
+    margin: 0 0 .75rem;
+    font-size: clamp(1.9rem, 6vw, 2.7rem);
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-indent: .16em;
+    background: linear-gradient(115deg,
+      #7d8494 0%, #c3cad6 22%, #5c6472 46%,
+      #c3cad6 70%, #7d8494 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 0 1px 0 rgba(255,255,255,.6);
+  }
+  .hero .sub {
+    margin: 0;
+    font-size: .72rem;
+    letter-spacing: .34em;
+    text-indent: .34em;
+    text-transform: uppercase;
+    color: #9aa1b0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .ribbon {
+    display: flex;
+    height: 5px;
+    width: 260px;
+    max-width: 70%;
+    margin: 1.5rem auto 0;
+    border-radius: 99px;
+    overflow: hidden;
+    opacity: .9;
+  }
+  .ribbon span { flex: 1; }
+
+  /* 声调图例 */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .45rem .95rem;
+    margin: 1.7rem auto 0;
+    padding: .7rem 1.1rem;
+    max-width: 560px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: .76rem;
+    color: var(--ink-2);
+  }
+  .legend b {
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    margin-right: .25rem;
+  }
+  .legend .l1 b { color: var(--tone1); }
+  .legend .l2 b { color: var(--tone2); }
+  .legend .l3 b { color: var(--tone3); }
+  .legend .l4 b { color: var(--tone4); }
+  .legend .l5 b { color: var(--tone5); }
+
+  /* ================= 一级模块 ================= */
+  .section {
+    margin-top: 2.6rem;
+    scroll-margin-top: 1rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .5rem .8rem .5rem .5rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.6);
+    border: 1px solid transparent;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .18s ease, border-color .18s ease;
+  }
+  .section-head:hover {
+    background: #fff;
+    border-color: var(--line-2);
+  }
+  .section-head::-webkit-details-marker { display: none; }
+  .section-head::marker { content: ""; }
+
+  details.section[open] > .section-head { margin-bottom: 1rem; }
+
+  .section-num {
+    flex: none;
+    width: 34px; height: 34px;
+    border-radius: 12px;
+    display: grid; place-items: center;
+    font-size: .86rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(135deg, #b8c0cc, #7e8b9e);
+    box-shadow: 0 8px 16px -8px rgba(120,130,150,.9);
+  }
+  .section-head h2 {
+    margin: 0;
+    font-size: 1.18rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: #3a3a44;
+  }
+  .section-head .en {
+    margin-left: auto;
+    font-size: .66rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #a8aeba;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .section-head::after {
+    content: "";
+    flex: none;
+    width: .44rem;
+    height: .44rem;
+    margin: -.24rem .35rem 0 .5rem;
+    border-right: 2px solid #b0b7c2;
+    border-bottom: 2px solid #b0b7c2;
+    border-radius: 1px;
+    transform: rotate(45deg);
+    transition: transform .25s ease, border-color .2s ease;
+  }
+  details.section[open] > .section-head::after {
+    transform: rotate(-135deg);
+    margin-top: .1rem;
+    border-color: #5c6472;
+  }
+
+  /* 控制按钮行（展开 / 折叠 / 复制） */
+  .controls {
+    display: flex;
+    gap: .5rem;
+    margin: .2rem 0 1rem;
+    flex-wrap: wrap;
+  }
+  .ctrl-btn {
+    padding: .38rem .85rem;
+    border-radius: 99px;
+    background: rgba(255,255,255,.85);
+    border: 1px solid var(--line);
+    color: #55555f;
+    font-size: .76rem;
+    letter-spacing: .08em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease,
+                border-color .16s ease, transform .16s ease;
+  }
+  .ctrl-btn:hover {
+    background: #fff;
+    border-color: var(--line-2);
+    color: #2c2c34;
+    transform: translateY(-1px);
+  }
+  .ctrl-btn.copied {
+    background: #2c2c34;
+    border-color: #2c2c34;
+    color: #fff;
+  }
+  .ctrl-btn.copied:hover {
+    background: #2c2c34;
+    color: #fff;
+  }
+
+  /* ================= 单词分组 ================= */
+  .group {
+    margin-bottom: .85rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 26px -24px rgba(90,100,120,.9);
+    overflow: hidden;
+    transition: box-shadow .2s ease, border-color .2s ease;
+  }
+  .group[open] { box-shadow: 0 16px 34px -24px rgba(90,100,120,1); }
+  .group:hover { border-color: var(--line-2); }
+
+  .group-head {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .7rem 1rem .7rem .85rem;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .16s ease;
+  }
+  .group-head:hover { background: rgba(246,248,251,.9); }
+  .group-head::-webkit-details-marker { display: none; }
+  .group-head::marker { content: ""; }
+
+  .group-head .bar {
+    flex: none;
+    width: 4px;
+    height: 1.1em;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #cfd6e2, #7e8b9e);
+  }
+  .group-head h3 {
+    margin: 0;
+    font-size: .96rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: #3a3a44;
+  }
+  .group-head .en {
+    margin-left: auto;
+    font-size: .64rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #a8aeba;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .group-head::after {
+    content: "";
+    flex: none;
+    width: .38rem;
+    height: .38rem;
+    margin: -.2rem .1rem 0 .5rem;
+    border-right: 2px solid #b0b7c2;
+    border-bottom: 2px solid #b0b7c2;
+    transform: rotate(45deg);
+    transition: transform .25s ease, border-color .2s ease;
+  }
+  details.group[open] > .group-head::after {
+    transform: rotate(-135deg);
+    margin-top: .12rem;
+    border-color: #5c6472;
+  }
+
+  .group-body { padding: 0 .9rem .9rem; }
+
+  /* ================= 单词卡 ================= */
+  .words {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: .55rem .65rem;
+  }
+
+  .word {
+    border-radius: 13px;
+    background: #fff;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    transition: border-color .18s ease, box-shadow .18s ease;
+  }
+  .word:hover { border-color: var(--line-2); }
+  .word[open] {
+    border-color: rgba(120,130,150,.5);
+    box-shadow: 0 12px 26px -20px rgba(90,100,120,.9);
+  }
+
+  .word > summary {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .55rem .8rem;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .16s ease;
+  }
+  .word > summary:hover { background: rgba(246,248,251,.9); }
+  .word > summary::-webkit-details-marker { display: none; }
+  .word > summary::marker { content: ""; }
+
+  .word .zh {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 1.14rem;
+    font-weight: 600;
+    line-height: 2.55;
+    letter-spacing: .02em;
+  }
+  .word > summary .sign {
+    flex: none;
+    width: 20px; height: 20px;
+    display: grid;
+    place-items: center;
+    border-radius: 7px;
+    background: #f0f2f6;
+    border: 1px solid var(--line);
+    color: #9aa1b0;
+    font-size: .82rem;
+    line-height: 1;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    transition: background .18s ease, color .18s ease,
+                transform .22s ease, border-color .18s ease;
+  }
+  .word > summary .sign::before { content: "+"; }
+  .word[open] > summary .sign {
+    background: #2c2c34;
+    border-color: #2c2c34;
+    color: #fff;
+    transform: rotate(180deg);
+  }
+  .word[open] > summary .sign::before { content: "−"; }
+
+  .word-body {
+    padding: .15rem .85rem .75rem;
+    border-top: 1px dashed var(--line);
+    animation: reveal .24s ease both;
+  }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(-3px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .word-en {
+    margin: .5rem 0 .3rem;
+    font-size: .78rem;
+    line-height: 1.5;
+    color: #6a7280;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .word-en .tag {
+    display: inline-block;
+    margin-right: .45rem;
+    padding: .05rem .45rem;
+    border-radius: 6px;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    font-size: .66rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #8a93a3;
+  }
+
+  .word-ex {
+    margin: .5rem 0 0;
+    padding: .55rem .8rem .6rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    position: relative;
+  }
+  .word-ex::before {
+    content: "例";
+    position: absolute;
+    top: .55rem; left: .8rem;
+    font-size: .62rem;
+    font-weight: 700;
+    color: #b0b7c2;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .word-ex .ex-zh {
+    margin: 0 0 0 1.1rem;
+    font-size: 1.06rem;
+    line-height: 2.6;
+    color: #34343e;
+  }
+  .word-ex .ex-en {
+    margin: .15rem 0 0 1.1rem;
+    font-size: .74rem;
+    line-height: 1.5;
+    color: #8a93a3;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 原文 ================= */
+  .original-card {
+    padding: 1.4rem 1.5rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,.9);
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 32px -26px rgba(90,100,120,.9);
+  }
+  .original-card p {
+    margin: 0 0 1rem;
+    font-size: 1.14rem;
+    line-height: 3;
+    color: #34343e;
+    letter-spacing: .01em;
+  }
+  .original-card p:last-child { margin-bottom: 0; }
+
+  mark.hl {
+    background: linear-gradient(180deg, transparent 62%, rgba(200,210,230,.55) 62%);
+    color: inherit;
+    padding: 0 .08em;
+    border-radius: 3px;
+  }
+
+  /* ================= 页脚 ================= */
+  .footer {
+    margin-top: 3.6rem;
+    text-align: center;
+    font-size: .7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #b0b7c2;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 语法点 ================= */
+  .grammar {
+    margin-bottom: .85rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.82);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 26px -24px rgba(90,100,120,.9);
+    overflow: hidden;
+  }
+  .grammar[open] { box-shadow: 0 16px 34px -24px rgba(90,100,120,1); }
+  .grammar > summary {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .75rem 1rem;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .16s ease;
+  }
+  .grammar > summary:hover { background: rgba(246,248,251,.9); }
+  .grammar > summary::-webkit-details-marker { display: none; }
+  .grammar > summary::marker { content: ""; }
+  .grammar > summary .g-bar {
+    flex: none;
+    width: 4px;
+    height: 1.1em;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #d9c29a, #b08d57);
+  }
+  .grammar > summary h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #3a3a44;
+  }
+  .grammar > summary .g-en {
+    margin-left: auto;
+    font-size: .64rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #a8aeba;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .grammar > summary::after {
+    content: "";
+    flex: none;
+    width: .38rem;
+    height: .38rem;
+    margin: -.2rem .1rem 0 .5rem;
+    border-right: 2px solid #b0b7c2;
+    border-bottom: 2px solid #b0b7c2;
+    transform: rotate(45deg);
+    transition: transform .25s ease, border-color .2s ease;
+  }
+  .grammar[open] > summary::after {
+    transform: rotate(-135deg);
+    margin-top: .12rem;
+    border-color: #5c6472;
+  }
+  .grammar .g-body { padding: 0 1rem .95rem; }
+  .g-usage {
+    margin: 0 0 .6rem;
+    padding: .6rem .85rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    font-size: .88rem;
+    line-height: 1.8;
+    color: #55555f;
+  }
+  .g-usage b { color: #2c2c34; }
+  .g-ex {
+    position: relative;
+    margin: .35rem 0 0;
+    padding-left: 1.55rem;
+    font-size: 1.05rem;
+    line-height: 2.15;
+    color: #34343e;
+  }
+  .g-ex::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0;
+    top: .22rem;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    color: #8a93a3;
+    font-size: .66rem;
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .g-note {
+    margin: .6rem 0 0;
+    padding: .55rem .85rem;
+    border-radius: 11px;
+    background: #fffbe9;
+    border: 1px solid rgba(207,185,96,.35);
+    font-size: .84rem;
+    line-height: 1.8;
+    color: #6b5f3a;
+  }
+  .g-note::before { content: "💡 "; }
+  .g-diff {
+    margin: .6rem 0 0;
+    padding: .6rem .85rem;
+    border-radius: 11px;
+    background: #f3f0fb;
+    border: 1px solid rgba(150,130,210,.3);
+    font-size: .84rem;
+    line-height: 1.9;
+    color: #4c4266;
+  }
+  .g-diff::before { content: "⚖️ 区别："; font-weight: 700; }
+  .g-diff b { color: #352b52; }
+
+  /* ================= 内容卡（口语/讨论/文化/法律/总结） ================= */
+  .content-card {
+    margin-bottom: .85rem;
+    padding: 1.05rem 1.2rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.85);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 26px -24px rgba(90,100,120,.9);
+  }
+  .content-card .card-h {
+    margin: 0 0 .65rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #3a3a44;
+  }
+  .content-card p {
+    margin: 0 0 .5rem;
+    font-size: .9rem;
+    line-height: 1.9;
+    color: #55555f;
+  }
+  .content-card p:last-child { margin-bottom: 0; }
+  .content-card .sub-h {
+    margin: .7rem 0 .35rem;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #6a7280;
+  }
+  .content-card .sub-h:first-child { margin-top: 0; }
+  .q-list { margin: 0; padding: 0; list-style: none; }
+  .q-list li {
+    position: relative;
+    margin: 0 0 .6rem;
+    padding-left: 1.75rem;
+    font-size: .92rem;
+    line-height: 1.85;
+    color: #34343e;
+  }
+  .q-list li:last-child { margin-bottom: 0; }
+  .q-list li::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0;
+    top: .17rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #b8c0cc, #7e8b9e);
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .dot-list { margin: 0; padding: 0; list-style: none; }
+  .dot-list li {
+    position: relative;
+    margin: 0 0 .45rem;
+    padding-left: 1.15rem;
+    font-size: .9rem;
+    line-height: 1.85;
+    color: #34343e;
+  }
+  .dot-list li:last-child { margin-bottom: 0; }
+  .dot-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .68em;
+    width: .42rem;
+    height: .42rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #b8c0cc, #7e8b9e);
+  }
+  .stance {
+    display: flex;
+    gap: .6rem;
+    margin: .45rem 0 0;
+    padding: .55rem .8rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    font-size: .88rem;
+    line-height: 1.8;
+    color: #34343e;
+  }
+  .stance .who {
+    flex: none;
+    align-self: flex-start;
+    margin-top: .28rem;
+    padding: .08rem .5rem;
+    border-radius: 6px;
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .stance.pro .who { background: #2563d4; }
+  .stance.con .who { background: #d94a4a; }
+  .law-name {
+    margin: 0 0 .6rem;
+    padding: .55rem .85rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    font-size: .88rem;
+    line-height: 1.8;
+    color: #34343e;
+    font-weight: 600;
+  }
+  .expr { margin: .5rem 0 0; }
+  .expr:first-child { margin-top: 0; }
+  .expr .label {
+    display: inline-block;
+    margin-bottom: .35rem;
+    padding: .12rem .6rem;
+    border-radius: 7px;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: #6a7280;
+  }
+  .expr p { margin: 0 0 .2rem; font-size: .9rem; }
+  .expr p:last-child { margin-bottom: 0; }
+  .group-note {
+    margin: .55rem 0 0;
+    padding: .6rem .85rem;
+    border-radius: 11px;
+    background: #fffbe9;
+    border: 1px solid rgba(207,185,96,.35);
+    font-size: .84rem;
+    line-height: 1.8;
+    color: #6b5f3a;
+  }
+  .group-note::before { content: "💡 "; }
+
+  /* ================= 响应式 ================= */
+  @media (max-width: 620px) {
+    .hero { padding-top: 3.4rem; }
+    .words { grid-template-columns: 1fr; gap: .5rem; }
+    .word .zh { font-size: 1rem; line-height: 2.5; }
+    .word-ex .ex-zh { font-size: .92rem; }
+    .original-card { padding: 1.1rem 1.1rem; }
+    .original-card p { font-size: .96rem; line-height: 2.75; }
+    rt { font-size: .78em; letter-spacing: .04em; }
+    .legend { font-size: .7rem; gap: .35rem .7rem; }
+    .section-head h2 { font-size: 1.06rem; }
+    .grammar .g-body { padding: 0 .85rem .9rem; }
+    .g-ex { font-size: .9rem; }
+    .content-card { padding: .95rem 1rem; }
+  }
+
+  /* ================= 点词收集 ================= */
+  .pick-word {
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .pick-word:hover { background: rgba(37,99,212,.08); border-radius: 4px; }
+  .pick-word.picked { background: rgba(24,154,88,.14); border-radius: 4px; }
+
+  .add-pop {
+    position: fixed;
+    z-index: 120;
+    width: 30px; height: 30px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563d4, #3b82f6);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 8px 18px -8px rgba(37,99,212,.9);
+    opacity: 0;
+    transform: scale(.6);
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease, background .18s ease;
+  }
+  .add-pop.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+  .add-pop.done {
+    background: linear-gradient(135deg, #189a58, #4ade80);
+  }
+
+  /* ================= 浮动生词框 ================= */
+  .wordbox {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 80;
+    width: min(300px, 88vw);
+    max-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--line-2);
+    box-shadow: 0 24px 60px -30px rgba(60,70,90,.9);
+    transform: translateY(140%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .34s cubic-bezier(.4,.02,.2,1), opacity .3s ease;
+  }
+  .wordbox.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .wordbox-head {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .6rem .7rem .55rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordbox-head .wb-title {
+    font-size: .82rem;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: .02em;
+  }
+  .wordbox-head .wb-count {
+    font-size: .68rem;
+    font-weight: 700;
+    color: #fff;
+    background: #2563d4;
+    border-radius: 999px;
+    padding: .05rem .45rem;
+    min-width: 20px;
+    text-align: center;
+  }
+  .wordbox-head .wb-spacer { margin-left: auto; }
+  .wb-btn {
+    width: 28px; height: 28px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    color: #6d7480;
+    font-size: .82rem;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .wb-btn:hover { background: #f2f5f9; color: var(--ink-2); }
+  .wb-btn.primary {
+    width: auto;
+    padding: 0 .65rem;
+    color: #fff;
+    background: linear-gradient(135deg, #2563d4, #3b82f6);
+    border-color: transparent;
+    font-weight: 700;
+    font-size: .76rem;
+    gap: .3rem;
+  }
+  .wb-btn.primary:hover { filter: brightness(1.06); }
+  .wb-btn.primary.copied {
+    background: linear-gradient(135deg, #189a58, #4ade80);
+  }
+  .wordbox-list {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: .5rem .6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    align-content: flex-start;
+  }
+  .wordbox-list:empty::after {
+    content: "点击页面中的词语，再点 + 添加到这里";
+    display: block;
+    width: 100%;
+    padding: .8rem .3rem;
+    text-align: center;
+    font-size: .78rem;
+    color: #b0b7c2;
+  }
+  .wb-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .28rem .5rem;
+    border-radius: 9px;
+    background: rgba(37,99,212,.08);
+    color: #2c2c34;
+    font-size: .88rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .wb-chip .wb-py {
+    font-size: .68rem;
+    font-weight: 600;
+    color: #2563d4;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .wb-chip .wb-del {
+    border: none;
+    background: transparent;
+    color: #9aa1ae;
+    font-size: .85rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 .1rem;
+  }
+  .wb-chip .wb-del:hover { color: #d94a4a; }
+
+  /* 悬浮框最小化时的圆形按钮 */
+  .wordbox-fab {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 80;
+    width: 52px; height: 52px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563d4, #3b82f6);
+    color: #fff;
+    font-size: 1.35rem;
+    cursor: pointer;
+    box-shadow: 0 16px 34px -16px rgba(37,99,212,.95);
+    opacity: 0;
+    transform: scale(.5);
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease, filter .15s ease;
+  }
+  .wordbox-fab.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+  .wordbox-fab:hover { filter: brightness(1.06); }
+  .wordbox-fab .fab-badge {
+    position: absolute;
+    top: -3px; right: -3px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 .3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: #d94a4a;
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 700;
+    border: 2px solid #fff;
+  }
+
+  /* ================= 字号调节 ================= */
+  .font-ctrl {
+    position: fixed;
+    top: .85rem;
+    right: .85rem;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 24px -18px rgba(90,100,120,.95);
+  }
+  .font-ctrl button {
+    width: 34px; height: 34px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #4b5362;
+    font-size: .95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+    line-height: 1;
+  }
+  .font-ctrl button:hover { background: rgba(150,160,180,.14); }
+  .font-ctrl button:disabled { opacity: .35; cursor: not-allowed; }
+  .font-ctrl button:disabled:hover { background: transparent; }
+  .font-ctrl .fs-a { font-size: .8rem; }
+  .font-ctrl .fs-big { font-size: 1.05rem; }
+  .font-ctrl .fs-label {
+    min-width: 30px;
+    text-align: center;
+    font-size: .72rem;
+    font-weight: 700;
+    color: #8a8a99;
+  }
+
+  @media (max-width: 620px) {
+    .wordbox { right: .7rem; bottom: .7rem; }
+    .wordbox-fab { right: .7rem; bottom: .7rem; }
+    .font-ctrl { top: .7rem; right: .7rem; }
+    .font-ctrl button { width: 30px; height: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== 汉堡按钮 ==================== -->
+<button class="menu-btn" id="menuBtn" aria-label="打开目录" aria-expanded="false">
+  <span class="bars"><i></i><i></i><i></i></span>
+</button>
+
+<!-- ==================== 字号调节 ==================== -->
+<div class="font-ctrl" role="group" aria-label="调整字体大小">
+  <button type="button" class="fs-a" id="fontDown" title="缩小字体" aria-label="缩小字体">A−</button>
+  <span class="fs-label" id="fontLabel">100%</span>
+  <button type="button" class="fs-big" id="fontUp" title="放大字体" aria-label="放大字体">A＋</button>
+</div>
+
+<!-- ==================== 侧边目录 ==================== -->
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="t">目录 MENU</span>
+    <button class="close-btn" id="closeBtn" aria-label="关闭目录">✕</button>
+  </div>
+  <nav>
+    <p class="grp">单词 Vocabulary</p>
+    <a href="#sec-vocab">全部单词 <span style="margin-left:auto;font-size:.62rem;color:#b0b7c2">Top</span></a>
+    <a class="sub" href="#vocab-bg">事件背景 <span style="margin-left:auto;font-size:.62rem;color:#b0b7c2">Background</span></a>
+    <a class="sub" href="#vocab-energy">石油与能源 <span style="margin-left:auto;font-size:.62rem;color:#b0b7c2">Oil &amp; Energy</span></a>
+    <a class="sub" href="#vocab-econ">经济与金融 <span style="margin-left:auto;font-size:.62rem;color:#b0b7c2">Economy</span></a>
+    <a class="sub" href="#vocab-func">动词 · 虚词 <span style="margin-left:auto;font-size:.62rem;color:#b0b7c2">Verbs &amp; Function</span></a>
+
+    <p class="grp">原文 Original Text</p>
+    <a href="#sec-original">全文 <span style="margin-left:auto;font-size:.62rem;color:#b0b7c2">Full text</span></a>
+
+    <p class="grp">语法 Grammar</p>
+    <a href="#sec-grammar">语法点 <span style="margin-left:auto;font-size:.62rem;color:#b0b7c2">Patterns</span></a>
+
+    <p class="grp">口语与讨论 Speaking</p>
+    <a href="#sec-speaking">口语练习 <span style="margin-left:auto;font-size:.62rem;color:#b0b7c2">Speaking</span></a>
+    <a href="#sec-discussion">深度讨论 <span style="margin-left:auto;font-size:.62rem;color:#b0b7c2">Discussion</span></a>
+
+    <p class="grp">总结 Summary</p>
+    <a href="#sec-summary">本课总结 <span style="margin-left:auto;font-size:.62rem;color:#b0b7c2">Summary</span></a>
+  </nav>
+</aside>
+<div class="overlay" id="overlay"></div>
+
+<!-- ==================== 内容 ==================== -->
+<div class="page">
+
+  <!-- ==================== 顶部 ==================== -->
+  <header class="hero" id="top">
+    <a class="back-btn" href="index.html"><span class="arrow">←</span> 返回 Marcus 主页</a>
+    <h1>伊朗局势与石油</h1>
+    <p class="sub">时事阅读 · 单词与语法</p>
+    <div class="ribbon">
+      <span style="background:#d94a4a"></span>
+      <span style="background:#cf8500"></span>
+      <span style="background:#189a58"></span>
+      <span style="background:#2563d4"></span>
+      <span style="background:#8a8a99"></span>
+    </div>
+
+    <div class="legend">
+      <span class="l1"><b>一声 ˉ</b>阴平</span>
+      <span class="l2"><b>二声 ˊ</b>阳平</span>
+      <span class="l3"><b>三声 ˇ</b>上声</span>
+      <span class="l4"><b>四声 ˋ</b>去声</span>
+      <span class="l5"><b>轻声</b>无标记</span>
+    </div>
+  </header>
+
+  <!-- ==================== 单词 ==================== -->
+  <details class="section" id="sec-vocab" open>
+    <summary class="section-head">
+      <span class="section-num">1</span>
+      <h2>单词</h2>
+      <span class="en">Vocabulary</span>
+    </summary>
+
+    <div class="controls">
+      <button class="ctrl-btn" id="expandAll">全部展开</button>
+      <button class="ctrl-btn" id="collapseAll">全部折叠</button>
+      <button class="ctrl-btn" id="copyWordsBtn">复制单词 · Copy</button>
+    </div>
+
+    <details class="group" id="vocab-bg" open>
+      <summary class="group-head">
+        <span class="bar"></span>
+        <h3>事件背景</h3>
+        <span class="en">Background</span>
+      </summary>
+      <div class="group-body">
+        <div class="words">
+          <details class="word">
+            <summary><span class="zh"><ruby>联合打击<rt>lián hé dǎ jī</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">phr.</span>joint strike / joint attack</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>美国<rt>měi guó</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>以色列<rt>yǐ sè liè</rt></ruby><ruby>联合打击<rt>lián hé dǎ jī</rt></ruby><ruby>伊朗<rt>yī lǎng</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">The U.S. and Israel launched a joint strike on Iran.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>最高领袖<rt>zuì gāo lǐng xiù</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>supreme leader</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>哈梅内伊<rt>hā méi nèi yī</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>伊朗<rt>yī lǎng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>最高领袖<rt>zuì gāo lǐng xiù</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">Khamenei is Iran's supreme leader.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>身亡<rt>shēn wáng</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">v.</span>die / lose one's life (formal)</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>他<rt>tā</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>袭击<rt>xí jī</rt></ruby><ruby>中<rt>zhōng</rt></ruby><ruby>身亡<rt>shēn wáng</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">He was killed in the attack.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>临时<rt>lín shí</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">adj.</span>temporary / provisional</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>伊朗<rt>yī lǎng</rt></ruby><ruby>将<rt>jiāng</rt></ruby><ruby>成立<rt>chéng lì</rt></ruby><ruby>临时<rt>lín shí</rt></ruby><ruby>领导委员会<rt>lǐng dǎo wěi yuán huì</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">Iran will form a provisional leadership council.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>领导委员会<rt>lǐng dǎo wěi yuán huì</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>leadership council</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>临时<rt>lín shí</rt></ruby><ruby>领导委员会<rt>lǐng dǎo wěi yuán huì</rt></ruby><ruby>将<rt>jiāng</rt></ruby><ruby>管理<rt>guǎn lǐ</rt></ruby><ruby>国家<rt>guó jiā</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">The provisional leadership council will govern the country.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>动武<rt>dòng wǔ</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">v.</span>use force / resort to arms</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>美国<rt>měi guó</rt></ruby><ruby>为什么<rt>wèi shén me</rt></ruby><ruby>对<rt>duì</rt></ruby><ruby>伊朗<rt>yī lǎng</rt></ruby><ruby>动武<rt>dòng wǔ</rt></ruby><ruby>？<rt></rt></ruby></p>
+                <p class="ex-en">Why did the U.S. use force against Iran?</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>核问题<rt>hé wèn tí</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>nuclear issue</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>核问题<rt>hé wèn tí</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>国际<rt>guó jì</rt></ruby><ruby>关注<rt>guān zhù</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>焦点<rt>jiāo diǎn</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">The nuclear issue is a focus of international attention.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>地区安全<rt>dì qū ān quán</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>regional security</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>这<rt>zhè</rt></ruby><ruby>影响<rt>yǐng xiǎng</rt></ruby><ruby>中东<rt>zhōng dōng</rt></ruby><ruby>地区安全<rt>dì qū ān quán</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">This affects regional security in the Middle East.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </details>
+    <details class="group" id="vocab-energy" open>
+      <summary class="group-head">
+        <span class="bar"></span>
+        <h3>石油与能源</h3>
+        <span class="en">Oil &amp; Energy</span>
+      </summary>
+      <div class="group-body">
+        <div class="words">
+          <details class="word">
+            <summary><span class="zh"><ruby>储量<rt>chǔ liàng</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>reserves (of resources)</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>伊朗<rt>yī lǎng</rt></ruby><ruby>石油<rt>shí yóu</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>天然气<rt>tiān rán qì</rt></ruby><ruby>储量<rt>chǔ liàng</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>位于<rt>wèi yú</rt></ruby><ruby>世界<rt>shì jiè</rt></ruby><ruby>前列<rt>qián liè</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">Iran's oil and natural gas reserves both rank among the world's top.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>天然气<rt>tiān rán qì</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>natural gas</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>天然气<rt>tiān rán qì</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>重要<rt>zhòng yào</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>能源<rt>néng yuán</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">Natural gas is an important energy source.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>石油生产<rt>shí yóu shēng chǎn</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>oil production</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>美国<rt>měi guó</rt></ruby><ruby>可能<rt>kě néng</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>削弱<rt>xuē ruò</rt></ruby><ruby>伊朗<rt>yī lǎng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>石油生产<rt>shí yóu shēng chǎn</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">The U.S. may want to weaken Iran's oil production.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>石油美元体系<rt>shí yóu měi yuán tǐ xì</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>petrodollar system</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>美国<rt>měi guó</rt></ruby><ruby>希望<rt>xī wàng</rt></ruby><ruby>加强<rt>jiā qiáng</rt></ruby><ruby>石油美元体系<rt>shí yóu měi yuán tǐ xì</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">The U.S. hopes to strengthen the petrodollar system.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>霍尔木兹海峡<rt>huò ěr mù zī hǎi xiá</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>the Strait of Hormuz</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>霍尔木兹海峡<rt>huò ěr mù zī hǎi xiá</rt></ruby><ruby>是<rt>shì</rt></ruby><ruby>全球<rt>quán qiú</rt></ruby><ruby>最<rt>zuì</rt></ruby><ruby>重要<rt>zhòng yào</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>能源通道<rt>néng yuán tōng dào</rt></ruby><ruby>之一<rt>zhī yī</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">The Strait of Hormuz is one of the world's most important energy corridors.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>海运原油<rt>hǎi yùn yuán yóu</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>seaborne crude oil</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>全球<rt>quán qiú</rt></ruby><ruby>约<rt>yuē</rt></ruby><ruby>五分之一<rt>wǔ fēn zhī yī</rt></ruby><ruby>以上<rt>yǐ shàng</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>海运原油<rt>hǎi yùn yuán yóu</rt></ruby><ruby>经过<rt>jīng guò</rt></ruby><ruby>这里<rt>zhè lǐ</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">Over about one fifth of the world's seaborne crude oil passes through here.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>封锁<rt>fēng suǒ</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">v./n.</span>blockade / block off</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>伊朗<rt>yī lǎng</rt></ruby><ruby>已经<rt>yǐ jīng</rt></ruby><ruby>开始<rt>kāi shǐ</rt></ruby><ruby>封锁<rt>fēng suǒ</rt></ruby><ruby>海峡<rt>hǎi xiá</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">Iran has already begun to blockade the strait.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>能源通道<rt>néng yuán tōng dào</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>energy corridor / passage</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>这条<rt>zhè tiáo</rt></ruby><ruby>能源通道<rt>néng yuán tōng dào</rt></ruby><ruby>非常<rt>fēi cháng</rt></ruby><ruby>关键<rt>guān jiàn</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">This energy corridor is very critical.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </details>
+    <details class="group" id="vocab-econ" open>
+      <summary class="group-head">
+        <span class="bar"></span>
+        <h3>经济与金融</h3>
+        <span class="en">Economy</span>
+      </summary>
+      <div class="group-body">
+        <div class="words">
+          <details class="word">
+            <summary><span class="zh"><ruby>持久战红利<rt>chí jiǔ zhàn hóng lì</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>"protracted war dividend" (fig.)</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>美国<rt>měi guó</rt></ruby><ruby>可能<rt>kě néng</rt></ruby><ruby>得到<rt>dé dào</rt></ruby><ruby>持久战红利<rt>chí jiǔ zhàn hóng lì</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">The U.S. may gain a "protracted war dividend."</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>通胀<rt>tōng zhàng</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>inflation</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>高油价<rt>gāo yóu jià</rt></ruby><ruby>可能<rt>kě néng</rt></ruby><ruby>让<rt>ràng</rt></ruby><ruby>美国<rt>měi guó</rt></ruby><ruby>国内<rt>guó nèi</rt></ruby><ruby>通胀<rt>tōng zhàng</rt></ruby><ruby>更<rt>gèng</rt></ruby><ruby>严重<rt>yán zhòng</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">High oil prices may make U.S. domestic inflation worse.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>加征关税<rt>jiā zhēng guān shuì</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">phr.</span>impose additional tariffs</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>美国<rt>měi guó</rt></ruby><ruby>加征关税<rt>jiā zhēng guān shuì</rt></ruby><ruby>受到<rt>shòu dào</rt></ruby><ruby>限制<rt>xiàn zhì</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">The U.S.'s tariff hikes are being constrained.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>石油税<rt>shí yóu shuì</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>"oil tax" (figurative)</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>高油价<rt>gāo yóu jià</rt></ruby><ruby>像<rt>xiàng</rt></ruby><ruby>一种<rt>yì zhǒng</rt></ruby><ruby>石油税<rt>shí yóu shuì</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">High oil prices act like a kind of "oil tax."</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>制造业<rt>zhì zào yè</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>manufacturing industry</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>日本<rt>rì běn</rt></ruby><ruby>、<rt></rt></ruby><ruby>韩国<rt>hán guó</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>制造业<rt>zhì zào yè</rt></ruby><ruby>国家<rt>guó jiā</rt></ruby><ruby>成本<rt>chéng běn</rt></ruby><ruby>上升<rt>shàng shēng</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">Costs rise for manufacturing countries such as Japan and South Korea.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>出口竞争力<rt>chū kǒu jìng zhēng lì</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>export competitiveness</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>这<rt>zhè</rt></ruby><ruby>削弱<rt>xuē ruò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>亚洲<rt>yà zhōu</rt></ruby><ruby>出口竞争力<rt>chū kǒu jìng zhēng lì</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">This weakens Asia's export competitiveness.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>资本市场<rt>zī běn shì chǎng</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>capital market</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>战争<rt>zhàn zhēng</rt></ruby><ruby>预期<rt>yù qī</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>影响<rt>yǐng xiǎng</rt></ruby><ruby>资本市场<rt>zī běn shì chǎng</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">War expectations also affect the capital market.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>期货<rt>qī huò</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>futures (finance)</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>原油<rt>yuán yóu</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>黄金<rt>huáng jīn</rt></ruby><ruby>等<rt>děng</rt></ruby><ruby>期货<rt>qī huò</rt></ruby><ruby>价格<rt>jià gé</rt></ruby><ruby>剧烈<rt>jù liè</rt></ruby><ruby>波动<rt>bō dòng</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">Futures such as crude oil and gold fluctuate sharply.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>聪明钱<rt>cōng ming qián</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>"smart money" (fig.)</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>可能<rt>kě néng</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>聪明钱<rt>cōng ming qián</rt></ruby><ruby>提前<rt>tí qián</rt></ruby><ruby>进入<rt>jìn rù</rt></ruby><ruby>期货市场<rt>qī huò shì chǎng</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">"Smart money" may have entered the futures market early.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>走钢丝<rt>zǒu gāng sī</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">phr.</span>walk a tightrope (fig.)</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>美国<rt>měi guó</rt></ruby><ruby>也<rt>yě</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>走钢丝<rt>zǒu gāng sī</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">The U.S. is also walking a tightrope.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>军费开支<rt>jūn fèi kāi zhī</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>military spending</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>如果<rt>rú guǒ</rt></ruby><ruby>陷入<rt>xiàn rù</rt></ruby><ruby>长期<rt>cháng qī</rt></ruby><ruby>战争<rt>zhàn zhēng</rt></ruby><ruby>，<rt></rt></ruby><ruby>军费开支<rt>jūn fèi kāi zhī</rt></ruby><ruby>会<rt>huì</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">If it gets bogged down in a long war, military spending will be huge.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>中期选举<rt>zhōng qī xuǎn jǔ</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">n.</span>midterm elections</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>高油价<rt>gāo yóu jià</rt></ruby><ruby>可能<rt>kě néng</rt></ruby><ruby>影响<rt>yǐng xiǎng</rt></ruby><ruby>中期选举<rt>zhōng qī xuǎn jǔ</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">High oil prices may affect the midterm elections.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>报复<rt>bào fù</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">v./n.</span>retaliate / retaliation</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>如果<rt>rú guǒ</rt></ruby><ruby>伊朗<rt>yī lǎng</rt></ruby><ruby>报复<rt>bào fù</rt></ruby><ruby>造成<rt>zào chéng</rt></ruby><ruby>伤亡<rt>shāng wáng</rt></ruby><ruby>，<rt></rt></ruby><ruby>影响<rt>yǐng xiǎng</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>大<rt>dà</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">If Iran's retaliation causes casualties, the impact will be great.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </details>
+    <details class="group" id="vocab-func" open>
+      <summary class="group-head">
+        <span class="bar"></span>
+        <h3>动词 · 虚词</h3>
+        <span class="en">Verbs &amp; Function</span>
+      </summary>
+      <div class="group-body">
+        <div class="words">
+          <details class="word">
+            <summary><span class="zh"><ruby>位于<rt>wèi yú</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">v.</span>be located in/at  ·  位于 + 地点/位置</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>该<rt>gāi</rt></ruby><ruby>公司<rt>gōng sī</rt></ruby><ruby>位于<rt>wèi yú</rt></ruby><ruby>城市<rt>chéng shì</rt></ruby><ruby>中心<rt>zhōng xīn</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">The company is located in the city center.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>削弱<rt>xuē ruò</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">v.</span>weaken / undermine</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>制裁<rt>zhì cái</rt></ruby><ruby>削弱<rt>xuē ruò</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>经济<rt>jīng jì</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">Sanctions weakened the economy.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>推高<rt>tuī gāo</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">v.</span>push up / drive up (prices)</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>这<rt>zhè</rt></ruby><ruby>会<rt>huì</rt></ruby><ruby>推高<rt>tuī gāo</rt></ruby><ruby>油价<rt>yóu jià</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">This will drive up oil prices.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>陷入<rt>xiàn rù</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">v.</span>fall into / get bogged down in (bad state)</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>美军<rt>měi jūn</rt></ruby><ruby>再次<rt>zài cì</rt></ruby><ruby>陷入<rt>xiàn rù</rt></ruby><ruby>长期<rt>cháng qī</rt></ruby><ruby>战争<rt>zhàn zhēng</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">U.S. forces got bogged down in a long war again.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>受到限制<rt>shòu dào xiàn zhì</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">phr.</span>be constrained / be restricted  ·  受到 + 名词</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>这个<rt>zhè ge</rt></ruby><ruby>政策<rt>zhèng cè</rt></ruby><ruby>受到<rt>shòu dào</rt></ruby><ruby>限制<rt>xiàn zhì</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">This policy is being restricted.</p>
+              </div>
+            </div>
+          </details>
+          <details class="word">
+            <summary><span class="zh"><ruby>持续<rt>chí xù</rt></ruby></span><span class="sign"></span></summary>
+            <div class="word-body">
+              <p class="word-en"><span class="tag">v./adj.</span>continue / persist; sustained</p>
+              <div class="word-ex">
+                <p class="ex-zh"><ruby>市场<rt>shì chǎng</rt></ruby><ruby>预期<rt>yù qī</rt></ruby><ruby>风险<rt>fēng xiǎn</rt></ruby><ruby>会<rt>huì</rt></ruby><ruby>持续<rt>chí xù</rt></ruby><ruby>。<rt></rt></ruby></p>
+                <p class="ex-en">The market expects the risk to persist.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </details>
+  </details>
+
+  <!-- ==================== 原文 ==================== -->
+  <section class="section" id="sec-original">
+    <div class="section-head" style="cursor:default">
+      <span class="section-num">2</span>
+      <h2>原文</h2>
+      <span class="en">Original Text</span>
+    </div>
+
+    <div class="original-card">
+
+      <p><mark class="hl word-tap"><ruby>联合打击<rt>lián hé dǎ jī</rt></ruby></mark>2月28日，<mark class="hl word-tap"><ruby>美国<rt>měi guó</rt></ruby></mark>和<mark class="hl word-tap"><ruby>以色列<rt>yǐ sè liè</rt></ruby></mark><mark class="hl word-tap"><ruby>联合打击<rt>lián hé dǎ jī</rt></ruby></mark><mark class="hl word-tap"><ruby>伊朗<rt>yī lǎng</rt></ruby></mark>，<mark class="hl word-tap"><ruby>伊朗<rt>yī lǎng</rt></ruby></mark><mark class="hl word-tap"><ruby>最高领袖<rt>zuì gāo lǐng xiù</rt></ruby></mark><mark class="hl word-tap"><ruby>哈梅内伊<rt>hā méi nèi yī</rt></ruby></mark>在<mark class="hl word-tap"><ruby>袭击<rt>xí jī</rt></ruby></mark>中<mark class="hl word-tap"><ruby>身亡<rt>shēn wáng</rt></ruby></mark>。<mark class="hl word-tap"><ruby>伊朗<rt>yī lǎng</rt></ruby></mark>将于3月1日<mark class="hl word-tap"><ruby>成立<rt>chéng lì</rt></ruby></mark><mark class="hl word-tap"><ruby>临时<rt>lín shí</rt></ruby></mark><mark class="hl word-tap"><ruby>领导委员会<rt>lǐng dǎo wěi yuán huì</rt></ruby></mark>，并<mark class="hl word-tap"><ruby>选举<rt>xuǎn jǔ</rt></ruby></mark>新的<mark class="hl word-tap"><ruby>最高领袖<rt>zuì gāo lǐng xiù</rt></ruby></mark>。<mark class="hl word-tap"><ruby>美国<rt>měi guó</rt></ruby></mark><mark class="hl word-tap"><ruby>为什么<rt>wèi shén me</rt></ruby></mark>对<mark class="hl word-tap"><ruby>伊朗<rt>yī lǎng</rt></ruby></mark><mark class="hl word-tap"><ruby>动武<rt>dòng wǔ</rt></ruby></mark>？除了<mark class="hl word-tap"><ruby>核问题<rt>hé wèn tí</rt></ruby></mark>和<mark class="hl word-tap"><ruby>地区安全<rt>dì qū ān quán</rt></ruby></mark>，<mark class="hl word-tap"><ruby>石油<rt>shí yóu</rt></ruby></mark>和<mark class="hl word-tap"><ruby>金融<rt>jīn róng</rt></ruby></mark>也是很重要的原因。</p>
+
+      <p>第一，<mark class="hl word-tap"><ruby>伊朗<rt>yī lǎng</rt></ruby></mark><mark class="hl word-tap"><ruby>石油<rt>shí yóu</rt></ruby></mark>和<mark class="hl word-tap"><ruby>天然气<rt>tiān rán qì</rt></ruby></mark><mark class="hl word-tap"><ruby>储量<rt>chǔ liàng</rt></ruby></mark>都<mark class="hl word-tap"><ruby>位于<rt>wèi yú</rt></ruby></mark><mark class="hl word-tap"><ruby>世界<rt>shì jiè</rt></ruby></mark><mark class="hl word-tap"><ruby>前列<rt>qián liè</rt></ruby></mark>。<mark class="hl word-tap"><ruby>美国<rt>měi guó</rt></ruby></mark><mark class="hl word-tap"><ruby>可能<rt>kě néng</rt></ruby></mark>想<mark class="hl word-tap"><ruby>削弱<rt>xuē ruò</rt></ruby></mark><mark class="hl word-tap"><ruby>伊朗<rt>yī lǎng</rt></ruby></mark>的<mark class="hl word-tap"><ruby>石油生产<rt>shí yóu shēng chǎn</rt></ruby></mark>，<mark class="hl word-tap"><ruby>限制<rt>xiàn zhì</rt></ruby></mark>它的<mark class="hl word-tap"><ruby>出口<rt>chū kǒu</rt></ruby></mark>，甚至<mark class="hl word-tap"><ruby>改变<rt>gǎi biàn</rt></ruby></mark><mark class="hl word-tap"><ruby>伊朗<rt>yī lǎng</rt></ruby></mark><mark class="hl word-tap"><ruby>政权<rt>zhèng quán</rt></ruby></mark>，从而影响全球<mark class="hl word-tap"><ruby>石油<rt>shí yóu</rt></ruby></mark><mark class="hl word-tap"><ruby>供应<rt>gōng yìng</rt></ruby></mark>，<mark class="hl word-tap"><ruby>推高<rt>tuī gāo</rt></ruby></mark>油价，并加强<mark class="hl word-tap"><ruby>石油美元体系<rt>shí yóu měi yuán tǐ xì</rt></ruby></mark>。<mark class="hl word-tap"><ruby>美国<rt>měi guó</rt></ruby></mark>已经控制了<mark class="hl word-tap"><ruby>委内瑞拉<rt>wěi nèi ruì lā</rt></ruby></mark>，未来也可能用<mark class="hl word-tap"><ruby>类似<rt>lèi sì</rt></ruby></mark>方式控制<mark class="hl word-tap"><ruby>伊朗<rt>yī lǎng</rt></ruby></mark><mark class="hl word-tap"><ruby>石油<rt>shí yóu</rt></ruby></mark>。</p>
+
+      <p>第二，<mark class="hl word-tap"><ruby>霍尔木兹海峡<rt>huò ěr mù zī hǎi xiá</rt></ruby></mark>是全球最重要的<mark class="hl word-tap"><ruby>能源通道<rt>néng yuán tōng dào</rt></ruby></mark>之一，全球约五分之一以上的<mark class="hl word-tap"><ruby>海运原油<rt>hǎi yùn yuán yóu</rt></ruby></mark>经过这里。<mark class="hl word-tap"><ruby>伊朗<rt>yī lǎng</rt></ruby></mark>已经开始<mark class="hl word-tap"><ruby>封锁<rt>fēng suǒ</rt></ruby></mark>海峡。<mark class="hl word-tap"><ruby>即使<rt>jí shǐ</rt></ruby></mark><mark class="hl word-tap"><ruby>石油<rt>shí yóu</rt></ruby></mark>没有真正<mark class="hl word-tap"><ruby>中断<rt>zhōng duàn</rt></ruby></mark>，只要<mark class="hl word-tap"><ruby>市场<rt>shì chǎng</rt></ruby></mark><mark class="hl word-tap"><ruby>预期<rt>yù qī</rt></ruby></mark><mark class="hl word-tap"><ruby>风险<rt>fēng xiǎn</rt></ruby></mark>会<mark class="hl word-tap"><ruby>持续<rt>chí xù</rt></ruby></mark>，油价就会<mark class="hl word-tap"><ruby>上涨<rt>shàng zhǎng</rt></ruby></mark>。<mark class="hl word-tap"><ruby>美国<rt>měi guó</rt></ruby></mark>不怕<mark class="hl word-tap"><ruby>长期<rt>cháng qī</rt></ruby></mark><mark class="hl word-tap"><ruby>战争<rt>zhàn zhēng</rt></ruby></mark>，因为<mark class="hl word-tap"><ruby>封锁<rt>fēng suǒ</rt></ruby></mark>越久，油价越高，<mark class="hl word-tap"><ruby>美国<rt>měi guó</rt></ruby></mark><mark class="hl word-tap"><ruby>可能<rt>kě néng</rt></ruby></mark>得到“<mark class="hl word-tap"><ruby>持久战红利<rt>chí jiǔ zhàn hóng lì</rt></ruby></mark>”。但高油价也可能让<mark class="hl word-tap"><ruby>美国<rt>měi guó</rt></ruby></mark><mark class="hl word-tap"><ruby>国内<rt>guó nèi</rt></ruby></mark><mark class="hl word-tap"><ruby>通胀<rt>tōng zhàng</rt></ruby></mark>更<mark class="hl word-tap"><ruby>严重<rt>yán zhòng</rt></ruby></mark>。</p>
+
+      <p>第三，<mark class="hl word-tap"><ruby>美国<rt>měi guó</rt></ruby></mark><mark class="hl word-tap"><ruby>加征关税<rt>jiā zhēng guān shuì</rt></ruby></mark><mark class="hl word-tap"><ruby>受到<rt>shòu dào</rt></ruby></mark><mark class="hl word-tap"><ruby>限制<rt>xiàn zhì</rt></ruby></mark>后，可能通过高油价达到类似“<mark class="hl word-tap"><ruby>石油税<rt>shí yóu shuì</rt></ruby></mark>”的效果。油价<mark class="hl word-tap"><ruby>上涨<rt>shàng zhǎng</rt></ruby></mark>会增加<mark class="hl word-tap"><ruby>日本<rt>rì běn</rt></ruby></mark>、<mark class="hl word-tap"><ruby>韩国<rt>hán guó</rt></ruby></mark>等<mark class="hl word-tap"><ruby>制造业<rt>zhì zào yè</rt></ruby></mark><mark class="hl word-tap"><ruby>国家<rt>guó jiā</rt></ruby></mark>的能源<mark class="hl word-tap"><ruby>成本<rt>chéng běn</rt></ruby></mark>，削弱<mark class="hl word-tap"><ruby>亚洲<rt>yà zhōu</rt></ruby></mark><mark class="hl word-tap"><ruby>出口竞争力<rt>chū kǒu jìng zhēng lì</rt></ruby></mark>。</p>
+
+      <p>第四，<mark class="hl word-tap"><ruby>战争<rt>zhàn zhēng</rt></ruby></mark><mark class="hl word-tap"><ruby>预期<rt>yù qī</rt></ruby></mark>也会影响<mark class="hl word-tap"><ruby>资本市场<rt>zī běn shì chǎng</rt></ruby></mark>。<mark class="hl word-tap"><ruby>中东<rt>zhōng dōng</rt></ruby></mark><mark class="hl word-tap"><ruby>冲突<rt>chōng tū</rt></ruby></mark>常常让原油和黄金等<mark class="hl word-tap"><ruby>期货<rt>qī huò</rt></ruby></mark><mark class="hl word-tap"><ruby>价格<rt>jià gé</rt></ruby></mark><mark class="hl word-tap"><ruby>剧烈<rt>jù liè</rt></ruby></mark><mark class="hl word-tap"><ruby>波动<rt>bō dòng</rt></ruby></mark>。过去曾有资金提前布局，获得<mark class="hl word-tap"><ruby>巨额<rt>jù é</rt></ruby></mark><mark class="hl word-tap"><ruby>利润<rt>lì rùn</rt></ruby></mark>。这次打击<mark class="hl word-tap"><ruby>伊朗<rt>yī lǎng</rt></ruby></mark>前，也可能有“<mark class="hl word-tap"><ruby>聪明钱<rt>cōng ming qián</rt></ruby></mark>”提前进入<mark class="hl word-tap"><ruby>期货市场<rt>qī huò shì chǎng</rt></ruby></mark>。</p>
+
+      <p>不过，<mark class="hl word-tap"><ruby>美国<rt>měi guó</rt></ruby></mark>也在“<mark class="hl word-tap"><ruby>走钢丝<rt>zǒu gāng sī</rt></ruby></mark>”。高油价可能影响<mark class="hl word-tap"><ruby>美国<rt>měi guó</rt></ruby></mark><mark class="hl word-tap"><ruby>经济<rt>jīng jì</rt></ruby></mark>和<mark class="hl word-tap"><ruby>中期选举<rt>zhōng qī xuǎn jǔ</rt></ruby></mark>，战争<mark class="hl word-tap"><ruby>成本<rt>chéng běn</rt></ruby></mark>难以控制，如果美军再次<mark class="hl word-tap"><ruby>陷入<rt>xiàn rù</rt></ruby></mark><mark class="hl word-tap"><ruby>长期<rt>cháng qī</rt></ruby></mark><mark class="hl word-tap"><ruby>战争<rt>zhàn zhēng</rt></ruby></mark>，<mark class="hl word-tap"><ruby>军费开支<rt>jūn fèi kāi zhī</rt></ruby></mark>会很大。如果<mark class="hl word-tap"><ruby>伊朗<rt>yī lǎng</rt></ruby></mark><mark class="hl word-tap"><ruby>报复<rt>bào fù</rt></ruby></mark>造成重大<mark class="hl word-tap"><ruby>伤亡<rt>shāng wáng</rt></ruby></mark>，也会带来<mark class="hl word-tap"><ruby>负面<rt>fù miàn</rt></ruby></mark><mark class="hl word-tap"><ruby>影响<rt>yǐng xiǎng</rt></ruby></mark>。后续发展仍需继续<mark class="hl word-tap"><ruby>关注<rt>guān zhù</rt></ruby></mark>。</p>
+
+    </div>
+  </section>
+
+  <!-- ==================== 语法 ==================== -->
+  <details class="section" id="sec-grammar" open>
+    <summary class="section-head">
+      <span class="section-num">3</span>
+      <h2>语法</h2>
+      <span class="en">Grammar</span>
+    </summary>
+
+    <details class="grammar" open>
+      <summary><span class="g-bar"></span><h3>位于</h3><span class="g-en">be located in / at</span></summary>
+      <div class="g-body">
+        <p class="g-usage"><b>用法：</b>表示某人或某物所在的位置、方位，书面语色彩较浓。常见结构：A 位于 + 地点 / 方位。</p>
+        <p class="g-ex" data-n="1"><ruby>伊朗<rt>yī lǎng</rt></ruby><ruby>石油<rt>shí yóu</rt></ruby><ruby>和<rt>hé</rt></ruby><ruby>天然气<rt>tiān rán qì</rt></ruby><ruby>储量<rt>chǔ liàng</rt></ruby><ruby>都<rt>dōu</rt></ruby><ruby>位于<rt>wèi yú</rt></ruby><ruby>世界<rt>shì jiè</rt></ruby><ruby>前列<rt>qián liè</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-ex" data-n="2"><ruby>这个<rt>zhè ge</rt></ruby><ruby>城市<rt>chéng shì</rt></ruby><ruby>位于<rt>wèi yú</rt></ruby><ruby>中国<rt>zhōng guó</rt></ruby><ruby>东部<rt>dōng bù</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-ex" data-n="3"><ruby>那家<rt>nà jiā</rt></ruby><ruby>公司<rt>gōng sī</rt></ruby><ruby>位于<rt>wèi yú</rt></ruby><ruby>市中心<rt>shì zhōng xīn</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-note">注意：‘位于’后面接地点或方位，不接动作；口语中更常说‘在’。</p>
+      </div>
+    </details>
+
+    <details class="grammar" open>
+      <summary><span class="g-bar"></span><h3>越……越……</h3><span class="g-en">the more… the more…</span></summary>
+      <div class="g-body">
+        <p class="g-usage"><b>用法：</b>表示程度随着条件的变化而变化。结构：越 + 形容词/动词，越 + 形容词/动词。</p>
+        <p class="g-ex" data-n="1"><ruby>封锁<rt>fēng suǒ</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>久<rt>jiǔ</rt></ruby><ruby>，<rt></rt></ruby><ruby>油价<rt>yóu jià</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>高<rt>gāo</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-ex" data-n="2"><ruby>他<rt>tā</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>紧张<rt>jǐn zhāng</rt></ruby><ruby>，<rt></rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>说<rt>shuō</rt></ruby><ruby>不<rt>bù</rt></ruby><ruby>清楚<rt>qīng chu</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-ex" data-n="3"><ruby>问题<rt>wèn tí</rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>复杂<rt>fù zá</rt></ruby><ruby>，<rt></rt></ruby><ruby>越<rt>yuè</rt></ruby><ruby>需要<rt>xū yào</rt></ruby><ruby>耐心<rt>nài xīn</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-note">注意：前后两个‘越’结构相互对应，可以省略后面分句的主语。</p>
+      </div>
+    </details>
+
+    <details class="grammar" open>
+      <summary><span class="g-bar"></span><h3>即使……只要……就……</h3><span class="g-en">even if… as long as… then…</span></summary>
+      <div class="g-body">
+        <p class="g-usage"><b>用法：</b>‘即使’表示让步（就算某种情况成立），‘只要……就……’表示条件。合起来强调‘不用真正发生，只要满足某个条件就足以导致结果’。</p>
+        <p class="g-ex" data-n="1"><ruby>即使<rt>jí shǐ</rt></ruby><ruby>石油<rt>shí yóu</rt></ruby><ruby>没有<rt>méi yǒu</rt></ruby><ruby>真正<rt>zhēn zhèng</rt></ruby><ruby>中断<rt>zhōng duàn</rt></ruby><ruby>，<rt></rt></ruby><ruby>只要<rt>zhǐ yào</rt></ruby><ruby>市场<rt>shì chǎng</rt></ruby><ruby>预期<rt>yù qī</rt></ruby><ruby>风险<rt>fēng xiǎn</rt></ruby><ruby>会<rt>huì</rt></ruby><ruby>持续<rt>chí xù</rt></ruby><ruby>，<rt></rt></ruby><ruby>油价<rt>yóu jià</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>会<rt>huì</rt></ruby><ruby>上涨<rt>shàng zhǎng</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-ex" data-n="2"><ruby>即使<rt>jí shǐ</rt></ruby><ruby>下雨<rt>xià yǔ</rt></ruby><ruby>，<rt></rt></ruby><ruby>只要<rt>zhǐ yào</rt></ruby><ruby>你<rt>nǐ</rt></ruby><ruby>愿意<rt>yuàn yì</rt></ruby><ruby>，<rt></rt></ruby><ruby>我们<rt>wǒ men</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>去<rt>qù</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-ex" data-n="3"><ruby>即使<rt>jí shǐ</rt></ruby><ruby>很<rt>hěn</rt></ruby><ruby>难<rt>nán</rt></ruby><ruby>，<rt></rt></ruby><ruby>只要<rt>zhǐ yào</rt></ruby><ruby>坚持<rt>jiān chí</rt></ruby><ruby>，<rt></rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>有<rt>yǒu</rt></ruby><ruby>希望<rt>xī wàng</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-note">注意：‘即使’引出让步，‘只要’引出条件，‘就’引出结果。</p>
+      </div>
+    </details>
+
+    <details class="grammar" open>
+      <summary><span class="g-bar"></span><h3>受到 + 名词（被动）</h3><span class="g-en">be subjected to / be given…</span></summary>
+      <div class="g-body">
+        <p class="g-usage"><b>用法：</b>‘受到’后接名词或名词短语，表示承受某动作或影响，是常见的被动表达，多用于书面语。</p>
+        <p class="g-ex" data-n="1"><ruby>美国<rt>měi guó</rt></ruby><ruby>加征关税<rt>jiā zhēng guān shuì</rt></ruby><ruby>受到<rt>shòu dào</rt></ruby><ruby>限制<rt>xiàn zhì</rt></ruby><ruby>后<rt>hòu</rt></ruby><ruby>，<rt></rt></ruby><ruby>可能<rt>kě néng</rt></ruby><ruby>通过<rt>tōng guò</rt></ruby><ruby>高油价<rt>gāo yóu jià</rt></ruby><ruby>达到<rt>dá dào</rt></ruby><ruby>类似<rt>lèi sì</rt></ruby><ruby>效果<rt>xiào guǒ</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-ex" data-n="2"><ruby>这个<rt>zhè ge</rt></ruby><ruby>建议<rt>jiàn yì</rt></ruby><ruby>受到<rt>shòu dào</rt></ruby><ruby>欢迎<rt>huān yíng</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-ex" data-n="3"><ruby>他<rt>tā</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>观点<rt>guān diǎn</rt></ruby><ruby>受到<rt>shòu dào</rt></ruby><ruby>批评<rt>pī píng</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-diff"><b>受到</b>：强调承受影响，后面多接‘限制、欢迎、批评、影响、关注’等抽象名词。<br><b>被</b>：直接引出施动者或动作，如‘被限制’‘被批评’。书面语中‘受到 + 名词’更常见。</p>
+      </div>
+    </details>
+
+    <details class="grammar" open>
+      <summary><span class="g-bar"></span><h3>通过……达到…… / 从而</h3><span class="g-en">through… achieve… / thereby</span></summary>
+      <div class="g-body">
+        <p class="g-usage"><b>用法：</b>表示借助某种手段、方式实现某个结果。‘通过’引出手段，‘达到’引出目的或结果；‘从而’连接前后，引出由前事导致的结果。</p>
+        <p class="g-ex" data-n="1"><ruby>美国<rt>měi guó</rt></ruby><ruby>可能<rt>kě néng</rt></ruby><ruby>通过<rt>tōng guò</rt></ruby><ruby>高油价<rt>gāo yóu jià</rt></ruby><ruby>达到<rt>dá dào</rt></ruby><ruby>类似<rt>lèi sì</rt></ruby><ruby>石油税<rt>shí yóu shuì</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>效果<rt>xiào guǒ</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-ex" data-n="2"><ruby>美国<rt>měi guó</rt></ruby><ruby>想<rt>xiǎng</rt></ruby><ruby>影响<rt>yǐng xiǎng</rt></ruby><ruby>全球<rt>quán qiú</rt></ruby><ruby>石油<rt>shí yóu</rt></ruby><ruby>供应<rt>gōng yìng</rt></ruby><ruby>，<rt></rt></ruby><ruby>从而<rt>cóng ér</rt></ruby><ruby>推高<rt>tuī gāo</rt></ruby><ruby>油价<rt>yóu jià</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-ex" data-n="3"><ruby>他<rt>tā</rt></ruby><ruby>通过<rt>tōng guò</rt></ruby><ruby>努力<rt>nǔ lì</rt></ruby><ruby>达到<rt>dá dào</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>目标<rt>mù biāo</rt></ruby><ruby>。<rt></rt></ruby></p>
+        <p class="g-note">注意：‘从而’前一般是原因/手段，后是结果，常用于书面语。</p>
+      </div>
+    </details>
+
+  </details>
+
+  <!-- ==================== 口语练习 ==================== -->
+  <details class="section" id="sec-speaking" open>
+    <summary class="section-head">
+      <span class="section-num">4</span>
+      <h2>口语练习</h2>
+      <span class="en">Speaking</span>
+    </summary>
+
+    <div class="content-card">
+      <h3 class="card-h">🗣️ 复述新闻</h3>
+      <p>请根据新闻内容，用自己的话复述美国对伊朗动武的几个原因。</p>
+      <p class="sub-h">提示词</p>
+      <ul class="dot-list">
+        <li>2月28日 / 联合打击 / 哈梅内伊身亡</li>
+        <li>石油、天然气储量 / 石油美元体系</li>
+        <li>霍尔木兹海峡 / 封锁 / 持久战红利</li>
+        <li>加征关税 / 石油税 / 出口竞争力</li>
+        <li>资本市场 / 期货 / 聪明钱 / 走钢丝</li>
+      </ul>
+      <p class="sub-h">要求</p>
+      <p>尽量使用本课生词和语法点（尤其是“位于、越……越……、受到……、从而”）。</p>
+    </div>
+
+    <div class="content-card">
+      <h3 class="card-h">💬 小型辩论</h3>
+      <p><b>辩题：</b>美国对伊朗动武，真的是为了石油吗？</p>
+      <div class="stance pro"><span class="who">正方</span><span>石油和金融才是核心动机：控制供应、推高油价、巩固石油美元体系。</span></div>
+      <div class="stance con"><span class="who">反方</span><span>核问题和地区安全才是主要原因，石油只是被顺带影响的次要因素。</span></div>
+    </div>
+  </details>
+
+  <!-- ==================== 深度讨论 ==================== -->
+  <details class="section" id="sec-discussion" open>
+    <summary class="section-head">
+      <span class="section-num">5</span>
+      <h2>深度讨论</h2>
+      <span class="en">Discussion</span>
+    </summary>
+
+    <div class="content-card">
+      <ul class="q-list">
+        <li data-n="1">为什么文章说美国“也在走钢丝”？它面临哪些风险？</li>
+        <li data-n="2">“即使石油没有真正中断，只要市场预期风险会持续，油价就会上涨。”这句话说明预期和事实有什么不同？</li>
+        <li data-n="3">高油价对美国、日本、韩国等国家分别有什么利弊？</li>
+        <li data-n="4">什么是“聪明钱”？你觉得它提前进入期货市场合理吗？</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ==================== 本课总结 ==================== -->
+  <details class="section" id="sec-summary" open>
+    <summary class="section-head">
+      <span class="section-num">6</span>
+      <h2>本课总结</h2>
+      <span class="en">Summary</span>
+    </summary>
+
+    <div class="content-card">
+      <h3 class="card-h">🎯 总结</h3>
+      <ul class="dot-list">
+        <li><b>核心话题：</b>美国打击伊朗背后的石油与金融动机</li>
+        <li><b>重点生词：</b>联合打击、动武、核问题、储量、封锁、能源通道、石油美元体系、持久战红利、通胀、加征关税、石油税、出口竞争力、期货、聪明钱、走钢丝、军费开支、报复</li>
+        <li><b>重点语法：</b>位于（位置，书面语）；越……越……（程度变化）；即使……只要……就……（让步 + 条件）；受到 + 名词（被动）；通过……达到…… / 从而（手段与结果）</li>
+      </ul>
+    </div>
+  </details>
+
+  <p class="footer">时事阅读 · 伊朗局势与石油</p>
+</div>
+
+<!-- ==================== 浮动生词框 ==================== -->
+<aside class="wordbox" id="wordbox" aria-hidden="true">
+  <div class="wordbox-head">
+    <span class="wb-title">生词本</span>
+    <span class="wb-count" id="wbCount">0</span>
+    <span class="wb-spacer"></span>
+    <button class="wb-btn primary" id="wbCopy" title="复制全部生词">复制</button>
+    <button class="wb-btn" id="wbClear" title="清空生词本">🗑</button>
+    <button class="wb-btn" id="wbMin" title="最小化">—</button>
+  </div>
+  <div class="wordbox-list" id="wbList"></div>
+</aside>
+
+<button class="wordbox-fab" id="wbFab" title="打开生词本" aria-hidden="true">
+  📒<span class="fab-badge" id="wbBadge">0</span>
+</button>
+
+<script>
+(function () {
+  /* ---------- 声调着色 ---------- */
+  var toneChars = {
+    '1': 'āēīōūǖĀĒĪŌŪǕ',
+    '2': 'áéíóúǘÁÉÍÓÚǗ',
+    '3': 'ǎěǐǒǔǚǍĚǏǑǓǙ',
+    '4': 'àèìòùǜÀÈÌÒÙǛ'
+  };
+
+  function detectTone(syllable) {
+    if (!/[a-zA-ZüÜ]/.test(syllable)) return null;
+    for (var t in toneChars) {
+      var chars = toneChars[t];
+      for (var i = 0; i < syllable.length; i++) {
+        if (chars.indexOf(syllable[i]) !== -1) return t;
+      }
+    }
+    return '5';
+  }
+
+  document.querySelectorAll('rt').forEach(function (rt) {
+    if (rt.dataset.toneDone) return;
+    rt.dataset.toneDone = '1';
+    var text = rt.textContent;
+    var parts = text.split(/(\s+)/);
+    rt.textContent = '';
+    parts.forEach(function (part) {
+      if (part === '') return;
+      if (/^\s+$/.test(part)) {
+        rt.appendChild(document.createTextNode(part));
+        return;
+      }
+      var tone = detectTone(part);
+      if (tone === null) {
+        rt.appendChild(document.createTextNode(part));
+      } else {
+        var span = document.createElement('span');
+        span.className = 'tone-' + tone;
+        span.textContent = part;
+        rt.appendChild(span);
+      }
+    });
+  });
+
+  /* ---------- 抽屉开关 ---------- */
+  var body     = document.body;
+  var menuBtn  = document.getElementById('menuBtn');
+  var closeBtn = document.getElementById('closeBtn');
+  var overlay  = document.getElementById('overlay');
+  var drawer   = document.getElementById('drawer');
+
+  function openMenu() {
+    body.classList.add('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+  }
+  function closeMenu() {
+    body.classList.remove('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  /* ---------- 目录跳转 ---------- */
+  drawer.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = a.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      if (target.tagName === 'DETAILS') target.open = true;
+      var p = target.parentElement;
+      while (p) {
+        if (p.tagName === 'DETAILS') p.open = true;
+        p = p.parentElement;
+      }
+      closeMenu();
+      setTimeout(function () {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 90);
+    });
+  });
+
+  /* ---------- 单词分组：全体展开 / 折叠 ---------- */
+  var groups = document.querySelectorAll('#sec-vocab .group');
+  document.getElementById('expandAll').addEventListener('click', function () {
+    groups.forEach(function (g) { g.open = true; });
+  });
+  document.getElementById('collapseAll').addEventListener('click', function () {
+    groups.forEach(function (g) { g.open = false; });
+  });
+
+  /* ---------- 复制全部单词 ---------- */
+  var copyBtn = document.getElementById('copyWordsBtn');
+
+  function buildWordText() {
+    var lines = [];
+    document.querySelectorAll('#sec-vocab .group').forEach(function (group) {
+      var h3 = group.querySelector('.group-head h3');
+      if (h3) lines.push(h3.textContent.trim());
+
+      var words = [];
+      group.querySelectorAll('.word .zh').forEach(function (zh) {
+        var clone = zh.cloneNode(true);
+        clone.querySelectorAll('rt, rp').forEach(function (n) { n.remove(); });
+        var text = clone.textContent.replace(/\s+/g, '').trim();
+        if (text) words.push(text);
+      });
+      lines.push(words.join('　'));
+      lines.push('');
+    });
+    return lines.join('\n').trim();
+  }
+
+  copyBtn.addEventListener('click', function () {
+    var text = buildWordText();
+
+    function done() {
+      copyBtn.classList.add('copied');
+      copyBtn.textContent = '已复制 ✓';
+      setTimeout(function () {
+        copyBtn.classList.remove('copied');
+        copyBtn.textContent = '复制单词 · Copy';
+      }, 1800);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () {
+        fallbackCopy(text, done);
+      });
+    } else {
+      fallbackCopy(text, done);
+    }
+  });
+
+  function fallbackCopy(text, cb) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); cb(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+
+<!-- ==================== 点词收集生词本 + 字号 ==================== -->
+<script>
+(function () {
+  'use strict';
+
+  var STORAGE_KEY = 'iran-oil-wordbox';
+
+  var wordbox = document.getElementById('wordbox');
+  var wbList  = document.getElementById('wbList');
+  var wbCount = document.getElementById('wbCount');
+  var wbBadge = document.getElementById('wbBadge');
+  var wbCopy  = document.getElementById('wbCopy');
+  var wbClear = document.getElementById('wbClear');
+  var wbMin   = document.getElementById('wbMin');
+  var wbFab   = document.getElementById('wbFab');
+
+  /* ================= 生词本数据 ================= */
+  var words = [];   // [{ zh, py }]
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        var arr = JSON.parse(raw);
+        if (Array.isArray(arr)) words = arr;
+      }
+    } catch (e) { words = []; }
+  }
+  function save() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(words)); } catch (e) {}
+  }
+
+  /* ================= 拼音回退表（原文里没有 ruby 的词） ================= */
+  var PINYIN_FALLBACK = {};
+
+  function getPinyin(el) {
+    // 优先取元素内已有 rt
+    var rt = el.querySelector('rt');
+    if (rt && rt.textContent.trim()) return rt.textContent.replace(/\s+/g, ' ').trim();
+    // 其次查回退表
+    var zh = (el.textContent || '').replace(/\s+/g, '').trim();
+    if (PINYIN_FALLBACK[zh]) return PINYIN_FALLBACK[zh];
+    return '';
+  }
+  function getWord(el) {
+    // 去掉 rt 与标点后得到词
+    var clone = el.cloneNode(true);
+    clone.querySelectorAll('rt, rp').forEach(function (n) { n.remove(); });
+    return (clone.textContent || '').replace(/\s+/g, '').replace(/[。，、！？；：""''（）·「」『』《》\s]/g, '').trim();
+  }
+
+  /* ================= 渲染生词本 ================= */
+  function render() {
+    wbList.innerHTML = '';
+    words.forEach(function (w, i) {
+      var chip = document.createElement('span');
+      chip.className = 'wb-chip';
+      var txt = document.createElement('span');
+      txt.textContent = w.zh;
+      chip.appendChild(txt);
+      if (w.py) {
+        var py = document.createElement('span');
+        py.className = 'wb-py';
+        py.textContent = w.py;
+        chip.appendChild(py);
+      }
+      var del = document.createElement('button');
+      del.className = 'wb-del';
+      del.type = 'button';
+      del.textContent = '×';
+      del.setAttribute('aria-label', '删除 ' + w.zh);
+      del.addEventListener('click', function (ev) { ev.stopPropagation(); remove(i); });
+      chip.appendChild(del);
+      wbList.appendChild(chip);
+    });
+    wbCount.textContent = words.length;
+    wbBadge.textContent = words.length;
+    wbFab.classList.toggle('show', words.length > 0 && !wordbox.classList.contains('show'));
+  }
+
+  function add(zh, py) {
+    if (!zh) return false;
+    var exists = words.some(function (x) { return x.zh === zh; });
+    if (exists) return false;
+    words.push({ zh: zh, py: py || '' });
+    save();
+    render();
+    openBox();
+    return true;
+  }
+  function remove(i) {
+    words.splice(i, 1);
+    save();
+    render();
+    if (words.length === 0) closeBox();
+  }
+
+  function openBox() {
+    wordbox.classList.add('show');
+    wordbox.setAttribute('aria-hidden', 'false');
+    wbFab.classList.remove('show');
+    wbFab.setAttribute('aria-hidden', 'true');
+  }
+  function closeBox() {
+    wordbox.classList.remove('show');
+    wordbox.setAttribute('aria-hidden', 'true');
+    wbFab.classList.toggle('show', words.length > 0);
+    wbFab.setAttribute('aria-hidden', words.length > 0 ? 'false' : 'true');
+  }
+
+  /* ================= 点击词语 -> 直接加入生词本 ================= */
+  var PICK_SELECTOR = '#sec-vocab .word .zh, #sec-original .word-tap';
+
+  function bindPickers() {
+    document.querySelectorAll(PICK_SELECTOR).forEach(function (el) {
+      if (el.dataset.pickBound) return;
+      el.dataset.pickBound = '1';
+      el.classList.add('pick-word');
+      el.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (el.closest('summary')) e.preventDefault();  // 词条在 summary 内：不触发展开
+        var zh = getWord(el);
+        if (!zh) return;
+        var py = getPinyin(el);
+        var added = add(zh, py);
+        // 反馈动画
+        el.classList.add('picked');
+        setTimeout(function () { el.classList.remove('picked'); }, 450);
+        if (!added) {
+          // 已存在时给个轻微抖动提示
+          el.classList.add('dup');
+          setTimeout(function () { el.classList.remove('dup'); }, 400);
+        }
+      });
+    });
+  }
+
+  /* ================= 生词框按钮 ================= */
+  wbMin.addEventListener('click', function () { closeBox(); });
+  wbFab.addEventListener('click', function () { openBox(); });
+  wbClear.addEventListener('click', function () {
+    if (!words.length) return;
+    if (window.confirm('清空生词本？')) {
+      words = [];
+      save();
+      render();
+      closeBox();
+    }
+  });
+
+  function copyText(text, cb) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(cb).catch(function () { fallback(text, cb); });
+    } else { fallback(text, cb); }
+  }
+  function fallback(text, cb) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); cb(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  wbCopy.addEventListener('click', function () {
+    if (!words.length) return;
+    var text = words.map(function (w) {
+      return w.py ? w.zh + '（' + w.py + '）' : w.zh;
+    }).join('\n');
+    copyText(text, function () {
+      wbCopy.classList.add('copied');
+      var old = wbCopy.textContent;
+      wbCopy.textContent = '已复制 ✓';
+      setTimeout(function () {
+        wbCopy.classList.remove('copied');
+        wbCopy.textContent = old;
+      }, 1500);
+    });
+  });
+
+  /* ================= 字号调节 ================= */
+  var FS_KEY = 'iran-oil-fontsize';
+  var FS_MIN = 16, FS_MAX = 26, FS_STEP = 1, FS_DEFAULT = 18;
+
+  var fontUp = document.getElementById('fontUp');
+  var fontDown = document.getElementById('fontDown');
+  var fontLabel = document.getElementById('fontLabel');
+  var baseSize = FS_DEFAULT;
+
+  function applyFont(px, persist) {
+    px = Math.max(FS_MIN, Math.min(FS_MAX, px));
+    baseSize = px;
+    document.documentElement.style.fontSize = px + 'px';
+    fontLabel.textContent = Math.round(px / FS_DEFAULT * 100) + '%';
+    fontDown.disabled = px <= FS_MIN;
+    fontUp.disabled = px >= FS_MAX;
+    if (persist) { try { localStorage.setItem(FS_KEY, px); } catch (e) {} }
+  }
+
+  var savedSize = null;
+  try { savedSize = parseInt(localStorage.getItem(FS_KEY), 10); } catch (e) {}
+  applyFont(isNaN(savedSize) ? FS_DEFAULT : savedSize, false);
+
+  fontUp.addEventListener('click', function () { applyFont(baseSize + FS_STEP, true); });
+  fontDown.addEventListener('click', function () { applyFont(baseSize - FS_STEP, true); });
+
+  /* ================= 初始化 ================= */
+  load();
+  render();
+  bindPickers();
+  if (words.length > 0) closeBox();
+})();
+</script>
+
+</body>
+</html>

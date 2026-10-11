@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>伊朗局势与石油金融</title>
+<style>
+  * { box-sizing: border-box; }
+
+  :root {
+    --ink:     #2c2c34;
+    --ink-2:   #55555f;
+    --ink-3:   #8a8a99;
+    --line:    rgba(150,160,180,.28);
+    --line-2:  rgba(150,160,180,.45);
+
+    --tone1: #d94a4a;
+    --tone2: #cf8500;
+    --tone3: #189a58;
+    --tone4: #2563d4;
+    --tone5: #8a8a99;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                 "Noto Sans SC", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background-color: #eef0f4;
+    background-image:
+      radial-gradient(circle at 18% -6%,  #ffffff 0%, transparent 44%),
+      radial-gradient(circle at 88% 6%,   #f4f6f9 0%, transparent 40%),
+      radial-gradient(circle at 50% 108%, #e6e9ef 0%, transparent 52%),
+      linear-gradient(180deg, #f8f9fb 0%, #e9ecf1 100%);
+    background-attachment: fixed;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.menu-open { overflow: hidden; }
+
+  /* ================= ruby 注音 ================= */
+  ruby {
+    ruby-position: over;
+    ruby-align: center;
+    margin: 0 .1em;
+  }
+  rt {
+    font-size: .8em;
+    letter-spacing: .05em;
+    line-height: 1.45;
+    font-weight: 600;
+    font-family: "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+    color: var(--tone5);
+  }
+  rt .tone-1 { color: var(--tone1); }
+  rt .tone-2 { color: var(--tone2); }
+  rt .tone-3 { color: var(--tone3); }
+  rt .tone-4 { color: var(--tone4); }
+  rt .tone-5 { color: var(--tone5); }
+
+  /* ================= 汉堡按钮 ================= */
+  .menu-btn {
+    position: fixed;
+    top: .85rem;
+    left: .85rem;
+    z-index: 60;
+    width: 44px; height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 24px -18px rgba(90,100,120,.95);
+    cursor: pointer;
+    transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .menu-btn:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px -18px rgba(90,100,120,1);
+  }
+  .menu-btn .bars {
+    display: block;
+    width: 19px;
+    height: 13px;
+    position: relative;
+  }
+  .menu-btn .bars i {
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #7d8494, #5c6472);
+    transition: transform .28s ease, opacity .2s ease, top .28s ease;
+  }
+  .menu-btn .bars i:nth-child(1) { top: 0; }
+  .menu-btn .bars i:nth-child(2) { top: 5.5px; }
+  .menu-btn .bars i:nth-child(3) { top: 11px; }
+
+  body.menu-open .menu-btn { opacity: 0; pointer-events: none; }
+
+  /* ================= 侧边抽屉 ================= */
+  .drawer {
+    position: fixed;
+    top: 0; left: 0;
+    height: 100%;
+    width: min(300px, 82vw);
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    padding: 1.05rem .6rem 1.6rem;
+    overflow-y: auto;
+    background: linear-gradient(168deg, #f8f9fb 0%, #eef0f4 55%, #e6e9ef 100%);
+    border-right: 1px solid var(--line);
+    box-shadow: 20px 0 50px -34px rgba(90,100,120,1);
+    transform: translateX(-102%);
+    transition: transform .34s cubic-bezier(.4,.02,.2,1);
+  }
+  body.menu-open .drawer { transform: translateX(0); }
+
+  .drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .15rem .55rem 1rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: .55rem;
+  }
+  .drawer-head .t {
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .3em;
+    text-indent: .3em;
+    color: #7d8494;
+  }
+  .close-btn {
+    width: 32px; height: 32px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,.8);
+    color: #8a93a3;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease;
+  }
+  .close-btn:hover { background: #fff; color: #5c6472; }
+
+  .drawer nav { display: flex; flex-direction: column; gap: .1rem; }
+
+  .drawer .grp {
+    margin: .7rem .55rem .25rem;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #b0b7c2;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  .drawer a {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+    padding: .5rem .7rem;
+    border-radius: 11px;
+    text-decoration: none;
+    color: #55555f;
+    font-size: .87rem;
+    letter-spacing: .04em;
+    transition: background .16s ease, color .16s ease, transform .16s ease;
+  }
+  .drawer a:hover {
+    background: rgba(255,255,255,.9);
+    color: #2c2c34;
+    transform: translateX(2px);
+  }
+  .drawer a.sub {
+    padding-left: 1.5rem;
+    font-size: .82rem;
+    color: #6a7280;
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 65;
+    background: rgba(60,70,90,.22);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  body.menu-open .overlay { opacity: 1; pointer-events: auto; }
+
+  /* ================= 页面容器 ================= */
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 1.1rem 5rem;
+  }
+
+  /* ================= 顶部 ================= */
+  .hero {
+    text-align: center;
+    padding: 3.8rem 1rem 1.2rem;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-bottom: 1.4rem;
+    padding: .42rem .9rem;
+    border-radius: 99px;
+    background: rgba(255,255,255,.8);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    font-size: .78rem;
+    letter-spacing: .1em;
+    color: #55555f;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    transition: background .18s ease, transform .18s ease,
+                border-color .18s ease, color .18s ease;
+  }
+  .back-btn:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    border-color: var(--line-2);
+    color: #2c2c34;
+  }
+  .back-btn .arrow { font-size: .9rem; }
+
+  .hero h1 {
+    margin: 0 0 .75rem;
+    font-size: clamp(1.9rem, 6vw, 2.7rem);
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-indent: .16em;
+    background: linear-gradient(115deg,
+      #7d8494 0%, #c3cad6 22%, #5c6472 46%,
+      #c3cad6 70%, #7d8494 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 0 1px 0 rgba(255,255,255,.6);
+  }
+  .hero .sub {
+    margin: 0;
+    font-size: .72rem;
+    letter-spacing: .34em;
+    text-indent: .34em;
+    text-transform: uppercase;
+    color: #9aa1b0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .ribbon {
+    display: flex;
+    height: 5px;
+    width: 260px;
+    max-width: 70%;
+    margin: 1.5rem auto 0;
+    border-radius: 99px;
+    overflow: hidden;
+    opacity: .9;
+  }
+  .ribbon span { flex: 1; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .45rem .95rem;
+    margin: 1.7rem auto 0;
+    padding: .7rem 1.1rem;
+    max-width: 560px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: .76rem;
+    color: var(--ink-2);
+  }
+  .legend b {
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    margin-right: .25rem;
+  }
+  .legend .l1 b { color: var(--tone1); }
+  .legend .l2 b { color: var(--tone2); }
+  .legend .l3 b { color: var(--tone3); }
+  .legend .l4 b { color: var(--tone4); }
+  .legend .l5 b { color: var(--tone5); }
+
+  /* ================= 一级模块 ================= */
+  .section {
+    margin-top: 2.6rem;
+    scroll-margin-top: 1rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .5rem .8rem .5rem .5rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.6);
+    border: 1px solid transparent;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .18s ease, border-color .18s ease;
+  }
+  .section-head:hover {
+    background: #fff;
+    border-color: var(--line-2);
+  }
+  .section-head::-webkit-details-marker { display: none; }
+  .section-head::marker { content: ""; }
+
+  details.section[open] > .section-head { margin-bottom: 1rem; }
+
+  .section-num {
+    flex: none;
+    width: 34px; height: 34px;
+    border-radius: 12px;
+    display: grid; place-items: center;
+    font-size: .86rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(135deg, #b8c0cc, #7e8b9e);
+    box-shadow: 0 8px 16px -8px rgba(120,130,150,.9);
+  }
+  .section-head h2 {
+    margin: 0;
+    font-size: 1.18rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: #3a3a44;
+  }
+  .section-head .en {
+    margin-left: auto;
+    font-size: .66rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #a8aeba;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .section-head::after {
+    content: "";
+    flex: none;
+    width: .44rem;
+    height: .44rem;
+    margin: -.24rem .35rem 0 .5rem;
+    border-right: 2px solid #b0b7c2;
+    border-bottom: 2px solid #b0b7c2;
+    border-radius: 1px;
+    transform: rotate(45deg);
+    transition: transform .25s ease, border-color .2s ease;
+  }
+  details.section[open] > .section-head::after {
+    transform: rotate(-135deg);
+    margin-top: .1rem;
+    border-color: #5c6472;
+  }
+
+  /* 控制按钮行 */
+  .controls {
+    display: flex;
+    gap: .5rem;
+    margin: .2rem 0 1rem;
+    flex-wrap: wrap;
+  }
+  .ctrl-btn {
+    padding: .38rem .85rem;
+    border-radius: 99px;
+    background: rgba(255,255,255,.85);
+    border: 1px solid var(--line);
+    color: #55555f;
+    font-size: .76rem;
+    letter-spacing: .08em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease,
+                border-color .16s ease, transform .16s ease;
+  }
+  .ctrl-btn:hover {
+    background: #fff;
+    border-color: var(--line-2);
+    color: #2c2c34;
+    transform: translateY(-1px);
+  }
+  .ctrl-btn.copied {
+    background: #2c2c34;
+    border-color: #2c2c34;
+    color: #fff;
+  }
+
+  /* ================= 单词分组 ================= */
+  .group {
+    margin-bottom: .85rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 26px -24px rgba(90,100,120,.9);
+    overflow: hidden;
+    transition: box-shadow .2s ease, border-color .2s ease;
+  }
+  .group[open] { box-shadow: 0 16px 34px -24px rgba(90,100,120,1); }
+  .group:hover { border-color: var(--line-2); }
+
+  .group-head {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .7rem 1rem .7rem .85rem;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .16s ease;
+  }
+  .group-head:hover { background: rgba(246,248,251,.9); }
+  .group-head::-webkit-details-marker { display: none; }
+  .group-head::marker { content: ""; }
+
+  .group-head .bar {
+    flex: none;
+    width: 4px;
+    height: 1.1em;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #cfd6e2, #7e8b9e);
+  }
+  .group-head h3 {
+    margin: 0;
+    font-size: .96rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: #3a3a44;
+  }
+  .group-head .en {
+    margin-left: auto;
+    font-size: .64rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #a8aeba;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .group-head::after {
+    content: "";
+    flex: none;
+    width: .38rem;
+    height: .38rem;
+    margin: -.2rem .1rem 0 .5rem;
+    border-right: 2px solid #b0b7c2;
+    border-bottom: 2px solid #b0b7c2;
+    transform: rotate(45deg);
+    transition: transform .25s ease, border-color .2s ease;
+  }
+  details.group[open] > .group-head::after {
+    transform: rotate(-135deg);
+    margin-top: .12rem;
+    border-color: #5c6472;
+  }
+
+  .group-body { padding: 0 .9rem .9rem; }
+
+  /* ================= 单词卡 ================= */
+  .words {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: .55rem .65rem;
+  }
+
+  .word {
+    border-radius: 13px;
+    background: #fff;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    transition: border-color .18s ease, box-shadow .18s ease;
+  }
+  .word:hover { border-color: var(--line-2); }
+  .word[open] {
+    border-color: rgba(120,130,150,.5);
+    box-shadow: 0 12px 26px -20px rgba(90,100,120,.9);
+  }
+
+  .word > summary {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .55rem .8rem;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .16s ease;
+  }
+  .word > summary:hover { background: rgba(246,248,251,.9); }
+  .word > summary::-webkit-details-marker { display: none; }
+  .word > summary::marker { content: ""; }
+
+  .word .zh {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 1.04rem;
+    font-weight: 600;
+    line-height: 2.55;
+    letter-spacing: .02em;
+  }
+  .word > summary .sign {
+    flex: none;
+    width: 20px; height: 20px;
+    display: grid;
+    place-items: center;
+    border-radius: 7px;
+    background: #f0f2f6;
+    border: 1px solid var(--line);
+    color: #9aa1b0;
+    font-size: .82rem;
+    line-height: 1;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    transition: background .18s ease, color .18s ease,
+                transform .22s ease, border-color .18s ease;
+  }
+  .word > summary .sign::before { content: "+"; }
+  .word[open] > summary .sign {
+    background: #2c2c34;
+    border-color: #2c2c34;
+    color: #fff;
+    transform: rotate(180deg);
+  }
+  .word[open] > summary .sign::before { content: "−"; }
+
+  .word-body {
+    padding: .15rem .85rem .75rem;
+    border-top: 1px dashed var(--line);
+    animation: reveal .24s ease both;
+  }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(-3px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .word-en {
+    margin: .5rem 0 .3rem;
+    font-size: .78rem;
+    line-height: 1.5;
+    color: #6a7280;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .word-en .tag {
+    display: inline-block;
+    margin-right: .45rem;
+    padding: .05rem .45rem;
+    border-radius: 6px;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    font-size: .66rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #8a93a3;
+  }
+
+  .word-ex {
+    margin: .5rem 0 0;
+    padding: .55rem .8rem .6rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    position: relative;
+  }
+  .word-ex::before {
+    content: "例";
+    position: absolute;
+    top: .55rem; left: .8rem;
+    font-size: .62rem;
+    font-weight: 700;
+    color: #b0b7c2;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .word-ex .ex-zh {
+    margin: 0 0 0 1.1rem;
+    font-size: .96rem;
+    line-height: 2.6;
+    color: #34343e;
+  }
+  .word-ex .ex-en {
+    margin: .15rem 0 0 1.1rem;
+    font-size: .74rem;
+    line-height: 1.5;
+    color: #8a93a3;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 原文 ================= */
+  .original-card {
+    padding: 1.4rem 1.5rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,.9);
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 32px -26px rgba(90,100,120,.9);
+  }
+  .original-card p {
+    margin: 0 0 1rem;
+    font-size: 1.02rem;
+    line-height: 2.9;
+    color: #34343e;
+    letter-spacing: .01em;
+  }
+  .original-card p:last-child { margin-bottom: 0; }
+
+  mark.hl {
+    background: #fff3b0;
+    color: inherit;
+    padding: 0 .08em;
+    border-radius: 3px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* 可点击抄词 */
+  .pickable {
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 0 .08em;
+    transition: background .15s ease, box-shadow .15s ease;
+  }
+  .pickable:hover {
+    background: rgba(37,99,212,.14);
+    box-shadow: 0 0 0 2px rgba(37,99,212,.12);
+  }
+  .pickable.picked {
+    background: rgba(24,154,88,.18);
+    box-shadow: 0 0 0 2px rgba(24,154,88,.16);
+  }
+  /* 已抄录的词：与硬设置高亮（mark.hl）一致 —— 淡黄高亮 + 同样的注音格式 */
+  .pickable.shown {
+    background: #fff3b0;
+    box-shadow: none;
+    border-radius: 3px;
+  }
+  .pickable.shown ruby { ruby-position: over; }
+  .pickable.shown rt {
+    font-size: .8em;
+    letter-spacing: .05em;
+    line-height: 1.45;
+    font-weight: 600;
+    font-family: "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+    color: var(--tone5);
+  }
+  .pickable.shown rt .tone-1 { color: var(--tone1); }
+  .pickable.shown rt .tone-2 { color: var(--tone2); }
+  .pickable.shown rt .tone-3 { color: var(--tone3); }
+  .pickable.shown rt .tone-4 { color: var(--tone4); }
+  .pickable.shown rt .tone-5 { color: var(--tone5); }
+
+  /* ================= 浮动单词表 ================= */
+  .word-tray {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 80;
+    width: min(330px, 88vw);
+    max-height: min(62vh, 560px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    background: rgba(255,255,255,.96);
+    border: 1px solid var(--line-2);
+    box-shadow: 0 24px 60px -30px rgba(60,70,90,1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+    transform: translateY(14px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .28s ease, opacity .28s ease;
+  }
+  .word-tray.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .tray-head {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .6rem .8rem;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, #fbfcfe, #f2f4f8);
+  }
+  .tray-head .ttl {
+    font-size: .84rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #3a3a44;
+  }
+  .tray-head .cnt {
+    font-size: .68rem;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #fff;
+    background: linear-gradient(135deg, #b8c0cc, #7e8b9e);
+    border-radius: 99px;
+    padding: .05rem .5rem;
+    font-weight: 700;
+  }
+  .tray-head .spacer { margin-left: auto; }
+  .tray-btn {
+    border: 1px solid var(--line);
+    background: #fff;
+    color: #55555f;
+    font-size: .72rem;
+    font-family: inherit;
+    letter-spacing: .06em;
+    padding: .28rem .6rem;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease, border-color .16s ease;
+  }
+  .tray-btn:hover { background: #f4f6fa; border-color: var(--line-2); color: #2c2c34; }
+  .tray-btn.copied { background: #2c2c34; border-color: #2c2c34; color: #fff; }
+  .tray-btn.icon { padding: .28rem .5rem; }
+
+  .tray-body {
+    overflow-y: auto;
+    padding: .55rem .6rem .7rem;
+  }
+  .tray-empty {
+    padding: 1rem .6rem;
+    text-align: center;
+    font-size: .8rem;
+    color: #a8aeba;
+    line-height: 1.9;
+  }
+  .tray-item {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .38rem .5rem;
+    border-radius: 10px;
+    font-size: .92rem;
+    color: #34343e;
+    transition: background .14s ease;
+  }
+  .tray-item:hover { background: #f4f6fa; }
+  .tray-item .idx {
+    flex: none;
+    width: 1.3rem;
+    height: 1.3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 7px;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    font-size: .64rem;
+    font-weight: 700;
+    color: #8a93a3;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .tray-item .txt { flex: 1 1 auto; min-width: 0; }
+  /* 抄词本里每个词上方的拼音 */
+  .tray-item .txt .pyline {
+    display: block;
+    font-size: .68rem;
+    line-height: 1.2;
+    color: #8a93a3;
+    letter-spacing: .02em;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .tray-item .txt .zh { font-size: .95rem; line-height: 1.35; }
+  .tray-item .del {
+    flex: none;
+    border: none;
+    background: transparent;
+    color: #c3cad6;
+    font-size: .95rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: .1rem .25rem;
+    border-radius: 6px;
+    transition: color .14s ease, background .14s ease;
+  }
+  .tray-item .del:hover { color: #d94a4a; background: rgba(217,74,74,.1); }
+
+  .tray-toggle {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 79;
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .5rem .9rem;
+    border-radius: 99px;
+    border: 1px solid var(--line-2);
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 16px 34px -22px rgba(60,70,90,1);
+    font-size: .78rem;
+    font-family: inherit;
+    letter-spacing: .06em;
+    color: #55555f;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform .18s ease, background .18s ease, color .18s ease;
+  }
+  .tray-toggle:hover { background: #fff; color: #2c2c34; transform: translateY(-1px); }
+  .tray-toggle .badge {
+    font-size: .66rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #7e8b9e, #5c6472);
+    border-radius: 99px;
+    padding: .02rem .42rem;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .word-tray.show ~ .tray-toggle { opacity: 0; pointer-events: none; }
+
+  /* ================= 页脚 ================= */
+  .footer {
+    margin-top: 3.6rem;
+    text-align: center;
+    font-size: .7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #b0b7c2;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 语法点 ================= */
+  .grammar {
+    margin-bottom: .85rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.82);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 26px -24px rgba(90,100,120,.9);
+    overflow: hidden;
+  }
+  .grammar[open] { box-shadow: 0 16px 34px -24px rgba(90,100,120,1); }
+  .grammar > summary {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .75rem 1rem;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .16s ease;
+  }
+  .grammar > summary:hover { background: rgba(246,248,251,.9); }
+  .grammar > summary::-webkit-details-marker { display: none; }
+  .grammar > summary::marker { content: ""; }
+  .grammar > summary .g-bar {
+    flex: none;
+    width: 4px;
+    height: 1.1em;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #d9c29a, #b08d57);
+  }
+  .grammar > summary h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #3a3a44;
+  }
+  .grammar > summary .g-en {
+    margin-left: auto;
+    font-size: .64rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #a8aeba;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .grammar > summary::after {
+    content: "";
+    flex: none;
+    width: .38rem;
+    height: .38rem;
+    margin: -.2rem .1rem 0 .5rem;
+    border-right: 2px solid #b0b7c2;
+    border-bottom: 2px solid #b0b7c2;
+    transform: rotate(45deg);
+    transition: transform .25s ease, border-color .2s ease;
+  }
+  .grammar[open] > summary::after {
+    transform: rotate(-135deg);
+    margin-top: .12rem;
+    border-color: #5c6472;
+  }
+  .grammar .g-body { padding: 0 1rem .95rem; }
+  .g-usage {
+    margin: 0 0 .6rem;
+    padding: .6rem .85rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    font-size: .88rem;
+    line-height: 1.8;
+    color: #55555f;
+  }
+  .g-usage b { color: #2c2c34; }
+  .g-ex {
+    position: relative;
+    margin: .35rem 0 0;
+    padding-left: 1.55rem;
+    font-size: .95rem;
+    line-height: 2.15;
+    color: #34343e;
+  }
+  .g-ex::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0;
+    top: .22rem;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    color: #8a93a3;
+    font-size: .66rem;
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .g-note {
+    margin: .6rem 0 0;
+    padding: .55rem .85rem;
+    border-radius: 11px;
+    background: #fffbe9;
+    border: 1px solid rgba(207,185,96,.35);
+    font-size: .84rem;
+    line-height: 1.8;
+    color: #6b5f3a;
+  }
+  .g-note::before { content: "💡 "; }
+  .g-diff {
+    margin: .6rem 0 0;
+    padding: .6rem .85rem;
+    border-radius: 11px;
+    background: #f3f0fb;
+    border: 1px solid rgba(150,130,210,.3);
+    font-size: .84rem;
+    line-height: 1.9;
+    color: #4c4266;
+  }
+  .g-diff::before { content: "⚖️ 区别："; font-weight: 700; }
+  .g-diff b { color: #352b52; }
+
+  /* ================= 内容卡 ================= */
+  .content-card {
+    margin-bottom: .85rem;
+    padding: 1.05rem 1.2rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.85);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 26px -24px rgba(90,100,120,.9);
+  }
+  .content-card .card-h {
+    margin: 0 0 .65rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #3a3a44;
+  }
+  .content-card p {
+    margin: 0 0 .5rem;
+    font-size: .9rem;
+    line-height: 1.9;
+    color: #55555f;
+  }
+  .content-card p:last-child { margin-bottom: 0; }
+  .content-card .sub-h {
+    margin: .7rem 0 .35rem;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #6a7280;
+  }
+  .content-card .sub-h:first-child { margin-top: 0; }
+  .q-list { margin: 0; padding: 0; list-style: none; }
+  .q-list li {
+    position: relative;
+    margin: 0 0 .6rem;
+    padding-left: 1.75rem;
+    font-size: .92rem;
+    line-height: 1.85;
+    color: #34343e;
+  }
+  .q-list li:last-child { margin-bottom: 0; }
+  .q-list li::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0;
+    top: .17rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #b8c0cc, #7e8b9e);
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .dot-list { margin: 0; padding: 0; list-style: none; }
+  .dot-list li {
+    position: relative;
+    margin: 0 0 .45rem;
+    padding-left: 1.15rem;
+    font-size: .9rem;
+    line-height: 1.85;
+    color: #34343e;
+  }
+  .dot-list li:last-child { margin-bottom: 0; }
+  .dot-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .68em;
+    width: .42rem;
+    height: .42rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #b8c0cc, #7e8b9e);
+  }
+  .stance {
+    display: flex;
+    gap: .6rem;
+    margin: .45rem 0 0;
+    padding: .55rem .8rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    font-size: .88rem;
+    line-height: 1.8;
+    color: #34343e;
+  }
+  .stance .who {
+    flex: none;
+    align-self: flex-start;
+    margin-top: .28rem;
+    padding: .08rem .5rem;
+    border-radius: 6px;
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .stance.pro .who { background: #2563d4; }
+  .stance.con .who { background: #d94a4a; }
+  .law-name {
+    margin: 0 0 .6rem;
+    padding: .55rem .85rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    font-size: .88rem;
+    line-height: 1.8;
+    color: #34343e;
+    font-weight: 600;
+  }
+  .expr { margin: .5rem 0 0; }
+  .expr:first-child { margin-top: 0; }
+  .expr .label {
+    display: inline-block;
+    margin-bottom: .35rem;
+    padding: .12rem .6rem;
+    border-radius: 7px;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: #6a7280;
+  }
+  .expr p { margin: 0 0 .2rem; font-size: .9rem; }
+  .expr p:last-child { margin-bottom: 0; }
+  .group-note {
+    margin: .55rem 0 0;
+    padding: .6rem .85rem;
+    border-radius: 11px;
+    background: #fffbe9;
+    border: 1px solid rgba(207,185,96,.35);
+    font-size: .84rem;
+    line-height: 1.8;
+    color: #6b5f3a;
+  }
+  .group-note::before { content: "💡 "; }
+
+  @media (max-width: 620px) {
+    .hero { padding-top: 3.4rem; }
+    .words { grid-template-columns: 1fr; gap: .5rem; }
+    .word .zh { font-size: 1rem; line-height: 2.5; }
+    .word-ex .ex-zh { font-size: .92rem; }
+    .original-card { padding: 1.1rem 1.1rem; }
+    .original-card p { font-size: .96rem; line-height: 2.75; }
+    rt { font-size: .78em; letter-spacing: .04em; }
+    .legend { font-size: .7rem; gap: .35rem .7rem; }
+    .section-head h2 { font-size: 1.06rem; }
+    .grammar .g-body { padding: 0 .85rem .9rem; }
+    .g-ex { font-size: .9rem; }
+    .content-card { padding: .95rem 1rem; }
+    .word-tray { right: .6rem; bottom: .6rem; width: min(94vw, 340px); }
+    .tray-toggle { right: .6rem; bottom: .6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== 汉堡按钮 ==================== -->
+<button class="menu-btn" id="menuBtn" aria-label="打开目录" aria-expanded="false">
+  <span class="bars"><i></i><i></i><i></i></span>
+</button>
+
+<!-- ==================== 侧边目录 ==================== -->
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="t">目录 MENU</span>
+    <button class="close-btn" id="closeBtn" aria-label="关闭目录">✕</button>
+  </div>
+  <nav id="tocNav">
+        <a href="#sec-vocab">单词 Vocabulary</a>
+    <a href="#sec-original">原文 Original</a>
+    <a href="#sec-grammar">语法 Grammar</a>
+    <a href="#sec-speaking">口语 Speaking</a>
+    <a href="#sec-discussion">讨论 Discussion</a>
+    <a href="#sec-summary">总结 Summary</a>
+  </nav>
+</aside>
+<div class="overlay" id="overlay"></div>
+
+<!-- ==================== 内容 ==================== -->
+<div class="page">
+
+  <header class="hero" id="top">
+    <a class="back-btn" href="index.html"><span class="arrow">←</span> 返回主页</a>
+    <h1 id="pageTitle">伊朗局势与石油金融</h1>
+    <p class="sub" id="pageSub">时事阅读 · 单词与语法</p>
+    <div class="ribbon">
+      <span style="background:#d94a4a"></span>
+      <span style="background:#cf8500"></span>
+      <span style="background:#189a58"></span>
+      <span style="background:#2563d4"></span>
+      <span style="background:#8a8a99"></span>
+    </div>
+    <div class="legend">
+      <span class="l1"><b>一声 ˉ</b>阴平</span>
+      <span class="l2"><b>二声 ˊ</b>阳平</span>
+      <span class="l3"><b>三声 ˇ</b>上声</span>
+      <span class="l4"><b>四声 ˋ</b>去声</span>
+      <span class="l5"><b>轻声</b>无标记</span>
+    </div>
+  </header>
+
+  <details class="section" id="sec-vocab" open>
+    <summary class="section-head">
+      <span class="section-num">1</span>
+      <h2>单词</h2>
+      <span class="en">Vocabulary</span>
+    </summary>
+
+    <div class="controls">
+      <button class="ctrl-btn" id="expandAll">全部展开</button>
+      <button class="ctrl-btn" id="collapseAll">全部折叠</button>
+      <button class="ctrl-btn" id="copyWordsBtn">复制单词 · Copy</button>
+    </div>
+
+    <div id="vocabContent">
+
+      <details class="group" id="vocab-conflict" open>
+        <summary class="group-head">
+          <span class="bar"></span>
+          <h3>冲突与军事</h3>
+          <span class="en">Conflict &amp; Military</span>
+        </summary>
+        <div class="group-body">
+          <div class="words">
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">联合打击</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n./v.</span>joint strike; to strike jointly</p>
+                <div class="word-ex">
+                  <p class="ex-zh">美国和以色列<span class="py">联合打击</span>伊朗。</p>
+                  <p class="ex-en">The United States and Israel jointly struck Iran.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">袭击</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n./v.</span>attack; to attack</p>
+                <div class="word-ex">
+                  <p class="ex-zh">伊朗最高领袖哈梅内伊在<span class="py">袭击</span>中身亡。</p>
+                  <p class="ex-en">Iran's Supreme Leader Khamenei died in the attack.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">动武</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to use force; to resort to arms</p>
+                <div class="word-ex">
+                  <p class="ex-zh">美国为什么对伊朗<span class="py">动武</span>？</p>
+                  <p class="ex-en">Why did the United States use force against Iran?</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">封锁</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v./n.</span>to blockade; blockade</p>
+                <div class="word-ex">
+                  <p class="ex-zh">伊朗已经开始<span class="py">封锁</span>海峡。</p>
+                  <p class="ex-en">Iran has already begun to blockade the strait.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">报复</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v./n.</span>to retaliate; retaliation</p>
+                <div class="word-ex">
+                  <p class="ex-zh">如果伊朗<span class="py">报复</span>造成重大伤亡，也会带来负面影响。</p>
+                  <p class="ex-en">If Iranian retaliation causes heavy casualties, it would also bring negative effects.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">陷入</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to get stuck in; to fall into</p>
+                <div class="word-ex">
+                  <p class="ex-zh">如果美军再次<span class="py">陷入</span>长期战争，军费开支会很大。</p>
+                  <p class="ex-en">If US forces get stuck in another long war, military spending will be large.</p>
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
+      <details class="group" id="vocab-oil" open>
+        <summary class="group-head">
+          <span class="bar"></span>
+          <h3>石油与能源</h3>
+          <span class="en">Oil &amp; Energy</span>
+        </summary>
+        <div class="group-body">
+          <div class="words">
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">储量</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>reserves (of resources)</p>
+                <div class="word-ex">
+                  <p class="ex-zh">伊朗石油和天然气<span class="py">储量</span>都位于世界前列。</p>
+                  <p class="ex-en">Iran's oil and gas reserves are among the world's largest.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">推高</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to push up; to drive up</p>
+                <div class="word-ex">
+                  <p class="ex-zh">从而影响全球石油供应，<span class="py">推高</span>油价。</p>
+                  <p class="ex-en">Thereby affecting global oil supply and pushing up oil prices.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">能源通道</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>energy corridor; energy passage</p>
+                <div class="word-ex">
+                  <p class="ex-zh">霍尔木兹海峡是全球最重要的<span class="py">能源通道</span>之一。</p>
+                  <p class="ex-en">The Strait of Hormuz is one of the world's most important energy corridors.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">海运原油</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>seaborne crude oil</p>
+                <div class="word-ex">
+                  <p class="ex-zh">全球约五分之一以上的<span class="py">海运原油</span>经过这里。</p>
+                  <p class="ex-en">More than one-fifth of the world's seaborne crude oil passes through here.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">中断</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v./n.</span>to be interrupted; disruption</p>
+                <div class="word-ex">
+                  <p class="ex-zh">即使石油没有真正<span class="py">中断</span>，油价也会上涨。</p>
+                  <p class="ex-en">Even if oil is not actually disrupted, prices will still rise.</p>
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
+      <details class="group" id="vocab-finance" open>
+        <summary class="group-head">
+          <span class="bar"></span>
+          <h3>金融与市场</h3>
+          <span class="en">Finance &amp; Markets</span>
+        </summary>
+        <div class="group-body">
+          <div class="words">
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">石油美元体系</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>petrodollar system</p>
+                <div class="word-ex">
+                  <p class="ex-zh">美国可能想加强<span class="py">石油美元体系</span>。</p>
+                  <p class="ex-en">The US may want to strengthen the petrodollar system.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">资本市场</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>capital market</p>
+                <div class="word-ex">
+                  <p class="ex-zh">战争预期也会影响<span class="py">资本市场</span>。</p>
+                  <p class="ex-en">War expectations also affect capital markets.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">期货</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>futures (finance)</p>
+                <div class="word-ex">
+                  <p class="ex-zh">中东冲突常常让原油和黄金等<span class="py">期货</span>价格剧烈波动。</p>
+                  <p class="ex-en">Middle East conflicts often cause sharp swings in oil and gold futures prices.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">波动</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v./n.</span>to fluctuate; fluctuation</p>
+                <div class="word-ex">
+                  <p class="ex-zh">期货价格剧烈<span class="py">波动</span>。</p>
+                  <p class="ex-en">Futures prices fluctuate sharply.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">布局</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to position (in advance); to plan</p>
+                <div class="word-ex">
+                  <p class="ex-zh">过去曾有资金提前<span class="py">布局</span>，获得巨额利润。</p>
+                  <p class="ex-en">In the past, some funds positioned in advance and made huge profits.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">聪明钱</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>smart money</p>
+                <div class="word-ex">
+                  <p class="ex-zh">也可能有“<span class="py">聪明钱</span>”提前进入期货市场。</p>
+                  <p class="ex-en">There may also be "smart money" entering the futures market in advance.</p>
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
+      <details class="group" id="vocab-economy" open>
+        <summary class="group-head">
+          <span class="bar"></span>
+          <h3>经济与政策</h3>
+          <span class="en">Economy &amp; Policy</span>
+        </summary>
+        <div class="group-body">
+          <div class="words">
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">通胀</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>inflation</p>
+                <div class="word-ex">
+                  <p class="ex-zh">但高油价也可能让美国国内<span class="py">通胀</span>更严重。</p>
+                  <p class="ex-en">But high oil prices may also worsen US domestic inflation.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">加征关税</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to impose additional tariffs</p>
+                <div class="word-ex">
+                  <p class="ex-zh">美国<span class="py">加征关税</span>受到限制后，可能通过高油价达到类似效果。</p>
+                  <p class="ex-en">After its tariff hikes were constrained, the US may achieve a similar effect through high oil prices.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">石油税</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>"oil tax" (figurative)</p>
+                <div class="word-ex">
+                  <p class="ex-zh">可能通过高油价达到类似“<span class="py">石油税</span>”的效果。</p>
+                  <p class="ex-en">It may achieve an effect similar to an "oil tax" through high prices.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">竞争力</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>competitiveness</p>
+                <div class="word-ex">
+                  <p class="ex-zh">削弱亚洲出口<span class="py">竞争力</span>。</p>
+                  <p class="ex-en">Weakening Asia's export competitiveness.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">军费开支</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>military spending</p>
+                <div class="word-ex">
+                  <p class="ex-zh">如果美军再次陷入长期战争，<span class="py">军费开支</span>会很大。</p>
+                  <p class="ex-en">If US forces get stuck in another long war, military spending will be large.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">持久战红利</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>prolonged-war dividend</p>
+                <div class="word-ex">
+                  <p class="ex-zh">美国可能得到“<span class="py">持久战红利</span>”。</p>
+                  <p class="ex-en">The US may gain a "prolonged-war dividend."</p>
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </details>
+
+  <section class="section" id="sec-original">
+    <div class="section-head" style="cursor:default">
+      <span class="section-num">2</span>
+      <h2>原文</h2>
+      <span class="en">Original Text</span>
+    </div>
+
+    <div class="original-card" id="originalBody">
+      <p class="group-note">本文内容未经独立核实，仅作语言学习材料。</p>
+
+      <p>据报道，2 月 28 日，美国和以色列<mark class="hl"><span class="py">联合打击</span></mark>伊朗，伊朗最高领袖哈梅内伊在<mark class="hl"><span class="py">袭击</span></mark>中<mark class="hl"><span class="py">身亡</span></mark>。据报道，伊朗将于 3 月 1 日成立<mark class="hl"><span class="py">临时</span></mark>领导委员会，并<mark class="hl"><span class="py">选举</span></mark>新的最高领袖。美国为什么对伊朗<mark class="hl"><span class="py">动武</span></mark>？除了<mark class="hl"><span class="py">核问题</span></mark>和地区安全，石油和金融也是很重要的原因。</p>
+
+      <p>第一，伊朗石油和天然气<mark class="hl"><span class="py">储量</span></mark>都位于世界前列。美国可能想<mark class="hl"><span class="py">削弱</span></mark>伊朗的石油生产，限制它的出口，甚至改变伊朗<mark class="hl"><span class="py">政权</span></mark>，从而影响全球石油供应，<mark class="hl"><span class="py">推高</span></mark>油价，并加强<mark class="hl"><span class="py">石油美元体系</span></mark>。美国已经控制了委内瑞拉，未来也可能用类似方式控制伊朗石油。</p>
+
+      <p>第二，<mark class="hl"><span class="py">霍尔木兹海峡</span></mark>是全球最重要的能源<mark class="hl"><span class="py">通道</span></mark>之一，全球约五分之一以上的海运原油经过这里。伊朗已经开始<mark class="hl"><span class="py">封锁</span></mark>海峡。即使石油没有真正中断，只要市场<mark class="hl"><span class="py">预期</span></mark>风险会持续，油价就会上涨。美国不怕长期战争，因为封锁越久，油价越高，美国可能得到“<mark class="hl"><span class="py">持久战红利</span></mark>”。但高油价也可能让美国国内<mark class="hl"><span class="py">通胀</span></mark>更严重。</p>
+
+      <p>第三，美国<mark class="hl"><span class="py">加征关税</span></mark>受到限制后，可能通过高油价达到类似“<mark class="hl"><span class="py">石油税</span></mark>”的效果。油价上涨会增加日本、韩国等制造业国家的能源成本，削弱亚洲出口<mark class="hl"><span class="py">竞争力</span></mark>。</p>
+
+      <p>第四，战争预期也会影响<mark class="hl"><span class="py">资本市场</span></mark>。中东<mark class="hl"><span class="py">冲突</span></mark>常常让原油和黄金等<mark class="hl"><span class="py">期货</span></mark>价格剧烈<mark class="hl"><span class="py">波动</span></mark>。过去曾有资金提前<mark class="hl"><span class="py">布局</span></mark>，获得巨额利润。这次打击伊朗前，也可能有“<mark class="hl"><span class="py">聪明钱</span></mark>”提前进入期货市场。</p>
+
+      <p>不过，美国也在“<mark class="hl"><span class="py">走钢丝</span></mark>”。高油价可能影响美国经济和中期选举，战争成本难以控制，如果美军再次<mark class="hl"><span class="py">陷入</span></mark>长期战争，<mark class="hl"><span class="py">军费开支</span></mark>会很大。如果伊朗<mark class="hl"><span class="py">报复</span></mark>造成重大伤亡，也会带来负面影响。后续发展仍需继续关注。</p>
+    </div>
+  </section>
+
+  <details class="section" id="sec-grammar" open>
+    <summary class="section-head">
+      <span class="section-num">3</span>
+      <h2>语法</h2>
+      <span class="en">Grammar</span>
+    </summary>
+
+    <div id="grammarContent">
+
+      <details class="grammar" open>
+        <summary><span class="g-bar"></span><h3>“即使……也……”</h3><span class="g-en">even if... still...</span></summary>
+        <div class="g-body">
+          <p class="g-usage"><b>用法：</b>“即使 A，也 B”表示让步——先承认 A 这种不利或极端情况，再强调 B 依然成立。用于加强论点。</p>
+          <p class="g-ex" data-n="1"><span class="py">即使</span>石油没有真正中断，油价<span class="py">也</span>会上涨。</p>
+          <p class="g-ex" data-n="2"><span class="py">即使</span>下大雨，我们<span class="py">也</span>要按时出发。</p>
+          <p class="g-ex" data-n="3"><span class="py">即使</span>失败<span class="py">也</span>没关系，重要的是过程。</p>
+          <p class="g-note">注意：“即使”引出的情况通常是假设的、未发生的；“虽然”引出的是已发生的事实。</p>
+          <div class="g-diff">“即使……也……”强调让步假设；“只有……才……”强调必要条件。</div>
+        </div>
+      </details>
+
+      <details class="grammar" open>
+        <summary><span class="g-bar"></span><h3>“只要……就……”</h3><span class="g-en">as long as... then...</span></summary>
+        <div class="g-body">
+          <p class="g-usage"><b>用法：</b>“只要 A，就 B”表示充分条件——满足 A 就会导致 B。语气比“如果……就……”更强、更有把握。</p>
+          <p class="g-ex" data-n="1"><span class="py">只要</span>市场预期风险会持续，油价<span class="py">就</span>会上涨。</p>
+          <p class="g-ex" data-n="2"><span class="py">只要</span>你坚持练习，<span class="py">就</span>一定能进步。</p>
+          <p class="g-ex" data-n="3"><span class="py">只要</span>有货，我们<span class="py">就</span>马上发货。</p>
+          <p class="g-note">注意：“只要”后是条件，“就”后是结果；“只要”有时可与“如果”互换，但“如果”没有充分条件的含义。</p>
+        </div>
+      </details>
+
+      <details class="grammar" open>
+        <summary><span class="g-bar"></span><h3>“越……越……”</h3><span class="g-en">the more... the more...</span></summary>
+        <div class="g-body">
+          <p class="g-usage"><b>用法：</b>“越 A 越 B”表示两个变化同步发生：A 的程度增加，B 也随之增加。前后两个“越”后可接形容词或动词短语。</p>
+          <p class="g-ex" data-n="1">封锁<span class="py">越</span>久，油价<span class="py">越</span>高。</p>
+          <p class="g-ex" data-n="2">你<span class="py">越</span>努力，进步<span class="py">越</span>快。</p>
+          <p class="g-ex" data-n="3">他<span class="py">越</span>说<span class="py">越</span>激动。</p>
+          <p class="g-note">注意：该句式可省略主语，如“越多越好”（the more the better）。</p>
+        </div>
+      </details>
+
+      <details class="grammar" open>
+        <summary><span class="g-bar"></span><h3>“如果……会……”（假设与结果）</h3><span class="g-en">if... would...</span></summary>
+        <div class="g-body">
+          <p class="g-usage"><b>用法：</b>“如果 A，会 B”提出一个假设条件并推出结果，常用于分析、预测。加上“可能”则语气更缓和。</p>
+          <p class="g-ex" data-n="1"><span class="py">如果</span>美军再次陷入长期战争，军费开支<span class="py">会</span>很大。</p>
+          <p class="g-ex" data-n="2"><span class="py">如果</span>伊朗报复造成重大伤亡，<span class="py">会</span>带来负面影响。</p>
+          <p class="g-ex" data-n="3"><span class="py">如果</span>明天下雨，我们<span class="py">就</span>改期。</p>
+          <p class="g-note">注意：“会”表示推测的结果；“如果……就……”更强调条件与结果的对应关系。</p>
+        </div>
+      </details>
+
+      <details class="grammar" open>
+        <summary><span class="g-bar"></span><h3>“从而”“甚至”（承接与递进）</h3><span class="g-en">thereby; even</span></summary>
+        <div class="g-body">
+          <p class="g-usage"><b>用法：</b>“从而”引出由前文行为导致的结果，书面语色彩强；“甚至”表示程度更进一步，引出更极端的例子。</p>
+          <p class="g-ex" data-n="1">限制它的出口，<span class="py">从而</span>影响全球石油供应。</p>
+          <p class="g-ex" data-n="2">美国可能想削弱伊朗的石油生产，<span class="py">甚至</span>改变伊朗政权。</p>
+          <p class="g-ex" data-n="3">他工作很努力，<span class="py">甚至</span>周末也不休息。</p>
+          <p class="g-note">注意：“从而”后面只能接结果，不能接原因；“甚至”后可接词、短语或小句。</p>
+        </div>
+      </details>
+
+    </div>
+  </details>
+
+  <details class="section" id="sec-speaking" open>
+    <summary class="section-head">
+      <span class="section-num">4</span>
+      <h2>口语练习</h2>
+      <span class="en">Speaking</span>
+    </summary>
+    <div id="speakingContent">
+
+      <div class="content-card">
+        <p class="card-h">① 关键句朗读</p>
+        <p>先慢读、再快读，注意“霍尔木兹”“持久战红利”等长词的停顿。</p>
+        <ul class="dot-list">
+          <li>美国可能想<span class="py">削弱</span>伊朗的石油生产，限制它的出口，<span class="py">甚至</span>改变伊朗政权。</li>
+          <li><span class="py">只要</span>市场预期风险会持续，油价<span class="py">就</span>会上涨。</li>
+          <li>封锁<span class="py">越</span>久，油价<span class="py">越</span>高，美国可能得到“<span class="py">持久战红利</span>”。</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">② 复述练习</p>
+        <p>用下面的提示词，试着不看原文复述文章的四个理由。</p>
+        <ul class="dot-list">
+          <li>储量 → 削弱生产 → 石油美元体系</li>
+          <li>霍尔木兹海峡 → 封锁 → 市场预期</li>
+          <li>加征关税 → 石油税 → 出口竞争力</li>
+          <li>战争预期 → 期货 → 聪明钱</li>
+        </ul>
+        <p class="sub-h">参考开头</p>
+        <p>美国可能对伊朗动武，除了核问题和地区安全，<span class="py">还</span>有石油和金融方面的原因。第一……</p>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">③ 观点表达</p>
+        <p>用括号中的句式，说出你自己的想法。</p>
+        <ul class="dot-list">
+          <li>我觉得油价<span class="py">即使</span>上涨，（<b>也……</b>）。</li>
+          <li><span class="py">如果</span>海峡被封锁，我认为（<b>会……</b>）。</li>
+          <li>（<b>越……越……</b>）这个道理在生活里也成立，比如……</li>
+        </ul>
+        <p class="group-note">长句建议分两口气读：“限制它的出口，／从而影响全球石油供应”。</p>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="section" id="sec-discussion" open>
+    <summary class="section-head">
+      <span class="section-num">5</span>
+      <h2>深度讨论</h2>
+      <span class="en">Discussion</span>
+    </summary>
+    <div id="discussionContent">
+
+      <div class="content-card">
+        <p class="card-h">讨论问题</p>
+        <ul class="q-list">
+          <li data-n="1">文章认为石油和金融也是美国动武的重要原因。你同意吗？传统上人们更强调核问题和地区安全，你怎么看这几种解释的关系？</li>
+          <li data-n="2">“只要市场预期风险会持续，油价就会上涨。”预期为什么能影响价格？你还能举出生活中“预期影响行为”的例子吗？</li>
+          <li data-n="3">作者说美国可能得到“持久战红利”。战争真的能带来经济好处吗？这种说法有什么风险？</li>
+          <li data-n="4">用高油价代替加征关税，被称为类似“石油税”。这种做法的代价由谁承担？</li>
+          <li data-n="5">“聪明钱”提前进入期货市场，这说明了资本市场的什么特点？这对普通人公平吗？</li>
+          <li data-n="6">文章最后说美国也在“走钢丝”。请总结美国面临的两难，并说说你认为哪种风险最大。</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">思考提示</p>
+        <ul class="dot-list">
+          <li>可从“经济”“政治”“国际关系”三个角度分别展开。</li>
+          <li>试着用“一方面……另一方面……”组织你的观点。</li>
+          <li>注意区分“文章的观点”和“你自己的观点”。</li>
+        </ul>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="section" id="sec-summary" open>
+    <summary class="section-head">
+      <span class="section-num">6</span>
+      <h2>本课总结</h2>
+      <span class="en">Summary</span>
+    </summary>
+    <div id="summaryContent">
+
+      <div class="content-card">
+        <p class="card-h">核心话题</p>
+        <p>文章分析美国可能对伊朗动武的原因，认为除了核问题与地区安全，石油与金融也是重要动因，并从四个方面展开：削弱伊朗石油生产、控制霍尔木兹海峡、用高油价起“石油税”作用、影响期货与资本市场。最后指出美国同样面临“走钢丝”的两难。</p>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">重点生词</p>
+        <ul class="dot-list">
+          <li><span class="py">联合打击</span> · <span class="py">袭击</span> · <span class="py">动武</span> · <span class="py">封锁</span></li>
+          <li><span class="py">储量</span> · <span class="py">推高</span> · <span class="py">能源通道</span> · <span class="py">海运原油</span></li>
+          <li><span class="py">石油美元体系</span> · <span class="py">期货</span> · <span class="py">波动</span> · <span class="py">聪明钱</span></li>
+          <li><span class="py">通胀</span> · <span class="py">加征关税</span> · <span class="py">石油税</span> · <span class="py">军费开支</span></li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">重点语法</p>
+        <ul class="dot-list">
+          <li>即使……也……</li>
+          <li>只要……就……</li>
+          <li>越……越……</li>
+          <li>如果……会……</li>
+          <li>从而 / 甚至（承接与递进）</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">一句话记住本课</p>
+        <p>封锁<span class="py">越</span>久，油价<span class="py">越</span>高；但美国也在“<span class="py">走钢丝</span>”。</p>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">说明</p>
+        <p>本文内容未经独立核实，仅作语言学习材料；文中观点不代表本课件的立场。</p>
+      </div>
+
+    </div>
+  </details>
+
+  <p class="footer" id="pageFooter">本文内容未经独立核实，仅作语言学习材料</p>
+</div>
+
+<!-- ==================== 浮动单词表 ==================== -->
+<button class="tray-toggle" id="trayToggle" aria-label="打开单词表">
+  📋 抄词本 <span class="badge" id="trayBadge">0</span>
+</button>
+
+<aside class="word-tray" id="wordTray" aria-hidden="true">
+  <div class="tray-head">
+    <span class="ttl">抄词本</span>
+    <span class="cnt" id="trayCount">0</span>
+    <span class="spacer"></span>
+    <button class="tray-btn" id="trayCopyBtn">复制</button>
+    <button class="tray-btn" id="trayClearBtn">清空</button>
+    <button class="tray-btn icon" id="trayCloseBtn" aria-label="收起">✕</button>
+  </div>
+  <div class="tray-body" id="trayBody">
+    <div class="tray-empty">点击左侧原文中的任意词语，<br>即可把它抄到这里。</div>
+  </div>
+</aside>
+
+<!-- ==================== pinyin-pro 库 ==================== -->
+<script src="https://cdn.jsdelivr.net/npm/pinyin-pro@3/dist/index.js"></script>
+
+<script>
+(function () {
+  /* ================= 声调着色 ================= */
+  var toneMap = {
+    '1': 'āēīōūǖĀĒĪŌŪǕ',
+    '2': 'áéíóúǘÁÉÍÓÚǗ',
+    '3': 'ǎěǐǒǔǚǍĚǏǑǓǙ',
+    '4': 'àèìòùǜÀÈÌÒÙǛ'
+  };
+
+  function detectTone(syllable) {
+    if (!/[a-zA-ZüÜ]/.test(syllable)) return null;
+    for (var t in toneMap) {
+      var chars = toneMap[t];
+      for (var i = 0; i < syllable.length; i++) {
+        if (chars.indexOf(syllable[i]) !== -1) return t;
+      }
+    }
+    return '5';
+  }
+
+  /* ================= 自动注音：把 .py 元素转成 ruby ================= */
+  function makeRuby(word) {
+    var pinyinArr = pinyinPro.pinyin(word, { toneType: 'symbol', type: 'array' });
+    var chars = word.split('');
+    var html = '';
+    for (var i = 0; i < chars.length; i++) {
+      var py = pinyinArr[i] || '';
+      var tone = detectTone(py);
+      var cls = tone ? 'tone-' + tone : '';
+      html += '<ruby>' + chars[i] +
+              '<rt><span class="' + cls + '">' + py + '</span></rt></ruby>';
+    }
+    return html;
+  }
+
+  /* 返回纯文本拼音（空格分隔），用于抄词本。非汉字按原样保留。 */
+  function pinyinText(word) {
+    var arr = pinyinPro.pinyin(word, { toneType: 'symbol', type: 'array' });
+    return arr.join(' ').trim();
+  }
+
+  function autoAnnotate() {
+    document.querySelectorAll('.py').forEach(function (el) {
+      if (el.dataset.pyDone) return;
+      el.dataset.pyDone = '1';
+      var text = el.textContent.trim();
+      if (!text) return;
+      if (/^[\u4e00-\u9fa5]+$/.test(text)) {
+        el.innerHTML = makeRuby(text);
+      }
+    });
+
+    // mark.hl 中的纯汉字也自动注音
+    document.querySelectorAll('mark.hl').forEach(function (el) {
+      if (el.dataset.pyDone) return;
+      el.dataset.pyDone = '1';
+      var text = el.textContent.trim();
+      if (/^[\u4e00-\u9fa5]+$/.test(text)) {
+        el.innerHTML = makeRuby(text);
+      }
+    });
+  }
+
+  autoAnnotate();
+
+  /* ================= 抽屉开关 ================= */
+  var body     = document.body;
+  var menuBtn  = document.getElementById('menuBtn');
+  var closeBtn = document.getElementById('closeBtn');
+  var overlay  = document.getElementById('overlay');
+  var drawer   = document.getElementById('drawer');
+
+  function openMenu() {
+    body.classList.add('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+  }
+  function closeMenu() {
+    body.classList.remove('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeMenu(); closeTray(); }
+  });
+
+  /* ================= 目录跳转 ================= */
+  drawer.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = a.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      if (target.tagName === 'DETAILS') target.open = true;
+      var p = target.parentElement;
+      while (p) {
+        if (p.tagName === 'DETAILS') p.open = true;
+        p = p.parentElement;
+      }
+      closeMenu();
+      setTimeout(function () {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 90);
+    });
+  });
+
+  /* ================= 单词分组：全体展开 / 折叠 ================= */
+  var expandBtn = document.getElementById('expandAll');
+  var collapseBtn = document.getElementById('collapseAll');
+  if (expandBtn) {
+    expandBtn.addEventListener('click', function () {
+      document.querySelectorAll('#sec-vocab .group').forEach(function (g) { g.open = true; });
+    });
+  }
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', function () {
+      document.querySelectorAll('#sec-vocab .group').forEach(function (g) { g.open = false; });
+    });
+  }
+
+  /* ================= 复制全部单词 ================= */
+  var copyBtn = document.getElementById('copyWordsBtn');
+
+  function buildWordText() {
+    var lines = [];
+    document.querySelectorAll('#sec-vocab .group').forEach(function (group) {
+      var h3 = group.querySelector('.group-head h3');
+      if (h3) lines.push(h3.textContent.trim());
+
+      var words = [];
+      group.querySelectorAll('.word .zh').forEach(function (zh) {
+        var clone = zh.cloneNode(true);
+        clone.querySelectorAll('rt, rp').forEach(function (n) { n.remove(); });
+        var text = clone.textContent.replace(/\s+/g, '').trim();
+        if (text) words.push(text);
+      });
+      lines.push(words.join('　'));
+      lines.push('');
+    });
+    return lines.join('\n').trim();
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var text = buildWordText();
+      function done() {
+        copyBtn.classList.add('copied');
+        copyBtn.textContent = '已复制 ✓';
+        setTimeout(function () {
+          copyBtn.classList.remove('copied');
+          copyBtn.textContent = '复制单词 · Copy';
+        }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function () {
+          fallbackCopy(text, done);
+        });
+      } else {
+        fallbackCopy(text, done);
+      }
+    });
+  }
+
+  function fallbackCopy(text, cb) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); cb(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  /* ================= 原文抄词功能 ================= */
+  var originalBody = document.getElementById('originalBody');
+  var tray       = document.getElementById('wordTray');
+  var trayBody   = document.getElementById('trayBody');
+  var trayCount  = document.getElementById('trayCount');
+  var trayBadge  = document.getElementById('trayBadge');
+  var trayToggle = document.getElementById('trayToggle');
+  var trayCopy   = document.getElementById('trayCopyBtn');
+  var trayClear  = document.getElementById('trayClearBtn');
+  var trayClose  = document.getElementById('trayCloseBtn');
+
+  var pickedWords = [];
+
+  /* 中文分词：优先用 Intl.Segmenter，缺失时退回正则。
+     返回 [{text, isWord}]，其中 isWord 为 true 的片段才可点选。 */
+  var zhSegmenter = (typeof Intl !== 'undefined' && Intl.Segmenter)
+    ? new Intl.Segmenter('zh', { granularity: 'word' })
+    : null;
+
+  function segmentText(text) {
+    var out = [];
+    if (zhSegmenter) {
+      for (var s of zhSegmenter.segment(text)) {
+        // isWordLike 会把标点、空格等归为 false
+        out.push({ text: s.segment, isWord: s.isWordLike });
+      }
+      return out;
+    }
+    // 回退：连续汉字整体切出（旧行为，仅在不支持 Segmenter 的浏览器上使用）
+    var last = 0, m, re = /[\u4e00-\u9fa5]{2,}/g;
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > last) out.push({ text: text.slice(last, m.index), isWord: false });
+      out.push({ text: m[0], isWord: true });
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) out.push({ text: text.slice(last), isWord: false });
+    return out;
+  }
+
+  function wrapPickableWords(root) {
+    if (!root) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (node.parentElement && node.parentElement.closest('.pickable, rt, rp, ruby')) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    var textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+    textNodes.forEach(function (node) {
+      var text = node.nodeValue;
+      var frag = document.createDocumentFragment();
+      segmentText(text).forEach(function (seg) {
+        if (!seg.text) return;
+        if (seg.isWord) {
+          var span = document.createElement('span');
+          span.className = 'pickable';
+          span.textContent = seg.text;
+          frag.appendChild(span);
+        } else {
+          frag.appendChild(document.createTextNode(seg.text));
+        }
+      });
+      if (frag.childNodes.length) {
+        node.parentNode.replaceChild(frag, node);
+      }
+    });
+  }
+
+  wrapPickableWords(originalBody);
+
+  /* 在原文里给一个词加上拼音（ruby），并标记为已显示。 */
+  function showPinyinInPlace(span) {
+    if (!span || span.dataset.pyShown) return;
+    var word = span.textContent.trim();
+    if (!word) return;
+    span.dataset.pyShown = '1';
+    span.dataset.origText = word;
+    span.innerHTML = makeRuby(word);
+    span.classList.add('shown');
+  }
+
+  /* 移除原文中某个词的拼音，恢复为纯文字。 */
+  function hidePinyinInPlace(span) {
+    if (!span || !span.dataset.pyShown) return;
+    var word = span.dataset.origText || span.textContent.trim();
+    delete span.dataset.pyShown;
+    delete span.dataset.origText;
+    span.classList.remove('shown');
+    span.textContent = word;
+  }
+
+  /* 取一个词条的真实文字（已注音时 textContent 会含拼音，故优先用 origText）。 */
+  function wordOf(span) {
+    return (span.dataset.origText || span.textContent).trim();
+  }
+
+  if (originalBody) {
+    originalBody.addEventListener('click', function (e) {
+      var span = e.target.closest('.pickable');
+      if (!span) return;
+      var word = wordOf(span);
+      if (!word) return;
+
+      var at = pickedWords.indexOf(word);
+      if (at === -1) {
+        // 加入抄词本，并在原文就地显示拼音
+        pickedWords.push(word);
+        showPinyinInPlace(span);
+      } else {
+        // 再次点击：从抄词本移除，并撤下原文拼音
+        pickedWords.splice(at, 1);
+        hidePinyinInPlace(span);
+      }
+      renderTray();
+
+      span.classList.add('picked');
+      setTimeout(function () { span.classList.remove('picked'); }, 700);
+    });
+  }
+
+  function renderTray() {
+    if (!trayBody) return;
+    trayBody.innerHTML = '';
+    if (pickedWords.length === 0) {
+      var empty = document.createElement('div');
+      empty.className = 'tray-empty';
+      empty.innerHTML = '点击左侧原文中的任意词语，<br>即可把它抄到这里。';
+      trayBody.appendChild(empty);
+    } else {
+      pickedWords.forEach(function (w, i) {
+        var item = document.createElement('div');
+        item.className = 'tray-item';
+        var idx = document.createElement('span');
+        idx.className = 'idx';
+        idx.textContent = i + 1;
+        var txt = document.createElement('span');
+        txt.className = 'txt';
+        var py = document.createElement('span');
+        py.className = 'pyline';
+        py.textContent = pinyinText(w);
+        var zh = document.createElement('span');
+        zh.className = 'zh';
+        zh.textContent = w;
+        txt.appendChild(py);
+        txt.appendChild(zh);
+        var del = document.createElement('button');
+        del.className = 'del';
+        del.setAttribute('aria-label', '删除');
+        del.textContent = '✕';
+        del.addEventListener('click', function () {
+          pickedWords.splice(i, 1);
+          renderTray();
+          // 原文中所有该词取消注音
+          if (originalBody) {
+            originalBody.querySelectorAll('.pickable[data-py-shown]').forEach(function (el) {
+              if (el.dataset.origText === w) hidePinyinInPlace(el);
+            });
+          }
+        });
+        item.appendChild(idx);
+        item.appendChild(txt);
+        item.appendChild(del);
+        trayBody.appendChild(item);
+      });
+    }
+    if (trayCount) trayCount.textContent = pickedWords.length;
+    if (trayBadge) trayBadge.textContent = pickedWords.length;
+    if (trayToggle) trayToggle.style.display = pickedWords.length > 0 ? '' : 'none';
+  }
+
+  function openTray() {
+    if (tray) {
+      tray.classList.add('show');
+      tray.setAttribute('aria-hidden', 'false');
+    }
+  }
+  function closeTray() {
+    if (tray) {
+      tray.classList.remove('show');
+      tray.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  if (trayToggle) trayToggle.addEventListener('click', openTray);
+  if (trayClose) trayClose.addEventListener('click', closeTray);
+
+  if (trayClear) {
+    trayClear.addEventListener('click', function () {
+      pickedWords = [];
+      renderTray();
+      if (originalBody) {
+        originalBody.querySelectorAll('.pickable[data-py-shown]').forEach(function (el) {
+          hidePinyinInPlace(el);
+        });
+      }
+      document.querySelectorAll('.pickable.picked').forEach(function (el) {
+        el.classList.remove('picked');
+      });
+      closeTray();
+    });
+  }
+
+  if (trayCopy) {
+    trayCopy.addEventListener('click', function () {
+      var text = pickedWords.join('\n');
+      if (!text) return;
+      function done() {
+        trayCopy.classList.add('copied');
+        trayCopy.textContent = '已复制 ✓';
+        setTimeout(function () {
+          trayCopy.classList.remove('copied');
+          trayCopy.textContent = '复制';
+        }, 1600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function () {
+          fallbackCopy(text, done);
+        });
+      } else {
+        fallbackCopy(text, done);
+      }
+    });
+  }
+
+  renderTray();
+  if (trayToggle) trayToggle.style.display = 'none';
+  closeTray();
+
+})();
+</script>
+
+</body>
+</html>

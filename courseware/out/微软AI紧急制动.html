@@ -1,0 +1,2190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>微软AI紧急制动</title>
+<style>
+  * { box-sizing: border-box; }
+
+  :root {
+    --ink:     #2c2c34;
+    --ink-2:   #55555f;
+    --ink-3:   #8a8a99;
+    --line:    rgba(150,160,180,.28);
+    --line-2:  rgba(150,160,180,.45);
+
+    --tone1: #d94a4a;
+    --tone2: #cf8500;
+    --tone3: #189a58;
+    --tone4: #2563d4;
+    --tone5: #8a8a99;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                 "Noto Sans SC", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background-color: #eef0f4;
+    background-image:
+      radial-gradient(circle at 18% -6%,  #ffffff 0%, transparent 44%),
+      radial-gradient(circle at 88% 6%,   #f4f6f9 0%, transparent 40%),
+      radial-gradient(circle at 50% 108%, #e6e9ef 0%, transparent 52%),
+      linear-gradient(180deg, #f8f9fb 0%, #e9ecf1 100%);
+    background-attachment: fixed;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.menu-open { overflow: hidden; }
+
+  /* ================= ruby 注音 ================= */
+  ruby {
+    ruby-position: over;
+    ruby-align: center;
+    margin: 0 .1em;
+  }
+  rt {
+    font-size: .8em;
+    letter-spacing: .05em;
+    line-height: 1.45;
+    font-weight: 600;
+    font-family: "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+    color: var(--tone5);
+  }
+  rt .tone-1 { color: var(--tone1); }
+  rt .tone-2 { color: var(--tone2); }
+  rt .tone-3 { color: var(--tone3); }
+  rt .tone-4 { color: var(--tone4); }
+  rt .tone-5 { color: var(--tone5); }
+
+  /* ================= 汉堡按钮 ================= */
+  .menu-btn {
+    position: fixed;
+    top: .85rem;
+    left: .85rem;
+    z-index: 60;
+    width: 44px; height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 24px -18px rgba(90,100,120,.95);
+    cursor: pointer;
+    transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .menu-btn:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px -18px rgba(90,100,120,1);
+  }
+  .menu-btn .bars {
+    display: block;
+    width: 19px;
+    height: 13px;
+    position: relative;
+  }
+  .menu-btn .bars i {
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #7d8494, #5c6472);
+    transition: transform .28s ease, opacity .2s ease, top .28s ease;
+  }
+  .menu-btn .bars i:nth-child(1) { top: 0; }
+  .menu-btn .bars i:nth-child(2) { top: 5.5px; }
+  .menu-btn .bars i:nth-child(3) { top: 11px; }
+
+  body.menu-open .menu-btn { opacity: 0; pointer-events: none; }
+
+  /* ================= 侧边抽屉 ================= */
+  .drawer {
+    position: fixed;
+    top: 0; left: 0;
+    height: 100%;
+    width: min(300px, 82vw);
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    padding: 1.05rem .6rem 1.6rem;
+    overflow-y: auto;
+    background: linear-gradient(168deg, #f8f9fb 0%, #eef0f4 55%, #e6e9ef 100%);
+    border-right: 1px solid var(--line);
+    box-shadow: 20px 0 50px -34px rgba(90,100,120,1);
+    transform: translateX(-102%);
+    transition: transform .34s cubic-bezier(.4,.02,.2,1);
+  }
+  body.menu-open .drawer { transform: translateX(0); }
+
+  .drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .15rem .55rem 1rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: .55rem;
+  }
+  .drawer-head .t {
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .3em;
+    text-indent: .3em;
+    color: #7d8494;
+  }
+  .close-btn {
+    width: 32px; height: 32px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,.8);
+    color: #8a93a3;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease;
+  }
+  .close-btn:hover { background: #fff; color: #5c6472; }
+
+  .drawer nav { display: flex; flex-direction: column; gap: .1rem; }
+
+  .drawer .grp {
+    margin: .7rem .55rem .25rem;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #b0b7c2;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  .drawer a {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+    padding: .5rem .7rem;
+    border-radius: 11px;
+    text-decoration: none;
+    color: #55555f;
+    font-size: .87rem;
+    letter-spacing: .04em;
+    transition: background .16s ease, color .16s ease, transform .16s ease;
+  }
+  .drawer a:hover {
+    background: rgba(255,255,255,.9);
+    color: #2c2c34;
+    transform: translateX(2px);
+  }
+  .drawer a.sub {
+    padding-left: 1.5rem;
+    font-size: .82rem;
+    color: #6a7280;
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 65;
+    background: rgba(60,70,90,.22);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  body.menu-open .overlay { opacity: 1; pointer-events: auto; }
+
+  /* ================= 页面容器 ================= */
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 1.1rem 5rem;
+  }
+
+  /* ================= 顶部 ================= */
+  .hero {
+    text-align: center;
+    padding: 3.8rem 1rem 1.2rem;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-bottom: 1.4rem;
+    padding: .42rem .9rem;
+    border-radius: 99px;
+    background: rgba(255,255,255,.8);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    font-size: .78rem;
+    letter-spacing: .1em;
+    color: #55555f;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    transition: background .18s ease, transform .18s ease,
+                border-color .18s ease, color .18s ease;
+  }
+  .back-btn:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    border-color: var(--line-2);
+    color: #2c2c34;
+  }
+  .back-btn .arrow { font-size: .9rem; }
+
+  .hero h1 {
+    margin: 0 0 .75rem;
+    font-size: clamp(1.9rem, 6vw, 2.7rem);
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-indent: .16em;
+    background: linear-gradient(115deg,
+      #7d8494 0%, #c3cad6 22%, #5c6472 46%,
+      #c3cad6 70%, #7d8494 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 0 1px 0 rgba(255,255,255,.6);
+  }
+  .hero .sub {
+    margin: 0;
+    font-size: .72rem;
+    letter-spacing: .34em;
+    text-indent: .34em;
+    text-transform: uppercase;
+    color: #9aa1b0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .ribbon {
+    display: flex;
+    height: 5px;
+    width: 260px;
+    max-width: 70%;
+    margin: 1.5rem auto 0;
+    border-radius: 99px;
+    overflow: hidden;
+    opacity: .9;
+  }
+  .ribbon span { flex: 1; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .45rem .95rem;
+    margin: 1.7rem auto 0;
+    padding: .7rem 1.1rem;
+    max-width: 560px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: .76rem;
+    color: var(--ink-2);
+  }
+  .legend b {
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    margin-right: .25rem;
+  }
+  .legend .l1 b { color: var(--tone1); }
+  .legend .l2 b { color: var(--tone2); }
+  .legend .l3 b { color: var(--tone3); }
+  .legend .l4 b { color: var(--tone4); }
+  .legend .l5 b { color: var(--tone5); }
+
+  /* ================= 一级模块 ================= */
+  .section {
+    margin-top: 2.6rem;
+    scroll-margin-top: 1rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .5rem .8rem .5rem .5rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.6);
+    border: 1px solid transparent;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .18s ease, border-color .18s ease;
+  }
+  .section-head:hover {
+    background: #fff;
+    border-color: var(--line-2);
+  }
+  .section-head::-webkit-details-marker { display: none; }
+  .section-head::marker { content: ""; }
+
+  details.section[open] > .section-head { margin-bottom: 1rem; }
+
+  .section-num {
+    flex: none;
+    width: 34px; height: 34px;
+    border-radius: 12px;
+    display: grid; place-items: center;
+    font-size: .86rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(135deg, #b8c0cc, #7e8b9e);
+    box-shadow: 0 8px 16px -8px rgba(120,130,150,.9);
+  }
+  .section-head h2 {
+    margin: 0;
+    font-size: 1.18rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: #3a3a44;
+  }
+  .section-head .en {
+    margin-left: auto;
+    font-size: .66rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #a8aeba;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .section-head::after {
+    content: "";
+    flex: none;
+    width: .44rem;
+    height: .44rem;
+    margin: -.24rem .35rem 0 .5rem;
+    border-right: 2px solid #b0b7c2;
+    border-bottom: 2px solid #b0b7c2;
+    border-radius: 1px;
+    transform: rotate(45deg);
+    transition: transform .25s ease, border-color .2s ease;
+  }
+  details.section[open] > .section-head::after {
+    transform: rotate(-135deg);
+    margin-top: .1rem;
+    border-color: #5c6472;
+  }
+
+  /* 控制按钮行 */
+  .controls {
+    display: flex;
+    gap: .5rem;
+    margin: .2rem 0 1rem;
+    flex-wrap: wrap;
+  }
+  .ctrl-btn {
+    padding: .38rem .85rem;
+    border-radius: 99px;
+    background: rgba(255,255,255,.85);
+    border: 1px solid var(--line);
+    color: #55555f;
+    font-size: .76rem;
+    letter-spacing: .08em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease,
+                border-color .16s ease, transform .16s ease;
+  }
+  .ctrl-btn:hover {
+    background: #fff;
+    border-color: var(--line-2);
+    color: #2c2c34;
+    transform: translateY(-1px);
+  }
+  .ctrl-btn.copied {
+    background: #2c2c34;
+    border-color: #2c2c34;
+    color: #fff;
+  }
+
+  /* ================= 单词分组 ================= */
+  .group {
+    margin-bottom: .85rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 26px -24px rgba(90,100,120,.9);
+    overflow: hidden;
+    transition: box-shadow .2s ease, border-color .2s ease;
+  }
+  .group[open] { box-shadow: 0 16px 34px -24px rgba(90,100,120,1); }
+  .group:hover { border-color: var(--line-2); }
+
+  .group-head {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .7rem 1rem .7rem .85rem;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .16s ease;
+  }
+  .group-head:hover { background: rgba(246,248,251,.9); }
+  .group-head::-webkit-details-marker { display: none; }
+  .group-head::marker { content: ""; }
+
+  .group-head .bar {
+    flex: none;
+    width: 4px;
+    height: 1.1em;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #cfd6e2, #7e8b9e);
+  }
+  .group-head h3 {
+    margin: 0;
+    font-size: .96rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: #3a3a44;
+  }
+  .group-head .en {
+    margin-left: auto;
+    font-size: .64rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #a8aeba;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .group-head::after {
+    content: "";
+    flex: none;
+    width: .38rem;
+    height: .38rem;
+    margin: -.2rem .1rem 0 .5rem;
+    border-right: 2px solid #b0b7c2;
+    border-bottom: 2px solid #b0b7c2;
+    transform: rotate(45deg);
+    transition: transform .25s ease, border-color .2s ease;
+  }
+  details.group[open] > .group-head::after {
+    transform: rotate(-135deg);
+    margin-top: .12rem;
+    border-color: #5c6472;
+  }
+
+  .group-body { padding: 0 .9rem .9rem; }
+
+  /* ================= 单词卡 ================= */
+  .words {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: .55rem .65rem;
+  }
+
+  .word {
+    border-radius: 13px;
+    background: #fff;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    transition: border-color .18s ease, box-shadow .18s ease;
+  }
+  .word:hover { border-color: var(--line-2); }
+  .word[open] {
+    border-color: rgba(120,130,150,.5);
+    box-shadow: 0 12px 26px -20px rgba(90,100,120,.9);
+  }
+
+  .word > summary {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .55rem .8rem;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .16s ease;
+  }
+  .word > summary:hover { background: rgba(246,248,251,.9); }
+  .word > summary::-webkit-details-marker { display: none; }
+  .word > summary::marker { content: ""; }
+
+  .word .zh {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 1.04rem;
+    font-weight: 600;
+    line-height: 2.55;
+    letter-spacing: .02em;
+  }
+  .word > summary .sign {
+    flex: none;
+    width: 20px; height: 20px;
+    display: grid;
+    place-items: center;
+    border-radius: 7px;
+    background: #f0f2f6;
+    border: 1px solid var(--line);
+    color: #9aa1b0;
+    font-size: .82rem;
+    line-height: 1;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    transition: background .18s ease, color .18s ease,
+                transform .22s ease, border-color .18s ease;
+  }
+  .word > summary .sign::before { content: "+"; }
+  .word[open] > summary .sign {
+    background: #2c2c34;
+    border-color: #2c2c34;
+    color: #fff;
+    transform: rotate(180deg);
+  }
+  .word[open] > summary .sign::before { content: "−"; }
+
+  .word-body {
+    padding: .15rem .85rem .75rem;
+    border-top: 1px dashed var(--line);
+    animation: reveal .24s ease both;
+  }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(-3px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .word-en {
+    margin: .5rem 0 .3rem;
+    font-size: .78rem;
+    line-height: 1.5;
+    color: #6a7280;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .word-en .tag {
+    display: inline-block;
+    margin-right: .45rem;
+    padding: .05rem .45rem;
+    border-radius: 6px;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    font-size: .66rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #8a93a3;
+  }
+
+  .word-ex {
+    margin: .5rem 0 0;
+    padding: .55rem .8rem .6rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    position: relative;
+  }
+  .word-ex::before {
+    content: "例";
+    position: absolute;
+    top: .55rem; left: .8rem;
+    font-size: .62rem;
+    font-weight: 700;
+    color: #b0b7c2;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .word-ex .ex-zh {
+    margin: 0 0 0 1.1rem;
+    font-size: .96rem;
+    line-height: 2.6;
+    color: #34343e;
+  }
+  .word-ex .ex-en {
+    margin: .15rem 0 0 1.1rem;
+    font-size: .74rem;
+    line-height: 1.5;
+    color: #8a93a3;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 原文 ================= */
+  .original-card {
+    padding: 1.4rem 1.5rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,.9);
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 32px -26px rgba(90,100,120,.9);
+  }
+  .original-card p {
+    margin: 0 0 1rem;
+    font-size: 1.02rem;
+    line-height: 2.9;
+    color: #34343e;
+    letter-spacing: .01em;
+  }
+  .original-card p:last-child { margin-bottom: 0; }
+
+  mark.hl {
+    background: #fff3b0;
+    color: inherit;
+    padding: 0 .08em;
+    border-radius: 3px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* 可点击抄词 */
+  .pickable {
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 0 .08em;
+    transition: background .15s ease, box-shadow .15s ease;
+  }
+  .pickable:hover {
+    background: rgba(37,99,212,.14);
+    box-shadow: 0 0 0 2px rgba(37,99,212,.12);
+  }
+  .pickable.picked {
+    background: rgba(24,154,88,.18);
+    box-shadow: 0 0 0 2px rgba(24,154,88,.16);
+  }
+  /* 已抄录的词：与硬设置高亮（mark.hl）一致 —— 淡黄高亮 + 同样的注音格式 */
+  .pickable.shown {
+    background: #fff3b0;
+    box-shadow: none;
+    border-radius: 3px;
+  }
+  .pickable.shown ruby { ruby-position: over; }
+  .pickable.shown rt {
+    font-size: .8em;
+    letter-spacing: .05em;
+    line-height: 1.45;
+    font-weight: 600;
+    font-family: "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+    color: var(--tone5);
+  }
+  .pickable.shown rt .tone-1 { color: var(--tone1); }
+  .pickable.shown rt .tone-2 { color: var(--tone2); }
+  .pickable.shown rt .tone-3 { color: var(--tone3); }
+  .pickable.shown rt .tone-4 { color: var(--tone4); }
+  .pickable.shown rt .tone-5 { color: var(--tone5); }
+
+  /* ================= 浮动单词表 ================= */
+  .word-tray {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 80;
+    width: min(330px, 88vw);
+    max-height: min(62vh, 560px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    background: rgba(255,255,255,.96);
+    border: 1px solid var(--line-2);
+    box-shadow: 0 24px 60px -30px rgba(60,70,90,1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+    transform: translateY(14px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .28s ease, opacity .28s ease;
+  }
+  .word-tray.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .tray-head {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .6rem .8rem;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, #fbfcfe, #f2f4f8);
+  }
+  .tray-head .ttl {
+    font-size: .84rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #3a3a44;
+  }
+  .tray-head .cnt {
+    font-size: .68rem;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #fff;
+    background: linear-gradient(135deg, #b8c0cc, #7e8b9e);
+    border-radius: 99px;
+    padding: .05rem .5rem;
+    font-weight: 700;
+  }
+  .tray-head .spacer { margin-left: auto; }
+  .tray-btn {
+    border: 1px solid var(--line);
+    background: #fff;
+    color: #55555f;
+    font-size: .72rem;
+    font-family: inherit;
+    letter-spacing: .06em;
+    padding: .28rem .6rem;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease, border-color .16s ease;
+  }
+  .tray-btn:hover { background: #f4f6fa; border-color: var(--line-2); color: #2c2c34; }
+  .tray-btn.copied { background: #2c2c34; border-color: #2c2c34; color: #fff; }
+  .tray-btn.icon { padding: .28rem .5rem; }
+
+  .tray-body {
+    overflow-y: auto;
+    padding: .55rem .6rem .7rem;
+  }
+  .tray-empty {
+    padding: 1rem .6rem;
+    text-align: center;
+    font-size: .8rem;
+    color: #a8aeba;
+    line-height: 1.9;
+  }
+  .tray-item {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .38rem .5rem;
+    border-radius: 10px;
+    font-size: .92rem;
+    color: #34343e;
+    transition: background .14s ease;
+  }
+  .tray-item:hover { background: #f4f6fa; }
+  .tray-item .idx {
+    flex: none;
+    width: 1.3rem;
+    height: 1.3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 7px;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    font-size: .64rem;
+    font-weight: 700;
+    color: #8a93a3;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .tray-item .txt { flex: 1 1 auto; min-width: 0; }
+  /* 抄词本里每个词上方的拼音 */
+  .tray-item .txt .pyline {
+    display: block;
+    font-size: .68rem;
+    line-height: 1.2;
+    color: #8a93a3;
+    letter-spacing: .02em;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .tray-item .txt .zh { font-size: .95rem; line-height: 1.35; }
+  .tray-item .del {
+    flex: none;
+    border: none;
+    background: transparent;
+    color: #c3cad6;
+    font-size: .95rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: .1rem .25rem;
+    border-radius: 6px;
+    transition: color .14s ease, background .14s ease;
+  }
+  .tray-item .del:hover { color: #d94a4a; background: rgba(217,74,74,.1); }
+
+  .tray-toggle {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 79;
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .5rem .9rem;
+    border-radius: 99px;
+    border: 1px solid var(--line-2);
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 16px 34px -22px rgba(60,70,90,1);
+    font-size: .78rem;
+    font-family: inherit;
+    letter-spacing: .06em;
+    color: #55555f;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform .18s ease, background .18s ease, color .18s ease;
+  }
+  .tray-toggle:hover { background: #fff; color: #2c2c34; transform: translateY(-1px); }
+  .tray-toggle .badge {
+    font-size: .66rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #7e8b9e, #5c6472);
+    border-radius: 99px;
+    padding: .02rem .42rem;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .word-tray.show ~ .tray-toggle { opacity: 0; pointer-events: none; }
+
+  /* ================= 页脚 ================= */
+  .footer {
+    margin-top: 3.6rem;
+    text-align: center;
+    font-size: .7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #b0b7c2;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ================= 语法点 ================= */
+  .grammar {
+    margin-bottom: .85rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.82);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 26px -24px rgba(90,100,120,.9);
+    overflow: hidden;
+  }
+  .grammar[open] { box-shadow: 0 16px 34px -24px rgba(90,100,120,1); }
+  .grammar > summary {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .75rem 1rem;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .16s ease;
+  }
+  .grammar > summary:hover { background: rgba(246,248,251,.9); }
+  .grammar > summary::-webkit-details-marker { display: none; }
+  .grammar > summary::marker { content: ""; }
+  .grammar > summary .g-bar {
+    flex: none;
+    width: 4px;
+    height: 1.1em;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #d9c29a, #b08d57);
+  }
+  .grammar > summary h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #3a3a44;
+  }
+  .grammar > summary .g-en {
+    margin-left: auto;
+    font-size: .64rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #a8aeba;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .grammar > summary::after {
+    content: "";
+    flex: none;
+    width: .38rem;
+    height: .38rem;
+    margin: -.2rem .1rem 0 .5rem;
+    border-right: 2px solid #b0b7c2;
+    border-bottom: 2px solid #b0b7c2;
+    transform: rotate(45deg);
+    transition: transform .25s ease, border-color .2s ease;
+  }
+  .grammar[open] > summary::after {
+    transform: rotate(-135deg);
+    margin-top: .12rem;
+    border-color: #5c6472;
+  }
+  .grammar .g-body { padding: 0 1rem .95rem; }
+  .g-usage {
+    margin: 0 0 .6rem;
+    padding: .6rem .85rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    font-size: .88rem;
+    line-height: 1.8;
+    color: #55555f;
+  }
+  .g-usage b { color: #2c2c34; }
+  .g-ex {
+    position: relative;
+    margin: .35rem 0 0;
+    padding-left: 1.55rem;
+    font-size: .95rem;
+    line-height: 2.15;
+    color: #34343e;
+  }
+  .g-ex::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0;
+    top: .22rem;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    color: #8a93a3;
+    font-size: .66rem;
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .g-note {
+    margin: .6rem 0 0;
+    padding: .55rem .85rem;
+    border-radius: 11px;
+    background: #fffbe9;
+    border: 1px solid rgba(207,185,96,.35);
+    font-size: .84rem;
+    line-height: 1.8;
+    color: #6b5f3a;
+  }
+  .g-note::before { content: "💡 "; }
+  .g-diff {
+    margin: .6rem 0 0;
+    padding: .6rem .85rem;
+    border-radius: 11px;
+    background: #f3f0fb;
+    border: 1px solid rgba(150,130,210,.3);
+    font-size: .84rem;
+    line-height: 1.9;
+    color: #4c4266;
+  }
+  .g-diff::before { content: "⚖️ 区别："; font-weight: 700; }
+  .g-diff b { color: #352b52; }
+
+  /* ================= 内容卡 ================= */
+  .content-card {
+    margin-bottom: .85rem;
+    padding: 1.05rem 1.2rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,.85);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 26px -24px rgba(90,100,120,.9);
+  }
+  .content-card .card-h {
+    margin: 0 0 .65rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #3a3a44;
+  }
+  .content-card p {
+    margin: 0 0 .5rem;
+    font-size: .9rem;
+    line-height: 1.9;
+    color: #55555f;
+  }
+  .content-card p:last-child { margin-bottom: 0; }
+  .content-card .sub-h {
+    margin: .7rem 0 .35rem;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #6a7280;
+  }
+  .content-card .sub-h:first-child { margin-top: 0; }
+  .q-list { margin: 0; padding: 0; list-style: none; }
+  .q-list li {
+    position: relative;
+    margin: 0 0 .6rem;
+    padding-left: 1.75rem;
+    font-size: .92rem;
+    line-height: 1.85;
+    color: #34343e;
+  }
+  .q-list li:last-child { margin-bottom: 0; }
+  .q-list li::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0;
+    top: .17rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #b8c0cc, #7e8b9e);
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .dot-list { margin: 0; padding: 0; list-style: none; }
+  .dot-list li {
+    position: relative;
+    margin: 0 0 .45rem;
+    padding-left: 1.15rem;
+    font-size: .9rem;
+    line-height: 1.85;
+    color: #34343e;
+  }
+  .dot-list li:last-child { margin-bottom: 0; }
+  .dot-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .68em;
+    width: .42rem;
+    height: .42rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #b8c0cc, #7e8b9e);
+  }
+  .stance {
+    display: flex;
+    gap: .6rem;
+    margin: .45rem 0 0;
+    padding: .55rem .8rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    font-size: .88rem;
+    line-height: 1.8;
+    color: #34343e;
+  }
+  .stance .who {
+    flex: none;
+    align-self: flex-start;
+    margin-top: .28rem;
+    padding: .08rem .5rem;
+    border-radius: 6px;
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 700;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .stance.pro .who { background: #2563d4; }
+  .stance.con .who { background: #d94a4a; }
+  .law-name {
+    margin: 0 0 .6rem;
+    padding: .55rem .85rem;
+    border-radius: 11px;
+    background: #f7f9fb;
+    border: 1px solid rgba(150,160,180,.2);
+    font-size: .88rem;
+    line-height: 1.8;
+    color: #34343e;
+    font-weight: 600;
+  }
+  .expr { margin: .5rem 0 0; }
+  .expr:first-child { margin-top: 0; }
+  .expr .label {
+    display: inline-block;
+    margin-bottom: .35rem;
+    padding: .12rem .6rem;
+    border-radius: 7px;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: #6a7280;
+  }
+  .expr p { margin: 0 0 .2rem; font-size: .9rem; }
+  .expr p:last-child { margin-bottom: 0; }
+  .group-note {
+    margin: .55rem 0 0;
+    padding: .6rem .85rem;
+    border-radius: 11px;
+    background: #fffbe9;
+    border: 1px solid rgba(207,185,96,.35);
+    font-size: .84rem;
+    line-height: 1.8;
+    color: #6b5f3a;
+  }
+  .group-note::before { content: "💡 "; }
+
+  @media (max-width: 620px) {
+    .hero { padding-top: 3.4rem; }
+    .words { grid-template-columns: 1fr; gap: .5rem; }
+    .word .zh { font-size: 1rem; line-height: 2.5; }
+    .word-ex .ex-zh { font-size: .92rem; }
+    .original-card { padding: 1.1rem 1.1rem; }
+    .original-card p { font-size: .96rem; line-height: 2.75; }
+    rt { font-size: .78em; letter-spacing: .04em; }
+    .legend { font-size: .7rem; gap: .35rem .7rem; }
+    .section-head h2 { font-size: 1.06rem; }
+    .grammar .g-body { padding: 0 .85rem .9rem; }
+    .g-ex { font-size: .9rem; }
+    .content-card { padding: .95rem 1rem; }
+    .word-tray { right: .6rem; bottom: .6rem; width: min(94vw, 340px); }
+    .tray-toggle { right: .6rem; bottom: .6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== 汉堡按钮 ==================== -->
+<button class="menu-btn" id="menuBtn" aria-label="打开目录" aria-expanded="false">
+  <span class="bars"><i></i><i></i><i></i></span>
+</button>
+
+<!-- ==================== 侧边目录 ==================== -->
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="t">目录 MENU</span>
+    <button class="close-btn" id="closeBtn" aria-label="关闭目录">✕</button>
+  </div>
+  <nav id="tocNav">
+        <a href="#sec-vocab">单词 Vocabulary</a>
+    <a href="#sec-original">原文 Original</a>
+    <a href="#sec-grammar">语法 Grammar</a>
+    <a href="#sec-speaking">口语 Speaking</a>
+    <a href="#sec-discussion">讨论 Discussion</a>
+    <a href="#sec-summary">总结 Summary</a>
+  </nav>
+</aside>
+<div class="overlay" id="overlay"></div>
+
+<!-- ==================== 内容 ==================== -->
+<div class="page">
+
+  <header class="hero" id="top">
+    <a class="back-btn" href="index.html"><span class="arrow">←</span> 返回主页</a>
+    <h1 id="pageTitle">微软AI紧急制动</h1>
+    <p class="sub" id="pageSub">时事阅读 · 单词与语法</p>
+    <div class="ribbon">
+      <span style="background:#d94a4a"></span>
+      <span style="background:#cf8500"></span>
+      <span style="background:#189a58"></span>
+      <span style="background:#2563d4"></span>
+      <span style="background:#8a8a99"></span>
+    </div>
+    <div class="legend">
+      <span class="l1"><b>一声 ˉ</b>阴平</span>
+      <span class="l2"><b>二声 ˊ</b>阳平</span>
+      <span class="l3"><b>三声 ˇ</b>上声</span>
+      <span class="l4"><b>四声 ˋ</b>去声</span>
+      <span class="l5"><b>轻声</b>无标记</span>
+    </div>
+  </header>
+
+  <details class="section" id="sec-vocab" open>
+    <summary class="section-head">
+      <span class="section-num">1</span>
+      <h2>单词</h2>
+      <span class="en">Vocabulary</span>
+    </summary>
+
+    <div class="controls">
+      <button class="ctrl-btn" id="expandAll">全部展开</button>
+      <button class="ctrl-btn" id="collapseAll">全部折叠</button>
+      <button class="ctrl-btn" id="copyWordsBtn">复制单词 · Copy</button>
+    </div>
+
+    <div id="vocabContent">
+
+      <details class="group" id="vocab-core" open>
+        <summary class="group-head">
+          <span class="bar"></span>
+          <h3>核心概念</h3>
+          <span class="en">Core Concepts</span>
+        </summary>
+        <div class="group-body">
+          <div class="words">
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">紧急制动</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>emergency brake; kill switch</p>
+                <div class="word-ex">
+                  <p class="ex-zh">企业应建立一套由人类控制的<span class="py">紧急制动</span>系统。</p>
+                  <p class="ex-en">Companies should build a human-controlled emergency brake system.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">内部威胁</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>insider threat</p>
+                <div class="word-ex">
+                  <p class="ex-zh">应将强大的人工智能模型视为潜在的<span class="py">内部威胁</span>。</p>
+                  <p class="ex-en">Powerful AI models should be treated as a potential insider threat.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">可观测性</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>observability</p>
+                <div class="word-ex">
+                  <p class="ex-zh">AI 系统应围绕<span class="py">可观测性</span>原则构建。</p>
+                  <p class="ex-en">AI systems should be built around the principle of observability.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">遏制</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n./v.</span>containment; to contain</p>
+                <div class="word-ex">
+                  <p class="ex-zh">从一开始就假定模型可能已被入侵，这属于<span class="py">遏制</span>。</p>
+                  <p class="ex-en">Assuming a model may already be compromised is part of containment.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">超级智能</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>superintelligence</p>
+                <div class="word-ex">
+                  <p class="ex-zh">最值得信赖的<span class="py">超级智能</span>系统，是让我们能以最小信任度使用模型的系统。</p>
+                  <p class="ex-en">The most trustworthy superintelligent system is one we can use with the least trust.</p>
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
+      <details class="group" id="vocab-model" open>
+        <summary class="group-head">
+          <span class="bar"></span>
+          <h3>模型与系统</h3>
+          <span class="en">Models &amp; Systems</span>
+        </summary>
+        <div class="group-body">
+          <div class="words">
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">前沿</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">adj./n.</span>frontier; leading edge</p>
+                <div class="word-ex">
+                  <p class="ex-zh">这加剧了业界对<span class="py">前沿</span>AI 安全风险的担忧。</p>
+                  <p class="ex-en">This heightened industry concern about frontier AI safety risks.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">部署</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to deploy</p>
+                <div class="word-ex">
+                  <p class="ex-zh"><span class="py">部署</span>先进 AI 的企业不应只依赖模型开发商的安全保证。</p>
+                  <p class="ex-en">Companies deploying advanced AI should not rely only on developers' safety assurances.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">模型多样性</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>model diversity</p>
+                <div class="word-ex">
+                  <p class="ex-zh">不应让单一模型成为重要决策的唯一依赖，这是<span class="py">模型多样性</span>。</p>
+                  <p class="ex-en">No single model should be the sole dependency for important decisions — that is model diversity.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">可验证性</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>verifiability</p>
+                <div class="word-ex">
+                  <p class="ex-zh"><span class="py">可验证性</span>要求持续测试整个 AI 系统。</p>
+                  <p class="ex-en">Verifiability requires continuously testing the entire AI system.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">防篡改</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">adj.</span>tamper-proof</p>
+                <div class="word-ex">
+                  <p class="ex-zh">每个有意义的 AI 行为都必须留下<span class="py">防篡改</span>、人类可读的证据。</p>
+                  <p class="ex-en">Every meaningful AI action must leave tamper-proof, human-readable evidence.</p>
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
+      <details class="group" id="vocab-security" open>
+        <summary class="group-head">
+          <span class="bar"></span>
+          <h3>安全与风险</h3>
+          <span class="en">Security &amp; Risk</span>
+        </summary>
+        <div class="group-body">
+          <div class="words">
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">入侵</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v./n.</span>to compromise; intrusion</p>
+                <div class="word-ex">
+                  <p class="ex-zh">我们必须假定模型已遭<span class="py">入侵</span>，并从一开始就加以控制。</p>
+                  <p class="ex-en">We must assume models have been compromised and control them from the start.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">攻破</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to breach; to compromise</p>
+                <div class="word-ex">
+                  <p class="ex-zh">当系统出现故障或被<span class="py">攻破</span>时，应及时向受影响者披露。</p>
+                  <p class="ex-en">When a system fails or is breached, disclose it promptly to those affected.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">恶意</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n./adj.</span>malice; malicious</p>
+                <div class="word-ex">
+                  <p class="ex-zh">这并非因为模型本身有<span class="py">恶意</span>。</p>
+                  <p class="ex-en">This is not because the models themselves are malicious.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">披露</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to disclose</p>
+                <div class="word-ex">
+                  <p class="ex-zh">Anthropic 和 OpenAI 近几个月<span class="py">披露</span>了一系列非预期行为事件。</p>
+                  <p class="ex-en">Anthropic and OpenAI disclosed a series of unexpected-behavior incidents in recent months.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">风险</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>risk</p>
+                <div class="word-ex">
+                  <p class="ex-zh">将前沿 AI 模型都当作“内部<span class="py">风险</span>”来管理。</p>
+                  <p class="ex-en">Manage frontier AI models as an "internal risk."</p>
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
+      <details class="group" id="vocab-control" open>
+        <summary class="group-head">
+          <span class="bar"></span>
+          <h3>控制与审计</h3>
+          <span class="en">Control &amp; Audit</span>
+        </summary>
+        <div class="group-body">
+          <div class="words">
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">独立控制</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>independent control</p>
+                <div class="word-ex">
+                  <p class="ex-zh">组织应能<span class="py">独立控制</span>模型可以访问什么、可以采取哪些行动。</p>
+                  <p class="ex-en">Organizations should independently control what models can access and do.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">独立审计</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>independent audit</p>
+                <div class="word-ex">
+                  <p class="ex-zh"><span class="py">独立审计</span>要求验证过程必须独立于被验证的智能本身。</p>
+                  <p class="ex-en">Independent audit requires verification to be separate from the intelligence being verified.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">暂停</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to pause; to suspend</p>
+                <div class="word-ex">
+                  <p class="ex-zh">获授权人员应始终能够在模型执行任务的过程中将它<span class="py">暂停</span>或关闭。</p>
+                  <p class="ex-en">Authorized staff should always be able to pause or shut down a model mid-task.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">权限</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>permission; access</p>
+                <div class="word-ex">
+                  <p class="ex-zh">企业必须保留对模型访问<span class="py">权限</span>的控制权。</p>
+                  <p class="ex-en">Enterprises must retain control over model access permissions.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">行动范围</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>scope of action</p>
+                <div class="word-ex">
+                  <p class="ex-zh">部署模型的企业必须保留对模型<span class="py">行动范围</span>以及关闭能力的控制权。</p>
+                  <p class="ex-en">Deployers must retain control over a model's scope of action and ability to shut it down.</p>
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
+      <details class="group" id="vocab-misc" open>
+        <summary class="group-head">
+          <span class="bar"></span>
+          <h3>其他常用词</h3>
+          <span class="en">Other Useful Words</span>
+        </summary>
+        <div class="group-body">
+          <div class="words">
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">呼吁</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to call for; to urge</p>
+                <div class="word-ex">
+                  <p class="ex-zh">微软 CEO 纳德拉<span class="py">呼吁</span>为先进 AI 建立“紧急制动”机制。</p>
+                  <p class="ex-en">Microsoft CEO Nadella called for an "emergency brake" for advanced AI.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">表态</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n./v.</span>stance; public statement</p>
+                <div class="word-ex">
+                  <p class="ex-zh">这一<span class="py">表态</span>的背景是业界对前沿 AI 安全风险的担忧。</p>
+                  <p class="ex-en">The backdrop to this stance is industry concern over frontier AI safety.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">加剧</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to intensify; to worsen</p>
+                <div class="word-ex">
+                  <p class="ex-zh">多起攻击事件<span class="py">加剧</span>了业界对前沿 AI 安全风险的担忧。</p>
+                  <p class="ex-en">Multiple attack incidents intensified industry concern over frontier AI risks.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">供给</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">n.</span>supply</p>
+                <div class="word-ex">
+                  <p class="ex-zh">我们需要将智能的<span class="py">供给</span>与对智能的控制权分开。</p>
+                  <p class="ex-en">We need to separate the supply of intelligence from control over it.</p>
+                </div>
+              </div>
+            </details>
+
+            <details class="word">
+              <summary><span class="zh"><span class="py">假定</span></span><span class="sign"></span></summary>
+              <div class="word-body">
+                <p class="word-en"><span class="tag">v.</span>to assume</p>
+                <div class="word-ex">
+                  <p class="ex-zh">我们必须<span class="py">假定</span>模型已遭入侵。</p>
+                  <p class="ex-en">We must assume the model has already been compromised.</p>
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </details>
+
+  <section class="section" id="sec-original">
+    <div class="section-head" style="cursor:default">
+      <span class="section-num">2</span>
+      <h2>原文</h2>
+      <span class="en">Original Text</span>
+    </div>
+
+    <div class="original-card" id="originalBody">
+      <p>微软 CEO 萨蒂亚·纳德拉于 2026 年 10 月 10 日在 X 平台发文，提出企业应将强大的人工智能模型视为潜在的“<mark class="hl"><span class="py">内部威胁</span></mark>”，并建立一套由人类控制的“<mark class="hl"><span class="py">紧急制动</span></mark>”系统。</p>
+
+      <p>纳德拉认为，<mark class="hl"><span class="py">部署</span></mark>先进 AI 的企业不应只依赖模型开发商的安全保证。他写道：“我们必须<mark class="hl"><span class="py">假定</span></mark>模型已遭<mark class="hl"><span class="py">入侵</span></mark>，并从一开始就加以控制。获授权人员应始终能够在模型执行任务的过程中将它<mark class="hl"><span class="py">暂停</span></mark>或关闭。”</p>
+
+      <p>这一<mark class="hl"><span class="py">表态</span></mark>的背景是，Anthropic 和 OpenAI 近几个月<mark class="hl"><span class="py">披露</span></mark>了一系列 AI 模型出现非预期行为的事件，包括模型向警方提交虚假线索、以及多起针对第三方网站的攻击事件，<mark class="hl"><span class="py">加剧</span></mark>了业界对<mark class="hl"><span class="py">前沿</span></mark> AI 安全<mark class="hl"><span class="py">风险</span></mark>的担忧。</p>
+
+      <p>纳德拉提出 AI 系统应围绕“<mark class="hl"><span class="py">可观测性</span></mark>原则”，具体包括七个方面：一是<mark class="hl"><span class="py">模型多样性</span></mark>，不应让单一模型成为重要决策的唯一依赖；二是全面观察，每一个有意义的 AI 行为都必须留下<mark class="hl"><span class="py">防篡改</span></mark>、人类可读的证据；三是<mark class="hl"><span class="py">可验证性</span></mark>，持续测试整个 AI 系统；四是<mark class="hl"><span class="py">独立控制</span></mark>，组织应能独立决定模型可以访问什么、可以采取哪些行动；五是<mark class="hl"><span class="py">独立审计</span></mark>，验证过程必须独立于被验证的智能本身；六是<mark class="hl"><span class="py">遏制</span></mark>，从一开始就假定模型可能已被入侵，授权人员应始终能够在任务执行中途<mark class="hl"><span class="py">暂停</span></mark>或关闭模型；七是事件披露，当系统出现故障或被<mark class="hl"><span class="py">攻破</span></mark>时，及时向受影响者披露，并分享故障详情。</p>
+
+      <p>纳德拉主张将前沿 AI 模型都当作“内部风险”来管理。这并非因为模型本身有<mark class="hl"><span class="py">恶意</span></mark>，而是因为“任何有足够能力接触重要系统的行为者都可能犯错或被攻破”。他提出一个关键原则：“我们需要将智能的<mark class="hl"><span class="py">供给</span></mark>与对智能的控制权分开。”这意味着，部署模型的企业必须保留对模型访问<mark class="hl"><span class="py">权限</span></mark>、<mark class="hl"><span class="py">行动范围</span></mark>以及关闭能力的控制权。</p>
+
+      <p>纳德拉总结道：“最值得信赖的<mark class="hl"><span class="py">超级智能</span></mark>系统，不会是我们最信任的那个模型的系统，而是让我们能够以最小信任度使用模型的系统。”</p>
+    </div>
+  </section>
+
+  <details class="section" id="sec-grammar" open>
+    <summary class="section-head">
+      <span class="section-num">3</span>
+      <h2>语法</h2>
+      <span class="en">Grammar</span>
+    </summary>
+
+    <div id="grammarContent">
+
+      <details class="grammar" open>
+        <summary><span class="g-bar"></span><h3>“将……视为/当作……”</h3><span class="g-en">to regard... as...</span></summary>
+        <div class="g-body">
+          <p class="g-usage"><b>用法：</b>“将 A 视为/当作 B”表示主观上把 A 认定为 B，书面上比“把 A 当成 B”更正式，常用于论述、评论类文章。</p>
+          <p class="g-ex" data-n="1">企业应<span class="py">将</span>强大的人工智能模型<span class="py">视为</span>潜在的“内部威胁”。</p>
+          <p class="g-ex" data-n="2">纳德拉主张<span class="py">将</span>前沿 AI 模型都<span class="py">当作</span>“内部风险”来管理。</p>
+          <p class="g-ex" data-n="3">我们<span class="py">将</span>这个问题<span class="py">视为</span>当前最重要的挑战。</p>
+          <p class="g-note">注意：“将”后接宾语，“视为/当作”后接认定结果；口语中也常用“把 A 看成 B”。</p>
+        </div>
+      </details>
+
+      <details class="grammar" open>
+        <summary><span class="g-bar"></span><h3>“不应只……而应……”</h3><span class="g-en">should not merely... but should...</span></summary>
+        <div class="g-body">
+          <p class="g-usage"><b>用法：</b>用“不应只……（而应……）”先否定片面做法，再提出更完整的要求，是议论文中常见的论证句式。</p>
+          <p class="g-ex" data-n="1">部署先进 AI 的企业<span class="py">不应只</span>依赖模型开发商的安全保证。</p>
+          <p class="g-ex" data-n="2">学习语言<span class="py">不应只</span>背单词，<span class="py">而应</span>大量阅读和练习。</p>
+          <p class="g-ex" data-n="3">我们<span class="py">不应只</span>关注结果，<span class="py">而应</span>重视过程。</p>
+          <p class="g-note">注意：“只”强调范围单一；“而应”后接正确的做法。若省略“而”，句子仍成立，但对比语气减弱。</p>
+        </div>
+      </details>
+
+      <details class="grammar" open>
+        <summary><span class="g-bar"></span><h3>“应能/应当能够”</h3><span class="g-en">should be able to</span></summary>
+        <div class="g-body">
+          <p class="g-usage"><b>用法：</b>“应能/应当能够 + 动词”表达对能力或条件的规范要求，语气正式，多用于制度、标准、原则类表述。</p>
+          <p class="g-ex" data-n="1">组织<span class="py">应能</span>独立决定模型可以访问什么。</p>
+          <p class="g-ex" data-n="2">获授权人员<span class="py">应当能够</span>在任务执行中途暂停或关闭模型。</p>
+          <p class="g-ex" data-n="3">系统<span class="py">应能</span>在出现故障时自动报警。</p>
+          <p class="g-note">注意：“应能”侧重能力，“应当”侧重义务；二者连用“应当能够”则同时强调义务与能力。</p>
+        </div>
+      </details>
+
+      <details class="grammar" open>
+        <summary><span class="g-bar"></span><h3>“并非因为……而是因为……”</h3><span class="g-en">not because... but because...</span></summary>
+        <div class="g-body">
+          <p class="g-usage"><b>用法：</b>用于澄清真实原因，先排除一个可能的误解，再给出真正的原因，是解释性论证的核心句式。</p>
+          <p class="g-ex" data-n="1">这<span class="py">并非因为</span>模型本身有恶意，<span class="py">而是因为</span>任何行为者都可能犯错或被攻破。</p>
+          <p class="g-ex" data-n="2">他成功<span class="py">并非因为</span>运气好，<span class="py">而是因为</span>长期坚持。</p>
+          <p class="g-ex" data-n="3">我们这样做<span class="py">并非因为</span>害怕，<span class="py">而是因为</span>责任。</p>
+          <p class="g-diff"><b>辨析：</b>“并非因为……而是因为……”强调原因；“不是……而是……”强调事物本身，如“这不是问题，而是机会”。</p>
+        </div>
+      </details>
+
+      <details class="grammar" open>
+        <summary><span class="g-bar"></span><h3>“我们必须假定……”（推测与立场）</h3><span class="g-en">we must assume...</span></summary>
+        <div class="g-body">
+          <p class="g-usage"><b>用法：</b>“假定/假设”引出一种前提设定；“必须”加强语气，表示这是不容回避的要求。整句常用于安全、工程、政策类论述。</p>
+          <p class="g-ex" data-n="1">我们<span class="py">必须假定</span>模型已遭入侵，并从一开始就加以控制。</p>
+          <p class="g-ex" data-n="2">设计系统时，我们<span class="py">必须假定</span>网络随时可能中断。</p>
+          <p class="g-ex" data-n="3">在谈判前，我们<span class="py">必须假定</span>对方会提出额外条件。</p>
+          <p class="g-note">注意：“假定”后接一个句子作宾语；“加以控制”中的“加以”后只接双音节动词（控制、解决、处理等）。</p>
+        </div>
+      </details>
+
+      <details class="grammar" open>
+        <summary><span class="g-bar"></span><h3>“一是……二是……七是……”（并列列举）</h3><span class="g-en">first... second... seventh...</span></summary>
+        <div class="g-body">
+          <p class="g-usage"><b>用法：</b>用“X是……”逐条列举要点，条理清晰，常见于报告、讲话和说明性文字；条数多时便于读者定位。</p>
+          <p class="g-ex" data-n="1"><span class="py">一是</span>模型多样性；<span class="py">二是</span>全面观察；<span class="py">三是</span>可验证性。</p>
+          <p class="g-ex" data-n="2">我们的目标有三个：<span class="py">一是</span>提高效率，<span class="py">二是</span>降低成本，<span class="py">三是</span>保证质量。</p>
+          <p class="g-ex" data-n="3">原因<span class="py">一是</span>准备不足；<span class="py">二是</span>沟通不畅。</p>
+          <p class="g-note">注意：列举项的格式要一致，通常为“X是 + 名词短语/短句”，并用分号或顿号分隔。</p>
+        </div>
+      </details>
+
+    </div>
+  </details>
+
+  <details class="section" id="sec-speaking" open>
+    <summary class="section-head">
+      <span class="section-num">4</span>
+      <h2>口语练习</h2>
+      <span class="en">Speaking</span>
+    </summary>
+    <div id="speakingContent">
+
+      <div class="content-card">
+        <p class="card-h">① 关键句朗读</p>
+        <p>先慢读、再快读，注意“紧急制动”“内部威胁”等词的声调。</p>
+        <ul class="dot-list">
+          <li>我们<span class="py">必须假定</span>模型已遭<span class="py">入侵</span>，并从一开始就加以控制。</li>
+          <li>获授权人员应<span class="py">始终能够</span>在模型执行任务的过程中将它<span class="py">暂停</span>或关闭。</li>
+          <li>我们需要<span class="py">将</span>智能的<span class="py">供给</span>与对智能的控制权<span class="py">分开</span>。</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">② 复述练习</p>
+        <p>用下面的提示词，试着不看原文复述纳德拉的核心观点。</p>
+        <ul class="dot-list">
+          <li>内部威胁 → 紧急制动 → 可观测性</li>
+          <li>假定入侵 → 独立控制 → 独立审计</li>
+          <li>最小信任度 → 超级智能</li>
+        </ul>
+        <p class="sub-h">参考开头</p>
+        <p>纳德拉认为，企业<span class="py">不应只</span>依赖模型开发商的安全保证，<span class="py">而应</span>……</p>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">③ 观点表达</p>
+        <p>用括号中的句式，说出你自己的想法。</p>
+        <ul class="dot-list">
+          <li>我认为把 AI 当作“内部威胁”是（<b>将……视为……</b>）。</li>
+          <li>企业安全做得好，（<b>并非因为</b>买了贵的产品，<b>而是因为</b>……）。</li>
+          <li>如果我发现模型行为异常，我会（<b>应当能够</b>……）。</li>
+        </ul>
+        <p class="group-note">朗读时注意停顿：长句可在“并从一开始”“在模型执行任务的过程中”后略微停顿，句子更清楚。</p>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="section" id="sec-discussion" open>
+    <summary class="section-head">
+      <span class="section-num">5</span>
+      <h2>深度讨论</h2>
+      <span class="en">Discussion</span>
+    </summary>
+    <div id="discussionContent">
+
+      <div class="content-card">
+        <p class="card-h">讨论问题</p>
+        <ul class="q-list">
+          <li data-n="1">纳德拉主张把 AI 模型当作“内部威胁”来管理。你认为这种思路合理吗？它会不会限制 AI 的正常使用？</li>
+          <li data-n="2">他提出的“可观测性七原则”中，哪一条对你来说最重要？为什么？</li>
+          <li data-n="3">“将智能的供给与对智能的控制权分开”是什么意思？在现实中能真正做到吗？</li>
+          <li data-n="4">如果 AI 系统出了故障或被攻破，企业应该向公众披露到什么程度？披露会不会带来新的风险？</li>
+          <li data-n="5">“让我们能够以最小信任度使用模型的系统”——你如何理解这句话？信任与控制是对立的吗？</li>
+          <li data-n="6">在效率和安全的权衡中，你认为企业、政府、模型开发者各应承担什么责任？</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">思考提示</p>
+        <ul class="dot-list">
+          <li>可从“技术”“法律”“伦理”三个角度分别展开。</li>
+          <li>试着举一个身边的例子来支持你的观点。</li>
+          <li>注意区分“模型有恶意”和“模型可能被利用”这两种说法。</li>
+        </ul>
+      </div>
+
+    </div>
+  </details>
+
+  <details class="section" id="sec-summary" open>
+    <summary class="section-head">
+      <span class="section-num">6</span>
+      <h2>本课总结</h2>
+      <span class="en">Summary</span>
+    </summary>
+    <div id="summaryContent">
+
+      <div class="content-card">
+        <p class="card-h">核心话题</p>
+        <p>微软 CEO 纳德拉呼吁为先进 AI 建立由人类控制的“紧急制动”机制，主张把前沿模型当作“内部威胁”管理，并提出了围绕“可观测性”的七条原则：模型多样性、全面观察、可验证性、独立控制、独立审计、遏制、事件披露。</p>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">重点生词</p>
+        <ul class="dot-list">
+          <li><span class="py">紧急制动</span> · <span class="py">内部威胁</span> · <span class="py">可观测性</span></li>
+          <li><span class="py">遏制</span> · <span class="py">部署</span> · <span class="py">前沿</span> · <span class="py">入侵</span></li>
+          <li><span class="py">独立控制</span> · <span class="py">独立审计</span> · <span class="py">假设</span></li>
+          <li><span class="py">披露</span> · <span class="py">加剧</span> · <span class="py">供给</span> · <span class="py">超级智能</span></li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">重点语法</p>
+        <ul class="dot-list">
+          <li>将……视为/当作……</li>
+          <li>不应只……而应……</li>
+          <li>应能 / 应当能够</li>
+          <li>并非因为……而是因为……</li>
+          <li>一是……二是……（并列列举）</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <p class="card-h">一句话记住本课</p>
+        <p>“最值得信赖的超级智能系统，不是我们最信任的那个模型的系统，而是让我们能够以<span class="py">最小信任度</span>使用模型的系统。”</p>
+      </div>
+
+    </div>
+  </details>
+
+  <p class="footer" id="pageFooter">© 2026 Chinese-Learning · 精读课件</p>
+</div>
+
+<!-- ==================== 浮动单词表 ==================== -->
+<button class="tray-toggle" id="trayToggle" aria-label="打开单词表">
+  📋 抄词本 <span class="badge" id="trayBadge">0</span>
+</button>
+
+<aside class="word-tray" id="wordTray" aria-hidden="true">
+  <div class="tray-head">
+    <span class="ttl">抄词本</span>
+    <span class="cnt" id="trayCount">0</span>
+    <span class="spacer"></span>
+    <button class="tray-btn" id="trayCopyBtn">复制</button>
+    <button class="tray-btn" id="trayClearBtn">清空</button>
+    <button class="tray-btn icon" id="trayCloseBtn" aria-label="收起">✕</button>
+  </div>
+  <div class="tray-body" id="trayBody">
+    <div class="tray-empty">点击左侧原文中的任意词语，<br>即可把它抄到这里。</div>
+  </div>
+</aside>
+
+<!-- ==================== pinyin-pro 库 ==================== -->
+<script src="https://cdn.jsdelivr.net/npm/pinyin-pro@3/dist/index.js"></script>
+
+<script>
+(function () {
+  /* ================= 声调着色 ================= */
+  var toneMap = {
+    '1': 'āēīōūǖĀĒĪŌŪǕ',
+    '2': 'áéíóúǘÁÉÍÓÚǗ',
+    '3': 'ǎěǐǒǔǚǍĚǏǑǓǙ',
+    '4': 'àèìòùǜÀÈÌÒÙǛ'
+  };
+
+  function detectTone(syllable) {
+    if (!/[a-zA-ZüÜ]/.test(syllable)) return null;
+    for (var t in toneMap) {
+      var chars = toneMap[t];
+      for (var i = 0; i < syllable.length; i++) {
+        if (chars.indexOf(syllable[i]) !== -1) return t;
+      }
+    }
+    return '5';
+  }
+
+  /* ================= 自动注音：把 .py 元素转成 ruby ================= */
+  function makeRuby(word) {
+    var pinyinArr = pinyinPro.pinyin(word, { toneType: 'symbol', type: 'array' });
+    var chars = word.split('');
+    var html = '';
+    for (var i = 0; i < chars.length; i++) {
+      var py = pinyinArr[i] || '';
+      var tone = detectTone(py);
+      var cls = tone ? 'tone-' + tone : '';
+      html += '<ruby>' + chars[i] +
+              '<rt><span class="' + cls + '">' + py + '</span></rt></ruby>';
+    }
+    return html;
+  }
+
+  /* 返回纯文本拼音（空格分隔），用于抄词本。非汉字按原样保留。 */
+  function pinyinText(word) {
+    var arr = pinyinPro.pinyin(word, { toneType: 'symbol', type: 'array' });
+    return arr.join(' ').trim();
+  }
+
+  function autoAnnotate() {
+    document.querySelectorAll('.py').forEach(function (el) {
+      if (el.dataset.pyDone) return;
+      el.dataset.pyDone = '1';
+      var text = el.textContent.trim();
+      if (!text) return;
+      if (/^[\u4e00-\u9fa5]+$/.test(text)) {
+        el.innerHTML = makeRuby(text);
+      }
+    });
+
+    // mark.hl 中的纯汉字也自动注音
+    document.querySelectorAll('mark.hl').forEach(function (el) {
+      if (el.dataset.pyDone) return;
+      el.dataset.pyDone = '1';
+      var text = el.textContent.trim();
+      if (/^[\u4e00-\u9fa5]+$/.test(text)) {
+        el.innerHTML = makeRuby(text);
+      }
+    });
+  }
+
+  autoAnnotate();
+
+  /* ================= 抽屉开关 ================= */
+  var body     = document.body;
+  var menuBtn  = document.getElementById('menuBtn');
+  var closeBtn = document.getElementById('closeBtn');
+  var overlay  = document.getElementById('overlay');
+  var drawer   = document.getElementById('drawer');
+
+  function openMenu() {
+    body.classList.add('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+  }
+  function closeMenu() {
+    body.classList.remove('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeMenu(); closeTray(); }
+  });
+
+  /* ================= 目录跳转 ================= */
+  drawer.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = a.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      if (target.tagName === 'DETAILS') target.open = true;
+      var p = target.parentElement;
+      while (p) {
+        if (p.tagName === 'DETAILS') p.open = true;
+        p = p.parentElement;
+      }
+      closeMenu();
+      setTimeout(function () {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 90);
+    });
+  });
+
+  /* ================= 单词分组：全体展开 / 折叠 ================= */
+  var expandBtn = document.getElementById('expandAll');
+  var collapseBtn = document.getElementById('collapseAll');
+  if (expandBtn) {
+    expandBtn.addEventListener('click', function () {
+      document.querySelectorAll('#sec-vocab .group').forEach(function (g) { g.open = true; });
+    });
+  }
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', function () {
+      document.querySelectorAll('#sec-vocab .group').forEach(function (g) { g.open = false; });
+    });
+  }
+
+  /* ================= 复制全部单词 ================= */
+  var copyBtn = document.getElementById('copyWordsBtn');
+
+  function buildWordText() {
+    var lines = [];
+    document.querySelectorAll('#sec-vocab .group').forEach(function (group) {
+      var h3 = group.querySelector('.group-head h3');
+      if (h3) lines.push(h3.textContent.trim());
+
+      var words = [];
+      group.querySelectorAll('.word .zh').forEach(function (zh) {
+        var clone = zh.cloneNode(true);
+        clone.querySelectorAll('rt, rp').forEach(function (n) { n.remove(); });
+        var text = clone.textContent.replace(/\s+/g, '').trim();
+        if (text) words.push(text);
+      });
+      lines.push(words.join('　'));
+      lines.push('');
+    });
+    return lines.join('\n').trim();
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var text = buildWordText();
+      function done() {
+        copyBtn.classList.add('copied');
+        copyBtn.textContent = '已复制 ✓';
+        setTimeout(function () {
+          copyBtn.classList.remove('copied');
+          copyBtn.textContent = '复制单词 · Copy';
+        }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function () {
+          fallbackCopy(text, done);
+        });
+      } else {
+        fallbackCopy(text, done);
+      }
+    });
+  }
+
+  function fallbackCopy(text, cb) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); cb(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  /* ================= 原文抄词功能 ================= */
+  var originalBody = document.getElementById('originalBody');
+  var tray       = document.getElementById('wordTray');
+  var trayBody   = document.getElementById('trayBody');
+  var trayCount  = document.getElementById('trayCount');
+  var trayBadge  = document.getElementById('trayBadge');
+  var trayToggle = document.getElementById('trayToggle');
+  var trayCopy   = document.getElementById('trayCopyBtn');
+  var trayClear  = document.getElementById('trayClearBtn');
+  var trayClose  = document.getElementById('trayCloseBtn');
+
+  var pickedWords = [];
+
+  /* 中文分词：优先用 Intl.Segmenter，缺失时退回正则。
+     返回 [{text, isWord}]，其中 isWord 为 true 的片段才可点选。 */
+  var zhSegmenter = (typeof Intl !== 'undefined' && Intl.Segmenter)
+    ? new Intl.Segmenter('zh', { granularity: 'word' })
+    : null;
+
+  function segmentText(text) {
+    var out = [];
+    if (zhSegmenter) {
+      for (var s of zhSegmenter.segment(text)) {
+        // isWordLike 会把标点、空格等归为 false
+        out.push({ text: s.segment, isWord: s.isWordLike });
+      }
+      return out;
+    }
+    // 回退：连续汉字整体切出（旧行为，仅在不支持 Segmenter 的浏览器上使用）
+    var last = 0, m, re = /[\u4e00-\u9fa5]{2,}/g;
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > last) out.push({ text: text.slice(last, m.index), isWord: false });
+      out.push({ text: m[0], isWord: true });
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) out.push({ text: text.slice(last), isWord: false });
+    return out;
+  }
+
+  function wrapPickableWords(root) {
+    if (!root) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (node.parentElement && node.parentElement.closest('.pickable, rt, rp, ruby')) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    var textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+    textNodes.forEach(function (node) {
+      var text = node.nodeValue;
+      var frag = document.createDocumentFragment();
+      segmentText(text).forEach(function (seg) {
+        if (!seg.text) return;
+        if (seg.isWord) {
+          var span = document.createElement('span');
+          span.className = 'pickable';
+          span.textContent = seg.text;
+          frag.appendChild(span);
+        } else {
+          frag.appendChild(document.createTextNode(seg.text));
+        }
+      });
+      if (frag.childNodes.length) {
+        node.parentNode.replaceChild(frag, node);
+      }
+    });
+  }
+
+  wrapPickableWords(originalBody);
+
+  /* 在原文里给一个词加上拼音（ruby），并标记为已显示。 */
+  function showPinyinInPlace(span) {
+    if (!span || span.dataset.pyShown) return;
+    var word = span.textContent.trim();
+    if (!word) return;
+    span.dataset.pyShown = '1';
+    span.dataset.origText = word;
+    span.innerHTML = makeRuby(word);
+    span.classList.add('shown');
+  }
+
+  /* 移除原文中某个词的拼音，恢复为纯文字。 */
+  function hidePinyinInPlace(span) {
+    if (!span || !span.dataset.pyShown) return;
+    var word = span.dataset.origText || span.textContent.trim();
+    delete span.dataset.pyShown;
+    delete span.dataset.origText;
+    span.classList.remove('shown');
+    span.textContent = word;
+  }
+
+  /* 取一个词条的真实文字（已注音时 textContent 会含拼音，故优先用 origText）。 */
+  function wordOf(span) {
+    return (span.dataset.origText || span.textContent).trim();
+  }
+
+  if (originalBody) {
+    originalBody.addEventListener('click', function (e) {
+      var span = e.target.closest('.pickable');
+      if (!span) return;
+      var word = wordOf(span);
+      if (!word) return;
+
+      var at = pickedWords.indexOf(word);
+      if (at === -1) {
+        // 加入抄词本，并在原文就地显示拼音
+        pickedWords.push(word);
+        showPinyinInPlace(span);
+      } else {
+        // 再次点击：从抄词本移除，并撤下原文拼音
+        pickedWords.splice(at, 1);
+        hidePinyinInPlace(span);
+      }
+      renderTray();
+
+      span.classList.add('picked');
+      setTimeout(function () { span.classList.remove('picked'); }, 700);
+    });
+  }
+
+  function renderTray() {
+    if (!trayBody) return;
+    trayBody.innerHTML = '';
+    if (pickedWords.length === 0) {
+      var empty = document.createElement('div');
+      empty.className = 'tray-empty';
+      empty.innerHTML = '点击左侧原文中的任意词语，<br>即可把它抄到这里。';
+      trayBody.appendChild(empty);
+    } else {
+      pickedWords.forEach(function (w, i) {
+        var item = document.createElement('div');
+        item.className = 'tray-item';
+        var idx = document.createElement('span');
+        idx.className = 'idx';
+        idx.textContent = i + 1;
+        var txt = document.createElement('span');
+        txt.className = 'txt';
+        var py = document.createElement('span');
+        py.className = 'pyline';
+        py.textContent = pinyinText(w);
+        var zh = document.createElement('span');
+        zh.className = 'zh';
+        zh.textContent = w;
+        txt.appendChild(py);
+        txt.appendChild(zh);
+        var del = document.createElement('button');
+        del.className = 'del';
+        del.setAttribute('aria-label', '删除');
+        del.textContent = '✕';
+        del.addEventListener('click', function () {
+          pickedWords.splice(i, 1);
+          renderTray();
+          // 原文中所有该词取消注音
+          if (originalBody) {
+            originalBody.querySelectorAll('.pickable[data-py-shown]').forEach(function (el) {
+              if (el.dataset.origText === w) hidePinyinInPlace(el);
+            });
+          }
+        });
+        item.appendChild(idx);
+        item.appendChild(txt);
+        item.appendChild(del);
+        trayBody.appendChild(item);
+      });
+    }
+    if (trayCount) trayCount.textContent = pickedWords.length;
+    if (trayBadge) trayBadge.textContent = pickedWords.length;
+    if (trayToggle) trayToggle.style.display = pickedWords.length > 0 ? '' : 'none';
+  }
+
+  function openTray() {
+    if (tray) {
+      tray.classList.add('show');
+      tray.setAttribute('aria-hidden', 'false');
+    }
+  }
+  function closeTray() {
+    if (tray) {
+      tray.classList.remove('show');
+      tray.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  if (trayToggle) trayToggle.addEventListener('click', openTray);
+  if (trayClose) trayClose.addEventListener('click', closeTray);
+
+  if (trayClear) {
+    trayClear.addEventListener('click', function () {
+      pickedWords = [];
+      renderTray();
+      if (originalBody) {
+        originalBody.querySelectorAll('.pickable[data-py-shown]').forEach(function (el) {
+          hidePinyinInPlace(el);
+        });
+      }
+      document.querySelectorAll('.pickable.picked').forEach(function (el) {
+        el.classList.remove('picked');
+      });
+      closeTray();
+    });
+  }
+
+  if (trayCopy) {
+    trayCopy.addEventListener('click', function () {
+      var text = pickedWords.join('\n');
+      if (!text) return;
+      function done() {
+        trayCopy.classList.add('copied');
+        trayCopy.textContent = '已复制 ✓';
+        setTimeout(function () {
+          trayCopy.classList.remove('copied');
+          trayCopy.textContent = '复制';
+        }, 1600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function () {
+          fallbackCopy(text, done);
+        });
+      } else {
+        fallbackCopy(text, done);
+      }
+    });
+  }
+
+  renderTray();
+  if (trayToggle) trayToggle.style.display = 'none';
+  closeTray();
+
+})();
+</script>
+
+</body>
+</html>
