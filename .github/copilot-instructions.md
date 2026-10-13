@@ -1,5 +1,13 @@
 # Chinese-Learning 仓库约定
 
+## 新任务开场（冷启动必做）
+1. 先读 `hsk1/data/manifest.json`（应用地图）与本文档，**不要整读** `data.js`（~1400 行）/
+   `app.js`（~2700 行）；用 `grep -n` 定位后只读目标 40–80 行。
+2. 动手前先向用户复述：你理解的结构 + 计划改哪几个文件，等确认再改。
+3. `data/sentences/*.json|.js` 是生成物，**禁止手改**；改语料要改 txt 再跑脚本。
+4. 改完在 `file://` 和 `http://` 各验证一次，控制台零报错。
+5. 不碰无关的既有改动（`.DS_Store`、`classroom/` 等）。
+
 ## 课件构建（每次改完必须执行，除非用户说不要 build）
 cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题>.html
 - 输出只用于本地查看，不要提交 out/ 下的 HTML

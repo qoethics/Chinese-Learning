@@ -1,5 +1,6 @@
 {
   "$comment": "hsk1 应用地图 —— 改东西前先读这里，不要读 index.html。",
+  "kickoffPrompt": "新任务开场：先读 hsk1/data/manifest.json 和 .github/copilot-instructions.md，别整读 data.js/app.js。用 grep -n 定位后只读相关 40-80 行。先向我复述你理解的结构 + 计划改哪几个文件，我确认后再动手。语料 json/js 是生成物禁止手改。做完在 file:// 和 http:// 各验证一次，控制台零报错，别碰无关的既有改动（.DS_Store、classroom/）。",
   "entry": "hsk1/index.html",
   "entryNote": "只剩 HTML 骨架 + <link>/<script src> 引用，约 170 行。",
   "loadOrder": ["data/sentences/grammar-sentences.js", "js/data.js", "js/app.js"],
