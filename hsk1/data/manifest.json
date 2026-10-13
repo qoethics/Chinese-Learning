@@ -6,7 +6,7 @@
 
   "files": {
     "hsk1/css/app.css": "全部样式（原 index.html <style> 1332 行）",
-    "hsk1/js/data.js": "词汇/课文/语法语料：window.HSK1_LESSONS（原 LESSONS，2734 行）",
+    "hsk1/js/data.js": "词汇/课文语料：window.HSK1_LESSONS（原 LESSONS；含 L5-L15 课文 texts）",
     "hsk1/js/app.js": "应用逻辑：单个 IIFE（themes + 拼音 + 音频 + 状态 + 渲染 + 游戏 + 事件 + 启动）"
   },
 

@@ -189,7 +189,7 @@ window.HSK1_LESSONS = [
         {hanzi:'二十',pinyin:'èr shí',en:'twenty'},
         {hanzi:'三十',pinyin:'sān shí',en:'thirty'}
       ],
-      extended:[]
+      extended:[],
       texts:[
         {
           id:'05-01',
@@ -296,7 +296,7 @@ window.HSK1_LESSONS = [
         {hanzi:'包子',pinyin:'bāo zi',en:'steamed bun'},
         {hanzi:'饺子',pinyin:'jiǎo zi',en:'dumpling'},
         {hanzi:'汉堡',pinyin:'hàn bǎo',en:'hamburger'}
-      ]
+      ],
       texts:[
         {
           id:'06-01',
@@ -395,7 +395,7 @@ window.HSK1_LESSONS = [
         {hanzi:'星期日',pinyin:'xīng qī rì',en:'Sunday'},
         {hanzi:'星期天',pinyin:'xīng qī tiān',en:'Sunday'}
       ],
-      extended:[]
+      extended:[],
       texts:[
         {
           id:'07-01',
@@ -514,7 +514,7 @@ window.HSK1_LESSONS = [
         {hanzi:'海',pinyin:'hǎi',en:'sea'},
         {hanzi:'海边',pinyin:'hǎi biān',en:'seaside'},
         {hanzi:'椰子鸡',pinyin:'yē zi jī',en:'coconut chicken'}
-      ]
+      ],
       texts:[
         {
           id:'08-01',
@@ -645,7 +645,7 @@ window.HSK1_LESSONS = [
         {hanzi:'睡觉',pinyin:'shuì jiào',en:'sleep'},
         {hanzi:'取钱',pinyin:'qǔ qián',en:'withdraw money'},
         {hanzi:'散步',pinyin:'sàn bù',en:'take a walk'}
-      ]
+      ],
       texts:[
         {
           id:'09-01',
@@ -760,7 +760,7 @@ window.HSK1_LESSONS = [
         {hanzi:'山东',pinyin:'Shāndōng',en:'Shandong'},
         {hanzi:'出国',pinyin:'chū guó',en:'go abroad'},
         {hanzi:'真的',pinyin:'zhēn de',en:'really'}
-      ]
+      ],
       texts:[
         {
           id:'10-01',
@@ -855,7 +855,8 @@ window.HSK1_LESSONS = [
       ]
     },
     {
-      name:'L11 · Time',      core:[
+      name:'L11 · Time',
+      core:[
         {hanzi:'几点',pinyin:'jǐ diǎn',en:'what time'},
         {hanzi:'几点前',pinyin:'jǐ diǎn qián',en:'before what time'},
         {hanzi:'几点几分',pinyin:'jǐ diǎn jǐ fēn',en:'what time'},
@@ -878,7 +879,8 @@ window.HSK1_LESSONS = [
         {hanzi:'一周前',pinyin:'yī zhōu qián',en:'a week ago'},
         {hanzi:'四点前',pinyin:'sì diǎn qián',en:'before 4'},
         {hanzi:'星期五前',pinyin:'xīng qī wǔ qián',en:'before Friday'}
-      ],      extended:[
+      ],
+      extended:[
         {hanzi:'多久',pinyin:'duō jiǔ',en:'how long'},
         {hanzi:'走',pinyin:'zǒu',en:'walk'},
         {hanzi:'时间',pinyin:'shí jiān',en:'time'},
@@ -891,10 +893,68 @@ window.HSK1_LESSONS = [
         {hanzi:'起床',pinyin:'qǐ chuáng',en:'get up'},
         {hanzi:'下班后',pinyin:'xià bān hòu',en:'after work'},
         {hanzi:'回家后',pinyin:'huí jiā hòu',en:'after going home'}
+      ],
+      texts:[
+        {
+          id:'11-01',
+          title:{cn:'在图书馆', en:'In the library', emoji:'📚'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-11/hsk1-textbook-1101.mp3',
+          lines:[
+            {cn:'A：现在几点？', en:'A: What time is it now?'},
+            {cn:'B：现在十点十分。', en:'B: It is 10:10 now.'},
+            {cn:'A：中午几点吃饭？', en:'A: What time do you eat lunch?'},
+            {cn:'B：十二点吃饭。', en:'B: I eat at twelve.'}
+          ],
+          words:[
+            {cn:'现在', en:'now'},
+            {cn:'点', en:"o'clock"},
+            {cn:'分', en:'minute'},
+            {cn:'中午', en:'noon'},
+            {cn:'吃饭', en:'eat / have a meal'}
+          ]
+        },
+        {
+          id:'11-02',
+          title:{cn:'在家', en:'At home', emoji:'🏠'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-11/hsk1-textbook-1102.mp3',
+          lines:[
+            {cn:'A：爸爸什么时候回家？', en:'A: When does dad come home?'},
+            {cn:'B：下午五点。', en:'B: At five in the afternoon.'},
+            {cn:'A：我们什么时候去看电影？', en:'A: When do we go to see a movie?'},
+            {cn:'B：六点三十分。', en:'B: At 6:30.'}
+          ],
+          words:[
+            {cn:'时候', en:'time / moment'},
+            {cn:'回', en:'return'},
+            {cn:'我们', en:'we / us'},
+            {cn:'电影', en:'movie'}
+          ]
+        },
+        {
+          id:'11-03',
+          title:{cn:'在家', en:'At home', emoji:'🏠'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-11/hsk1-textbook-1103.mp3',
+          lines:[
+            {cn:'A：我星期一去北京。', en:'A: I am going to Beijing on Monday.'},
+            {cn:'B：你想在北京住几天？', en:'B: How many days do you want to stay in Beijing?'},
+            {cn:'A：住三天。', en:'A: Three days.'},
+            {cn:'B：星期五前能回家吗？', en:'B: Can you come home before Friday?'},
+            {cn:'A：能。', en:'A: Yes, I can.'}
+          ],
+          words:[
+            {cn:'住', en:'to stay / live'},
+            {cn:'前', en:'before'},
+            {cn:'北京', en:'Beijing'}
+          ]
+        },
+        {id:'11-04', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-11/hsk1-textbook-1104.mp3', lines:[]},
+        {id:'11-05', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-11/hsk1-textbook-1105.mp3', lines:[]},
+        {id:'11-06', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-11/hsk1-textbook-1106.mp3', lines:[]}
       ]
     },
     {
-      name:'L12 · How is it?',      core:[
+      name:'L12 · How is it?',
+      core:[
         {hanzi:'天气',pinyin:'tiān qì',en:'weather'},
         {hanzi:'怎么样',pinyin:'zěn me yàng',en:'how is it'},
         {hanzi:'太',pinyin:'tài',en:'too'},
@@ -919,7 +979,8 @@ window.HSK1_LESSONS = [
         {hanzi:'这家',pinyin:'zhè jiā',en:'this one'},
         {hanzi:'那家',pinyin:'nà jiā',en:'that one'},
         {hanzi:'我觉得',pinyin:'wǒ jué de',en:'I think'}
-      ],      extended:[
+      ],
+      extended:[
         {hanzi:'身体好',pinyin:'shēn tǐ hǎo',en:'good health'},
         {hanzi:'舒服',pinyin:'shū fu',en:'comfortable'},
         {hanzi:'工作有意思',pinyin:'gōng zuò yǒu yì si',en:'work is interesting'},
@@ -964,10 +1025,71 @@ window.HSK1_LESSONS = [
         {hanzi:'香港',pinyin:'Xiānggǎng',en:'Hong Kong'},
         {hanzi:'感觉',pinyin:'gǎn jué',en:'feel'},
         {hanzi:'欢迎',pinyin:'huān yíng',en:'welcome'}
+      ],
+      texts:[
+        {
+          id:'12-01',
+          title:{cn:'在路上', en:'On the road', emoji:'🛣️'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-12/hsk1-textbook-1201.mp3',
+          lines:[
+            {cn:'A：昨天北京的天气怎么样？', en:'A: How was the weather in Beijing yesterday?'},
+            {cn:'B：太热了。', en:'B: It was too hot.'},
+            {cn:'A：明天呢？明天天气怎么样？', en:'A: What about tomorrow? How is the weather tomorrow?'},
+            {cn:'B：明天天气很好，不冷不热。', en:'B: The weather is nice tomorrow, neither hot nor cold.'}
+          ],
+          words:[
+            {cn:'天气', en:'weather'},
+            {cn:'怎么样', en:'how is it'},
+            {cn:'太', en:'too'},
+            {cn:'太...了', en:'too...'},
+            {cn:'热', en:'hot'},
+            {cn:'冷', en:'cold'}
+          ]
+        },
+        {
+          id:'12-02',
+          title:{cn:'在健身房', en:'At the gym', emoji:'🏋️'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-12/hsk1-textbook-1202.mp3',
+          lines:[
+            {cn:'A：今天会下雨吗？', en:'A: Will it rain today?'},
+            {cn:'B：今天不会下雨。', en:"B: It won't rain today."},
+            {cn:'A：王小姐今天会来吗？', en:'A: Will Miss Wang come today?'},
+            {cn:'B：不会来，天气太冷了。', en:"B: She won't come; the weather is too cold."}
+          ],
+          words:[
+            {cn:'下雨', en:'to rain'},
+            {cn:'下', en:'to fall'},
+            {cn:'雨', en:'rain'},
+            {cn:'小姐', en:'Miss'},
+            {cn:'来', en:'to come'}
+          ]
+        },
+        {
+          id:'12-03',
+          title:{cn:'在病房', en:'In the ward', emoji:'🏥'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-12/hsk1-textbook-1203.mp3',
+          lines:[
+            {cn:'A：你身体怎么样？', en:'A: How is your health?'},
+            {cn:'B：我身体不太好。天气太热了，不爱吃饭。', en:"B: I'm not doing so well. The weather is too hot, and I don't feel like eating."},
+            {cn:'A：你多吃些水果，多喝水。', en:'A: Eat more fruit and drink more water.'},
+            {cn:'B：谢谢你，医生。', en:'B: Thank you, doctor.'}
+          ],
+          words:[
+            {cn:'身体', en:'body / health'},
+            {cn:'爱', en:'to like / love'},
+            {cn:'些', en:'some'},
+            {cn:'水果', en:'fruit'},
+            {cn:'水', en:'water'}
+          ]
+        },
+        {id:'12-04', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-12/hsk1-textbook-1204.mp3', lines:[]},
+        {id:'12-05', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-12/hsk1-textbook-1205.mp3', lines:[]},
+        {id:'12-06', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-12/hsk1-textbook-1206.mp3', lines:[]}
       ]
     },
     {
-      name:'L13 · What are you doing?',      core:[
+      name:'L13 · What are you doing?',
+      core:[
         {hanzi:'看电视',pinyin:'kàn diàn shì',en:'watch TV'},
         {hanzi:'看书',pinyin:'kàn shū',en:'read a book'},
         {hanzi:'睡觉',pinyin:'shuì jiào',en:'sleep'},
@@ -976,7 +1098,8 @@ window.HSK1_LESSONS = [
         {hanzi:'学习',pinyin:'xué xí',en:'study'},
         {hanzi:'上午',pinyin:'shàng wǔ',en:'morning'},
         {hanzi:'给',pinyin:'gěi',en:'give'}
-      ],      extended:[
+      ],
+      extended:[
         {hanzi:'努力',pinyin:'nǔ lì',en:'work hard'},
         {hanzi:'考试',pinyin:'kǎo shì',en:'exam'},
         {hanzi:'散步',pinyin:'sàn bù',en:'take a walk'},
@@ -1006,6 +1129,61 @@ window.HSK1_LESSONS = [
         {hanzi:'大熊猫',pinyin:'dà xióng māo',en:'giant panda'},
         {hanzi:'可爱',pinyin:'kě ài',en:'cute'},
         {hanzi:'火锅',pinyin:'huǒ guō',en:'hot pot'}
+      ],
+      texts:[
+        {
+          id:'13-01',
+          title:{cn:'打电话', en:'On the phone', emoji:'📞'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-13/hsk1-textbook-1301.mp3',
+          lines:[
+            {cn:'A：喂，你在做什么呢？', en:'A: Hello, what are you doing?'},
+            {cn:'B：我在看书呢。', en:'B: I am reading.'},
+            {cn:'A：大卫也在看书吗？', en:'A: Is David reading too?'},
+            {cn:'B：他没看书，他在学做中国菜呢。', en:"B: He isn't reading; he is learning to cook Chinese food."}
+          ],
+          words:[
+            {cn:'喂', en:'hello (on the phone)'},
+            {cn:'也', en:'also / too'},
+            {cn:'学习', en:'to study'},
+            {cn:'大卫', en:'David'}
+          ]
+        },
+        {
+          id:'13-02',
+          title:{cn:'在咖啡馆儿', en:'At the café', emoji:'☕'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-13/hsk1-textbook-1302.mp3',
+          lines:[
+            {cn:'A：昨天上午你在做什么呢？', en:'A: What were you doing yesterday morning?'},
+            {cn:'B：我在睡觉呢。你呢？', en:'B: I was sleeping. And you?'},
+            {cn:'A：在家看电视呢，你喜欢看电视吗？', en:'A: I was watching TV at home. Do you like watching TV?'},
+            {cn:'B：我不喜欢看电视，我喜欢看电影。', en:"B: I don't like watching TV; I like watching movies."}
+          ],
+          words:[
+            {cn:'上午', en:'morning'},
+            {cn:'睡觉', en:'to sleep'},
+            {cn:'电视', en:'TV'},
+            {cn:'喜欢', en:'to like'}
+          ]
+        },
+        {
+          id:'13-03',
+          title:{cn:'在学校办公室', en:'At the school office', emoji:'🏫'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-13/hsk1-textbook-1303.mp3',
+          lines:[
+            {cn:'A：82304155，这是李老师的电话吗？', en:"A: 82304155, is this Teacher Li's phone number?"},
+            {cn:'B：是他的电话是82304156。', en:'B: Yes, his number is 82304156.'},
+            {cn:'A：好，我现在给她打电话。', en:'A: OK, I will call her now.'},
+            {cn:'B：她在工作呢，你下午打吧。', en:"B: She is working right now; call her this afternoon."}
+          ],
+          words:[
+            {cn:'给', en:'to give / for'},
+            {cn:'打电话', en:'to make a phone call'},
+            {cn:'吧', en:'(suggestion particle)'}
+          ]
+        },
+        {id:'13-04', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-13/hsk1-textbook-1304.mp3', lines:[]},
+        {id:'13-05', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-13/hsk1-textbook-1305.mp3', lines:[]},
+        {id:'13-06', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-13/hsk1-textbook-1306.mp3', lines:[]}
       ]
     },
     {
@@ -1059,6 +1237,67 @@ window.HSK1_LESSONS = [
         {hanzi:'美',pinyin:'měi',en:'beautiful'},
         {hanzi:'厉害',pinyin:'lì hai',en:'amazing'},
         {hanzi:'特别',pinyin:'tè bié',en:'especially'}
+      ],
+      texts:[
+        {
+          id:'14-01',
+          title:{cn:'在宿舍', en:'In the dorm', emoji:'🛏️'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-14/hsk1-textbook-1401.mp3',
+          lines:[
+            {cn:'A：昨天上午你去哪儿了？', en:'A: Where did you go yesterday morning?'},
+            {cn:'B：我去商店买东西了。', en:'B: I went to the store to buy things.'},
+            {cn:'A：你买什么了？', en:'A: What did you buy?'},
+            {cn:'B：我买了一点儿苹果。', en:'B: I bought a few apples.'}
+          ],
+          words:[
+            {cn:'东西', en:'things'},
+            {cn:'一点儿', en:'a little'},
+            {cn:'苹果', en:'apple'}
+          ]
+        },
+        {
+          id:'14-02',
+          title:{cn:'在公司', en:'At the company', emoji:'🏢'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-14/hsk1-textbook-1402.mp3',
+          lines:[
+            {cn:'A：你看见张先生了吗？', en:'A: Did you see Mr. Zhang?'},
+            {cn:'B：看见了，他去学开车了。', en:'B: Yes, I did. He went to learn to drive.'},
+            {cn:'A：他什么时候能回来？', en:'A: When can he come back?'},
+            {cn:'B：40分钟后回来。', en:'B: He will be back in 40 minutes.'}
+          ],
+          words:[
+            {cn:'看见', en:'to see'},
+            {cn:'先生', en:'Mr.'},
+            {cn:'开', en:'to drive / open'},
+            {cn:'车', en:'car'},
+            {cn:'回来', en:'to come back'},
+            {cn:'分钟', en:'minute'},
+            {cn:'后', en:'after'}
+          ]
+        },
+        {
+          id:'14-03',
+          title:{cn:'在商店门口', en:'At the store entrance', emoji:'🛍️'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-14/hsk1-textbook-1403.mp3',
+          lines:[
+            {cn:'A：王方的衣服太漂亮了！', en:"A: Wang Fang's clothes are so pretty!"},
+            {cn:'B：是啊，她买了不少衣服。', en:'B: Yes, she bought quite a few clothes.'},
+            {cn:'A：你买什么了？', en:'A: What did you buy?'},
+            {cn:'B：我没买，这些都是王方的东西。', en:"B: I didn't buy anything; these are all Wang Fang's things."}
+          ],
+          words:[
+            {cn:'衣服', en:'clothes'},
+            {cn:'漂亮', en:'pretty'},
+            {cn:'啊', en:'(modal particle)'},
+            {cn:'少', en:'few'},
+            {cn:'不少', en:'quite a few'},
+            {cn:'这些', en:'these'},
+            {cn:'都', en:'all'}
+          ]
+        },
+        {id:'14-04', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-14/hsk1-textbook-1404.mp3', lines:[]},
+        {id:'14-05', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-14/hsk1-textbook-1405.mp3', lines:[]},
+        {id:'14-06', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-14/hsk1-textbook-1406.mp3', lines:[]}
       ]
     },
     {
@@ -1113,6 +1352,59 @@ window.HSK1_LESSONS = [
         {hanzi:'西湖',pinyin:'Xīhú',en:'West Lake'},
         {hanzi:'风景',pinyin:'fēng jǐng',en:'scenery'},
         {hanzi:'美',pinyin:'měi',en:'beautiful'}
+      ],
+      texts:[
+        {
+          id:'15-01',
+          title:{cn:'在餐桌旁', en:'At the dinner table', emoji:'🍽️'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-15/hsk1-textbook-1501.mp3',
+          lines:[
+            {cn:'A：你和李小姐是什么时候认识的？', en:'A: When did you and Miss Li meet?'},
+            {cn:'B：我们是2021年9月认识的。', en:'B: We met in September 2021.'},
+            {cn:'A：你们在哪儿认识的？', en:'A: Where did you meet?'},
+            {cn:'B：我们是在学校认识的，她是我大学同学。', en:'B: We met at school; she is my university classmate.'}
+          ],
+          words:[
+            {cn:'认识', en:'to know / meet'},
+            {cn:'年', en:'year'},
+            {cn:'大学', en:'university'}
+          ]
+        },
+        {
+          id:'15-02',
+          title:{cn:'在饭店门口', en:'At the restaurant entrance', emoji:'🏨'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-15/hsk1-textbook-1502.mp3',
+          lines:[
+            {cn:'A：你们是怎么来饭店的？', en:'A: How did you come to the restaurant?'},
+            {cn:'B：我们是坐出租车来的。', en:'B: We came by taxi.'},
+            {cn:'A：李先生呢？', en:'A: What about Mr. Li?'},
+            {cn:'B：他是和朋友一起开车来的。', en:'B: He came by car with a friend.'}
+          ],
+          words:[
+            {cn:'饭店', en:'restaurant / hotel'},
+            {cn:'出租车', en:'taxi'},
+            {cn:'一起', en:'together'}
+          ]
+        },
+        {
+          id:'15-03',
+          title:{cn:'在公司', en:'At the company', emoji:'🏢'},
+          audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-15/hsk1-textbook-1503.mp3',
+          lines:[
+            {cn:'A：很高兴认识您！李小姐。', en:'A: Nice to meet you, Miss Li!'},
+            {cn:'B：认识你我也很高兴！', en:'B: Nice to meet you too!'},
+            {cn:'A：听张先生说，您是坐飞机来北京的？', en:'A: I heard from Mr. Zhang that you came to Beijing by plane?'},
+            {cn:'B：是的。', en:'B: Yes, that is right.'}
+          ],
+          words:[
+            {cn:'高兴', en:'happy / glad'},
+            {cn:'听', en:'to listen'},
+            {cn:'飞机', en:'airplane'}
+          ]
+        },
+        {id:'15-04', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-15/hsk1-textbook-1504.mp3', lines:[]},
+        {id:'15-05', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-15/hsk1-textbook-1505.mp3', lines:[]},
+        {id:'15-06', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-15/hsk1-textbook-1506.mp3', lines:[]}
       ]
     },
     {
