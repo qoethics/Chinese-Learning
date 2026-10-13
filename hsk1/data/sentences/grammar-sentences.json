@@ -1563,10 +1563,18 @@
         "en": "Sentences with an Adjectival Predicate",
         "items": [
           {
-            "c": "Negative form: Subject + 不 + adjective"
+            "c": "我很好。",
+            "py": "wǒ hěn hǎo。",
+            "en": "I am very good."
+          },
+          {
+            "c": "我妈妈的中文不好。"
+          },
+          {
+            "c": "中国菜很好吃。"
           }
         ],
-        "note": "Subject + adverb of degree + adjective"
+        "note": "Subject + adverb of degree + adjective Negative form: Subject + 不 + adjective"
       },
       {
         "id": "6-3",
@@ -2056,12 +2064,6 @@
         "en": "",
         "items": [
           {
-            "c": "In spoken/verbal Chinese, “号” is used instead of “日” to express the date."
-          },
-          {
-            "c": "Note: 周日 = 星期日 = 星期天"
-          },
-          {
             "c": "5月1号，星期三。"
           },
           {
@@ -2116,7 +2118,7 @@
             "en": "What day was yesterday?"
           }
         ],
-        "note": "Expression of a Date (1): Month, date, day of the week Chinese dates observe the principle of \"bigger unit comes before smaller unit\". Year - Month - Date; then day of the week."
+        "note": "Expression of a Date (1): Month, date, day of the week Chinese dates observe the principle of \"bigger unit comes before smaller unit\". Year - Month - Date; then day of the week. In spoken/verbal Chinese, “号” is used instead of “日” to express the date. Note: 周日 = 星期日 = 星期天"
       },
       {
         "id": "7-2",
@@ -2148,9 +2150,6 @@
         "cn": "连动句(1)：去+地方+做什么",
         "en": "",
         "items": [
-          {
-            "c": "去 + place + to do sth."
-          },
           {
             "c": "我去中国学习汉语。",
             "py": "wǒ qù Zhōngguó xué xí Hànyǔ。",
@@ -2236,7 +2235,7 @@
             "c": "我不去餐馆，我做饭。"
           }
         ],
-        "note": "Sentences with a Serial Verb Construction (1)"
+        "note": "Sentences with a Serial Verb Construction (1) 去 + place + to do sth."
       }
     ]
   },
@@ -3055,9 +3054,6 @@
         "en": "The Interrogative Pronoun “哪儿”",
         "items": [
           {
-            "c": "Where. Also “哪里”."
-          },
-          {
             "c": "我的手机在哪儿？",
             "py": "wǒ de shǒu jī zài nǎ er？",
             "en": "Where is my phone?"
@@ -3142,7 +3138,8 @@
             "py": "xīng qī sì nǐ zài nǎ er？bù zài jiā ma？",
             "en": "Where are you on Thursday? Not at home?"
           }
-        ]
+        ],
+        "note": "Where. Also “哪里”."
       },
       {
         "id": "9-3",
@@ -5751,14 +5748,6 @@
             "en": "I went to this store, there are many computers inside."
           },
           {
-            "c": "没 + verb + (object)",
-            "sub": "c. 否定：没+动词（+宾语）Negative"
-          },
-          {
-            "c": "In the negative form, omit 了.",
-            "sub": "c. 否定：没+动词（+宾语）Negative"
-          },
-          {
             "c": "她没去商店。",
             "sub": "c. 否定：没+动词（+宾语）Negative"
           },
@@ -5801,7 +5790,7 @@
             "en": "She didn't go to the bank, she has no money."
           }
         ],
-        "note": "Usually there's a modifier before the object of the verb, such as a numeral classifier, an adjective or a pronoun, etc."
+        "note": "Usually there's a modifier before the object of the verb, such as a numeral classifier, an adjective or a pronoun, etc. 没 + verb + (object) In the negative form, omit 了."
       },
       {
         "id": "14-2",
@@ -5904,9 +5893,6 @@
         "en": "The Adverb “都”",
         "items": [
           {
-            "c": "Both/all. People or objects included are put before \"都\"."
-          },
-          {
             "c": "我们都是中国人。"
           },
           {
@@ -5920,7 +5906,8 @@
             "py": "zhè lǐ yǒu sān shí běn shū, nǐ dōu dú le？tài lì hai le。",
             "en": "There are 30 books here, you read them all? Amazing."
           }
-        ]
+        ],
+        "note": "Both/all. People or objects included are put before \"都\"."
       },
       {
         "id": "14-5",
@@ -6093,13 +6080,6 @@
         "cn": "“是...的”句：强调时间、地点、方式",
         "en": "",
         "items": [
-          {
-            "c": "The Structure “是...的”: used to emphasize time, place or manner"
-          },
-          {
-            "c": "\"是\" can be omitted in positive and interrogative sentences, but not in negative sentences.",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred."
-          },
           {
             "c": "我是昨天来的。",
             "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
@@ -6382,7 +6362,8 @@
             "py": "wǒmen shì kāi chē lái Wǔhàn de。",
             "en": "We came to Wuhan by car."
           }
-        ]
+        ],
+        "note": "The Structure “是...的”: used to emphasize time, place or manner \"是\" can be omitted in positive and interrogative sentences, but not in negative sentences."
       },
       {
         "id": "15-2",

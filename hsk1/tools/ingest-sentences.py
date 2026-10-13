@@ -85,9 +85,46 @@ def split_title_en(text):
     return cn, en
 
 
+# 说明行里常见的英文功能词 / 语法术语（整词匹配）。用来区分
+#   'The Structure “是...的”: used to emphasize…'  （说明，含引号里的汉字）
+# 与真正的中英混排句子
+#   '这个汉堡是在 McDonald's 买的' / '我是Jackie Chan。'
+# 外文专名（McDonald's / Uniqlo / Spider Man）不会命中这些词，因此仍是句子。
+NOTE_WORDS = re.compile(
+    r"(?<![A-Za-z])("
+    r"the|this|that|these|those|is|are|was|were|be|been|being|"
+    r"a|an|and|or|but|not|no|to|of|in|on|at|for|with|by|from|"
+    r"can|cannot|may|must|should|will|would|"
+    r"used|use|uses|when|whenever|where|which|who|whose|how|why|"
+    r"it|its|you|your|we|our|they|their|he|she|his|her|"
+    r"also|instead|omit|omitted|form|forms|pronoun|preposition|conjunction|"
+    r"subject|predicate|object|verb|noun|adjective|adverb|particle|"
+    r"note|spoken|verbal|positive|negative|interrogative|"
+    r"both|all|between|before|after|end|beginning|"
+    r"indicate|indicates|indicating|express|expresses|expressing|emphasize|"
+    r"sentence|sentences|word|words|phrase|clause|structure|means|meaning"
+    r")(?![A-Za-z])",
+    re.I,
+)
+
+
 def is_english_note(line):
-    """纯英文说明行（无汉字），用于 grammar point 的 note。"""
-    return not re.search(r"[\u4e00-\u9fff]", line)
+    """说明行（语法点注解 -> note）。
+
+    1) 完全没有汉字 -> 说明行；
+    2) 含汉字，但去掉括号注释后仍出现常见英文功能词/语法术语 -> 说明行。
+       例如 'The Structure “是...的”: used to emphasize…'、
+       'a. 用于句尾 used at the end of a sentence'。
+       反之 '我是Jackie Chan。'、'这个汉堡是在 McDonald's 买的' 不含这些
+       功能词，仍是句子。
+    """
+    if not re.search(r"[\u4e00-\u9fff]", line):
+        return True
+    # 去掉 '(clothes)' / '(take out money)' 这类汉字后的词汇注释，避免误判
+    stripped = re.sub(r"[\(（][^()（）]*[\)）]", "", line)
+    if not re.search(r"[A-Za-z]", stripped):
+        return False
+    return bool(NOTE_WORDS.search(stripped))
 
 
 def split_sentence(line):

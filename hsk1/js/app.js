@@ -255,6 +255,67 @@
     }
     return out;
   }
+  // Per-character tone-coloured ruby driven by an authoritative pinyin string
+  // (e.g. an item's `py`). Each whitespace token is a syllable, except
+  // multi-syllable words (Zhèjiāng, wǒmen); those are split greedily across the
+  // upcoming Han characters. Tone-insensitive matching keeps sandhi / neutral
+  // tone (ge vs gè) from breaking the alignment.
+  function stripTone(s){
+    return (s || '').toLowerCase()
+      .replace(/[āáǎà]/g,'a').replace(/[ēéěè]/g,'e').replace(/[īíǐì]/g,'i')
+      .replace(/[ōóǒò]/g,'o').replace(/[ūúǔù]/g,'u').replace(/[ǖǘǚǜü]/g,'v');
+  }
+  function charReading(ch){
+    return (wordMap[ch] && wordMap[ch].pinyin) || SINGLE_CHAR_PINYIN[ch] || EXTRA_PINYIN_WORDS[ch] || '';
+  }
+  function rubyFromPy(text, py){
+    if (!text) return '';
+    const chars = [...text].filter(c => /[\u3400-\u9fff\uf900-\ufaff]/.test(c));
+    if (!chars.length) return escapeHtml(text);
+    const tokens = (py || '')
+      .replace(/[^\u3400-\u9fff\uf900-\ufaffA-Za-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü\s]/g, ' ')
+      .split(/\s+/).filter(Boolean);
+
+    // Assign one syllable per Han character.
+    const perChar = [];
+    let ci = 0;
+    for (const tok of tokens){
+      const remain = chars.length - ci;
+      if (remain <= 0) break;
+      // Greedily peel single-char readings off the front of the token.
+      const lower = stripTone(tok);
+      let pos = 0, taken = 0, produced = [];
+      while (pos < lower.length && ci + taken < chars.length){
+        const want = stripTone(charReading(chars[ci + taken]));
+        if (want && lower.startsWith(want, pos)){
+          produced.push(tok.slice(pos, pos + want.length));
+          pos += want.length;
+          taken++;
+        } else { break; }
+      }
+      if (taken && pos === lower.length){
+        produced.forEach((p, k) => { perChar[ci + k] = p; });
+        ci += taken;
+      } else {
+        // Token doesn't decompose against the next chars (unknown char / tone
+        // sandhi variant): give it to a single character as-is.
+        perChar[ci] = tok;
+        ci++;
+      }
+    }
+
+    let si = 0, out = '';
+    for (const ch of text){
+      if (/[\u3400-\u9fff\uf900-\ufaff]/.test(ch)){
+        const raw = perChar[si] || charReading(ch) || '';
+        si++;
+        out += `<ruby>${escapeHtml(ch)}<rt class="tone-${toneOf(raw)}">${escapeHtml(raw)}</rt></ruby>`;
+      } else {
+        out += escapeHtml(ch);
+      }
+    }
+    return out;
+  }
   // Render Chinese text with tone-coloured ruby where every Han character is
   // wrapped in a clickable .char-btn (click to read that single character).
   function rubyHtmlChars(text){
@@ -1759,7 +1820,7 @@
         gr.bucket.forEach(it => {
           const en = showListEnglish ? ((pmap[it.c] && pmap[it.c].en) || it.en || '') : '';
           const cn = it.py && showListPinyin
-            ? `<ruby class="py-override">${escapeHtml(it.c)}<rt>${colorPinyin(it.py)}</rt></ruby>`
+            ? rubyFromPy(it.c, it.py)
             : renderSentence(it.c);
           html += `<div class="grammar-item${it.ext ? ' ext' : ''}" data-read="${escapeHtml(it.c)}">
             <span class="grammar-cn">${cn}</span>
