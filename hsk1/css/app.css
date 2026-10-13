@@ -1006,9 +1006,11 @@
   }
   .grammar-body.collapsed { display: none; }
   .grammar-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 56%) minmax(0, 1fr);
     align-items: baseline;
-    gap: 10px;
+    column-gap: 14px;
+    row-gap: 2px;
     padding: 6px 10px;
     border-radius: 10px;
     cursor: pointer;

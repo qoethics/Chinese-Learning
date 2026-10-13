@@ -1749,7 +1749,7 @@
       items.forEach(it => {
         const en = showListEnglish ? ((pmap[it.c] && pmap[it.c].en) || it.en || '') : '';
         const cn = it.py && showListPinyin
-          ? `<ruby class="py-override">${escapeHtml(it.c)}<rt>${escapeHtml(it.py)}</rt></ruby>`
+          ? `<ruby class="py-override">${escapeHtml(it.c)}<rt>${colorPinyin(it.py)}</rt></ruby>`
           : renderSentence(it.c);
         html += `<div class="grammar-item${it.ext ? ' ext' : ''}" data-read="${escapeHtml(it.c)}">
           <span class="grammar-cn">${cn}</span>
