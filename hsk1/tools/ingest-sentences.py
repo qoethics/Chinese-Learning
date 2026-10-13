@@ -36,109 +36,23 @@ POINT_RE = re.compile(r"^(\d{1,2})\.\s+(.+?)\s*$")
 SUB_RE = re.compile(r"^([a-z]\.\s+.+|Extended[:：]?.*)$")
 
 
-def extract_js_arrays(text, key):
-    """从 JS 源码里提取 `<key>: [ ... ]` 的每个平衡括号数组字面量。"""
-    out = []
-    for m in re.finditer(r"\b" + key + r"\s*:\s*\[", text):
-        i = m.end() - 1
-        depth = 0
-        start = i
-        instr = None
-        esc = False
-        while i < len(text):
-            ch = text[i]
-            if instr:
-                if esc:
-                    esc = False
-                elif ch == "\\":
-                    esc = True
-                elif ch == instr:
-                    instr = None
-            else:
-                if ch in "'\"":
-                    instr = ch
-                elif ch == "[":
-                    depth += 1
-                elif ch == "]":
-                    depth -= 1
-                    if depth == 0:
-                        break
-            i += 1
-        out.append(text[start : i + 1])
-    return out
+def load_legacy_map(enrichment_path):
+    """从 enrichment.json 读取句子的拼音/英文，返回 {cn: {py,en}}。
 
-
-def js_to_json(s):
-    """把 JS 对象字面量（无引号键 + 单引号字符串）转成 JSON。"""
-    out = []
-    i = 0
-    n = len(s)
-    while i < n:
-        ch = s[i]
-        if ch == "'":
-            i += 1
-            buf = []
-            while i < n and s[i] != "'":
-                if s[i] == "\\" and i + 1 < n:
-                    buf.append(s[i : i + 2])
-                    i += 2
-                    continue
-                buf.append(s[i])
-                i += 1
-            i += 1
-            raw = "".join(buf).replace("\\'", "'").replace('\\"', '"').replace("\\\\", "\\")
-            raw = raw.replace("\\", "\\\\").replace('"', '\\"')
-            out.append('"' + raw + '"')
-            continue
-        if ch == '"':
-            i += 1
-            buf = []
-            while i < n and s[i] != '"':
-                if s[i] == "\\" and i + 1 < n:
-                    buf.append(s[i : i + 2])
-                    i += 2
-                    continue
-                buf.append(s[i])
-                i += 1
-            i += 1
-            out.append('"' + "".join(buf) + '"')
-            continue
-        if ch.isalpha() or ch == "_":
-            j = i
-            while j < n and (s[j].isalnum() or s[j] == "_"):
-                j += 1
-            word = s[i:j]
-            k = j
-            while k < n and s[k] in " \t\n":
-                k += 1
-            out.append('"' + word + '"' if k < n and s[k] == ":" else word)
-            i = j
-            continue
-        out.append(ch)
-        i += 1
-    return "".join(out)
-
-
-def load_legacy_map(data_js_path):
-    """从 js/data.js 读取 phrases 的拼音/英文，返回 {cn: {py,en}}。
-
-    语料 txt 只有中文；拼音/英文原先存在 data.js 的 phrases[] 里。生成时把它们
-    合并进 json，语料即可自给自足，data.js 的 phrases/grammar 便可删除。
+    语料 txt 只有中文；拼音/英文由人工维护在 data/sentences/enrichment.json 里
+    （key 为整句中文）。生成时合并进 json，语料即可自给自足。
     """
-    path = Path(data_js_path)
+    path = Path(enrichment_path)
     if not path.exists():
         return {}
-    text = path.read_text(encoding="utf-8")
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
     pmap = {}
-    for arr in extract_js_arrays(text, "phrases"):
-        try:
-            items = json.loads(js_to_json(arr))
-        except json.JSONDecodeError:
-            continue
-        for p in items:
-            cn = p.get("cn")
-            if cn and cn not in pmap:
-                pmap[cn] = {"py": p.get("pinyin") or p.get("py") or "", "en": p.get("en") or ""}
+    for cn, v in raw.items():
+        if isinstance(v, dict):
+            pmap[cn] = {"py": v.get("py") or "", "en": v.get("en") or ""}
     return pmap
 
 
@@ -346,8 +260,8 @@ def main():
     dst = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("hsk1/data/sentences/grammar-sentences.json")
     data = parse(src.read_text(encoding="utf-8"))
 
-    # 用 js/data.js 里旧 phrases 的拼音/英文补齐语料，使其自给自足。
-    legacy = load_legacy_map(Path(__file__).resolve().parent.parent / "js" / "data.js")
+    # 用 data/sentences/enrichment.json 的拼音/英文补齐语料，使其自给自足。
+    legacy = load_legacy_map(Path(__file__).resolve().parent.parent / "data" / "sentences" / "enrichment.json")
     filled = 0
     for L in data:
         for p in L["points"]:
@@ -369,7 +283,7 @@ def main():
     withen = sum(1 for L in data for p in L["points"] for it in p["items"] if it.get("en"))
     print(f"wrote {dst}")
     print(f"lessons: {len(data)}  grammar points: {sum(len(L['points']) for L in data)}  sentences: {total}")
-    print(f"pinyin源自旧phrases: {filled}  最终带拼音: {withpy}  带英文: {withen}")
+    print(f"pinyin源自enrichment: {filled}  最终带拼音: {withpy}  带英文: {withen}")
     for L in data:
         print(f"  L{L['key']:<7} points={len(L['points']):<2} sentences={sum(len(p['items']) for p in L['points'])}")
 

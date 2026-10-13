@@ -24,7 +24,8 @@
   // Lessons Data
   // =====================================================================
   // Lessons Data — externalized to js/data.js (loaded before this file).
-  const LESSONS = window.HSK1_LESSONS;
+  // Neutral global name so a copied HSK2/HSK3 folder works unchanged.
+  const LESSONS = window.COURSE_LESSONS || window.HSK1_LESSONS;
 
   // =====================================================================
   // Single-char pinyin
@@ -929,12 +930,17 @@
   }
 
   // External sentence corpus adapter: data/sentences/grammar-sentences.{json,js}.
-  // Returns an array in the app's grammar shape ({id,cn,py,en,note,items:[{c,en,py}]})
-  // for the given 1-based lesson index, or null when the corpus is unavailable.
+  // Looks the corpus up by the lesson's id (LESSONS[lesson-1].id, e.g. '10',
+  // '1-10', 'all'), falling back to array position for corpora that lack keys.
+  // `lesson` is the 1-based index. Returns an array in the app's grammar shape
+  // ({id,cn,py,en,note,items:[{c,en,py}]}), or null when the corpus is unavailable.
   function externalLessonGrammar(lesson){
-    const corpus = window.GRAMMAR_SENTENCES;
+    const corpus = window.SENTENCE_CORPUS || window.GRAMMAR_SENTENCES;
     if (!corpus || !corpus.length) return null;
-    const L = corpus[lesson - 1];
+    const key = (LESSONS[lesson - 1] || {}).id;
+    const L = key
+      ? corpus.find(c => c && c.key === key)
+      : corpus[lesson - 1];
     if (!L || !L.points || !L.points.length) return null;
     // English/pinyin may live in the legacy phrases[] — resolve through it first.
     const pmap = {};

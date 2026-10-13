@@ -13,15 +13,22 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 `hsk1/index.html` 只是骨架（~170 行），不要再往里塞代码。改动前先读
 `hsk1/data/manifest.json`（应用地图），按需只打开对应文件：
 - 样式 → `hsk1/css/app.css`
-- 词汇 / 课文 → `hsk1/js/data.js`（`window.HSK1_LESSONS`）
+- 词汇 / 课文 → `hsk1/js/data.js`（`window.COURSE_LESSONS`，兼容别名 `HSK1_LESSONS`）
+  每课必须有唯一 `id`，与句子语料的 `key` 对应（如 `'10'` / `'1-10'` / `'all'`）
 - 句子语料 → 改 `hsk1/HSK 1 语料 <date>.txt`，再重跑：
   ```
   python3 hsk1/tools/ingest-sentences.py "hsk1/HSK 1 语料 <date>.txt" hsk1/data/sentences/grammar-sentences.json
   python3 hsk1/tools/gen-sentences-js.py hsk1/data/sentences/grammar-sentences.json
   ```
-  （`data/sentences/*.json|.js` 是自动生成，**不要手改**）
+  （`data/sentences/*.json|.js` 是自动生成，**不要手改**；
+  句子拼音/英文人工维护在 `data/sentences/enrichment.json`，key 为整句中文）
 - 交互 / 渲染逻辑 → `hsk1/js/app.js`（~2700 行，**禁止整文件读**，用 `grep -n` 定位后只读 40–80 行）
 - 加载顺序固定：`data/sentences/grammar-sentences.js` → `js/data.js` → `js/app.js`，不要改
+
+### 新增级别（HSK2 等）
+复制整个 `hsk1/` 目录改名即可（如 `hsk2/`），app.js / css 不需要改动：
+变量名是中性的（`window.COURSE_LESSONS` / `window.SENTENCE_CORPUS`），
+只要每课 `id` 与语料 `key` 对应，就不会因数组顺序错位而出错。
 
 ## 已知陷阱
 已知陷阱（务必遵守）：

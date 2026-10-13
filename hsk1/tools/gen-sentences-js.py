@@ -24,7 +24,9 @@ def main():
     dst.write_text(
         "// AUTO-GENERATED from grammar-sentences.json — do not edit.\n"
         "// Regenerate: python3 hsk1/tools/gen-sentences-js.py\n"
-        f"window.GRAMMAR_SENTENCES = {body};\n",
+        f"window.SENTENCE_CORPUS = {body};\n"
+        "// Backwards-compatible alias (neutral name is SENTENCE_CORPUS).\n"
+        "window.GRAMMAR_SENTENCES = window.SENTENCE_CORPUS;\n",
         encoding="utf-8",
     )
     print(f"wrote {dst} ({dst.stat().st_size} bytes)")

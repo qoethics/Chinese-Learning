@@ -1,7 +1,8 @@
 // HSK1 lesson vocabulary / texts / grammar corpus. Read-only at runtime.
-window.HSK1_LESSONS = [
+window.COURSE_LESSONS = [
     {
       name:'L1 · Greetings & Countries',
+      id:'1',
       core:[
         {hanzi:'你好',pinyin:'nǐ hǎo',en:'hello'},
         {hanzi:'我',pinyin:'wǒ',en:'I/me'},
@@ -33,6 +34,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L2 · Friends & Family',
+      id:'2',
       core:[
         {hanzi:'什么',pinyin:'shén me',en:'what'},
         {hanzi:'这',pinyin:'zhè',en:'this'},
@@ -54,6 +56,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L3 · No, Hungry and Busy',
+      id:'3',
       core:[
         {hanzi:'行',pinyin:'xíng',en:'OK'},
         {hanzi:'饿',pinyin:'è',en:'hungry'},
@@ -86,12 +89,14 @@ window.HSK1_LESSONS = [
     },
     {
       name:'🔁 Review L1-3',
+      id:'1-3',
       reviewRange:[1,3],
       extraCore:[],
       extraExtended:[]
     },
     {
       name:'L4 · Eating, Drinking, Going',
+      id:'4',
       core:[
         {hanzi:'咖啡',pinyin:'kāfēi',en:'coffee'},
         {hanzi:'啤酒',pinyin:'píjiǔ',en:'beer'},
@@ -142,6 +147,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L5 · Numbers & Age',
+      id:'5',
       core:[
         {hanzi:'多少',pinyin:'duō shǎo',en:'how many (above 10)'},
         {hanzi:'几',pinyin:'jǐ',en:'how many (under 10)'},
@@ -247,6 +253,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L6 · I can',
+      id:'6',
       core:[
         {hanzi:'汉字',pinyin:'Hàn zì',en:'Chinese character'},
         {hanzi:'中国菜',pinyin:'Zhōngguó cài',en:'Chinese food'},
@@ -353,6 +360,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'🔁 Review L1-6',
+      id:'1-6',
       reviewRange:[4,6],
       extraCore:[
         {hanzi:'二十一',pinyin:'èr shí yī',en:'twenty-one'},
@@ -369,6 +377,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L7 · Date and Weekday',
+      id:'7',
       core:[
         {hanzi:'书',pinyin:'shū',en:'book'},
         {hanzi:'学校',pinyin:'xué xiào',en:'school'},
@@ -453,6 +462,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L8 · I want',
+      id:'8',
       core:[
         {hanzi:'钱',pinyin:'qián',en:'money'},
         {hanzi:'米饭',pinyin:'mǐ fàn',en:'rice'},
@@ -575,6 +585,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'🔁 Review L1-8',
+      id:'1-8',
       reviewRange:[7,8],
       extraCore:[
         {hanzi:'25号',pinyin:'èr shí wǔ hào',en:'the 25th'},
@@ -587,6 +598,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L9 · It is where?',
+      id:'9',
       core:[
         {hanzi:'爸爸',pinyin:'bà ba',en:'dad'},
         {hanzi:'医生',pinyin:'yī shēng',en:'doctor'},
@@ -697,6 +709,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L10 · There is & Can I',
+      id:'10',
       core:[
         {hanzi:'工作',pinyin:'gōng zuò',en:'work'},
         {hanzi:'看书',pinyin:'kàn shū',en:'read a book'},
@@ -822,6 +835,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'🔁 Review L1-10',
+      id:'1-10',
       reviewRange:[9,10],
       extraCore:[
         {hanzi:'漂亮',pinyin:'piào liang',en:'pretty'},
@@ -856,6 +870,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L11 · Time',
+      id:'11',
       core:[
         {hanzi:'几点',pinyin:'jǐ diǎn',en:'what time'},
         {hanzi:'几点前',pinyin:'jǐ diǎn qián',en:'before what time'},
@@ -954,6 +969,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L12 · How is it?',
+      id:'12',
       core:[
         {hanzi:'天气',pinyin:'tiān qì',en:'weather'},
         {hanzi:'怎么样',pinyin:'zěn me yàng',en:'how is it'},
@@ -1089,6 +1105,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L13 · What are you doing?',
+      id:'13',
       core:[
         {hanzi:'看电视',pinyin:'kàn diàn shì',en:'watch TV'},
         {hanzi:'看书',pinyin:'kàn shū',en:'read a book'},
@@ -1188,6 +1205,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'🔁 Review L1-13',
+      id:'1-13',
       reviewRange:[11,13],
       extraCore:[],
       extraExtended:[
@@ -1197,6 +1215,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L14 · What did you buy?',
+      id:'14',
       core:[
         {hanzi:'苹果',pinyin:'píng guǒ',en:'apple'},
         {hanzi:'车',pinyin:'chē',en:'car'},
@@ -1302,6 +1321,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'L15 · I came here by plane',
+      id:'15',
       core:[
         {hanzi:'飞机',pinyin:'fēi jī',en:'airplane'},
         {hanzi:'坐飞机',pinyin:'zuò fēi jī',en:'take a plane'},
@@ -1409,6 +1429,7 @@ window.HSK1_LESSONS = [
     },
     {
       name:'🏆 All HSK 1 Review',
+      id:'all',
       reviewRange:[14,15],
       extraCore:[
         {hanzi:'张',pinyin:'Zhāng',en:'Zhang (surname)'},
@@ -1420,3 +1441,5 @@ window.HSK1_LESSONS = [
     }
   ];
 
+// Backwards-compatible alias (neutral name is COURSE_LESSONS).
+window.HSK1_LESSONS = window.COURSE_LESSONS;

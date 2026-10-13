@@ -2,20 +2,26 @@
   "$comment": "hsk1 应用地图 —— 改东西前先读这里，不要读 index.html。",
   "entry": "hsk1/index.html",
   "entryNote": "只剩 HTML 骨架 + <link>/<script src> 引用，约 170 行。",
-  "loadOrder": ["js/data.js", "js/app.js"],
+  "loadOrder": ["data/sentences/grammar-sentences.js", "js/data.js", "js/app.js"],
+
+  "globals": {
+    "js/data.js": "window.COURSE_LESSONS（别名 window.HSK1_LESSONS）— 课程词汇/课文，每课有唯一 id",
+    "data/sentences/grammar-sentences.js": "window.SENTENCE_CORPUS（别名 window.GRAMMAR_SENTENCES）— 句子语料，每项有唯一 key=课 id"
+  },
 
   "files": {
     "hsk1/css/app.css": "全部样式（原 index.html <style> 1332 行）",
-    "hsk1/js/data.js": "词汇/课文语料：window.HSK1_LESSONS（原 LESSONS；含 L5-L15 课文 texts）",
+    "hsk1/js/data.js": "词汇/课文：window.COURSE_LESSONS（含 L5-L15 课文 texts；每课 id 对应语料 key）",
     "hsk1/js/app.js": "应用逻辑：单个 IIFE（themes + 拼音 + 音频 + 状态 + 渲染 + 游戏 + 事件 + 启动）"
   },
 
   "sentenceCorpus": {
     "status": "ACTIVE — 语料由 txt 自动生成",
     "sourceOfTruth": "HSK 1 语料 20261013.txt",
+    "enrichment": "data/sentences/enrichment.json（人工维护 {整句: {py,en}}；txt 只有中文）",
     "generated": ["data/sentences/grammar-sentences.json", "data/sentences/grammar-sentences.js"],
     "regenerate": "python3 hsk1/tools/ingest-sentences.py \"hsk1/HSK 1 语料 <date>.txt\" hsk1/data/sentences/grammar-sentences.json && python3 hsk1/tools/gen-sentences-js.py hsk1/data/sentences/grammar-sentences.json",
-    "entrypoint": "js/app.js :: externalLessonGrammar()",
+    "entrypoint": "js/app.js :: externalLessonGrammar(data) —— 按课程 id 匹配语料 key，缺失则按数组顺序兜底",
     "appShape": "grammar[] = {id,cn,py,en,note,items:[{c,en,py,sub?}]}",
     "consumers": {
       "sentflash (句卡/句表)": "phrases <- grammarSentenceList()",
@@ -30,12 +36,15 @@
     "改样式": "hsk1/css/app.css",
     "改单词/课文": "hsk1/js/data.js",
     "改句子语料": "改 txt，再跑 manifest.sentenceCorpus.regenerate 里的命令（不要手改 json/js）",
-    "改交互/渲染逻辑": "hsk1/js/app.js（先 grep -n 定位，再只读目标 40-80 行）"
+    "补句子拼音/英文": "hsk1/data/sentences/enrichment.json（key=整句中文），再重跑生成命令",
+    "改交互/渲染逻辑": "hsk1/js/app.js（先 grep -n 定位，再只读目标 40-80 行）",
+    "新增级别 HSK2": "复制整个 hsk1/ 为 hsk2/，换 data.js 与 txt；app.js/css 无需改（变量名中性）"
   },
 
   "doNot": [
     "不要整文件读取 hsk1/js/app.js（2700 行），用 grep -n 定位后局部读取",
     "不要改 hsk1/index.html 的 <script> 加载顺序（grammar-sentences.js → data.js → app.js）",
-    "不要手改 data/sentences/ 下自动生成的文件，改 txt 后重跑脚本"
+    "不要手改 data/sentences/ 下自动生成的文件，改 txt 后重跑脚本",
+    "每课 id 与语料 key 必须一致；新增课程不要插在中间，否则需同步两边顺序"
   ]
 }
