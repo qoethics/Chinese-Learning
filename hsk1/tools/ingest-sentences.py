@@ -216,15 +216,16 @@ def parse(txt):
             cur_sub = ""
             continue
 
+        # 子标记 a. / b. / c. / Extended:（先于英文注解判断，否则纯英文的
+        # "a. Positive form" 会被误当成 note 吸走，丢失分组）
+        if cur_section in ("sentences", "other") and SUB_RE.match(stripped):
+            cur_sub = stripped
+            continue
+
         # 纯英文说明行（语法点内的注解）-> 当前点的 note，不是句子
         if is_english_note(stripped) and cur_point is not None:
             prev = cur_point.get("note", "")
             cur_point["note"] = (prev + " " + stripped).strip() if prev else stripped
-            continue
-
-        # 子标记 a. / b. / Extended:
-        if cur_section in ("sentences", "other") and SUB_RE.match(stripped):
-            cur_sub = stripped
             continue
 
         # 词汇段里混进的句子：以句末标点结尾的行，视为句子（部分 Review 课

@@ -976,16 +976,22 @@
   .grammar-title { font-size: 1.05rem; font-weight: 700; }
   .grammar-title-cn ruby rt { font-size: 0.55em; }
   .grammar-title-en { font-size: 1.05rem; color: var(--theme-text); font-weight: 400; margin-left: 4px; }
-  .grammar-note {
-    margin-left: auto;
-    font-size: 0.72rem;
-    color: var(--theme-accent);
-    background: white;
-    border: 1px solid var(--theme-mid);
-    border-radius: 30px;
-    padding: 2px 10px;
-    white-space: nowrap;
+  .grammar-intro {
+    font-size: 0.82rem;
+    color: #8a7f6f;
+    line-height: 1.5;
+    padding: 2px 4px 6px;
   }
+  .grammar-sub {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--theme-accent);
+    padding: 8px 4px 2px;
+    margin-top: 4px;
+    border-top: 1px dashed color-mix(in srgb, var(--theme-mid) 60%, transparent);
+  }
+  .grammar-body > .grammar-sub:first-child,
+  .grammar-body > .grammar-intro + .grammar-sub { margin-top: 0; border-top: none; }
   .grammar-count {
     font-size: 0.75rem;
     color: white;

@@ -1731,30 +1731,41 @@
     let shownSections = 0, shownItems = 0;
     orderedGrammar.forEach(({ g, gi }) => {
       const items = g.items.slice()
-        .map(it => ({ c: it.c, py: it.py, en: it.en, ext: isExtended(it.c) }))
-        .filter(it => grammarSub === 'all' || (grammarSub === 'ext') === it.ext)
-        .sort((a,b) => (a.ext ? 1 : 0) - (b.ext ? 1 : 0));
+        .map(it => ({ c: it.c, py: it.py, en: it.en, sub: it.sub || '', ext: isExtended(it.c) }))
+        .filter(it => grammarSub === 'all' || (grammarSub === 'ext') === it.ext);
       if (!items.length) return;
       shownSections++; shownItems += items.length;
+      // Keep sub-groups (a./b./c.) contiguous: bucket by sub in first-seen order,
+      // then order items inside each bucket by core-before-extended.
+      const groups = [];
+      const bySub = new Map();
+      items.forEach(it => {
+        if (!bySub.has(it.sub)){ const bucket = []; bySub.set(it.sub, bucket); groups.push({ sub: it.sub, bucket }); }
+        bySub.get(it.sub).push(it);
+      });
+      groups.forEach(gr => gr.bucket.sort((a, b) => (a.ext ? 1 : 0) - (b.ext ? 1 : 0)));
       html += `<div class="grammar-section" data-g="${gi}">
         <button class="grammar-head">
           <span class="grammar-head-inner">
           <span class="grammar-caret">${grammarOpen.has(g.id) ? '▾' : '▸'}</span>
           <span class="grammar-title"><span class="grammar-title-cn">${titleRuby(g.cn, g.py)}</span> <span class="grammar-title-en">${escapeHtml(g.en || '')}</span></span>
-          <span class="grammar-note">${escapeHtml(g.note || '')}</span>
           <span class="grammar-count">${items.length}</span>
           </span>
         </button>
         <div class="grammar-body${grammarOpen.has(g.id) ? '' : ' collapsed'}" data-gid="${escapeHtml(g.id || '')}">`;
-      items.forEach(it => {
-        const en = showListEnglish ? ((pmap[it.c] && pmap[it.c].en) || it.en || '') : '';
-        const cn = it.py && showListPinyin
-          ? `<ruby class="py-override">${escapeHtml(it.c)}<rt>${colorPinyin(it.py)}</rt></ruby>`
-          : renderSentence(it.c);
-        html += `<div class="grammar-item${it.ext ? ' ext' : ''}" data-read="${escapeHtml(it.c)}">
-          <span class="grammar-cn">${cn}</span>
-          ${en ? `<span class="grammar-en">${escapeHtml(en)}</span>` : ''}
-        </div>`;
+      if (g.note) html += `<div class="grammar-intro">${escapeHtml(g.note)}</div>`;
+      groups.forEach(gr => {
+        if (gr.sub) html += `<div class="grammar-sub">${escapeHtml(gr.sub)}</div>`;
+        gr.bucket.forEach(it => {
+          const en = showListEnglish ? ((pmap[it.c] && pmap[it.c].en) || it.en || '') : '';
+          const cn = it.py && showListPinyin
+            ? `<ruby class="py-override">${escapeHtml(it.c)}<rt>${colorPinyin(it.py)}</rt></ruby>`
+            : renderSentence(it.c);
+          html += `<div class="grammar-item${it.ext ? ' ext' : ''}" data-read="${escapeHtml(it.c)}">
+            <span class="grammar-cn">${cn}</span>
+            ${en ? `<span class="grammar-en">${escapeHtml(en)}</span>` : ''}
+          </div>`;
+        });
       });
       html += '</div></div>';
     });

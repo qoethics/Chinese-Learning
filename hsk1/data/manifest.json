@@ -23,7 +23,7 @@
     "generated": ["data/sentences/grammar-sentences.json", "data/sentences/grammar-sentences.js"],
     "regenerate": "python3 hsk1/tools/ingest-sentences.py \"hsk1/HSK 1 语料 <date>.txt\" hsk1/data/sentences/grammar-sentences.json && python3 hsk1/tools/gen-sentences-js.py hsk1/data/sentences/grammar-sentences.json",
     "entrypoint": "js/app.js :: externalLessonGrammar(data) —— 按课程 id 匹配语料 key，缺失则按数组顺序兜底",
-    "appShape": "grammar[] = {id,cn,py,en,note,items:[{c,en,py,sub?}]}",
+    "appShape": "grammar[] = {id,cn,py,en,note,items:[{c,en,py,sub?}]} —— note 渲染为组内引言，item.sub 为 a./b./c. 小标题（按 sub 分组显示）",
     "consumers": {
       "sentflash (句卡/句表)": "phrases <- grammarSentenceList()",
       "fill (填空)": "originalFillItems <- grammarSentenceList()",
