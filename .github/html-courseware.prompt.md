@@ -36,7 +36,7 @@ description: 根据新文章生成 HTML 精读课件（片段式，省 token）
 | `toc.html` | 目录链接 | `snippets/toc.html` |
 | `vocab.html` | 单词分组 | `snippets/word-card.html` |
 | `original.html` | 原文段落 | 片段内注释 |
-| `grammar.html` | 语法点 | `snippets/grammar-point.html` |
+| `grammar.html` | 语法点（说明用英语） | `snippets/grammar-point.html` |
 | `speaking.html` | 口语练习 | — |
 | `discussion.html` | 讨论问题 | `snippets/discussion.html` |
 | `summary.html` | 总结 | — |
@@ -66,6 +66,22 @@ python3 build.py --meta meta.json --out ../out/文章标题.html
 - **讨论**：4-6 个深度问题，用 `.q-list`
 - **总结**：核心话题、重点生词、重点语法
 
-# 开始
+# 语法部分用英语写（重要）
 
-等我提供文章。
+`grammar.html` 里除例句外的说明文字**全部用英语**，方便学生用英语理解语法：
+
+- `<h3>` 句式标题：中文句式 + 英文标签，如 `<h3>“即使……也……”（even if… still…）</h3>`
+- `.g-en`：英文名，可留空
+- `.g-usage`：纯英文说明，如
+  `<p class="g-usage"><b>Usage:</b> “即使 A，也 B” concedes an extreme or unfavourable case (A), then stresses that B still holds.</p>`
+- `.g-note`：英文提示，如 `<p class="g-note"><b>Note:</b> “即使” introduces a hypothetical case, while “虽然” introduces a fact.</p>`
+- `.g-diff`：英文对比说明
+- **`.g-ex` 例句保持中文原文**，只给句中虚词/关键词加 `<span class="py">`，句式本身不翻译
+
+
+# 省 token 约束（重要）
+
+- **不要读 `templates/shell.html`** —— 它由组装脚本提供，与内容无关，2000 行会严重浪费 token
+- **不要读 `snippets/*.html`** —— 格式已在本文件说明，除非某节确实不确定
+- 不要在 `out/` 之外创建临时文件
+- 完成后**只输出：生成的文件名 + 字节数**，不要写总结、不要贴 HTML 内容

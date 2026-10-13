@@ -623,13 +623,59 @@
   .original-card p:last-child { margin-bottom: 0; }
 
   mark.hl {
-    background: #fff3b0;
+    background: #d3e6ff;
     color: inherit;
     padding: 0 .08em;
     border-radius: 3px;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
   }
+
+  /* 点击原文词语后，浮在词下方的小圆角按钮条（不参与原文排版） */
+  .word-panel {
+    position: fixed;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+    padding: .16rem .22rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.97);
+    border: 1px solid var(--line-2);
+    box-shadow: 0 10px 24px -12px rgba(50,60,80,.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    white-space: nowrap;
+    animation: wordPanelIn .14s ease-out;
+  }
+  @keyframes wordPanelIn {
+    from { opacity: 0; transform: translateY(-3px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .wp-btn {
+    border: 0;
+    background: transparent;
+    color: #4d5a70;
+    font-family: inherit;
+    font-size: .7rem;
+    line-height: 1;
+    letter-spacing: .04em;
+    padding: .32rem .5rem;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .14s ease, color .14s ease;
+  }
+  .wp-btn:hover { background: #eef2f8; color: #2c2c34; }
+  .wp-btn.active {
+    background: #2563d4;
+    color: #fff;
+  }
+  .wp-btn.gray {
+    color: #aab2c0;
+    padding: .32rem .42rem;
+  }
+  .wp-btn.gray:hover { background: rgba(217,74,74,.1); color: #d94a4a; }
 
   /* 可点击抄词 */
   .pickable {
@@ -646,12 +692,13 @@
     background: rgba(24,154,88,.18);
     box-shadow: 0 0 0 2px rgba(24,154,88,.16);
   }
-  /* 已抄录的词：与硬设置高亮（mark.hl）一致 —— 淡黄高亮 + 同样的注音格式 */
+  /* 已标记的词：拼音模式=淡黄，意思+拼音模式=淡绿；两种都显示拼音 */
   .pickable.shown {
-    background: #fff3b0;
     box-shadow: none;
     border-radius: 3px;
   }
+  .pickable.shown.mode-py  { background: #fff3b0; }
+  .pickable.shown.mode-def { background: #c9f0d2; }
   .pickable.shown ruby { ruby-position: over; }
   .pickable.shown rt {
     font-size: .8em;
@@ -666,6 +713,27 @@
   .pickable.shown rt .tone-3 { color: var(--tone3); }
   .pickable.shown rt .tone-4 { color: var(--tone4); }
   .pickable.shown rt .tone-5 { color: var(--tone5); }
+
+  /* 显示“意思 + 拼音”时，在词后追加的紧凑释义。
+     模仿 .py（拼音）在原文里的排布，保证行高不变、不换行。 */
+  .pickable.shown .def {
+    display: inline;
+    font-size: .8em;
+    line-height: 0;
+    letter-spacing: .05em;
+    font-weight: 600;
+    font-family: "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+    color: var(--tone5);
+    background: none;
+    padding: 0;
+    margin: 0 .1em;
+    vertical-align: baseline;
+  }
+  .pickable.shown .def .tone-1 { color: var(--tone1); }
+  .pickable.shown .def .tone-2 { color: var(--tone2); }
+  .pickable.shown .def .tone-3 { color: var(--tone3); }
+  .pickable.shown .def .tone-4 { color: var(--tone4); }
+  .pickable.shown .def .tone-5 { color: var(--tone5); }
 
   /* ================= 浮动单词表 ================= */
   .word-tray {
@@ -755,6 +823,35 @@
     color: #34343e;
     transition: background .14s ease;
   }
+  /* 抄词本里的两栏：拼音 / 拼音 + 意思 */
+  .tray-sec + .tray-sec { margin-top: .45rem; }
+  .tray-sec-head {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .3rem .5rem .2rem;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: #8a93a3;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .tray-sec-head .t { color: #6d7686; }
+  .tray-sec-head .c {
+    font-size: .62rem;
+    color: #8a93a3;
+    background: #eef0f4;
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    padding: 0 .4rem;
+    font-weight: 700;
+  }
+  .tray-sec-head::after {
+    content: "";
+    flex: 1 1 auto;
+    height: 1px;
+    background: var(--line);
+  }
   .tray-item:hover { background: #f4f6fa; }
   .tray-item .idx {
     flex: none;
@@ -781,6 +878,13 @@
     font-family: "Segoe UI", system-ui, sans-serif;
   }
   .tray-item .txt .zh { font-size: .95rem; line-height: 1.35; }
+  .tray-item .txt .defline {
+    display: block;
+    font-size: .7rem;
+    line-height: 1.5;
+    color: #6d7686;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
   .tray-item .del {
     flex: none;
     border: none;
@@ -1111,6 +1215,8 @@
     .word-ex .ex-zh { font-size: .92rem; }
     .original-card { padding: 1.1rem 1.1rem; }
     .original-card p { font-size: .96rem; line-height: 2.75; }
+    .wp-btn { font-size: .68rem; padding: .3rem .44rem; }
+    .pickable.shown .def { font-size: .66em; }
     rt { font-size: .78em; letter-spacing: .04em; }
     .legend { font-size: .7rem; gap: .35rem .7rem; }
     .section-head h2 { font-size: 1.06rem; }
@@ -1164,7 +1270,7 @@
     <button class="tray-btn icon" id="trayCloseBtn" aria-label="收起">✕</button>
   </div>
   <div class="tray-body" id="trayBody">
-    <div class="tray-empty">点击左侧原文中的任意词语，<br>即可把它抄到这里。</div>
+    <div class="tray-empty">点击左侧原文中的任意词语，<br>即可给这个词加上拼音或意思。</div>
   </div>
 </aside>
 
@@ -1198,11 +1304,11 @@
     var chars = word.split('');
     var html = '';
     for (var i = 0; i < chars.length; i++) {
-      var py = pinyinArr[i] || '';
-      var tone = detectTone(py);
+      var syllable = pinyinArr[i] || '';
+      var tone = detectTone(syllable);
       var cls = tone ? 'tone-' + tone : '';
       html += '<ruby>' + chars[i] +
-              '<rt><span class="' + cls + '">' + py + '</span></rt></ruby>';
+              '<rt><span class="' + cls + '">' + syllable + '</span></rt></ruby>';
     }
     return html;
   }
@@ -1362,6 +1468,7 @@
   var trayClose  = document.getElementById('trayCloseBtn');
 
   var pickedWords = [];
+  var MAX_DEF_LEN = 140;
 
   /* 中文分词：优先用 Intl.Segmenter，缺失时退回正则。
      返回 [{text, isWord}]，其中 isWord 为 true 的片段才可点选。 */
@@ -1426,104 +1533,403 @@
 
   wrapPickableWords(originalBody);
 
-  /* 在原文里给一个词加上拼音（ruby），并标记为已显示。 */
-  function showPinyinInPlace(span) {
-    if (!span || span.dataset.pyShown) return;
-    var word = span.textContent.trim();
-    if (!word) return;
-    span.dataset.pyShown = '1';
-    span.dataset.origText = word;
+  /* 分段后的词语按出现顺序编号，用来和单词表一一对应。 */
+  var pickables = originalBody ? originalBody.querySelectorAll('.pickable') : [];
+
+  /* ---------- 词典：从单词卡/单词表建立“词语 → 释义”索引 ---------- */
+  var wordIndex = null;
+
+  function normWord(s) {
+    return (s || '').replace(/[\s\u3000]+/g, '');
+  }
+
+  /* 取元素里的汉字：排除 ruby 注音（rt/rp），否则 textContent 会混进拼音。 */
+  function hanziOf(el) {
+    if (!el) return '';
+    var clone = el.cloneNode(true);
+    clone.querySelectorAll('rt, rp').forEach(function (x) { x.remove(); });
+    return normWord(clone.textContent);
+  }
+
+  function collectKeyWords(root) {
+    var keys = [];
+    var pyEl = root.querySelector('.py');
+    var zh = root.querySelector('.zh');
+    if (pyEl && /[\u4e00-\u9fa5]/.test(hanziOf(pyEl))) {
+      keys.push(hanziOf(pyEl));
+    } else if (zh && /[\u4e00-\u9fa5]/.test(hanziOf(zh))) {
+      keys.push(hanziOf(zh));
+    }
+    return keys;
+  }
+
+  function collectDefs() {
+    var defs = {};
+    document.querySelectorAll('.word').forEach(function (card) {
+      var en = card.querySelector('.word-en');
+      if (!en) return;
+      var clone = en.cloneNode(true);
+      clone.querySelectorAll('.tag').forEach(function (t) { t.remove(); });
+      var text = clone.textContent.replace(/\s+/g, ' ').trim();
+      if (!text) return;
+      var tag = en.querySelector('.tag');
+      var pos = tag ? tag.textContent.trim() : '';
+      collectKeyWords(card).forEach(function (k) {
+        if (k && !defs[k]) defs[k] = { pos: pos, en: text };
+      });
+    });
+    // 兜底：没有单词卡时，用抄词本里的“词语 + 英文释义”行
+    document.querySelectorAll('.tray-item').forEach(function (item) {
+      var zh = item.querySelector('.txt .zh');
+      var en = item.querySelector('.txt .defline');
+      if (!zh || !en) return;
+      var k = hanziOf(zh);
+      var text = en.textContent.replace(/\s+/g, ' ').trim();
+      if (k && text && !defs[k]) defs[k] = { pos: '', en: text };
+    });
+    return defs;
+  }
+
+  function lookupDef(sp) {
+    if (!wordIndex) wordIndex = collectDefs();
+    var key = wordOf(sp);
+    if (wordIndex[key]) return wordIndex[key];
+    // 原文分词可能把词组拆开，退一步找包含关系的词条
+    var keys = Object.keys(wordIndex), best = null;
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i];
+      if (k.length > 1 && key.length > 1 && (key.indexOf(k) !== -1 || k.indexOf(key) !== -1)) {
+        if (!best || k.length > best.length) best = k;
+      }
+    }
+    return best ? wordIndex[best] : null;
+  }
+
+  /* ---------- 词语 → 序号 & 注音 / 释义开关 ---------- */
+  function indexOfSpan(span) {
+    for (var i = 0; i < pickables.length; i++) {
+      if (pickables[i] === span) return i;
+    }
+    return -1;
+  }
+
+  /* 紧凑的“词性 + 英文释义”文本。 */
+  function defText(hit) {
+    if (!hit) return '';
+    return (hit.pos ? hit.pos + ' ' : '') +
+      (hit.en.length > MAX_DEF_LEN ? hit.en.slice(0, MAX_DEF_LEN - 1) + '…' : hit.en);
+  }
+
+  /* 重建词条内容：两种模式都显示拼音（ruby）；意思模式再在词后追加释义。 */
+  function renderWord(span) {
+    var word = wordOf(span);
+    var mode = span.dataset.pyOn === '1' ? 'py' : (span.dataset.defOn === '1' ? 'def' : '');
+    span.classList.remove('mode-py', 'mode-def');
+    if (!mode) {
+      span.classList.remove('shown');
+      span.textContent = word;
+      return;
+    }
     span.innerHTML = makeRuby(word);
-    span.classList.add('shown');
+    if (mode === 'def') {
+      var hit = lookupDef(span);
+      if (hit) {
+        var def = document.createElement('i');
+        def.className = 'def';
+        def.textContent = defText(hit);
+        span.appendChild(def);
+      }
+    }
+    span.classList.add('shown', 'mode-' + mode);
   }
 
-  /* 移除原文中某个词的拼音，恢复为纯文字。 */
-  function hidePinyinInPlace(span) {
-    if (!span || !span.dataset.pyShown) return;
-    var word = span.dataset.origText || span.textContent.trim();
-    delete span.dataset.pyShown;
-    delete span.dataset.origText;
-    span.classList.remove('shown');
-    span.textContent = word;
+  /* ---------- 点击后浮在词下方的小按钮条（挂到 body，不影响原文排版） ---------- */
+  function buildPanel() {
+    var bar = document.createElement('div');
+    bar.className = 'word-panel';
+    bar.setAttribute('role', 'toolbar');
+    var pyBtn = document.createElement('button');
+    pyBtn.type = 'button';
+    pyBtn.className = 'wp-btn';
+    pyBtn.dataset.act = 'py';
+    pyBtn.textContent = '拼音';
+    var defBtn = document.createElement('button');
+    defBtn.type = 'button';
+    defBtn.className = 'wp-btn';
+    defBtn.dataset.act = 'def';
+    defBtn.textContent = '意思 + 拼音';
+    var delBtn = document.createElement('button');
+    delBtn.type = 'button';
+    delBtn.className = 'wp-btn gray';
+    delBtn.dataset.act = 'del';
+    delBtn.textContent = '✕';
+    delBtn.setAttribute('aria-label', '删除');
+    bar.appendChild(pyBtn);
+    bar.appendChild(defBtn);
+    bar.appendChild(delBtn);
+    return bar;
   }
 
-  /* 取一个词条的真实文字（已注音时 textContent 会含拼音，故优先用 origText）。 */
+  var panelEl = null;      // 当前的按钮条
+  var panelSpan = null;    // 按钮条对应的词
+
+  function refreshPanel(span) {
+    if (!panelEl || panelSpan !== span) return;
+    var pyBtn = panelEl.querySelector('[data-act="py"]');
+    var defBtn = panelEl.querySelector('[data-act="def"]');
+    if (pyBtn) pyBtn.classList.toggle('active', span.dataset.pyOn === '1');
+    if (defBtn) defBtn.classList.toggle('active', span.dataset.defOn === '1');
+  }
+
+  /* 把按钮条贴在词的正下方并水平居中；贴着视口边缘时收回来。 */
+  function placePanel(span) {
+    if (!panelEl || !span) return;
+    var r = span.getBoundingClientRect();
+    var w = panelEl.offsetWidth || 150;
+    var h = panelEl.offsetHeight || 30;
+    var left = r.left + r.width / 2 - w / 2;
+    var maxLeft = window.innerWidth - w - 8;
+    if (left < 8) left = 8;
+    if (left > maxLeft) left = Math.max(8, maxLeft);
+    var top = r.bottom + 6;
+    if (top + h > window.innerHeight - 8) top = Math.max(8, r.top - h - 6);  // 下方放不下就翻到上方
+    panelEl.style.left = left + 'px';
+    panelEl.style.top = top + 'px';
+  }
+
+  function openPanel(span) {
+    closePanel();
+    panelSpan = span;
+    panelEl = buildPanel();
+    document.body.appendChild(panelEl);
+    refreshPanel(span);
+    placePanel(span);
+  }
+
+  function closePanel() {
+    if (panelEl) panelEl.remove();
+    panelEl = null;
+    panelSpan = null;
+  }
+
+  /* 切换/取消一个词时，只影响这一个词；其他词保持已显示的拼音或意思。 */
+
+  /* ---------- 抄词本 ---------- */
+  /* 取一个词条的真实文字：优先 origText（已注音时 textContent 会混入拼音）。 */
   function wordOf(span) {
-    return (span.dataset.origText || span.textContent).trim();
+    if (span.dataset.origText) return span.dataset.origText;
+    /* 兜底：从 ruby 结构里还原汉字（rt 是注音，要丢掉） */
+    if (span.querySelector(':scope > ruby')) return hanziOf(span);
+    return span.textContent.trim();
+  }
+
+  /* 所有可点选的词在初始化时记住原文，之后无论怎么注音都不会丢。 */
+  function rememberWords() {
+    pickables.forEach(function (el) {
+      if (el.dataset.origText === undefined) {
+        el.dataset.origText = el.querySelector(':scope > ruby')
+          ? hanziOf(el)
+          : el.textContent.trim();
+      }
+    });
+  }
+
+  function addWord(span) {
+    var word = wordOf(span);
+    if (!word) return;
+    if (pickedWords.indexOf(word) === -1) pickedWords.push(word);
+    var i = indexOfSpan(span);
+    if (i !== -1) span.dataset.idx = String(i + 1);
+    renderTray();
+  }
+
+  rememberWords();
+
+  /* 撤下注音/释义、关掉按钮，并把词从抄词本里移除。 */
+  function removeWord(span, alsoPanel) {
+    var word = wordOf(span);
+    var at = pickedWords.indexOf(word);
+    if (at !== -1) pickedWords.splice(at, 1);
+    span.dataset.pyOn = '0';
+    span.dataset.defOn = '0';
+    span.classList.remove('shown', 'mode-py', 'mode-def');
+    span.textContent = word;
+    delete span.dataset.idx;
+    if (alsoPanel !== false && panelSpan === span) closePanel();
+    renderTray();
+  }
+
+  /* 切换某个词的“拼音 / 意思 + 拼音”，两者互斥。 */
+  /* 抄词本分两栏：只显示拼音的、显示拼音+意思的。 */
+  function trayGroups() {
+    var groups = { py: [], def: [] };
+    pickables.forEach(function (el) {
+      if (el.dataset.pyOn === '1') groups.py.push(el);
+      else if (el.dataset.defOn === '1') groups.def.push(el);
+    });
+    return groups;
+  }
+
+  /* 该词在原文中的出现顺序（与词条上的序号一致）。 */
+  function orderOf(span) {
+    var i = indexOfSpan(span);
+    return i === -1 ? 0 : i;
+  }
+
+  function toggleWord(span, mode) {
+    if (mode === 'py') {
+      span.dataset.pyOn = span.dataset.pyOn === '1' ? '0' : '1';
+      if (span.dataset.pyOn === '1') span.dataset.defOn = '0';
+    } else {
+      span.dataset.defOn = span.dataset.defOn === '1' ? '0' : '1';
+      if (span.dataset.defOn === '1') span.dataset.pyOn = '0';
+    }
+    var on = span.dataset.pyOn === '1' || span.dataset.defOn === '1';
+    if (on) addWord(span); else removeWord(span, false);
+    renderWord(span);
+    refreshPanel(span);
   }
 
   if (originalBody) {
     originalBody.addEventListener('click', function (e) {
       var span = e.target.closest('.pickable');
       if (!span) return;
-      var word = wordOf(span);
-      if (!word) return;
-
-      var at = pickedWords.indexOf(word);
-      if (at === -1) {
-        // 加入抄词本，并在原文就地显示拼音
-        pickedWords.push(word);
-        showPinyinInPlace(span);
+      if (span.dataset.origText === undefined) span.dataset.origText = wordOf(span);
+      if (panelSpan === span) {
+        /* 再点一次同一个词：收起按钮并撤下这个词的注音/释义 */
+        removeWord(span, true);
       } else {
-        // 再次点击：从抄词本移除，并撤下原文拼音
-        pickedWords.splice(at, 1);
-        hidePinyinInPlace(span);
+        openPanel(span);
       }
-      renderTray();
-
       span.classList.add('picked');
       setTimeout(function () { span.classList.remove('picked'); }, 700);
     });
   }
 
+  /* 按钮条的点击：在 document 上代理，因为它挂在 body 上。 */
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.word-panel .wp-btn');
+    if (!btn || !panelSpan) return;
+    var act = btn.dataset.act;
+    if (act === 'del') removeWord(panelSpan, true);
+    else toggleWord(panelSpan, act);
+  });
+
+  /* 点空白处收起按钮条（保留已显示的注音/释义）。 */
+  document.addEventListener('click', function (e) {
+    if (!panelEl) return;
+    if (e.target.closest('.word-panel') || e.target.closest('.pickable')) return;
+    closePanel();
+  });
+
+  /* 滚动/缩放时重新贴合词的位置。 */
+  function repositionPanel() {
+    if (panelEl && panelSpan && panelSpan.isConnected) placePanel(panelSpan);
+  }
+  window.addEventListener('scroll', repositionPanel, { passive: true });
+  window.addEventListener('resize', repositionPanel);
+
+  /* 一个词条。inDef 为 true 时额外显示英文释义。 */
+  function buildTrayItem(span, inDef) {
+    var w = wordOf(span);
+    var item = document.createElement('div');
+    item.className = 'tray-item';
+
+    var idx = document.createElement('span');
+    idx.className = 'idx';
+    idx.textContent = span.dataset.idx || '';
+
+    var txt = document.createElement('span');
+    txt.className = 'txt';
+    var pyLine = document.createElement('span');
+    pyLine.className = 'pyline';
+    pyLine.textContent = pinyinText(w);
+    var zh = document.createElement('span');
+    zh.className = 'zh';
+    zh.textContent = w;
+    txt.appendChild(pyLine);
+    txt.appendChild(zh);
+
+    if (inDef) {
+      var hit = wordIndex ? wordIndex[w] : null;
+      if (hit) {
+        var dl = document.createElement('span');
+        dl.className = 'defline';
+        dl.textContent = (hit.pos ? hit.pos + ' ' : '') + hit.en;
+        txt.appendChild(dl);
+      }
+    }
+
+    var del = document.createElement('button');
+    del.className = 'del';
+    del.setAttribute('aria-label', '删除');
+    del.textContent = '✕';
+    del.addEventListener('click', function () { removeWord(span, true); });
+
+    item.appendChild(idx);
+    item.appendChild(txt);
+    item.appendChild(del);
+    return item;
+  }
+
+  function buildTraySection(key, title, hint, spans, inDef) {
+    if (!spans.length) return null;
+    var sec = document.createElement('div');
+    sec.className = 'tray-sec';
+    sec.dataset.kind = key;
+    var head = document.createElement('div');
+    head.className = 'tray-sec-head';
+    var label = document.createElement('span');
+    label.className = 't';
+    label.textContent = hint ? title + ' ' + hint : title;
+    var count = document.createElement('span');
+    count.className = 'c';
+    count.textContent = spans.length;
+    head.appendChild(label);
+    head.appendChild(count);
+    sec.appendChild(head);
+    spans.forEach(function (sp) { sec.appendChild(buildTrayItem(sp, inDef)); });
+    return sec;
+  }
+
   function renderTray() {
     if (!trayBody) return;
     trayBody.innerHTML = '';
-    if (pickedWords.length === 0) {
+    var groups = trayGroups();
+    var pySpans = groups.py.slice().sort(function (a, b) { return orderOf(a) - orderOf(b); });
+    var defSpans = groups.def.slice().sort(function (a, b) { return orderOf(a) - orderOf(b); });
+
+    if (!pySpans.length && !defSpans.length) {
       var empty = document.createElement('div');
       empty.className = 'tray-empty';
-      empty.innerHTML = '点击左侧原文中的任意词语，<br>即可把它抄到这里。';
+      empty.innerHTML = '点击左侧原文中的任意词语，<br>即可给这个词加上拼音或意思。';
       trayBody.appendChild(empty);
     } else {
-      pickedWords.forEach(function (w, i) {
-        var item = document.createElement('div');
-        item.className = 'tray-item';
-        var idx = document.createElement('span');
-        idx.className = 'idx';
-        idx.textContent = i + 1;
-        var txt = document.createElement('span');
-        txt.className = 'txt';
-        var py = document.createElement('span');
-        py.className = 'pyline';
-        py.textContent = pinyinText(w);
-        var zh = document.createElement('span');
-        zh.className = 'zh';
-        zh.textContent = w;
-        txt.appendChild(py);
-        txt.appendChild(zh);
-        var del = document.createElement('button');
-        del.className = 'del';
-        del.setAttribute('aria-label', '删除');
-        del.textContent = '✕';
-        del.addEventListener('click', function () {
-          pickedWords.splice(i, 1);
-          renderTray();
-          // 原文中所有该词取消注音
-          if (originalBody) {
-            originalBody.querySelectorAll('.pickable[data-py-shown]').forEach(function (el) {
-              if (el.dataset.origText === w) hidePinyinInPlace(el);
-            });
-          }
-        });
-        item.appendChild(idx);
-        item.appendChild(txt);
-        item.appendChild(del);
-        trayBody.appendChild(item);
-      });
+      var secPy = buildTraySection('py', '拼音', '', pySpans, false);
+      var secDef = buildTraySection('def', '拼音 + 意思', '', defSpans, true);
+      if (secPy) trayBody.appendChild(secPy);
+      if (secDef) trayBody.appendChild(secDef);
     }
-    if (trayCount) trayCount.textContent = pickedWords.length;
-    if (trayBadge) trayBadge.textContent = pickedWords.length;
-    if (trayToggle) trayToggle.style.display = pickedWords.length > 0 ? '' : 'none';
+
+    var total = pySpans.length + defSpans.length;
+    if (trayCount) trayCount.textContent = total;
+    if (trayBadge) trayBadge.textContent = total;
+    if (trayToggle) trayToggle.style.display = total > 0 ? '' : 'none';
+  }
+
+  /* 清空：撤下所有注音/释义，关掉按钮。 */
+  function clearAllWords() {
+    pickedWords = [];
+    pickables.forEach(function (el) {
+      var word = wordOf(el);
+      el.dataset.pyOn = '0';
+      el.dataset.defOn = '0';
+      el.classList.remove('shown', 'mode-py', 'mode-def');
+      el.textContent = word;
+      delete el.dataset.idx;
+    });
+    closePanel();
+    renderTray();
   }
 
   function openTray() {
@@ -1544,23 +1950,35 @@
 
   if (trayClear) {
     trayClear.addEventListener('click', function () {
-      pickedWords = [];
-      renderTray();
-      if (originalBody) {
-        originalBody.querySelectorAll('.pickable[data-py-shown]').forEach(function (el) {
-          hidePinyinInPlace(el);
-        });
-      }
-      document.querySelectorAll('.pickable.picked').forEach(function (el) {
-        el.classList.remove('picked');
-      });
+      clearAllWords();
       closeTray();
     });
   }
 
   if (trayCopy) {
     trayCopy.addEventListener('click', function () {
-      var text = pickedWords.join('\n');
+      var groups = trayGroups();
+      var pySpans = groups.py.slice().sort(function (a, b) { return orderOf(a) - orderOf(b); });
+      var defSpans = groups.def.slice().sort(function (a, b) { return orderOf(a) - orderOf(b); });
+      if (!pySpans.length && !defSpans.length) return;
+
+      function defOf(sp) {
+        var hit = wordIndex ? wordIndex[wordOf(sp)] : null;
+        return hit ? ((hit.pos ? hit.pos + ' ' : '') + hit.en) : '';
+      }
+      var blocks = [];
+      if (pySpans.length) {
+        blocks.push('拼音：\n' + pySpans.map(function (sp) {
+          return wordOf(sp) + ' ' + pinyinText(wordOf(sp));
+        }).join('\n'));
+      }
+      if (defSpans.length) {
+        blocks.push('拼音+意思：\n' + defSpans.map(function (sp) {
+          var w = wordOf(sp);
+          return w + ' ' + pinyinText(w) + (defOf(sp) ? ' — ' + defOf(sp) : '');
+        }).join('\n'));
+      }
+      var text = blocks.join('\n\n');
       if (!text) return;
       function done() {
         trayCopy.classList.add('copied');
