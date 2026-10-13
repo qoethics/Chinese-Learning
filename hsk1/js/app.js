@@ -913,7 +913,10 @@
     lessonExtendedWords = data.extended;
     lessonPhrases = data.phrases || [];
     lessonTexts = data.texts || [];
-    lessonGrammar = data.grammar || [];
+    // Prefer the external sentence corpus (data/sentences/grammar-sentences.*).
+    // Falls back to the inline LESSONS[].grammar when unavailable.
+    const ext = externalLessonGrammar(currentLesson);
+    lessonGrammar = (ext && ext.length) ? ext : (data.grammar || []);
     lessonLabel.textContent = data.name;
     applyTheme(currentLesson);
 
@@ -923,6 +926,36 @@
     memoryCards=[]; memoryFlipped=[]; memoryMatched=[]; memoryLock=false;
     moleCorrect=0; moleWrong=0; moleProcessing=false; picIndex=0;
     updateScore();
+  }
+
+  // External sentence corpus adapter: data/sentences/grammar-sentences.{json,js}.
+  // Returns an array in the app's grammar shape ({id,cn,py,en,note,items:[{c,en,py}]})
+  // for the given 1-based lesson index, or null when the corpus is unavailable.
+  function externalLessonGrammar(lesson){
+    const corpus = window.GRAMMAR_SENTENCES;
+    if (!corpus || !corpus.length) return null;
+    const L = corpus[lesson - 1];
+    if (!L || !L.points || !L.points.length) return null;
+    // English/pinyin may live in the legacy phrases[] — resolve through it first.
+    const pmap = {};
+    (lessonPhrases || []).forEach(p => { if (p.cn && !(p.cn in pmap)) pmap[p.cn] = p; });
+    return L.points.map(p => ({
+      id: p.id,
+      cn: p.cn || '',
+      py: p.py || '',
+      en: p.en || '',
+      note: p.note || '',
+      items: (p.items || []).map(it => {
+        const lp = pmap[it.c];
+        const py = it.py || p.py || (lp && (lp.pinyin || lp.py)) || '';
+        const en = it.en || (lp && lp.en) || '';
+        const o = { c: it.c };
+        if (py) o.py = py;
+        if (en) o.en = en;
+        if (it.sub) o.sub = it.sub;
+        return o;
+      })
+    }));
   }
 
   // Rebuild every module's dataset from the words of the current subMode.

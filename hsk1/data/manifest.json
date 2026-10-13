@@ -11,25 +11,31 @@
   },
 
   "sentenceCorpus": {
-    "status": "TODO — 阶段 D/E 实施",
-    "plannedSource": "data/sentences/grammar-sentences.json",
-    "plannedFallback": "data/sentences/grammar-sentences.js (window.GRAMMAR_SENTENCES)",
-    "entrypoint": "js/app.js :: grammarSentenceList()",
-    "entrypointNote": "唯一的句子数据源适配点；改这里即可同时替换句卡/句表/填空。",
-    "gamesUsingSentences": ["sentflash", "fill"],
+    "status": "ACTIVE — 语料由 txt 自动生成",
+    "sourceOfTruth": "HSK 1 语料 20261013.txt",
+    "generated": ["data/sentences/grammar-sentences.json", "data/sentences/grammar-sentences.js"],
+    "regenerate": "python3 hsk1/tools/ingest-sentences.py \"hsk1/HSK 1 语料 <date>.txt\" hsk1/data/sentences/grammar-sentences.json && python3 hsk1/tools/gen-sentences-js.py hsk1/data/sentences/grammar-sentences.json",
+    "entrypoint": "js/app.js :: externalLessonGrammar()",
+    "appShape": "grammar[] = {id,cn,py,en,note,items:[{c,en,py,sub?}]}",
+    "consumers": {
+      "sentflash (句卡/句表)": "phrases <- grammarSentenceList()",
+      "fill (填空)": "originalFillItems <- grammarSentenceList()",
+      "grammar (语法视图)": "lessonGrammar"
+    },
     "gamesWordsOnly": ["pairs", "picture", "mole", "memory"],
-    "legacyData": "js/data.js 中每个 lesson 的 phrases[] 与 grammar[]（待替换）"
+    "doNotEdit": ["data/sentences/grammar-sentences.json", "data/sentences/grammar-sentences.js"]
   },
 
   "commonTasks": {
     "改样式": "hsk1/css/app.css",
     "改单词/课文": "hsk1/js/data.js",
-    "改句子语料": "data/sentences/grammar-sentences.json",
+    "改句子语料": "改 txt，再跑 manifest.sentenceCorpus.regenerate 里的命令（不要手改 json/js）",
     "改交互/渲染逻辑": "hsk1/js/app.js（先 grep -n 定位，再只读目标 40-80 行）"
   },
 
   "doNot": [
     "不要整文件读取 hsk1/js/app.js（2700 行），用 grep -n 定位后局部读取",
-    "不要改 hsk1/index.html 的 <script> 加载顺序（data.js 必须先于 app.js）"
+    "不要改 hsk1/index.html 的 <script> 加载顺序（grammar-sentences.js → data.js → app.js）",
+    "不要手改 data/sentences/ 下自动生成的文件，改 txt 后重跑脚本"
   ]
 }

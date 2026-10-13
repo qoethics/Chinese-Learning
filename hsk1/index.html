@@ -153,7 +153,8 @@ if (location.protocol !== 'file:') {
     <div class="copyright">© Min Ren 2026 · <a href="#" id="switchAccount" class="switch-account">Switch Account</a></div>
   </div>
 
-<!-- External modules: data first, then app. Order matters. -->
+<!-- External modules: sentences → data → app. Order matters. -->
+<script src="data/sentences/grammar-sentences.js"></script>
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
 <script>

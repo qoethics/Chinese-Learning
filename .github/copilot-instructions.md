@@ -14,9 +14,14 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 `hsk1/data/manifest.json`（应用地图），按需只打开对应文件：
 - 样式 → `hsk1/css/app.css`
 - 词汇 / 课文 → `hsk1/js/data.js`（`window.HSK1_LESSONS`）
-- 句子语料 → `hsk1/data/sentences/grammar-sentences.json`（规划中）
+- 句子语料 → 改 `hsk1/HSK 1 语料 <date>.txt`，再重跑：
+  ```
+  python3 hsk1/tools/ingest-sentences.py "hsk1/HSK 1 语料 <date>.txt" hsk1/data/sentences/grammar-sentences.json
+  python3 hsk1/tools/gen-sentences-js.py hsk1/data/sentences/grammar-sentences.json
+  ```
+  （`data/sentences/*.json|.js` 是自动生成，**不要手改**）
 - 交互 / 渲染逻辑 → `hsk1/js/app.js`（~2700 行，**禁止整文件读**，用 `grep -n` 定位后只读 40–80 行）
-- `js/data.js` 必须早于 `js/app.js` 加载（`app.js` 依赖 `window.HSK1_LESSONS`），不要改 index.html 的 script 顺序
+- 加载顺序固定：`data/sentences/grammar-sentences.js` → `js/data.js` → `js/app.js`，不要改
 
 ## 已知陷阱
 已知陷阱（务必遵守）：
