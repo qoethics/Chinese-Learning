@@ -1338,3 +1338,117 @@
   @media (max-width: 580px) {
     .top-bar .random-toggle label .toggle-text { display: none; }
   }
+
+  /* ===== Sound self-check (支撑“学生没声音”自助排查) ===== */
+  .sound-check-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 14px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    background: color-mix(in srgb, var(--theme-light) 30%, white 70%);
+    color: var(--theme-text);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.12s;
+  }
+  .sound-check-btn:hover { background: var(--theme-light); }
+
+  .sound-check-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+  .sound-check-overlay.hidden { opacity: 0; pointer-events: none; }
+  .sound-check-panel {
+    width: min(520px, 100%);
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    overflow: hidden;
+  }
+  .sound-check-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 18px;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+  }
+  .sound-check-close {
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #888;
+    padding: 4px;
+  }
+  .sound-check-close:hover { color: #333; }
+  .sound-check-body {
+    padding: 6px 18px 14px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+  }
+  .sound-check-body h3 {
+    font-size: 0.85rem;
+    margin: 14px 0 6px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .sc-row {
+    display: flex;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px dashed #eee;
+    line-height: 1.45;
+  }
+  .sc-row:last-child { border-bottom: none; }
+  .sc-ico { flex: 0 0 1.2em; }
+  .sc-ok { color: #2e7d32; }
+  .sc-bad { color: #c62828; }
+  .sc-warn { color: #ef6c00; }
+  .sc-label { color: #333; }
+  .sc-detail {
+    display: block;
+    color: #777;
+    font-size: 0.82rem;
+    margin-top: 2px;
+    word-break: break-word;
+  }
+  .sc-detail code {
+    background: #f4f4f4;
+    padding: 1px 4px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+  }
+  .sound-check-foot {
+    padding: 12px 18px;
+    border-top: 1px solid #eee;
+    text-align: right;
+  }
+  .sound-check-run {
+    padding: 7px 18px;
+    border-radius: 30px;
+    border: none;
+    background: var(--theme-accent, #1565c0);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .sound-check-run:hover { filter: brightness(1.08); }

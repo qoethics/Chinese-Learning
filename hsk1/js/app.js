@@ -2732,6 +2732,123 @@
     }
   });
 
+  // =====================================================================
+  // Sound self-check — helps a student diagnose "no sound" on their device.
+  // Covers both audio paths: system TTS (word reading) and CDN MP3 (texts).
+  // =====================================================================
+  const SOUND_CHECK_MP3 =
+    'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-05/hsk1-textbook-0501.mp3';
+
+  function scRow(state, label, detail){
+    const ico = state === 'ok' ? '✅' : state === 'bad' ? '❌' : '⚠️';
+    const cls = state === 'ok' ? 'sc-ok' : state === 'bad' ? 'sc-bad' : 'sc-warn';
+    return `<div class="sc-row"><span class="sc-ico ${cls}">${ico}</span>`
+      + `<span><span class="sc-label">${label}</span>`
+      + (detail ? `<span class="sc-detail">${detail}</span>` : '')
+      + '</span></div>';
+  }
+
+  function zhVoices(){
+    try {
+      return (window.speechSynthesis.getVoices() || [])
+        .filter(v => (v.lang || '').toLowerCase().indexOf('zh') === 0);
+    } catch (e){ return []; }
+  }
+
+  function collectSoundReport(){
+    const rows = [];
+
+    // 1. TTS interface
+    const hasTTS = !!window.speechSynthesis && typeof SpeechSynthesisUtterance !== 'undefined';
+    rows.push(scRow(hasTTS ? 'ok' : 'bad', 'Speech engine (SpeechSynthesis)',
+      hasTTS ? 'This browser supports speech.' : 'This browser does not support speech. Please use Chrome / Edge / Safari.'));
+
+    // 2. Chinese voice pack
+    let zh = zhVoices();
+    const allCount = (window.speechSynthesis && window.speechSynthesis.getVoices().length) || 0;
+    if (!hasTTS) {
+      rows.push(scRow('warn', 'Chinese voice pack', 'Skipped — speech is not supported above.'));
+    } else if (zh.length > 0) {
+      rows.push(scRow('ok', 'Chinese voice pack', `Found ${zh.length} Chinese voice(s) (of ${allCount} total): <code>${zh.map(v => v.name).slice(0, 4).join('</code>, <code>')}</code>`));
+    } else {
+      rows.push(scRow('bad', 'Chinese voice pack',
+        `No Chinese voice installed (device has ${allCount} voice(s)). This is the most common cause of "no sound" for word reading. `
+        + 'Install a Chinese voice: Windows → Settings → Time & language → Speech; '
+        + 'iPhone → Settings → Accessibility → Spoken Content → Voices; '
+        + 'Android → Settings → System → Languages & input → Text-to-speech.'));
+    }
+
+    // 3. Mute state
+    rows.push(scRow(muted ? 'bad' : 'ok', 'Mute switch',
+      muted ? 'Mute is ON — turn off the 🔇 toggle in the top bar and try again.' : 'Not muted.'));
+
+    // 4. Text audio CDN reachability
+    rows.push(scRow('warn', 'Lesson audio (CDN)', 'Checking… (see result below)'));
+
+    return { rows, hasTTS, zhCount: zh.length };
+  }
+
+  function renderSoundReport(){
+    const body = $('soundCheckBody');
+    if (!body) return;
+    const info = collectSoundReport();
+    body.innerHTML = '<h3>① Word reading (system speech)</h3>' + info.rows.slice(0, 3).join('')
+      + '<h3>② Lesson audio (online MP3)</h3>' + info.rows[3];
+
+    // Async: actually try to speak, and probe the MP3.
+    let spoke = false;
+    if (info.hasTTS && !muted){
+      try {
+        const u = new SpeechSynthesisUtterance('你好');
+        const v = zhVoices()[0];
+        if (v) u.voice = v;
+        u.lang = 'zh-CN'; u.rate = 1;
+        u.onstart = () => { spoke = true; };
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u);
+      } catch (e){}
+    }
+    setTimeout(() => {
+      const ttsRow = scRow(spoke ? 'ok' : (info.hasTTS ? 'warn' : 'bad'), 'Try saying "你好"',
+        spoke ? 'Sound was played (please confirm you actually heard it).'
+              : (info.zhCount === 0 ? 'No Chinese voice — cannot speak.'
+                 : 'No sound detected. Could be system volume, iPhone mute switch, Bluetooth headphones, or a muted tab. Try refreshing the page.'));
+      const cur = body.querySelector('.sc-row:last-child');
+      if (cur) cur.outerHTML = scRow('warn', 'Lesson audio (CDN)', 'Checking… (see result below)');
+      body.insertAdjacentHTML('beforeend', ttsRow);
+    }, 900);
+
+    // MP3 probe: build an element and watch for canplay/error.
+    const probe = new Audio();
+    probe.preload = 'auto';
+    let done = false;
+    const finish = (state, detail) => {
+      if (done) return; done = true;
+      body.insertAdjacentHTML('beforeend', scRow(state, 'Lesson audio (CDN)', detail));
+      probe.src = '';
+    };
+    probe.oncanplay = () => finish('ok', 'CDN reachable — lesson ▶ should play (if still silent, it is a device volume/mute issue).');
+    probe.onerror = () => finish('bad', `CDN unreachable (blocked by network / firewall / ad blocker). Quick check: open <code>${SOUND_CHECK_MP3}</code> directly and see if it plays.`);
+    probe.src = SOUND_CHECK_MP3;
+    setTimeout(() => finish('warn', 'CDN check timed out (slow or blocked network). Quick check: open the mp3 link above directly.'), 6000);
+  }
+
+  (function initSoundCheck(){
+    const btn = $('soundCheckBtn');
+    const overlay = $('soundCheckOverlay');
+    const close = $('soundCheckClose');
+    const run = $('soundCheckRun');
+    if (!btn || !overlay) return;
+    // TTS voices load asynchronously; warm them up so the report is accurate.
+    if (window.speechSynthesis) {
+      try { window.speechSynthesis.getVoices(); } catch (e){}
+    }
+    btn.addEventListener('click', () => { overlay.classList.remove('hidden'); renderSoundReport(); });
+    close.addEventListener('click', () => overlay.classList.add('hidden'));
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.add('hidden'); });
+    run.addEventListener('click', renderSoundReport);
+  })();
+
   kaitiToggle.addEventListener('change', e => {
     kaitiMode = e.target.checked;
     document.body.classList.toggle('kaiti', kaitiMode);

@@ -79,6 +79,7 @@ if (location.protocol !== 'file:') {
         <input type="checkbox" id="muteToggle">
         <label for="muteToggle">🔇 <span class="toggle-text">Mute</span></label>
       </div>
+      <button class="sound-check-btn" id="soundCheckBtn" title="Check whether speech and lesson audio work">🔊 Sound Check</button>
       <div class="random-toggle" id="picEnglishToggleWrap" style="display:none;">
         <input type="checkbox" id="picEnglishToggle">
         <label for="picEnglishToggle">🔤 <span class="toggle-text">English</span></label>
@@ -156,6 +157,19 @@ if (location.protocol !== 'file:') {
 <!-- External modules: sentences → data → app. Order matters. -->
 <script src="data/sentences/grammar-sentences.js"></script>
 <script src="js/data.js"></script>
+  <div class="sound-check-overlay hidden" id="soundCheckOverlay">
+    <div class="sound-check-panel" role="dialog" aria-label="Sound Check">
+      <div class="sound-check-head">
+        <span>🔊 Sound Check</span>
+        <button class="sound-check-close" id="soundCheckClose" aria-label="Close">✕</button>
+      </div>
+      <div class="sound-check-body" id="soundCheckBody"></div>
+      <div class="sound-check-foot">
+        <button class="sound-check-run" id="soundCheckRun">Run again</button>
+      </div>
+    </div>
+  </div>
+
 <script src="js/app.js"></script>
 <script>
 document.getElementById('switchAccount').addEventListener('click', function (e) {
