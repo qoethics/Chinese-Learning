@@ -1,0 +1,259 @@
+/* 讲练 · 气泡网格原型 —— 只用于设计评审，不影响 hsk2 正式样式 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #FCE7F3;
+  --accent: #9D174D;
+  --light: #FDF2F8;
+  --mid: #F9A8D4;
+  --text: #1e1e2a;
+  --ink: #6b6154;
+  --radius: 14px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', Roboto, sans-serif;
+  min-height: 100vh;
+  padding: 0 0 90px;
+}
+
+/* ── header ───────────────────────────────────────── */
+.pt-head { padding: 26px 20px 14px; max-width: 900px; margin: 0 auto; }
+.pt-head h1 { font-size: 1.6rem; color: var(--accent); }
+.pt-sub { margin-top: 6px; color: var(--ink); font-size: .92rem; line-height: 1.65; }
+
+/* ── 专题 选择按钮（并列） ────────────────────────── */
+.pt-tabs {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  max-width: 900px; margin: 0 auto 16px; padding: 0 20px;
+}
+.pt-tabs button {
+  border: 1px solid var(--mid); background: #fff; color: var(--text);
+  padding: 8px 18px; border-radius: 50px; font-size: .92rem;
+  cursor: pointer; transition: .15s;
+}
+.pt-tabs button:hover { background: var(--light); }
+.pt-tabs button.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+
+.pt-body { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.pt-panel { display: none; }
+.pt-panel.active { display: block; }
+.pt-note {
+  color: var(--ink); font-size: .9rem; line-height: 1.7;
+  margin-bottom: 12px; background: #fff; border: 1px dashed var(--mid);
+  border-radius: 12px; padding: 12px 14px;
+}
+.pt-note code {
+  background: var(--light); border: 1px solid var(--mid);
+  border-radius: 6px; padding: 1px 6px; font-size: .85em;
+}
+
+/* ── drill card ───────────────────────────────────── */
+.drill-card {
+  background: #fff; border: 1px solid var(--mid); border-radius: var(--radius);
+  padding: 20px 18px; margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(157,23,77,.06);
+}
+.drill-sentence {
+  font-size: 1.45rem; line-height: 2.3; text-align: center; color: var(--text);
+}
+/* 每句一块，块内就是可点的句子本身 */
+.drill-sent-item:last-child { border-bottom: none !important; }
+.drill-sent-item .drill-sentence { text-align: left; }
+.drill-sentence ruby rt { font-size: .5em; }
+.drill-sentence .stat { display: inline; }
+/* 句子里已填入的词也带拼音 */
+.slot ruby rt {
+  font-size: .5em;
+  color: #3c7a54;
+  font-weight: 400;
+}
+
+/* ── 槽位（分类填空） ─────────────────────────────── */
+.slot-wrap { position: relative; display: inline-block; }
+.slot {
+  display: inline-block; min-width: 3.6em; margin: 0 3px; padding: 0 10px;
+  border: none; border-bottom: 4px solid var(--mid); background: var(--light);
+  border-radius: 8px 8px 0 0; color: var(--text); font-size: inherit;
+  font-family: inherit; font-weight: 500; line-height: 1.4; cursor: pointer;
+  transition: .15s; vertical-align: baseline;
+}
+.slot:hover { background: #FBE3F0; }
+.slot.slot-empty::after { content: attr(data-ph); font-size: .6em; color: #b9a6bd; }
+.slot.filled { background: #ddf0e2; border-bottom-color: #1f6e3f; }
+.slot.active-slot { outline: 3px solid var(--accent); outline-offset: 2px; background: #fff; }
+
+/* ── 输入框 [输入框] / [输入N] ────────────────────── */
+.field {
+  display: inline-block; min-width: 4em; margin: 0 3px; padding: 0 9px;
+  border: none; border-bottom: 4px solid #b0b0c0; background: #F7F7FA;
+  border-radius: 8px 8px 0 0; color: var(--text); font-size: inherit;
+  font-family: inherit; font-weight: 500; line-height: 1.4; text-align: center;
+  vertical-align: baseline;
+}
+.field.shared { border-bottom-style: dashed; border-bottom-color: #c9a0c4; background: #FBF7FE; }
+.field:focus { outline: 3px solid var(--accent); outline-offset: 2px; background: #fff; }
+.field-chip {
+  font-size: .6em; color: var(--accent); background: var(--light);
+  border-radius: 50px; padding: 0 6px; margin-left: 4px;
+  vertical-align: super; font-weight: 700;
+}
+
+/* ── 整句朗读按钮 ─────────────────────────────────── */
+/* 每句一行，整行可点 → 朗读（模仿 index.html 的 grammar-item） */
+.drill-sent-item {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .12s;
+  border: 1px dashed transparent;
+}
+.drill-sent-item:hover {
+  background: color-mix(in srgb, var(--light) 55%, var(--mid) 45%);
+}
+/* 还没填完 → 不可读，视觉弱化 */
+.drill-sent-item.not-ready {
+  cursor: not-allowed;
+  background: transparent;
+  border-color: #efe3ec;
+}
+.drill-sent-item.not-ready:hover { background: transparent; }
+.drill-sent-item.not-ready .drill-sentence { opacity: .72; }
+/* 可读时给个轻微提示 */
+.drill-sent-item.ready { border-color: var(--mid); }
+.drill-ready-hint {
+  display: inline-block;
+  font-size: .72rem;
+  color: #a8639a;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+@keyframes drillNudge {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+.drill-sent-item.nudge { animation: drillNudge .3s ease; }
+
+/* ── 气泡网格菜单 ─────────────────────────────────── */
+.grid-menu {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  z-index: 50; margin-top: 8px; background: #fff;
+  border: 1px solid var(--mid); border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  padding: 10px; text-align: center;
+  /* 宽度由 JS 按列数写入；这里只兜底不越界 */
+  max-width: calc(100vw - 32px);
+}
+.grid-menu-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 2px 4px 9px; min-height: 28px;
+}
+.grid-menu-head .back-btn {
+  border: none; background: transparent; cursor: pointer;
+  color: var(--accent); font-size: 1rem; font-weight: 700;
+  padding: 2px 6px; border-radius: 8px; line-height: 1;
+}
+.grid-menu-head .back-btn:hover { background: var(--light); }
+.grid-menu-head .crumb {
+  font-size: .76rem; font-weight: 700; color: var(--accent);
+  letter-spacing: .03em; flex: 1; text-align: left;
+}
+.grid-menu-head .crumb .sub { color: var(--ink); font-weight: 500; }
+.grid-menu-head .home-btn {
+  border: none; background: transparent; cursor: pointer;
+  color: var(--ink); font-size: .74rem; padding: 2px 6px;
+  border-radius: 8px; white-space: nowrap;
+}
+.grid-menu-head .home-btn:hover { background: var(--light); color: var(--accent); }
+
+.grid-body { display: flex; align-items: center; gap: 4px; }
+.grid-nav {
+  border: none; background: transparent; cursor: pointer;
+  color: var(--accent); font-size: 1.05rem; line-height: 1;
+  width: 22px; flex: 0 0 22px; align-self: stretch;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+}
+.grid-nav:hover:not(:disabled) { background: var(--light); }
+.grid-nav:disabled { opacity: .18; cursor: default; }
+
+/* 网格本体：列数由 JS 按容器宽度写入 --cols，行数固定 2 行 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+  gap: 6px;
+  width: 100%;
+}
+.grid .bubble {
+  border: 1px solid var(--mid); background: #fff; border-radius: 11px;
+  font-family: inherit; color: var(--text); cursor: pointer;
+  padding: 6px 3px; min-width: 0; transition: .12s;
+  display: flex; align-items: center; justify-content: center;
+  line-height: 1.1; overflow: hidden;
+  font-size: 1rem;
+}
+.grid .bubble:hover { background: var(--light); transform: scale(.95); }
+/* 拼音直接标在字上面：ruby + rt */
+.grid .bubble ruby {
+  ruby-align: center;
+  display: inline-flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  white-space: nowrap;
+}
+.grid .bubble rt {
+  font-size: .6em;
+  color: #a8639a;
+  line-height: 1.15;
+  font-weight: 400;
+  white-space: nowrap;
+  margin-bottom: 1px;
+}
+.grid .bubble.sub-entry { border-style: dashed; border-color: var(--accent); }
+.grid .bubble.sub-entry rt { color: var(--accent); }
+.grid .bubble.sub-entry { font-weight: 600; color: var(--accent); }
+
+.grid-foot {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 9px; font-size: .74rem; color: var(--ink);
+}
+.grid-dots { display: flex; gap: 5px; }
+.grid-dots i {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--mid); display: block;
+}
+.grid-dots i.on { background: var(--accent); }
+
+/* ── hover 英文提示（自绘，避免 title 延迟） ───────── */
+.hover-tip {
+  position: fixed; z-index: 90; pointer-events: none;
+  background: #2b2b3a; color: #fff; font-size: .74rem;
+  padding: 4px 10px; border-radius: 50px; white-space: nowrap;
+  transform: translate(-50%, -140%); opacity: 0; transition: opacity .1s;
+}
+.hover-tip.on { opacity: 1; }
+
+/* ── 共享输入提示条 ───────────────────────────────── */
+.shared-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.shared-chip {
+  background: #fff; border: 1px solid var(--mid); border-radius: 50px;
+  padding: 6px 14px; font-size: .84rem;
+}
+.shared-chip em { font-style: normal; color: var(--accent); font-weight: 700; }
+.mini {
+  border: 1px solid var(--mid); background: #fff; border-radius: 50px;
+  padding: 6px 14px; font-size: .84rem; font-family: inherit; cursor: pointer;
+}
+.mini:hover { background: var(--light); }
+
+@media (max-width: 620px) {
+  .drill-sentence { font-size: 1.15rem; }
+  .pt-head, .pt-tabs, .pt-body { padding-left: 13px; padding-right: 13px; }
+  .grid .bubble { font-size: .92rem; }
+  .grid .bubble rt { font-size: .58em; }
+}

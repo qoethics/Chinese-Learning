@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>讲练 · 气泡网格 (prototype)</title>
+<link rel="stylesheet" href="drill-menu-test.css">
+</head>
+<body>
+
+<header class="pt-head">
+  <h1>讲练 · 气泡网格原型</h1>
+  <p class="pt-sub">
+    专题用并列按钮切换。点句子里的方框 → 弹出气泡网格（带拼音）；鼠标悬停气泡看英文；
+    词多时左右三角翻页；类别里含子类别，点进去后左上角 ◀ 返回；再点一次方框关闭菜单。
+    句子填齐后「🔊 读整句」才可用。
+  </p>
+</header>
+
+<nav class="pt-tabs" id="ptTabs"></nav>
+<main class="pt-body" id="ptBody"></main>
+
+<!-- pinyin-pro：与 hsk2 主站同一个库，用来给气泡和句子注音 -->
+<script src="../js/vendor/pinyin-pro.js"></script>
+<script src="drill-categories.js"></script>
+<script src="drill-menu-test.js"></script>
+</body>
+</html>
