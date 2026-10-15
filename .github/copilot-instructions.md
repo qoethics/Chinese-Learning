@@ -83,16 +83,34 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 - 交互 / 渲染逻辑 → `hsk1/js/app.js`（~2700 行，**禁止整文件读**，用 `grep -n` 定位后只读 40–80 行）
 - 加载顺序固定：`data/sentences/grammar-sentences.js` → `js/data.js` → `js/app.js`，不要改
 
-### 新增级别（HSK2 等）
-复制整个 `hsk1/` 目录改名即可（如 `hsk2/`），app.js / css 不需要改动：
-变量名是中性的（`window.COURSE_LESSONS` / `window.SENTENCE_CORPUS`），
-只要每课 `id` 与语料 `key` 对应，就不会因数组顺序错位而出错。
+### 新增级别（HSK3 等）
+复制整个 `hsk2/` 目录改名即可（如 `hsk3/`），换 data.js 内容：
+- 变量名是中性的（`window.COURSE_LESSONS` / `window.SENTENCE_CORPUS`），
+  只要每课 `id` 与语料 `key` 对应，就不会因数组顺序错位而出错
+- `js/vendor/pinyin-pro.js` 要一起复制（拼音靠它分词注音）
+- `js/app.js` / `css/app.css` 不需要改；`data/manifest.json` 里的路径说明要跟着改名
+
+### hsk2（已建好，与 hsk1 的差异）
+- 结构、`app.js`、`css/app.css` 都由 hsk1 复制而来，逻辑一致
+- **课文**：L1-L15 × 4 段对话，来自 `hsk2/887830144-Dialogues-HSK-2.pdf`；
+  `data.js` 的 `texts[].lines` **不存拼音**（与 hsk1 相同），拼音由 app.js 现场生成
+- **拼音**：`hsk2/js/vendor/pinyin-pro.js`（本地库，离线可用）负责分词+注音。
+  `app.js` 里 `perCharPinyin()` / `PINYIN_PRO` 是入口；库缺失时自动退回
+  `wordMap` + `SINGLE_CHAR_PINYIN`（会漏字，属预期降级）
+- **无生词表**：`core`/`extended` 为空 → 图片/打地鼠/记忆配对 无素材；
+  句卡/填空/语法无内容（`data/sentences/grammar-sentences.js` 是空数组占位）
+- 改语料：写好 txt 后跑
+  `python3 hsk2/tools/gen-sentences-js.py hsk2/data/sentences/grammar-sentences.json`
+  （ingest 脚本的 `HSK 1 Review` 正则已改为 `HSK 2`）
 
 ## 已知陷阱
 1. 任何 .textContent 读取都必须排除 ruby 注音 —— 用 wordOf()/hanziOf()，不要直接 textContent。
 2. 不要在嵌套作用域里用 py 命名局部变量（会遮蔽全局 pinyin-pro），用 syllable/pyBtn/pyLine。
 3. .pickable 状态用 dataset.pyOn / dataset.defOn（'1'/'0'），高亮类为 mode-py / mode-def。
 4. 按钮条 .word-panel 挂在 <body>，position:fixed，不能参与原文排版。
+5. hsk2 拼音走 `window.pinyinPro`（`js/vendor/pinyin-pro.js`）；改 `app.js` 拼音逻辑时
+   别改 `perCharPinyin()` 的"每字一条"契约——`pinyin(type:'array')` 必须与字符串等长。
+   加载顺序：`js/vendor/pinyin-pro.js` 必须在 `js/app.js` 之前。
 
 - 不要改 courseware/.DS_Store
 

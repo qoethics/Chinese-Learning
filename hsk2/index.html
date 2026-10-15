@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<script>
+// 部署环境：目录 URL 无尾斜杠时相对资源（图片等）会丢目录，动态补一个目录 base；本地 file:// 不启用。
+if (location.protocol !== 'file:') {
+  (function () {
+    var p = location.pathname;
+    if (!/\/$/.test(p)) {
+      p = /\.[^\/]+$/.test(p) ? p.slice(0, p.lastIndexOf('/') + 1) : p + '/';
+    }
+    var b = document.createElement('base');
+    b.href = p;
+    document.head.appendChild(b);
+  })();
+}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HSK 2 综合练习 · L1-L15</title>
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <div id="welcomeOverlay">
+    <div class="welcome-title">HSK 2 Practice</div>
+  </div>
+
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <h2>📚 Lessons</h2>
+    <div id="lessonList"></div>
+  </aside>
+
+  <div class="card" id="app">
+    <h1>
+      <span>🎯 HSK 综合练习</span>
+      <div class="h1-right">
+        <small id="lessonLabel">L1 · Greetings &amp; Countries</small>
+        <div class="font-group">
+          <div class="random-toggle" id="kaitiToggleWrap">
+            <input type="checkbox" id="kaitiToggle">
+            <label for="kaitiToggle" class="kaiti-label">楷</label>
+          </div>
+          <div class="random-toggle" id="latinFontToggleWrap">
+            <input type="checkbox" id="latinFontToggle">
+            <label for="latinFontToggle" class="aa-label">Aa</label>
+          </div>
+          <div class="font-size-ctl" id="fontSizeCtl">
+            <button id="fontDownBtn" title="Shrink content text">−</button>
+            <button id="fontUpBtn" title="Enlarge content text">+</button>
+          </div>
+        </div>
+      </div>
+    </h1>
+
+    <div class="pick-grid">
+      <button class="pick-btn active" id="studyPickBtn">📖 学习<small>Study</small></button>
+      <button class="pick-btn" id="gamePickBtn">🎮 游戏<small>Games</small></button>
+    </div>
+
+    <div class="top-bar" id="topBar">
+      <div class="random-toggle">
+        <input type="checkbox" id="randomToggle">
+        <label for="randomToggle">🎲 <span class="toggle-text">Random</span></label>
+      </div>
+      <div class="random-toggle">
+        <input type="checkbox" id="accumulativeToggle">
+        <label for="accumulativeToggle">📈 <span class="toggle-text">Accumulative</span></label>
+      </div>
+      <div class="random-toggle">
+        <input type="checkbox" id="autoSpeakToggle">
+        <label for="autoSpeakToggle">🔊 <span class="toggle-text">Auto</span></label>
+      </div>
+      <div class="random-toggle">
+        <input type="checkbox" id="muteToggle">
+        <label for="muteToggle">🔇 <span class="toggle-text">Mute</span></label>
+      </div>
+      <button class="sound-check-btn" id="soundCheckBtn" title="Check whether speech and lesson audio work">🔊 Sound Check</button>
+      <div class="random-toggle" id="picEnglishToggleWrap" style="display:none;">
+        <input type="checkbox" id="picEnglishToggle">
+        <label for="picEnglishToggle">🔤 <span class="toggle-text">English</span></label>
+      </div>
+      <span id="statusBadge" style="display:none;"></span>
+      <div class="top-spacer">
+        <span id="counterDisplay">1 / 10</span>
+        <span class="score-display">🏆 <span id="scoreDisplay">0</span> / <span id="totalDisplay">0</span></span>
+      </div>
+    </div>
+
+    <div class="sub-menu" id="subMenu">
+      <div id="learnMenu">
+        <div class="ctx-row" id="scopeRow">
+          <span class="ctx-label">范围 · Scope</span>
+          <div class="flash-sub-mode" id="subModeBar"></div>
+        </div>
+        <div class="ctx-row">
+          <span class="ctx-label">内容 · Content</span>
+          <div class="study-tab-bar" id="studyTabBar"></div>
+        </div>
+        <div class="ctx-row">
+          <span class="ctx-label">视图 · View</span>
+          <div class="view-mode-bar" id="viewModeBar"></div>
+        </div>
+        <div class="ctx-row">
+          <span class="ctx-label">显示 · Display</span>
+          <div class="ctx-chips">
+            <div class="random-toggle"><input type="checkbox" id="listPinyinToggle" checked><label for="listPinyinToggle">🔠 Pinyin</label></div>
+            <div class="random-toggle"><input type="checkbox" id="listEnglishToggle"><label for="listEnglishToggle">🔤 English</label></div>
+            <div class="random-toggle" id="vocabToggleWrap"><input type="checkbox" id="vocabToggle" checked><label for="vocabToggle">📖 Vocab</label></div>
+          </div>
+        </div>
+      </div>
+      <div id="gameMenuWrap" class="hidden">
+        <div class="game-menu" id="gameMenu">
+          <button class="game-btn" data-game="pairs">🔤 搭配<small>Match</small></button>
+          <button class="game-btn" data-game="fill">✏️ 填空<small>Fill Blank</small></button>
+          <button class="game-btn" data-game="picture">🖼️ 图片<small>Picture</small></button>
+          <button class="game-btn" data-game="mole">🐹 打地鼠<small>Whack-a-Mole</small></button>
+          <button class="game-btn" data-game="memory">🧠 记忆配对<small>Memory</small></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sentence-box" id="sentenceBox">
+      <div id="questionArea" class="question-area"></div>
+      <div id="fillContainer" style="display:none;"></div>
+      <div id="optionsContainer" class="options-grid"></div>
+      <div id="flashContainer" style="display:none;"></div>
+      <div id="moleContainer" style="display:none;"></div>
+      <div id="memoryContainer" style="display:none;"></div>
+      <div id="pictureContainer" style="display:none;"></div>
+    </div>
+
+    <div class="action-bar-top">
+      <div class="left-group">
+        <button class="primary" id="firstBtn" title="Go to first">⏮</button>
+        <button class="primary" id="resetBtn" title="Reset this question">⟳</button>
+      </div>
+      <button class="primary" id="nextBtn">→ Next</button>
+    </div>
+
+    <div class="tone-dots">
+      <span class="tone-1">● 一声 ā</span>
+      <span class="tone-2">● 二声 á</span>
+      <span class="tone-3">● 三声 ǎ</span>
+      <span class="tone-4">● 四声 à</span>
+      <span class="tone-5">● 轻声 a</span>
+    </div>
+
+    <div class="copyright">© Min Ren 2026 · <a href="#" id="switchAccount" class="switch-account">Switch Account</a></div>
+  </div>
+
+<!-- External modules: sentences → data → app. Order matters. -->
+<script src="js/vendor/pinyin-pro.js"></script>
+<script src="data/sentences/grammar-sentences.js"></script>
+<script src="js/core-vocab.js"></script>
+<script src="js/data.js"></script>
+  <div class="sound-check-overlay hidden" id="soundCheckOverlay">
+    <div class="sound-check-panel" role="dialog" aria-label="Sound Check">
+      <div class="sound-check-head">
+        <span>🔊 Sound Check</span>
+        <button class="sound-check-close" id="soundCheckClose" aria-label="Close">✕</button>
+      </div>
+      <div class="sound-check-body" id="soundCheckBody"></div>
+      <div class="sound-check-foot">
+        <button class="sound-check-run" id="soundCheckRun">Run again</button>
+      </div>
+    </div>
+  </div>
+
+<script src="js/app.js"></script>
+<script>
+document.getElementById('switchAccount').addEventListener('click', function (e) {
+  e.preventDefault();
+  try { sessionStorage.removeItem('study_login'); } catch (err) {}
+  var p = location.pathname.split('/');
+  p.pop(); p.pop(); p.push('index.html');
+  location.href = p.join('/');
+});
+</script>
+</body>
+</html>

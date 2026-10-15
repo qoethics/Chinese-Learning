@@ -1,0 +1,40 @@
+{
+  "$comment": "hsk2 应用地图 —— 改东西前先读这里，不要读 index.html。",
+  "kickoffPrompt": "新任务开场：先读 hsk2/data/manifest.json 和 .github/copilot-instructions.md，别整读 data.js/app.js。用 grep -n 定位后只读相关 40-80 行。先向我复述你理解的结构 + 计划改哪几个文件，我确认后再动手。语料 json/js 是生成物禁止手改。改完只跑 build 并报结果，别碰无关的既有改动（.DS_Store、classroom/）。",
+  "entry": "hsk2/index.html",
+  "entryNote": "只剩 HTML 骨架 + <link>/<script src> 引用，约 180 行。",
+  "loadOrder": ["data/sentences/grammar-sentences.js", "js/data.js", "js/app.js"],
+
+  "globals": {
+    "js/data.js": "window.COURSE_LESSONS（别名 window.HSK2_LESSONS）— 课程课文，每课有唯一 id",
+    "data/sentences/grammar-sentences.js": "window.SENTENCE_CORPUS（别名 window.GRAMMAR_SENTENCES）— 句子语料，每项有唯一 key=课 id；当前为空占位"
+  },
+
+  "files": {
+    "hsk2/css/app.css": "全部样式（与 hsk1 相同，未改）",
+    "hsk2/js/data.js": "课文：window.COURSE_LESSONS（L1-L15 texts；每课 id 对应语料 key）；core/extended 为空",
+    "hsk2/js/app.js": "应用逻辑（与 hsk1 相同，未改）：单个 IIFE（themes + 拼音 + 音频 + 状态 + 渲染 + 游戏 + 事件 + 启动）"
+  },
+
+  "contentStatus": {
+    "texts": "ACTIVE — 15 课 × 4 段对话，来自 hsk2/887830144-Dialogues-HSK-2.pdf（汉字 + 拼音按 PDF 原样；英文只有课/场景标题）",
+    "coreVocab": "EMPTY — 按用户要求本级别不配生词表；因此 图片/打地鼠/记忆配对 三个游戏无素材会空着",
+    "sentenceCorpus": "EMPTY PLACEHOLDER — data/sentences/grammar-sentences.js 里是空数组；因此 句卡/填空/语法视图 无内容",
+    "images": "复用 hsk1 的 image/ 副本；缺图时 emoji 兜底，不报错"
+  },
+
+  "commonTasks": {
+    "改样式": "hsk2/css/app.css",
+    "改课文": "hsk2/js/data.js",
+    "新增/调整课程": "hsk2/js/data.js（每课 id 与语料 key 必须一致；不要插在中间，否则两边顺序会错位）",
+    "改交互/渲染逻辑": "hsk2/js/app.js（先 grep -n 定位，再只读目标 40-80 行）",
+    "以后接句子语料": "改写 hsk2/tools/ 下脚本里的 hsk1 路径，或直接从 txt 生成；参考 hsk1/data/manifest.json 的 sentenceCorpus 段"
+  },
+
+  "doNot": [
+    "不要整文件读取 hsk2/js/app.js（约 2900 行），用 grep -n 定位后局部读取",
+    "不要改 hsk2/index.html 的 <script> 加载顺序（grammar-sentences.js → data.js → app.js）",
+    "不要手改 data/sentences/ 下自动生成的文件，改 txt 后重跑脚本",
+    "每课 id 与语料 key 必须一致"
+  ]
+}
