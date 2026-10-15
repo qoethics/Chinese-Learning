@@ -31,9 +31,12 @@
 #### 需要用户明确许可才能动的文件
 以下属于“生成物或数据管线”，**未经用户明确说“可以改”，一律不动**：
 - `tools/*.py`（parser、ingest、gen 等）
-- `data/sentences/*.json` / `*.js`
+- `hsk1/data/sentences/*.json` / `*.js`（生成物）
 - `enrichment.json`
 - 任何 `out/` 下的生成物
+
+**例外**：`hsk2/data/sentences/grammar-sentences.json` 与 `hsk2/data/sentences/grammar-topics.js`
+是**手写真源**（不是生成物），可以直接改，不需要许可 —— 但改完记得重跑 `gen-sentences-js.py`。
 
 #### 触发条件
 需求落在上述文件时，**先停下**，用中文说：
@@ -51,10 +54,13 @@
 > 用户往往不知道一个需求会牵动数据管线；先说清影响范围比事后解释更安全、更省 token。
 
 ## 新任务开场（冷启动必做）
-1. 先读 `hsk1/data/manifest.json`（应用地图）与本文档，**不要整读** `data.js`（~1400 行）/
-   `app.js`（~2700 行）；用 `grep -n` 定位后只读目标 40–80 行。
+1. 先读**当前级别**的 `data/manifest.json`（应用地图）与本文档，**不要整读**
+   `data.js`（hsk2 ~1590 行）/ `app.js`（hsk2 ~3150 行）；用 `grep -n` 定位后只读目标 40–80 行。
+   做 hsk2 的事就读 `hsk2/data/manifest.json`，不要拿 hsk1 的地图套。
 2. 需求模糊时，先向用户复述：你理解的结构 + 计划改哪几个文件，等确认再改（精确需求直接改）。
-3. `data/sentences/*.json|.js` 是生成物，**禁止手改**；改语料要改 txt 再跑脚本。
+3. `hsk1/data/sentences/*.json|.js` 是生成物，**禁止手改**；改语料要改 txt 再跑脚本。
+   `hsk2/data/sentences/grammar-sentences.json` 例外 —— 它是手写真源，直接改，改完重跑
+   `gen-sentences-js.py` 生成同名 `.js`（详见「hsk2 语法点数据结构」）。
 4. 改完只跑 build 并报结果；`file://`/`http://` 浏览器验证需用户明确要求（见“验证”）。
 5. 不碰无关的既有改动（`.DS_Store`、`classroom/` 等）。
 
@@ -90,18 +96,64 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 - `js/vendor/pinyin-pro.js` 要一起复制（拼音靠它分词注音）
 - `js/app.js` / `css/app.css` 不需要改；`data/manifest.json` 里的路径说明要跟着改名
 
-### hsk2（已建好，与 hsk1 的差异）
-- 结构、`app.js`、`css/app.css` 都由 hsk1 复制而来，逻辑一致
+### hsk2（已建好，与 hsk1 的关键差异）
+- 结构、`app.js`、`css/app.css` 都由 hsk1 复制而来，但 **hsk2 已有自己的改动，两边已不同步**；
+  改 hsk2 的 `app.js` 不要假设 hsk1 一致（反之亦然）
 - **课文**：L1-L15 × 4 段对话，来自 `hsk2/887830144-Dialogues-HSK-2.pdf`；
   `data.js` 的 `texts[].lines` **不存拼音**（与 hsk1 相同），拼音由 app.js 现场生成
 - **拼音**：`hsk2/js/vendor/pinyin-pro.js`（本地库，离线可用）负责分词+注音。
   `app.js` 里 `perCharPinyin()` / `PINYIN_PRO` 是入口；库缺失时自动退回
   `wordMap` + `SINGLE_CHAR_PINYIN`（会漏字，属预期降级）
-- **无生词表**：`core`/`extended` 为空 → 图片/打地鼠/记忆配对 无素材；
-  句卡/填空/语法无内容（`data/sentences/grammar-sentences.js` 是空数组占位）
-- 改语料：写好 txt 后跑
-  `python3 hsk2/tools/gen-sentences-js.py hsk2/data/sentences/grammar-sentences.json`
-  （ingest 脚本的 `HSK 1 Review` 正则已改为 `HSK 2`）
+- **无生词表**：`core`/`extended` 为空 → 图片/打地鼠/记忆配对 无素材
+- **语法语料是手写的，不是生成物**（与 hsk1 不同，务必注意）：
+  - `hsk2/data/sentences/grammar-sentences.json` 是**唯一真源，直接手改**
+  - `hsk2/data/sentences/grammar-sentences.js` 是生成物，改完 json 后重跑：
+    ```
+    python3 hsk2/tools/gen-sentences-js.py hsk2/data/sentences/grammar-sentences.json
+    ```
+  - **不要用 hsk1 的 txt → ingest 流程来改 hsk2 语法**；hsk2 没有对应 txt
+  - 现状：L1-L15 共 51 个语法点 / 232 条例句；每点都有 `en` + `note` + `subs[]`
+- **跨课专题**：`hsk2/data/sentences/grammar-topics.js`（手写，非生成物）→
+  `window.GRAMMAR_TOPICS`，6 个专题 / 27 行对比；界面是「🔗 Topics」标签页
+
+#### hsk2 语法点数据结构（改语法前必读）
+```jsonc
+{
+  "id": "7-g1", "no": 1,
+  "cn": "语气副词“还”（2）",
+  "en": "The Modal Adverb 还 (2)",
+  "note": "点级英文解释，渲染在标题正下方（.grammar-intro）",
+  "subs": [                                  // 用法拆分表；id 一般是 'a'/'b'/'c'
+    { "id": "a", "label": "还 1 · 状态持续", "exp": "用法级英文解释" }
+  ],
+  "items": [
+    { "c": "他还在教室学习呢。", "en": "...", "sub": "a" }   // sub 存 subs[].id
+  ]
+}
+```
+- `items[].sub` 存 **subs[] 的 id**，不是标签文本（字符串匹配已废弃，太脆）
+  实际用过的 id：`a`/`b`/`c`/`d`/`e`，以及 `8-g4` 动词重叠用的 `aa`/`abab`
+- **向后兼容**：没有 `subs[]` 的点会走老分支，此时 `items[].sub` 当普通公式字符串用
+  （hsk1 的 11 个点是这种情况）
+- 专题结构：`{ id, cn, en, note, lessons:[课id...], points:[语法点id...], rows:[{label,cn,en}] }`
+  - `points[i]` 与 `lessons[i]` **按位置配对**；两者长度不等时不预选任何点
+
+#### 两条硬性规则（都踩过坑）
+1. **新增任何语料字段，必须同时加进 `externalLessonGrammar()` 适配器**
+   （`hsk2/js/app.js`，约 1080 行）。该函数逐字段手工搬运语料 → 应用结构；
+   只改渲染层不改适配器，新字段会被静默丢掉（`subs` 就因此一度不显示）。
+2. **`note` / `sub` / `exp` 一律用 `rubyHtml()` 渲染，不要用 `escapeHtml()`**
+   （要显示拼音）。对应 CSS 里 `ruby rt` 字号为 `0.55em`，与例句一致。
+   `rubyHtml()` 只包中日韩字符，公式里的拉丁文（如 `S + V + result`）会原样通过。
+
+#### hsk2 加载顺序（不要改）
+`js/vendor/pinyin-pro.js` → `data/sentences/grammar-sentences.js` →
+`data/sentences/grammar-topics.js` → `js/core-vocab.js` → `js/data.js` → `js/app.js`
+
+#### hsk1 / hsk2 同步策略
+`hsk2/js/app.js` 是从 hsk1 复制的，两边已有差异。**等 HSK 2 全部做完后，
+再一次性把 hsk2 的 `app.js` 同步给 hsk1**，不要边做边同步。
+同步时要验证 hsk1 仍正常：hsk1 有 11 个点用 `note`、且**没有** `subs[]`，走的是老分支。
 
 ## 已知陷阱
 1. 任何 .textContent 读取都必须排除 ruby 注音 —— 用 wordOf()/hanziOf()，不要直接 textContent。
@@ -111,6 +163,12 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 5. hsk2 拼音走 `window.pinyinPro`（`js/vendor/pinyin-pro.js`）；改 `app.js` 拼音逻辑时
    别改 `perCharPinyin()` 的"每字一条"契约——`pinyin(type:'array')` 必须与字符串等长。
    加载顺序：`js/vendor/pinyin-pro.js` 必须在 `js/app.js` 之前。
+6. **新增语料字段必须同时改 `externalLessonGrammar()` 适配器**（见 hsk2 段），
+   否则渲染层拿不到该字段（`subs` 踩过这个坑）。
+7. **`studyTab` 与 `currentMode` 是两套状态**：`setLesson()` 只换数据、**不改 `currentMode`**。
+   任何"跳到某标签页"的代码，改完 `studyTab` 后必须再调 `setMode(...)`，
+   否则标签高亮变了但视图还是旧的（Topics 课程 chip 踩过这个坑）。
+8. 不要手改 `hsk2/data/sentences/grammar-sentences.js`（生成物）；改 `.json` 后重跑脚本。
 
 - 不要改 courseware/.DS_Store
 

@@ -1,40 +1,51 @@
 {
   "$comment": "hsk2 应用地图 —— 改东西前先读这里，不要读 index.html。",
-  "kickoffPrompt": "新任务开场：先读 hsk2/data/manifest.json 和 .github/copilot-instructions.md，别整读 data.js/app.js。用 grep -n 定位后只读相关 40-80 行。先向我复述你理解的结构 + 计划改哪几个文件，我确认后再动手。语料 json/js 是生成物禁止手改。改完只跑 build 并报结果，别碰无关的既有改动（.DS_Store、classroom/）。",
+  "kickoffPrompt": "新任务开场：先读 hsk2/data/manifest.json 和 .github/copilot-instructions.md，别整读 data.js/app.js。用 grep -n 定位后只读相关 40-80 行。先向我复述你理解的结构 + 计划改哪几个文件，我确认后再动手。注意 hsk2 的语法语料 grammar-sentences.json 是手写真源（不是生成物），只有 .js 是生成的。改完只跑 build 并报结果，别碰无关的既有改动（.DS_Store、classroom/）。",
   "entry": "hsk2/index.html",
-  "entryNote": "只剩 HTML 骨架 + <link>/<script src> 引用，约 180 行。",
-  "loadOrder": ["data/sentences/grammar-sentences.js", "js/data.js", "js/app.js"],
-
+  "entryNote": "只剩 HTML 骨架 + <link>/<script src> 引用（约 180 行）。",
+  "loadOrder": [
+    "js/vendor/pinyin-pro.js",
+    "data/sentences/grammar-sentences.js",
+    "data/sentences/grammar-topics.js",
+    "js/core-vocab.js",
+    "js/data.js",
+    "js/app.js"
+  ],
   "globals": {
     "js/data.js": "window.COURSE_LESSONS（别名 window.HSK2_LESSONS）— 课程课文，每课有唯一 id",
-    "data/sentences/grammar-sentences.js": "window.SENTENCE_CORPUS（别名 window.GRAMMAR_SENTENCES）— 句子语料，每项有唯一 key=课 id；当前为空占位"
+    "data/sentences/grammar-sentences.js": "window.SENTENCE_CORPUS（别名 window.GRAMMAR_SENTENCES）— 语法语料，每项 key=课 id；由 grammar-sentences.json 生成",
+    "data/sentences/grammar-topics.js": "window.GRAMMAR_TOPICS — 跨课专题对比（手写，非生成物）",
+    "js/core-vocab.js": "生词表兜底数据"
   },
-
   "files": {
-    "hsk2/css/app.css": "全部样式（与 hsk1 相同，未改）",
+    "hsk2/css/app.css": "全部样式（已加 note/sub/exp 注音与 Topics 专题样式，与 hsk1 已不同步）",
     "hsk2/js/data.js": "课文：window.COURSE_LESSONS（L1-L15 texts；每课 id 对应语料 key）；core/extended 为空",
-    "hsk2/js/app.js": "应用逻辑（与 hsk1 相同，未改）：单个 IIFE（themes + 拼音 + 音频 + 状态 + 渲染 + 游戏 + 事件 + 启动）"
+    "hsk2/js/app.js": "应用逻辑（已加 Topics 视图等，与 hsk1 已不同步）：单个 IIFE",
+    "hsk2/data/sentences/grammar-sentences.json": "★语法语料真源（手写，直接改）；改完重跑 gen-sentences-js.py",
+    "hsk2/data/sentences/grammar-topics.js": "★跨课专题数据（手写，直接改）：6 专题 / 27 行对比"
   },
-
   "contentStatus": {
     "texts": "ACTIVE — 15 课 × 4 段对话，来自 hsk2/887830144-Dialogues-HSK-2.pdf（汉字 + 拼音按 PDF 原样；英文只有课/场景标题）",
     "coreVocab": "EMPTY — 按用户要求本级别不配生词表；因此 图片/打地鼠/记忆配对 三个游戏无素材会空着",
-    "sentenceCorpus": "EMPTY PLACEHOLDER — data/sentences/grammar-sentences.js 里是空数组；因此 句卡/填空/语法视图 无内容",
+    "sentenceCorpus": "ACTIVE — grammar-sentences.json 手写维护，L1-L15 共 51 个语法点 / 232 条例句；真源是 .json，.js 由 tools/gen-sentences-js.py 生成",
+    "grammarTopics": "ACTIVE — grammar-topics.js（手写），6 个跨课专题 / 27 行对比，界面为「🔗 Topics」标签页",
     "images": "复用 hsk1 的 image/ 副本；缺图时 emoji 兜底，不报错"
   },
-
   "commonTasks": {
     "改样式": "hsk2/css/app.css",
     "改课文": "hsk2/js/data.js",
     "新增/调整课程": "hsk2/js/data.js（每课 id 与语料 key 必须一致；不要插在中间，否则两边顺序会错位）",
-    "改交互/渲染逻辑": "hsk2/js/app.js（先 grep -n 定位，再只读目标 40-80 行）",
-    "以后接句子语料": "改写 hsk2/tools/ 下脚本里的 hsk1 路径，或直接从 txt 生成；参考 hsk1/data/manifest.json 的 sentenceCorpus 段"
+    "改语法点/例句": "改 hsk2/data/sentences/grammar-sentences.json（手写真源），再跑 python3 hsk2/tools/gen-sentences-js.py hsk2/data/sentences/grammar-sentences.json",
+    "改跨课专题": "改 hsk2/data/sentences/grammar-topics.js（手写，无生成步骤）",
+    "改交互/渲染逻辑": "hsk2/js/app.js（先 grep -n 定位，再只读目标 40-80 行）"
   },
-
   "doNot": [
-    "不要整文件读取 hsk2/js/app.js（约 2900 行），用 grep -n 定位后局部读取",
-    "不要改 hsk2/index.html 的 <script> 加载顺序（grammar-sentences.js → data.js → app.js）",
-    "不要手改 data/sentences/ 下自动生成的文件，改 txt 后重跑脚本",
-    "每课 id 与语料 key 必须一致"
+    "不要整文件读取 hsk2/js/app.js（约 3150 行）或 js/data.js（约 1590 行），用 grep -n 定位后局部读取",
+    "不要改 hsk2/index.html 的 <script> 加载顺序（pinyin-pro → grammar-sentences → grammar-topics → core-vocab → data → app）",
+    "不要手改 data/sentences/grammar-sentences.js（生成物）；改 .json 后重跑 gen-sentences-js.py",
+    "新增语料字段必须同时加进 app.js 的 externalLessonGrammar() 适配器，否则字段会被丢掉",
+    "note/sub/exp 必须用 rubyHtml() 渲染（要显示拼音），不要用 escapeHtml()",
+    "每课 id 与语料 key 必须一致",
+    "不要用 hsk1 的 txt → ingest 流程来改 hsk2 语法；hsk2 语法是直接手写 json 的"
   ]
 }
