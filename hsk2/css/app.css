@@ -977,21 +977,31 @@
   .grammar-title-cn ruby rt { font-size: 0.55em; }
   .grammar-title-en { font-size: 1.05rem; color: var(--theme-text); font-weight: 400; margin-left: 4px; }
   .grammar-intro {
-    font-size: 0.82rem;
+    font-size: 0.92rem;
     color: #8a7f6f;
-    line-height: 1.5;
+    line-height: 1.9;
     padding: 2px 4px 6px;
   }
+  .grammar-intro ruby rt { font-size: 0.55em; }
   .grammar-sub {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--theme-accent);
+    line-height: 1.9;
     padding: 8px 4px 2px;
     margin-top: 4px;
     border-top: 1px dashed color-mix(in srgb, var(--theme-mid) 60%, transparent);
   }
+  .grammar-sub ruby rt { font-size: 0.55em; }
   .grammar-body > .grammar-sub:first-child,
   .grammar-body > .grammar-intro + .grammar-sub { margin-top: 0; border-top: none; }
+  .grammar-subexp {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    line-height: 1.9;
+    padding: 0 4px 2px 4px;
+  }
+  .grammar-subexp ruby rt { font-size: 0.55em; }
   .grammar-count {
     font-size: 0.75rem;
     color: white;
@@ -1298,6 +1308,48 @@
   .pic-options button.wrong-guess { background: #fecaca; border-color: #ef4444; }
   .pic-feedback { font-weight: 500; min-height: 1.6rem; text-align: center; font-size: 0.95rem; }
   .pic-question { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+
+  /* ---- Cross-lesson topics (🔗 Topics tab) ---- */
+  .topics-list .grammar-caret { visibility: visible; }
+  .topic-row {
+    display: grid;
+    grid-template-columns: 8.5rem minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: baseline;
+    column-gap: 12px;
+    row-gap: 2px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .topic-row:hover { background: color-mix(in srgb, var(--theme-light) 55%, var(--theme-mid) 45%); }
+  .topic-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--theme-accent);
+    line-height: 2;
+  }
+  .topic-label ruby rt { font-size: 0.55em; }
+  .topic-lessons { display: flex; flex-wrap: wrap; gap: 6px; padding: 2px 4px 8px; }
+  /* Grammar point targeted by a Topics lesson chip: brief highlight on arrival. */
+  .grammar-section.grammar-focus .grammar-head { background: var(--theme-light); }
+  .grammar-section.grammar-flash {
+    border-radius: 10px;
+    animation: grammar-flash 1.6s ease-out;
+  }
+  @keyframes grammar-flash {
+    0% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--theme-accent) 65%, transparent); }
+    100% { box-shadow: 0 0 0 3px transparent; }
+  }
+  .topic-lesson-chip {
+    font-size: 0.75rem;
+    color: var(--theme-accent);
+    background: color-mix(in srgb, var(--theme-light) 60%, white 40%);
+    border: 1px solid color-mix(in srgb, var(--theme-mid) 70%, transparent);
+    border-radius: 999px;
+    padding: 3px 10px;
+    cursor: pointer;
+  }
+  .topic-lesson-chip:hover { background: var(--theme-light); }
 
   /* ---- Ruby pinyin (above each hanzi) + tone colours ---- */
   ruby { ruby-position: over; ruby-align: center; }

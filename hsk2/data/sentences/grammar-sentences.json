@@ -10,12 +10,35 @@
     "id": "1-g1",
     "no": 1,
     "cn": "助动词“要”",
-    "en": "",
+    "en": "The Auxiliary Verb 要",
+    "note": "要 is an auxiliary verb: 要+V expresses a plan or intention; the negative is 不想/不要 + V.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "要 + V",
+      "exp": "Expresses intention or a plan."
+     },
+     {
+      "id": "b",
+      "label": "不 + 要 + V",
+      "exp": "Negates a plan (\"not going to\")."
+     }
+    ],
     "items": [
      {
       "c": "我（不）要去商店。",
-      "en": "I'm (not) going to the store.",
-      "sub": "（不）要+V"
+      "en": "I am (not) going to the store.",
+      "sub": "a"
+     },
+     {
+      "c": "明天我要去北京。",
+      "en": "I am going to Beijing tomorrow.",
+      "sub": "a"
+     },
+     {
+      "c": "我不要去商店。",
+      "en": "I am not going to the store.",
+      "sub": "b"
      }
     ]
    },
@@ -23,12 +46,35 @@
     "id": "1-g2",
     "no": 2,
     "cn": "程度副词“最”",
-    "en": "",
+    "en": "The Adverb of Degree 最",
+    "note": "最 is an adverb of degree meaning \"the most\". It comes before the adjective and takes no 很.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "最 + adj",
+      "exp": "Marks the highest degree."
+     },
+     {
+      "id": "b",
+      "label": "最 + adj + 的 + N",
+      "exp": "As an attributive."
+     }
+    ],
     "items": [
      {
       "c": "它的眼睛最漂亮。",
       "en": "It has the prettiest eyes.",
-      "sub": "最+adj"
+      "sub": "a"
+     },
+     {
+      "c": "九月去北京旅游最好。",
+      "en": "September is the best time to visit Beijing.",
+      "sub": "a"
+     },
+     {
+      "c": "这是我最喜欢的书。",
+      "en": "This is my favourite book.",
+      "sub": "b"
      }
     ]
    },
@@ -36,22 +82,80 @@
     "id": "1-g3",
     "no": 3,
     "cn": "概数的表达：几、多",
-    "en": "",
+    "en": "Approximate Numbers: 几 and 多",
+    "note": "几 and 多 both give an approximate number. With 个/本/件/次, 多 must come BEFORE the measure word; with 年/月/星期/点/岁/块 it can come before or after — except 点, which only takes 多 after.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "几 / 十几 / 几十 + M + N",
+      "exp": "Approximate number with 几."
+     },
+     {
+      "id": "b",
+      "label": "Number + 多 + M",
+      "exp": "个/本/件/次 — 多 must come BEFORE the measure word."
+     },
+     {
+      "id": "c",
+      "label": "Number + M + 多",
+      "exp": "年/月/星期/点/岁/块 — 多 AFTER the measure word."
+     },
+     {
+      "id": "d",
+      "label": "Number + 多 + M",
+      "exp": "年/月/星期/岁/块 — 多 BEFORE also works; 点 never does."
+     }
+    ],
     "items": [
      {
       "c": "我们要不要买几/十几/几十个椅子？",
-      "en": "Shall we buy some/dozens/dozens of chairs?",
-      "sub": "几/十几/几十+M+N"
+      "en": "Shall we buy some / a dozen / dozens of chairs?",
+      "sub": "a"
+     },
+     {
+      "c": "十多个人。",
+      "en": "More than ten people.",
+      "sub": "b"
+     },
+     {
+      "c": "一百多本书。",
+      "en": "More than a hundred books.",
+      "sub": "b"
+     },
+     {
+      "c": "一千多件衣服。",
+      "en": "More than a thousand items of clothing.",
+      "sub": "b"
+     },
+     {
+      "c": "三十多次。",
+      "en": "More than thirty times.",
+      "sub": "b"
      },
      {
       "c": "我在中国六个多月了。",
       "en": "I have been in China for more than six months.",
-      "sub": "Number+M+多"
+      "sub": "c"
+     },
+     {
+      "c": "三点多。",
+      "en": "A bit past three.",
+      "sub": "c"
      },
      {
       "c": "这个杯子二十多块钱。",
-      "en": "This cup is over twenty dollars.",
-      "sub": "Number+多+M"
+      "en": "This cup costs over twenty yuan.",
+      "sub": "c"
+     },
+     {
+      "c": "他三十多岁。",
+      "en": "He is over thirty.",
+      "sub": "d"
+     },
+     {
+      "c": "十多个月。",
+      "en": "More than ten months.",
+      "sub": "d"
      }
     ]
    }
@@ -67,13 +171,71 @@
    {
     "id": "2-g1",
     "no": 1,
-    "cn": "“是不是”问句",
-    "en": "",
+    "cn": "问句：“是不是”与正反问",
+    "en": "The 是不是 Question & Affirmative-Negative Questions",
+    "note": "A statement can become a question with the tag 是不是, or by repeating the predicate in the affirmative and negative (A不A).",
+    "subs": [
+     {
+      "id": "a",
+      "label": "是不是 + predicate？",
+      "exp": "Tag question with 是不是."
+     },
+     {
+      "id": "b",
+      "label": "statement，是不是？",
+      "exp": "是不是 at the end."
+     },
+     {
+      "id": "c",
+      "label": "V + 不 + V + (O)？",
+      "exp": "Affirmative-negative: verb repeated."
+     },
+     {
+      "id": "d",
+      "label": "adj + 不 + adj？",
+      "exp": "Affirmative-negative: adjective repeated."
+     },
+     {
+      "id": "e",
+      "label": "V + O + 不 + V？",
+      "exp": "The object splits the verb pair."
+     }
+    ],
     "items": [
      {
+      "c": "你是不是中国人？",
+      "en": "Are you Chinese?",
+      "sub": "a"
+     },
+     {
       "c": "你很少生病，是不是喜欢运动？",
-      "en": "You seldom get sick. Do you like sports?",
-      "sub": "是不是……？"
+      "en": "You seldom get sick — do you like sports?",
+      "sub": "a"
+     },
+     {
+      "c": "你是中国人，是不是？",
+      "en": "You are Chinese, aren't you?",
+      "sub": "b"
+     },
+     {
+      "c": "今天去不去打球？",
+      "en": "Are we going to play ball today or not?",
+      "sub": "c"
+     },
+     {
+      "c": "你想不想去超市？",
+      "en": "Do you want to go to the supermarket or not?",
+      "sub": "c"
+     },
+     {
+      "c": "你们今天高兴不高兴？",
+      "en": "Are you happy today or not?",
+      "sub": "d"
+     },
+     {
+      "c": "你想去超市不想？",
+      "en": "Do you want to go to the supermarket or not?",
+      "sub": "e"
      }
     ]
    },
@@ -81,25 +243,91 @@
     "id": "2-g2",
     "no": 2,
     "cn": "代词“每”",
-    "en": "",
+    "en": "The Pronoun 每",
+    "note": "每 means \"every / each\". It must be followed by a measure word, and 都 often appears later in the sentence.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "每 + M + N",
+      "exp": "\"Every\" + measure word."
+     },
+     {
+      "id": "b",
+      "label": "每 + M + N + 都……",
+      "exp": "With 都 in the predicate."
+     }
+    ],
     "items": [
      {
       "c": "我每个星期六十点起床。",
-      "en": "I get up at ten o'clock every Saturday.",
-      "sub": "每+M+N"
+      "en": "I get up at ten every Saturday.",
+      "sub": "a"
+     },
+     {
+      "c": "我每天早上六点起床。",
+      "en": "I get up at six every morning.",
+      "sub": "a"
+     },
+     {
+      "c": "他每天都运动。",
+      "en": "He exercises every day.",
+      "sub": "b"
      }
     ]
    },
    {
     "id": "2-g3",
     "no": 3,
-    "cn": "疑问词“多”",
-    "en": "",
+    "cn": "疑问代词“多”",
+    "en": "The Interrogative 多",
+    "note": "多 before an adjective asks \"how …?\" — used for age, height, size, distance, duration or price.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "多 + adj？",
+      "exp": "Asks about degree, age, size, etc."
+     },
+     {
+      "id": "b",
+      "label": "多大 / 多高 / 多远 / 多长时间",
+      "exp": "Common fixed questions."
+     }
+    ],
     "items": [
      {
-      "c": "你多大？多高？",
-      "en": "How old are you? How tall are you?",
-      "sub": "多+adj"
+      "c": "它多大了？",
+      "en": "How old is it?",
+      "sub": "a"
+     },
+     {
+      "c": "大卫今年多大？",
+      "en": "How old is David this year?",
+      "sub": "b"
+     },
+     {
+      "c": "他多高？",
+      "en": "How tall is he?",
+      "sub": "b"
+     },
+     {
+      "c": "公司离你家有多远？",
+      "en": "How far is the company from your home?",
+      "sub": "b"
+     },
+     {
+      "c": "你在这儿工作多长时间了？",
+      "en": "How long have you worked here?",
+      "sub": "b"
+     },
+     {
+      "c": "这个房间多大？",
+      "en": "How big is this room?",
+      "sub": "a"
+     },
+     {
+      "c": "多少钱买的？",
+      "en": "How much did it cost?",
+      "sub": "b"
      }
     ]
    }
@@ -116,12 +344,35 @@
     "id": "3-g1",
     "no": 1,
     "cn": "“的”字短语",
-    "en": "",
+    "en": "The 的 Phrase",
+    "note": "The 的 phrase omits the noun after 的 when it is already known — 的 itself carries the meaning \"the one(s) that…\".",
+    "subs": [
+     {
+      "id": "a",
+      "label": "Phrase + 的",
+      "exp": "Standalone noun phrase."
+     },
+     {
+      "id": "b",
+      "label": "Pronoun / adj / V + 的 + N",
+      "exp": "As an attributive."
+     }
+    ],
     "items": [
      {
       "c": "这块手表是你昨天买的吗？",
-      "en": "Did you buy this watch yesterday?",
-      "sub": "Pronoun/adj/V+的=N"
+      "en": "Is this watch the one you bought yesterday?",
+      "sub": "a"
+     },
+     {
+      "c": "左边那个红色的是我的。",
+      "en": "The red one on the left is mine.",
+      "sub": "a"
+     },
+     {
+      "c": "这是新买的自行车。",
+      "en": "This is a newly bought bicycle.",
+      "sub": "b"
      }
     ]
    },
@@ -129,12 +380,35 @@
     "id": "3-g2",
     "no": 2,
     "cn": "“一下”",
-    "en": "",
+    "en": "The Expression 一下",
+    "note": "一下 softens a verb, making the action brief or tentative — \"a little / for a moment\".",
+    "subs": [
+     {
+      "id": "a",
+      "label": "V + 一下",
+      "exp": "Makes the action short and casual."
+     },
+     {
+      "id": "b",
+      "label": "V + 一下 + N",
+      "exp": "With a short object."
+     }
+    ],
     "items": [
      {
       "c": "我看一下。",
-      "en": "Let me have a look.",
-      "sub": "V+一下"
+      "en": "Let me take a look.",
+      "sub": "a"
+     },
+     {
+      "c": "请等一下。",
+      "en": "Please wait a moment.",
+      "sub": "a"
+     },
+     {
+      "c": "我介绍一下我的朋友。",
+      "en": "Let me introduce my friend.",
+      "sub": "b"
      }
     ]
    },
@@ -142,12 +416,50 @@
     "id": "3-g3",
     "no": 3,
     "cn": "语气副词“真”",
-    "en": "",
+    "en": "The Modal Adverb 真",
+    "note": "真 shows a subjective exclamation, while 很 merely states a high degree. 真 cannot modify a noun directly.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "真 + adj",
+      "exp": "Exclamation (\"really\")."
+     },
+     {
+      "id": "b",
+      "label": "很 + adj",
+      "exp": "Plain statement of degree."
+     }
+    ],
     "items": [
      {
       "c": "你女儿的房间真漂亮！",
       "en": "Your daughter's room is really beautiful!",
-      "sub": "真+adj"
+      "sub": "a"
+     },
+     {
+      "c": "今天真热！",
+      "en": "It's really hot today!",
+      "sub": "a"
+     },
+     {
+      "c": "我今天很忙。",
+      "en": "I am very busy today.",
+      "sub": "b"
+     },
+     {
+      "c": "我今天很生气。",
+      "en": "I am very angry today.",
+      "sub": "b"
+     },
+     {
+      "c": "认识你很高兴。",
+      "en": "Nice to meet you.",
+      "sub": "b"
+     },
+     {
+      "c": "这道题目真简单。",
+      "en": "This question is really easy.",
+      "sub": "a"
      }
     ]
    }
@@ -164,12 +476,40 @@
     "id": "4-g1",
     "no": 1,
     "cn": "“是……的”句：强调施事",
-    "en": "",
+    "en": "The 是……的 Sentence: Emphasizing the Agent",
+    "note": "是……的 highlights an already-known fact, emphasising who did it, or when / where / how. The two sentences with 了 alone (我买了一本汉语书 / 昨天我去故宫了) belong to 了, not here.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "是 + S + V + 的",
+      "exp": "Emphasises the agent."
+     },
+     {
+      "id": "b",
+      "label": "不 + 是 + S + V + 的",
+      "exp": "Negative form."
+     }
+    ],
     "items": [
      {
+      "c": "这个工作是他帮我介绍的。",
+      "en": "He recommended me for this job.",
+      "sub": "a"
+     },
+     {
+      "c": "他是昨天来的。",
+      "en": "It was yesterday that he came.",
+      "sub": "a"
+     },
+     {
       "c": "电话（不）是我打的。",
-      "en": "I did (not) call.",
-      "sub": "O+（不）是+S+V+的"
+      "en": "I am (not) the one who made the call.",
+      "sub": "b"
+     },
+     {
+      "c": "我是坐飞机来的。",
+      "en": "I came by plane.",
+      "sub": "a"
      }
     ]
    },
@@ -177,12 +517,35 @@
     "id": "4-g2",
     "no": 2,
     "cn": "表示时间：“……的时候”",
-    "en": "",
+    "en": "Expressing Time: ……的时候",
+    "note": "……的时候 marks \"when / at the time of\". It follows the clause that names the time.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "Clause + 的时候",
+      "exp": "\"When …\"."
+     },
+     {
+      "id": "b",
+      "label": "……的时候，……",
+      "exp": "Time clause + main clause."
+     }
+    ],
     "items": [
      {
       "c": "我十一岁的时候开始踢足球。",
       "en": "I started playing football when I was eleven.",
-      "sub": "……的时候"
+      "sub": "a"
+     },
+     {
+      "c": "吃饭的时候不要说话。",
+      "en": "Don't talk while eating.",
+      "sub": "b"
+     },
+     {
+      "c": "下雨的时候我在家。",
+      "en": "I was at home when it rained.",
+      "sub": "b"
      }
     ]
    },
@@ -190,12 +553,35 @@
     "id": "4-g3",
     "no": 3,
     "cn": "时间副词“已经”",
-    "en": "",
+    "en": "The Time Adverb 已经",
+    "note": "已经 marks that something has already happened. It usually pairs with a sentence-final 了.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "已经 + V + 了",
+      "exp": "Action already completed."
+     },
+     {
+      "id": "b",
+      "label": "已经 + Time/V + 了",
+      "exp": "With a time expression."
+     }
+    ],
     "items": [
      {
       "c": "我已经踢了十年足球了。",
-      "en": "I have been playing football for ten years.",
-      "sub": "已经+adj/V+了"
+      "en": "I have played football for ten years already.",
+      "sub": "a"
+     },
+     {
+      "c": "他已经走了。",
+      "en": "He has already left.",
+      "sub": "a"
+     },
+     {
+      "c": "现在已经十二点了。",
+      "en": "It is already twelve o'clock.",
+      "sub": "b"
      }
     ]
    }
@@ -211,13 +597,46 @@
    {
     "id": "5-g1",
     "no": 1,
-    "cn": "副词“就”",
-    "en": "",
+    "cn": "副词“就”（1）",
+    "en": "The Adverb 就 (1)",
+    "note": "就 (1) at L5: it settles on a choice (\"just / simply\") and affirms firmly.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "就 + V",
+      "exp": "Settling on a choice — \"just do it\"."
+     },
+     {
+      "id": "b",
+      "label": "S + 就 + 是/在 + N",
+      "exp": "Affirming firmly — \"this is exactly…\"."
+     }
+    ],
     "items": [
      {
-      "c": "就做你爱吃的鱼吧。",
-      "en": "Just cook the fish you love.",
-      "sub": "就+V"
+      "c": "就买这件吧。",
+      "en": "Let's just buy this one.",
+      "sub": "a"
+     },
+     {
+      "c": "他就吃面条。",
+      "en": "He'll just have noodles.",
+      "sub": "a"
+     },
+     {
+      "c": "他就是我的老师。",
+      "en": "He is exactly my teacher.",
+      "sub": "b"
+     },
+     {
+      "c": "这就是我的家。",
+      "en": "This is my home right here.",
+      "sub": "b"
+     },
+     {
+      "c": "书就在桌子上面。",
+      "en": "The book is right on the desk.",
+      "sub": "b"
      }
     ]
    },
@@ -225,12 +644,35 @@
     "id": "5-g2",
     "no": 2,
     "cn": "语气副词“还”（1）",
-    "en": "",
+    "en": "The Modal Adverb 还 (1)",
+    "note": "还 (1) at L5: a state or degree still holds, or the degree is only \"fairly / so-so\".",
+    "subs": [
+     {
+      "id": "a",
+      "label": "还 + adj",
+      "exp": "\"Fairly / still\" — a moderate degree."
+     },
+     {
+      "id": "b",
+      "label": "还 + V",
+      "exp": "A state or action still continues."
+     }
+    ],
     "items": [
      {
       "c": "我觉得听和说还可以，读和写不好。",
-      "en": "I think listening and speaking are ok, but reading and writing are not good.",
-      "sub": "还+adj"
+      "en": "I think listening and speaking are okay, but reading and writing are not.",
+      "sub": "a"
+     },
+     {
+      "c": "现在还早呢。",
+      "en": "It's still early.",
+      "sub": "a"
+     },
+     {
+      "c": "他还在教室学习呢。",
+      "en": "He is still studying in the classroom.",
+      "sub": "b"
      }
     ]
    },
@@ -238,12 +680,137 @@
     "id": "5-g3",
     "no": 3,
     "cn": "程度副词“有点儿”",
-    "en": "",
+    "en": "The Adverb of Degree 有点儿",
+    "note": "有点儿 expresses a small degree and usually carries a tone of dissatisfaction.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "有点儿 + adj",
+      "exp": "Slightly (and not desirable)."
+     }
+    ],
     "items": [
      {
       "c": "这件衣服有点儿大。",
-      "en": "This dress is a bit big.",
-      "sub": "有点儿+adj"
+      "en": "This piece of clothing is a bit too big.",
+      "sub": "a"
+     },
+     {
+      "c": "他今天有点儿不高兴。",
+      "en": "He is a bit unhappy today.",
+      "sub": "a"
+     },
+     {
+      "c": "俄语有点儿难。",
+      "en": "Russian is a bit difficult.",
+      "sub": "a"
+     }
+    ]
+   },
+   {
+    "id": "5-g4",
+    "no": 4,
+    "cn": "语气助词“吧”",
+    "en": "The Modal Particle 吧",
+    "note": "吧 softens a sentence: it can guess, suggest, or give permission.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "Sentence + 吧",
+      "exp": "Guessing about something uncertain."
+     },
+     {
+      "id": "b",
+      "label": "Sentence + 吧",
+      "exp": "Making a suggestion or request."
+     },
+     {
+      "id": "c",
+      "label": "Sentence + 吧",
+      "exp": "Agreeing or giving permission."
+     }
+    ],
+    "items": [
+     {
+      "c": "这辆车很贵吧？",
+      "en": "This car is expensive, isn't it?",
+      "sub": "a"
+     },
+     {
+      "c": "你们认识吧？",
+      "en": "You know each other, right?",
+      "sub": "a"
+     },
+     {
+      "c": "你快去开会吧。",
+      "en": "Hurry up and go to the meeting.",
+      "sub": "b"
+     },
+     {
+      "c": "你昨天太累了，今天就在家休息吧。",
+      "en": "You were too tired yesterday — just rest at home today.",
+      "sub": "b"
+     },
+     {
+      "c": "请你帮我一下吧。",
+      "en": "Please give me a hand.",
+      "sub": "b"
+     },
+     {
+      "c": "可以，就这样吧。",
+      "en": "Fine, let's leave it at that.",
+      "sub": "c"
+     },
+     {
+      "c": "你坐吧。",
+      "en": "Have a seat.",
+      "sub": "c"
+     }
+    ]
+   },
+   {
+    "id": "5-g5",
+    "no": 5,
+    "cn": "数量词“一点儿”",
+    "en": "The Quantifier 一点儿",
+    "note": "一点儿 is a quantity word meaning \"a little / a bit\". Unlike 有点儿 it is neutral and can follow a verb or an adjective+了.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "V + 一点儿 + (N)",
+      "exp": "\"A little of something\" — with a verb."
+     },
+     {
+      "id": "b",
+      "label": "adj + 了 + 一点儿",
+      "exp": "\"A bit more … than before\" — with a change of state."
+     }
+    ],
+    "items": [
+     {
+      "c": "以后我少喝一点儿。",
+      "en": "I'll drink a bit less from now on.",
+      "sub": "a"
+     },
+     {
+      "c": "来一点儿面条吧。",
+      "en": "Have a bit of noodles.",
+      "sub": "a"
+     },
+     {
+      "c": "我去买一点儿葡萄。",
+      "en": "I'll go buy some grapes.",
+      "sub": "a"
+     },
+     {
+      "c": "这条裤子长了一点儿。",
+      "en": "These trousers are a bit too long.",
+      "sub": "b"
+     },
+     {
+      "c": "他比我高一点儿。",
+      "en": "He is a little taller than me.",
+      "sub": "b"
      }
     ]
    }
@@ -260,12 +827,35 @@
     "id": "6-g1",
     "no": 1,
     "cn": "疑问代词“怎么”",
-    "en": "",
+    "en": "The Interrogative Pronoun 怎么",
+    "note": "怎么 asks \"how\" about a manner, and can also express surprise or puzzlement.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "怎么 + V？",
+      "exp": "How? / in what way?"
+     },
+     {
+      "id": "b",
+      "label": "怎么 + 不 + V？",
+      "exp": "Why not…? (surprise)"
+     }
+    ],
     "items": [
      {
       "c": "昨天你们怎么都没去打篮球？",
-      "en": "Why didn't you play basketball yesterday?",
-      "sub": "怎么+V/adj"
+      "en": "Why didn't any of you go play basketball yesterday?",
+      "sub": "b"
+     },
+     {
+      "c": "你怎么去学校？",
+      "en": "How do you get to school?",
+      "sub": "a"
+     },
+     {
+      "c": "这个字怎么写？",
+      "en": "How do you write this character?",
+      "sub": "a"
      }
     ]
    },
@@ -273,12 +863,30 @@
     "id": "6-g2",
     "no": 2,
     "cn": "量词的重叠",
-    "en": "",
+    "en": "Reduplication of Measure Words",
+    "note": "Measure words can be reduplicated to mean \"every / one after another\".",
+    "subs": [
+     {
+      "id": "a",
+      "label": "M + M + 都",
+      "exp": "Every single one."
+     },
+     {
+      "id": "b",
+      "label": "天天 / 个个",
+      "exp": "Common reduplicated forms."
+     }
+    ],
     "items": [
      {
       "c": "这个星期我天天吃羊肉。",
-      "en": "I've been eating mutton every day this week.",
-      "sub": "N+MM+都=every+N"
+      "en": "I ate mutton every day this week.",
+      "sub": "b"
+     },
+     {
+      "c": "这些苹果个个都很大。",
+      "en": "Every one of these apples is big.",
+      "sub": "a"
      }
     ]
    },
@@ -286,12 +894,30 @@
     "id": "6-g3",
     "no": 3,
     "cn": "关联词“因为……所以”",
-    "en": "",
+    "en": "The Conjunction 因为……所以",
+    "note": "因为……所以…… gives a cause and its result. Either half may be omitted in speech.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "因为……，所以……",
+      "exp": "Full cause-and-effect pair."
+     },
+     {
+      "id": "b",
+      "label": "因为……，……",
+      "exp": "所以 omitted."
+     }
+    ],
     "items": [
      {
       "c": "因为昨天下雨，所以我们都没去打篮球。",
-      "en": "We didn't play basketball because it rained yesterday.",
-      "sub": "因为……所以……"
+      "en": "Because it rained yesterday, none of us went to play basketball.",
+      "sub": "a"
+     },
+     {
+      "c": "因为太忙，他没来。",
+      "en": "Because he was too busy, he didn't come.",
+      "sub": "b"
      }
     ]
    }
@@ -308,25 +934,111 @@
     "id": "7-g1",
     "no": 1,
     "cn": "语气副词“还”（2）",
-    "en": "",
+    "en": "The Modal Adverb 还 (2)",
+    "note": "还 (2) at L7: the three main uses — continuation, repetition, and a further supplement.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "还 1 · 状态持续",
+      "exp": "It's used to indicate the continuation of an action or a state."
+     },
+     {
+      "id": "b",
+      "label": "还 2 · 动作重复",
+      "exp": "It's used to indicate the repetition of an action."
+     },
+     {
+      "id": "c",
+      "label": "还 3 · 补充追加",
+      "exp": "It's used to make a further supplement for what was mentioned before."
+     }
+    ],
     "items": [
      {
       "c": "他还在教室学习呢。",
       "en": "He is still studying in the classroom.",
-      "sub": "还（没）+V"
+      "sub": "a"
+     },
+     {
+      "c": "现在还在下雨。",
+      "en": "It's still raining now.",
+      "sub": "a"
+     },
+     {
+      "c": "窗户还开着呢。",
+      "en": "The window is still open.",
+      "sub": "a"
+     },
+     {
+      "c": "昨天吃了饺子，今天我还想吃。",
+      "en": "I had dumplings yesterday; today I still want them.",
+      "sub": "b"
+     },
+     {
+      "c": "你已经喝了三杯咖啡了，还要喝？",
+      "en": "You've already had three cups of coffee — you still want more?",
+      "sub": "b"
+     },
+     {
+      "c": "我喜欢看电视，还喜欢听音乐。",
+      "en": "I like watching TV, and I also like listening to music.",
+      "sub": "c"
+     },
+     {
+      "c": "单词学完了以后，你们还要多复习几遍。",
+      "en": "After finishing the words, you still need to review them a few more times.",
+      "sub": "c"
      }
     ]
    },
    {
     "id": "7-g2",
     "no": 2,
-    "cn": "时间副词“就”",
-    "en": "",
+    "cn": "时间副词“就”（2）",
+    "en": "The Time Adverb 就 (2)",
+    "note": "就 (2) at L7: it stresses that something happens early, quickly, or as soon as expected.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "S + Time + 就 + V + 了",
+      "exp": "\"As early as / by then already\"."
+     },
+     {
+      "id": "b",
+      "label": "就 + V",
+      "exp": "Right away."
+     },
+     {
+      "id": "c",
+      "label": "一……就……",
+      "exp": "\"As soon as … then …\"."
+     }
+    ],
     "items": [
      {
       "c": "我二十分钟就到。",
       "en": "I'll be there in twenty minutes.",
-      "sub": "S+Time+就+V+了"
+      "sub": "a"
+     },
+     {
+      "c": "他七点就来了。",
+      "en": "He came as early as seven.",
+      "sub": "a"
+     },
+     {
+      "c": "我就来。",
+      "en": "I'm coming right away.",
+      "sub": "b"
+     },
+     {
+      "c": "我马上就来。",
+      "en": "I'll be right there.",
+      "sub": "b"
+     },
+     {
+      "c": "我到了北京就给你打电话。",
+      "en": "I'll call you as soon as I arrive in Beijing.",
+      "sub": "c"
      }
     ]
    },
@@ -334,12 +1046,40 @@
     "id": "7-g3",
     "no": 3,
     "cn": "动词“离”",
-    "en": "",
+    "en": "The Verb 离",
+    "note": "离 states the distance between two places, or the time remaining before an event.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "A + 离 + B + 远/近",
+      "exp": "Distance in space."
+     },
+     {
+      "id": "b",
+      "label": "A + 离 + B + 时间/距离",
+      "exp": "With a measure phrase."
+     }
+    ],
     "items": [
+     {
+      "c": "你家离公司远吗？",
+      "en": "Is your home far from the company?",
+      "sub": "a"
+     },
      {
       "c": "我家离学校很远。",
       "en": "My home is far from the school.",
-      "sub": "N1+离+N2+DISTANCE/time"
+      "sub": "a"
+     },
+     {
+      "c": "公司离这里很近。",
+      "en": "The company is very close to here.",
+      "sub": "a"
+     },
+     {
+      "c": "超市离我家两百米。",
+      "en": "The supermarket is 200 metres from my home.",
+      "sub": "b"
      }
     ]
    },
@@ -347,12 +1087,30 @@
     "id": "7-g4",
     "no": 4,
     "cn": "语气助词“呢”",
-    "en": "",
+    "en": "The Modal Particle 呢",
+    "note": "呢 at the end of a sentence softens the tone, or signals that a situation is ongoing.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "Sentence + 呢",
+      "exp": "Softening / reminding."
+     },
+     {
+      "id": "b",
+      "label": "…在… + 呢",
+      "exp": "Continuous action."
+     }
+    ],
     "items": [
      {
       "c": "坐公共汽车要一个多小时呢！",
-      "en": "It takes more than an hour by bus.",
-      "sub": "sentence+呢"
+      "en": "Taking the bus takes more than an hour!",
+      "sub": "a"
+     },
+     {
+      "c": "他在教室学习呢。",
+      "en": "He is studying in the classroom.",
+      "sub": "b"
      }
     ]
    }
@@ -369,12 +1127,25 @@
     "id": "8-g1",
     "no": 1,
     "cn": "疑问句“，好吗？”",
-    "en": "",
+    "en": "The Question Form ，好吗？",
+    "note": "，好吗？ tacks a request for agreement onto a statement — \"…, okay?\"",
+    "subs": [
+     {
+      "id": "a",
+      "label": "statement，好吗？",
+      "exp": "Asks for the listener's consent."
+     }
+    ],
     "items": [
      {
       "c": "我们下午去看电影，好吗？",
-      "en": "Let's go to the cinema this afternoon, ok?",
-      "sub": "sentence，好吗？"
+      "en": "Let's go see a movie this afternoon, okay?",
+      "sub": "a"
+     },
+     {
+      "c": "我们一起去吃饭，好吗？",
+      "en": "Let's go eat together, okay?",
+      "sub": "a"
      }
     ]
    },
@@ -382,22 +1153,40 @@
     "id": "8-g2",
     "no": 2,
     "cn": "副词“再”",
-    "en": "",
+    "en": "The Adverb 再",
+    "note": "再 means \"again\" for a future or repeated action, and can also mean \"then, after that\".",
+    "subs": [
+     {
+      "id": "a",
+      "label": "再 + V",
+      "exp": "Do it again."
+     },
+     {
+      "id": "b",
+      "label": "Time + 再 + V",
+      "exp": "Do it again later."
+     },
+     {
+      "id": "c",
+      "label": "V1 + 再 + V2",
+      "exp": "Do V1, then V2."
+     }
+    ],
     "items": [
      {
       "c": "你让我想想再告诉你。",
-      "en": "Let me think and tell you.",
-      "sub": "再+V"
+      "en": "Let me think it over and then tell you.",
+      "sub": "c"
      },
      {
       "c": "你再看一下这本书吧。",
-      "en": "Look at this book one more time.",
-      "sub": "再+V"
+      "en": "Take another look at this book.",
+      "sub": "a"
      },
      {
       "c": "你明天再给我打电话吧。",
-      "en": "You can call me till tomorrow.",
-      "sub": "Time+再+V"
+      "en": "Call me again tomorrow.",
+      "sub": "b"
      }
     ]
    },
@@ -405,12 +1194,40 @@
     "id": "8-g3",
     "no": 3,
     "cn": "兼语句",
-    "en": "",
+    "en": "Pivotal Sentences",
+    "note": "A pivotal sentence has the object of the first verb serve as the subject of the second (让 / 叫 / 请).",
+    "subs": [
+     {
+      "id": "a",
+      "label": "A + 让/叫/请 + B + V",
+      "exp": "B does the second action."
+     },
+     {
+      "id": "b",
+      "label": "A + 让 + B + V + (O)",
+      "exp": "With an object."
+     }
+    ],
     "items": [
      {
       "c": "我叫人去看看。",
-      "en": "I'll ask someone to have a look.",
-      "sub": "S+V+O/S+predicate"
+      "en": "I'll have someone go and take a look.",
+      "sub": "a"
+     },
+     {
+      "c": "妈妈让我早点儿回家。",
+      "en": "Mother let me go home a bit earlier.",
+      "sub": "b"
+     },
+     {
+      "c": "老师让我们读课文。",
+      "en": "The teacher had us read the text.",
+      "sub": "b"
+     },
+     {
+      "c": "请你帮我一下吧。",
+      "en": "Please give me a hand.",
+      "sub": "a"
      }
     ]
    },
@@ -418,17 +1235,101 @@
     "id": "8-g4",
     "no": 4,
     "cn": "动词的重叠",
-    "en": "",
+    "en": "Reduplication of Verbs",
+    "note": "Verbs are reduplicated to show a short, casual or tentative action.",
+    "subs": [
+     {
+      "id": "aa",
+      "label": "单音节 · AA / A一A",
+      "exp": "Monosyllabic verbs: AA or A一A, meaning \"do sth a little / give it a try\"."
+     },
+     {
+      "id": "abab",
+      "label": "双音节 · ABAB",
+      "exp": "Disyllabic verbs: ABAB, meaning \"do sth a little / take a short break\"."
+     }
+    ],
     "items": [
      {
       "c": "看—看看—看一看",
-      "en": "Have a look.",
-      "sub": "V—VV—V一V"
+      "en": "look — have a look — take a look",
+      "sub": "aa"
+     },
+     {
+      "c": "说—说说—说一说",
+      "en": "speak — have a talk — say a bit",
+      "sub": "aa"
+     },
+     {
+      "c": "听—听听—听一听",
+      "en": "listen — give a listen — take a listen",
+      "sub": "aa"
+     },
+     {
+      "c": "等—等等—等一等",
+      "en": "wait — wait a bit — wait a moment",
+      "sub": "aa"
+     },
+     {
+      "c": "介绍—介绍介绍",
+      "en": "introduce — give a brief introduction",
+      "sub": "abab"
+     },
+     {
+      "c": "休息—休息休息",
+      "en": "rest — take a little rest",
+      "sub": "abab"
+     },
+     {
+      "c": "准备—准备准备",
+      "en": "prepare — do a bit of preparation",
+      "sub": "abab"
      },
      {
       "c": "运动—运动运动",
-      "en": "To do some exercise",
-      "sub": "V（AB）—V（ABAB）"
+      "en": "exercise — do some exercise",
+      "sub": "abab"
+     }
+    ]
+   },
+   {
+    "id": "8-g5",
+    "no": 5,
+    "cn": "形容词的重叠",
+    "en": "Reduplication of Adjectives",
+    "note": "Monosyllabic adjectives can be reduplicated (AA + 的) to stress a deep degree or affection. No degree adverb may precede them.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "AA + 的",
+      "exp": "Reduplicated adjective as predicate."
+     },
+     {
+      "id": "b",
+      "label": "AA + 的 + N",
+      "exp": "As an attributive."
+     }
+    ],
+    "items": [
+     {
+      "c": "这个苹果甜甜的。",
+      "en": "This apple is nice and sweet.",
+      "sub": "a"
+     },
+     {
+      "c": "他的手大大的。",
+      "en": "His hands are big.",
+      "sub": "a"
+     },
+     {
+      "c": "我的头发长长的。",
+      "en": "My hair is long.",
+      "sub": "a"
+     },
+     {
+      "c": "她有一双大大的眼睛。",
+      "en": "She has a pair of big eyes.",
+      "sub": "b"
      }
     ]
    }
@@ -445,22 +1346,55 @@
     "id": "9-g1",
     "no": 1,
     "cn": "结果补语",
-    "en": "",
+    "en": "The Result Complement",
+    "note": "A result complement follows the verb to show the outcome of the action (完 / 懂 / 好 / 到 / 见).",
+    "subs": [
+     {
+      "id": "a",
+      "label": "S + V + result + (O)",
+      "exp": "Affirmative."
+     },
+     {
+      "id": "b",
+      "label": "S + 没（有）+ V + result + (O)",
+      "exp": "Negative with 没."
+     },
+     {
+      "id": "c",
+      "label": "S + V + result + (O) + 了没有？",
+      "exp": "Affirmative-negative question."
+     }
+    ],
     "items": [
      {
       "c": "我的作业做完了。",
-      "en": "My homework is done.",
-      "sub": "S+V+complement of result+O"
+      "en": "I finished my homework.",
+      "sub": "a"
+     },
+     {
+      "c": "我听见了。",
+      "en": "I heard it.",
+      "sub": "a"
      },
      {
       "c": "我的作业没做完。",
-      "en": "I haven't finished my homework.",
-      "sub": "S+没（有）+V+complement of result+O"
+      "en": "I didn't finish my homework.",
+      "sub": "b"
      },
      {
       "c": "你的作业做完了没有？",
-      "en": "Have you finished your homework yet?",
-      "sub": "S+V+complement of result+O+（了）没有？"
+      "en": "Have you finished your homework?",
+      "sub": "c"
+     },
+     {
+      "c": "我看完了那个电影。",
+      "en": "I finished watching that movie.",
+      "sub": "a"
+     },
+     {
+      "c": "你找到钥匙了吗？",
+      "en": "Did you find the key?",
+      "sub": "c"
      }
     ]
    },
@@ -468,12 +1402,45 @@
     "id": "9-g2",
     "no": 2,
     "cn": "介词“从”",
-    "en": "",
+    "en": "The Preposition 从",
+    "note": "从 marks the starting point of a place, time or range; 从……到…… means \"from … to …\".",
+    "subs": [
+     {
+      "id": "a",
+      "label": "从 + place/time + V",
+      "exp": "Starting point."
+     },
+     {
+      "id": "b",
+      "label": "从……到……",
+      "exp": "From … to …"
+     }
+    ],
     "items": [
      {
+      "c": "我从早上八点开始上课。",
+      "en": "I start class at eight in the morning.",
+      "sub": "a"
+     },
+     {
+      "c": "你从第二个词开始读。",
+      "en": "Start reading from the second word.",
+      "sub": "a"
+     },
+     {
       "c": "从北京到上海要坐几个小时的飞机？",
-      "en": "How long does it take from Beijing to Shanghai by plane?",
-      "sub": "从……到……"
+      "en": "How many hours by plane from Beijing to Shanghai?",
+      "sub": "b"
+     },
+     {
+      "c": "从三号到五号公司放假。",
+      "en": "The company is closed from the 3rd to the 5th.",
+      "sub": "b"
+     },
+     {
+      "c": "我从北京坐飞机到上海。",
+      "en": "I flew from Beijing to Shanghai.",
+      "sub": "b"
      }
     ]
    },
@@ -481,12 +1448,86 @@
     "id": "9-g3",
     "no": 3,
     "cn": "“第…”表示顺序",
-    "en": "",
+    "en": "第… for Ordinal Numbers",
+    "note": "第 before a number forms an ordinal: first, second, third …",
+    "subs": [
+     {
+      "id": "a",
+      "label": "第 + Number",
+      "exp": "Ordinal number."
+     },
+     {
+      "id": "b",
+      "label": "第 + Number + M + N",
+      "exp": "As an attributive."
+     }
+    ],
     "items": [
      {
       "c": "第一个人",
       "en": "The first person",
-      "sub": "第一、第二、第……"
+      "sub": "a"
+     },
+     {
+      "c": "第二个星期",
+      "en": "The second week",
+      "sub": "a"
+     },
+     {
+      "c": "这是我第一次来中国。",
+      "en": "This is my first time in China.",
+      "sub": "b"
+     }
+    ]
+   },
+   {
+    "id": "9-g4",
+    "no": 4,
+    "cn": "可能补语",
+    "en": "The Potential Complement",
+    "note": "A potential complement uses 得/不 between the verb and its complement to say whether a result is possible.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "V + 得 + complement",
+      "exp": "Possible / able to."
+     },
+     {
+      "id": "b",
+      "label": "V + 不 + complement",
+      "exp": "Impossible / unable to."
+     },
+     {
+      "id": "c",
+      "label": "V + 得 + complement + 吗？",
+      "exp": "Question form."
+     }
+    ],
+    "items": [
+     {
+      "c": "我听得见他说话。",
+      "en": "I can hear him speaking.",
+      "sub": "a"
+     },
+     {
+      "c": "我看得见那座山。",
+      "en": "I can see that mountain.",
+      "sub": "a"
+     },
+     {
+      "c": "我学不会那首歌。",
+      "en": "I can't learn that song.",
+      "sub": "b"
+     },
+     {
+      "c": "我没学会那首歌。",
+      "en": "I didn't manage to learn that song.",
+      "sub": "b"
+     },
+     {
+      "c": "你看得见吗？",
+      "en": "Can you see it?",
+      "sub": "c"
      }
     ]
    }
@@ -503,17 +1544,45 @@
     "id": "10-g1",
     "no": 1,
     "cn": "祈使句：不要……了/别……了",
-    "en": "",
+    "en": "Imperatives: 不要……了 / 别……了",
+    "note": "别 and 不要 both forbid an action. 别 is more colloquial; a sentence-final 了 often follows.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "不要 + V + (O) + 了",
+      "exp": "Prohibition."
+     },
+     {
+      "id": "b",
+      "label": "别 + V + (O) + 了",
+      "exp": "Colloquial prohibition."
+     }
+    ],
     "items": [
      {
       "c": "不要看电视了。",
       "en": "Stop watching TV.",
-      "sub": "不要+V+（O）+了"
+      "sub": "a"
+     },
+     {
+      "c": "不要坐。",
+      "en": "Don't sit here.",
+      "sub": "a"
      },
      {
       "c": "别看报纸了。",
       "en": "Stop reading the newspaper.",
-      "sub": "别+V+（O）+了"
+      "sub": "b"
+     },
+     {
+      "c": "别说话了。",
+      "en": "Stop talking.",
+      "sub": "b"
+     },
+     {
+      "c": "别高兴了。",
+      "en": "Don't get too excited.",
+      "sub": "b"
      }
     ]
    },
@@ -521,12 +1590,101 @@
     "id": "10-g2",
     "no": 2,
     "cn": "介词“对”",
-    "en": "",
+    "en": "The Preposition 对",
+    "note": "对 marks the target or recipient of an action or attitude: \"to / towards / for\".",
+    "subs": [
+     {
+      "id": "a",
+      "label": "S + 对 + N + V/adj",
+      "exp": "Towards someone."
+     },
+     {
+      "id": "b",
+      "label": "对 + N + 有 + N",
+      "exp": "\"Have … for …\"."
+     }
+    ],
     "items": [
      {
       "c": "看电视对学汉语有帮助。",
-      "en": "Watching TV is helpful in learning Chinese.",
-      "sub": "S+对+N+Adj"
+      "en": "Watching TV is helpful for learning Chinese.",
+      "sub": "b"
+     },
+     {
+      "c": "他对我很好。",
+      "en": "He is very good to me.",
+      "sub": "a"
+     },
+     {
+      "c": "运动对身体有好处。",
+      "en": "Exercise is good for your health.",
+      "sub": "b"
+     }
+    ]
+   },
+   {
+    "id": "10-g3",
+    "no": 3,
+    "cn": "形容词、副词“多”",
+    "en": "The Adjective and Adverb 多",
+    "note": "多 also means \"many / much\" as a predicate or attributive, and \"more\" as an adverb before a verb.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "S + 多",
+      "exp": "多 as the predicate (\"there is a lot\")."
+     },
+     {
+      "id": "b",
+      "label": "degree adverb + 多 + N",
+      "exp": "As an attributive (\"many …\")."
+     },
+     {
+      "id": "c",
+      "label": "S + 多 + V",
+      "exp": "As an adverb (\"do more\")."
+     }
+    ],
+    "items": [
+     {
+      "c": "人很多。",
+      "en": "There are many people.",
+      "sub": "a"
+     },
+     {
+      "c": "他的头发不多。",
+      "en": "He doesn't have much hair.",
+      "sub": "a"
+     },
+     {
+      "c": "题太多，我没做完。",
+      "en": "There were too many questions; I didn't finish them all.",
+      "sub": "a"
+     },
+     {
+      "c": "他有很多钱。",
+      "en": "He has a lot of money.",
+      "sub": "b"
+     },
+     {
+      "c": "他总有许多理由。",
+      "en": "He always has many reasons.",
+      "sub": "b"
+     },
+     {
+      "c": "你怎么买了这么多东西啊？",
+      "en": "Why did you buy so many things?",
+      "sub": "b"
+     },
+     {
+      "c": "你要多休息。",
+      "en": "You need to rest more.",
+      "sub": "c"
+     },
+     {
+      "c": "学习汉语要多听多说。",
+      "en": "To learn Chinese you must listen and speak more.",
+      "sub": "c"
      }
     ]
    }
@@ -543,12 +1701,30 @@
     "id": "11-g1",
     "no": 1,
     "cn": "动词结构做定语",
-    "en": "",
+    "en": "Verbal Phrases as Attributives",
+    "note": "A verb phrase plus 的 can modify a noun: S + V + 的 + N.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "S + V + 的 + N",
+      "exp": "Verbal attributive."
+     }
+    ],
     "items": [
      {
       "c": "这是新买的自行车。",
-      "en": "This is a new bike that I bought.",
-      "sub": "S+V+的+N"
+      "en": "This is a newly bought bicycle.",
+      "sub": "a"
+     },
+     {
+      "c": "他是我昨天认识的朋友。",
+      "en": "He is a friend I met yesterday.",
+      "sub": "a"
+     },
+     {
+      "c": "你说的话我没听懂。",
+      "en": "I didn't catch what you said.",
+      "sub": "a"
      }
     ]
    },
@@ -556,22 +1732,60 @@
     "id": "11-g2",
     "no": 2,
     "cn": "“比”字句（1）",
-    "en": "",
+    "en": "The 比 Sentence (1)",
+    "note": "The 比 sentence compares two things. The adjective is followed by 一点儿/一些/多了/得多, never by 很.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "A + 比 + B + adj",
+      "exp": "Simple comparison."
+     },
+     {
+      "id": "b",
+      "label": "A + 比 + B + adj + 一点儿/多了",
+      "exp": "Difference in degree."
+     },
+     {
+      "id": "c",
+      "label": "A + 比 + B + V + 得 + complement",
+      "exp": "With a complement."
+     }
+    ],
     "items": [
      {
-      "c": "今天的西瓜比昨天的便宜。",
-      "en": "Today's watermelon is cheaper than yesterday's.",
-      "sub": "A比B+adj"
+      "c": "他比我大三岁。",
+      "en": "He is three years older than me.",
+      "sub": "a"
      },
      {
-      "c": "西瓜没有苹果便宜。",
-      "en": "Watermelons are not as cheap as apples.",
-      "sub": "A没有B+adj"
+      "c": "今天比昨天热多了。",
+      "en": "Today is much hotter than yesterday.",
+      "sub": "b"
      },
      {
-      "c": "她比我们老师小两岁。",
-      "en": "She is two years younger than our teacher.",
-      "sub": "A比B+adj+Num-M"
+      "c": "他比我高一点儿。",
+      "en": "He is a little taller than me.",
+      "sub": "b"
+     },
+     {
+      "c": "他比我跑得快。",
+      "en": "He runs faster than me.",
+      "sub": "c"
+     },
+     {
+      "c": "他比我高。",
+      "en": "He is taller than me.",
+      "sub": "a"
+     },
+     {
+      "c": "他比我喜欢读书。",
+      "en": "He likes reading more than I do.",
+      "sub": "a"
+     },
+     {
+      "c": "他比我多买了一本书。",
+      "en": "He bought one more book than I did.",
+      "sub": "c"
      }
     ]
    },
@@ -579,12 +1793,30 @@
     "id": "11-g3",
     "no": 3,
     "cn": "助动词“可能”",
-    "en": "",
+    "en": "The Auxiliary Verb 可能",
+    "note": "可能 expresses possibility: \"probably / maybe / possibly\".",
+    "subs": [
+     {
+      "id": "a",
+      "label": "可能 + V/adj",
+      "exp": "It may be…"
+     },
+     {
+      "id": "b",
+      "label": "可能 + 会 + V",
+      "exp": "Likely will…"
+     }
+    ],
     "items": [
      {
-      "c": "你可能不认识他。",
-      "en": "You may not know him.",
-      "sub": "可能+V"
+      "c": "他可能不来了。",
+      "en": "He probably isn't coming.",
+      "sub": "a"
+     },
+     {
+      "c": "明天可能会下雨。",
+      "en": "It may rain tomorrow.",
+      "sub": "b"
      }
     ]
    }
@@ -601,22 +1833,60 @@
     "id": "12-g1",
     "no": 1,
     "cn": "程度补语",
-    "en": "",
+    "en": "The Degree Complement",
+    "note": "A degree complement follows 得 and describes how well an action is done.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "V + 得 + complement",
+      "exp": "Affirmative."
+     },
+     {
+      "id": "b",
+      "label": "V + 得 + 不 + complement",
+      "exp": "Negative."
+     },
+     {
+      "id": "c",
+      "label": "V + 得 + complement + 吗 / 不 + complement？",
+      "exp": "Questions."
+     }
+    ],
     "items": [
      {
-      "c": "我睡得（不）晚。",
-      "en": "I (do not) go to bed late.",
-      "sub": "S+V+得+（不+）adj"
+      "c": "他歌唱得好。",
+      "en": "He sings well.",
+      "sub": "a"
      },
      {
-      "c": "他（说）汉语说得（不）好。",
-      "en": "He (does not) speak Chinese well.",
-      "sub": "S+（V+）O+V+得+（不+）adj"
+      "c": "他吃得多。",
+      "en": "He eats a lot.",
+      "sub": "a"
      },
      {
-      "c": "姐姐起得早不早？",
-      "en": "Does sister get up early?",
-      "sub": "S+V+得+adj+不adj？"
+      "c": "他说得不清楚。",
+      "en": "He doesn't speak clearly.",
+      "sub": "b"
+     },
+     {
+      "c": "他吃得不多。",
+      "en": "He doesn't eat much.",
+      "sub": "b"
+     },
+     {
+      "c": "他住得远不远？",
+      "en": "Does he live far?",
+      "sub": "c"
+     },
+     {
+      "c": "他歌唱得好吗？",
+      "en": "Does he sing well?",
+      "sub": "c"
+     },
+     {
+      "c": "你走得快不快？",
+      "en": "Do you walk fast?",
+      "sub": "c"
      }
     ]
    },
@@ -624,12 +1894,35 @@
     "id": "12-g2",
     "no": 2,
     "cn": "“比”字句（2）",
-    "en": "",
+    "en": "The 比 Sentence (2)",
+    "note": "The 比 sentence also works with a degree complement: A + V + 得 + 比 + B + complement.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "A + V + 得 + 比 + B + complement",
+      "exp": "Compares the manner of two actions."
+     }
+    ],
     "items": [
      {
-      "c": "我妻子比我做得好。",
-      "en": "My wife does better than I do.",
-      "sub": "A比B+V+得+adj"
+      "c": "她来得比我早。",
+      "en": "She came earlier than me.",
+      "sub": "a"
+     },
+     {
+      "c": "他跑得比我快。",
+      "en": "He runs faster than me.",
+      "sub": "a"
+     },
+     {
+      "c": "你说得比我好。",
+      "en": "You speak better than me.",
+      "sub": "a"
+     },
+     {
+      "c": "我比他早到一天。",
+      "en": "I arrived one day earlier than him.",
+      "sub": "a"
      }
     ]
    }
@@ -646,17 +1939,40 @@
     "id": "13-g1",
     "no": 1,
     "cn": "结构助词“着”",
-    "en": "",
-    "items": [
+    "en": "The Structural Particle 着",
+    "note": "着 marks a continuous state, or that one action is the manner of another.",
+    "subs": [
      {
-      "c": "她（没）拿着铅笔。",
-      "en": "She (doesn't have) has a pencil.",
-      "sub": "S+（没）+V+着+O"
+      "id": "a",
+      "label": "V + 着 + (O)",
+      "exp": "Ongoing state."
      },
      {
-      "c": "门开着没有？",
-      "en": "Is the door open?",
-      "sub": "S+V+着+O+没有？"
+      "id": "b",
+      "label": "V1 + 着 + V2",
+      "exp": "V1 is the manner of V2."
+     }
+    ],
+    "items": [
+     {
+      "c": "门开着呢。",
+      "en": "The door is open.",
+      "sub": "a"
+     },
+     {
+      "c": "他穿着黑色的毛衣。",
+      "en": "He is wearing a black sweater.",
+      "sub": "a"
+     },
+     {
+      "c": "大家都坐着吃饭。",
+      "en": "Everyone sits while eating.",
+      "sub": "b"
+     },
+     {
+      "c": "他穿着新衣服去学校了。",
+      "en": "He went to school wearing new clothes.",
+      "sub": "b"
      }
     ]
    },
@@ -664,12 +1980,25 @@
     "id": "13-g2",
     "no": 2,
     "cn": "反问句“不是……吗？”",
-    "en": "",
+    "en": "The Rhetorical Question 不是……吗？",
+    "note": "不是……吗？ is a rhetorical question that implies the answer is already obvious.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "不是……吗？",
+      "exp": "\"Isn't it …?\" (obvious)"
+     }
+    ],
     "items": [
      {
-      "c": "她不是有男朋友了吗？",
-      "en": "Didn't she have a boyfriend?",
-      "sub": "不是……吗？"
+      "c": "你不是去北京了吗？",
+      "en": "Didn't you go to Beijing?",
+      "sub": "a"
+     },
+     {
+      "c": "这不是你的书吗？",
+      "en": "Isn't this your book?",
+      "sub": "a"
      }
     ]
    },
@@ -677,12 +2006,152 @@
     "id": "13-g3",
     "no": 3,
     "cn": "介词“往”",
-    "en": "",
+    "en": "The Preposition 往",
+    "note": "往 marks the direction towards which a movement goes: \"towards / to\".",
+    "subs": [
+     {
+      "id": "a",
+      "label": "往 + direction + V",
+      "exp": "Movement towards."
+     }
+    ],
     "items": [
      {
-      "c": "从这儿一直往前走。",
-      "en": "Go straight from here.",
-      "sub": "往+direction+V"
+      "c": "往前走。",
+      "en": "Go straight ahead.",
+      "sub": "a"
+     },
+     {
+      "c": "往左拐就到了。",
+      "en": "Turn left and you'll be there.",
+      "sub": "a"
+     },
+     {
+      "c": "他往学校走了。",
+      "en": "He headed towards the school.",
+      "sub": "a"
+     }
+    ]
+   },
+   {
+    "id": "13-g4",
+    "no": 4,
+    "cn": "简单趋向补语",
+    "en": "Simple Directional Complements",
+    "note": "A directional complement follows the verb to show the direction of the action: 来 (towards the speaker) or 去 (away).",
+    "subs": [
+     {
+      "id": "a",
+      "label": "V + 来/去",
+      "exp": "Direction relative to the speaker."
+     },
+     {
+      "id": "b",
+      "label": "V + 上/下/进/出/回/过/起 + 来/去",
+      "exp": "Compound directional complements."
+     },
+     {
+      "id": "c",
+      "label": "V + 来/去 + (O)",
+      "exp": "With an object."
+     }
+    ],
+    "items": [
+     {
+      "c": "他进来了。",
+      "en": "He came in.",
+      "sub": "a"
+     },
+     {
+      "c": "老师出去了。",
+      "en": "The teacher went out.",
+      "sub": "a"
+     },
+     {
+      "c": "请上来。",
+      "en": "Please come up.",
+      "sub": "b"
+     },
+     {
+      "c": "太阳出来了。",
+      "en": "The sun has come out.",
+      "sub": "b"
+     },
+     {
+      "c": "他带来了一些水果。",
+      "en": "He brought some fruit.",
+      "sub": "c"
+     },
+     {
+      "c": "我给你送去。",
+      "en": "I'll take it over to you.",
+      "sub": "c"
+     }
+    ]
+   },
+   {
+    "id": "13-g5",
+    "no": 5,
+    "cn": "进行态“在/正在……呢”",
+    "en": "The Progressive 在/正在……呢",
+    "note": "在 / 正在 / 正 + V + 呢 marks an action in progress. 在 is the plainest; 正在 is the most emphatic; 正 must pair with 呢.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "S + 正在 + V + 呢",
+      "exp": "The most emphatic progressive."
+     },
+     {
+      "id": "b",
+      "label": "S + 在 + V + 呢",
+      "exp": "The plain progressive."
+     },
+     {
+      "id": "c",
+      "label": "S + 正 + V + 呢",
+      "exp": "正 must be followed by 呢."
+     },
+     {
+      "id": "d",
+      "label": "S + V + 呢",
+      "exp": "呢 alone can mark the progressive."
+     }
+    ],
+    "items": [
+     {
+      "c": "我正在买东西呢。",
+      "en": "I am (in the middle of) shopping.",
+      "sub": "a"
+     },
+     {
+      "c": "他正在准备午饭呢。",
+      "en": "He is preparing lunch right now.",
+      "sub": "a"
+     },
+     {
+      "c": "你在做什么呢？",
+      "en": "What are you doing?",
+      "sub": "b"
+     },
+     {
+      "c": "我在开会呢。",
+      "en": "I am in a meeting.",
+      "sub": "b"
+     },
+     {
+      "c": "我正看书呢。",
+      "en": "I am reading right now.",
+      "sub": "c"
+     },
+     {
+      "c": "我学习呢。",
+      "en": "I am studying.",
+      "sub": "d"
+     },
+     {
+      "c": "那个正在说话的女孩儿是谁？",
+      "en": "Who is that girl who is speaking?",
+      "sub": "a"
      }
     ]
    }
@@ -699,17 +2168,80 @@
     "id": "14-g1",
     "no": 1,
     "cn": "结构助词“过”",
-    "en": "",
-    "items": [
+    "en": "The Structural Particle 过",
+    "note": "过 marks that an action has been experienced before. Negate with 没（有）; 过 stays after the verb.",
+    "subs": [
      {
-      "c": "我（没（有））去过中国。",
-      "en": "I (have not) been to China.",
-      "sub": "S+（没（有））+V+过+O"
+      "id": "a",
+      "label": "V + 过 + (O)",
+      "exp": "Experiential aspect."
      },
      {
-      "c": "你去过中国没有？",
-      "en": "Have you ever been to China?",
-      "sub": "S+V+过+O+没有？"
+      "id": "b",
+      "label": "没（有）+ V + 过",
+      "exp": "Never done."
+     },
+     {
+      "id": "c",
+      "label": "V + 过 + (O) + 吗 / 没有？",
+      "exp": "Questions."
+     }
+    ],
+    "items": [
+     {
+      "c": "你看过那个电影吗？",
+      "en": "Have you seen that movie?",
+      "sub": "c"
+     },
+     {
+      "c": "我吃过。",
+      "en": "I have eaten it (before).",
+      "sub": "a"
+     },
+     {
+      "c": "我没去过日本。",
+      "en": "I have never been to Japan.",
+      "sub": "b"
+     },
+     {
+      "c": "你看过这部电影没有？",
+      "en": "Have you seen this movie or not?",
+      "sub": "c"
+     },
+     {
+      "c": "我见过他。",
+      "en": "I have met him.",
+      "sub": "a"
+     },
+     {
+      "c": "他来过我们家。",
+      "en": "He has been to our house.",
+      "sub": "a"
+     },
+     {
+      "c": "他去过中国没？",
+      "en": "Has he been to China or not?",
+      "sub": "c"
+     },
+     {
+      "c": "你看过这部电影没？",
+      "en": "Have you seen this movie or not?",
+      "sub": "c"
+     },
+     {
+      "c": "你吃过药了吗？",
+      "en": "Have you taken your medicine?",
+      "sub": "c"
+     },
+     {
+      "c": "你洗过澡了吗？",
+      "en": "Have you had a shower?",
+      "sub": "c"
+     },
+     {
+      "c": "我没听过。",
+      "en": "I have never heard it.",
+      "sub": "b"
      }
     ]
    },
@@ -717,12 +2249,30 @@
     "id": "14-g2",
     "no": 2,
     "cn": "虽然……但是……",
-    "en": "",
+    "en": "虽然……但是……",
+    "note": "虽然……但是…… concedes a point and then contrasts it: \"although … but …\".",
+    "subs": [
+     {
+      "id": "a",
+      "label": "虽然……，但是……",
+      "exp": "Concession + contrast."
+     },
+     {
+      "id": "b",
+      "label": "虽然……，可是……",
+      "exp": "可是 variant."
+     }
+    ],
     "items": [
      {
-      "c": "虽然是晴天，但是很冷。",
-      "en": "Although it was sunny, it was cold.",
-      "sub": "虽然……但是……"
+      "c": "虽然很累，但是我们很开心。",
+      "en": "Although we were tired, we were very happy.",
+      "sub": "a"
+     },
+     {
+      "c": "虽然下雨了，可是他还是去了。",
+      "en": "Although it rained, he still went.",
+      "sub": "b"
      }
     ]
    },
@@ -730,27 +2280,45 @@
     "id": "14-g3",
     "no": 3,
     "cn": "动量补语“次”",
-    "en": "",
+    "en": "The Complement of Frequency 次",
+    "note": "A complement of quantity follows the verb to give frequency or duration.",
+    "subs": [
+     {
+      "id": "a",
+      "label": "V + Num + 次",
+      "exp": "Frequency."
+     },
+     {
+      "id": "b",
+      "label": "V + duration",
+      "exp": "Duration of an action."
+     },
+     {
+      "id": "c",
+      "label": "V + 过 + Num + 次",
+      "exp": "Past frequency."
+     }
+    ],
     "items": [
      {
-      "c": "我在这个商店买过一次东西。",
-      "en": "I bought something in this shop once.",
-      "sub": "S+V+过+Num+次+O"
+      "c": "北京我去过两次。",
+      "en": "I have been to Beijing twice.",
+      "sub": "c"
      },
      {
-      "c": "我去过中国一次。",
-      "en": "I have been to China once.",
-      "sub": "S+V+过+O of place+Num+次"
+      "c": "我去过三次长城。",
+      "en": "I have been to the Great Wall three times.",
+      "sub": "a"
      },
      {
-      "c": "我去过一次中国。",
-      "en": "I have been to China once.",
-      "sub": "S+V+过+Num+次+O of place"
+      "c": "他在北京住了一天。",
+      "en": "He stayed in Beijing for one day.",
+      "sub": "b"
      },
      {
-      "c": "我们找过他三次。",
-      "en": "We've been to him three times.",
-      "sub": "S+V+过+O of person+Num+次"
+      "c": "这本书我看过两遍。",
+      "en": "I have read this book twice.",
+      "sub": "c"
      }
     ]
    }
@@ -767,30 +2335,106 @@
     "id": "15-g1",
     "no": 1,
     "cn": "动作的状态“要……了”",
-    "en": "",
-    "items": [
+    "en": "The State 要……了",
+    "note": "要……了 / 快（要）……了 / 就要……了 all signal that something is about to happen.",
+    "subs": [
      {
-      "c": "火车快要/就要/快/要来了。",
-      "en": "The train is coming soon.",
-      "sub": "S+快要/就要/快/要V+（O）+了"
+      "id": "a",
+      "label": "要 + V + 了",
+      "exp": "About to happen."
      },
      {
-      "c": "下个星期我们就要考试了。",
-      "en": "We have an exam next week.",
-      "sub": "Time+S+就要+V+（O）+了"
+      "id": "b",
+      "label": "快（要）+ V + 了",
+      "exp": "Happening soon."
+     },
+     {
+      "id": "c",
+      "label": "就要 + V + 了",
+      "exp": "About to (with a time word)."
+     }
+    ],
+    "items": [
+     {
+      "c": "新年就要到了。",
+      "en": "The New Year is coming soon.",
+      "sub": "c"
+     },
+     {
+      "c": "要下雨了。",
+      "en": "It's going to rain.",
+      "sub": "a"
+     },
+     {
+      "c": "快上课了。",
+      "en": "Class is about to start.",
+      "sub": "b"
+     },
+     {
+      "c": "火车快要开了。",
+      "en": "The train is about to leave.",
+      "sub": "b"
      }
     ]
    },
    {
     "id": "15-g2",
     "no": 2,
-    "cn": "都……了",
-    "en": "",
+    "cn": "副词“都”",
+    "en": "The Adverb 都",
+    "note": "都 has two uses: \"all / every one\" (things before 都), and 都……了 \"already reached a point\".",
+    "subs": [
+     {
+      "id": "a",
+      "label": "S + 都 + V/adj",
+      "exp": "\"All / every one\" — refers to what precedes 都."
+     },
+     {
+      "id": "b",
+      "label": "都 + time/quantity + 了",
+      "exp": "Already reached a point (often with surprise)."
+     },
+     {
+      "id": "c",
+      "label": "都……了，……",
+      "exp": "With a follow-up clause."
+     }
+    ],
     "items": [
      {
-      "c": "我们都等她半个小时了。",
-      "en": "We've already been waiting for her for half an hour.",
-      "sub": "都+Time/Adj/V+了"
+      "c": "苹果都很大。",
+      "en": "The apples are all very big.",
+      "sub": "a"
+     },
+     {
+      "c": "我们都是中国人。",
+      "en": "We are all Chinese.",
+      "sub": "a"
+     },
+     {
+      "c": "孩子们都喜欢睡觉。",
+      "en": "Children all like sleeping.",
+      "sub": "a"
+     },
+     {
+      "c": "都准备好了吗？",
+      "en": "Is everything ready?",
+      "sub": "a"
+     },
+     {
+      "c": "都七岁了，应该去学校了。",
+      "en": "You're already seven, you should go to school.",
+      "sub": "b"
+     },
+     {
+      "c": "都十一点了，怎么还不睡觉？",
+      "en": "It's already eleven — why aren't you asleep yet?",
+      "sub": "c"
+     },
+     {
+      "c": "都这么多人了，怎么还不开始？",
+      "en": "There are already so many people — why haven't we started?",
+      "sub": "c"
      }
     ]
    }

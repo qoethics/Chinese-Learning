@@ -207,6 +207,13 @@
   function escapeHtml(s){
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
+  // Escape an id for use inside an attribute selector (CSS.escape covers most
+  // browsers; fall back to quoting for the plain ids used by grammar points).
+  function cssEscape(s){
+    const v = String(s);
+    if (window.CSS && typeof window.CSS.escape === 'function') return window.CSS.escape(v);
+    return v.replace(/["\\]/g, '\\$&');
+  }
   // Wrap every whitespace-separated syllable in a tone-coloured span.
   function colorPinyin(py){
     if (!py) return '';
@@ -538,6 +545,7 @@
   let listRevealed=new Set();  // word list: per-word reveal state
   let textRevealed=new Set();  // text list: per-line English reveal state
   let grammarOpen=new Set();   // grammar sections currently expanded (persist across re-renders)
+  let grammarFocus=null;       // grammar point id flashed after a Topics jump (cleared on next render)
   let grammarSub='all';        // grammar scope: all / core / ext
   let sentenceSub='all';       // sentence-tab scope: all / core / ext
   let noteTimer=null;
@@ -1072,6 +1080,7 @@
       py: p.py || '',
       en: p.en || '',
       note: p.note || '',
+      subs: (p.subs || []).map(s => ({ id: s.id, label: s.label || '', exp: s.exp || '' })),
       items: (p.items || []).map(it => {
         const lp = pmap[it.c];
         const py = it.py || p.py || (lp && (lp.pinyin || lp.py)) || '';
@@ -1180,6 +1189,11 @@
       subModeBar.innerHTML = '<button class="ctx-na" disabled>n/a</button>';
       return;
     }
+    if (currentMode === 'topics'){
+      if (row) row.style.display = 'none';
+      subModeBar.innerHTML = '';
+      return;
+    }
     // Sentence tab: the same All / Core / Extended scope the Grammar tab uses,
     // filtering the sentence list by the lesson's Core-vs-Extended split.
     if (studyTab === 'sentence' && (currentMode === 'wordflash' || currentMode === 'sentflash')){
@@ -1232,7 +1246,7 @@
   // Study module: Word / Sentence / Texts tab (sits above Core/Extended/All)
   // =====================================================================
   function renderStudyTabBar(){
-    const isStudy = (currentMode === 'wordflash' || currentMode === 'sentflash' || currentMode === 'texts' || currentMode === 'grammar');
+    const isStudy = (currentMode === 'wordflash' || currentMode === 'sentflash' || currentMode === 'texts' || currentMode === 'grammar' || currentMode === 'topics');
     if (!isStudy){
       studyTabBar.style.display = 'none';
       studyTabBar.innerHTML = '';
@@ -1244,12 +1258,16 @@
       <button class="${studyTab === 'sentence' ? 'active' : ''}" data-tab="sentence">📝 Sentence</button>
       <button class="${studyTab === 'texts' ? 'active' : ''}" data-tab="texts">📄 Texts</button>
       <button class="${studyTab === 'grammar' ? 'active' : ''}" data-tab="grammar">🧩 Grammar</button>
+      <button class="${studyTab === 'topics' ? 'active' : ''}" data-tab="topics">🔗 Topics</button>
     `;
     studyTabBar.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('click', function(){
         if (this.dataset.tab === studyTab) return;
         studyTab = this.dataset.tab;
-        setMode(studyTab === 'texts' ? 'texts' : (studyTab === 'grammar' ? 'grammar' : (studyTab === 'sentence' ? 'sentflash' : 'wordflash')));
+        setMode(studyTab === 'texts' ? 'texts'
+          : (studyTab === 'grammar' ? 'grammar'
+          : (studyTab === 'topics' ? 'topics'
+          : (studyTab === 'sentence' ? 'sentflash' : 'wordflash'))));
       });
     });
   }
@@ -1257,7 +1275,7 @@
   // =====================================================================
   // Card vs List view (Word Cards & Sentence Cards only)
   // =====================================================================
-  function isListModeActive(){ return currentMode === 'texts' || currentMode === 'grammar' || (listMode && (currentMode === 'wordflash' || currentMode === 'sentflash')); }
+  function isListModeActive(){ return currentMode === 'texts' || currentMode === 'grammar' || currentMode === 'topics' || (listMode && (currentMode === 'wordflash' || currentMode === 'sentflash')); }
   function showListNote(text){
     // The status text row was removed from the UI — these notes are intentionally not shown.
   }
@@ -1306,7 +1324,7 @@
   // Render
   // =====================================================================
   function renderPickButtons(){
-    const isStudy = (currentMode === 'wordflash' || currentMode === 'sentflash' || currentMode === 'texts' || currentMode === 'grammar');
+    const isStudy = (currentMode === 'wordflash' || currentMode === 'sentflash' || currentMode === 'texts' || currentMode === 'grammar' || currentMode === 'topics');
     studyPickBtn.classList.toggle('active', isStudy);
     gamePickBtn.classList.toggle('active', !isStudy);
     learnMenu.classList.toggle('hidden', !isStudy);
@@ -1318,7 +1336,7 @@
 
   function render(){
     // In sentence-list mode the question area is empty — hide it (no blank row).
-    questionArea.style.display = ((currentMode === 'sentflash' && listMode) || currentMode === 'grammar') ? 'none' : '';
+    questionArea.style.display = ((currentMode === 'sentflash' && listMode) || currentMode === 'grammar' || currentMode === 'topics') ? 'none' : '';
     if (readActive && !(listMode && (currentMode === 'sentflash' || currentMode === 'wordflash'))) stopSentenceRead();
     renderPickButtons();
     renderStudyTabBar();
@@ -1334,6 +1352,7 @@
       case 'sentflash': renderSentFlash(); break;
       case 'texts': renderTextList(); break;
       case 'grammar': renderGrammar(); break;
+      case 'topics': renderTopics(); break;
       case 'fill': renderFill(); break;
       case 'mole': renderMole(); break;
       case 'memory': renderMemory(); break;
@@ -1856,27 +1875,47 @@
         .filter(it => grammarSub === 'all' || (grammarSub === 'ext') === it.ext);
       if (!items.length) return;
       shownSections++; shownItems += items.length;
-      // Keep sub-groups (a./b./c.) contiguous: bucket by sub in first-seen order,
-      // then order items inside each bucket by core-before-extended.
+      // Keep sub-groups (a./b./c.) contiguous. When the point declares a subs[]
+      // table (label + exp per usage), drive the groups from it and match items
+      // by sub id; otherwise fall back to first-seen order over item.sub.
       const groups = [];
-      const bySub = new Map();
-      items.forEach(it => {
-        if (!bySub.has(it.sub)){ const bucket = []; bySub.set(it.sub, bucket); groups.push({ sub: it.sub, bucket }); }
-        bySub.get(it.sub).push(it);
-      });
+      if (Array.isArray(g.subs) && g.subs.length){
+        const byId = new Map();
+        g.subs.forEach(s => {
+          const gr = { sub: s.label || '', exp: s.exp || '', bucket: [] };
+          byId.set(s.id, gr);
+          groups.push(gr);
+        });
+        items.forEach(it => {
+          const gr = byId.get(it.sub);
+          if (gr) gr.bucket.push(it);
+        });
+      } else {
+        const bySub = new Map();
+        items.forEach(it => {
+          if (!bySub.has(it.sub)){ const bucket = []; bySub.set(it.sub, bucket); groups.push({ sub: it.sub, exp: '', bucket }); }
+          bySub.get(it.sub).push(it);
+        });
+      }
       groups.forEach(gr => gr.bucket.sort((a, b) => (a.ext ? 1 : 0) - (b.ext ? 1 : 0)));
-      html += `<div class="grammar-section" data-g="${gi}">
+      const focused = !!g.id && g.id === grammarFocus;
+      // A Topics jump expands the point it points at, even if it was collapsed.
+      const open = grammarOpen.has(g.id) || focused;
+      html += `<div class="grammar-section${focused ? ' grammar-focus' : ''}" data-g="${gi}" data-point="${escapeHtml(g.id || '')}">
         <button class="grammar-head">
           <span class="grammar-head-inner">
-          <span class="grammar-caret">${grammarOpen.has(g.id) ? '▾' : '▸'}</span>
+          <span class="grammar-caret">${open ? '▾' : '▸'}</span>
           <span class="grammar-title"><span class="grammar-title-cn">${titleRuby(g.cn, g.py)}</span> <span class="grammar-title-en">${escapeHtml(g.en || '')}</span></span>
           <span class="grammar-count">${items.length}</span>
           </span>
         </button>
-        <div class="grammar-body${grammarOpen.has(g.id) ? '' : ' collapsed'}" data-gid="${escapeHtml(g.id || '')}">`;
-      if (g.note) html += `<div class="grammar-intro">${escapeHtml(g.note)}</div>`;
+        <div class="grammar-body${open ? '' : ' collapsed'}" data-gid="${escapeHtml(g.id || '')}">`;
+      if (g.note) html += `<div class="grammar-intro">${rubyHtml(g.note)}</div>`;
       groups.forEach(gr => {
-        if (gr.sub) html += `<div class="grammar-sub">${escapeHtml(gr.sub)}</div>`;
+        // sub / exp may contain Chinese (e.g. "还 1 · 状态持续"); ruby-annotate the
+        // Han characters so the usage labels read with pinyin too.
+        if (gr.sub) html += `<div class="grammar-sub">${rubyHtml(gr.sub)}</div>`;
+        if (gr.exp) html += `<div class="grammar-subexp">${rubyHtml(gr.exp)}</div>`;
         gr.bucket.forEach(it => {
           const en = showListEnglish ? ((pmap[it.c] && pmap[it.c].en) || it.en || '') : '';
           const cn = it.py && showListPinyin
@@ -1912,6 +1951,119 @@
     });
     const scopeLabel = grammarSub === 'all' ? 'All' : grammarSub === 'ext' ? 'Extended' : 'Core HSK';
     statusBadge.textContent = `🧩 Grammar · ${scopeLabel} · ${shownSections} sections · ${shownItems} sentences`;
+
+    // Arrived here from a Topics lesson chip: reveal the point it referred to.
+    if (grammarFocus){
+      const target = flashContainer.querySelector(`.grammar-section[data-point="${cssEscape(grammarFocus)}"]`);
+      grammarFocus = null;
+      if (target){
+        target.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        target.classList.add('grammar-flash');
+        setTimeout(() => target.classList.remove('grammar-flash'), 1600);
+      }
+    }
+  }
+
+  // Cross-lesson topics (🔗 Topics tab): side-by-side comparisons that span more
+  // than one lesson. Data comes from data/sentences/grammar-topics.js. Each topic
+  // is one card with a comparison table; a lesson chip jumps to that lesson.
+  function renderTopics(){
+    showAutoSpeak();
+    const topics = window.GRAMMAR_TOPICS || [];
+    if (!topics.length){
+      questionArea.style.display = '';
+      questionArea.innerHTML = '<div style="font-size:1rem;color:#6b6154;">No topics available.</div>';
+      optionsContainer.style.display = 'none';
+      flashContainer.innerHTML = '';
+      flashContainer.style.display = 'none';
+      fillContainer.style.display = 'none';
+      moleContainer.style.display = 'none';
+      memoryContainer.style.display = 'none';
+      pictureContainer.style.display = 'none';
+      return;
+    }
+    questionArea.innerHTML = '';
+    optionsContainer.style.display = 'none';
+    flashContainer.style.display = 'block';
+    fillContainer.style.display = 'none';
+    moleContainer.style.display = 'none';
+    memoryContainer.style.display = 'none';
+    pictureContainer.style.display = 'none';
+
+    // Full word map (core + extended) so pinyin ruby resolves properly.
+    const savedMap = wordMap;
+    wordMap = {};
+    lessonCoreWords.forEach(w => { wordMap[w.hanzi] = w; });
+    lessonExtendedWords.forEach(w => { wordMap[w.hanzi] = w; });
+
+    const lessonName = id => {
+      const i = LESSONS.findIndex(L => L.id === id);
+      return i >= 0 ? LESSONS[i].name : ('L' + id);
+    };
+
+    let html = '<div class="grammar-list topics-list">';
+    let shownRows = 0;
+    topics.forEach(t => {
+      html += `<div class="grammar-section topic-section" data-topic="${escapeHtml(t.id)}">
+        <button class="grammar-head topic-head">
+          <span class="grammar-head-inner">
+          <span class="grammar-caret">\u25b8</span>
+          <span class="grammar-title"><span class="grammar-title-cn">${rubyHtml(t.cn || '')}</span> <span class="grammar-title-en">${escapeHtml(t.en || '')}</span></span>
+          <span class="grammar-count">${(t.rows || []).length}</span>
+          </span>
+        </button>
+        <div class="grammar-body collapsed" data-gid="topic-${escapeHtml(t.id)}">`;
+      if (t.note) html += `<div class="grammar-intro">${rubyHtml(t.note)}</div>`;
+      if (Array.isArray(t.lessons) && t.lessons.length){
+        const pts = t.points || [];
+        html += '<div class="topic-lessons">'
+          + t.lessons.map((id, li) => `<button class="topic-lesson-chip" data-lesson="${escapeHtml(id)}" data-point="${escapeHtml(pts[li] || '')}">${escapeHtml(lessonName(id))}</button>`).join('')
+          + '</div>';
+      }
+      (t.rows || []).forEach(r => {
+        shownRows++;
+        html += `<div class="topic-row" data-read="${escapeHtml(r.cn || '')}">
+          <span class="topic-label">${rubyHtml(r.label || '')}</span>
+          <span class="grammar-cn">${rubyHtml(r.cn || '')}</span>
+          <span class="grammar-en">${escapeHtml(r.en || '')}</span>
+        </div>`;
+      });
+      html += '</div></div>';
+    });
+    html += '</div>';
+    flashContainer.innerHTML = html;
+
+    wordMap = savedMap;
+
+    flashContainer.querySelectorAll('.topic-head').forEach(head => {
+      head.addEventListener('click', function(){
+        const body = this.parentElement.querySelector('.grammar-body');
+        const nowCollapsed = !body.classList.contains('collapsed');
+        body.classList.toggle('collapsed', nowCollapsed);
+        this.querySelector('.grammar-caret').textContent = nowCollapsed ? '\u25b8' : '\u25be';
+      });
+    });
+    // Click a row to read its Chinese sentence aloud.
+    flashContainer.querySelectorAll('.topic-row').forEach(row => {
+      row.addEventListener('click', function(){ speakChinese(this.dataset.read); });
+    });
+    // Lesson chips jump to the lesson's Grammar tab, expanding and flashing the
+    // grammar point the chip refers to (data-point). setLesson() alone leaves
+    // currentMode on 'topics', so setMode() must follow to actually switch tabs.
+    flashContainer.querySelectorAll('.topic-lesson-chip').forEach(chip => {
+      chip.addEventListener('click', function(e){
+        e.stopPropagation();
+        const idx = LESSONS.findIndex(L => L.id === this.dataset.lesson);
+        if (idx < 0) return;
+        const point = this.dataset.point || '';
+        studyTab = 'grammar';
+        if (point) grammarOpen.add(point);
+        setLesson(idx + 1);
+        grammarFocus = point || null;
+        setMode('grammar');
+      });
+    });
+    statusBadge.textContent = `\ud83d\udd17 Topics \u00b7 ${topics.length} topics \u00b7 ${shownRows} comparisons`;
   }
 
   // ---- Read menu (shared by word list & sentence list) ----
@@ -2589,7 +2741,7 @@
 
   function updateCounter(){
     if (isListModeActive()){
-      const n = currentMode === 'wordflash' ? flashItems.length : (currentMode === 'texts' ? lessonTexts.length : (currentMode === 'grammar' ? grammarTotal() : phrases.length));
+      const n = currentMode === 'wordflash' ? flashItems.length : (currentMode === 'texts' ? lessonTexts.length : (currentMode === 'grammar' ? grammarTotal() : (currentMode === 'topics' ? (window.GRAMMAR_TOPICS || []).length : phrases.length)));
       counterDisplay.textContent = `${n} items`;
       return;
     }
@@ -2634,7 +2786,7 @@
   // Mode / Lesson
   // =====================================================================
   function setMode(mode){
-    if (mode === 'study') mode = studyTab === 'texts' ? 'texts' : (studyTab === 'grammar' ? 'grammar' : (studyTab === 'sentence' ? 'sentflash' : 'wordflash'));
+    if (mode === 'study') mode = studyTab === 'texts' ? 'texts' : (studyTab === 'grammar' ? 'grammar' : (studyTab === 'topics' ? 'topics' : (studyTab === 'sentence' ? 'sentflash' : 'wordflash')));
     currentMode = mode;
     currentIndex = 0;
     isAnswered = false;
@@ -2664,7 +2816,7 @@
       memory: '🧠 Memory Match',
       picture: '🖼️ Picture Choice'
     };
-    statusBadge.textContent = (mode === 'wordflash' || mode === 'sentflash' || mode === 'texts' || mode === 'grammar') ? '📖 Study' : (names[mode] || mode);
+    statusBadge.textContent = (mode === 'wordflash' || mode === 'sentflash' || mode === 'texts' || mode === 'grammar' || mode === 'topics') ? '📖 Study' : (names[mode] || mode);
     applyRandomOrder();
     reseedFillBlank();
     render();
@@ -2718,10 +2870,10 @@
     });
   });
   studyPickBtn.addEventListener('click', () => {
-    if (!(currentMode === 'wordflash' || currentMode === 'sentflash' || currentMode === 'texts' || currentMode === 'grammar')) setMode('study');
+    if (!(currentMode === 'wordflash' || currentMode === 'sentflash' || currentMode === 'texts' || currentMode === 'grammar' || currentMode === 'topics')) setMode('study');
   });
   gamePickBtn.addEventListener('click', () => {
-    if (currentMode === 'wordflash' || currentMode === 'sentflash' || currentMode === 'texts' || currentMode === 'grammar'){
+    if (currentMode === 'wordflash' || currentMode === 'sentflash' || currentMode === 'texts' || currentMode === 'grammar' || currentMode === 'topics'){
       if (subMode !== 'all'){
         subMode = 'all';
         rebuildSubModeData();
@@ -2991,6 +3143,9 @@
   autoSpeakToggle.checked = false;
   buildLessonMenu();
   setLesson(1);
+  // Open on the Study module (Word tab), not whatever the initial currentMode
+  // happened to be, so the app never boots straight into a game.
+  setMode('study');
   messageArea.className = 'message info-msg';
   messageArea.textContent = 'Select a lesson and mode to start · Auto-pronounce is OFF by default';
 })();
