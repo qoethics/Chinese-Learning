@@ -173,9 +173,14 @@
     container.innerHTML = '';
     var tokens = parseTemplate(tmpl);
 
-    // 是否所有空都填好了 —— 直接扫 DOM，不维护计数，改来改去也不会算错
+    // 是否所有空都填好了 —— 直接扫 DOM，不维护计数，改来改去也不会算错。
+    // 注意：气泡菜单是挂在容器内的 .slot-wrap 底下的，必须排除掉，
+    // 否则菜单一开，这里的统计就会把菜单里的东西也算进来。
     function refreshRead() {
-      var blanks = container.querySelectorAll('.slot, .field');
+      var blanks = Array.prototype.filter.call(
+        container.querySelectorAll('.slot, .field'),
+        function (el) { return !el.closest('.grid-menu'); }
+      );
       var total = blanks.length;
       var filled = 0;
       blanks.forEach(function (el) {
@@ -201,7 +206,7 @@
       if (tk.kind === 'text') {
         var sp = document.createElement('span');
         sp.className = 'stat';
-        sp.textContent = tk.text;
+        sp.innerHTML = rubyAbove(tk.text);
         container.appendChild(sp);
         return;
       }
@@ -211,7 +216,6 @@
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'slot slot-empty';
-        btn.dataset.ph = '[' + tk.label + ']';
         btn.dataset.cat = tk.catId;
         btn.addEventListener('click', function (e) {
           e.stopPropagation();
@@ -221,7 +225,6 @@
           openBubbleMenu(wrap, btn, tk, scope, function (value) {
             btn.classList.remove('slot-empty');
             btn.classList.add('filled');
-            btn.dataset.ph = '';
             btn.dataset.value = value;      // ← 朗读就靠这个判断填好了没
             // 填进去的词也要带拼音（拼音在字上面）
             btn.innerHTML = rubyAbove(value);
@@ -266,14 +269,31 @@
   // 气泡网格菜单
   // ═══════════════════════════════════════════════════════════════
   var ROWS_PER_PAGE = 5;
-  // 单个气泡最小宽度(px)。拼音竖排在字上面，所以宽一点才不挤。
-  var MIN_CELL_W = 84;
+  // 单页最多列数，避免超宽屏一行排太多、气泡被拉得很扁。
+  var MAX_COLS = 7;
+  // 兜底列数：首次绘制前 readCols() 量不到布局时用它铺第一页，
+  // rAF 里读回真实列数再重排一次。真实最小列宽在 CSS 的 auto-fit 里。
+  var FALLBACK_COLS = 4;
+
+  // 读回 CSS auto-fit 真正排出来的列数。
+  // 未上屏/无布局时返回 0，由调用方决定兜底。
+  function readCols(grid) {
+    if (!grid || !grid.isConnected) return 0;
+    var cs = window.getComputedStyle(grid);
+    var tpl = cs.gridTemplateColumns;
+    if (!tpl || tpl === 'none') return 0;
+    var n = tpl.split(/\s+/).filter(Boolean).length;
+    return Math.min(n, MAX_COLS);
+  }
 
   function openBubbleMenu(wrap, slotBtn, tk, scope, onPick) {
     var menu = document.createElement('div');
     menu.className = 'grid-menu';
     menu.addEventListener('click', function (e) { e.stopPropagation(); });
-    wrap.appendChild(menu);
+    // 挂到 body：.slot-wrap 是个没有 z-index 的 position:relative，
+    // 菜单挂在它里面时 z-index 出不去，后面兄弟句子的文字会盖在菜单上
+    // （看起来像「透明」），而且会随句子换行漂移。挂 body + fixed 才干净。
+    document.body.appendChild(menu);
     slotBtn.classList.add('active-slot');
 
     openCtx = { menu: menu, wrap: wrap, slotBtn: slotBtn, tk: tk, chain: [tk.catId], page: 0, onPick: onPick };
@@ -333,52 +353,36 @@
     head.appendChild(home);
     menu.appendChild(head);
 
-    // ── body：◀ 网格 ▶ ──
+    // ── body：只有网格，翻页键移到下方 foot ──
     var body = document.createElement('div');
     body.className = 'grid-body';
-
-    var prev = document.createElement('button');
-    prev.className = 'grid-nav';
-    prev.type = 'button';
-    prev.textContent = '◀';
-    body.appendChild(prev);
 
     var grid = document.createElement('div');
     grid.className = 'grid';
     body.appendChild(grid);
 
-    var next = document.createElement('button');
-    next.className = 'grid-nav';
-    next.type = 'button';
-    next.textContent = '▶';
-    body.appendChild(next);
-
     menu.appendChild(body);
 
-    // ── foot：页码点 ──
+    // ── foot：所有选项下面的翻页键（只有多于 1 页时才出现）──
     var foot = document.createElement('div');
     foot.className = 'grid-foot';
-    var dots = document.createElement('div');
-    dots.className = 'grid-dots';
-    foot.appendChild(dots);
     menu.appendChild(foot);
 
-    // ── 动态列数 → 每页容量 ──
-    // 不用 getBoundingClientRect（首次绘制前会量到 0 或陈旧值）。
-    // 用「本菜单能用多宽」反推：视口宽 - 两侧留白，再夹在合理区间内。
-    var navW = 22 * 2 + 8;                                   // 左右三角 + 间距
-    var menuMaxW = Math.min(560, Math.max(260, window.innerWidth - 48));
-    var avail = menuMaxW - 20 - navW;                        // 20 = 菜单左右 padding
-    var cols = Math.max(2, Math.floor(avail / MIN_CELL_W));
-    cols = Math.min(cols, 6);
-    grid.style.setProperty('--cols', cols);
+    // ── 列数交给 CSS auto-fit，JS 只负责“算容量”和“读回列数” ──
+    // 不再自己拿最小格宽去除容器宽度（那会把最小宽度当成格子宽度，
+    // 列数偏少、每格大量留白）。改成让浏览器按内容裁列，再读回真实列数。
+    var cols = readCols(grid);
+    if (!cols) {
+      // 首次绘制前量不到 → 先按保守值铺一页，rAF 里再校正
+      cols = FALLBACK_COLS;
+    }
 
     var perPage = cols * ROWS_PER_PAGE;
     var pages = Math.max(1, Math.ceil(entries.length / perPage));
     if (ctx.page >= pages) ctx.page = pages - 1;
 
-    // 让菜单宽度贴合实际列数（宽屏不空、窄屏不溢出）
-    menu.style.width = (20 + navW + cols * MIN_CELL_W) + 'px';
+    // 菜单宽度：auto-fit 的列宽是 1fr，得有确定宽度才有意义
+    menu.style.width = Math.min(window.innerWidth - 32, 560) + 'px';
     menu.style.maxWidth = (window.innerWidth - 32) + 'px';
 
     var slice = entries.slice(ctx.page * perPage, ctx.page * perPage + perPage);
@@ -408,39 +412,70 @@
       grid.appendChild(b);
     });
 
-    // 翻页状态
+    // 翻页键放在所有气泡下面；只有一页时不显示。
+    var prev = document.createElement('button');
+    prev.className = 'grid-nav';
+    prev.type = 'button';
+    prev.textContent = '◀';
+    prev.title = '上一页';
+
+    var next = document.createElement('button');
+    next.className = 'grid-nav';
+    next.type = 'button';
+    next.textContent = '▶';
+    next.title = '下一页';
+
     prev.disabled = ctx.page <= 0;
     next.disabled = ctx.page >= pages - 1;
     prev.addEventListener('click', function () { openCtx.page--; drawMenu(); });
     next.addEventListener('click', function () { openCtx.page++; drawMenu(); });
 
     if (pages > 1) {
-      for (var i = 0; i < pages; i++) {
-        var d = document.createElement('i');
-        if (i === ctx.page) d.className = 'on';
-        dots.appendChild(d);
-      }
-      var lbl = document.createElement('span');
-      lbl.textContent = (ctx.page + 1) + ' / ' + pages + '  ·  共 ' + entries.length + ' 项';
-      foot.appendChild(lbl);
-    } else {
-      var lbl2 = document.createElement('span');
-      lbl2.textContent = '共 ' + entries.length + ' 项';
-      foot.appendChild(lbl2);
+      foot.appendChild(prev);
+      var pageLbl = document.createElement('span');
+      pageLbl.className = 'grid-page';
+      pageLbl.textContent = (ctx.page + 1) + ' / ' + pages;
+      foot.appendChild(pageLbl);
+      foot.appendChild(next);
     }
 
-    // ── 贴边修正：菜单默认以槽位为中线居中，靠近屏幕边缘时会溢出 ──
+    // ── 定位：菜单挂在 body 上、position:fixed，按方框的视口坐标摆放 ──
     requestAnimationFrame(function () {
       if (!menu.parentElement) return;
-      menu.style.transform = 'none';
-      menu.style.left = '0px';
-      var mr = menu.getBoundingClientRect();
-      var wr = ctx.wrap.getBoundingClientRect();
-      var desired = wr.left + wr.width / 2 - mr.width / 2;
-      var left = Math.max(10, Math.min(desired, window.innerWidth - mr.width - 10));
-      // left 是相对 .slot-wrap（position:relative）的偏移
-      menu.style.left = (left - wr.left) + 'px';
+
+      // 布局完成 → 读回真实列数；和铺页时用的兜底值不一致就重排一次。
+      // 只重排一次，避免 rAF 里递归。
+      var real = readCols(grid);
+      if (real && real !== cols && !ctx._colsSynced) {
+        ctx._colsSynced = true;
+        drawMenu();
+        return;
+      }
+
+      positionMenu(menu, ctx.slotBtn);
     });
+  }
+
+  // 把菜单摆到方框正下方并水平居中；左右贴边、上下不够高时自动翻转。
+  // 菜单是 fixed，所以全部用视口坐标，不受祖先层叠/换行影响。
+  function positionMenu(menu, slotBtn) {
+    var GAP = 8;
+    var PAD = 10;
+    var sr = slotBtn.getBoundingClientRect();
+    var mr = menu.getBoundingClientRect();
+
+    var left = sr.left + sr.width / 2 - mr.width / 2;
+    left = Math.max(PAD, Math.min(left, window.innerWidth - mr.width - PAD));
+
+    var top = sr.bottom + GAP;
+    // 下方放不下就翻到方框上方；上方也放不下就贴着视口底边。
+    if (top + mr.height > window.innerHeight - PAD) {
+      var above = sr.top - GAP - mr.height;
+      top = (above >= PAD) ? above : Math.max(PAD, window.innerHeight - mr.height - PAD);
+    }
+
+    menu.style.left = left + 'px';
+    menu.style.top = top + 'px';
   }
 
   // 填进句子的显示形式：去掉 emoji（拼音交给 ruby 层处理；这里保留纯文字更干净）
@@ -476,28 +511,23 @@
       sent.className = 'drill-sentence';
       row.appendChild(sent);
 
-      var hint = document.createElement('span');
-      hint.className = 'drill-ready-hint';
-      hint.textContent = '（填完可点读）';
-      row.appendChild(hint);
-
       row.addEventListener('click', function (e) {
-        // 点槽位/输入框本身时不触发朗读
-        if (e.target.closest('.slot') || e.target.closest('input')) return;
+        // 点槽位/输入框本身时不触发朗读。
+        // 用 closest 且把 .slot-wrap 也算进来：槽位塌陷或事件落在
+        // 包装层上时，也不该把它当成「点整句朗读」。
+        if (e.target.closest('.slot') || e.target.closest('.slot-wrap') || e.target.closest('input')) return;
         if (!row.classList.contains('ready')) {
-          // 没填完：轻提示一下，不朗读
+          // 没填完：只抖一下，不朗读
           row.classList.remove('nudge');
           void row.offsetWidth;               // 重启动画
           row.classList.add('nudge');
-          hint.textContent = '先把空填完再点朗读';
-          setTimeout(refreshHint, 1400);
           return;
         }
         speak_(sent._readText || '');
       });
 
       card.appendChild(row);
-      lines.push({ el: sent, tmpl: line, row: row, hint: hint });
+      lines.push({ el: sent, tmpl: line, row: row });
     });
 
     host.appendChild(card);
@@ -507,17 +537,8 @@
       renderSentence(L.el, L.tmpl, cfg.scope, function (ready) {
         L.row.classList.toggle('ready', ready);
         L.row.classList.toggle('not-ready', !ready);
-        refreshHint();
       });
     });
-
-    function refreshHint() {
-      lines.forEach(function (L) {
-        L.hint.textContent = L.row.classList.contains('ready')
-          ? '🔊 点这句朗读'
-          : '（填完可点读）';
-      });
-    }
   }
 
   // ═══════════════════════════════════════════════════════════════
@@ -634,8 +655,15 @@
       if (e.target.closest && (e.target.closest('.grid-menu') || e.target.closest('.slot'))) return;
       closeMenu();
     });
-    document.addEventListener('scroll', hideTip, true);
-    window.addEventListener('resize', function () { if (openCtx) drawMenu(); });
+    // 菜单是 fixed 的，页面一滚它就会和方框脱开 —— 直接关掉，别让它悬在半空。
+    document.addEventListener('scroll', function () { closeMenu(); }, true);
+    window.addEventListener('resize', function () {
+      if (!openCtx) return;
+      // 尺寸变了列数可能变，重排一次再按新方框位置摆好。
+      openCtx._colsSynced = false;
+      drawMenu();
+      positionMenu(openCtx.menu, openCtx.slotBtn);
+    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);

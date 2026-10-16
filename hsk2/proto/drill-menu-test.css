@@ -57,31 +57,47 @@ body {
   box-shadow: 0 4px 16px rgba(157,23,77,.06);
 }
 .drill-sentence {
-  font-size: 1.45rem; line-height: 2.3; text-align: center; color: var(--text);
+  font-size: 1.45rem; line-height: 2.2; text-align: center; color: var(--text);
 }
 /* 每句一块，块内就是可点的句子本身 */
 .drill-sent-item:last-child { border-bottom: none !important; }
 .drill-sent-item .drill-sentence { text-align: left; }
-.drill-sentence ruby rt { font-size: .5em; }
-.drill-sentence .stat { display: inline; }
-/* 句子里已填入的词也带拼音 */
-.slot ruby rt {
-  font-size: .5em;
-  color: #3c7a54;
-  font-weight: 400;
+/* 拼音紧贴在字上方，跟 hsk2 主站 app.css 的 ruby 规则保持一致 */
+.drill-sentence ruby { ruby-position: over; ruby-align: center; }
+.drill-sentence ruby rt {
+  font-size: .45em;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #a8639a;
+  padding: 0 1px;
 }
+.drill-sentence .stat { display: inline; }
+/* 槽位里填进去的词也走原生 ruby，保证和整行的拼音在同一水平线上 */
+.slot { ruby-position: over; }
+.slot ruby rt { color: #3c7a54; font-weight: 400; }
 
 /* ── 槽位（分类填空） ─────────────────────────────── */
-.slot-wrap { position: relative; display: inline-block; }
+/* wrap 只是个定位锚点；对齐交给 .slot 自己的 vertical-align。 */
+.slot-wrap {
+  position: relative; display: inline-block; vertical-align: baseline;
+}
 .slot {
   display: inline-block; min-width: 3.6em; margin: 0 3px; padding: 0 10px;
   border: none; border-bottom: 4px solid var(--mid); background: var(--light);
   border-radius: 8px 8px 0 0; color: var(--text); font-size: inherit;
   font-family: inherit; font-weight: 500; line-height: 1.4; cursor: pointer;
-  transition: .15s; vertical-align: baseline;
+  transition: .15s;
+  /* 和整行汉字按基线对齐；填入后原生 ruby 会把拼音画在字上方 */
+  vertical-align: baseline;
+  /* 空槽位没有文字撑高，得自己给一个和汉字行一样高的盒子，
+     否则整个按钮塌成 4px 的底边，点不到。 */
+  min-height: 1.4em;
+  /* 高于整行的「点我朗读」热区，否则点不到 */
+  position: relative; z-index: 2;
 }
 .slot:hover { background: #FBE3F0; }
-.slot.slot-empty::after { content: attr(data-ph); font-size: .6em; color: #b9a6bd; }
+/* 空槽位不显示任何文字（含类别名占位） */
+.slot.slot-empty::after { content: ''; }
 .slot.filled { background: #ddf0e2; border-bottom-color: #1f6e3f; }
 .slot.active-slot { outline: 3px solid var(--accent); outline-offset: 2px; background: #fff; }
 
@@ -114,23 +130,21 @@ body {
 .drill-sent-item:hover {
   background: color-mix(in srgb, var(--light) 55%, var(--mid) 45%);
 }
-/* 还没填完 → 不可读，视觉弱化 */
+/* 还没填完 → 不可读。整行仍然可点（点了只抖一下），
+   所以不拦鼠标事件；只是视觉弱化，且热区不能压住方框。 */
 .drill-sent-item.not-ready {
-  cursor: not-allowed;
+  cursor: pointer;
   background: transparent;
   border-color: #efe3ec;
 }
 .drill-sent-item.not-ready:hover { background: transparent; }
-.drill-sent-item.not-ready .drill-sentence { opacity: .72; }
+/* 方框必须盖在整行热区之上，否则点不到 */
+.drill-sent-item .slot-wrap,
+.drill-sent-item .field {
+  position: relative; z-index: 2;
+}
 /* 可读时给个轻微提示 */
 .drill-sent-item.ready { border-color: var(--mid); }
-.drill-ready-hint {
-  display: inline-block;
-  font-size: .72rem;
-  color: #a8639a;
-  margin-left: 8px;
-  vertical-align: middle;
-}
 @keyframes drillNudge {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-4px); }
@@ -139,13 +153,18 @@ body {
 .drill-sent-item.nudge { animation: drillNudge .3s ease; }
 
 /* ── 气泡网格菜单 ─────────────────────────────────── */
+/* 实心浮层，挂在 <body> 上、position:fixed，坐标由 JS 按方框位置写。
+   不放在 .slot-wrap 里是因为那个祖先没有 z-index，菜单会被后面的句子盖住。 */
 .grid-menu {
-  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-  z-index: 50; margin-top: 8px; background: #fff;
-  border: 1px solid var(--mid); border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  position: fixed; left: 0; top: 0;
+  z-index: 500;
+  margin-top: 0;
+  background: #fff;
+  border: 1px solid var(--mid);
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(157,23,77,.22);
   padding: 10px; text-align: center;
-  /* 宽度由 JS 按列数写入；这里只兜底不越界 */
+  /* 宽度由 JS 写入；这里只兜底不越界 */
   max-width: calc(100vw - 32px);
 }
 .grid-menu-head {
@@ -181,13 +200,15 @@ body {
 .grid-nav:hover:not(:disabled) { background: var(--light); }
 .grid-nav:disabled { opacity: .18; cursor: default; }
 
-/* 网格本体：列数由 JS 按容器宽度写入 --cols，行数固定 2 行 */
+/* 网格本体的底：淡色，让白色气泡在面板里也能看出边界 */
 .grid {
   display: grid;
-  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
-  grid-auto-rows: minmax(0, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
   gap: 6px;
   width: 100%;
+  background: var(--light);
+  border-radius: 11px;
+  padding: 6px;
 }
 .grid .bubble {
   border: 1px solid var(--mid); background: #fff; border-radius: 11px;
@@ -196,6 +217,7 @@ body {
   display: flex; align-items: center; justify-content: center;
   line-height: 1.1; overflow: hidden;
   font-size: 1rem;
+  box-shadow: 0 1px 2px rgba(157,23,77,.10);
 }
 .grid .bubble:hover { background: var(--light); transform: scale(.95); }
 /* 拼音直接标在字上面：ruby + rt */
@@ -222,12 +244,7 @@ body {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   margin-top: 9px; font-size: .74rem; color: var(--ink);
 }
-.grid-dots { display: flex; gap: 5px; }
-.grid-dots i {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--mid); display: block;
-}
-.grid-dots i.on { background: var(--accent); }
+.grid-page { color: var(--accent); font-weight: 700; letter-spacing: .04em; }
 
 /* ── hover 英文提示（自绘，避免 title 延迟） ───────── */
 .hover-tip {

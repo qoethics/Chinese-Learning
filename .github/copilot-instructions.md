@@ -155,6 +155,79 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 再一次性把 hsk2 的 `app.js` 同步给 hsk1**，不要边做边同步。
 同步时要验证 hsk1 仍正常：hsk1 有 11 个点用 `note`、且**没有** `subs[]`，走的是老分支。
 
+## Ruby 拼音显示 SOP（所有模块/新页面一律照此执行）
+
+拼音显示是本仓库**最容易反复踩坑**的地方（原型里为它返工过 5+ 轮）。新写任何带拼音的
+模块前，先读这一节，不要自己另发明一套。
+
+### 唯一正确方案：交还给浏览器原生 ruby
+
+```css
+ruby { ruby-position: over; ruby-align: center; }
+ruby rt {
+  font-size: 0.45em;      /* 主站正文用 0.55em，卡片/例句用 0.5em；按上下文选 */
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 0 1px;
+}
+```
+
+`ruby-position: over` 让 `rt` 由浏览器贴在汉字正上方，行高、基线和标点位置全部自动算对。
+
+### ⛔ 禁止：用 flex 自绘「拼音在上」
+
+```css
+/* 绝对不要这样写 */
+ruby { display: inline-flex; flex-direction: column-reverse; align-items: center; }
+rt   { margin-bottom: 1px; }
+```
+
+`column-reverse` 会把 ruby 变成一个比汉字行**高得多**的 flex 盒子。后果是连环的：
+
+1. **标点漂到拼音那一行** —— 后面的 `。`/`？` 按 flex 盒底部对齐，视觉上落在拼音行。
+2. **槽位/输入框跟原句对不齐** —— 行内各元素的基线不再一致，怎么调 `vertical-align` 都补不回来。
+3. **拼音离字太远** —— 得靠 `margin-bottom` 手动往回拉，越调越乱。
+
+这些问题**无法通过微调数值修好**，因为根因是丢掉了原生的 ruby 布局算法。
+原型为此返工多轮（试过 `inline-block`、`vertical-align: bottom`、固定 `min-height`…全都没用），
+最后改回原生 ruby 一次解决。**看到「标点跑到拼音行」「拼音太高/太远」「槽位对不齐」，
+第一反应就应该是检查有没有人加了 flex 自绘 ruby，然后删掉它。**
+
+### 生成 HTML 的契约
+
+拼音字符串必须**逐字**注入，且**只有中日韩字符**包 `<ruby>`：
+
+```js
+const HAN = /[\u3400-\u9fff\uf900-\ufaff]/;
+// pinyinPro.pinyin(text, {type:'array'}) 返回数组，长度 === text.length
+for (let i = 0; i < text.length; i++) {
+  const ch = text[i];
+  if (!HAN.test(ch)) { out += esc(ch); continue; }   // emoji / 拉丁 / 标点原样透传
+  out += `<ruby>${esc(ch)}<rt>${esc(arr[i] || '')}</rt></ruby>`;
+}
+```
+
+- **长度相等是硬契约**：`pinyin(text, {type:'array'}).length === text.length`。
+  不相等时必须整体退化为无拼音（`return esc(text)`），不要硬拼，否则空 `<rt>` 会错位。
+- **非汉字绝不包 `<ruby>`**：emoji（`网球 🎾`）、拉丁词（`Netflix`）原样透传，
+  否则会出现空 `<rt>`，把整行撑歪。
+- 主站还应给 `rt` 加 `class="tone-N"`（1 红 / 2 橙 / 3 绿 / 4 蓝 / 5 灰），见 `hsk2/css/app.css`。
+- 复用现成函数：主站用 `rubyHtml()` / `perCharPinyin()`（`hsk2/js/app.js`），不要另写一份。
+
+### 读文本时必须剔除注音
+
+任何从含 ruby 的 DOM 读文字的地方，都用 `wordOf()` / `hanziOf()`，
+**不要用 `.textContent`** —— 否则拼音会被当成正文读进结果（朗读、判分、复制全会错）。
+见「已知陷阱」第 1 条。
+
+### 顺手检查清单（新模块加完拼音后过一遍）
+
+- [ ] CSS 里**没有** `flex-direction: column-reverse` 配在 `ruby` 上
+- [ ] 汉字上方有拼音，且**只有汉字**有；emoji / 拉丁词上方是空的但不塌陷
+- [ ] 句末标点（`。？！`）跟汉字在同一行，不在拼音行
+- [ ] 句子里若有填空/输入框，其文字和拼音与前后静态文字**同一基线、同一拼音高度**
+- [ ] 字号：正文 `0.55em`，例句/卡片 `0.5em`，大号标题按比例调小
+
 ## 已知陷阱
 1. 任何 .textContent 读取都必须排除 ruby 注音 —— 用 wordOf()/hanziOf()，不要直接 textContent。
 2. 不要在嵌套作用域里用 py 命名局部变量（会遮蔽全局 pinyin-pro），用 syllable/pyBtn/pyLine。
