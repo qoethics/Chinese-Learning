@@ -421,8 +421,21 @@
   // =====================================================================
   // Speech
   // =====================================================================
+  const READ_RATES = [{ rate: 1, label: '1x' }, { rate: 0.75, label: '0.75x' }, { rate: 0.5, label: '0.5x' }];
+  const READ_RATE_KEY = 'hsk.readrate.v1';
+  function loadReadRate(){
+    try {
+      const r = parseFloat(localStorage.getItem(READ_RATE_KEY));
+      if (READ_RATES.some(x => x.rate === r)) return r;
+    } catch (e) { /* storage unavailable — keep the default */ }
+    return 0.85;
+  }
+  function saveReadRate(r){
+    try { localStorage.setItem(READ_RATE_KEY, String(r)); } catch (e) { /* ignore */ }
+  }
   let speakTimeout = null;
-  function speak(text, cb){
+  let speakRate = loadReadRate();  // spoken speed; the shared read toolbar's 0.5x–1x slow presets drive this
+  function speak(text, cb, rate){
     if (muted){ if (cb) cb(); return; }
     if (!window.speechSynthesis){ if (cb) cb(); return; }
     window.speechSynthesis.cancel();
@@ -430,7 +443,7 @@
     speakTimeout = setTimeout(()=>{
       if (muted){ if (cb) cb(); return; }
       const u = new SpeechSynthesisUtterance(text);
-      u.lang='zh-CN'; u.rate=0.85; u.pitch=1;
+      u.lang='zh-CN'; u.rate=rate || speakRate; u.pitch=1;
       u.onend=()=>{ if(cb) cb(); };
       u.onerror=()=>{ if(cb) cb(); };
       window.speechSynthesis.speak(u);
@@ -526,12 +539,15 @@
   let muted=false;
   let showPicEnglish=false;    // Picture mode: show the English line by default
   let kaitiMode=false;         // Kaiti font toggle — whole page switches to 楷体 (default OFF)
+  const CONTENT_ZOOMS = [0.8, 0.9, 1, 1.1, 1.2, 1.3];
   let contentZoomIdx=2;        // 0..5 → 0.8× … 1.3× zoom of the practice area (default 1×)
   let readRepeat=1;            // sentence-list read-aloud: times per sentence (1..5)
   let readTimer=null;
   let readActive=false;
   let readPaused=false;
   let readIndex=0;
+  let readItemRep=0;           // repeats already spoken for readList[readIndex]
+  let readShadow=false;        // shadowing: after each read, stay silent for the same duration
   let readList=[];             // texts to read in display order (word or sentence list)
   let accumulative=false;
   let subMode='all';
@@ -645,6 +661,25 @@
   const hamburgerBtn = $('hamburgerBtn');
   const sidebar = $('sidebar');
   const sidebarOverlay = $('sidebarOverlay');
+  const navBar = $('navBar');
+  const settingsBtn = $('settingsBtn');
+  const settingsSidebar = $('settingsSidebar');
+  const settingsOverlay = $('settingsOverlay');
+  const fontSizeValue = $('fontSizeValue');
+  const startModeSeg = $('startModeSeg');
+  const rememberLastToggle = $('rememberLastToggle');
+  const settingsResetBtn = $('settingsResetBtn');
+  const settingsNote = $('settingsNote');
+
+  // Welcome screen: choosing a lesson (or opening Settings — which lives behind
+  // it visually) dismisses it.
+  let welcomeDismissed = false;
+  function dismissWelcome(){
+    if (welcomeDismissed) return;
+    welcomeDismissed = true;
+    const w = $('welcomeOverlay');
+    if (w){ w.classList.add('hidden'); setTimeout(() => w.remove(), 450); }
+  }
 
   // =====================================================================
   // Sidebar
@@ -664,6 +699,7 @@
     });
   }
   function openSidebar(){
+    closeSettings();
     sidebar.classList.add('open');
     sidebarOverlay.classList.add('open');
     hamburgerBtn.classList.add('open');
@@ -677,6 +713,101 @@
     if (sidebar.classList.contains('open')) closeSidebar(); else openSidebar();
   });
   sidebarOverlay.addEventListener('click', closeSidebar);
+
+  // ---- Settings drawer (right side) ----
+  const SETTINGS_KEY = 'hsk.settings.v1';
+  const LAST_KEY = 'hsk.last.v1';
+  const DEFAULT_SETTINGS = { kaiti: false, latin: false, zoomIdx: 2, startMode: 'study', rememberLast: true };
+  const state = Object.assign({}, DEFAULT_SETTINGS);
+  function loadSettings(){
+    try { return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || {}; }
+    catch (e) { return {}; }
+  }
+  function saveSettings(patch){
+    Object.assign(state, patch);
+    try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(state)); }
+    catch (e) { /* private mode / storage full — keep settings in memory only */ }
+  }
+  function loadLast(){
+    try { return JSON.parse(localStorage.getItem(LAST_KEY)) || null; }
+    catch (e) { return null; }
+  }
+  function persistLast(){
+    try {
+      localStorage.setItem(LAST_KEY, JSON.stringify({
+        lesson: currentLesson,
+        mode: isStudyMode() ? 'study' : 'game',
+        studyTab: studyTab,
+        gameMode: lastGameMode
+      }));
+    } catch (e) { /* ignore */ }
+  }
+  function isStudyMode(){
+    return currentMode === 'wordflash' || currentMode === 'sentflash' || currentMode === 'texts' || currentMode === 'grammar' || currentMode === 'topics';
+  }
+  function syncStartModeSeg(){
+    startModeSeg.querySelectorAll('button').forEach(b => {
+      b.classList.toggle('active', b.dataset.start === state.startMode);
+    });
+  }
+  function flashNote(msg){
+    if (!settingsNote) return;
+    settingsNote.textContent = msg;
+    settingsNote.classList.add('show');
+    clearTimeout(flashNote.timer);
+    flashNote.timer = setTimeout(() => settingsNote.classList.remove('show'), 1800);
+  }
+  startModeSeg.addEventListener('click', e => {
+    const btn = e.target.closest('button[data-start]');
+    if (!btn) return;
+    state.startMode = btn.dataset.start;
+    saveSettings({ startMode: state.startMode });
+    syncStartModeSeg();
+  });
+  rememberLastToggle.addEventListener('change', e => {
+    state.rememberLast = e.target.checked;
+    saveSettings({ rememberLast: state.rememberLast });
+  });
+  settingsResetBtn.addEventListener('click', () => {
+    try { localStorage.removeItem(SETTINGS_KEY); localStorage.removeItem(LAST_KEY); } catch (e) { /* ignore */ }
+    Object.assign(state, DEFAULT_SETTINGS);
+    kaitiMode = false;
+    document.body.classList.remove('kaiti', 'latin-serif');
+    kaitiToggle.checked = false;
+    latinFontToggle.checked = false;
+    contentZoomIdx = DEFAULT_SETTINGS.zoomIdx;
+    applyContentZoom();
+    rememberLastToggle.checked = DEFAULT_SETTINGS.rememberLast;
+    syncStartModeSeg();
+    flashNote('✓ Defaults restored');
+  });
+  function openSettings(){
+    dismissWelcome();
+    closeSidebar();
+    settingsSidebar.classList.add('open');
+    settingsOverlay.classList.add('open');
+    settingsBtn.classList.add('open');
+  }
+  function closeSettings(){
+    settingsSidebar.classList.remove('open');
+    settingsOverlay.classList.remove('open');
+    settingsBtn.classList.remove('open');
+  }
+  function toggleSettings(){
+    if (settingsSidebar.classList.contains('open')) closeSettings(); else openSettings();
+  }
+  const saved = loadSettings();
+  if (Number.isInteger(saved.zoomIdx)) contentZoomIdx = Math.min(Math.max(saved.zoomIdx, 0), CONTENT_ZOOMS.length - 1);
+  state.kaiti = kaitiToggle.checked = !!saved.kaiti;
+  state.latin = latinFontToggle.checked = !!saved.latin;
+  state.zoomIdx = contentZoomIdx;
+  state.startMode = saved.startMode === 'game' ? 'game' : 'study';
+  state.rememberLast = saved.rememberLast !== false;
+  rememberLastToggle.checked = state.rememberLast;
+  syncStartModeSeg();
+  kaitiMode = kaitiToggle.checked;
+  document.body.classList.toggle('kaiti', kaitiMode);
+  document.body.classList.toggle('latin-serif', latinFontToggle.checked);
 
   // =====================================================================
   // Theme
@@ -1340,7 +1471,10 @@
   function render(){
     // In sentence-list mode the question area is empty — hide it (no blank row).
     questionArea.style.display = ((currentMode === 'sentflash' && listMode) || currentMode === 'grammar' || currentMode === 'topics') ? 'none' : '';
-    if (readActive && !(listMode && (currentMode === 'sentflash' || currentMode === 'wordflash'))) stopSentenceRead();
+    // Read-active lists are word/sentence lists, Texts (words in reading order),
+    // Grammar and Topics.
+    const canRead = listMode && (currentMode === 'sentflash' || currentMode === 'wordflash');
+    if (readActive && !canRead && currentMode !== 'grammar' && currentMode !== 'topics') stopSentenceRead();
     renderPickButtons();
     renderStudyTabBar();
     renderSubModeBar();
@@ -1364,6 +1498,7 @@
     updateCounter();
     updateScore();
     updateMenuStack();
+    updateNavBar();
   }
 
   function getCurrentItem(arr){
@@ -1799,6 +1934,8 @@
 
   function renderGrammar(){
     showAutoSpeak();
+    // Grammar reads sentence-by-sentence with the shared read toolbar.
+    readList = [];
     if (lessonGrammar.length === 0){
       questionArea.style.display = '';
       questionArea.innerHTML = '<div style="font-size:1rem;color:#6b6154;">No grammar notes for this lesson yet.</div>';
@@ -1864,13 +2001,33 @@
     // A sentence is "extended" when it needs vocabulary beyond this lesson's Core
     // words plus the Core words of earlier lessons — see sentenceClassifier().
     const isExtended = sentenceClassifier(currentLesson);
+    // Class of the sentence's newest (rarest) word — the category whose highlight
+    // toggle governs whether the sentence is shown.
+    const lastWordClass = cn => {
+      if (!cn) return null;
+      let cat = null;
+      for (let i = 0; i < cn.length;){
+        const ch = cn[i];
+        if (!/[\u3400-\u9fff\uf900-\ufaff]/.test(ch)){ i++; continue; }
+        let hit = null;
+        for (let len = Math.min(6, cn.length - i); len > 0; len--){
+          const sub = cn.slice(i, i + len);
+          if (allWords.has(sub)){ hit = sub; break; }
+        }
+        if (!hit) hit = ch;
+        const c = classifyWord(hit);
+        if (c) cat = c;
+        i += hit.length;
+      }
+      return cat;
+    };
 
     // The province block always leads the grammar section list.
     const orderedGrammar = lessonGrammar
       .map((g, gi) => ({ g, gi }))
       .sort((a, b) => (a.g.id === 'shengfen' ? 0 : 1) - (b.g.id === 'shengfen' ? 0 : 1));
 
-    let html = '<div class="grammar-list">';
+    let html = readMenuHtml() + '<div class="grammar-list">';
     let shownSections = 0, shownItems = 0;
     orderedGrammar.forEach(({ g, gi }) => {
       const items = g.items.slice()
@@ -1912,8 +2069,17 @@
           <span class="grammar-count">${items.length}</span>
           </span>
         </button>
-        <div class="grammar-body${open ? '' : ' collapsed'}" data-gid="${escapeHtml(g.id || '')}">`;
+        <div class="grammar-body${bodyOpen ? '' : ' collapsed'}" data-gid="${escapeHtml(g.id || '')}">
+          <div class="grammar-body-inner">`;
       if (g.note) html += `<div class="grammar-intro">${rubyHtml(g.note)}</div>`;
+      // Expanded sections are read sentence-by-sentence. Collapsed sections are
+      // read only when turning a highlight category off renders their sentences
+      // inline (grammar-body-inner:has(...) reveals them), since hidden rows can't
+      // be shadowed on screen.
+      const hlHiddenCount = items.filter(it => { const c = lastWordClass(it.c); return c && !showHl[c]; }).length;
+      const bodyOpen = open || (!items.length || hlHiddenCount !== items.length);
+      const readable = bodyOpen ? items : [];
+      readable.forEach(it => { if (readList.indexOf(it.c) < 0) readList.push(it.c); });
       groups.forEach(gr => {
         // sub / exp may contain Chinese (e.g. "还 1 · 状态持续"); ruby-annotate the
         // Han characters so the usage labels read with pinyin too.
@@ -1924,16 +2090,19 @@
           const cn = it.py && showListPinyin
             ? rubyFromPy(it.c, it.py)
             : renderSentence(it.c);
-          html += `<div class="grammar-item${it.ext ? ' ext' : ''}" data-read="${escapeHtml(it.c)}">
+          const ri = readable.indexOf(it);
+          const hiddenCat = lastWordClass(it.c);
+          const hidden = hiddenCat && !showHl[hiddenCat];
+          html += `<div class="grammar-item${it.ext ? ' ext' : ''}${hidden ? ' hl-hidden' : ''}" data-read="${escapeHtml(it.c)}"${ri >= 0 ? ` data-ri="${ri}"` : ''}>
             <span class="grammar-cn">${cn}</span>
             ${en ? `<span class="grammar-en">${escapeHtml(en)}</span>` : ''}
           </div>`;
         });
       });
-      html += '</div></div>';
+      html += '</div></div></div>';
     });
     html += '</div>';
-    flashContainer.innerHTML = html;
+    flashContainer.innerHTML = readMenuHtml() + html;
 
     wordMap = savedMap;
 
@@ -1948,6 +2117,7 @@
         if (gid){ if (nowCollapsed) grammarOpen.delete(gid); else grammarOpen.add(gid); }
       });
     });
+    bindReadMenu();
     // Click a sentence to read the whole sentence aloud.
     flashContainer.querySelectorAll('.grammar-item').forEach(item => {
       item.addEventListener('click', function(){ speakChinese(this.dataset.read); });
@@ -2004,6 +2174,7 @@
       return i >= 0 ? LESSONS[i].name : ('L' + id);
     };
 
+    readList = [];
     let html = '<div class="grammar-list topics-list">';
     let shownRows = 0;
     topics.forEach(t => {
@@ -2025,7 +2196,9 @@
       }
       (t.rows || []).forEach(r => {
         shownRows++;
-        html += `<div class="topic-row" data-read="${escapeHtml(r.cn || '')}">
+        const ri = readList.indexOf(r.cn || '');
+        if (ri < 0) readList.push(r.cn || '');
+        html += `<div class="topic-row" data-read="${escapeHtml(r.cn || '')}" data-ri="${ri < 0 ? readList.length - 1 : ri}">
           <span class="topic-label">${rubyHtml(r.label || '')}</span>
           <span class="grammar-cn">${rubyHtml(r.cn || '')}</span>
           <span class="grammar-en">${escapeHtml(r.en || '')}</span>
@@ -2034,10 +2207,11 @@
       html += '</div></div>';
     });
     html += '</div>';
-    flashContainer.innerHTML = html;
+    flashContainer.innerHTML = readMenuHtml() + html;
 
     wordMap = savedMap;
 
+    bindReadMenu();
     flashContainer.querySelectorAll('.topic-head').forEach(head => {
       head.addEventListener('click', function(){
         const body = this.parentElement.querySelector('.grammar-body');
@@ -2069,17 +2243,46 @@
     statusBadge.textContent = `\ud83d\udd17 Topics \u00b7 ${topics.length} topics \u00b7 ${shownRows} comparisons`;
   }
 
-  // ---- Read menu (shared by word list & sentence list) ----
+  // ---- Shared read toolbar (word list / sentence list / grammar / topics) ----
+  // One control strip drives every list style: slow speeds, repeats per sentence,
+  // and shadowing (read once, wait the same duration, read again).
   function readMenuHtml(){
     const playing = readActive && !readPaused;
+    const rateBtn = r =>
+      `<button class="${r.rate === speakRate ? 'active' : ''}" data-rate="${r.rate}">${r.label}</button>`;
     return `
       <div class="sentence-read-menu">
         <button id="sentenceReadBtn" class="${readActive ? 'reading' : ''}">${playing ? '🔊 Reading…' : readActive ? '▶ Resume' : '🔊 Read'}</button>
         <button id="sentencePauseBtn" ${playing ? '' : 'disabled'}>⏸ Pause</button>
-        <div class="read-repeat" id="readRepeatBar">
+        <div class="read-speed" id="readSpeedBar" title="Speed">
+          <span class="read-ctl-label">🐢 Speed</span>
+          ${READ_RATES.map(rateBtn).join('')}
+        </div>
+        <div class="read-repeat" id="readRepeatBar" title="Reads per sentence">
+          <span class="read-ctl-label">🔁</span>
           ${[1,2,3,4,5].map(r => `<button class="${readRepeat === r ? 'active' : ''}" data-r="${r}">${r}x</button>`).join('')}
         </div>
+        <button id="shadowToggle" class="shadow-toggle ${readShadow ? 'on' : ''}" title="Read once, then stay silent for the same time so you can shadow">🫧 Shadow</button>
       </div>`;
+  }
+  function applyReadRate(rate){
+    speakRate = rate;
+    saveReadRate(rate);
+    document.querySelectorAll('#readSpeedBar [data-rate]').forEach(b => {
+      b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+    });
+  }
+  // Changing a read setting mid-play restarts the loop from the current item so
+  // the new setting takes effect immediately.
+  function restartSentenceRead(){
+    if (!readActive) return;
+    if (readTimer){ clearTimeout(readTimer); readTimer = null; }
+    if (speakTimeout){ clearTimeout(speakTimeout); speakTimeout = null; }
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    readPaused = false;
+    readItemRep = 0;
+    updateReadButtons();
+    sentenceReadNext();
   }
   function bindReadMenu(){
     const rb = $('sentenceReadBtn');
@@ -2090,26 +2293,62 @@
     });
     const pb = $('sentencePauseBtn');
     if (pb) pb.addEventListener('click', pauseSentenceRead);
+    const sb = $('readSpeedBar');
+    if (sb){
+      sb.querySelectorAll('button[data-rate]').forEach(b => {
+        b.addEventListener('click', () => {
+          applyReadRate(parseFloat(b.dataset.rate));
+          restartSentenceRead();
+        });
+      });
+    }
     const rrb = $('readRepeatBar');
     if (rrb){
       rrb.querySelectorAll('button').forEach(b => {
         b.addEventListener('click', () => {
           readRepeat = parseInt(b.dataset.r, 10) || 1;
+          readItemRep = 0;
           rrb.querySelectorAll('button').forEach(x => x.classList.toggle('active', x === b));
+          restartSentenceRead();
         });
       });
     }
+    const sh = $('shadowToggle');
+    if (sh){
+      sh.addEventListener('click', () => {
+        readShadow = !readShadow;
+        sh.classList.toggle('on', readShadow);
+        restartSentenceRead();
+      });
+    }
+  }
+  // Resolve the DOM rows for readList[i] in whichever list style is on screen.
+  function readRowSelector(i){
+    return '.sentence-list-item[data-i="' + i + '"], .word-list-item[data-i="' + i + '"]'
+      + ', .grammar-item[data-ri="' + i + '"], .topic-row[data-ri="' + i + '"]';
+  }
+  function markReadRow(i, shadow){
+    document.querySelectorAll('.sentence-list-item.reading, .word-list-item.reading, .grammar-item.reading, .topic-row.reading')
+      .forEach(el => el.classList.remove('reading', 'shadowing'));
+    const el = document.querySelector(readRowSelector(i));
+    if (!el) return;
+    el.classList.add(shadow ? 'shadowing' : 'reading');
+    el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
 
   // Read-aloud: read each item in readList readRepeat times, in display order.
+  // Shadowing wraps every single read: after the voice stops, the row waits
+  // silently for the same duration before the next read starts.
   function stopSentenceRead(){
     readActive = false;
     readPaused = false;
+    readItemRep = 0;
     if (readTimer){ clearTimeout(readTimer); readTimer = null; }
     if (speakTimeout){ clearTimeout(speakTimeout); speakTimeout = null; }
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     updateReadButtons();
-    document.querySelectorAll('.sentence-list-item.reading, .word-list-item.reading').forEach(el => el.classList.remove('reading'));
+    document.querySelectorAll('.sentence-list-item.reading, .word-list-item.reading, .grammar-item.reading, .topic-row.reading, .shadowing')
+      .forEach(el => el.classList.remove('reading', 'shadowing'));
   }
   function pauseSentenceRead(){
     if (!readActive || readPaused) return;
@@ -2131,8 +2370,10 @@
     if (typeof fromIndex === 'number'){
       if (fromIndex < 0 || fromIndex >= readList.length) return;
       readIndex = fromIndex;
+      readItemRep = 0;
     } else if (!readActive){
       readIndex = 0;
+      readItemRep = 0;
     }
     readActive = true;
     readPaused = false;
@@ -2153,18 +2394,33 @@
     if (!readActive || readPaused) return;
     if (readIndex >= readList.length){ stopSentenceRead(); return; }
     const txt = readList[readIndex];
-    let n = 0;
     const step = () => {
       if (!readActive || readPaused) return;
-      document.querySelectorAll('.sentence-list-item.reading, .word-list-item.reading').forEach(el => el.classList.remove('reading'));
-      const el = document.querySelector('.sentence-list-item[data-i="' + readIndex + '"]') || document.querySelector('.word-list-item[data-i="' + readIndex + '"]');
-      if (el){ el.classList.add('reading'); el.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
-      speak(txt, () => {
-        if (!readActive || readPaused) return;
-        n++;
-        if (n < readRepeat) readTimer = setTimeout(step, 700);
-        else { readIndex++; readTimer = setTimeout(sentenceReadNext, 1000); }
-      });
+      markReadRow(readIndex, false);
+      // The gap counts from the *end* of speech, so shadowing gives exactly
+      // the same speaking time to repeat aloud.
+      let startedAt = 0, finished = false;
+      const done = () => {
+        if (finished || !readActive || readPaused) return;
+        finished = true;
+        clearTimeout(watchdog);
+        const gap = readShadow ? Math.max(400, performance.now() - startedAt) : (readItemRep + 1 < readRepeat ? 700 : 1000);
+        if (readShadow) markReadRow(readIndex, true);
+        readItemRep++;
+        if (readItemRep < readRepeat){
+          readTimer = setTimeout(step, gap);
+        } else {
+          readIndex++;
+          readItemRep = 0;
+          readTimer = setTimeout(sentenceReadNext, readShadow ? gap : 1000);
+        }
+      };
+      // Fallback in case this engine never fires onend (long utterances on some
+      // platforms): assume ~4 chars/second at 1x and then close the gap.
+      const est = Math.max(1500, txt.length * 250 / speakRate);
+      const watchdog = setTimeout(done, est + 400);
+      startedAt = performance.now();
+      speak(txt, done, speakRate);
     };
     step();
   }
@@ -2742,6 +2998,31 @@
     messageArea.textContent = '⏮ Back to first';
   }
 
+  function previousQuestion(){
+    clearAutoAdvance();
+    if (currentMode === 'memory'){
+      memoryCards = [];
+      memoryFlipped = [];
+      memoryMatched = [];
+      memoryLock = false;
+      render();
+      return;
+    }
+    if (currentMode === 'mole') return;
+    if (currentIndex > 0) currentIndex--;
+    resetCurrentQuestion();
+    messageArea.className = 'message info-msg';
+    messageArea.textContent = '← Previous';
+  }
+
+  // The nav bar sits under the content area and is only useful where there is a
+  // question counter: games, plus the Word/Sentence card views.
+  function updateNavBar(){
+    const cards = currentMode === 'wordflash' || currentMode === 'sentflash';
+    const show = !isStudyMode() || (cards && !listMode);
+    navBar.classList.toggle('hidden', !show);
+  }
+
   function updateCounter(){
     if (isListModeActive()){
       const n = currentMode === 'wordflash' ? flashItems.length : (currentMode === 'texts' ? lessonTexts.length : (currentMode === 'grammar' ? grammarTotal() : (currentMode === 'topics' ? (window.GRAMMAR_TOPICS || []).length : phrases.length)));
@@ -2824,6 +3105,7 @@
     reseedFillBlank();
     render();
     updateScore();
+    persistLast();
   }
 
   function setLesson(lesson){
@@ -2855,6 +3137,7 @@
     updateScore();
     messageArea.className = 'message info-msg';
     messageArea.textContent = `Loaded ${getLessonData(lesson, accumulative).name}`;
+    persistLast();
   }
 
   // =====================================================================
@@ -3067,26 +3350,35 @@
   kaitiToggle.addEventListener('change', e => {
     kaitiMode = e.target.checked;
     document.body.classList.toggle('kaiti', kaitiMode);
+    saveSettings({ kaiti: kaitiMode });
   });
 
   latinFontToggle.addEventListener('change', e => {
     document.body.classList.toggle('latin-serif', e.target.checked);
+    saveSettings({ latin: e.target.checked });
   });
 
   // Content font-size control — zooms only the practice area (#sentenceBox).
-  const CONTENT_ZOOMS = [0.8, 0.9, 1, 1.1, 1.2, 1.3];
   function applyContentZoom(){
-    sentenceBox.style.zoom = String(CONTENT_ZOOMS[contentZoomIdx]);
+    const zoom = CONTENT_ZOOMS[contentZoomIdx];
+    sentenceBox.style.zoom = String(zoom);
+    if (fontSizeValue) fontSizeValue.textContent = zoom.toFixed(1) + '×';
     fontDownBtn.disabled = (contentZoomIdx === 0);
     fontUpBtn.disabled = (contentZoomIdx === CONTENT_ZOOMS.length - 1);
   }
   fontUpBtn.addEventListener('click', () => {
-    if (contentZoomIdx < CONTENT_ZOOMS.length - 1){ contentZoomIdx++; applyContentZoom(); }
+    if (contentZoomIdx < CONTENT_ZOOMS.length - 1){ contentZoomIdx++; applyContentZoom(); saveSettings({ zoomIdx: contentZoomIdx }); }
   });
   fontDownBtn.addEventListener('click', () => {
-    if (contentZoomIdx > 0){ contentZoomIdx--; applyContentZoom(); }
+    if (contentZoomIdx > 0){ contentZoomIdx--; applyContentZoom(); saveSettings({ zoomIdx: contentZoomIdx }); }
   });
   applyContentZoom();
+
+  settingsBtn.addEventListener('click', toggleSettings);
+  settingsOverlay.addEventListener('click', closeSettings);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape'){ closeSettings(); closeSidebar(); }
+  });
 
   // Study menu: when the Scope buttons drop below their label, stack every
   // setting row the same way (label on its own line above the chips).
@@ -3127,28 +3419,27 @@
 
   $('resetBtn').addEventListener('click', resetCurrentQuestion);
   $('firstBtn').addEventListener('click', goToFirst);
+  $('prevBtn').addEventListener('click', previousQuestion);
   $('nextBtn').addEventListener('click', nextQuestion);
-
-  // Welcome screen: only choosing a lesson from the hamburger menu dismisses it.
-  // Clicking the welcome screen itself does nothing.
-  let welcomeDismissed = false;
-  function dismissWelcome(){
-    if (welcomeDismissed) return;
-    welcomeDismissed = true;
-    const w = $('welcomeOverlay');
-    if (w){ w.classList.add('hidden'); setTimeout(() => w.remove(), 450); }
-  }
 
   // =====================================================================
   // Start
   // =====================================================================
   autoSpeak = false;
   autoSpeakToggle.checked = false;
-  buildLessonMenu();
-  setLesson(1);
-  // Open on the Study module (Word tab), not whatever the initial currentMode
-  // happened to be, so the app never boots straight into a game.
-  setMode('study');
+  const last = state.rememberLast ? loadLast() : null;
+  if (last && Number.isInteger(last.lesson)){
+    const lesson = Math.min(Math.max(last.lesson, 1), LESSONS.length);
+    studyTab = last.studyTab || 'word';
+    lastGameMode = last.gameMode || 'pairs';
+    setLesson(lesson);
+    setMode(last.mode === 'game' ? lastGameMode : 'study');
+    dismissWelcome();
+  } else {
+    buildLessonMenu();
+    setLesson(1);
+    setMode(state.startMode === 'game' ? lastGameMode : 'study');
+  }
   messageArea.className = 'message info-msg';
   messageArea.textContent = 'Select a lesson and mode to start · Auto-pronounce is OFF by default';
 })();

@@ -73,10 +73,55 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 - 先 `grep -n` 定位，再 `view` 只读目标 40–80 行，禁止整文件读取
 - 只做局部改动，不重构、不重新格式化、不加无关注释
 
-## hsk1 应用结构（已拆分，务必遵守）
-`hsk1/index.html` 只是骨架（~170 行），不要再往里塞代码。改动前先读
+## 多级别页面架构：shared/ 共享层（改动前必读）
+所有 HSK 级别页面（`hsk1/`、`hsk2/`、以后的 `hsk3/` …）走同一套代码，**不要复制出第二份 app.js/app.css**。
+
+- 交互 / 渲染逻辑 → `shared/js/app.js`（~3200 行，IIFE，**禁止整文件读**，用 `grep -n` 定位后只读 40–80 行）
+- 样式 → `shared/css/app.css`（~1700 行）
+- 页面骨架 → 各级别自己的 `index.html`（各 ~200 行），只放 DOM，不塞逻辑
+- 课程数据 → 各级别自己的 `js/data.js`（`window.COURSE_LESSONS`，兼容别名 `HSK1_LESSONS`）；
+  hsk2 另有 `js/core-vocab.js`、`data/sentences/grammar-topics.js`
+- 加载顺序固定：`js/vendor/pinyin-pro.js` → `data/sentences/grammar-sentences.js`
+  （hsk2 再加 `grammar-topics.js`、`js/core-vocab.js`）→ `js/data.js` → `../shared/js/app.js`
+  —— app.js 是 IIFE 且**末尾自动启动**（`setLesson` / `setMode`），所以必须最后加载
+- 级别差异只靠全局量切换（如 `const LESSONS = window.COURSE_LESSONS || window.HSK1_LESSONS`），
+  不要在 shared 里写 `if (hsk1)` 之类的分支
+
+### ⚠️ 改共享层时的落点规则
+| 要改的东西 | 落点 | 是否需要成对改 |
+|---|---|---|
+| 逻辑、渲染、状态、事件 | `shared/js/app.js` | 否（改一次全部级别生效） |
+| 样式、布局、组件外观 | `shared/css/app.css` | 否 |
+| DOM 结构、按钮、抽屉、区块 | 各级别 `index.html` | **是**：`hsk1/index.html` 与 `hsk2/index.html` 必须同步改 |
+| 课程/句子数据 | 各级别 `js/data.js`、`data/sentences/*` | 按级别单独改 |
+
+- 加 DOM 元素时优先**复用已有 id**（如 settings 抽屉里的 `kaitiToggle`、`fontUpBtn`、
+  `soundCheckBtn`），这样 `shared/js/app.js` 里的 `$('…')` 和事件绑定都不用改
+- 新增元素 id 必须两个页面保持一致；改完用
+  `grep -o 'id="[^"]*"' hsk1/index.html | sort | uniq -d` 自查重复 id
+- 导航条 `#navBar`（⏮ / ⟳ 左，← / → Next 右）跟随内容面板：**游戏模式全显示**，
+  学习模式只在 Word / Sentence 的 **Card 视图**显示（List、Texts、Grammar、Topics 隐藏），
+  由 `updateNavBar()` 在 `render()` 末尾统一切换 `.hidden`
+
+### 设置持久化约定
+- 全局设置存 `localStorage['hsk.settings.v1']`，默认值集中在 `DEFAULT_SETTINGS`
+  （`kaiti` / `latin` / `zoomIdx` / `startMode` / `rememberLast`）
+- 上次位置存 `localStorage['hsk.last.v1']`（`lesson` / `mode` / `studyTab` / `gameMode`），
+  由 `setLesson()`、`setMode()` 末尾调 `persistLast()` 写入
+- 新增设置项的固定流程：
+  1. 加进 `DEFAULT_SETTINGS`；
+  2. 在 settings 抽屉 DOM 里加控件（两个 `index.html` 都加）；
+  3. 初始化时从 `saved` 回填并写进内存 `state`（`saveSettings()` 只写 `state`，不要重新读 localStorage，
+     否则会把未改动的字段覆盖掉）；
+  4. 变更时调 `saveSettings({...})`；
+  5. `settingsResetBtn` 的 reset 逻辑里用 `Object.assign(state, DEFAULT_SETTINGS)` 一并复位
+- settings 抽屉文字统一用**英文**
+
+## hsk1 应用结构（务必遵守）
+`hsk1/index.html` 只是骨架（~200 行），不要再往里塞代码。改动前先读
 `hsk1/data/manifest.json`（应用地图），按需只打开对应文件：
-- 样式 → `hsk1/css/app.css`
+- 样式 → `shared/css/app.css`
+- 交互 / 渲染逻辑 → `shared/js/app.js`
 - 词汇 / 课文 → `hsk1/js/data.js`（`window.COURSE_LESSONS`，兼容别名 `HSK1_LESSONS`）
   每课必须有唯一 `id`，与句子语料的 `key` 对应（如 `'10'` / `'1-10'` / `'all'`）
 - 句子语料 → 改 `hsk1/HSK 1 语料 <date>.txt`，再重跑：
@@ -86,19 +131,18 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
   ```
   （`data/sentences/*.json|.js` 是自动生成，**不要手改**；
   句子拼音/英文人工维护在 `data/sentences/enrichment.json`，key 为整句中文）
-- 交互 / 渲染逻辑 → `hsk1/js/app.js`（~2700 行，**禁止整文件读**，用 `grep -n` 定位后只读 40–80 行）
-- 加载顺序固定：`data/sentences/grammar-sentences.js` → `js/data.js` → `js/app.js`，不要改
 
 ### 新增级别（HSK3 等）
 复制整个 `hsk2/` 目录改名即可（如 `hsk3/`），换 data.js 内容：
 - 变量名是中性的（`window.COURSE_LESSONS` / `window.SENTENCE_CORPUS`），
   只要每课 `id` 与语料 `key` 对应，就不会因数组顺序错位而出错
 - `js/vendor/pinyin-pro.js` 要一起复制（拼音靠它分词注音）
-- `js/app.js` / `css/app.css` 不需要改；`data/manifest.json` 里的路径说明要跟着改名
+- `shared/js/app.js` / `shared/css/app.css` 不需要改，新级别直接引用 `../shared/`；
+  `data/manifest.json` 里的路径说明要跟着改名
 
 ### hsk2（已建好，与 hsk1 的关键差异）
-- 结构、`app.js`、`css/app.css` 都由 hsk1 复制而来，但 **hsk2 已有自己的改动，两边已不同步**；
-  改 hsk2 的 `app.js` 不要假设 hsk1 一致（反之亦然）
+- 结构与本段规则一致：页面骨架 `hsk2/index.html`，逻辑/样式全部走 `shared/`；
+  hsk2 的差异只体现在自己的 `js/data.js`、`data/sentences/*` 与额外脚本（`grammar-topics.js`、`core-vocab.js`）
 - **课文**：L1-L15 × 4 段对话，来自 `hsk2/887830144-Dialogues-HSK-2.pdf`；
   `data.js` 的 `texts[].lines` **不存拼音**（与 hsk1 相同），拼音由 app.js 现场生成
 - **拼音**：`hsk2/js/vendor/pinyin-pro.js`（本地库，离线可用）负责分词+注音。
@@ -140,7 +184,7 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 
 #### 两条硬性规则（都踩过坑）
 1. **新增任何语料字段，必须同时加进 `externalLessonGrammar()` 适配器**
-   （`hsk2/js/app.js`，约 1080 行）。该函数逐字段手工搬运语料 → 应用结构；
+   （`shared/js/app.js`，搜 `externalLessonGrammar`）。该函数逐字段手工搬运语料 → 应用结构；
    只改渲染层不改适配器，新字段会被静默丢掉（`subs` 就因此一度不显示）。
 2. **`note` / `sub` / `exp` 一律用 `rubyHtml()` 渲染，不要用 `escapeHtml()`**
    （要显示拼音）。对应 CSS 里 `ruby rt` 字号为 `0.55em`，与例句一致。
@@ -148,12 +192,12 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 
 #### hsk2 加载顺序（不要改）
 `js/vendor/pinyin-pro.js` → `data/sentences/grammar-sentences.js` →
-`data/sentences/grammar-topics.js` → `js/core-vocab.js` → `js/data.js` → `js/app.js`
+`data/sentences/grammar-topics.js` → `js/core-vocab.js` → `js/data.js` → `../shared/js/app.js`
 
 #### hsk1 / hsk2 同步策略
-`hsk2/js/app.js` 是从 hsk1 复制的，两边已有差异。**等 HSK 2 全部做完后，
-再一次性把 hsk2 的 `app.js` 同步给 hsk1**，不要边做边同步。
-同步时要验证 hsk1 仍正常：hsk1 有 11 个点用 `note`、且**没有** `subs[]`，走的是老分支。
+逻辑与样式已全部收敛到 `shared/`，**不存在两份 app.js 需要同步**。
+唯一需要成对改的是两个 `index.html` 的 DOM（见「shared/ 共享层」一节的落点规则）。
+改 shared 后必须在 hsk1 与 hsk2 两边都确认：hsk1 有 11 个点用 `note`、且**没有** `subs[]`，走的是老分支。
 
 ## Ruby 拼音显示 SOP（所有模块/新页面一律照此执行）
 
@@ -211,8 +255,8 @@ for (let i = 0; i < text.length; i++) {
   不相等时必须整体退化为无拼音（`return esc(text)`），不要硬拼，否则空 `<rt>` 会错位。
 - **非汉字绝不包 `<ruby>`**：emoji（`网球 🎾`）、拉丁词（`Netflix`）原样透传，
   否则会出现空 `<rt>`，把整行撑歪。
-- 主站还应给 `rt` 加 `class="tone-N"`（1 红 / 2 橙 / 3 绿 / 4 蓝 / 5 灰），见 `hsk2/css/app.css`。
-- 复用现成函数：主站用 `rubyHtml()` / `perCharPinyin()`（`hsk2/js/app.js`），不要另写一份。
+- 主站还应给 `rt` 加 `class="tone-N"`（1 红 / 2 橙 / 3 绿 / 4 蓝 / 5 灰），见 `shared/css/app.css`。
+- 复用现成函数：主站用 `rubyHtml()` / `perCharPinyin()`（`shared/js/app.js`），不要另写一份。
 
 ### 读文本时必须剔除注音
 

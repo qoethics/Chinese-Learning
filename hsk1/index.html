@@ -35,25 +35,60 @@ if (location.protocol !== 'file:') {
     <div id="lessonList"></div>
   </aside>
 
+  <div class="sidebar-overlay" id="settingsOverlay"></div>
+  <aside class="sidebar settings-sidebar" id="settingsSidebar" aria-label="Settings">
+    <h2>⚙️ Settings</h2>
+    <div class="settings-section">Display</div>
+    <div class="settings-row">
+      <span class="settings-row-label"><span class="kaiti-label">楷</span> Kai (Chinese font)</span>
+      <div class="random-toggle">
+        <input type="checkbox" id="kaitiToggle">
+        <label for="kaitiToggle" class="settings-switch"><span class="settings-switch-dot"></span></label>
+      </div>
+    </div>
+    <div class="settings-row">
+      <span class="settings-row-label"><span class="aa-label">Aa</span> Serif (English font)</span>
+      <div class="random-toggle">
+        <input type="checkbox" id="latinFontToggle">
+        <label for="latinFontToggle" class="settings-switch"><span class="settings-switch-dot"></span></label>
+      </div>
+    </div>
+    <div class="settings-row">
+      <span class="settings-row-label">🔎 Text size</span>
+      <div class="font-size-ctl" id="fontSizeCtl">
+        <button id="fontDownBtn" title="Shrink content text">−</button>
+        <span class="font-size-value" id="fontSizeValue">1.0×</span>
+        <button id="fontUpBtn" title="Enlarge content text">+</button>
+      </div>
+    </div>
+    <div class="settings-section">Startup</div>
+    <div class="settings-row">
+      <span class="settings-row-label">🚀 Start in</span>
+      <div class="settings-seg" id="startModeSeg">
+        <button type="button" data-start="study">📖 Study</button>
+        <button type="button" data-start="game">🎮 Game</button>
+      </div>
+    </div>
+    <div class="settings-row">
+      <span class="settings-row-label">📍 Remember last location</span>
+      <div class="random-toggle">
+        <input type="checkbox" id="rememberLastToggle">
+        <label for="rememberLastToggle" class="settings-switch"><span class="settings-switch-dot"></span></label>
+      </div>
+    </div>
+    <div class="settings-section">Sound</div>
+    <button class="sound-check-btn" id="soundCheckBtn" title="Check whether speech and lesson audio work">🔊 Sound Check</button>
+    <div class="settings-section">Other</div>
+    <button class="settings-reset-btn" id="settingsResetBtn">↺ Reset all settings</button>
+    <div class="settings-note" id="settingsNote"></div>
+  </aside>
+
   <div class="card" id="app">
     <h1>
       <span>🎯 HSK 综合练习</span>
       <div class="h1-right">
         <small id="lessonLabel">L1 · Greetings &amp; Countries</small>
-        <div class="font-group">
-          <div class="random-toggle" id="kaitiToggleWrap">
-            <input type="checkbox" id="kaitiToggle">
-            <label for="kaitiToggle" class="kaiti-label">楷</label>
-          </div>
-          <div class="random-toggle" id="latinFontToggleWrap">
-            <input type="checkbox" id="latinFontToggle">
-            <label for="latinFontToggle" class="aa-label">Aa</label>
-          </div>
-          <div class="font-size-ctl" id="fontSizeCtl">
-            <button id="fontDownBtn" title="Shrink content text">−</button>
-            <button id="fontUpBtn" title="Enlarge content text">+</button>
-          </div>
-        </div>
+        <button class="settings-btn" id="settingsBtn" aria-label="Settings">⚙ <span>Settings</span></button>
       </div>
     </h1>
 
@@ -79,7 +114,6 @@ if (location.protocol !== 'file:') {
         <input type="checkbox" id="muteToggle">
         <label for="muteToggle">🔇 <span class="toggle-text">Mute</span></label>
       </div>
-      <button class="sound-check-btn" id="soundCheckBtn" title="Check whether speech and lesson audio work">🔊 Sound Check</button>
       <div class="random-toggle" id="picEnglishToggleWrap" style="display:none;">
         <input type="checkbox" id="picEnglishToggle">
         <label for="picEnglishToggle">🔤 <span class="toggle-text">English</span></label>
@@ -135,12 +169,15 @@ if (location.protocol !== 'file:') {
       <div id="pictureContainer" style="display:none;"></div>
     </div>
 
-    <div class="action-bar-top">
+    <div class="action-bar-top" id="navBar">
       <div class="left-group">
         <button class="primary" id="firstBtn" title="Go to first">⏮</button>
         <button class="primary" id="resetBtn" title="Reset this question">⟳</button>
       </div>
-      <button class="primary" id="nextBtn">→ Next</button>
+      <div class="right-group">
+        <button class="primary" id="prevBtn" title="Go to previous">←</button>
+        <button class="primary" id="nextBtn">→ Next</button>
+      </div>
     </div>
 
     <div class="tone-dots">
