@@ -34,6 +34,41 @@ REVIEW_RE = re.compile(r"^(?:(?:All\s+)?HSK\s*1\s+Review|([\d]+(?:-[\d]+)?)\s+Re
 POINT_RE = re.compile(r"^(\d{1,2})\.\s+(.+?)\s*$")
 # 子标记：a. / b. / c. / Extended: 等
 SUB_RE = re.compile(r"^([a-z]\.\s+.+|Extended[:：]?.*)$")
+# 省份组标题：'省份' / '省份：' / '省份：云南'（名字写在冒号后面）
+PROVINCE_RE = re.compile(r"^省份\s*[:：]?\s*(.*)$")
+# 省份中文名 -> 标题英文（语料里没有英文名，用固定表补齐）
+PROVINCE_EN = {
+    "海南": "Hainan",
+    "湖北": "Hubei",
+    "山东": "Shandong",
+    "湖南": "Hunan",
+    "广东": "Guangdong",
+    "四川": "Sichuan",
+    "云南": "Yunnan",
+    "浙江": "Zhejiang",
+}
+# 汉字（用于判断某行是否是纯英文说明/英文标题）
+HAN_RE = re.compile(r"[\u4e00-\u9fff]")
+SUB_ID_RE = re.compile(r"^([a-zA-Z])\.\s*")
+EXT_RE = re.compile(r"^Extended\s*[:：]?\s*", re.I)
+
+
+def sub_parts(line):
+    """子标记行 -> (id, label)。
+
+    'a. Positive form'  -> ('a', 'Positive form')
+    'Extended:'         -> ('ext', 'Extended')
+    只机械地剥掉 'a.' / 'Extended:' 前缀，不猜内容——中英混排的行整体当 label，
+    exp 留空，等手写的 grammar-notes.json 补充。
+    """
+    line = line.strip()
+    m = SUB_ID_RE.match(line)
+    if m:
+        return m.group(1).lower(), line[m.end():].strip().rstrip("：:").strip()
+    m = EXT_RE.match(line)
+    if m:
+        return "ext", line[m.end():].strip().rstrip("：:").strip() or "Extended"
+    return line.lower(), line
 
 
 def load_legacy_map(enrichment_path):
@@ -142,16 +177,25 @@ def parse(txt):
     cur_lesson = None
     cur_section = None      # 当前段落类型：vocab / sentences / other
     cur_point = None        # 当前语法点 dict
-    cur_sub = ""            # 当前子标记文本（a. Positive form）
+    cur_sub = ""            # 当前子标记 id（a / b / ext），对应 point["subs"][].id
     pending_soft = []       # 软标题（省份 等）下的句子，尚未遇到编号语法点
     soft_title = "句子"     # pending_soft 对应的标题
+    soft_en = ""            # pending_soft 对应的英文标题（省份组用）
     soft_no = 0             # 同一课内软标题组的递增序号（保证 id 唯一）
 
     def flush_point():
         nonlocal cur_point
         if cur_point is not None and cur_lesson is not None:
             if cur_point["items"]:
-                cur_lesson["points"].append(cur_point)
+                # 字段顺序与 hsk2 一致：id/no/cn/en/note/subs/items
+                out = {k: cur_point[k] for k in ("id", "no", "cn", "en")}
+                notes = [n for n in cur_point["_notes"] if n]
+                if notes:
+                    out["note"] = "\n".join(notes)
+                if cur_point["subs"]:
+                    out["subs"] = cur_point["subs"]
+                out["items"] = cur_point["items"]
+                cur_lesson["points"].append(out)
             cur_point = None
 
     def flush_soft():
@@ -160,7 +204,7 @@ def parse(txt):
         if pending_soft and cur_lesson is not None:
             cur_lesson["points"].append({
                 "id": f"{cur_lesson['key']}-s{soft_no}", "no": 0,
-                "cn": soft_title, "en": "", "items": pending_soft,
+                "cn": soft_title, "en": soft_en, "items": pending_soft,
             })
             soft_no += 1
             pending_soft = []
@@ -209,13 +253,35 @@ def parse(txt):
             lessons.append(cur_lesson)
             cur_section = None
             cur_point = None
+            cur_sub = ""
+            soft_title = "句子"
+            soft_en = ""
             pending_soft = []
             soft_no = 0
+            continue
+
+        # 省份组标题：'省份' / '省份：' / '省份：云南'
+        pv = PROVINCE_RE.match(stripped)
+        if pv:
+            # 先按旧标题落盘，避免被下面的 soft_title 覆盖（L9：省份 后紧跟 句子：）
+            flush_soft()
+            flush_point()
+            name = pv.group(1).strip()
+            cur_section = "other"
+            soft_title = f"省份：{name}" if name else "省份"
+            soft_en = f"Province: {PROVINCE_EN[name]}" if name in PROVINCE_EN else ""
+            if name and not soft_en:
+                print(f"warning: 省份没有英文名映射: {name}")
+            cur_sub = ""
             continue
 
         sm = SECTION_RE.match(stripped)
         if sm:
             name = sm.group(1)
+            # 上一组（如 句子 / 省份）先落盘，再换标题
+            flush_soft()
+            flush_point()
+            soft_en = ""
             if name in ("基础单词", "扩展单词", "单词"):
                 cur_section = "vocab"
             elif name in ("句子", "例句"):
@@ -223,18 +289,19 @@ def parse(txt):
                 soft_title = name
             elif name == "语法":
                 cur_section = "sentences"
-            else:  # 省份 / 综合 / 课文 —— 自成一组
+            else:  # 综合 / 课文 —— 自成一组
                 cur_section = "other"
                 soft_title = name
-            flush_point()
             cur_sub = ""
             continue
 
-        # 无冒号的软标题（如裸 '省份'）——自成一组，不当作句子
-        if stripped in ("省份", "综合", "课文"):
+        # 无冒号的软标题（如裸 '综合'）——自成一组，不当作句子
+        if stripped in ("综合", "课文"):
+            flush_soft()
+            flush_point()
             cur_section = "other"
             soft_title = stripped
-            flush_point()
+            soft_en = ""
             cur_sub = ""
             continue
 
@@ -249,20 +316,33 @@ def parse(txt):
             flush_point()
             cn, en = split_title_en(pm.group(2))
             cur_point = {"id": f"{cur_lesson['key']}-{pm.group(1)}", "no": int(pm.group(1)),
-                         "cn": cn, "en": en, "items": []}
+                         "cn": cn, "en": en, "subs": [], "items": [], "_notes": []}
             cur_sub = ""
+            continue
+
+        # 中文标题下方紧跟的一行英文 —— 是该语法点的英文标题，不是 note。
+        # 只在该点还没有英文、还没有句子时生效（如 L7-1 / L7-3 / L15-1）。
+        if (cur_point is not None and not cur_point["en"] and not cur_point["items"]
+                and not cur_sub and re.search(r"[A-Za-z]", stripped)
+                and len(HAN_RE.findall(stripped)) <= 3
+                and not re.search(r"[。！？]\s*$", stripped)
+                and not SUB_RE.match(stripped)):
+            cur_point["en"] = stripped
             continue
 
         # 子标记 a. / b. / c. / Extended:（先于英文注解判断，否则纯英文的
         # "a. Positive form" 会被误当成 note 吸走，丢失分组）
         if cur_section in ("sentences", "other") and SUB_RE.match(stripped):
-            cur_sub = stripped
+            if cur_point is not None:
+                sid, label = sub_parts(stripped)
+                if not any(s["id"] == sid for s in cur_point["subs"]):
+                    cur_point["subs"].append({"id": sid, "label": label, "exp": ""})
+                cur_sub = sid
             continue
 
-        # 纯英文说明行（语法点内的注解）-> 当前点的 note，不是句子
+        # 纯英文说明行（语法点内的注解）-> 当前点的 note（一行一段），不是句子
         if is_english_note(stripped) and cur_point is not None:
-            prev = cur_point.get("note", "")
-            cur_point["note"] = (prev + " " + stripped).strip() if prev else stripped
+            cur_point["_notes"].append(stripped)
             continue
 
         # 词汇段里混进的句子：以句末标点结尾的行，视为句子（部分 Review 课
@@ -278,7 +358,7 @@ def parse(txt):
             item = {"c": cn}
             if en:
                 item["en"] = en
-            if cur_sub:
+            if cur_sub and cur_point is not None:
                 item["sub"] = cur_sub
             if cur_point is not None:
                 cur_point["items"].append(item)

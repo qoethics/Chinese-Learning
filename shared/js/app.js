@@ -264,6 +264,35 @@
     // last resort: per-character readings (never leaves a character empty)
     return chars.map((c, k) => (parts && parts[k]) || SINGLE_CHAR_PINYIN[c] || '');
   }
+  // Grammar notes are a single string in the corpus; older/alt sources may hand us
+  // an array of lines. Normalise to \n-separated text so both render the same.
+  function noteText(v){
+    if (Array.isArray(v)) return v.filter(Boolean).map(s => String(s).trim()).join('\n');
+    return (v || '').toString();
+  }
+
+  // One <div class="grammar-intro"> per note line, so separate explanations don't
+  // run together into a single paragraph.
+  function noteHtml(v){
+    const text = noteText(v);
+    if (!text) return '';
+    return text.split('\n')
+      .map(line => line.trim())
+      .filter(Boolean)
+      .map(line => `<div class="grammar-intro">${rubyHtml(line)}</div>`)
+      .join('');
+  }
+
+  // Province groups ("省份：云南") get a small China map with that province highlighted.
+  // The SVG comes from shared/assets/china-map.js (loaded only by hsk1/index.html).
+  function provinceMapHtml(cn){
+    const svg = window.CHINA_MAP_SVG;
+    if (!svg || !cn || cn.indexOf('省份') !== 0) return '';
+    const m = cn.match(/[:：]\s*(.+)$/);
+    const name = m ? m[1].trim() : '';
+    return `<div class="province-map"${name ? ` data-province="${escapeHtml(name)}"` : ''}>${svg}</div>`;
+  }
+
   // Render Chinese text as <ruby> tags with tone-coloured pinyin above each character.
   function rubyHtml(text){
     if (!text) return '';
@@ -421,21 +450,27 @@
   // =====================================================================
   // Speech
   // =====================================================================
-  const READ_RATES = [{ rate: 1, label: '1x' }, { rate: 0.75, label: '0.75x' }, { rate: 0.5, label: '0.5x' }];
+  const READ_RATES = [{ rate: 1, label: '1x' }, { rate: 0.75, label: '0.75x' }, { rate: 0.5, label: '0.5x' }, { rate: 0.25, label: '0.25x' }, { rate: 0.1, label: '0.1x' }];
+  // Shadowing silently repeats the read's own duration multiplied by this factor.
+  // Adjustable in Settings (1.25x … 2x).
+  const SHADOW_FACTORS = [1.25, 1.5, 1.75, 2];
+  let shadowPauseFactor = SHADOW_FACTORS[0];
   const READ_RATE_KEY = 'hsk.readrate.v1';
   function loadReadRate(){
     try {
       const r = parseFloat(localStorage.getItem(READ_RATE_KEY));
       if (READ_RATES.some(x => x.rate === r)) return r;
     } catch (e) { /* storage unavailable — keep the default */ }
-    return 0.85;
+    return 1;
   }
   function saveReadRate(r){
     try { localStorage.setItem(READ_RATE_KEY, String(r)); } catch (e) { /* ignore */ }
   }
   let speakTimeout = null;
   let speakRate = loadReadRate();  // spoken speed; the shared read toolbar's 0.5x–1x slow presets drive this
+  let lastSpokenText = '';
   function speak(text, cb, rate){
+    lastSpokenText = text;
     if (muted){ if (cb) cb(); return; }
     if (!window.speechSynthesis){ if (cb) cb(); return; }
     window.speechSynthesis.cancel();
@@ -548,12 +583,17 @@
   let readIndex=0;
   let readItemRep=0;           // repeats already spoken for readList[readIndex]
   let readShadow=false;        // shadowing: after each read, stay silent for the same duration
+  let readLoop=false;          // loop: at the end of the list, read it again from the top
   let readList=[];             // texts to read in display order (word or sentence list)
+  let readGen=0;               // bumps on every (re)start; stale callbacks check it
+  let readWatchdog=null;       // per-read fallback timer (engines that never fire onend)
+  let readSpeaking=false;      // an utterance is in flight right now
   let accumulative=false;
   let subMode='all';
   let listMode=false;          // card vs list (wordflash / sentflash only)
   let studyTab='word';         // Study module: word / sentence / texts
   let sentCardView='hanzi';    // sentence card front: hanzi / pinyin / english
+  let wordCardView='hanzi';    // word card front: hanzi / pinyin / english
   let showListPinyin=true;     // word/sentence list: global pinyin visibility
   let showListEnglish=false;   // word/sentence list: global english visibility (default OFF)
   let showVocab=true;          // text view: show the per-text vocabulary rows (default ON)
@@ -666,6 +706,9 @@
   const settingsSidebar = $('settingsSidebar');
   const settingsOverlay = $('settingsOverlay');
   const fontSizeValue = $('fontSizeValue');
+  const shadowFactorValue = $('shadowFactorValue');
+  const shadowDownBtn = $('shadowDownBtn');
+  const shadowUpBtn = $('shadowUpBtn');
   const startModeSeg = $('startModeSeg');
   const rememberLastToggle = $('rememberLastToggle');
   const settingsResetBtn = $('settingsResetBtn');
@@ -717,7 +760,7 @@
   // ---- Settings drawer (right side) ----
   const SETTINGS_KEY = 'hsk.settings.v1';
   const LAST_KEY = 'hsk.last.v1';
-  const DEFAULT_SETTINGS = { kaiti: false, latin: false, zoomIdx: 2, startMode: 'study', rememberLast: true };
+  const DEFAULT_SETTINGS = { kaiti: false, latin: false, zoomIdx: 2, startMode: 'study', rememberLast: true, shadowFactor: 1.25 };
   const state = Object.assign({}, DEFAULT_SETTINGS);
   function loadSettings(){
     try { return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || {}; }
@@ -768,6 +811,22 @@
     state.rememberLast = e.target.checked;
     saveSettings({ rememberLast: state.rememberLast });
   });
+  function syncShadowFactor(){
+    shadowPauseFactor = state.shadowFactor;
+    if (shadowFactorValue) shadowFactorValue.textContent = state.shadowFactor.toFixed(2).replace(/0$/, '') + '×';
+    if (shadowDownBtn) shadowDownBtn.disabled = state.shadowFactor <= SHADOW_FACTORS[0];
+    if (shadowUpBtn) shadowUpBtn.disabled = state.shadowFactor >= SHADOW_FACTORS[SHADOW_FACTORS.length - 1];
+  }
+  function stepShadowFactor(dir){
+    const i = SHADOW_FACTORS.indexOf(state.shadowFactor);
+    const next = SHADOW_FACTORS[Math.min(Math.max((i < 0 ? 0 : i) + dir, 0), SHADOW_FACTORS.length - 1)];
+    if (next === state.shadowFactor) return;
+    state.shadowFactor = next;
+    saveSettings({ shadowFactor: next });
+    syncShadowFactor();
+  }
+  if (shadowDownBtn) shadowDownBtn.addEventListener('click', () => stepShadowFactor(-1));
+  if (shadowUpBtn) shadowUpBtn.addEventListener('click', () => stepShadowFactor(1));
   settingsResetBtn.addEventListener('click', () => {
     try { localStorage.removeItem(SETTINGS_KEY); localStorage.removeItem(LAST_KEY); } catch (e) { /* ignore */ }
     Object.assign(state, DEFAULT_SETTINGS);
@@ -778,6 +837,8 @@
     contentZoomIdx = DEFAULT_SETTINGS.zoomIdx;
     applyContentZoom();
     rememberLastToggle.checked = DEFAULT_SETTINGS.rememberLast;
+    state.shadowFactor = DEFAULT_SETTINGS.shadowFactor;
+    syncShadowFactor();
     syncStartModeSeg();
     flashNote('✓ Defaults restored');
   });
@@ -803,7 +864,9 @@
   state.zoomIdx = contentZoomIdx;
   state.startMode = saved.startMode === 'game' ? 'game' : 'study';
   state.rememberLast = saved.rememberLast !== false;
+  state.shadowFactor = SHADOW_FACTORS.includes(saved.shadowFactor) ? saved.shadowFactor : DEFAULT_SETTINGS.shadowFactor;
   rememberLastToggle.checked = state.rememberLast;
+  syncShadowFactor();
   syncStartModeSeg();
   kaitiMode = kaitiToggle.checked;
   document.body.classList.toggle('kaiti', kaitiMode);
@@ -1210,7 +1273,7 @@
       cn: p.cn || '',
       py: p.py || '',
       en: p.en || '',
-      note: p.note || '',
+      note: noteText(p.note),
       subs: (p.subs || []).map(s => ({ id: s.id, label: s.label || '', exp: s.exp || '' })),
       items: (p.items || []).map(it => {
         const lp = pmap[it.c];
@@ -1679,6 +1742,8 @@
     const isFlipped = userAnswer === 'flipped';
 
     questionArea.innerHTML = `
+      ${cardViewBarHtml('wordViewBar', wordCardView)}
+      ${speedBarHtml()}
       <div style="font-size:0.9rem;color:#6b6154;margin-bottom:4px;">🃏 Tap card to flip</div>
       <div style="margin-bottom:6px;"><button class="sound-btn" id="flashPlayBtn">🔊</button></div>
     `;
@@ -1700,8 +1765,12 @@
         </div>
       </div>`;
     } else {
+      let frontHtml;
+      if (wordCardView === 'pinyin') frontHtml = `<div class="front sent-front-pinyin" style="font-size:2rem;">${colorPinyin(item.pinyin || '')}</div>`;
+      else if (wordCardView === 'english') frontHtml = `<div class="front sent-front-english" style="font-size:2rem;">${escapeHtml(item.en || '')}</div>`;
+      else frontHtml = `<div class="front">${escapeHtml(item.hanzi)}</div>`;
       html = `<div class="flash-card" id="flashCard">
-        <div class="front">${item.hanzi}</div>
+        ${frontHtml}
         <div class="hint-text">👆 Tap to flip</div>
       </div>`;
     }
@@ -1709,6 +1778,16 @@
 
     const playBtn = $('flashPlayBtn');
     if (playBtn) playBtn.addEventListener('click', () => speakChinese(item.hanzi));
+    bindReadMenu();
+    const wvb = $('wordViewBar');
+    if (wvb){
+      wvb.querySelectorAll('button').forEach(b => {
+        b.addEventListener('click', () => {
+          wordCardView = b.dataset.view;
+          render();
+        });
+      });
+    }
     if (!isAnswered && autoSpeak) setTimeout(() => speakChinese(item.hanzi), 300);
 
     const card = $('flashCard');
@@ -2001,33 +2080,12 @@
     // A sentence is "extended" when it needs vocabulary beyond this lesson's Core
     // words plus the Core words of earlier lessons — see sentenceClassifier().
     const isExtended = sentenceClassifier(currentLesson);
-    // Class of the sentence's newest (rarest) word — the category whose highlight
-    // toggle governs whether the sentence is shown.
-    const lastWordClass = cn => {
-      if (!cn) return null;
-      let cat = null;
-      for (let i = 0; i < cn.length;){
-        const ch = cn[i];
-        if (!/[\u3400-\u9fff\uf900-\ufaff]/.test(ch)){ i++; continue; }
-        let hit = null;
-        for (let len = Math.min(6, cn.length - i); len > 0; len--){
-          const sub = cn.slice(i, i + len);
-          if (allWords.has(sub)){ hit = sub; break; }
-        }
-        if (!hit) hit = ch;
-        const c = classifyWord(hit);
-        if (c) cat = c;
-        i += hit.length;
-      }
-      return cat;
-    };
-
     // The province block always leads the grammar section list.
     const orderedGrammar = lessonGrammar
       .map((g, gi) => ({ g, gi }))
       .sort((a, b) => (a.g.id === 'shengfen' ? 0 : 1) - (b.g.id === 'shengfen' ? 0 : 1));
 
-    let html = readMenuHtml() + '<div class="grammar-list">';
+    let html = '<div class="grammar-list">';
     let shownSections = 0, shownItems = 0;
     orderedGrammar.forEach(({ g, gi }) => {
       const items = g.items.slice()
@@ -2041,6 +2099,7 @@
       const groups = [];
       if (Array.isArray(g.subs) && g.subs.length){
         const byId = new Map();
+        const orphans = [];
         g.subs.forEach(s => {
           const gr = { sub: s.label || '', exp: s.exp || '', bucket: [] };
           byId.set(s.id, gr);
@@ -2049,7 +2108,9 @@
         items.forEach(it => {
           const gr = byId.get(it.sub);
           if (gr) gr.bucket.push(it);
+          else orphans.push(it);   // sub id not declared in subs[] — never drop it
         });
+        if (orphans.length) groups.push({ sub: '', exp: '', bucket: orphans });
       } else {
         const bySub = new Map();
         items.forEach(it => {
@@ -2069,17 +2130,10 @@
           <span class="grammar-count">${items.length}</span>
           </span>
         </button>
-        <div class="grammar-body${bodyOpen ? '' : ' collapsed'}" data-gid="${escapeHtml(g.id || '')}">
+        <div class="grammar-body${open ? '' : ' collapsed'}" data-gid="${escapeHtml(g.id || '')}">
           <div class="grammar-body-inner">`;
-      if (g.note) html += `<div class="grammar-intro">${rubyHtml(g.note)}</div>`;
-      // Expanded sections are read sentence-by-sentence. Collapsed sections are
-      // read only when turning a highlight category off renders their sentences
-      // inline (grammar-body-inner:has(...) reveals them), since hidden rows can't
-      // be shadowed on screen.
-      const hlHiddenCount = items.filter(it => { const c = lastWordClass(it.c); return c && !showHl[c]; }).length;
-      const bodyOpen = open || (!items.length || hlHiddenCount !== items.length);
-      const readable = bodyOpen ? items : [];
-      readable.forEach(it => { if (readList.indexOf(it.c) < 0) readList.push(it.c); });
+      html += noteHtml(g.note);
+      html += provinceMapHtml(g.cn);
       groups.forEach(gr => {
         // sub / exp may contain Chinese (e.g. "还 1 · 状态持续"); ruby-annotate the
         // Han characters so the usage labels read with pinyin too.
@@ -2090,10 +2144,7 @@
           const cn = it.py && showListPinyin
             ? rubyFromPy(it.c, it.py)
             : renderSentence(it.c);
-          const ri = readable.indexOf(it);
-          const hiddenCat = lastWordClass(it.c);
-          const hidden = hiddenCat && !showHl[hiddenCat];
-          html += `<div class="grammar-item${it.ext ? ' ext' : ''}${hidden ? ' hl-hidden' : ''}" data-read="${escapeHtml(it.c)}"${ri >= 0 ? ` data-ri="${ri}"` : ''}>
+          html += `<div class="grammar-item${it.ext ? ' ext' : ''}" data-read="${escapeHtml(it.c)}">
             <span class="grammar-cn">${cn}</span>
             ${en ? `<span class="grammar-en">${escapeHtml(en)}</span>` : ''}
           </div>`;
@@ -2103,6 +2154,15 @@
     });
     html += '</div>';
     flashContainer.innerHTML = readMenuHtml() + html;
+    // Highlight the province named in each province group (海南省 ← 省份：海南).
+    flashContainer.querySelectorAll('.province-map').forEach(box => {
+      const name = box.dataset.province;
+      if (!name) return;
+      box.querySelectorAll('.china-map [data-province]').forEach(p => {
+        if (p.dataset.province.indexOf(name) === 0) p.classList.add('on');
+      });
+    });
+    indexReadRows();
 
     wordMap = savedMap;
 
@@ -2115,6 +2175,9 @@
         this.querySelector('.grammar-caret').textContent = nowCollapsed ? '▸' : '▾';
         // Remember the open sections so re-renders don't lose them.
         if (gid){ if (nowCollapsed) grammarOpen.delete(gid); else grammarOpen.add(gid); }
+        // The read list follows what is on screen: rebuild it after expanding or
+        // collapsing a point, so newly opened sentences join and closed ones drop.
+        indexReadRows();
       });
     });
     bindReadMenu();
@@ -2187,7 +2250,7 @@
           </span>
         </button>
         <div class="grammar-body collapsed" data-gid="topic-${escapeHtml(t.id)}">`;
-      if (t.note) html += `<div class="grammar-intro">${rubyHtml(t.note)}</div>`;
+      html += noteHtml(t.note);
       if (Array.isArray(t.lessons) && t.lessons.length){
         const pts = t.points || [];
         html += '<div class="topic-lessons">'
@@ -2196,9 +2259,7 @@
       }
       (t.rows || []).forEach(r => {
         shownRows++;
-        const ri = readList.indexOf(r.cn || '');
-        if (ri < 0) readList.push(r.cn || '');
-        html += `<div class="topic-row" data-read="${escapeHtml(r.cn || '')}" data-ri="${ri < 0 ? readList.length - 1 : ri}">
+        html += `<div class="topic-row" data-read="${escapeHtml(r.cn || '')}">
           <span class="topic-label">${rubyHtml(r.label || '')}</span>
           <span class="grammar-cn">${rubyHtml(r.cn || '')}</span>
           <span class="grammar-en">${escapeHtml(r.en || '')}</span>
@@ -2208,6 +2269,7 @@
     });
     html += '</div>';
     flashContainer.innerHTML = readMenuHtml() + html;
+    indexReadRows();
 
     wordMap = savedMap;
 
@@ -2218,6 +2280,7 @@
         const nowCollapsed = !body.classList.contains('collapsed');
         body.classList.toggle('collapsed', nowCollapsed);
         this.querySelector('.grammar-caret').textContent = nowCollapsed ? '\u25b8' : '\u25be';
+        indexReadRows();
       });
     });
     // Click a row to read its Chinese sentence aloud.
@@ -2246,18 +2309,34 @@
   // ---- Shared read toolbar (word list / sentence list / grammar / topics) ----
   // One control strip drives every list style: slow speeds, repeats per sentence,
   // and shadowing (read once, wait the same duration, read again).
+  // Shared speed strip: used by the read toolbar (lists / grammar) and by the
+  // Word / Sentence cards, so one rate applies everywhere.
+  function speedBarHtml(){
+    return `<div class="read-speed" id="readSpeedBar" title="Speed">
+          <span class="read-ctl-label">🐢 Speed</span>
+          ${READ_RATES.map(r => `<button class="${r.rate === speakRate ? 'active' : ''}" data-rate="${r.rate}">${r.label}</button>`).join('')}
+        </div>`;
+  }
+  // Front-of-card picker: 汉字 / pinyin / English (Word + Sentence cards).
+  function cardViewBarHtml(id, current){
+    const btn = (view, label) =>
+      `<button class="${current === view ? 'active' : ''}" data-view="${view}">${label}</button>`;
+    return `<div class="sent-view-bar" id="${id}">
+        ${btn('hanzi', '🀄 汉字')}
+        ${btn('pinyin', '🔠 pinyin')}
+        ${btn('english', '🔤 English')}
+      </div>`;
+  }
   function readMenuHtml(){
     const playing = readActive && !readPaused;
-    const rateBtn = r =>
-      `<button class="${r.rate === speakRate ? 'active' : ''}" data-rate="${r.rate}">${r.label}</button>`;
     return `
       <div class="sentence-read-menu">
-        <button id="sentenceReadBtn" class="${readActive ? 'reading' : ''}">${playing ? '🔊 Reading…' : readActive ? '▶ Resume' : '🔊 Read'}</button>
-        <button id="sentencePauseBtn" ${playing ? '' : 'disabled'}>⏸ Pause</button>
-        <div class="read-speed" id="readSpeedBar" title="Speed">
-          <span class="read-ctl-label">🐢 Speed</span>
-          ${READ_RATES.map(rateBtn).join('')}
+        <div class="read-main-row">
+          <button id="sentenceReadBtn" class="${readActive ? 'reading' : ''}">${playing ? '🔊 Reading…' : readActive ? '▶ Resume' : '🔊 Read'}</button>
+          <button id="sentencePauseBtn" ${playing ? '' : 'disabled'}>⏸ Pause</button>
+          <button id="loopToggle" class="shadow-toggle ${readLoop ? 'on' : ''}" title="When the list ends, read it again from the top (whatever is expanded at that moment)">🔁 Loop</button>
         </div>
+        ${speedBarHtml()}
         <div class="read-repeat" id="readRepeatBar" title="Reads per sentence">
           <span class="read-ctl-label">🔁</span>
           ${[1,2,3,4,5].map(r => `<button class="${readRepeat === r ? 'active' : ''}" data-r="${r}">${r}x</button>`).join('')}
@@ -2266,21 +2345,38 @@
       </div>`;
   }
   function applyReadRate(rate){
+    const changed = rate !== speakRate;
     speakRate = rate;
     saveReadRate(rate);
     document.querySelectorAll('#readSpeedBar [data-rate]').forEach(b => {
       b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
     });
+    // A new speed must be audible right away: at 0.1x a single sentence can run
+    // 20–30s, so "applies from the next sentence" looks like the button is dead.
+    if (!changed) return;
+    if (readActive){ restartSentenceRead(true); return; }
+    if (lastSpokenText && window.speechSynthesis && window.speechSynthesis.speaking){
+      speak(lastSpokenText);
+    }
   }
   // Changing a read setting mid-play restarts the loop from the current item so
   // the new setting takes effect immediately.
-  function restartSentenceRead(){
+  function restartSentenceRead(force){
     if (!readActive) return;
+    // Mid-utterance: let this sentence finish, the new setting applies from the
+    // next read (interrupting here would replay the same sentence). A speed
+    // change passes force — it has to be audible immediately.
+    if (readSpeaking && !force) return;
+    // Cancel the in-flight read, but make sure its onend/onerror cannot start a
+    // second loop: the generation bump orphans that callback.
+    readGen++;
     if (readTimer){ clearTimeout(readTimer); readTimer = null; }
+    if (readWatchdog){ clearTimeout(readWatchdog); readWatchdog = null; }
     if (speakTimeout){ clearTimeout(speakTimeout); speakTimeout = null; }
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     readPaused = false;
-    readItemRep = 0;
+    // readItemRep is deliberately kept: a setting change must not re-count the
+    // rep that just finished (it would replay the sentence from rep 1).
     updateReadButtons();
     sentenceReadNext();
   }
@@ -2298,7 +2394,6 @@
       sb.querySelectorAll('button[data-rate]').forEach(b => {
         b.addEventListener('click', () => {
           applyReadRate(parseFloat(b.dataset.rate));
-          restartSentenceRead();
         });
       });
     }
@@ -2321,11 +2416,72 @@
         restartSentenceRead();
       });
     }
+    const lp = $('loopToggle');
+    if (lp){
+      lp.addEventListener('click', () => {
+        readLoop = !readLoop;
+        lp.classList.toggle('on', readLoop);
+      });
+    }
   }
   // Resolve the DOM rows for readList[i] in whichever list style is on screen.
   function readRowSelector(i){
     return '.sentence-list-item[data-i="' + i + '"], .word-list-item[data-i="' + i + '"]'
       + ', .grammar-item[data-ri="' + i + '"], .topic-row[data-ri="' + i + '"]';
+  }
+  // Every readable row in visual order (collapsed grammar sections are skipped,
+  // since their body is display:none).
+  function visibleReadRows(){
+    // Rows carry data-read (grammar/topics) or data-i (word/sentence lists).
+    // data-ri is assigned here, so it must not be part of the query.
+    return Array.from(flashContainer.querySelectorAll(
+      '.sentence-list-item[data-i], .word-list-item[data-i], .grammar-item[data-read], .topic-row[data-read]'
+    )).filter(el => el.offsetParent !== null);
+  }
+  // Number the rows on screen after every render: the number is the position in
+  // visual order, so reading order === screen order (and section-local indices can
+  // no longer collide across grammar points).
+  function indexReadRows(){
+    readList = [];
+    // Drop stale numbers first: a row that just got collapsed must not keep the
+    // index it had while visible, or it would shadow an open row with the same one.
+    flashContainer.querySelectorAll('[data-ri]').forEach(el => { delete el.dataset.ri; });
+    visibleReadRows().forEach(el => {
+      el.dataset.ri = readList.length;
+      readList.push(el.dataset.read || '');
+    });
+  }
+  // ----- Gentle scroll follow -----
+  // Only pull the reading row into view when it is essentially off screen, and
+  // back off for a moment after the learner scrolls by hand.
+  const SCROLL_SUPPRESS_MS = 2000;
+  let lastUserScrollAt = -1e9;
+  let autoScrollUntil = 0;
+  window.addEventListener('scroll', () => {
+    if (performance.now() < autoScrollUntil) return;   // our own scrollIntoView
+    lastUserScrollAt = performance.now();
+  }, true);
+  // Visible both in the window and inside whichever list container scrolls.
+  function rowOnScreen(el){
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    let top = 0, bottom = vh;
+    for (let p = el.parentElement; p && p !== document.body; p = p.parentElement){
+      const cs = getComputedStyle(p);
+      if (/(auto|scroll)/.test(cs.overflowY) && p.scrollHeight > p.clientHeight + 1){
+        const pr = p.getBoundingClientRect();
+        top = Math.max(top, pr.top);
+        bottom = Math.min(bottom, pr.bottom);
+        break;
+      }
+    }
+    const r = el.getBoundingClientRect();
+    return r.top >= top - 8 && r.bottom <= bottom + 8;
+  }
+  function revealRow(el){
+    if (rowOnScreen(el)) return;
+    if (performance.now() - lastUserScrollAt < SCROLL_SUPPRESS_MS) return;
+    autoScrollUntil = performance.now() + 700;
+    el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
   function markReadRow(i, shadow){
     document.querySelectorAll('.sentence-list-item.reading, .word-list-item.reading, .grammar-item.reading, .topic-row.reading')
@@ -2333,7 +2489,7 @@
     const el = document.querySelector(readRowSelector(i));
     if (!el) return;
     el.classList.add(shadow ? 'shadowing' : 'reading');
-    el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    revealRow(el);
   }
 
   // Read-aloud: read each item in readList readRepeat times, in display order.
@@ -2342,8 +2498,11 @@
   function stopSentenceRead(){
     readActive = false;
     readPaused = false;
+    readSpeaking = false;
     readItemRep = 0;
+    readGen++;                                    // invalidate callbacks of the old loop
     if (readTimer){ clearTimeout(readTimer); readTimer = null; }
+    if (readWatchdog){ clearTimeout(readWatchdog); readWatchdog = null; }
     if (speakTimeout){ clearTimeout(speakTimeout); speakTimeout = null; }
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     updateReadButtons();
@@ -2353,7 +2512,10 @@
   function pauseSentenceRead(){
     if (!readActive || readPaused) return;
     readPaused = true;
+    readSpeaking = false;
+    readGen++;
     if (readTimer){ clearTimeout(readTimer); readTimer = null; }
+    if (readWatchdog){ clearTimeout(readWatchdog); readWatchdog = null; }
     if (speakTimeout){ clearTimeout(speakTimeout); speakTimeout = null; }
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     updateReadButtons();
@@ -2361,22 +2523,38 @@
   function resumeSentenceRead(){
     if (!readActive || !readPaused) return;
     readPaused = false;
+    readGen++;
     updateReadButtons();
     sentenceReadNext();
   }
+  // Index of the first row the learner can actually see: pressing Read starts
+  // there, so scrolling to a spot first works without resetting to the top.
+  function firstVisibleReadIndex(){
+    const rows = visibleReadRows();
+    for (let i = 0; i < rows.length; i++){
+      if (rowOnScreen(rows[i])) return i;
+    }
+    return 0;
+  }
   function startSentenceRead(fromIndex){
     if (readActive && !readPaused) return;
-    if (!readList.length) return;
+    if (!readList.length){
+      // Grammar/Topics only read what is expanded; an empty list means every
+      // point is collapsed.
+      flashStatus('展开一个语法点再朗读 · Expand a point to read');
+      return;
+    }
     if (typeof fromIndex === 'number'){
       if (fromIndex < 0 || fromIndex >= readList.length) return;
       readIndex = fromIndex;
       readItemRep = 0;
     } else if (!readActive){
-      readIndex = 0;
+      readIndex = firstVisibleReadIndex();
       readItemRep = 0;
     }
     readActive = true;
     readPaused = false;
+    readGen++;                       // fresh loop; anything from before is stale
     updateReadButtons();
     sentenceReadNext();
   }
@@ -2392,19 +2570,40 @@
   }
   function sentenceReadNext(){
     if (!readActive || readPaused) return;
-    if (readIndex >= readList.length){ stopSentenceRead(); return; }
+    if (readIndex >= readList.length){
+      if (!readLoop){ stopSentenceRead(); return; }
+      // Loop: re-read what is on screen *now* — sections expanded or collapsed
+      // during the previous pass change the next pass, nothing else does.
+      indexReadRows();
+      if (!readList.length){ stopSentenceRead(); return; }
+      readIndex = 0;
+      readItemRep = 0;
+      readGen++;
+      updateReadButtons();
+      sentenceReadNext();
+      return;
+    }
     const txt = readList[readIndex];
+    // Everything this step schedules is tagged with the generation that created
+    // it. Toggling speed / shadow restarts the loop, and the cancelled utterance
+    // still fires onend — without this guard that stale callback would advance a
+    // second, parallel loop and the rows would skip forward on their own.
+    const gen = readGen;
+    const alive = () => readActive && !readPaused && gen === readGen;
     const step = () => {
-      if (!readActive || readPaused) return;
+      if (!alive()) return;
       markReadRow(readIndex, false);
-      // The gap counts from the *end* of speech, so shadowing gives exactly
-      // the same speaking time to repeat aloud.
+      // The gap counts from the *end* of speech, so shadowing gives at least
+      // as long as the read took to repeat aloud (times shadowPauseFactor).
       let startedAt = 0, finished = false;
       const done = () => {
-        if (finished || !readActive || readPaused) return;
+        if (finished || !alive()) return;
         finished = true;
-        clearTimeout(watchdog);
-        const gap = readShadow ? Math.max(400, performance.now() - startedAt) : (readItemRep + 1 < readRepeat ? 700 : 1000);
+        readSpeaking = false;
+        if (readWatchdog){ clearTimeout(readWatchdog); readWatchdog = null; }
+        const gap = readShadow
+          ? Math.max(400, (performance.now() - startedAt) * shadowPauseFactor)
+          : (readItemRep + 1 < readRepeat ? 700 : 1000);
         if (readShadow) markReadRow(readIndex, true);
         readItemRep++;
         if (readItemRep < readRepeat){
@@ -2418,8 +2617,9 @@
       // Fallback in case this engine never fires onend (long utterances on some
       // platforms): assume ~4 chars/second at 1x and then close the gap.
       const est = Math.max(1500, txt.length * 250 / speakRate);
-      const watchdog = setTimeout(done, est + 400);
+      readWatchdog = setTimeout(done, est + 400);
       startedAt = performance.now();
+      readSpeaking = true;
       speak(txt, done, speakRate);
     };
     step();
@@ -2433,11 +2633,8 @@
     const isFlipped = userAnswer === 'flipped';
 
     questionArea.innerHTML = `
-      <div class="sent-view-bar" id="sentViewBar">
-        <button class="${sentCardView === 'hanzi' ? 'active' : ''}" data-view="hanzi">🀄 汉字</button>
-        <button class="${sentCardView === 'pinyin' ? 'active' : ''}" data-view="pinyin">🔠 拼音</button>
-        <button class="${sentCardView === 'english' ? 'active' : ''}" data-view="english">🔤 English</button>
-      </div>
+      ${cardViewBarHtml('sentViewBar', sentCardView)}
+      ${speedBarHtml()}
       <div style="font-size:0.9rem;color:#6b6154;margin-bottom:4px;">🃏 Tap card to flip</div>
       <div style="margin-bottom:6px;"><button class="sound-btn" id="flashPlayBtn">🔊</button></div>
     `;
@@ -2472,6 +2669,7 @@
 
     const playBtn = $('flashPlayBtn');
     if (playBtn) playBtn.addEventListener('click', () => speakChinese(item.cn));
+    bindReadMenu();
 
     const svb = $('sentViewBar');
     if (svb){

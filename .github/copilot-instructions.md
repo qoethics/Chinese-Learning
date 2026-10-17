@@ -197,7 +197,9 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 #### hsk1 / hsk2 同步策略
 逻辑与样式已全部收敛到 `shared/`，**不存在两份 app.js 需要同步**。
 唯一需要成对改的是两个 `index.html` 的 DOM（见「shared/ 共享层」一节的落点规则）。
-改 shared 后必须在 hsk1 与 hsk2 两边都确认：hsk1 有 11 个点用 `note`、且**没有** `subs[]`，走的是老分支。
+改 shared 后必须在 hsk1 与 hsk2 两边都确认：hsk1 的 70 个点里 11 个有 `note`（其中 3 个是多行），
+4 个有 `subs[]`（6-1 / 9-1 / 14-1 / 15-1），其余走老分支（无 `subs[]`、`sub` 当标签文本）。
+`note` 用 `\n` 分行，渲染时一行一个 `.grammar-intro`。
 
 ## Ruby 拼音显示 SOP（所有模块/新页面一律照此执行）
 

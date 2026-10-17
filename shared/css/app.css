@@ -475,6 +475,7 @@
     justify-content: center;
   }
   .question-area .sound-btn:hover { background: var(--theme-light); transform: scale(1.05); }
+  .question-area .read-speed { flex-wrap: wrap; justify-content: center; margin-bottom: 6px; }
   .options-grid {
     display: flex;
     flex-wrap: wrap;
@@ -846,6 +847,14 @@
     padding: 2px 0 10px;
     flex-wrap: wrap;
   }
+  .sentence-read-menu .read-main-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding-right: 2px;
+  }
+  .sentence-read-menu .read-main-row #loopToggle { margin-left: auto; }
   .sentence-read-menu #sentenceReadBtn {
     border: 1px solid var(--theme-mid);
     background: white;
@@ -1171,6 +1180,16 @@
     padding: 2px 4px 6px;
   }
   .grammar-intro ruby rt { font-size: 0.55em; }
+  .grammar-intro + .grammar-intro { padding-top: 0; }
+  .province-map { padding: 2px 4px 4px; text-align: center; }
+  .china-map { display: block; width: 240px; max-width: 100%; height: auto; margin: 0 auto; }
+  .china-map path {
+    fill: #e9e3d9;
+    stroke: #fff;
+    stroke-width: 1.2;
+    vector-effect: non-scaling-stroke;
+  }
+  .china-map path.on { fill: var(--theme-accent); }
   .grammar-sub {
     font-size: 0.95rem;
     font-weight: 600;
@@ -1211,26 +1230,6 @@
     padding: 10px 12px 12px;
   }
   .grammar-body.collapsed { display: none; }
-  /* Turning a highlight category off renders its sentences inline. The body keeps
-     its flex container (which would flatten everything into one row), so
-     :has() hands the layout to the inner wrapper once it has a revealed row. */
-  .grammar-body:has(.grammar-body-inner > .grammar-item.hl-hidden) {
-    display: inline-flex;
-    vertical-align: top;
-    padding: 0;
-  }
-  .grammar-body:has(.grammar-body-inner > .grammar-item.hl-hidden) > .grammar-body-inner {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 6px 14px;
-    padding: 6px 2px 2px;
-  }
-  .grammar-body-inner > .grammar-item.hl-hidden {
-    display: inline-flex;
-    grid-template-columns: none;
-    padding: 2px 6px;
-  }
   .grammar-item {
     display: grid;
     grid-template-columns: minmax(0, 56%) minmax(0, 1fr);

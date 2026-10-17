@@ -1102,465 +1102,478 @@
         "no": 1,
         "cn": "能愿动词“会”",
         "en": "The Modal Verb “会”",
+        "note": "Indicates having the ability to do something (acquired through learning).",
+        "subs": [
+          {
+            "id": "a",
+            "label": "Positive form",
+            "exp": ""
+          },
+          {
+            "id": "b",
+            "label": "Negative form 不会",
+            "exp": ""
+          }
+        ],
         "items": [
           {
             "c": "我会写汉字。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì xiě Hàn zì。",
             "en": "I can write Chinese characters."
           },
           {
             "c": "我会写字。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì xiě zì。",
             "en": "I can write characters."
           },
           {
             "c": "我会做饭。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì zuò fàn。",
             "en": "I can cook."
           },
           {
             "c": "我会开车。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì kāi chē。",
             "en": "I can drive."
           },
           {
             "c": "我会游泳。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì yóu yǒng。",
             "en": "I can swim."
           },
           {
             "c": "我会唱歌。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì chàng gē。",
             "en": "I can sing."
           },
           {
             "c": "我会跳舞。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì tiào wǔ。",
             "en": "I can dance."
           },
           {
             "c": "我会拍照。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì pāi zhào。",
             "en": "I can take photos."
           },
           {
             "c": "我会读汉字。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì dú Hàn zì。",
             "en": "I can read Chinese characters."
           },
           {
             "c": "我会说汉语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì shuō Hànyǔ。",
             "en": "I can speak Chinese."
           },
           {
             "c": "我会说英语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì shuō Yīngyǔ。",
             "en": "I can speak English."
           },
           {
             "c": "我会说法语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì shuō Fǎyǔ。",
             "en": "I can speak French."
           },
           {
             "c": "我会说荷兰语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì shuō Hélán yǔ。",
             "en": "I can speak Dutch."
           },
           {
             "c": "我会说日语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì shuō Rìyǔ。",
             "en": "I can speak Japanese."
           },
           {
             "c": "我会说西班牙语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "wǒ huì shuō Xībānyá yǔ。",
             "en": "I can speak Spanish."
           },
           {
             "c": "你会写汉字吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì xiě Hàn zì ma？",
             "en": "Can you write Chinese characters?"
           },
           {
             "c": "你会写字吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì xiě zì ma？",
             "en": "Can you write characters?"
           },
           {
             "c": "你会做饭吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì zuò fàn ma？",
             "en": "Can you cook?"
           },
           {
             "c": "你会开车吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì kāi chē ma？",
             "en": "Can you drive?"
           },
           {
             "c": "你会游泳吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì yóu yǒng ma？",
             "en": "Can you swim?"
           },
           {
             "c": "你会唱歌吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì chàng gē ma？",
             "en": "Can you sing?"
           },
           {
             "c": "你会跳舞吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì tiào wǔ ma？",
             "en": "Can you dance?"
           },
           {
             "c": "你会拍照吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì pāi zhào ma？",
             "en": "Can you take photos?"
           },
           {
             "c": "你会读汉字吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì dú Hàn zì ma？",
             "en": "Can you read Chinese characters?"
           },
           {
             "c": "你会说汉语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì shuō Hànyǔ ma？",
             "en": "Can you speak Chinese?"
           },
           {
             "c": "你会说英语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì shuō Yīngyǔ ma？",
             "en": "Can you speak English?"
           },
           {
             "c": "你会说法语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì shuō Fǎyǔ ma？",
             "en": "Can you speak French?"
           },
           {
             "c": "你会说荷兰语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì shuō Hélán yǔ ma？",
             "en": "Can you speak Dutch?"
           },
           {
             "c": "你会说日语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì shuō Rìyǔ ma？",
             "en": "Can you speak Japanese?"
           },
           {
             "c": "你会说西班牙语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "nǐ huì shuō Xībānyá yǔ ma？",
             "en": "Can you speak Spanish?"
           },
           {
             "c": "爸爸会写汉字。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "bà ba huì xiě Hàn zì。",
             "en": "Dad can write Chinese characters."
           },
           {
             "c": "妈妈会写字。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "mā ma huì xiě zì。",
             "en": "Mom can write characters."
           },
           {
             "c": "哥哥会做饭。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "gē ge huì zuò fàn。",
             "en": "Older brother can cook."
           },
           {
             "c": "姐姐会开车。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "jiě jie huì kāi chē。",
             "en": "Older sister can drive."
           },
           {
             "c": "弟弟会游泳。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "dì di huì yóu yǒng。",
             "en": "Younger brother can swim."
           },
           {
             "c": "妹妹会唱歌。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "mèi mei huì chàng gē。",
             "en": "Younger sister can sing."
           },
           {
             "c": "爸爸会跳舞。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "bà ba huì tiào wǔ。",
             "en": "Dad can dance."
           },
           {
             "c": "妈妈会拍照。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "mā ma huì pāi zhào。",
             "en": "Mom can take photos."
           },
           {
             "c": "哥哥会读汉字。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "gē ge huì dú Hàn zì。",
             "en": "Older brother can read Chinese characters."
           },
           {
             "c": "姐姐会说汉语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "jiě jie huì shuō Hànyǔ。",
             "en": "Older sister can speak Chinese."
           },
           {
             "c": "弟弟会说英语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "dì di huì shuō Yīngyǔ。",
             "en": "Younger brother can speak English."
           },
           {
             "c": "妹妹会说法语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "mèi mei huì shuō Fǎyǔ。",
             "en": "Younger sister can speak French."
           },
           {
             "c": "爸爸会说荷兰语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "bà ba huì shuō Hélán yǔ。",
             "en": "Dad can speak Dutch."
           },
           {
             "c": "妈妈会说日语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "mā ma huì shuō Rìyǔ。",
             "en": "Mom can speak Japanese."
           },
           {
             "c": "哥哥会说西班牙语。",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "gē ge huì shuō Xībānyá yǔ。",
             "en": "Older brother can speak Spanish."
           },
           {
             "c": "爸爸会写汉字吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "bà ba huì xiě Hàn zì ma？",
             "en": "Can Dad write Chinese characters?"
           },
           {
             "c": "妈妈会写字吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "mā ma huì xiě zì ma？",
             "en": "Can Mom write characters?"
           },
           {
             "c": "哥哥会做饭吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "gē ge huì zuò fàn ma？",
             "en": "Can older brother cook?"
           },
           {
             "c": "姐姐会开车吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "jiě jie huì kāi chē ma？",
             "en": "Can older sister drive?"
           },
           {
             "c": "弟弟会游泳吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "dì di huì yóu yǒng ma？",
             "en": "Can younger brother swim?"
           },
           {
             "c": "妹妹会唱歌吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "mèi mei huì chàng gē ma？",
             "en": "Can younger sister sing?"
           },
           {
             "c": "爸爸会跳舞吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "bà ba huì tiào wǔ ma？",
             "en": "Can Dad dance?"
           },
           {
             "c": "妈妈会拍照吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "mā ma huì pāi zhào ma？",
             "en": "Can Mom take photos?"
           },
           {
             "c": "哥哥会读汉字吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "gē ge huì dú Hàn zì ma？",
             "en": "Can older brother read Chinese characters?"
           },
           {
             "c": "姐姐会说汉语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "jiě jie huì shuō Hànyǔ ma？",
             "en": "Can older sister speak Chinese?"
           },
           {
             "c": "弟弟会说英语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "dì di huì shuō Yīngyǔ ma？",
             "en": "Can younger brother speak English?"
           },
           {
             "c": "妹妹会说法语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "mèi mei huì shuō Fǎyǔ ma？",
             "en": "Can younger sister speak French?"
           },
           {
             "c": "爸爸会说荷兰语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "bà ba huì shuō Hélán yǔ ma？",
             "en": "Can Dad speak Dutch?"
           },
           {
             "c": "妈妈会说日语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "mā ma huì shuō Rìyǔ ma？",
             "en": "Can Mom speak Japanese?"
           },
           {
             "c": "哥哥会说西班牙语吗？",
-            "sub": "a. Positive form",
+            "sub": "a",
             "py": "gē ge huì shuō Xībānyá yǔ ma？",
             "en": "Can older brother speak Spanish?"
           },
           {
             "c": "我不会写汉字。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "wǒ bù huì xiě Hàn zì。",
             "en": "I cannot write Chinese characters."
           },
           {
             "c": "你不会写字。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "nǐ bù huì xiě zì。",
             "en": "You cannot write characters."
           },
           {
             "c": "他不会做饭。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "tā bù huì zuò fàn。",
             "en": "He cannot cook."
           },
           {
             "c": "她不会开车。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "tā bù huì kāi chē。",
             "en": "She cannot drive."
           },
           {
             "c": "我们不会游泳。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "wǒmen bù huì yóu yǒng。",
             "en": "We cannot swim."
           },
           {
             "c": "他们不会唱歌。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "tāmen bù huì chàng gē。",
             "en": "They cannot sing."
           },
           {
             "c": "我不会跳舞。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "wǒ bù huì tiào wǔ。",
             "en": "I cannot dance."
           },
           {
             "c": "你不会拍照。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "nǐ bù huì pāi zhào。",
             "en": "You cannot take photos."
           },
           {
             "c": "他不会读汉字。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "tā bù huì dú Hàn zì。",
             "en": "He cannot read Chinese characters."
           },
           {
             "c": "她不会说汉语。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "tā bù huì shuō Hànyǔ。",
             "en": "She cannot speak Chinese."
           },
           {
             "c": "我们不会说英语。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "wǒmen bù huì shuō Yīngyǔ。",
             "en": "We cannot speak English."
           },
           {
             "c": "他们不会说法语。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "tāmen bù huì shuō Fǎyǔ。",
             "en": "They cannot speak French."
           },
           {
             "c": "我不会说荷兰语。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "wǒ bù huì shuō Hélán yǔ。",
             "en": "I cannot speak Dutch."
           },
           {
             "c": "你不会说日语。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "nǐ bù huì shuō Rìyǔ。",
             "en": "You cannot speak Japanese."
           },
           {
             "c": "他不会说西班牙语。",
-            "sub": "b. Negative form 不会",
+            "sub": "b",
             "py": "tā bù huì shuō Xībānyá yǔ。",
             "en": "He cannot speak Spanish."
           }
-        ],
-        "note": "Indicates having the ability to do something (acquired through learning)."
+        ]
       },
       {
         "id": "6-2",
         "no": 2,
         "cn": "形容词谓语句",
         "en": "Sentences with an Adjectival Predicate",
+        "note": "Subject + adverb of degree + adjective\nNegative form: Subject + 不 + adjective",
         "items": [
           {
             "c": "我很好。",
@@ -1573,8 +1586,7 @@
           {
             "c": "中国菜很好吃。"
           }
-        ],
-        "note": "Subject + adverb of degree + adjective Negative form: Subject + 不 + adjective"
+        ]
       },
       {
         "id": "6-3",
@@ -2061,7 +2073,8 @@
         "id": "7-1",
         "no": 1,
         "cn": "日期的表达（1）：月、日/号、星期、周",
-        "en": "",
+        "en": "Expression of a Date (1): Month, date, day of the week",
+        "note": "Chinese dates observe the principle of \"bigger unit comes before smaller unit\".\nYear - Month - Date; then day of the week.\nIn spoken/verbal Chinese, “号” is used instead of “日” to express the date.\nNote: 周日 = 星期日 = 星期天",
         "items": [
           {
             "c": "5月1号，星期三。"
@@ -2117,14 +2130,14 @@
             "py": "zuó tiān shì xīng qī jǐ？",
             "en": "What day was yesterday?"
           }
-        ],
-        "note": "Expression of a Date (1): Month, date, day of the week Chinese dates observe the principle of \"bigger unit comes before smaller unit\". Year - Month - Date; then day of the week. In spoken/verbal Chinese, “号” is used instead of “日” to express the date. Note: 周日 = 星期日 = 星期天"
+        ]
       },
       {
         "id": "7-2",
         "no": 2,
         "cn": "名词谓语句",
         "en": "Sentences with a Nominal Predicate",
+        "note": "Indicate age, time, date, etc.",
         "items": [
           {
             "c": "我的汉语老师33岁。",
@@ -2141,14 +2154,14 @@
             "py": "jīn tiān jiǔ yuè yī hào。",
             "en": "Today is September 1st."
           }
-        ],
-        "note": "Indicate age, time, date, etc."
+        ]
       },
       {
         "id": "7-3",
         "no": 3,
         "cn": "连动句(1)：去+地方+做什么",
-        "en": "",
+        "en": "Sentences with a Serial Verb Construction (1)",
+        "note": "去 + place + to do sth.",
         "items": [
           {
             "c": "我去中国学习汉语。",
@@ -2234,8 +2247,7 @@
           {
             "c": "我不去餐馆，我做饭。"
           }
-        ],
-        "note": "Sentences with a Serial Verb Construction (1) 去 + place + to do sth."
+        ]
       }
     ]
   },
@@ -2249,8 +2261,8 @@
       {
         "id": "8-s0",
         "no": 0,
-        "cn": "省份",
-        "en": "",
+        "cn": "省份：海南",
+        "en": "Province: Hainan",
         "items": [
           {
             "c": "你想去海南吗？",
@@ -2706,7 +2718,7 @@
       {
         "id": "1-8-s0",
         "no": 0,
-        "cn": "省份",
+        "cn": "句子",
         "en": "",
         "items": [
           {
@@ -2932,8 +2944,8 @@
       {
         "id": "9-s0",
         "no": 0,
-        "cn": "句子",
-        "en": "",
+        "cn": "省份：湖北",
+        "en": "Province: Hubei",
         "items": [
           {
             "c": "我在湖北呢，你在哪儿？我在湖北武汉！",
@@ -2957,101 +2969,114 @@
         "no": 1,
         "cn": "动词“在”",
         "en": "The Verb “在”",
+        "note": "Verb. Followed by word of locality; acts as the predicate of a sentence. Indicates the location of somebody or something.",
+        "subs": [
+          {
+            "id": "a",
+            "label": "Be (at/in/on) somewhere",
+            "exp": ""
+          },
+          {
+            "id": "b",
+            "label": "Negative form: Not somewhere",
+            "exp": ""
+          }
+        ],
         "items": [
           {
             "c": "小猫在床下面。",
-            "sub": "a. Be (at/in/on) somewhere",
+            "sub": "a",
             "py": "xiǎo māo zài chuáng xià miàn。",
             "en": "The kitten is under the bed."
           },
           {
             "c": "小狗在椅子下面。",
-            "sub": "a. Be (at/in/on) somewhere",
+            "sub": "a",
             "py": "xiǎo gǒu zài yǐ zi xià miàn。",
             "en": "The puppy is under the chair."
           },
           {
             "c": "爸爸在房间里。",
-            "sub": "a. Be (at/in/on) somewhere",
+            "sub": "a",
             "py": "bà ba zài fáng jiān lǐ。",
             "en": "Dad is in the room."
           },
           {
             "c": "我朋友在日本。",
-            "sub": "a. Be (at/in/on) somewhere",
+            "sub": "a",
             "py": "wǒ péng yǒu zài Rìběn。",
             "en": "My friend is in Japan."
           },
           {
             "c": "你们在车站吗？",
-            "sub": "a. Be (at/in/on) somewhere",
+            "sub": "a",
             "py": "nǐmen zài chē zhàn ma？",
             "en": "Are you at the station?"
           },
           {
             "c": "老师在学校。",
-            "sub": "a. Be (at/in/on) somewhere",
+            "sub": "a",
             "py": "lǎo shī zài xué xiào。",
             "en": "The teacher is at school."
           },
           {
             "c": "我的眼镜在衣服口袋里。",
-            "sub": "a. Be (at/in/on) somewhere",
+            "sub": "a",
             "py": "wǒ de yǎn jìng zài yī fu kǒu dài lǐ。",
             "en": "My glasses are in my clothing pocket."
           },
           {
             "c": "我不在公司，我在朋友家。",
-            "sub": "b. Negative form: Not somewhere"
+            "sub": "b"
           },
           {
             "c": "他们在学校看书。他们不在餐馆。",
-            "sub": "b. Negative form: Not somewhere",
+            "sub": "b",
             "py": "tāmen zài xué xiào kàn shū。tāmen bù zài cān guǎn。",
             "en": "They're reading at school. They're not at the restaurant."
           },
           {
             "c": "我妈妈在医院工作，她不在银行。",
-            "sub": "b. Negative form: Not somewhere",
+            "sub": "b",
             "py": "wǒ mā ma zài yī yuàn gōng zuò, tā bù zài yín háng。",
             "en": "My mom works at the hospital, she's not at the bank."
           },
           {
             "c": "我在家上中文课，我不在学校。",
-            "sub": "b. Negative form: Not somewhere",
+            "sub": "b",
             "py": "wǒ zài jiā shàng Zhōngwén kè, wǒ bù zài xué xiào。",
             "en": "I'm taking Chinese class at home, I'm not at school."
           },
           {
             "c": "我在外面吃饭。我不在家里。",
-            "sub": "b. Negative form: Not somewhere",
+            "sub": "b",
             "py": "wǒ zài wài miàn chī fàn。wǒ bù zài jiā lǐ。",
             "en": "I'm eating outside. I'm not at home."
           },
           {
             "c": "你在家里吗？",
-            "sub": "b. Negative form: Not somewhere",
+            "sub": "b",
             "py": "nǐ zài jiā lǐ ma？",
             "en": "Are you at home?"
           },
           {
             "c": "我爸爸在家里。",
-            "sub": "b. Negative form: Not somewhere",
+            "sub": "b",
             "py": "wǒ bà ba zài jiā lǐ。",
             "en": "My dad is at home."
           },
           {
             "c": "我不在家，我很忙。",
-            "sub": "b. Negative form: Not somewhere"
+            "sub": "b"
           }
-        ],
-        "note": "Verb. Followed by word of locality; acts as the predicate of a sentence. Indicates the location of somebody or something."
+        ]
       },
       {
         "id": "9-2",
         "no": 2,
         "cn": "疑问代词“哪儿”",
         "en": "The Interrogative Pronoun “哪儿”",
+        "note": "Where. Also “哪里”.",
         "items": [
           {
             "c": "我的手机在哪儿？",
@@ -3138,8 +3163,7 @@
             "py": "xīng qī sì nǐ zài nǎ er？bù zài jiā ma？",
             "en": "Where are you on Thursday? Not at home?"
           }
-        ],
-        "note": "Where. Also “哪里”."
+        ]
       },
       {
         "id": "9-3",
@@ -3289,8 +3313,8 @@
       {
         "id": "10-s0",
         "no": 0,
-        "cn": "省份",
-        "en": "",
+        "cn": "省份：山东",
+        "en": "Province: Shandong",
         "items": [
           {
             "c": "山东的草莓好吃吗？",
@@ -4064,8 +4088,8 @@
       {
         "id": "11-s0",
         "no": 0,
-        "cn": "省份",
-        "en": "",
+        "cn": "省份：湖南",
+        "en": "Province: Hunan",
         "items": [
           {
             "c": "我的火车十二点三十分到湖南长沙。",
@@ -4402,12 +4426,9 @@
       {
         "id": "12-s0",
         "no": 0,
-        "cn": "综合",
-        "en": "",
+        "cn": "省份：广东",
+        "en": "Province: Guangdong",
         "items": [
-          {
-            "c": "省份：广东"
-          },
           {
             "c": "欢迎，广东，粤语，普通话，早茶，香港，感觉，广州，深圳"
           },
@@ -4863,8 +4884,8 @@
       {
         "id": "13-s0",
         "no": 0,
-        "cn": "省份",
-        "en": "",
+        "cn": "省份：四川",
+        "en": "Province: Sichuan",
         "items": [
           {
             "c": "这是我的朋友，她是四川人，很会做四川菜，她在上大学。",
@@ -5535,12 +5556,9 @@
       {
         "id": "14-s0",
         "no": 0,
-        "cn": "句子",
-        "en": "",
+        "cn": "省份：云南",
+        "en": "Province: Yunnan",
         "items": [
-          {
-            "c": "省份：云南"
-          },
           {
             "c": "我在云南，这里经常下雨。",
             "py": "wǒ zài Yúnnán, zhè lǐ jīng cháng xià yǔ。",
@@ -5566,231 +5584,253 @@
         "no": 1,
         "cn": "“了” 表发生或完成",
         "en": "Indicating Occurrence or Completion",
+        "note": "Usually there's a modifier before the object of the verb, such as a numeral classifier, an adjective or a pronoun, etc.\n没 + verb + (object)\nIn the negative form, omit 了.",
+        "subs": [
+          {
+            "id": "a",
+            "label": "用于句尾 used at the end of a sentence",
+            "exp": ""
+          },
+          {
+            "id": "ext",
+            "label": "Extended",
+            "exp": ""
+          },
+          {
+            "id": "b",
+            "label": "动词后带宾语 used between a verb and its object",
+            "exp": ""
+          },
+          {
+            "id": "c",
+            "label": "否定：没+动词（+宾语）Negative",
+            "exp": ""
+          }
+        ],
         "items": [
           {
             "c": "我去商店了。",
-            "sub": "a. 用于句尾 used at the end of a sentence",
+            "sub": "a",
             "py": "wǒ qù shāng diàn le。",
             "en": "I went to the store."
           },
           {
             "c": "他去学开车了。",
-            "sub": "a. 用于句尾 used at the end of a sentence"
+            "sub": "a"
           },
           {
             "c": "你买什么了？",
-            "sub": "a. 用于句尾 used at the end of a sentence",
+            "sub": "a",
             "py": "nǐ mǎi shén me le？",
             "en": "What did you buy?"
           },
           {
             "c": "你昨天做什么了？",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "nǐ zuó tiān zuò shén me le？",
             "en": "What did you do yesterday?"
           },
           {
             "c": "你昨天吃什么了？",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "nǐ zuó tiān chī shén me le？",
             "en": "What did you eat yesterday?"
           },
           {
             "c": "你昨天去哪儿了？",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "nǐ zuó tiān qù nǎ er le？",
             "en": "Where did you go yesterday?"
           },
           {
             "c": "你买什么了？",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "nǐ mǎi shén me le？",
             "en": "What did you buy?"
           },
           {
             "c": "你做作业了吗？",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "nǐ zuò zuò yè le ma？",
             "en": "Did you do your homework?"
           },
           {
             "c": "我做了作业。",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "wǒ zuò le zuò yè。",
             "en": "I did my homework."
           },
           {
             "c": "你做饭了吗？",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "nǐ zuò fàn le ma？",
             "en": "Did you cook?"
           },
           {
             "c": "我做了饭。",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "wǒ zuò le fàn。",
             "en": "I cooked."
           },
           {
             "c": "你毕业了吗？",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "nǐ bì yè le ma？",
             "en": "Did you graduate?"
           },
           {
             "c": "我毕业了。",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "wǒ bì yè le。",
             "en": "I graduated."
           },
           {
             "c": "周五晚上，我去中国餐馆吃饭了。",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "zhōu wǔ wǎn shang, wǒ qù Zhōngguó cān guǎn chī fàn le。",
             "en": "Friday evening, I went to a Chinese restaurant to eat."
           },
           {
             "c": "9点了，我睡觉了。",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "jiǔ diǎn le, wǒ shuì jiào le。",
             "en": "It's 9, I went to sleep."
           },
           {
             "c": "周日你去公园了？你去公园做什么了？",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "zhōu rì nǐ qù gōng yuán le？nǐ qù gōng yuán zuò shén me le？",
             "en": "Did you go to the park on Sunday? What did you do there?"
           },
           {
             "c": "我去公园跑步了。",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "wǒ qù gōng yuán pǎo bù le。",
             "en": "I went running in the park."
           },
           {
             "c": "哇，你去跳舞了？好厉害。",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "wā, nǐ qù tiào wǔ le？hǎo lì hai。",
             "en": "Wow, you went dancing? Impressive."
           },
           {
             "c": "你在办公室做什么？我走了。",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "nǐ zài bàn gōng shì zuò shén me？wǒ zǒu le。",
             "en": "What are you doing in the office? I left."
           },
           {
             "c": "真的吗？你去跑步了？不错嘛。",
-            "sub": "Extended:",
+            "sub": "ext",
             "py": "zhēn de ma？nǐ qù pǎo bù le？bù cuò ma。",
             "en": "Really? You went running? Not bad."
           },
           {
             "c": "她买了不少苹果。",
-            "sub": "b. 动词后带宾语 used between a verb and its object"
+            "sub": "b"
           },
           {
             "c": "我买了不少衣服。",
-            "sub": "b. 动词后带宾语 used between a verb and its object",
+            "sub": "b",
             "py": "wǒ mǎi le bù shǎo yī fu。",
             "en": "I bought quite a few clothes."
           },
           {
             "c": "你看见了几个人？",
-            "sub": "b. 动词后带宾语 used between a verb and its object",
+            "sub": "b",
             "py": "nǐ kàn jiàn le jǐ ge rén？",
             "en": "How many people did you see?"
           },
           {
             "c": "我买了不少衣服。",
-            "sub": "b. 动词后带宾语 used between a verb and its object",
+            "sub": "b",
             "py": "wǒ mǎi le bù shǎo yī fu。",
             "en": "I bought quite a few clothes."
           },
           {
             "c": "你去了云南多久？",
-            "sub": "b. 动词后带宾语 used between a verb and its object"
+            "sub": "b"
           },
           {
             "c": "她买了一点儿花，现在花在房间里。",
-            "sub": "b. 动词后带宾语 used between a verb and its object",
+            "sub": "b",
             "py": "tā mǎi le yī diǎn er huā, xiàn zài huā zài fáng jiān lǐ。",
             "en": "She bought some flowers, now they are in the room."
           },
           {
             "c": "上午我玩了电脑，你呢？",
-            "sub": "b. 动词后带宾语 used between a verb and its object",
+            "sub": "b",
             "py": "shàng wǔ wǒ wán le diàn nǎo, nǐ ne？",
             "en": "In the morning I played on the computer, and you?"
           },
           {
             "c": "你学了筷子？不错嘛。",
-            "sub": "b. 动词后带宾语 used between a verb and its object",
+            "sub": "b",
             "py": "nǐ xué le kuài zi？bù cuò ma。",
             "en": "You learned chopsticks? Not bad."
           },
           {
             "c": "我学了中文，现在我会说中文。",
-            "sub": "b. 动词后带宾语 used between a verb and its object",
+            "sub": "b",
             "py": "wǒ xué le Zhōngwén, xiàn zài wǒ huì shuō Zhōngwén。",
             "en": "I studied Chinese, now I can speak Chinese."
           },
           {
             "c": "这个电影特别好，我看了这个电影。",
-            "sub": "b. 动词后带宾语 used between a verb and its object",
+            "sub": "b",
             "py": "zhè ge diàn yǐng tè bié hǎo, wǒ kàn le zhè ge diàn yǐng。",
             "en": "This movie is especially good, I watched it."
           },
           {
             "c": "我去了这个商店，里面有好多电脑。",
-            "sub": "b. 动词后带宾语 used between a verb and its object",
+            "sub": "b",
             "py": "wǒ qù le zhè ge shāng diàn, lǐ miàn yǒu hǎo duō diàn nǎo。",
             "en": "I went to this store, there are many computers inside."
           },
           {
             "c": "她没去商店。",
-            "sub": "c. 否定：没+动词（+宾语）Negative"
+            "sub": "c"
           },
           {
             "c": "我没买。",
-            "sub": "c. 否定：没+动词（+宾语）Negative"
+            "sub": "c"
           },
           {
             "c": "我没看见张先生。",
-            "sub": "c. 否定：没+动词（+宾语）Negative"
+            "sub": "c"
           },
           {
             "c": "我没吃饭，我好饿。",
-            "sub": "c. 否定：没+动词（+宾语）Negative",
+            "sub": "c",
             "py": "wǒ méi chī fàn, wǒ hǎo è。",
             "en": "I didn't eat, I'm so hungry."
           },
           {
             "c": "我没去日本，我去了上海。",
-            "sub": "c. 否定：没+动词（+宾语）Negative",
+            "sub": "c",
             "py": "wǒ méi qù Rìběn, wǒ qù le Shànghǎi。",
             "en": "I didn't go to Japan, I went to Shanghai."
           },
           {
             "c": "我没吃包子，我吃了西班牙菜。",
-            "sub": "c. 否定：没+动词（+宾语）Negative",
+            "sub": "c",
             "py": "wǒ méi chī bāo zi, wǒ chī le Xībānyá cài。",
             "en": "I didn't eat baozi, I ate Spanish food."
           },
           {
             "c": "我没学法语，我学了英语。",
-            "sub": "c. 否定：没+动词（+宾语）Negative",
+            "sub": "c",
             "py": "wǒ méi xué Fǎyǔ, wǒ xué le Yīngyǔ。",
             "en": "I didn't study French, I studied English."
           },
           {
             "c": "她没有去银行，她没钱。",
-            "sub": "c. 否定：没+动词（+宾语）Negative",
+            "sub": "c",
             "py": "tā méi yǒu qù yín háng, tā méi qián。",
             "en": "She didn't go to the bank, she has no money."
           }
-        ],
-        "note": "Usually there's a modifier before the object of the verb, such as a numeral classifier, an adjective or a pronoun, etc. 没 + verb + (object) In the negative form, omit 了."
+        ]
       },
       {
         "id": "14-2",
@@ -5873,6 +5913,7 @@
         "no": 3,
         "cn": "语气助词“啊”",
         "en": "The Modal Particle “啊”",
+        "note": "Used at the end of a declarative sentence to set the mood.",
         "items": [
           {
             "c": "你是王小姐吗？是啊。"
@@ -5883,14 +5924,14 @@
           {
             "c": "王方的衣服太漂亮了！是啊，她买了不少衣服。"
           }
-        ],
-        "note": "Used at the end of a declarative sentence to set the mood."
+        ]
       },
       {
         "id": "14-4",
         "no": 4,
         "cn": "副词“都”",
         "en": "The Adverb “都”",
+        "note": "Both/all. People or objects included are put before \"都\".",
         "items": [
           {
             "c": "我们都是中国人。"
@@ -5906,8 +5947,7 @@
             "py": "zhè lǐ yǒu sān shí běn shū, nǐ dōu dú le？tài lì hai le。",
             "en": "There are 30 books here, you read them all? Amazing."
           }
-        ],
-        "note": "Both/all. People or objects included are put before \"都\"."
+        ]
       },
       {
         "id": "14-5",
@@ -6049,8 +6089,8 @@
       {
         "id": "15-s0",
         "no": 0,
-        "cn": "省份",
-        "en": "",
+        "cn": "省份：浙江",
+        "en": "Province: Zhejiang",
         "items": [
           {
             "c": "我朋友是浙江人，他会说中文，也会说一点儿英语。",
@@ -6078,292 +6118,304 @@
         "id": "15-1",
         "no": 1,
         "cn": "“是...的”句：强调时间、地点、方式",
-        "en": "",
+        "en": "The Structure “是...的”: used to emphasize time, place or manner",
+        "note": "\"是\" can be omitted in positive and interrogative sentences, but not in negative sentences.",
+        "subs": [
+          {
+            "id": "a",
+            "label": "When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "exp": ""
+          },
+          {
+            "id": "b",
+            "label": "Negative form",
+            "exp": ""
+          }
+        ],
         "items": [
           {
             "c": "我是昨天来的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ shì zuó tiān lái de。",
             "en": "I came yesterday."
           },
           {
             "c": "这是在北京买的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "zhè shì zài Běijīng mǎi de。",
             "en": "This was bought in Beijing."
           },
           {
             "c": "你们是怎么来饭店的？",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "nǐmen shì zěn me lái fàn diàn de？",
             "en": "How did you come to the restaurant?"
           },
           {
             "c": "我在北京买了这个。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ zài Běijīng mǎi le zhè ge。",
             "en": "I bought this in Beijing."
           },
           {
             "c": "我没听见。这个是在哪儿买的？",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ méi tīng jiàn。zhè ge shì zài nǎ er mǎi de？",
             "en": "I didn't hear. Where was this bought?"
           },
           {
             "c": "这个是在北京买的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "zhè ge shì zài Běijīng mǎi de。",
             "en": "This was bought in Beijing."
           },
           {
             "c": "这个桌子是在北京买的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "zhè ge zhuō zi shì zài Běijīng mǎi de。",
             "en": "This table was bought in Beijing."
           },
           {
             "c": "这个汉堡是在 McDonald's 买的",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred."
+            "sub": "a"
           },
           {
             "c": "这个手机是在苹果商店买的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "zhè ge shǒu jī shì zài Píngguǒ shāng diàn mǎi de。",
             "en": "This phone was bought at the Apple Store."
           },
           {
             "c": "我不是昨天来的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ bù shì zuó tiān lái de。",
             "en": "I didn't come yesterday."
           },
           {
             "c": "这不是在北京买的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "zhè bù shì zài Běijīng mǎi de。",
             "en": "This wasn't bought in Beijing."
           },
           {
             "c": "我们不是坐出租车来的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒmen bù shì zuò chū zū chē lái de。",
             "en": "We didn't come by taxi."
           },
           {
             "c": "你是怎么来芝加哥(Chicago)的？",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred."
+            "sub": "a"
           },
           {
             "c": "我是坐飞机来的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ shì zuò fēi jī lái de。",
             "en": "I came by plane."
           },
           {
             "c": "你是怎么来餐馆的？",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "nǐ shì zěn me lái cān guǎn de？",
             "en": "How did you come to the restaurant?"
           },
           {
             "c": "我是坐出租车来的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ shì zuò chū zū chē lái de。",
             "en": "I came by taxi."
           },
           {
             "c": "我是打车来的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ shì dǎ chē lái de。",
             "en": "I came by taxi."
           },
           {
             "c": "我是开车来的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ shì kāi chē lái de。",
             "en": "I came by car."
           },
           {
             "c": "我是坐车来的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ shì zuò chē lái de。",
             "en": "I came by car."
           },
           {
             "c": "你是什么时候上大学的？",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "nǐ shì shén me shí hou shàng dà xué de？",
             "en": "When did you start university?"
           },
           {
             "c": "我是2016年上大学的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ shì èr líng yī liù nián shàng dà xué de。",
             "en": "I started university in 2016."
           },
           {
             "c": "我们是去哪儿住的？",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒmen shì qù nǎ er zhù de？",
             "en": "Where did we go to stay?"
           },
           {
             "c": "我们是去酒店住的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒmen shì qù jiǔ diàn zhù de。",
             "en": "We went to stay at a hotel."
           },
           {
             "c": "今天是2026年9月30号。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "jīn tiān shì èr líng èr liù nián jiǔ yuè sān shí hào。",
             "en": "Today is September 30, 2026."
           },
           {
             "c": "这个手机是在手机店买的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "zhè ge shǒu jī shì zài shǒu jī diàn mǎi de。",
             "en": "This phone was bought at a phone store."
           },
           {
             "c": "这个衣服是在 Uniqlo 买的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred."
+            "sub": "a"
           },
           {
             "c": "我的杯子是在淘宝买的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ de bēi zi shì zài Táobǎo mǎi de。",
             "en": "My cup was bought on Taobao."
           },
           {
             "c": "我和朋友是在网上认识的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ hé péng yǒu shì zài wǎng shàng rèn shi de。",
             "en": "I met my friend online."
           },
           {
             "c": "我在网上认识了很多中国朋友。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ zài wǎng shàng rèn shi le hěn duō Zhōngguó péng yǒu。",
             "en": "I met many Chinese friends online."
           },
           {
             "c": "你是怎么去上班的？",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "nǐ shì zěn me qù shàng bān de？",
             "en": "How do you go to work?"
           },
           {
             "c": "我是坐巴士去上班的。",
-            "sub": "a. When the occurrence of something is known, “是...的” can be used to emphasize when, where and in which manner it occurred.",
+            "sub": "a",
             "py": "wǒ shì zuò bā shì qù shàng bān de。",
             "en": "I go to work by bus."
           },
           {
             "c": "我不是昨天来的。",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "wǒ bù shì zuó tiān lái de。",
             "en": "I didn't come yesterday."
           },
           {
             "c": "这不是在北京买的。",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "zhè bù shì zài Běijīng mǎi de。",
             "en": "This wasn't bought in Beijing."
           },
           {
             "c": "我们不是坐出租车来的。",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "wǒmen bù shì zuò chū zū chē lái de。",
             "en": "We didn't come by taxi."
           },
           {
             "c": "我不是昨天来的，我是今天来的。",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "wǒ bù shì zuó tiān lái de, wǒ shì jīn tiān lái de。",
             "en": "I didn't come yesterday, I came today."
           },
           {
             "c": "你是在北京买的手机吗？",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "nǐ shì zài Běijīng mǎi de shǒu jī ma？",
             "en": "Did you buy the phone in Beijing?"
           },
           {
             "c": "我不是在北京买的手机，我是在上海买的手机。",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "wǒ bù shì zài Běijīng mǎi de shǒu jī, wǒ shì zài Shànghǎi mǎi de shǒu jī。",
             "en": "I didn't buy the phone in Beijing, I bought it in Shanghai."
           },
           {
             "c": "你们是走路来饭店的吗？",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "nǐmen shì zǒu lù lái fàn diàn de ma？",
             "en": "Did you walk to the restaurant?"
           },
           {
             "c": "我们不是走路来饭店的，我们是开车来的。",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "wǒmen bù shì zǒu lù lái fàn diàn de, wǒmen shì kāi chē lái de。",
             "en": "We didn't walk to the restaurant, we came by car."
           },
           {
             "c": "你是和老师一起去学校的吗？",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "nǐ shì hé lǎo shī yī qǐ qù xué xiào de ma？",
             "en": "Did you go to school with the teacher?"
           },
           {
             "c": "我不是和老师一起去学校的，我是一个人去的。",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "wǒ bù shì hé lǎo shī yī qǐ qù xué xiào de, wǒ shì yī ge rén qù de。",
             "en": "I didn't go to school with the teacher, I went alone."
           },
           {
             "c": "我不是来吃饭的，我是来玩的。",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "wǒ bù shì lái chī fàn de, wǒ shì lái wán de。",
             "en": "I didn't come to eat, I came to have fun."
           },
           {
             "c": "你是在英国上的大学吗？",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "nǐ shì zài Yīngguó shàng de dà xué ma？",
             "en": "Did you attend university in the UK?"
           },
           {
             "c": "我不是在英国上的大学，我是在中国上的大学。",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "wǒ bù shì zài Yīngguó shàng de dà xué, wǒ shì zài Zhōngguó shàng de dà xué。",
             "en": "I didn't attend university in the UK, I attended in China."
           },
           {
             "c": "你是今年来的吗？",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "nǐ shì jīn nián lái de ma？",
             "en": "Did you come this year?"
           },
           {
             "c": "我不是今年来的，我是2023年来的。",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "wǒ bù shì jīn nián lái de, wǒ shì èr líng èr sān nián lái de。",
             "en": "I didn't come this year, I came in 2023."
           },
           {
             "c": "你们是坐飞机来武汉的吗？",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "nǐmen shì zuò fēi jī lái Wǔhàn de ma？",
             "en": "Did you come to Wuhan by plane?"
           },
           {
             "c": "我们是开车来武汉的。",
-            "sub": "b. Negative form:",
+            "sub": "b",
             "py": "wǒmen shì kāi chē lái Wǔhàn de。",
             "en": "We came to Wuhan by car."
           }
-        ],
-        "note": "The Structure “是...的”: used to emphasize time, place or manner \"是\" can be omitted in positive and interrogative sentences, but not in negative sentences."
+        ]
       },
       {
         "id": "15-2",

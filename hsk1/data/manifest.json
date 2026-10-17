@@ -3,11 +3,12 @@
   "kickoffPrompt": "新任务开场：先读 hsk1/data/manifest.json 和 .github/copilot-instructions.md，别整读 data.js/app.js。用 grep -n 定位后只读相关 40-80 行。先向我复述你理解的结构 + 计划改哪几个文件，我确认后再动手。语料 json/js 是生成物禁止手改。做完在 file:// 和 http:// 各验证一次，控制台零报错，别碰无关的既有改动（.DS_Store、classroom/）。",
   "entry": "hsk1/index.html",
   "entryNote": "只剩 HTML 骨架 + <link>/<script src> 引用，约 170 行。",
-  "loadOrder": ["data/sentences/grammar-sentences.js", "js/data.js", "js/app.js"],
+  "loadOrder": ["../shared/assets/china-map.js", "data/sentences/grammar-sentences.js", "js/data.js", "js/app.js"],
 
   "globals": {
     "js/data.js": "window.COURSE_LESSONS（别名 window.HSK1_LESSONS）— 课程词汇/课文，每课有唯一 id",
-    "data/sentences/grammar-sentences.js": "window.SENTENCE_CORPUS（别名 window.GRAMMAR_SENTENCES）— 句子语料，每项有唯一 key=课 id"
+    "data/sentences/grammar-sentences.js": "window.SENTENCE_CORPUS（别名 window.GRAMMAR_SENTENCES）— 句子语料，每项有唯一 key=课 id",
+    "../shared/assets/china-map.js": "window.CHINA_MAP_SVG — 中国省界 SVG（仅 hsk1 加载，hsk2 不加载）"
   },
 
   "files": {
@@ -23,7 +24,8 @@
     "generated": ["data/sentences/grammar-sentences.json", "data/sentences/grammar-sentences.js"],
     "regenerate": "python3 hsk1/tools/ingest-sentences.py \"hsk1/HSK 1 语料 <date>.txt\" hsk1/data/sentences/grammar-sentences.json && python3 hsk1/tools/gen-sentences-js.py hsk1/data/sentences/grammar-sentences.json",
     "entrypoint": "js/app.js :: externalLessonGrammar(data) —— 按课程 id 匹配语料 key，缺失则按数组顺序兜底",
-    "appShape": "grammar[] = {id,cn,py,en,note,items:[{c,en,py,sub?}]} —— note 渲染为组内引言，item.sub 为 a./b./c. 小标题（按 sub 分组显示）",
+    "appShape": "grammar[] = {id,cn,py,en,note,subs?,items:[{c,en,py,sub?}]} —— note 为字符串（多行用 \\n 分隔，渲染成多个 .grammar-intro）；item.sub 存 subs[].id；省份组标题写 `省份：<中文名>`（en = `Province: <English>`）",
+    "provinceMap": "shared/assets/china-map.js（window.CHINA_MAP_SVG，由 DataV GeoJSON 一次性生成，勿手改）；app.js :: provinceMapHtml() 在 `省份：X` 组内插入地图并按 data-province 高亮；只有 hsk1/index.html 加载该脚本，hsk2 自动跳过",
     "consumers": {
       "sentflash (句卡/句表)": "phrases <- grammarSentenceList()",
       "fill (填空)": "originalFillItems <- grammarSentenceList()",

@@ -76,6 +76,15 @@ if (location.protocol !== 'file:') {
         <label for="rememberLastToggle" class="settings-switch"><span class="settings-switch-dot"></span></label>
       </div>
     </div>
+    <div class="settings-section">Read-aloud</div>
+    <div class="settings-row">
+      <span class="settings-row-label">🫧 Shadow pause</span>
+      <div class="font-size-ctl" id="shadowFactorCtl">
+        <button id="shadowDownBtn" title="Shorter shadow pause">−</button>
+        <span class="font-size-value" id="shadowFactorValue">1.25×</span>
+        <button id="shadowUpBtn" title="Longer shadow pause">+</button>
+      </div>
+    </div>
     <div class="settings-section">Sound</div>
     <button class="sound-check-btn" id="soundCheckBtn" title="Check whether speech and lesson audio work">🔊 Sound Check</button>
     <div class="settings-section">Other</div>
