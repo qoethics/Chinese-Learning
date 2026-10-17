@@ -18,7 +18,7 @@ if (location.protocol !== 'file:') {
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>HSK 综合练习 · L1-L15</title>
-<link rel="stylesheet" href="css/app.css" />
+<link rel="stylesheet" href="../shared/css/app.css" />
 </head>
 <body>
   <div id="welcomeOverlay">
@@ -154,7 +154,8 @@ if (location.protocol !== 'file:') {
     <div class="copyright">© Min Ren 2026 · <a href="#" id="switchAccount" class="switch-account">Switch Account</a></div>
   </div>
 
-<!-- External modules: sentences → data → app. Order matters. -->
+<!-- External modules: pinyin-pro → sentences → data → shared/app. Order matters. -->
+<script src="js/vendor/pinyin-pro.js"></script>
 <script src="data/sentences/grammar-sentences.js"></script>
 <script src="js/data.js"></script>
   <div class="sound-check-overlay hidden" id="soundCheckOverlay">
@@ -170,7 +171,7 @@ if (location.protocol !== 'file:') {
     </div>
   </div>
 
-<script src="js/app.js"></script>
+<script src="../shared/js/app.js"></script>
 <script>
 document.getElementById('switchAccount').addEventListener('click', function (e) {
   e.preventDefault();

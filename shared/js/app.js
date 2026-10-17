@@ -1253,12 +1253,15 @@
       return;
     }
     studyTabBar.style.display = 'flex';
+    // Topics 数据是按级别可选的（hsk1 没有 grammar-topics.js）。
+    // 没有数据就不显示这个标签，避免出现一个永远空着的页签。
+    const hasTopics = (window.GRAMMAR_TOPICS || []).length > 0;
     studyTabBar.innerHTML = `
       <button class="${studyTab === 'word' ? 'active' : ''}" data-tab="word">🀄 Word</button>
       <button class="${studyTab === 'sentence' ? 'active' : ''}" data-tab="sentence">📝 Sentence</button>
       <button class="${studyTab === 'texts' ? 'active' : ''}" data-tab="texts">📄 Texts</button>
       <button class="${studyTab === 'grammar' ? 'active' : ''}" data-tab="grammar">🧩 Grammar</button>
-      <button class="${studyTab === 'topics' ? 'active' : ''}" data-tab="topics">🔗 Topics</button>
+      ${hasTopics ? `<button class="${studyTab === 'topics' ? 'active' : ''}" data-tab="topics">🔗 Topics</button>` : ''}
     `;
     studyTabBar.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('click', function(){
