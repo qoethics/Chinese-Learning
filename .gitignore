@@ -1,5 +1,2 @@
 # macOS
 .DS_Store
-
-# 课件构建产物（仅本地查看，不提交）
-courseware/out/
