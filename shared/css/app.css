@@ -625,6 +625,14 @@
     transition: 0.12s;
     color: var(--theme-text);
   }
+  /* Hovering an option borrows the "toggle on" tint, so a chip reads as
+     clickable before it is selected. The active chip keeps its accent. */
+  .view-mode-bar button:not(.active):hover,
+  .study-tab-bar button:not(.active):hover,
+  .sent-view-bar button:not(.active):hover,
+  .flash-sub-mode button:not(.active):hover {
+    background: color-mix(in srgb, var(--theme-light) 62%, var(--theme-mid) 38%);
+  }
   .view-mode-bar button.active,
   .study-tab-bar button.active,
   .sent-view-bar button.active {
@@ -695,6 +703,72 @@
     font-weight: 600;
   }
   .ctx-chips { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  /* ===== Study menu: one set of width steps for the whole menu =====
+     The menu is its own size container, so every row answers the same
+     question at the same moment. Order: inline → stack (label above the
+     chips) → shrink the whole menu → icons only (the selected chip keeps
+     its text). Pure CSS: nothing is measured at runtime. */
+  .sub-menu { container-type: inline-size; }
+  #learnMenu .btn-ico { flex: 0 0 auto; }
+  #learnMenu button, #learnMenu label { white-space: nowrap; }
+  #learnMenu .ctx-row button { gap: 4px; }
+
+  /* ② any row can no longer keep its label inline → every row stacks */
+  @container (max-width: 600px) {
+    #learnMenu .ctx-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+    #learnMenu .ctx-label { min-width: 0; }
+  }
+  /* ③ the whole menu shrinks together */
+  @container (max-width: 484px) {
+    #learnMenu .ctx-row button,
+    #learnMenu .ctx-row label {
+      font-size: 0.68rem;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
+  /* ④ icons only; the active option is the only one that keeps its text.
+     Below 9px the labels stop being readable, so this replaces a second
+     shrink step instead of going smaller. */
+  @container (max-width: 412px) {
+    /* Toggles in View / Display collapse with everything else: their icon
+       already shows the state, so an "on" toggle keeps no text either. */
+    #learnMenu .ctx-row button,
+    #learnMenu .ctx-row label { gap: 0; }
+    #learnMenu .btn-text {
+      display: inline-block;
+      max-width: 0;
+      margin-left: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                  margin-left 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.2s ease;
+    }
+    /* The chip widens in place for the active option and for a toggle that was
+       just flipped, then folds back to its icon. */
+    #learnMenu button.active .btn-text,
+    #learnMenu .flash-text .btn-text {
+      max-width: 12em;
+      margin-left: 5px;
+      opacity: 1;
+    }
+    /* Switching option rebuilds the row, so the new active chip would appear
+       already expanded. JS adds this class right after the rebuild and removes
+       it on the next frame, replaying the expand as an animation. */
+    /* Switching options animates only the chip that opens; the one that lost
+       the selection snaps straight back to its icon. */
+    #learnMenu .ctx-row button:not(.active) .btn-text { transition: none; }
+    #learnMenu .ctx-row .btn-text-enter .btn-text {
+      max-width: 0;
+      margin-left: 0;
+      opacity: 0;
+      transition: none;
+    }
+
+    #learnMenu .ctx-row button,
+    #learnMenu .ctx-row label { padding-left: 8px; padding-right: 8px; }
+  }
   .sub-menu .flash-sub-mode,
   .sub-menu .study-tab-bar,
   .sub-menu .view-mode-bar {
@@ -721,7 +795,7 @@
   }
   .game-btn small {
     display: block;
-    font-size: 0.66rem;
+    font-size: 0.8em;
     opacity: 0.65;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -734,6 +808,121 @@
     color: white;
   }
   .game-btn.active small { color: rgba(255,255,255,0.8); }
+  /* Game menu: the same width steps as the Study / Read menus — one row that
+     never wraps. The row shrinks together, the Chinese name gives way to an
+     English one stacked under the icon (so it can stay readable), the English
+     keeps shrinking, and finally only the icons remain — larger, now that the
+     chip is icon-width (the selected game shows its label underneath). */
+  #gameMenuWrap { container-type: inline-size; }
+  .game-menu { flex-wrap: nowrap; }
+  .game-btn { white-space: nowrap; }
+  .game-btn .btn-ico { flex: 0 0 auto; }
+  .game-btn .btn-text { margin-left: 4px; }
+
+  /* ② the whole row shrinks together */
+  @container (max-width: 600px) {
+    .game-btn {
+      font-size: 0.82rem;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    .game-menu { gap: 6px; }
+  }
+  /* ③ the Chinese name no longer fits: an English one takes its place, on its
+     own line under the icon so it can stay big */
+  @container (max-width: 495px) {
+    .game-btn .btn-text { display: none; }
+    .game-btn small {
+      display: block;
+      margin: 2px 0 0;
+      font-size: 0.68rem;
+    }
+    .game-btn {
+      font-size: 0.78rem;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .game-menu { gap: 5px; }
+  }
+  /* ④ the English label still does not fit: shrink a step more */
+  @container (max-width: 455px) {
+    .game-btn {
+      font-size: 0.74rem;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+    .game-btn small { font-size: 0.64rem; }
+    .game-menu { gap: 4px; }
+  }
+  @container (max-width: 412px) {
+    .game-btn {
+      font-size: 0.7rem;
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+    .game-btn small { font-size: 0.6rem; }
+    .game-menu { gap: 3px; }
+  }
+  @container (max-width: 368px) {
+    .game-btn {
+      font-size: 0.66rem;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    .game-btn small { font-size: 0.56rem; }
+  }
+  /* ⑤ icons only: the chip is icon-width now, so the icon can grow. The
+     selected game opens its English label under the icon. */
+  @container (max-width: 340px) {
+    .game-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      padding: 4px 6px;
+    }
+    .game-btn small {
+      display: block;
+      max-width: 0;
+      max-height: 0;
+      margin: 0;
+      font-size: 0.62rem;
+      line-height: 1.25;
+      white-space: normal;
+      text-align: center;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                  max-height 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                  margin-top 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.2s ease;
+    }
+    /* Only the game being opened animates; the previous one snaps back. */
+    .game-btn:not(.active) small { transition: none; }
+    /* Long labels wrap instead of widening the chip; the fade keeps the
+       collapsed line count from snapping. */
+    .game-btn.active small {
+      max-width: 5.5em;
+      max-height: 3em;
+      margin-top: 2px;
+      opacity: 1;
+    }
+    /* The opened chip is no longer a pill: softer corners and room around the
+       label so the text never touches the border. */
+    .game-btn.active {
+      border-radius: 14px;
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-bottom: 6px;
+    }
+  }
+  @container (max-width: 260px) {
+    .game-btn { font-size: 1.3rem; }
+  }
+  @container (max-width: 232px) {
+    .game-btn { font-size: 1.05rem; padding: 3px 5px; }
+  }
   .top-spacer {
     margin-left: auto;
     display: flex;
@@ -850,11 +1039,10 @@
   .sentence-read-menu .read-main-row {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     width: 100%;
-    padding-right: 2px;
   }
-  .sentence-read-menu .read-main-row #loopToggle { margin-left: auto; }
   .sentence-read-menu #sentenceReadBtn {
     border: 1px solid var(--theme-mid);
     background: white;
@@ -960,6 +1148,103 @@
   .grammar-item.shadowing { background: #eef2ff; box-shadow: inset 0 0 0 1px #6366f1; }
   .topic-row.shadowing { background: #eef2ff; box-shadow: inset 0 0 0 1px #6366f1; }
   .sentence-read-menu .reading:not(#sentenceReadBtn) { color: #3730a3; }
+  /* ===== Read toolbar: the same width steps as the Study menu =====
+     One row of verbs, then the speed and repeat rows (their icon always stays
+     beside the chips). No row wraps: speed first drops the "x" (1 / 0.75 /
+     0.5 / 0.25 / 0.1), then the whole toolbar shrinks, then icons only.
+     The menu is its own size container, so every row steps at the same time. */
+  .sentence-read-menu { container-type: inline-size; }
+  .sentence-read-menu .read-main-row,
+  .sentence-read-menu .read-speed,
+  .sentence-read-menu .read-repeat { flex-wrap: nowrap; }
+  .sentence-read-menu .btn-ico,
+  .sentence-read-menu .read-ctl-label { flex: 0 0 auto; }
+  .sentence-read-menu button,
+  .sentence-read-menu .read-ctl-label { white-space: nowrap; }
+  .sentence-read-menu button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .sentence-read-menu .read-ctl-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ② the whole toolbar shrinks together (speed keeps its "x" while it fits) */
+  @container (max-width: 410px) {
+    .sentence-read-menu .read-main-row { gap: 8px; }
+    .sentence-read-menu .read-ctl-label,
+    .sentence-read-menu .read-speed button,
+    .sentence-read-menu .read-repeat button { font-size: 0.72rem; }
+    .sentence-read-menu #sentenceReadBtn,
+    .sentence-read-menu #sentencePauseBtn,
+    .sentence-read-menu .shadow-toggle {
+      font-size: 0.8rem;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    .sentence-read-menu .read-speed button,
+    .sentence-read-menu .read-repeat button { padding-left: 8px; padding-right: 8px; }
+  }
+  /* ③ still too wide: drop the "x" from every rate chip and shrink a step more */
+  @container (max-width: 360px) {
+    .sentence-read-menu .rate-x { display: none; }
+    .sentence-read-menu .read-main-row { gap: 6px; }
+    .sentence-read-menu .read-speed,
+    .sentence-read-menu .read-repeat { gap: 4px; }
+    .sentence-read-menu #sentenceReadBtn,
+    .sentence-read-menu #sentencePauseBtn,
+    .sentence-read-menu .shadow-toggle {
+      font-size: 0.74rem;
+      padding-left: 9px;
+      padding-right: 9px;
+    }
+    .sentence-read-menu .read-speed button,
+    .sentence-read-menu .read-repeat button { padding-left: 6px; padding-right: 6px; }
+  }
+  @container (max-width: 320px) {
+    .sentence-read-menu #sentenceReadBtn,
+    .sentence-read-menu #sentencePauseBtn,
+    .sentence-read-menu .shadow-toggle {
+      font-size: 0.68rem;
+      padding-left: 7px;
+      padding-right: 7px;
+    }
+    .sentence-read-menu .read-ctl-label,
+    .sentence-read-menu .read-speed button,
+    .sentence-read-menu .read-repeat button { font-size: 0.66rem; }
+    .sentence-read-menu .read-speed button,
+    .sentence-read-menu .read-repeat button { padding-left: 5px; padding-right: 5px; }
+  }
+  /* ④ icons only; a flipped toggle shows its label for a moment, and the read
+     button keeps its text while a read is active so the state stays visible */
+  @container (max-width: 290px) {
+    .sentence-read-menu button,
+    .sentence-read-menu .read-ctl-label { gap: 0; }
+    .sentence-read-menu button .btn-text,
+    .sentence-read-menu .read-ctl-label .btn-text {
+      display: inline-block;
+      max-width: 0;
+      margin-left: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                  margin-left 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.2s ease;
+    }
+    .sentence-read-menu .flash-text .btn-text,
+    .sentence-read-menu #sentenceReadBtn.reading .btn-text {
+      max-width: 12em;
+      margin-left: 5px;
+      opacity: 1;
+    }
+    .sentence-read-menu #sentenceReadBtn,
+    .sentence-read-menu #sentencePauseBtn,
+    .sentence-read-menu .shadow-toggle { padding-left: 8px; padding-right: 8px; }
+  }
   .text-list {
     display: flex;
     flex-direction: column;
@@ -1246,10 +1531,11 @@
   .grammar-cn { font-size: 1.25rem; font-weight: 500; line-height: 1.9; }
   .grammar-cn ruby rt { font-size: 0.55em; }
   .grammar-en { font-size: 0.85rem; color: #9ca3af; }
-  .hl-core { background: #FDE68A; border-radius: 4px; padding: 0 2px; }
-  .hl-ext { background: #FDBA74; border-radius: 4px; padding: 0 2px; }
-  .hl-acc-core { background: #BFDBFE; border-radius: 4px; padding: 0 2px; }
-  .hl-acc-ext { background: #BBF7D0; border-radius: 4px; padding: 0 2px; }
+  /* Highlighting must not reflow the sentence: no padding / margin here. */
+  .hl-core { background: #FDE68A; border-radius: 4px; }
+  .hl-ext { background: #FDBA74; border-radius: 4px; }
+  .hl-acc-core { background: #BFDBFE; border-radius: 4px; }
+  .hl-acc-ext { background: #BBF7D0; border-radius: 4px; }
   .hl-core ruby rt, .hl-ext ruby rt, .hl-acc-core ruby rt, .hl-acc-ext ruby rt { font-size: 0.55em; }
   .view-mode-bar .sw { width: 13px; height: 13px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.18); display: inline-block; }
   .sw-core { background: #FDE68A; }

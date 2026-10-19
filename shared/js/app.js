@@ -204,6 +204,28 @@
     for (let i=0; i<4; i++) if (TONE_RES[i].test(syl)) return i+1;
     return 5;   // neutral
   }
+  // Menu chips keep their icon and text in separate spans so a menu can drop
+  // the text at narrow widths and leave only the icon (see #learnMenu CSS).
+  function chipText(icon, text){
+    return `<span class="btn-ico">${escapeHtml(icon)}</span><span class="btn-text">${escapeHtml(text)}</span>`;
+  }
+  // Icon-only chip: flip a toggle and its label widens in place for a moment,
+  // then folds back to the icon.
+  function flashChip(el){
+    if (!el) return;
+    clearTimeout(el.flashTimer);
+    el.classList.add('flash-text');
+    el.flashTimer = setTimeout(() => el.classList.remove('flash-text'), 1400);
+  }
+  // Option rows are rebuilt on every switch, so the selected chip would snap
+  // open. Collapse it for one frame and let the CSS transition expand it.
+  function animateChipExpand(scope, target){
+    if (!scope) return;
+    const el = typeof target === 'string' ? scope.querySelector(target) : target;
+    if (!el) return;
+    el.classList.add('btn-text-enter');
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove('btn-text-enter')));
+  }
   function escapeHtml(s){
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
@@ -346,10 +368,12 @@
   function charReading(ch){
     return (wordMap[ch] && wordMap[ch].pinyin) || SINGLE_CHAR_PINYIN[ch] || EXTRA_PINYIN_WORDS[ch] || '';
   }
-  function rubyFromPy(text, py){
-    if (!text) return '';
+  // Per-character pinyin resolved from an authoritative `py` string, indexed by
+  // the character's position in `text` (not by Han order). Returns null when
+  // there is nothing to align.
+  function perCharFromPy(text, py){
     const chars = [...text].filter(c => /[\u3400-\u9fff\uf900-\ufaff]/.test(c));
-    if (!chars.length) return escapeHtml(text);
+    if (!chars.length) return null;
     const tokens = (py || '')
       .replace(/[^\u3400-\u9fff\uf900-\ufaffA-Za-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü\s]/g, ' ')
       .split(/\s+/).filter(Boolean);
@@ -382,15 +406,31 @@
       }
     }
 
-    let si = 0, out = '';
-    for (const ch of text){
-      if (/[\u3400-\u9fff\uf900-\ufaff]/.test(ch)){
-        const raw = perChar[si] || charReading(ch) || '';
+    const arr = new Array(text.length).fill('');
+    let si = 0;
+    for (let k = 0; k < text.length; k++){
+      if (/[\u3400-\u9fff\uf900-\ufaff]/.test(text[k])){
+        arr[k] = perChar[si] || charReading(text[k]) || '';
         si++;
-        out += `<ruby>${escapeHtml(ch)}<rt class="tone-${toneOf(raw)}">${escapeHtml(raw)}</rt></ruby>`;
-      } else {
-        out += escapeHtml(ch);
       }
+    }
+    return arr;
+  }
+  function rubyFromPy(text, py){
+    if (!text) return '';
+    const arr = perCharFromPy(text, py);
+    if (!arr) return escapeHtml(text);
+    return rubyFromArray(text, 0, arr);
+  }
+  // Ruby for `text`, a slice of a longer string starting at `start`, using an
+  // already-resolved per-character pinyin array.
+  function rubyFromArray(text, start, arr){
+    let out = '';
+    for (let k = 0; k < text.length; k++){
+      const ch = text[k];
+      if (!/[\u3400-\u9fff\uf900-\ufaff]/.test(ch)){ out += escapeHtml(ch); continue; }
+      const raw = arr[start + k] || '';
+      out += `<ruby>${escapeHtml(ch)}<rt class="tone-${toneOf(raw)}">${escapeHtml(raw)}</rt></ruby>`;
     }
     return out;
   }
@@ -921,7 +961,14 @@
   //   Core words of earlier lessons. Everything else — this lesson's Extended
   //   words, previously learned Extended words, later lessons' words, or words
   //   outside HSK 1 — makes it "extended".
+  //   The lesson word lists only carry teaching vocabulary, so basic function
+  //   words and a few everyday words used by the grammar examples are missing
+  //   from every list. They are neutral: never "extended", never highlighted.
   // =====================================================================
+  const NEUTRAL_WORDS = new Set([
+    '不', '的', '们', '吧', '没', '只', '儿', '哦', '呀', '嘛', '哎',
+    '有', '点', '块', '个', '人', '中'
+  ]);
   const sentenceClassCache = {};
   function sentenceClassifier(lessonIdx){
     if (sentenceClassCache[lessonIdx]) return sentenceClassCache[lessonIdx];
@@ -940,7 +987,7 @@
       p.core.forEach(w => futWords.add(w.hanzi));
       p.extended.forEach(w => futWords.add(w.hanzi));
     }
-    const known = new Set([...curCore, ...curExt, ...accCore, ...accExt, ...futWords]);
+    const known = new Set([...curCore, ...curExt, ...accCore, ...accExt, ...futWords, ...NEUTRAL_WORDS]);
     const isExtended = cn => {
       if (!cn) return false;
       let i = 0;
@@ -952,6 +999,7 @@
           const sub = cn.slice(i, i + len);
           if (known.has(sub)){ hit = sub; break; }
         }
+        if (hit && NEUTRAL_WORDS.has(hit)){ i += hit.length; continue; }
         if (!hit || (!curCore.has(hit) && !accCore.has(hit))) return true;
         i += hit.length;
       }
@@ -1365,15 +1413,16 @@
     if (currentMode === 'grammar'){
       if (row) row.style.display = 'flex';
       subModeBar.innerHTML = `
-        <button class="${grammarSub==='all'?'active':''}" data-gsub="all">📚📖 All</button>
-        <button class="${grammarSub==='core'?'active':''}" data-gsub="core">📚 Core HSK</button>
-        <button class="${grammarSub==='ext'?'active':''}" data-gsub="ext">📖 Extended</button>
+        <button class="${grammarSub==='all'?'active':''}" data-gsub="all">${chipText('📚📖', 'All')}</button>
+        <button class="${grammarSub==='core'?'active':''}" data-gsub="core">${chipText('📚', 'Core HSK')}</button>
+        <button class="${grammarSub==='ext'?'active':''}" data-gsub="ext">${chipText('📖', 'Extended')}</button>
       `;
       subModeBar.querySelectorAll('button').forEach(btn => {
         btn.addEventListener('click', function(){
           if (this.dataset.gsub === grammarSub) return;
           grammarSub = this.dataset.gsub;
           renderPreservingScroll();
+          animateChipExpand(subModeBar, `button[data-gsub="${grammarSub}"]`);
         });
       });
       return;
@@ -1393,9 +1442,9 @@
     if (studyTab === 'sentence' && (currentMode === 'wordflash' || currentMode === 'sentflash')){
       if (row) row.style.display = 'flex';
       subModeBar.innerHTML = `
-        <button class="${sentenceSub==='all'?'active':''}" data-ssub="all">📚📖 All</button>
-        <button class="${sentenceSub==='core'?'active':''}" data-ssub="core">📚 Core HSK</button>
-        <button class="${sentenceSub==='ext'?'active':''}" data-ssub="ext">📖 Extended</button>
+        <button class="${sentenceSub==='all'?'active':''}" data-ssub="all">${chipText('📚📖', 'All')}</button>
+        <button class="${sentenceSub==='core'?'active':''}" data-ssub="core">${chipText('📚', 'Core HSK')}</button>
+        <button class="${sentenceSub==='ext'?'active':''}" data-ssub="ext">${chipText('📖', 'Extended')}</button>
       `;
       subModeBar.querySelectorAll('button').forEach(btn => {
         btn.addEventListener('click', function(){
@@ -1408,15 +1457,16 @@
           stopSentenceRead();
           applyRandomOrder();
           renderPreservingScroll();
+          animateChipExpand(subModeBar, `button[data-ssub="${sentenceSub}"]`);
         });
       });
       return;
     }
     if (row) row.style.display = 'flex';
     subModeBar.innerHTML = `
-      <button class="${subMode==='all'?'active':''}" data-sub="all">📚📖 All</button>
-      <button class="${subMode==='core'?'active':''}" data-sub="core">📚 Core HSK</button>
-      <button class="${subMode==='ext'?'active':''}" data-sub="ext">📖 Extended</button>
+      <button class="${subMode==='all'?'active':''}" data-sub="all">${chipText('📚📖', 'All')}</button>
+      <button class="${subMode==='core'?'active':''}" data-sub="core">${chipText('📚', 'Core HSK')}</button>
+      <button class="${subMode==='ext'?'active':''}" data-sub="ext">${chipText('📖', 'Extended')}</button>
     `;
     subModeBar.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('click', function(){
@@ -1431,6 +1481,7 @@
         stopSentenceRead();
         rebuildSubModeData();
         renderPreservingScroll();
+        animateChipExpand(subModeBar, `button[data-sub="${subMode}"]`);
         statusBadge.textContent = (subMode === 'all' ? '📚📖 ' : subMode === 'ext' ? '📖 ' : '📚 ') + subModeLabel();
       });
     });
@@ -1451,11 +1502,11 @@
     // 没有数据就不显示这个标签，避免出现一个永远空着的页签。
     const hasTopics = (window.GRAMMAR_TOPICS || []).length > 0;
     studyTabBar.innerHTML = `
-      <button class="${studyTab === 'word' ? 'active' : ''}" data-tab="word">🀄 Word</button>
-      <button class="${studyTab === 'sentence' ? 'active' : ''}" data-tab="sentence">📝 Sentence</button>
-      <button class="${studyTab === 'texts' ? 'active' : ''}" data-tab="texts">📄 Texts</button>
-      <button class="${studyTab === 'grammar' ? 'active' : ''}" data-tab="grammar">🧩 Grammar</button>
-      ${hasTopics ? `<button class="${studyTab === 'topics' ? 'active' : ''}" data-tab="topics">🔗 Topics</button>` : ''}
+      <button class="${studyTab === 'word' ? 'active' : ''}" data-tab="word">${chipText('🀄', 'Word')}</button>
+      <button class="${studyTab === 'sentence' ? 'active' : ''}" data-tab="sentence">${chipText('📝', 'Sentence')}</button>
+      <button class="${studyTab === 'texts' ? 'active' : ''}" data-tab="texts">${chipText('📄', 'Texts')}</button>
+      <button class="${studyTab === 'grammar' ? 'active' : ''}" data-tab="grammar">${chipText('🧩', 'Grammar')}</button>
+      ${hasTopics ? `<button class="${studyTab === 'topics' ? 'active' : ''}" data-tab="topics">${chipText('🔗', 'Topics')}</button>` : ''}
     `;
     studyTabBar.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('click', function(){
@@ -1465,6 +1516,7 @@
           : (studyTab === 'grammar' ? 'grammar'
           : (studyTab === 'topics' ? 'topics'
           : (studyTab === 'sentence' ? 'sentflash' : 'wordflash'))));
+        animateChipExpand(studyTabBar, `button[data-tab="${studyTab}"]`);
       });
     });
   }
@@ -1480,10 +1532,10 @@
     if (currentMode === 'grammar'){
       viewModeBar.style.display = 'flex';
       viewModeBar.innerHTML = `
-        <div class="random-toggle"><input type="checkbox" id="hlCoreToggle" data-hl="core" ${showHl['core'] ? 'checked' : ''}><label for="hlCoreToggle"><span class="sw sw-core"></span>Core</label></div>
-        <div class="random-toggle"><input type="checkbox" id="hlExtToggle" data-hl="ext" ${showHl['ext'] ? 'checked' : ''}><label for="hlExtToggle"><span class="sw sw-ext"></span>Extended</label></div>
-        <div class="random-toggle"><input type="checkbox" id="hlAccCoreToggle" data-hl="acc-core" ${showHl['acc-core'] ? 'checked' : ''}><label for="hlAccCoreToggle"><span class="sw sw-acc-core"></span>Learned Core</label></div>
-        <div class="random-toggle"><input type="checkbox" id="hlAccExtToggle" data-hl="acc-ext" ${showHl['acc-ext'] ? 'checked' : ''}><label for="hlAccExtToggle"><span class="sw sw-acc-ext"></span>Learned Ext</label></div>
+        <div class="random-toggle"><input type="checkbox" id="hlCoreToggle" data-hl="core" ${showHl['core'] ? 'checked' : ''}><label for="hlCoreToggle"><span class="sw sw-core"></span><span class="btn-text">Core</span></label></div>
+        <div class="random-toggle"><input type="checkbox" id="hlExtToggle" data-hl="ext" ${showHl['ext'] ? 'checked' : ''}><label for="hlExtToggle"><span class="sw sw-ext"></span><span class="btn-text">Extended</span></label></div>
+        <div class="random-toggle"><input type="checkbox" id="hlAccCoreToggle" data-hl="acc-core" ${showHl['acc-core'] ? 'checked' : ''}><label for="hlAccCoreToggle"><span class="sw sw-acc-core"></span><span class="btn-text">Learned Core</span></label></div>
+        <div class="random-toggle"><input type="checkbox" id="hlAccExtToggle" data-hl="acc-ext" ${showHl['acc-ext'] ? 'checked' : ''}><label for="hlAccExtToggle"><span class="sw sw-acc-ext"></span><span class="btn-text">Learned Ext</span></label></div>
       `;
       viewModeBar.querySelectorAll('.random-toggle input').forEach(inp => {
         inp.addEventListener('change', function(){
@@ -1500,8 +1552,8 @@
     }
     viewModeBar.style.display = 'flex';
     viewModeBar.innerHTML = `
-      <button class="${listMode ? '' : 'active'}" data-view="card">🃏 Card</button>
-      <button class="${listMode ? 'active' : ''}" data-view="list">📋 List</button>
+      <button class="${listMode ? '' : 'active'}" data-view="card">${chipText('🃏', 'Card')}</button>
+      <button class="${listMode ? 'active' : ''}" data-view="list">${chipText('📋', 'List')}</button>
     `;
     viewModeBar.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('click', function(){
@@ -1510,6 +1562,7 @@
         listMode = wantList;
         listRevealed.clear();
         render();
+        animateChipExpand(viewModeBar, `button[data-view="${wantList ? 'list' : 'card'}"]`);
         if (!listMode && (currentMode === 'wordflash' || currentMode === 'sentflash')){
           statusBadge.textContent = '📖 Study';
         }
@@ -2055,10 +2108,15 @@
       p.core.forEach(w => accCore.add(w.hanzi));
       p.extended.forEach(w => accExt.add(w.hanzi));
     }
-    const allWords = new Set([...curCore, ...curExt, ...accCore, ...accExt]);
+    const allWords = new Set([...curCore, ...curExt, ...accCore, ...accExt, ...NEUTRAL_WORDS]);
     const classifyWord = w => curCore.has(w) ? 'core' : curExt.has(w) ? 'ext' : accCore.has(w) ? 'acc-core' : accExt.has(w) ? 'acc-ext' : null;
-    const renderSentence = cn => {
+    // Highlighting must not change the text itself, so every grammar sentence
+    // goes through this one path: same segmentation, same pinyin source.
+    const renderSentence = (cn, py) => {
       if (!cn) return '';
+      // Prefer the hand-written `py` (authoritative); fall back to pinyin-pro's
+      // whole-sentence reading. Both arrays are indexed by character position.
+      const pyArr = (py ? perCharFromPy(cn, py) : null) || perCharPinyin(cn);
       let out = '', i = 0;
       while (i < cn.length){
         const ch = cn[i];
@@ -2070,7 +2128,9 @@
         }
         if (!hit) hit = ch;
         const cat = classifyWord(hit);
-        const ruby = showListPinyin ? rubyHtml(hit) : escapeHtml(hit);
+        const ruby = !showListPinyin ? escapeHtml(hit)
+          : pyArr ? rubyFromArray(hit, i, pyArr)
+          : rubyHtml(hit);
         out += (cat && showHl[cat]) ? `<span class="hl hl-${cat}">${ruby}</span>` : ruby;
         i += hit.length;
       }
@@ -2141,9 +2201,7 @@
         if (gr.exp) html += `<div class="grammar-subexp">${rubyHtml(gr.exp)}</div>`;
         gr.bucket.forEach(it => {
           const en = showListEnglish ? ((pmap[it.c] && pmap[it.c].en) || it.en || '') : '';
-          const cn = it.py && showListPinyin
-            ? rubyFromPy(it.c, it.py)
-            : renderSentence(it.c);
+          const cn = renderSentence(it.c, it.py);
           html += `<div class="grammar-item${it.ext ? ' ext' : ''}" data-read="${escapeHtml(it.c)}">
             <span class="grammar-cn">${cn}</span>
             ${en ? `<span class="grammar-en">${escapeHtml(en)}</span>` : ''}
@@ -2313,8 +2371,8 @@
   // Word / Sentence cards, so one rate applies everywhere.
   function speedBarHtml(){
     return `<div class="read-speed" id="readSpeedBar" title="Speed">
-          <span class="read-ctl-label">🐢 Speed</span>
-          ${READ_RATES.map(r => `<button class="${r.rate === speakRate ? 'active' : ''}" data-rate="${r.rate}">${r.label}</button>`).join('')}
+          <span class="read-ctl-label">${chipText('🐢', 'Speed')}</span>
+          ${READ_RATES.map(r => `<button class="${r.rate === speakRate ? 'active' : ''}" data-rate="${r.rate}">${r.label.replace(/x$/, '')}<span class="rate-x">x</span></button>`).join('')}
         </div>`;
   }
   // Front-of-card picker: 汉字 / pinyin / English (Word + Sentence cards).
@@ -2332,16 +2390,16 @@
     return `
       <div class="sentence-read-menu">
         <div class="read-main-row">
-          <button id="sentenceReadBtn" class="${readActive ? 'reading' : ''}">${playing ? '🔊 Reading…' : readActive ? '▶ Resume' : '🔊 Read'}</button>
-          <button id="sentencePauseBtn" ${playing ? '' : 'disabled'}>⏸ Pause</button>
-          <button id="loopToggle" class="shadow-toggle ${readLoop ? 'on' : ''}" title="When the list ends, read it again from the top (whatever is expanded at that moment)">🔁 Loop</button>
+          <button id="sentenceReadBtn" class="${readActive ? 'reading' : ''}">${chipText(playing ? '🔊' : readActive ? '▶' : '🔊', playing ? 'Reading…' : readActive ? 'Resume' : 'Read')}</button>
+          <button id="sentencePauseBtn" ${playing ? '' : 'disabled'}>${chipText('⏸', 'Pause')}</button>
+          <button id="loopToggle" class="shadow-toggle ${readLoop ? 'on' : ''}" title="When the list ends, read it again from the top (whatever is expanded at that moment)">${chipText('🔁', 'Loop')}</button>
+          <button id="shadowToggle" class="shadow-toggle ${readShadow ? 'on' : ''}" title="Read once, then stay silent for the same time so you can shadow">${chipText('🫧', 'Shadow')}</button>
         </div>
         ${speedBarHtml()}
         <div class="read-repeat" id="readRepeatBar" title="Reads per sentence">
-          <span class="read-ctl-label">🔁</span>
+          <span class="read-ctl-label">${chipText('🔁', 'Repeat')}</span>
           ${[1,2,3,4,5].map(r => `<button class="${readRepeat === r ? 'active' : ''}" data-r="${r}">${r}x</button>`).join('')}
         </div>
-        <button id="shadowToggle" class="shadow-toggle ${readShadow ? 'on' : ''}" title="Read once, then stay silent for the same time so you can shadow">🫧 Shadow</button>
       </div>`;
   }
   function applyReadRate(rate){
@@ -2413,6 +2471,7 @@
       sh.addEventListener('click', () => {
         readShadow = !readShadow;
         sh.classList.toggle('on', readShadow);
+        flashChip(sh);
         restartSentenceRead();
       });
     }
@@ -2421,6 +2480,7 @@
       lp.addEventListener('click', () => {
         readLoop = !readLoop;
         lp.classList.toggle('on', readLoop);
+        flashChip(lp);
       });
     }
   }
@@ -2564,7 +2624,8 @@
     const playing = readActive && !readPaused;
     if (rb){
       rb.classList.toggle('reading', readActive);
-      rb.textContent = playing ? '🔊 Reading…' : readActive ? '▶ Resume' : '🔊 Read';
+      rb.innerHTML = chipText(playing ? '🔊' : readActive ? '▶' : '🔊',
+        playing ? 'Reading…' : readActive ? 'Resume' : 'Read');
     }
     if (pb) pb.disabled = !playing;
   }
@@ -3593,7 +3654,23 @@
     subMenu.classList.toggle('stacked', wrapped);
   }
   window.addEventListener('resize', updateMenuStack);
-  updateMenuStack();
+
+  // Icons-only menus: flipping a toggle widens its chip in place to show the
+  // label, then it folds back to the icon. The chip is found again after the
+  // toggle's own handler, because View rebuilds its row on every change.
+  subMenu.addEventListener('change', e => {
+    const input = e.target;
+    if (!input || input.type !== 'checkbox' || !input.id) return;
+    const id = input.id;
+    requestAnimationFrame(() => {
+      const label = document.querySelector(`#learnMenu label[for="${id}"]`);
+      const text = label && label.querySelector('.btn-text');
+      if (!text || text.getBoundingClientRect().width > 2) return;
+      label.classList.add('flash-text');
+      clearTimeout(label.flashTimer);
+      label.flashTimer = setTimeout(() => label.classList.remove('flash-text'), 1400);
+    });
+  });
 
   picEnglishToggle.addEventListener('change', e => {
     showPicEnglish = e.target.checked;
