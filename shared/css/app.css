@@ -1333,6 +1333,184 @@
     border-color: var(--theme-accent);
     color: white;
   }
+  /* --- A/B marking row (one per text player) --- */
+  .text-mark {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 2px 8px 4px;
+  }
+  .text-mark-label {
+    font-size: 0.8rem;
+    color: #9ca3af;
+  }
+  .text-mark-btn {
+    border: 1px solid var(--theme-mid);
+    background: white;
+    color: var(--theme-text);
+    border-radius: 20px;
+    padding: 3px 9px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.12s;
+  }
+  .text-mark-btn:hover { background: var(--theme-light); }
+  .text-mark-btn[data-act="a"], .text-mark-btn[data-act="b"] { min-width: 30px; }
+  .text-mark-btn.save { border-color: var(--theme-accent); color: var(--theme-accent); }
+  .text-mark-btn.save:hover { background: var(--theme-accent); color: white; }
+  .text-mark-btn.rec { border-color: #e5484d; color: #e5484d; }
+  .text-mark-btn.rec:hover { background: #fdecec; }
+  .text-mark-btn.rec.recording {
+    background: #e5484d;
+    border-color: #e5484d;
+    color: white;
+  }
+  .text-mark-btn.rec.done {
+    border-color: #4aa348;
+    color: #4aa348;
+    background: #eef7ec;
+    cursor: default;
+  }
+  .text-mark-btn[data-act="scissor"] {
+    color: #b7791f;
+    border-color: #b7791f;
+  }
+  .text-mark-btn[data-act="scissor"]:hover { background: #fdf6e3; }
+  /* Fine-tune tools: collapsed by default, toggled by ✎ 精调. */
+  .text-mark-tune {
+    border: 1px solid var(--theme-mid);
+    background: white;
+    color: var(--theme-text);
+    border-radius: 20px;
+    padding: 3px 9px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    opacity: 0.55;
+    transition: 0.12s;
+  }
+  .text-mark-tune:hover { opacity: 1; }
+  .text-mark-tune.open { opacity: 1; border-color: var(--theme-accent); color: var(--theme-accent); }
+  .text-mark-tools {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 2px 8px 4px;
+    border-top: 1px dashed var(--theme-mid);
+    margin: 2px 8px 0;
+  }
+  .text-mark-tools[hidden] { display: none; }
+  .text-mark-progress {
+    font-size: 0.72rem;
+    color: #9ca3af;
+    font-variant-numeric: tabular-nums;
+    min-width: 36px;
+    white-space: nowrap;
+  }
+  .text-mark-btn.is-on {
+    background: var(--theme-accent);
+    border-color: var(--theme-accent);
+    color: white;
+  }
+  .text-mark-time {
+    display: inline-flex;
+    gap: 4px;
+    font-size: 0.74rem;
+    color: #9ca3af;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .text-mark-time b {
+    font-weight: 700;
+    padding: 1px 5px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.12s;
+    user-select: none;
+  }
+  .text-mark-time b:hover {
+    background: var(--theme-light);
+  }
+  .text-mark-time b.is-edge {
+    color: var(--theme-accent);
+    border-color: var(--theme-accent);
+    background: rgba(59, 130, 246, 0.10);
+  }
+  .text-mark-select {
+    flex: 1 1 150px;
+    min-width: 110px;
+    max-width: 300px;
+    border: 1px solid var(--theme-mid);
+    border-radius: 8px;
+    background: white;
+    color: var(--theme-text);
+    font-family: inherit;
+    font-size: 0.74rem;
+    padding: 3px 6px;
+  }
+  .text-mark-msg {
+    font-size: 0.72rem;
+    color: var(--theme-accent);
+  }
+  .text-seg-export {
+    border: 1px dashed var(--theme-mid);
+    background: white;
+    color: var(--theme-text);
+    border-radius: 30px;
+    padding: 4px 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.12s;
+  }
+  .text-seg-export:hover { background: var(--theme-light); }
+  .text-seg-clear {
+    border: 1px solid var(--theme-accent);
+    background: white;
+    color: var(--theme-accent);
+    border-radius: 30px;
+    padding: 4px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .text-seg-clear:hover { background: var(--theme-light); }
+  .text-seg-clear[hidden] { display: none; }
+  /* Marked line: ▶ sits in the left gutter, out of the text flow. */
+  .text-line.has-seg { position: relative; padding-left: 30px; }
+  .text-line-play {
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--theme-mid);
+    border-radius: 50%;
+    background: white;
+    color: var(--theme-accent);
+    font-size: 0.6rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .text-line-play:hover { background: var(--theme-light); }
+  .text-line-play.playing {
+    background: var(--theme-accent);
+    border-color: var(--theme-accent);
+    color: white;
+  }
   .text-line {
     border: 1px solid transparent;
     border-radius: 10px;
@@ -1341,7 +1519,17 @@
     transition: 0.12s;
   }
   .text-line:hover { background: var(--theme-light); }
+  .text-line.is-selected {
+    border-color: var(--theme-accent);
+    background: rgba(59, 130, 246, 0.08);
+  }
   .text-line-cn { font-size: 1.35rem; font-weight: 600; line-height: 2; }
+  .text-line-cn.shadowed {
+    opacity: 0.08;
+    filter: blur(5px);
+    user-select: none;
+    pointer-events: none;
+  }
   .text-line ruby rt { font-size: 0.55em; }
   .text-line-en {
     font-size: 0.9rem;
@@ -1416,6 +1604,121 @@
   .text-vocab-cn { font-size: 1.1rem; font-weight: 600; line-height: 1.7; }
   .text-vocab-cn ruby rt { font-size: 0.6em; }
   .text-vocab-en { font-size: 0.85rem; color: #9ca3af; }
+  /* ---- HSK3 text extras: intro · speaker · questions · pos · post-questions · inline grammar ---- */
+  .text-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 2px 8px 4px;
+  }
+  .text-intro-cn { font-size: 0.95rem; color: var(--theme-text); line-height: 1.7; }
+  .text-intro-cn ruby rt { font-size: 0.55em; }
+  .text-intro-en { font-size: 0.85rem; color: #9ca3af; line-height: 1.5; }
+
+  .text-audio-id {
+    align-self: flex-start;
+    font-size: 0.8rem;
+    color: #9ca3af;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--theme-light);
+    border: 1px solid var(--theme-mid);
+  }
+
+  /* Speaker sits vertically centred against the ▶ button and the line body. */
+  .text-line.has-speaker { display: flex; align-items: center; gap: 10px; }
+  .text-line-speaker {
+    flex: 0 0 auto;
+    min-width: 4.5em;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--theme-accent);
+    line-height: 1.4;
+  }
+  .text-line-body { flex: 1 1 auto; min-width: 0; }
+
+  .text-vocab-pos {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #b0a89c;
+    margin-right: auto;
+    padding-left: 6px;
+  }
+
+  .text-questions,
+  .text-postquestions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: var(--theme-light);
+    border: 1px solid var(--theme-mid);
+  }
+  .text-question-q { font-size: 0.95rem; font-weight: 600; line-height: 1.7; }
+  .text-question-options { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .text-q-option {
+    font: inherit;
+    font-size: 0.9rem;
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--theme-mid);
+    background: white;
+    color: var(--theme-text);
+    cursor: pointer;
+    transition: 0.12s;
+  }
+  .text-q-option:hover { background: var(--theme-mid); }
+  .text-q-option b { margin-right: 4px; }
+  .text-q-option.is-correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+  .text-q-option.is-wrong { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+  .text-postquestions-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #9ca3af;
+    letter-spacing: 0.03em;
+  }
+  .text-postquestion { font-size: 1rem; line-height: 1.9; }
+  .text-postquestion ruby rt { font-size: 0.55em; }
+
+  .text-grammar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--theme-mid);
+  }
+
+  .grammar-intro-en {
+    color: #8a8175;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .grammar-practice {
+    margin-top: 10px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: var(--theme-light);
+    border: 1px dashed var(--theme-mid);
+  }
+  .grammar-practice-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--theme-accent);
+    margin-bottom: 4px;
+  }
+  .grammar-practice-item {
+    font-size: 1rem;
+    line-height: 1.9;
+    padding: 2px 4px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .grammar-practice-item:hover { background: var(--theme-mid); }
+  .grammar-practice-item ruby rt { font-size: 0.55em; }
   .grammar-list {
     display: flex;
     flex-direction: column;
@@ -1515,6 +1818,91 @@
     padding: 10px 12px 12px;
   }
   .grammar-body.collapsed { display: none; }
+  /* ---- Vocabulary section (per-text collapsible, mirrors grammar-section) ---- */
+  .vocab-section {
+    background: transparent;
+    margin-top: 4px;
+    border-top: 1px dashed var(--theme-mid);
+  }
+  .vocab-head {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--theme-text);
+    text-align: left;
+  }
+  .vocab-head-inner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 6px;
+    border-radius: 8px;
+    transition: 0.12s;
+  }
+  .vocab-head:hover .vocab-head-inner { background: var(--theme-light); }
+  .vocab-caret { font-size: 0.9rem; color: var(--theme-accent); width: 14px; }
+  .vocab-title { font-size: 0.95rem; font-weight: 700; }
+  .vocab-count {
+    font-size: 0.72rem;
+    color: white;
+    background: var(--theme-accent);
+    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    box-sizing: border-box;
+  }
+  .vocab-body {
+    padding: 6px 8px 10px;
+  }
+  .vocab-body.collapsed { display: none; }
+  .vocab-body-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .vocab-play {
+    border: 1px solid var(--theme-mid);
+    background: white;
+    color: var(--theme-accent);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.72rem;
+    flex: 0 0 auto;
+  }
+  .vocab-play:hover { background: var(--theme-light); }
+  .vocab-play.playing { background: var(--theme-accent); border-color: var(--theme-accent); color: white; }
+  .text-title-play {
+    border: 1px solid var(--theme-mid);
+    background: white;
+    color: var(--theme-accent);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.6rem;
+    flex: 0 0 auto;
+    margin-right: 2px;
+  }
+  .text-title-play:hover { background: var(--theme-light); }
+  .text-title-play.playing { background: var(--theme-accent); border-color: var(--theme-accent); color: white; }
   .grammar-item {
     display: grid;
     grid-template-columns: minmax(0, 56%) minmax(0, 1fr);

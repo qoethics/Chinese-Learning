@@ -85,6 +85,14 @@ if (location.protocol !== 'file:') {
         <button id="shadowUpBtn" title="Longer shadow pause">+</button>
       </div>
     </div>
+    <div class="settings-section">Audio marking</div>
+    <div class="settings-row">
+      <span class="settings-row-label">✂ Sentence recording (A/B marks)</span>
+      <div class="random-toggle">
+        <input type="checkbox" id="segMarkingToggle">
+        <label for="segMarkingToggle" class="settings-switch"><span class="settings-switch-dot"></span></label>
+      </div>
+    </div>
     <div class="settings-section">Sound</div>
     <button class="sound-check-btn" id="soundCheckBtn" title="Check whether speech and lesson audio work">🔊 Sound Check</button>
     <div class="settings-section">Other</div>
@@ -154,6 +162,7 @@ if (location.protocol !== 'file:') {
             <div class="random-toggle"><input type="checkbox" id="listPinyinToggle" checked><label for="listPinyinToggle"><span class="btn-ico">🔠</span><span class="btn-text">Pinyin</span></label></div>
             <div class="random-toggle"><input type="checkbox" id="listEnglishToggle"><label for="listEnglishToggle"><span class="btn-ico">🔤</span><span class="btn-text">English</span></label></div>
             <div class="random-toggle" id="vocabToggleWrap"><input type="checkbox" id="vocabToggle" checked><label for="vocabToggle"><span class="btn-ico">📖</span><span class="btn-text">Vocab</span></label></div>
+            <div class="random-toggle" id="shadowingToggleWrap"><input type="checkbox" id="shadowingToggle"><label for="shadowingToggle"><span class="btn-ico">🗣</span><span class="btn-text">Shadow</span></label></div>
           </div>
         </div>
       </div>

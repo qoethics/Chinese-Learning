@@ -532,17 +532,84 @@
   let textAudio = null;      // currently loaded Audio (may be playing or paused)
   let textAudioBar = null;   // the .text-audio element it belongs to
   let textPlayRate = 1;      // text audio playback speed
+  let vocabAudio = null;     // standalone vocab-list track (HSK3: wordAudio URL)
+  let vocabAudioBtn = null;
+
+  // Vocab list audio is its own mp3 (one track per text in HSK3), so it plays
+  // through a dedicated Audio element instead of the text player.
+  function stopVocabAudio(){
+    if (vocabAudio){
+      vocabAudio.pause();
+      vocabAudio.onended = vocabAudio.onerror = null;
+      vocabAudio = null;
+    }
+    if (vocabAudioBtn){ vocabAudioBtn.classList.remove('playing'); vocabAudioBtn = null; }
+  }
+  function toggleVocabAudio(url, btn){
+    if (!url) return;
+    if (vocabAudio && vocabAudioBtn === btn){ stopVocabAudio(); return; }
+    stopVocabAudio();
+    if (muted) return;
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    stopTextAudio();
+    const a = new Audio(url);
+    a.playbackRate = textPlayRate;
+    vocabAudio = a;
+    vocabAudioBtn = btn;
+    btn.classList.add('playing');
+    a.onended = () => stopVocabAudio();
+    a.onerror = () => stopVocabAudio();
+    a.play().catch(() => stopVocabAudio());
+  }
 
   function fmtTime(s){
     if (!isFinite(s) || s < 0) s = 0;
     s = Math.floor(s);
     return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
   }
+  // Same shape as fmtTime but keeps tenths — used by the A/B mark readout.
+  function fmtTime1(s){
+    let t = Math.round((isFinite(s) && s > 0 ? s : 0) * 10) / 10;
+    const m = Math.floor(t / 60);
+    const r = t - m * 60;
+    return m + ':' + (r < 10 ? '0' : '') + r.toFixed(1);
+  }
   function setBarPlaying(bar, playing){
     const btn = bar.querySelector('.text-play-btn');
     if (!btn) return;
     btn.classList.toggle('playing', playing);
     btn.innerHTML = (playing ? '⏸ ' : '▶ ') + (btn.dataset.label || '');
+  }
+  // Per-line ▶/⏸ button state — mirrors the main play/pause button.
+  function segLineHint(btn){
+    const item = btn.closest('.text-item');
+    if (!item) return '播放这一句';
+    const tId = item.dataset.text;
+    const li = parseInt(btn.dataset.line, 10);
+    const seg = segOf(tId, li);
+    return seg ? segTitle(seg, (textLinesOf(tId)[li] || {}).cn) : '播放这一句';
+  }
+  function setSegLinePlaying(btn, on){
+    if (!btn){
+      clearSegLineBtn();
+      return;
+    }
+    if (segLineBtn && segLineBtn !== btn) clearSegLineBtn();
+    segLineBtn = btn;
+    btn.classList.toggle('playing', !!on);
+    if (!btn.dataset.staticLabel){
+      btn.textContent = on ? '⏸' : '▶';
+      btn.title = on ? '暂停这一句' : segLineHint(btn);
+    } else {
+      btn.title = on ? '暂停' : btn.dataset.titleBase;
+    }
+  }
+  function clearSegLineBtn(){
+    const old = segLineBtn;
+    segLineBtn = null;
+    if (!old) return;
+    old.classList.remove('playing');
+    if (!old.dataset.staticLabel) old.textContent = '▶';
   }
   function syncBarFromAudio(){
     if (!textAudio || !textAudioBar) return;
@@ -554,7 +621,14 @@
     const t = textAudioBar.querySelector('.text-time');
     if (t) t.textContent = fmtTime(textAudio.currentTime) + ' / ' + fmtTime(textAudio.duration);
   }
+  function stopSegTick(){
+    if (segRaf){ cancelAnimationFrame(segRaf); segRaf = 0; }
+  }
   function stopTextAudio(){
+    stopSegTick();
+    stopVocabAudio();
+    segPlay = null;
+    clearSegLineBtn();
     if (textAudio){
       textAudio.pause();
       textAudio.onloadedmetadata = textAudio.ontimeupdate = textAudio.onended = textAudio.onerror = null;
@@ -569,22 +643,13 @@
       textAudioBar = null;
     }
   }
-  function startTextAudio(bar){
+  // Load (or reuse) a bar's Audio without starting playback.
+  function ensureTextAudio(bar){
     const url = bar.dataset.audio;
-    if (!url) return;
-    // Same track already loaded → toggle pause / resume.
-    if (textAudioBar === bar && textAudio){
-      if (textAudio.paused){
-        textAudio.play().catch(() => stopTextAudio());
-        setBarPlaying(bar, true);
-      } else {
-        textAudio.pause();
-        setBarPlaying(bar, false);
-      }
-      return;
-    }
+    if (!url) return null;
+    if (textAudio && textAudioBar === bar) return textAudio;
     stopTextAudio();
-    if (muted) return;
+    if (muted) return null;
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     const a = new Audio(url);
     a.playbackRate = textPlayRate;
@@ -594,8 +659,508 @@
     a.ontimeupdate = () => syncBarFromAudio();
     a.onended = () => stopTextAudio();
     a.onerror = () => stopTextAudio();
+    return a;
+  }
+  function startTextAudio(bar){
+    if (!bar.dataset.audio) return;
+    stopVocabAudio();
+    // Manual playback always cancels an A↔B loop.
+    document.querySelectorAll('.text-mark-btn[data-act="loop"].is-on').forEach(b => b.classList.remove('is-on'));
+    // Same track already loaded → toggle pause / resume.
+    if (textAudioBar === bar && textAudio){
+      segPlay = null;
+      stopSegTick();
+      clearSegLineBtn();
+      if (textAudio.paused){
+        textAudio.play().catch(() => stopTextAudio());
+        setBarPlaying(bar, true);
+      } else {
+        textAudio.pause();
+        setBarPlaying(bar, false);
+      }
+      return;
+    }
+    const a = ensureTextAudio(bar);
+    if (!a) return;
     setBarPlaying(bar, true);
     a.play().catch(() => stopTextAudio());
+  }
+  // Frame-accurate stop at the segment end (ontimeupdate alone is ~250 ms).
+  function segTick(){
+    if (!textAudio || !segPlay){ stopSegTick(); return; }
+    // A null `end` means "play to the natural end" — the audio's own `ended`
+    // event (→ stopTextAudio) handles stopping; no loop is possible then.
+    const atEnd = segPlay.end != null && textAudio.currentTime >= segPlay.end;
+    if (!textAudio.paused && (atEnd)){
+      if (segPlay.loop){
+        textAudio.currentTime = segPlay.start;
+      } else {
+        textAudio.pause();
+        textAudio.currentTime = segPlay.end;
+        segPlay = null;
+        stopSegTick();
+        clearSegLineBtn();
+        if (textAudioBar){
+          setBarPlaying(textAudioBar, false);
+          syncBarFromAudio();
+        }
+        return;
+      }
+    }
+    segRaf = requestAnimationFrame(segTick);
+  }
+  // Play [start, end) of a bar's track. Shift-click loops it.
+  // If paused inside [start, end), clicking again resumes from where it left off;
+  // only jumps back to `start` when the playhead is outside this sentence.
+  function playSegment(bar, start, end, loop, lineBtn){
+    // `end` may be null/negative → play to the track's natural end.
+    const hasEnd = end != null && end >= 0;
+    if (hasEnd && !(end > start)) return;
+    stopVocabAudio();
+    const a = ensureTextAudio(bar);
+    if (!a) return;
+    if (segPlay && segPlay.bar === bar && segPlay.start === start && !a.paused){
+      a.pause();
+      segPlay = null;
+      stopSegTick();
+      setBarPlaying(bar, false);
+      setSegLinePlaying(lineBtn, false);
+      return;
+    }
+    const begin = () => {
+      if (!textAudio || textAudio !== a) return;
+      const cur = a.currentTime || 0;
+      const inRange = cur >= start && (!hasEnd || cur < end);
+      if (!inRange) a.currentTime = start;   // outside the range → replay from A
+      segPlay = { bar, start, end: hasEnd ? end : null, loop: !!loop };
+      setBarPlaying(bar, true);
+      setSegLinePlaying(lineBtn, true);
+      stopSegTick();
+      a.play().catch(() => stopTextAudio());
+      segRaf = requestAnimationFrame(segTick);
+    };
+    // Seeking before metadata is ready is ignored, so wait for it.
+    if (a.readyState >= 1) begin();
+    else a.addEventListener('loadedmetadata', begin, { once: true });
+  }
+
+  // =====================================================================
+  // Per-sentence audio segments (A/B marks bound to one line of a text)
+  //
+  // Truth source is data/audio-segments.js → window.TEXT_AUDIO_SEGMENTS:
+  //   { "01-01": [ { line: 0, start: 3.2, end: 6.8, cn: "…" } ] }
+  // Marks made in the player live in a localStorage draft until "⇩ 导出"
+  // writes the file; `cn` lets us notice when a text's lines were reordered.
+  // =====================================================================
+  const SEG_DRAFT_KEY = 'hsk.audiosegs.draft.v1';
+  let segDraftDirty = false;
+  let textSegs = loadSegs();
+  let segMarks = {};   // in-progress per-text marks (survive re-renders)
+  let segPlay = null;  // { bar, start, end, loop } while a segment plays
+  let segRaf = 0;
+  let segLineBtn = null;  // the .text-line-play button currently playing its sentence
+
+  function segSignature(o){
+    const keys = Object.keys(o).filter(k => (o[k] || []).length).sort();
+    return JSON.stringify(keys.map(k => [k, (o[k] || []).slice().sort((a, b) => a.line - b.line)]));
+  }
+  function loadSegs(){
+    const base = window.TEXT_AUDIO_SEGMENTS;
+    const out = {};
+    if (base && typeof base === 'object'){
+      Object.keys(base).forEach(k => { if (Array.isArray(base[k])) out[k] = base[k].slice(); });
+    }
+    const baseSig = segSignature(out);
+    let raw = null;
+    try { raw = window.localStorage.getItem(SEG_DRAFT_KEY); } catch (e) {}
+    if (!raw) return out;
+    try {
+      const draft = JSON.parse(raw) || {};
+      Object.keys(draft).forEach(k => { if (Array.isArray(draft[k])) out[k] = draft[k]; });
+    } catch (e) { return out; }
+    // The draft only matters while it differs from the file on disk; once the
+    // exported file is in place (and the page reloaded) it is redundant.
+    if (segSignature(out) === baseSig){
+      try { window.localStorage.removeItem(SEG_DRAFT_KEY); } catch (e) {}
+      segDraftDirty = false;
+    } else {
+      segDraftDirty = true;
+    }
+    return out;
+  }
+  function segList(tId){ return (textSegs[tId] || []).slice(); }
+  function segOf(tId, li){
+    const list = textSegs[tId];
+    if (!list) return null;
+    for (let i = 0; i < list.length; i++) if (list[i].line === li) return list[i];
+    return null;
+  }
+  function segCount(){
+    return Object.keys(textSegs).reduce((n, k) => n + (textSegs[k] || []).length, 0);
+  }
+  // Title audio = from the track start (0s) to the first sentence's A (start).
+  function titleSegOf(tId){
+    const list = textSegs[tId];
+    const first = list && list.length
+      ? list.slice().sort((a, b) => a.line - b.line)[0]
+      : null;
+    if (!first || first.start == null) return null;
+    return { start: 0, end: first.start };
+  }
+  // Vocab audio = from the last sentence's B (end) to the track end (duration).
+  // The end bound is only known once metadata loads, so we store -1 and clamp
+  // to the audio's duration at play time.
+  function vocabSegOf(tId){
+    const list = textSegs[tId];
+    const last = list && list.length
+      ? list.slice().sort((a, b) => a.line - b.line)[list.length - 1]
+      : null;
+    if (!last || last.end == null) return null;
+    return { start: last.end, end: -1 };
+  }
+  // Tooltip for a line's ▶; flags the segment when the line text changed since
+  // it was marked (the stored `cn` no longer matches).
+  function segTitle(seg, lineCn){
+    const stale = seg.cn && lineCn != null && seg.cn !== lineCn;
+    return (stale ? '⚠ 句子文本已变，建议重新标记 · ' : '播放这一句 · ')
+      + fmtTime1(seg.start) + '–' + fmtTime1(seg.end) + '（Shift 点击＝循环）';
+  }
+  function textLinesOf(tId){
+    for (let i = 0; i < lessonTexts.length; i++){
+      const t = lessonTexts[i];
+      if (String(t.id || (i + 1)) === String(tId)) return t.lines || [];
+    }
+    return [];
+  }
+  function saveSegDraft(){
+    try {
+      window.localStorage.setItem(SEG_DRAFT_KEY, JSON.stringify(textSegs));
+      segDraftDirty = true;
+    } catch (e) { /* quota / private mode → keep it in memory only */ }
+    updateSegExportBtn();
+  }
+  function clearSegDraft(){
+    try { window.localStorage.removeItem(SEG_DRAFT_KEY); } catch (e) {}
+    segDraftDirty = false;
+    updateSegExportBtn();
+  }
+  function exportSegs(){
+    const keys = Object.keys(textSegs).filter(k => (textSegs[k] || []).length).sort();
+    const body = keys.map(k => {
+      const rows = textSegs[k]
+        .slice()
+        .sort((a, b) => a.line - b.line)
+        .map(s => '    ' + JSON.stringify({ line: s.line, start: s.start, end: s.end, cn: s.cn || '' }));
+      return '  ' + JSON.stringify(k) + ': [\n' + rows.join(',\n') + '\n  ]';
+    });
+    const text = '// Per-sentence audio segments for the Texts player.\n'
+      + '// Written by the player\'s "✂ A/B" row, then "⇩ 导出时间点".\n'
+      + '// Shape: { textId: [ { line, start, end, cn } ] } — seconds into that text\'s mp3.\n'
+      + 'window.TEXT_AUDIO_SEGMENTS = {\n' + body.join(',\n') + (keys.length ? '\n' : '') + '};\n';
+    const blob = new Blob([text], { type: 'text/javascript;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'audio-segments.js';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    return keys.length;
+  }
+  function updateSegExportBtn(){
+    const btn = document.getElementById('segExportBtn');
+    if (!btn) return;
+    const n = segCount();
+    btn.textContent = '⇩ 导出时间点' + (n ? ' (' + n + ')' : '');
+    btn.title = '下载 audio-segments.js → 覆盖 hsk2/data/audio-segments.js 后刷新';
+    const clear = document.getElementById('segClearBtn');
+    if (clear){
+      clear.hidden = !segDraftDirty;
+      clear.title = '清除本地草稿（当前时间点只存在于浏览器里）';
+    }
+  }
+
+  function markOf(tId){
+    let m = segMarks[tId];
+    if (!m) m = segMarks[tId] = { a: null, b: null, edge: null, line: 0, phase: 'idle' };
+    return m;
+  }
+  // Update the one-key record/cut button + progress readout.
+  function paintRec(row, tId){
+    const m = markOf(tId);
+    const btn = row.querySelector('.text-mark-btn[data-act="rec"]');
+    const prog = row.querySelector('.text-mark-progress');
+    const lines = textLinesOf(tId);
+    const done = (textSegs[tId] || []).length;
+    if (btn){
+      btn.classList.toggle('recording', m.phase === 'markA');
+      btn.classList.toggle('done', done >= lines.length && lines.length > 0);
+      btn.disabled = false;
+      if (m.phase === 'markA'){
+        btn.textContent = '✂ 切断';
+        btn.title = '标记句尾（B）：切下这一句并存下，随后自动暂停';
+      } else {
+        btn.textContent = '⏺ 录制';
+        btn.title = '标记句首（A）：按下记下现在的位置，随后自动继续播';
+      }
+    }
+    if (prog){
+      prog.textContent = lines.length ? (done + ' / ' + lines.length) : '';
+    }
+  }
+  function setMarkMsg(row, msg){
+    const el = row.querySelector('.text-mark-msg');
+    if (!el) return;
+    el.textContent = msg;
+    clearTimeout(setMarkMsg.timer);
+    setMarkMsg.timer = setTimeout(() => { el.textContent = ''; }, 2400);
+  }
+  // Find the fine-tune tools container paired with a mark row.
+  function toolsOf(row){
+    let el = row.parentElement.querySelector('.text-mark-tools[data-text="' + cssEscape(row.dataset.text) + '"]');
+    return el;
+  }
+  function paintMarkRow(row, tId){
+    const tools = toolsOf(row);
+    const m = markOf(tId);
+    const aEl = tools && tools.querySelector('.seg-a');
+    const bEl = tools && tools.querySelector('.seg-b');
+    if (aEl){
+      aEl.textContent = m.a == null ? 'A –' : 'A ' + fmtTime1(m.a);
+      aEl.classList.toggle('is-edge', m.edge === 'a');
+    }
+    if (bEl){
+      bEl.textContent = m.b == null ? 'B –' : 'B ' + fmtTime1(m.b);
+      bEl.classList.toggle('is-edge', m.edge === 'b');
+    }
+  }
+  // Highlight the currently-selected sentence for a text (no full re-render).
+  function paintLineSelect(tId){
+    if (!flashContainer) return;
+    const m = markOf(tId);
+    flashContainer.querySelectorAll('.text-item[data-text="' + cssEscape(tId) + '"] .text-line').forEach(el => {
+      const li = parseInt(el.dataset.line, 10);
+      el.classList.toggle('is-selected', li === m.line);
+    });
+  }
+  // Add / remove the ▶ button on every line of one text (no full re-render).
+  function refreshSegUI(tId){
+    if (!flashContainer) return;
+    const items = flashContainer.querySelectorAll('.text-item');
+    for (let i = 0; i < items.length; i++){
+      const item = items[i];
+      if (item.dataset.text !== String(tId)) continue;
+      item.querySelectorAll('.text-line').forEach(el => {
+        const li = parseInt(el.dataset.line, 10);
+        const seg = segOf(tId, li);
+        let btn = el.querySelector('.text-line-play');
+        if (seg){
+          if (!btn){
+            btn = document.createElement('button');
+            btn.className = 'text-line-play';
+            btn.dataset.line = String(li);
+            btn.textContent = '▶';
+            el.insertBefore(btn, el.firstChild);
+          }
+          btn.title = segTitle(seg, (textLinesOf(tId)[li] || {}).cn);
+          el.classList.add('has-seg');
+        } else if (btn){
+          btn.remove();
+          el.classList.remove('has-seg');
+        }
+      });
+      updateSegExportBtn();
+      return;
+    }
+  }
+  function bindMarkRow(row){
+    const tId = row.dataset.text;
+    const bar = row.parentElement.querySelector('.text-audio');
+    const tools = toolsOf(row);
+    paintMarkRow(row, tId);
+    paintRec(row, tId);
+    paintLineSelect(tId);
+    const allBtns = row.querySelectorAll('button[data-act]');
+    const toolBtns = tools ? tools.querySelectorAll('button[data-act]') : [];
+    Array.prototype.forEach.call(allBtns, bind);
+    Array.prototype.forEach.call(toolBtns, bind);
+    function bind(btn){
+      btn.addEventListener('click', function(){
+        const act = this.dataset.act;
+        const m = markOf(tId);
+        // One key: ⏺ (Mark A) ↔ ✂ (Mark B + cut), cycling automatically.
+        if (act === 'rec'){
+          const lines = textLinesOf(tId);
+          const li = m.line;
+          if (!(li < lines.length)){
+            setMarkMsg(row, '请先点选一句');
+            return;
+          }
+          if (m.phase === 'idle'){
+            // Mark A at the current playhead — always re-sample, so re-cutting
+            // a sentence starts clean rather than reusing an old A.
+            if (!textAudio || textAudioBar !== bar){
+              setMarkMsg(row, '先点 ▶ 播放到句首，再点 ⏺');
+              return;
+            }
+            m.a = Math.round((textAudio.currentTime || 0) * 10) / 10;
+            m.b = null;
+            m.edge = null;
+            m.phase = 'markA';
+            paintMarkRow(row, tId);
+            paintRec(row, tId);
+            if (textAudio && textAudio.paused) textAudio.play().catch(() => stopTextAudio());
+            setMarkMsg(row, '句中 A ' + fmtTime1(m.a) + ' · 播到句尾再点 ✂');
+            return;
+          }
+          // phase === 'markA' → Mark B and cut this sentence.
+          const t = Math.round((textAudio.currentTime || 0) * 10) / 10;
+          const start = (m.a != null) ? Math.min(m.a, t) : 0;
+          if (!(t > start)){
+            setMarkMsg(row, '句尾还没到（或已切得太早）'); return;
+          }
+          const line = lines[li] || {};
+          const list = (textSegs[tId] || []).filter(s => s.line !== li);
+          list.push({ line: li, start: start, end: t, cn: line.cn || '' });
+          list.sort((x, y) => x.line - y.line);
+          textSegs[tId] = list;
+          m.phase = 'idle';
+          // Clear A/B so the next cut always re-samples fresh positions.
+          m.a = null;
+          m.b = null;
+          m.edge = null;
+          // Advance the selection to the next unmarked sentence for convenience;
+          // the user can still click any sentence to re-cut it.
+          const nextLi = lines.findIndex((_, i) => !segOf(tId, i));
+          if (nextLi >= 0 && nextLi !== li) m.line = nextLi;
+          // Cut always pauses the audio.
+          textAudio.pause();
+          setBarPlaying(bar, false);
+          saveSegDraft();
+          refreshSegUI(tId);
+          paintMarkRow(row, tId);
+          paintRec(row, tId);
+          paintLineSelect(tId);
+          setMarkMsg(row, '已切第 ' + (li + 1) + ' 句'
+            + (m.line < lines.length && m.line !== li ? ' · 下一句点选后 ⏺' : ''));
+          return;
+        }
+        // ✎ tune: toggle the fine-tune tools panel.
+        if (act === 'tune'){
+          if (!tools) return;
+          const open = tools.hidden;
+          tools.hidden = !open;
+          this.classList.toggle('open', open);
+          this.textContent = open ? '▾ 精调' : '✎ 精调';
+          if (open){
+            paintMarkRow(row, tId);
+            paintLineSelect(tId);
+          }
+          return;
+        }
+        // Everything below is inside the fine-tune tools panel.
+        if (act === 'a' || act === 'b'){
+          if (!textAudio || textAudioBar !== bar){
+            setMarkMsg(row, '先点 ▶ 播放，再按 ' + act.toUpperCase());
+            return;
+          }
+          const t = Math.round((textAudio.currentTime || 0) * 10) / 10;
+          if (act === 'a'){
+            m.a = t;
+            if (m.b != null && m.b <= m.a) m.b = null;
+          } else {
+            if (m.a == null) m.a = 0;
+            if (t <= m.a){ setMarkMsg(row, 'B 必须晚于 A'); paintMarkRow(row, tId); return; }
+            m.b = t;
+          }
+          m.edge = null;   // sampling a point does not select it for editing
+          paintMarkRow(row, tId);
+          return;
+        }
+        if (act === 'minus' || act === 'plus'){
+          const delta = (act === 'plus' ? 0.1 : -0.1);
+          // No point selected → nudge the playhead (seek bar time) instead.
+          if (m.edge !== 'a' && m.edge !== 'b'){
+            if (!textAudio || textAudioBar !== bar){
+              setMarkMsg(row, '音频没在播，无法调播放位置'); return;
+            }
+            const nv = Math.max(0, Math.round(((textAudio.currentTime || 0) + delta) * 10) / 10);
+            textAudio.pause();
+            textAudio.currentTime = Math.min(nv, textAudio.duration || nv);
+            syncBarFromAudio();
+            return;
+          }
+          const k = m.edge;
+          if (m[k] == null){ setMarkMsg(row, '这个点还没标，请先设点'); return; }
+          const v = Math.max(0, Math.round((m[k] + delta) * 10) / 10);
+          if (k === 'a' && m.b != null && v >= m.b){ setMarkMsg(row, 'A 必须早于 B'); return; }
+          if (k === 'b' && m.a != null && v <= m.a){ setMarkMsg(row, 'B 必须晚于 A'); return; }
+          m[k] = v;
+          paintMarkRow(row, tId);
+          // Jump to the nudged position (paused) so the user can hear/check it.
+          if (textAudio && textAudioBar === bar){
+            textAudio.pause();
+            textAudio.currentTime = v;
+            syncBarFromAudio();
+          }
+          return;
+        }
+        if (act === 'loop'){
+          if (m.a == null || m.b == null){ setMarkMsg(row, '先按 A 和 B'); return; }
+          const on = !this.classList.contains('is-on');
+          if (on){
+            playSegment(bar, m.a, m.b, true);
+          } else {
+            if (textAudio) textAudio.pause();
+            segPlay = null;
+            stopSegTick();
+            if (textAudioBar === bar) setBarPlaying(bar, false);
+          }
+          this.classList.toggle('is-on', on);
+          return;
+        }
+        if (act === 'save'){
+          const selLi = m.line;
+          if (m.a == null || m.b == null){ setMarkMsg(row, '先按 A 和 B'); return; }
+          if (!(m.b > m.a)){ setMarkMsg(row, 'B 必须晚于 A'); return; }
+          const lines = textLinesOf(tId);
+          if (!lines.length){ setMarkMsg(row, '这篇课文还没有句子'); return; }
+          if (!(selLi >= 0 && selLi < lines.length)){ setMarkMsg(row, '先点选一句'); return; }
+          const line = lines[selLi] || {};
+          const list = segList(tId).filter(s => s.line !== selLi);
+          list.push({ line: selLi, start: m.a, end: m.b, cn: line.cn || '' });
+          list.sort((x, y) => x.line - y.line);
+          textSegs[tId] = list;
+          saveSegDraft();
+          refreshSegUI(tId);
+          setMarkMsg(row, '已保存到第 ' + (selLi + 1) + ' 句');
+          return;
+        }
+      });
+    }
+    // Click the A / B time label to jump there and enter edit mode on that edge.
+    const segLabels = tools ? tools.querySelectorAll('.seg-a, .seg-b') : [];
+    Array.prototype.forEach.call(segLabels, function(el){
+      el.addEventListener('click', function(){
+        const m = markOf(tId);
+        const k = el.dataset.edge === 'b' ? 'b' : 'a';
+        const v = m[k];
+        if (v == null){
+          setMarkMsg(row, (k === 'a' ? 'A' : 'B') + ' 还没标点');
+          return;
+        }
+        m.edge = k;             // enter edit mode on this edge
+        paintMarkRow(row, tId);
+        if (!textAudio || textAudioBar !== bar){
+          // Not loaded yet; just select (jump happens once the audio is open).
+          return;
+        }
+        textAudio.pause();
+        textAudio.currentTime = v;
+        syncBarFromAudio();
+      });
+    });
   }
 
   // =====================================================================
@@ -614,6 +1179,8 @@
   let muted=false;
   let showPicEnglish=false;    // Picture mode: show the English line by default
   let kaitiMode=false;         // Kaiti font toggle — whole page switches to 楷体 (default OFF)
+  let segMarking=false;        // sentence recording (A/B marks) — off by default
+  let shadowing=false;         // shadowing: hide sentence text until tapped
   const CONTENT_ZOOMS = [0.8, 0.9, 1, 1.1, 1.2, 1.3];
   let contentZoomIdx=2;        // 0..5 → 0.8× … 1.3× zoom of the practice area (default 1×)
   let readRepeat=1;            // sentence-list read-aloud: times per sentence (1..5)
@@ -640,10 +1207,12 @@
   let showHl={ core:true, ext:true, 'acc-core':true, 'acc-ext':true };  // grammar highlight categories
   let listRevealed=new Set();  // word list: per-word reveal state
   let textRevealed=new Set();  // text list: per-line English reveal state
+  let shadowRevealed=new Set();  // shadowing: lines whose text has been tapped to reveal
   let grammarOpen=new Set();   // grammar sections currently expanded (persist across re-renders)
   let grammarFocus=null;       // grammar point id flashed after a Topics jump (cleared on next render)
   let grammarSub='all';        // grammar scope: all / core / ext
   let sentenceSub='all';       // sentence-tab scope: all / core / ext
+  let textSub='all';           // texts-tab scope: all / '1' / '2' / ... (position in lessonTexts)
   let noteTimer=null;
 
   let words=[];
@@ -653,6 +1222,7 @@
   let lessonGrammar=[];        // lesson grammar sections (grammar view)
   let lessonCoreWords=[];
   let lessonExtendedWords=[];
+  let lessonTextVocab={};   // tId -> [vocab words] (each core word assigned to the first dialogue where it appears)
   let wordMap={};
   let pairsItems=[];
   let flashItems=[];
@@ -698,6 +1268,9 @@
   const gameMenuWrap = $('gameMenuWrap');
   const gameMenu = $('gameMenu');
   const listPinyinToggle = $('listPinyinToggle');
+  // Each level's index.html decides the initial state via the checkbox attribute
+  // (HSK3 ships with list pinyin off).
+  showListPinyin = listPinyinToggle.checked;
   const listEnglishToggle = $('listEnglishToggle');
   const vocabToggle = $('vocabToggle');
   const vocabToggleWrap = $('vocabToggleWrap');
@@ -751,6 +1324,8 @@
   const shadowUpBtn = $('shadowUpBtn');
   const startModeSeg = $('startModeSeg');
   const rememberLastToggle = $('rememberLastToggle');
+  const segMarkingToggle = $('segMarkingToggle');
+  const shadowingToggle = $('shadowingToggle');
   const settingsResetBtn = $('settingsResetBtn');
   const settingsNote = $('settingsNote');
 
@@ -800,7 +1375,7 @@
   // ---- Settings drawer (right side) ----
   const SETTINGS_KEY = 'hsk.settings.v1';
   const LAST_KEY = 'hsk.last.v1';
-  const DEFAULT_SETTINGS = { kaiti: false, latin: false, zoomIdx: 2, startMode: 'study', rememberLast: true, shadowFactor: 1.25 };
+  const DEFAULT_SETTINGS = { kaiti: false, latin: false, zoomIdx: 2, startMode: 'study', rememberLast: true, shadowFactor: 1.25, segMarking: false };
   const state = Object.assign({}, DEFAULT_SETTINGS);
   function loadSettings(){
     try { return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || {}; }
@@ -851,6 +1426,16 @@
     state.rememberLast = e.target.checked;
     saveSettings({ rememberLast: state.rememberLast });
   });
+  if (segMarkingToggle) segMarkingToggle.addEventListener('change', e => {
+    segMarking = e.target.checked;
+    saveSettings({ segMarking: segMarking });
+    renderTextList();
+  });
+  if (shadowingToggle) shadowingToggle.addEventListener('change', e => {
+    shadowing = e.target.checked;
+    if (!shadowing) shadowRevealed.clear();
+    if (isListModeActive()) renderPreservingScroll();
+  });
   function syncShadowFactor(){
     shadowPauseFactor = state.shadowFactor;
     if (shadowFactorValue) shadowFactorValue.textContent = state.shadowFactor.toFixed(2).replace(/0$/, '') + '×';
@@ -877,6 +1462,8 @@
     contentZoomIdx = DEFAULT_SETTINGS.zoomIdx;
     applyContentZoom();
     rememberLastToggle.checked = DEFAULT_SETTINGS.rememberLast;
+    if (segMarkingToggle) segMarkingToggle.checked = DEFAULT_SETTINGS.segMarking;
+    segMarking = DEFAULT_SETTINGS.segMarking;
     state.shadowFactor = DEFAULT_SETTINGS.shadowFactor;
     syncShadowFactor();
     syncStartModeSeg();
@@ -904,8 +1491,11 @@
   state.zoomIdx = contentZoomIdx;
   state.startMode = saved.startMode === 'game' ? 'game' : 'study';
   state.rememberLast = saved.rememberLast !== false;
+  state.segMarking = !!saved.segMarking;
   state.shadowFactor = SHADOW_FACTORS.includes(saved.shadowFactor) ? saved.shadowFactor : DEFAULT_SETTINGS.shadowFactor;
   rememberLastToggle.checked = state.rememberLast;
+  segMarking = state.segMarking;
+  if (segMarkingToggle) segMarkingToggle.checked = segMarking;
   syncShadowFactor();
   syncStartModeSeg();
   kaitiMode = kaitiToggle.checked;
@@ -1279,12 +1869,32 @@
     return (list || []).map(w => (w && w.pinyin) ? w : Object.assign({}, w, { pinyin: pinyinFor(w.hanzi) }));
   }
 
+  // Assign each lesson core word to the FIRST dialogue where any of its
+  // character parts occurs. A word is a single hanzi string, but "template"
+  // words like 因为……所以…… are split on '……' into parts; the word counts as
+  // present in a dialogue if any part's characters all occur in that dialogue.
+  function buildTextVocab(){
+    lessonTextVocab = {};
+    if (!lessonCoreWords.length || !lessonTexts.length) return;
+    lessonTexts.forEach(t => { lessonTextVocab[t.id] = []; });
+    lessonCoreWords.forEach(w => {
+      const parts = String(w.hanzi || '').split('……').filter(Boolean);
+      if (!parts.length) return;
+      for (const t of lessonTexts){
+        const full = (t.lines || []).map(l => (l.cn || '')).join('');
+        const hit = parts.some(p => Array.from(p).every(ch => full.indexOf(ch) !== -1));
+        if (hit){ lessonTextVocab[t.id].push(w); break; }
+      }
+    });
+  }
+
   function initLessonData(){
     const data = getLessonData(currentLesson, accumulative);
     lessonCoreWords = withPinyin(data.core);
     lessonExtendedWords = withPinyin(data.extended);
     lessonPhrases = data.phrases || [];
     lessonTexts = data.texts || [];
+    buildTextVocab();
     // Prefer the external sentence corpus (data/sentences/grammar-sentences.*).
     // Falls back to the inline LESSONS[].grammar when unavailable.
     const ext = externalLessonGrammar(currentLesson);
@@ -1318,10 +1928,13 @@
     (lessonPhrases || []).forEach(p => { if (p.cn && !(p.cn in pmap)) pmap[p.cn] = p; });
     return L.points.map(p => ({
       id: p.id,
+      textId: p.textId || '',
       cn: p.cn || '',
       py: p.py || '',
       en: p.en || '',
       note: noteText(p.note),
+      noteEn: p.noteEn || '',
+      practice: p.practice || [],
       subs: (p.subs || []).map(s => ({ id: s.id, label: s.label || '', exp: s.exp || '' })),
       items: (p.items || []).map(it => {
         const lp = pmap[it.c];
@@ -1428,8 +2041,24 @@
       return;
     }
     if (currentMode === 'texts'){
+      if (lessonTexts.length < 2){
+        if (row) row.style.display = 'flex';
+        subModeBar.innerHTML = '<button class="ctx-na" disabled>n/a</button>';
+        return;
+      }
       if (row) row.style.display = 'flex';
-      subModeBar.innerHTML = '<button class="ctx-na" disabled>n/a</button>';
+      subModeBar.innerHTML = `
+        <button class="${textSub==='all'?'active':''}" data-tsub="all">${chipText('📄', 'All')}</button>
+        ${lessonTexts.map((t, i) => `<button class="${textSub===String(i+1)?'active':''}" data-tsub="${i+1}" title="${escapeHtml((t.title && t.title.cn) || '')}">${chipText('📄', String(i+1))}</button>`).join('')}
+      `;
+      subModeBar.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', function(){
+          if (this.dataset.tsub === textSub) return;
+          textSub = this.dataset.tsub;
+          renderPreservingScroll();
+          animateChipExpand(subModeBar, `button[data-tsub="${textSub}"]`);
+        });
+      });
       return;
     }
     if (currentMode === 'topics'){
@@ -1914,6 +2543,70 @@
   }
 
   // ----- Texts (lesson dialogues/passages with real audio) -----
+  // Whether a text's `audio` field is a playable URL (vs. a textbook track ID
+  // like "13-1"). HSK1/HSK2 store full mp3 URLs; HSK3 stores track IDs.
+  function isAudioUrl(v){
+    if (typeof v !== 'string' || !v) return false;
+    return /^(https?:)?\/\//.test(v) || /\.(mp3|m4a|ogg|wav)(\?|$)/i.test(v);
+  }
+
+  // One collapsible grammar section, styled identically to the Grammar tab.
+  // Used by renderTextList() to show a text's own grammar points under it.
+  function grammarPointSectionHtml(g, open){
+    const items = g.items || [];
+    let h = `<div class="grammar-section" data-point="${escapeHtml(g.id || '')}">
+      <button class="grammar-head">
+        <span class="grammar-head-inner">
+        <span class="grammar-caret">${open ? '▾' : '▸'}</span>
+        <span class="grammar-title"><span class="grammar-title-cn">${titleRuby(g.cn, g.py)}</span> <span class="grammar-title-en">${escapeHtml(g.en || '')}</span></span>
+        <span class="grammar-count">${items.length}</span>
+        </span>
+      </button>
+      <div class="grammar-body${open ? '' : ' collapsed'}" data-gid="${escapeHtml(g.id || '')}">
+        <div class="grammar-body-inner">`;
+    h += noteHtml(g.note);
+    if (g.noteEn) h += `<div class="grammar-intro grammar-intro-en">${escapeHtml(g.noteEn)}</div>`;
+    items.forEach(it => {
+      const en = it.en || '';
+      h += `<div class="grammar-item" data-read="${escapeHtml(it.c || '')}">
+        <span class="grammar-cn">${rubyHtml(it.c)}</span>
+        ${en ? `<span class="grammar-en">${escapeHtml(en)}</span>` : ''}
+      </div>`;
+    });
+    if (g.practice && g.practice.length){
+      h += '<div class="grammar-practice"><div class="grammar-practice-label">✏️ 练习 · Practice</div>';
+      g.practice.forEach(p => {
+        h += `<div class="grammar-practice-item" data-read="${escapeHtml(p.cn || '')}">${rubyHtml(p.cn)}${p.en ? `<span class="grammar-en">${escapeHtml(p.en)}</span>` : ''}</div>`;
+      });
+      h += '</div>';
+    }
+    h += '</div></div></div>';
+    return h;
+  }
+
+  // Wire collapse/expand on any .grammar-head inside `root` (idempotent).
+  function bindGrammarToggles(root){
+    root.querySelectorAll('.grammar-head').forEach(head => {
+      if (head.dataset.bound) return;
+      head.dataset.bound = '1';
+      head.addEventListener('click', function(){
+        const body = this.parentElement.querySelector('.grammar-body');
+        if (!body) return;
+        const nowCollapsed = !body.classList.contains('collapsed');
+        body.classList.toggle('collapsed', nowCollapsed);
+        const caret = this.querySelector('.grammar-caret');
+        if (caret) caret.textContent = nowCollapsed ? '▸' : '▾';
+      });
+    });
+  }
+
+  // Texts honour the Scope row: 'all' shows every dialogue, '1'..'N' only that one.
+  function textsInScope(){
+    if (textSub === 'all') return lessonTexts;
+    const one = lessonTexts[Number(textSub) - 1];
+    return one ? [one] : lessonTexts;
+  }
+
   function renderTextList(){
     showAutoSpeak();
     if (lessonTexts.length === 0){
@@ -1933,6 +2626,8 @@
         <div class="text-speed-btns">
           ${[0.8, 1, 1.2, 1.5, 1.8, 2].map(s => `<button class="text-speed-btn${s === textPlayRate ? ' active' : ''}" data-rate="${s}">${s}x</button>`).join('')}
         </div>
+        ${segMarking ? `<button class="text-seg-export" id="segExportBtn" title="下载 audio-segments.js">⇩ 导出时间点</button>
+        <button class="text-seg-clear" id="segClearBtn" hidden>✕ 草稿</button>` : ''}
       </div>`;
     optionsContainer.style.display = 'none';
     flashContainer.style.display = 'block';
@@ -1942,44 +2637,176 @@
     pictureContainer.style.display = 'none';
 
     let html = '<div class="text-list">';
-    lessonTexts.forEach((t, i) => {
+    textsInScope().forEach((t, i) => {
       const tId = t.id || String(i + 1);
-      html += `<div class="text-item" data-i="${i}">`;
+      html += `<div class="text-item" data-i="${i}" data-text="${escapeHtml(tId)}">`;
       // Location / title — emoji + Chinese + English always visible inline.
       if (t.title){
         const tcn = showListPinyin ? rubyHtmlChars(t.title.cn) : escapeHtml(t.title.cn);
+        const titleSeg = titleSegOf(tId);
+        const titlePlay = (isAudioUrl(t.audio) && titleSeg)
+          ? `<button class="text-title-play" data-text="${escapeHtml(tId)}" data-static-label="1" data-title-base="朗读标题 · ${fmtTime1(titleSeg.start)}–${fmtTime1(titleSeg.end)}" title="朗读标题 · ${fmtTime1(titleSeg.start)}–${fmtTime1(titleSeg.end)}">▶</button>`
+          : '';
         html += `<div class="text-title-line">
+          ${titlePlay}
           <span class="text-title-emoji">${escapeHtml(t.title.emoji || '')}</span>
           <span class="text-title-cn">${tcn}</span>
           <span class="text-title-en">${escapeHtml(t.title.en || '')}</span>
         </div>`;
       }
-      // Audio player: play button + draggable progress bar + time.
-      html += `<div class="text-audio" data-audio="${escapeHtml(t.audio || '')}">
-        <button class="text-play-btn" data-label="${escapeHtml(tId)}">▶ ${escapeHtml(tId)}</button>
-        <input type="range" class="text-seek" min="0" max="0" value="0" step="0.1">
-        <span class="text-time">0:00</span>
-      </div>`;
+      // Scene intro (HSK3): Chinese + English line under the title.
+      if (t.intro && (t.intro.cn || t.intro.en)){
+        html += `<div class="text-intro">
+          ${t.intro.cn ? `<span class="text-intro-cn">${showListPinyin ? rubyHtml(t.intro.cn) : escapeHtml(t.intro.cn)}</span>` : ''}
+          ${t.intro.en ? `<span class="text-intro-en">${escapeHtml(t.intro.en)}</span>` : ''}
+        </div>`;
+      }
+      // Audio: HSK3 stores a track ID ("13-1"), not an mp3 URL. Only render the
+      // player when a real URL is present; otherwise show a read-only badge.
+      if (isAudioUrl(t.audio)){
+        html += `<div class="text-audio" data-audio="${escapeHtml(t.audio)}" data-text="${escapeHtml(tId)}">
+          <button class="text-play-btn" data-label="${escapeHtml(tId)}">▶ ${escapeHtml(tId)}</button>
+          <input type="range" class="text-seek" min="0" max="0" value="0" step="0.1">
+          <span class="text-time">0:00</span>
+        </div>`;
+        // One-key marking: ⏺ (Mark A) ↔ ✂ (Mark B + cut). Play/pause stays
+        // separate from time-marking. Fine-tune tools are collapsed by default.
+        // Only shown when the sentence-recording setting (✂) is enabled.
+        if (segMarking){
+          html += `<div class="text-mark" data-text="${escapeHtml(tId)}">
+            <button class="text-mark-btn rec" data-act="rec" title="Mark A（录制）：按下记这一句开头，随后自动继续播">⏺ 录制</button>
+            <span class="text-mark-progress" title="已切句数 / 本课总句数"></span>
+            <button class="text-mark-tune" data-act="tune" title="展开精调工具">✎ 精调</button>
+            <span class="text-mark-msg"></span>
+          </div>
+          <div class="text-mark-tools" data-text="${escapeHtml(tId)}" hidden>
+            <button class="text-mark-btn" data-act="a" title="Set A (start) at the current position">A</button>
+            <button class="text-mark-btn" data-act="b" title="Set B (end) at the current position">B</button>
+            <span class="text-mark-time">
+              <b class="seg-a" data-edge="a" title="跳到 A 时刻并选中编辑">A –</b>
+              <b class="seg-b" data-edge="b" title="跳到 B 时刻并选中编辑">B –</b>
+            </span>
+            <button class="text-mark-btn" data-act="minus" title="Nudge the underlined edge −0.1s">−0.1</button>
+            <button class="text-mark-btn" data-act="plus" title="Nudge the underlined edge +0.1s">+0.1</button>
+            <button class="text-mark-btn" data-act="loop" title="Loop A ↔ B">↺</button>
+            <button class="text-mark-btn save" data-act="save" title="Save this range to the selected sentence">保存</button>
+          </div>`;
+        }
+      } else if (t.audio){
+        html += `<div class="text-audio-id" title="Textbook audio track">🔊 ${escapeHtml(t.audio)}</div>`;
+      }
+      // Pre-listening comprehension questions (HSK3).
+      if (t.questions && t.questions.length){
+        html += '<div class="text-questions">';
+        t.questions.forEach((q, qi) => {
+          html += `<div class="text-question" data-answer="${escapeHtml(q.answer || '')}">
+            <div class="text-question-q">${qi + 1}. ${escapeHtml(q.q || '')}</div>`;
+          if (q.options && q.options.length){
+            html += '<div class="text-question-options">';
+            q.options.forEach((op, oi) => {
+              const letter = String.fromCharCode(65 + oi);
+              html += `<button class="text-q-option" data-letter="${letter}"><b>${letter}</b> ${escapeHtml(op)}</button>`;
+            });
+            html += '</div>';
+          }
+          html += '</div>';
+        });
+        html += '</div>';
+      }
       // Sentences.
       (t.lines || []).forEach((line, li) => {
         const key = tId + '-' + li;
-        const shown = showListEnglish || textRevealed.has(key);
+        // Shadowing hides the whole line — Chinese *and* English — until tapped.
+        const shadowHide = shadowing && !shadowRevealed.has(key);
+        const shown = !shadowHide && (showListEnglish || textRevealed.has(key));
         const cnHtml = showListPinyin ? rubyHtmlChars(line.cn) : escapeHtml(line.cn);
-        html += `<div class="text-line" data-key="${escapeHtml(key)}">
-          <div class="text-line-cn">${cnHtml}</div>
-          <div class="text-line-en" style="display:${shown ? 'block' : 'none'};">${escapeHtml(line.en || '')}</div>
+        const spk = line.speaker ? `<div class="text-line-speaker">${escapeHtml(line.speaker)}</div>` : '';
+        const seg = segOf(tId, li);
+        // Per-line ▶ is data-driven (any device with audio-segments.js sees it)
+        // and is independent of the recording toggle.
+        const play = seg
+          ? `<button class="text-line-play" data-line="${li}" title="${segTitle(seg, line.cn)}">▶</button>`
+          : '';
+        // No English stored → render no node at all, so tapping the line (or the
+        // English toggle) cannot flash an empty line.
+        const enHtml = line.en
+          ? `<div class="text-line-en" style="display:${shown ? 'block' : 'none'};">${escapeHtml(line.en)}</div>`
+          : '';
+        html += `<div class="text-line${line.speaker ? ' has-speaker' : ''}${seg ? ' has-seg' : ''}${shadowHide ? ' is-shadowed' : ''}" data-key="${escapeHtml(key)}" data-line="${li}">
+          ${play}
+          ${spk}
+          <div class="text-line-body">
+            <div class="text-line-cn${shadowHide ? ' shadowed' : ''}">${cnHtml}</div>
+            ${enHtml}
+          </div>
         </div>`;
       });
-      // Vocabulary words (always show English).
+      // Vocabulary words (always show English) — legacy per-text t.words rows.
       if (showVocab && t.words && t.words.length){
         html += '<div class="text-vocab">';
         t.words.forEach(w => {
-          const vcn = showListPinyin ? rubyHtml(w.cn) : escapeHtml(w.cn);
+          // Vocabulary always carries pinyin, independent of the Pinyin toggle.
+          const vcn = rubyHtml(w.cn);
           html += `<div class="text-vocab-row" data-read="${escapeHtml(w.cn)}">
             <span class="text-vocab-cn">${vcn}</span>
+            ${w.pos ? `<span class="text-vocab-pos">${escapeHtml(w.pos)}</span>` : ''}
             <span class="text-vocab-en">${escapeHtml(w.en)}</span>
           </div>`;
         });
+        html += '</div>';
+      }
+      // Collapsible vocabulary section shown after each dialogue, containing
+      // only the core words that FIRST appear in this dialogue (each word shows
+      // up exactly once per lesson), styled like the grammar-section. Header
+      // carries a read-aloud button that plays the vocab audio (last B → end).
+      const textVocab = lessonTextVocab[tId] || [];
+      if (textVocab.length){
+        const vocabSeg = vocabSegOf(tId);
+        // HSK3 ships a dedicated vocab-list track per text (wordAudio) — the
+        // mp3 that follows the dialogue track (13-1 → 13-2). Older levels have
+        // no such URL and instead play the tail of the dialogue audio.
+        const wUrl = isAudioUrl(t.wordAudio) ? t.wordAudio : '';
+        const vPlay = wUrl
+          ? `<button class="vocab-play" data-text="${escapeHtml(tId)}" data-vocab-audio="${escapeHtml(wUrl)}" title="朗读单词表 · Vocabulary audio">🔊</button>`
+          : ((isAudioUrl(t.audio) && vocabSeg)
+            ? `<button class="vocab-play" data-text="${escapeHtml(tId)}" data-static-label="1" data-title-base="朗读单词 · 从 ${fmtTime1(vocabSeg.start)} 到结尾" title="朗读单词 · 从 ${fmtTime1(vocabSeg.start)} 到结尾">🔊</button>`
+            : '');
+        html += `<div class="vocab-section" data-text="${escapeHtml(tId)}">
+          <div class="vocab-head" role="button" tabindex="0">
+            <span class="vocab-head-inner">
+              ${vPlay}
+              <span class="vocab-caret">▸</span>
+              <span class="vocab-title">📖 单词 · Vocabulary</span>
+              <span class="vocab-count">${textVocab.length}</span>
+            </span>
+          </div>
+          <div class="vocab-body collapsed">
+            <div class="vocab-body-inner">`;
+        textVocab.forEach(w => {
+          // Vocabulary always carries pinyin, independent of the Pinyin toggle.
+          const vcn = rubyHtml(w.hanzi);
+          html += `<div class="text-vocab-row" data-read="${escapeHtml(w.hanzi)}">
+            <span class="text-vocab-cn">${vcn}</span>
+            ${w.en ? `<span class="text-vocab-en">${escapeHtml(w.en)}</span>` : ''}
+          </div>`;
+        });
+        html += '</div></div></div>';
+      }
+      // Post-reading questions (HSK3).
+      if (t.postQuestions && t.postQuestions.length){
+        html += '<div class="text-postquestions">';
+        html += '<div class="text-postquestions-label">🗣 分角色朗读，读后回答 · Role-play and answer</div>';
+        t.postQuestions.forEach((q, qi) => {
+          html += `<div class="text-postquestion">${qi + 1}. ${rubyHtml(q.q || '')}</div>`;
+        });
+        html += '</div>';
+      }
+      // Grammar points (and tip) attached to this text (HSK3): same collapsible
+      // section markup as the Grammar tab, shown under the text.
+      const linked = lessonGrammar.filter(g => g.textId === t.id);
+      if (linked.length){
+        html += '<div class="text-grammar">';
+        linked.forEach(g => { html += grammarPointSectionHtml(g, false); });
         html += '</div>';
       }
       html += '</div>';
@@ -1987,27 +2814,182 @@
     html += '</div>';
     flashContainer.innerHTML = html;
 
+    // Collapsible grammar sections shown under each text.
+    bindGrammarToggles(flashContainer);
+    // Collapsible vocabulary sections (same collapse pattern as grammar).
+    flashContainer.querySelectorAll('.vocab-head').forEach(head => {
+      if (head.dataset.bound) return;
+      head.dataset.bound = '1';
+      head.addEventListener('click', function(e){
+        if (e.target.closest('.vocab-play')) return;   // the 🔊, is its own button
+        const body = this.parentElement.querySelector('.vocab-body');
+        if (!body) return;
+        const nowCollapsed = !body.classList.contains('collapsed');
+        body.classList.toggle('collapsed', nowCollapsed);
+        const caret = this.querySelector('.vocab-caret');
+        if (caret) caret.textContent = nowCollapsed ? '▸' : '▾';
+      });
+    });
+    // Pre-listening questions: click an option to mark it right/wrong.
+    flashContainer.querySelectorAll('.text-question').forEach(qEl => {
+      const ans = qEl.dataset.answer;
+      qEl.querySelectorAll('.text-q-option').forEach(btn => {
+        btn.addEventListener('click', function(){
+          qEl.querySelectorAll('.text-q-option').forEach(b => b.classList.remove('is-correct', 'is-wrong'));
+          this.classList.add(this.dataset.letter === ans ? 'is-correct' : 'is-wrong');
+        });
+      });
+    });
+    // Read a grammar/practice sentence aloud on click.
+    flashContainer.querySelectorAll('.text-grammar .grammar-item, .text-grammar .grammar-practice-item').forEach(el => {
+      el.addEventListener('click', function(){ speakChinese(this.dataset.read); });
+    });
+
     // Audio players.
     flashContainer.querySelectorAll('.text-audio').forEach(bar => {
       const btn = bar.querySelector('.text-play-btn');
       if (btn) btn.addEventListener('click', () => startTextAudio(bar));
       const seek = bar.querySelector('.text-seek');
+      // Pre-load metadata so the seek bar has a real max and is draggable
+      // before the user ever hits ▶.
+      const url = bar.dataset.audio;
+      if (url && !bar.dataset.preloaded){
+        bar.dataset.preloaded = '1';
+        const probe = new Audio();
+        probe.preload = 'metadata';
+        probe.src = url;
+        probe.onloadedmetadata = () => {
+          if (seek && isFinite(probe.duration) && probe.duration > 0 && !seek.dataset.sized){
+            seek.dataset.sized = '1';
+            seek.max = probe.duration;
+            const t = bar.querySelector('.text-time');
+            if (t) t.textContent = '0:00 / ' + fmtTime(probe.duration);
+          }
+          probe.src = '';
+          probe.onloadedmetadata = null;
+        };
+        probe.onerror = () => { probe.src = ''; probe.onerror = null; };
+      }
       if (seek) seek.addEventListener('input', function(){
-        if (textAudio && textAudioBar === bar){
-          textAudio.currentTime = parseFloat(this.value) || 0;
-          const t = bar.querySelector('.text-time');
-          if (t) t.textContent = fmtTime(textAudio.currentTime) + ' / ' + fmtTime(textAudio.duration);
+        if (!textAudio || textAudioBar !== bar){
+          // Not loaded yet — load it, then seek once metadata is ready.
+          const a = ensureTextAudio(bar);
+          if (!a){ return; }
+          const target = parseFloat(this.value) || 0;
+          const apply = () => {
+            if (textAudio !== a) return;
+            segPlay = null;
+            a.currentTime = target;
+            syncBarFromAudio();
+          };
+          if (a.readyState >= 1) apply();
+          else a.addEventListener('loadedmetadata', apply, { once: true });
+          return;
         }
+        segPlay = null;
+        textAudio.currentTime = parseFloat(this.value) || 0;
+        const t = bar.querySelector('.text-time');
+        if (t) t.textContent = fmtTime(textAudio.currentTime) + ' / ' + fmtTime(textAudio.duration);
       });
     });
-    // Line bars: reveal / hide the individual English translation.
+    // A/B marking rows.
+    flashContainer.querySelectorAll('.text-mark').forEach(bindMarkRow);
+    // Delegated playback: per-line ▶, title ▶, and vocab 🔊, (container reused).
+    if (!flashContainer.dataset.segDelegated){
+      flashContainer.dataset.segDelegated = '1';
+      flashContainer.addEventListener('click', e => {
+        // Per-line ▶
+        const play = e.target.closest('.text-line-play');
+        if (play){
+          e.stopPropagation();
+          const item = play.closest('.text-item');
+          const bar = item && item.querySelector('.text-audio');
+          const seg = item && segOf(item.dataset.text, parseInt(play.dataset.line, 10));
+          if (bar && seg) playSegment(bar, seg.start, seg.end, e.shiftKey, play);
+          return;
+        }
+        // Title ▶ (0 → first sentence A)
+        const tp = e.target.closest('.text-title-play');
+        if (tp){
+          e.stopPropagation();
+          const item = tp.closest('.text-item');
+          const bar = item && item.querySelector('.text-audio');
+          const seg = titleSegOf(tp.dataset.text);
+          if (bar && seg) playSegment(bar, seg.start, seg.end, false, tp);
+          return;
+        }
+        // Vocab 🔊 — HSK3: its own track (wordAudio); older levels: last B → end
+        const vp = e.target.closest('.vocab-play');
+        if (vp){
+          e.stopPropagation();
+          if (vp.dataset.vocabAudio){
+            toggleVocabAudio(vp.dataset.vocabAudio, vp);
+            return;
+          }
+          const item = vp.closest('.text-item');
+          const bar = item && item.querySelector('.text-audio');
+          const seg = vocabSegOf(vp.dataset.text);
+          if (bar && seg) playSegment(bar, seg.start, seg.end, false, vp);
+          return;
+        }
+      });
+    }
+    updateSegExportBtn();
+    // Line bars:
+    //  - recording ON  → click selects the sentence (highlight as edit target)
+    //  - recording OFF → click reveals/hides that line's English translation
     flashContainer.querySelectorAll('.text-line').forEach(line => {
-      line.addEventListener('click', function(){
-        if (showListEnglish) return;
-        const key = this.dataset.key;
-        if (textRevealed.has(key)) textRevealed.delete(key); else textRevealed.add(key);
-        const en = this.querySelector('.text-line-en');
-        if (en) en.style.display = textRevealed.has(key) ? 'block' : 'none';
+      line.addEventListener('click', function(e){
+        if (e.target.closest('.text-line-play')) return;
+        const item = this.closest('.text-item');
+        const tId = item && item.dataset.text;
+        const li = parseInt(this.dataset.line, 10);
+        if (!tId || !(li >= 0)) return;
+        if (!segMarking){
+          // Shadowing on → reveal this line's hidden Chinese text.
+          if (shadowing){
+            const key = this.dataset.key;
+            const en = this.querySelector('.text-line-en');
+            if (shadowRevealed.has(key)){
+              shadowRevealed.delete(key);
+              this.classList.add('is-shadowed');
+              const cn = this.querySelector('.text-line-cn');
+              if (cn) cn.classList.add('shadowed');
+              if (en) en.style.display = 'none';
+            } else {
+              shadowRevealed.add(key);
+              this.classList.remove('is-shadowed');
+              const cn = this.querySelector('.text-line-cn');
+              if (cn) cn.classList.remove('shadowed');
+              // English only comes back if it was on (toggle or per-line reveal).
+              if (en) en.style.display = (showListEnglish || textRevealed.has(key)) ? 'block' : 'none';
+            }
+            return;
+          }
+          // Reveal English on this line.
+          if (showListEnglish) return;
+          const en = this.querySelector('.text-line-en');
+          if (!en) return;
+          const key = this.dataset.key;
+          if (textRevealed.has(key)) textRevealed.delete(key); else textRevealed.add(key);
+          en.style.display = textRevealed.has(key) ? 'block' : 'none';
+          return;
+        }
+        const m = markOf(tId);
+        m.line = li;
+        // Load this sentence's existing segment (if any) into A/B for fine-tune.
+        const seg = segOf(tId, li);
+        if (seg){
+          m.a = seg.start;
+          m.b = seg.end;
+          m.edge = null;
+        }
+        paintLineSelect(tId);
+        const row = item.querySelector('.text-mark');
+        if (row){
+          paintMarkRow(row, tId);
+          paintRec(row, tId);
+        }
       });
     });
     // Characters: click to read that single character aloud.
@@ -2031,6 +3013,19 @@
         if (textAudio) textAudio.playbackRate = textPlayRate;
       });
     });
+    const exportBtn = questionArea.querySelector('#segExportBtn');
+    if (exportBtn) exportBtn.addEventListener('click', () => {
+      const n = exportSegs();
+      exportBtn.textContent = n ? '已导出 ' + n + ' 篇' : '还没有时间点';
+      setTimeout(updateSegExportBtn, 2200);
+    });
+    const clearBtn = questionArea.querySelector('#segClearBtn');
+    if (clearBtn) clearBtn.addEventListener('click', () => {
+      if (!window.confirm('清除本地草稿？已保存到浏览器但还没写进 audio-segments.js 的时间点会丢失。')) return;
+      clearSegDraft();
+      textSegs = loadSegs();
+      renderTextList();
+    });
     // If a track is still loaded across a re-render, re-attach its UI.
     if (textAudio){
       flashContainer.querySelectorAll('.text-audio').forEach(bar => {
@@ -2041,7 +3036,7 @@
         }
       });
     }
-    statusBadge.textContent = `📄 Texts · ${lessonTexts.length} items`;
+    statusBadge.textContent = `📄 Texts · ${textsInScope().length} items`;
   }
 
   // ----- Grammar (grammar points with categorized sentences) -----
@@ -2193,6 +3188,7 @@
         <div class="grammar-body${open ? '' : ' collapsed'}" data-gid="${escapeHtml(g.id || '')}">
           <div class="grammar-body-inner">`;
       html += noteHtml(g.note);
+      if (g.noteEn) html += `<div class="grammar-intro grammar-intro-en">${escapeHtml(g.noteEn)}</div>`;
       html += provinceMapHtml(g.cn);
       groups.forEach(gr => {
         // sub / exp may contain Chinese (e.g. "还 1 · 状态持续"); ruby-annotate the
@@ -2208,6 +3204,13 @@
           </div>`;
         });
       });
+      if (g.practice && g.practice.length){
+        html += '<div class="grammar-practice"><div class="grammar-practice-label">✏️ 练习 · Practice</div>';
+        g.practice.forEach(p => {
+          html += `<div class="grammar-practice-item" data-read="${escapeHtml(p.cn || '')}">${rubyHtml(p.cn)}${p.en ? `<span class="grammar-en">${escapeHtml(p.en)}</span>` : ''}</div>`;
+        });
+        html += '</div>';
+      }
       html += '</div></div></div>';
     });
     html += '</div>';
@@ -3284,7 +4287,7 @@
 
   function updateCounter(){
     if (isListModeActive()){
-      const n = currentMode === 'wordflash' ? flashItems.length : (currentMode === 'texts' ? lessonTexts.length : (currentMode === 'grammar' ? grammarTotal() : (currentMode === 'topics' ? (window.GRAMMAR_TOPICS || []).length : phrases.length)));
+      const n = currentMode === 'wordflash' ? flashItems.length : (currentMode === 'texts' ? textsInScope().length : (currentMode === 'grammar' ? grammarTotal() : (currentMode === 'topics' ? (window.GRAMMAR_TOPICS || []).length : phrases.length)));
       counterDisplay.textContent = `${n} items`;
       return;
     }
@@ -3390,6 +4393,7 @@
     stopSentenceRead();
     stopTextAudio();
     subMode = 'all';
+    textSub = 'all';
     buildLessonMenu();
     initLessonData();
     render();

@@ -25,7 +25,7 @@
     "hsk2/data/sentences/grammar-topics.js": "★跨课专题数据（手写，直接改）：6 专题 / 27 行对比"
   },
   "contentStatus": {
-    "texts": "ACTIVE — 15 课 × 4 段对话，来自 hsk2/887830144-Dialogues-HSK-2.pdf（汉字 + 拼音按 PDF 原样；英文只有课/场景标题）",
+    "texts": "ACTIVE — 15 课 × 4 段对话，来自 hsk2/887830144-Dialogues-HSK-2.pdf（汉字 + 拼音按 PDF 原样；每句 lines[].en 已有英文译文，Texts 里打开 English toggle 显示）",
     "coreVocab": "EMPTY — 按用户要求本级别不配生词表；因此 图片/打地鼠/记忆配对 三个游戏无素材会空着",
     "sentenceCorpus": "ACTIVE — grammar-sentences.json 手写维护，L1-L15 共 51 个语法点 / 232 条例句；真源是 .json，.js 由 tools/gen-sentences-js.py 生成",
     "grammarTopics": "ACTIVE — grammar-topics.js（手写），6 个跨课专题 / 27 行对比，界面为「🔗 Topics」标签页",
