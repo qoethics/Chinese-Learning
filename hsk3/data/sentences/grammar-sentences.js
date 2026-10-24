@@ -1,6 +1,146 @@
-// AUTO-GENERATED from hsk3/data/lesson13.json — do not edit by hand.
-// Hand-authored source of truth: hsk3/data/lesson13.json
+// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson13.json — do not edit by hand.
+// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson13.json
 window.SENTENCE_CORPUS = [
+  {
+    "lesson": 1,
+    "key": "1",
+    "review": false,
+    "title": "We will pick you up at the airport",
+    "titleCn": "我们去机场接你们",
+    "points": [
+      {
+        "id": "1-g1",
+        "textId": "01-01",
+        "no": 1,
+        "cn": "固定短语“看上去/看起来”",
+        "en": "Set Phrases “看上去/看起来”",
+        "note": "固定短语“看上去”与“看起来”，可用来描述某人或某物的外观或状态。",
+        "noteEn": "The set phrases “看上去” and “看起来” can be used to describe the appearance or condition of a person or an object.",
+        "practice": [
+          {
+            "cn": "你______，长得更像你妈妈。",
+            "en": ""
+          },
+          {
+            "cn": "你______，好好休息一下吧。",
+            "en": ""
+          },
+          {
+            "cn": "你怎么了？今天______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "他们看上去有点儿像。",
+            "en": "They look a bit alike."
+          },
+          {
+            "c": "这些菜看起来都很好吃。",
+            "en": "These dishes all look delicious."
+          },
+          {
+            "c": "那个新来的老师看上去很年轻。",
+            "en": "That new teacher looks very young."
+          }
+        ]
+      },
+      {
+        "id": "1-g2",
+        "textId": "01-02",
+        "no": 2,
+        "cn": "疑问代词的非疑问用法（1）",
+        "en": "Non-Interrogative Use of Interrogative Pronouns (1)",
+        "note": "疑问代词“哪儿、什么、谁、哪”等用在陈述句中，表示不知道或不需要指明的地点、事物或人等。",
+        "noteEn": "Interrogative pronouns such as “哪儿”, “什么”, “谁”, and “哪” can be used in declarative sentences to indicate unspecified places, things, or people.",
+        "practice": [
+          {
+            "cn": "A：我们是不是走错了？",
+            "en": ""
+          },
+          {
+            "cn": "B：我也不知道，我去______。（谁）",
+            "en": ""
+          },
+          {
+            "cn": "A：你有时间了来我家，我______给你吃。（什么）",
+            "en": ""
+          },
+          {
+            "cn": "B：好的，谢谢你。",
+            "en": ""
+          },
+          {
+            "cn": "A：这几天太累了，我想______。（哪儿）",
+            "en": ""
+          },
+          {
+            "cn": "B：那你去西安吧。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "我好像在哪儿看到过这个箱子。",
+            "en": "It seems I've seen this suitcase somewhere."
+          },
+          {
+            "c": "你吃点儿什么再走吧。",
+            "en": "Have something to eat before you go."
+          },
+          {
+            "c": "我们哪天一起去踢足球吧。",
+            "en": "Let's go play football together one of these days."
+          }
+        ]
+      },
+      {
+        "id": "1-g3",
+        "textId": "01-03",
+        "no": 3,
+        "cn": "多项定语",
+        "en": "Multiple Attributives",
+        "note": "名词性中心语的前面可以同时有多个定语，这些定语一般按照时间/处所、动作/状态、特点的顺序进行排列，数量短语或指量短语位置比较灵活，可以放在表示动作或状态的定语的前面或者后面。",
+        "noteEn": "A nominal head can be modified by multiple attributives simultaneously. They are generally arranged in the order of time/location, action/state, and characteristic. The position of numeral-measure word phrases or demonstrative-measure word phrases is relatively flexible; they can be placed either before or after the attributive indicating an action or state.",
+        "practice": [
+          {
+            "cn": "那本______的书是我最喜欢的。",
+            "en": ""
+          },
+          {
+            "cn": "A：哪个人是你男朋友？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：你们上课的楼在哪儿？",
+            "en": ""
+          },
+          {
+            "cn": "B：在______的楼后面。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "李文是那个穿着黑衣服的短头发的年轻人吗？",
+            "en": "Is Li Wen that young man with short hair, wearing black?"
+          },
+          {
+            "c": "昨天和家月一起看电影的两个人是我的朋友。",
+            "en": "The two people who went to see a film with Jiayue yesterday are my friends."
+          },
+          {
+            "c": "我那件新买的白色的衣服在哪儿？",
+            "en": "Where is that white piece of clothing I just bought?"
+          }
+        ]
+      }
+    ]
+  },
   {
     "lesson": 13,
     "key": "13",

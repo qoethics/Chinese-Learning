@@ -1,0 +1,668 @@
+{
+  "lesson": 1,
+  "key": "1",
+  "name": "L1 · 我们去机场接你们",
+  "titleCn": "我们去机场接你们",
+  "titleEn": "We will pick you up at the airport",
+  "texts": [
+    {
+      "id": "01-01",
+      "title": {
+        "cn": "在沙发上聊天",
+        "en": "Chatting on the sofa",
+        "emoji": "🛋️"
+      },
+      "intro": {
+        "cn": "在家里，刘明和王一雪在沙发上聊天儿。",
+        "en": "At home, Liu Ming and Wang Yixue were chatting on the sofa."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "刘明和王一雪在做什么？",
+          "options": [
+            "看电视",
+            "看手机",
+            "去机场"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "刘明跟王一雪一起去机场做什么？",
+          "options": [
+            "坐飞机",
+            "找朋友",
+            "接白家月"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "刘明",
+          "cn": "这是杨同乐吗？他怎么跟白家月在一起？",
+          "en": "Is that Yang Tongle? Why is he with Bai Jiayue?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "他不是杨同乐，他叫李文，是白家月的好朋友。",
+          "en": "That's not Yang Tongle. That's Li Wen. He's a good friend of Bai Jiayue."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "我还以为是同乐呢，他们看上去有点儿像。",
+          "en": "Oh, I thought it was Tongle. They do look a bit alike."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "是长得有点儿像，但是他比同乐高，身高有一米八。",
+          "en": "Yes, they look somewhat alike, but he's taller than Tongle—about 1.8 meters."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "看起来也比同乐瘦一点儿。",
+          "en": "And he looks a bit thinner, too."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "下个星期家月和李文要来北京，我去机场接他们。",
+          "en": "Jiayue and Li Wen are coming to Beijing next week. I'm going to pick them up at the airport."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "他们哪天到北京？我跟你一起去机场接他们吧。",
+          "en": "What day will they get here? I'll come with you to pick them up."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "刘明为什么以为李文是杨同乐？"
+        },
+        {
+          "q": "李文长什么样？"
+        },
+        {
+          "q": "白家月什么时候来中国？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "以为",
+          "pos": "v.",
+          "en": "think; consider"
+        },
+        {
+          "cn": "像",
+          "pos": "v.",
+          "en": "be like"
+        },
+        {
+          "cn": "长",
+          "pos": "v.",
+          "en": "grow; develop"
+        },
+        {
+          "cn": "身高",
+          "pos": "n.",
+          "en": "height"
+        },
+        {
+          "cn": "米",
+          "pos": "m.",
+          "en": "meter"
+        },
+        {
+          "cn": "瘦",
+          "pos": "adj.",
+          "en": "thin"
+        },
+        {
+          "cn": "接",
+          "pos": "v.",
+          "en": "meet, pick up"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-2.mp3"
+    },
+    {
+      "id": "01-02",
+      "title": {
+        "cn": "行李不见了",
+        "en": "The luggage is missing",
+        "emoji": "🧳"
+      },
+      "intro": {
+        "cn": "在机场，李文和白家月在行李领取处。",
+        "en": "At the airport, Li Wen and Bai Jiayue were at baggage claim."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "李文和白家月在机场做什么？",
+          "options": [
+            "等箱子",
+            "等同学",
+            "等王一雪"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "白家月为什么很着急？",
+          "options": [
+            "护照丢了",
+            "行李箱丢了",
+            "拿错行李箱了"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "白家月",
+          "cn": "我的行李怎么还没出来？是不是丢了？",
+          "en": "Why hasn't my luggage shown up yet? Could it be lost?"
+        },
+        {
+          "speaker": "李文",
+          "cn": "你的行李箱是什么样的？",
+          "en": "What does your suitcase look like?"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "是一个黑色的箱子，上面写着我的名字和电话号码。",
+          "en": "It's a black one with my name and phone number on it."
+        },
+        {
+          "speaker": "李文",
+          "cn": "我好像在哪儿看到过这个箱子，是不是有人拿错了？",
+          "en": "It seems I've seen one like that somewhere. Could someone have taken it by mistake?"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我们快找谁问一下吧，箱子里有不少重要的东西。",
+          "en": "Let's quickly find someone to ask. There are quite a few important things in it."
+        },
+        {
+          "speaker": "李文",
+          "cn": "别着急，我们拿着护照和机票，去服务台问问吧。",
+          "en": "Don't worry. Let's take our passports and plane tickets to the service desk and ask there."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "白家月的箱子是什么样的？"
+        },
+        {
+          "q": "李文看到过白家月的箱子吗？"
+        },
+        {
+          "q": "他们现在要做什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "行李",
+          "pos": "n.",
+          "en": "luggage"
+        },
+        {
+          "cn": "丢",
+          "pos": "v.",
+          "en": "lose"
+        },
+        {
+          "cn": "箱子",
+          "pos": "n.",
+          "en": "case; trunk"
+        },
+        {
+          "cn": "号码",
+          "pos": "n.",
+          "en": "number"
+        },
+        {
+          "cn": "好像",
+          "pos": "adv.",
+          "en": "seemingly"
+        },
+        {
+          "cn": "重要",
+          "pos": "adj.",
+          "en": "important"
+        },
+        {
+          "cn": "着急",
+          "pos": "adj.",
+          "en": "worried"
+        },
+        {
+          "cn": "护照",
+          "pos": "n.",
+          "en": "passport"
+        },
+        {
+          "cn": "服务台",
+          "pos": "n.",
+          "en": "service desk"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-4.mp3"
+    },
+    {
+      "id": "01-03",
+      "title": {
+        "cn": "在机场接人",
+        "en": "Meeting them at the airport",
+        "emoji": "🛬"
+      },
+      "intro": {
+        "cn": "在机场大厅，刘明和王一雪接机。",
+        "en": "In the airport arrival hall, Liu Ming and Wang Yixue were waiting to meet their friends."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "刘明和王一雪在机场做什么？",
+          "options": [
+            "接人",
+            "坐飞机",
+            "找行李箱"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "刘明为什么要站到中间？",
+          "options": [
+            "旁边人太多了",
+            "他看见白家月了",
+            "白家月好找他们"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "刘明",
+          "cn": "飞机早就到了，你看见白家月他们了吗？",
+          "en": "The plane arrived a while ago. Have you seen Bai Jiayue and Li Wen?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "没有，他们应该快出来了。",
+          "en": "No, they should be coming out any minute now."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "我们站到中间去吧，这样他们好找一些。",
+          "en": "Let's stand in the middle so it'll be easier for them to spot us."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "你看那个高个子的人是李文吗？",
+          "en": "Look, is that tall guy Li Wen?"
+        },
+        {
+          "speaker": "刘明",
+          "cn": "你说的是哪个？那个穿着黑衣服的短头发的年轻人？",
+          "en": "Which one do you mean? The young man with short hair, wearing black?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "对，那个人就是李文！你看，家月在他后面呢。",
+          "en": "Yes, that's Li Wen! And look, Jiayue is right behind him."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "王一雪为什么说白家月他们应该快出来了？"
+        },
+        {
+          "q": "刘明看见的年轻人长什么样？"
+        },
+        {
+          "q": "王一雪怎么知道那个年轻人就是李文？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "应该",
+          "pos": "mod.",
+          "en": "should"
+        },
+        {
+          "cn": "站",
+          "pos": "v.",
+          "en": "stand"
+        },
+        {
+          "cn": "中间",
+          "pos": "n.",
+          "en": "middle"
+        },
+        {
+          "cn": "短",
+          "pos": "adj.",
+          "en": "short (in length)"
+        },
+        {
+          "cn": "头发",
+          "pos": "n.",
+          "en": "hair"
+        },
+        {
+          "cn": "年轻",
+          "pos": "adj.",
+          "en": "young"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-6.mp3"
+    },
+    {
+      "id": "01-04",
+      "title": {
+        "cn": "李文的日记",
+        "en": "Li Wen's diary",
+        "emoji": "📔"
+      },
+      "intro": {
+        "cn": "在宾馆房间，李文在写日记。",
+        "en": "In the hotel room, Li Wen was writing in his diary."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "李文回北京的路上花了多长时间？",
+          "options": [
+            "几个小时",
+            "十几个小时",
+            "几十个小时"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "李文觉得王老师的姐姐看起来怎么样？",
+          "options": [
+            "很累",
+            "很年轻",
+            "很像王老师"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "昨天我到北京了。",
+          "en": "Yesterday I arrived in Beijing."
+        },
+        {
+          "speaker": "",
+          "cn": "虽然路上花了十几个小时，但是跟家月坐在一起，我觉得时间过得很快。",
+          "en": "Though the journey took more than ten hours, sitting next to Jiayue made the time pass quickly."
+        },
+        {
+          "speaker": "",
+          "cn": "到机场的时候，家月发现行李箱不见了，我带她去服务台，帮助她找到了行李箱。",
+          "en": "When we arrived at the airport, Jiayue found her suitcase missing. So I took her to the service desk and helped her retrieve it."
+        },
+        {
+          "speaker": "",
+          "cn": "走出机场的时候，已经八点多了，我们一出来就看见了王老师的姐姐，她看起来比照片上年轻。",
+          "en": "By the time we left the airport, it was already past 8 p.m. As soon as we stepped outside, we saw Ms. Wang's cousin, who looked younger than in her photos."
+        },
+        {
+          "speaker": "",
+          "cn": "晚上，一雪姐带我们去吃了一家很好吃的中国菜。",
+          "en": "In the evening, Yixue took us to a Chinese restaurant with amazing food."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "李文为什么觉得时间过得很快？"
+        },
+        {
+          "q": "到机场的时候，白家月发现了什么问题？"
+        },
+        {
+          "q": "王一雪带他们去做什么了？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "发现",
+          "pos": "v.",
+          "en": "discover; find"
+        },
+        {
+          "cn": "帮助",
+          "pos": "v.",
+          "en": "help"
+        },
+        {
+          "cn": "不见",
+          "pos": "v.",
+          "en": "be lost"
+        },
+        {
+          "cn": "照片",
+          "pos": "n.",
+          "en": "photo"
+        },
+        {
+          "cn": "带",
+          "pos": "v.",
+          "en": "take; bring, have"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "1-g1",
+      "textId": "01-01",
+      "no": 1,
+      "cn": "固定短语“看上去/看起来”",
+      "en": "Set Phrases “看上去/看起来”",
+      "note": "固定短语“看上去”与“看起来”，可用来描述某人或某物的外观或状态。",
+      "noteEn": "The set phrases “看上去” and “看起来” can be used to describe the appearance or condition of a person or an object.",
+      "items": [
+        {
+          "c": "他们看上去有点儿像。",
+          "en": "They look a bit alike."
+        },
+        {
+          "c": "这些菜看起来都很好吃。",
+          "en": "These dishes all look delicious."
+        },
+        {
+          "c": "那个新来的老师看上去很年轻。",
+          "en": "That new teacher looks very young."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "你______，长得更像你妈妈。",
+          "en": ""
+        },
+        {
+          "cn": "你______，好好休息一下吧。",
+          "en": ""
+        },
+        {
+          "cn": "你怎么了？今天______。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "1-g2",
+      "textId": "01-02",
+      "no": 2,
+      "cn": "疑问代词的非疑问用法（1）",
+      "en": "Non-Interrogative Use of Interrogative Pronouns (1)",
+      "note": "疑问代词“哪儿、什么、谁、哪”等用在陈述句中，表示不知道或不需要指明的地点、事物或人等。",
+      "noteEn": "Interrogative pronouns such as “哪儿”, “什么”, “谁”, and “哪” can be used in declarative sentences to indicate unspecified places, things, or people.",
+      "items": [
+        {
+          "c": "我好像在哪儿看到过这个箱子。",
+          "en": "It seems I've seen this suitcase somewhere."
+        },
+        {
+          "c": "你吃点儿什么再走吧。",
+          "en": "Have something to eat before you go."
+        },
+        {
+          "c": "我们哪天一起去踢足球吧。",
+          "en": "Let's go play football together one of these days."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：我们是不是走错了？",
+          "en": ""
+        },
+        {
+          "cn": "B：我也不知道，我去______。（谁）",
+          "en": ""
+        },
+        {
+          "cn": "A：你有时间了来我家，我______给你吃。（什么）",
+          "en": ""
+        },
+        {
+          "cn": "B：好的，谢谢你。",
+          "en": ""
+        },
+        {
+          "cn": "A：这几天太累了，我想______。（哪儿）",
+          "en": ""
+        },
+        {
+          "cn": "B：那你去西安吧。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "1-g3",
+      "textId": "01-03",
+      "no": 3,
+      "cn": "多项定语",
+      "en": "Multiple Attributives",
+      "note": "名词性中心语的前面可以同时有多个定语，这些定语一般按照时间/处所、动作/状态、特点的顺序进行排列，数量短语或指量短语位置比较灵活，可以放在表示动作或状态的定语的前面或者后面。",
+      "noteEn": "A nominal head can be modified by multiple attributives simultaneously. They are generally arranged in the order of time/location, action/state, and characteristic. The position of numeral-measure word phrases or demonstrative-measure word phrases is relatively flexible; they can be placed either before or after the attributive indicating an action or state.",
+      "items": [
+        {
+          "c": "李文是那个穿着黑衣服的短头发的年轻人吗？",
+          "en": "Is Li Wen that young man with short hair, wearing black?"
+        },
+        {
+          "c": "昨天和家月一起看电影的两个人是我的朋友。",
+          "en": "The two people who went to see a film with Jiayue yesterday are my friends."
+        },
+        {
+          "c": "我那件新买的白色的衣服在哪儿？",
+          "en": "Where is that white piece of clothing I just bought?"
+        }
+      ],
+      "practice": [
+        {
+          "cn": "那本______的书是我最喜欢的。",
+          "en": ""
+        },
+        {
+          "cn": "A：哪个人是你男朋友？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        },
+        {
+          "cn": "A：你们上课的楼在哪儿？",
+          "en": ""
+        },
+        {
+          "cn": "B：在______的楼后面。",
+          "en": ""
+        }
+      ]
+    }
+  ],
+  "tip": null,
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "带",
+          "接",
+          "丢",
+          "重要",
+          "应该"
+        ],
+        "items": [
+          {
+            "cn": "服务台______在前面，我们过去问问吧。",
+            "answer": "应该"
+          },
+          {
+            "cn": "他已经到了，我们快出去______他吧。",
+            "answer": "接"
+          },
+          {
+            "cn": "我的护照不见了，是不是在机场______了？",
+            "answer": "丢"
+          },
+          {
+            "cn": "行李票很______，你们出机场的时候有人看。",
+            "answer": "重要"
+          },
+          {
+            "cn": "我______了两个行李箱和一个大包，所以走得非常慢。",
+            "answer": "带"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "发现",
+          "以为",
+          "好像",
+          "年轻",
+          "帮助"
+        ],
+        "items": [
+          {
+            "cn": "A：这个头发很短的男孩儿是我弟弟。\nB：我______这个是你，你们长得太像了。",
+            "answer": "以为"
+          },
+          {
+            "cn": "A：我______坐飞机来北京的人非常多。\nB：对，很多人这个时候来北京旅游。",
+            "answer": "发现"
+          },
+          {
+            "cn": "A：这是我和哥哥的照片，你看我们像吗？\nB：你们很像，你哥哥看起来也很______。",
+            "answer": "年轻"
+          },
+          {
+            "cn": "A：你的行李箱找到了，你看看是不是这个？\nB：对，太好了！谢谢您的______。",
+            "answer": "帮助"
+          },
+          {
+            "cn": "A：那个穿着黑衣服的高个子的人是王老师吗？\nB：______是吧，我也不知道。",
+            "answer": "好像"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,9 +1,585 @@
 // HSK3 lesson texts. Read-only at runtime.
-// Source: hsk3/data/lesson13.json (Lesson 13, book pp.116-124).
+// Source: hsk3/data/lesson1.json (Lesson 1, book pp.1-9) + hsk3/data/lesson13.json (Lesson 13, book pp.116-124).
 // Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).
 // Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);
 // each point carries a textId so renderTextList can show it under its own text.
 window.COURSE_LESSONS = [
+  {
+    "name": "L1 · 我们去机场接你们",
+    "id": "1",
+    "core": [
+      {
+        "hanzi": "以为",
+        "en": "think; consider"
+      },
+      {
+        "hanzi": "像",
+        "en": "be like"
+      },
+      {
+        "hanzi": "长",
+        "en": "grow; develop"
+      },
+      {
+        "hanzi": "身高",
+        "en": "height"
+      },
+      {
+        "hanzi": "米",
+        "en": "meter"
+      },
+      {
+        "hanzi": "瘦",
+        "en": "thin"
+      },
+      {
+        "hanzi": "接",
+        "en": "meet, pick up"
+      },
+      {
+        "hanzi": "行李",
+        "en": "luggage"
+      },
+      {
+        "hanzi": "丢",
+        "en": "lose"
+      },
+      {
+        "hanzi": "箱子",
+        "en": "case; trunk"
+      },
+      {
+        "hanzi": "号码",
+        "en": "number"
+      },
+      {
+        "hanzi": "好像",
+        "en": "seemingly"
+      },
+      {
+        "hanzi": "重要",
+        "en": "important"
+      },
+      {
+        "hanzi": "着急",
+        "en": "worried"
+      },
+      {
+        "hanzi": "护照",
+        "en": "passport"
+      },
+      {
+        "hanzi": "服务台",
+        "en": "service desk"
+      },
+      {
+        "hanzi": "应该",
+        "en": "should"
+      },
+      {
+        "hanzi": "站",
+        "en": "stand"
+      },
+      {
+        "hanzi": "中间",
+        "en": "middle"
+      },
+      {
+        "hanzi": "短",
+        "en": "short (in length)"
+      },
+      {
+        "hanzi": "头发",
+        "en": "hair"
+      },
+      {
+        "hanzi": "年轻",
+        "en": "young"
+      },
+      {
+        "hanzi": "发现",
+        "en": "discover; find"
+      },
+      {
+        "hanzi": "帮助",
+        "en": "help"
+      },
+      {
+        "hanzi": "不见",
+        "en": "be lost"
+      },
+      {
+        "hanzi": "照片",
+        "en": "photo"
+      },
+      {
+        "hanzi": "带",
+        "en": "take; bring, have"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "01-01",
+        "title": {
+          "cn": "在沙发上聊天",
+          "en": "Chatting on the sofa",
+          "emoji": "🛋️"
+        },
+        "intro": {
+          "cn": "在家里，刘明和王一雪在沙发上聊天儿。",
+          "en": "At home, Liu Ming and Wang Yixue were chatting on the sofa."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "刘明和王一雪在做什么？",
+            "options": [
+              "看电视",
+              "看手机",
+              "去机场"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "刘明跟王一雪一起去机场做什么？",
+            "options": [
+              "坐飞机",
+              "找朋友",
+              "接白家月"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "刘明",
+            "cn": "这是杨同乐吗？他怎么跟白家月在一起？",
+            "en": "Is that Yang Tongle? Why is he with Bai Jiayue?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "他不是杨同乐，他叫李文，是白家月的好朋友。",
+            "en": "That's not Yang Tongle. That's Li Wen. He's a good friend of Bai Jiayue."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "我还以为是同乐呢，他们看上去有点儿像。",
+            "en": "Oh, I thought it was Tongle. They do look a bit alike."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "是长得有点儿像，但是他比同乐高，身高有一米八。",
+            "en": "Yes, they look somewhat alike, but he's taller than Tongle—about 1.8 meters."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "看起来也比同乐瘦一点儿。",
+            "en": "And he looks a bit thinner, too."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "下个星期家月和李文要来北京，我去机场接他们。",
+            "en": "Jiayue and Li Wen are coming to Beijing next week. I'm going to pick them up at the airport."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "他们哪天到北京？我跟你一起去机场接他们吧。",
+            "en": "What day will they get here? I'll come with you to pick them up."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "刘明为什么以为李文是杨同乐？"
+          },
+          {
+            "q": "李文长什么样？"
+          },
+          {
+            "q": "白家月什么时候来中国？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "以为",
+            "pos": "v.",
+            "en": "think; consider"
+          },
+          {
+            "cn": "像",
+            "pos": "v.",
+            "en": "be like"
+          },
+          {
+            "cn": "长",
+            "pos": "v.",
+            "en": "grow; develop"
+          },
+          {
+            "cn": "身高",
+            "pos": "n.",
+            "en": "height"
+          },
+          {
+            "cn": "米",
+            "pos": "m.",
+            "en": "meter"
+          },
+          {
+            "cn": "瘦",
+            "pos": "adj.",
+            "en": "thin"
+          },
+          {
+            "cn": "接",
+            "pos": "v.",
+            "en": "meet, pick up"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-2.mp3"
+      },
+      {
+        "id": "01-02",
+        "title": {
+          "cn": "行李不见了",
+          "en": "The luggage is missing",
+          "emoji": "🧳"
+        },
+        "intro": {
+          "cn": "在机场，李文和白家月在行李领取处。",
+          "en": "At the airport, Li Wen and Bai Jiayue were at baggage claim."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "李文和白家月在机场做什么？",
+            "options": [
+              "等箱子",
+              "等同学",
+              "等王一雪"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "白家月为什么很着急？",
+            "options": [
+              "护照丢了",
+              "行李箱丢了",
+              "拿错行李箱了"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "我的行李怎么还没出来？是不是丢了？",
+            "en": "Why hasn't my luggage shown up yet? Could it be lost?"
+          },
+          {
+            "speaker": "李文",
+            "cn": "你的行李箱是什么样的？",
+            "en": "What does your suitcase look like?"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "是一个黑色的箱子，上面写着我的名字和电话号码。",
+            "en": "It's a black one with my name and phone number on it."
+          },
+          {
+            "speaker": "李文",
+            "cn": "我好像在哪儿看到过这个箱子，是不是有人拿错了？",
+            "en": "It seems I've seen one like that somewhere. Could someone have taken it by mistake?"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我们快找谁问一下吧，箱子里有不少重要的东西。",
+            "en": "Let's quickly find someone to ask. There are quite a few important things in it."
+          },
+          {
+            "speaker": "李文",
+            "cn": "别着急，我们拿着护照和机票，去服务台问问吧。",
+            "en": "Don't worry. Let's take our passports and plane tickets to the service desk and ask there."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "白家月的箱子是什么样的？"
+          },
+          {
+            "q": "李文看到过白家月的箱子吗？"
+          },
+          {
+            "q": "他们现在要做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "行李",
+            "pos": "n.",
+            "en": "luggage"
+          },
+          {
+            "cn": "丢",
+            "pos": "v.",
+            "en": "lose"
+          },
+          {
+            "cn": "箱子",
+            "pos": "n.",
+            "en": "case; trunk"
+          },
+          {
+            "cn": "号码",
+            "pos": "n.",
+            "en": "number"
+          },
+          {
+            "cn": "好像",
+            "pos": "adv.",
+            "en": "seemingly"
+          },
+          {
+            "cn": "重要",
+            "pos": "adj.",
+            "en": "important"
+          },
+          {
+            "cn": "着急",
+            "pos": "adj.",
+            "en": "worried"
+          },
+          {
+            "cn": "护照",
+            "pos": "n.",
+            "en": "passport"
+          },
+          {
+            "cn": "服务台",
+            "pos": "n.",
+            "en": "service desk"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-4.mp3"
+      },
+      {
+        "id": "01-03",
+        "title": {
+          "cn": "在机场接人",
+          "en": "Meeting them at the airport",
+          "emoji": "🛬"
+        },
+        "intro": {
+          "cn": "在机场大厅，刘明和王一雪接机。",
+          "en": "In the airport arrival hall, Liu Ming and Wang Yixue were waiting to meet their friends."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "刘明和王一雪在机场做什么？",
+            "options": [
+              "接人",
+              "坐飞机",
+              "找行李箱"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "刘明为什么要站到中间？",
+            "options": [
+              "旁边人太多了",
+              "他看见白家月了",
+              "白家月好找他们"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "刘明",
+            "cn": "飞机早就到了，你看见白家月他们了吗？",
+            "en": "The plane arrived a while ago. Have you seen Bai Jiayue and Li Wen?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "没有，他们应该快出来了。",
+            "en": "No, they should be coming out any minute now."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "我们站到中间去吧，这样他们好找一些。",
+            "en": "Let's stand in the middle so it'll be easier for them to spot us."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "你看那个高个子的人是李文吗？",
+            "en": "Look, is that tall guy Li Wen?"
+          },
+          {
+            "speaker": "刘明",
+            "cn": "你说的是哪个？那个穿着黑衣服的短头发的年轻人？",
+            "en": "Which one do you mean? The young man with short hair, wearing black?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "对，那个人就是李文！你看，家月在他后面呢。",
+            "en": "Yes, that's Li Wen! And look, Jiayue is right behind him."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "王一雪为什么说白家月他们应该快出来了？"
+          },
+          {
+            "q": "刘明看见的年轻人长什么样？"
+          },
+          {
+            "q": "王一雪怎么知道那个年轻人就是李文？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "应该",
+            "pos": "mod.",
+            "en": "should"
+          },
+          {
+            "cn": "站",
+            "pos": "v.",
+            "en": "stand"
+          },
+          {
+            "cn": "中间",
+            "pos": "n.",
+            "en": "middle"
+          },
+          {
+            "cn": "短",
+            "pos": "adj.",
+            "en": "short (in length)"
+          },
+          {
+            "cn": "头发",
+            "pos": "n.",
+            "en": "hair"
+          },
+          {
+            "cn": "年轻",
+            "pos": "adj.",
+            "en": "young"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-6.mp3"
+      },
+      {
+        "id": "01-04",
+        "title": {
+          "cn": "李文的日记",
+          "en": "Li Wen's diary",
+          "emoji": "📔"
+        },
+        "intro": {
+          "cn": "在宾馆房间，李文在写日记。",
+          "en": "In the hotel room, Li Wen was writing in his diary."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "李文回北京的路上花了多长时间？",
+            "options": [
+              "几个小时",
+              "十几个小时",
+              "几十个小时"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "李文觉得王老师的姐姐看起来怎么样？",
+            "options": [
+              "很累",
+              "很年轻",
+              "很像王老师"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "昨天我到北京了。",
+            "en": "Yesterday I arrived in Beijing."
+          },
+          {
+            "speaker": "",
+            "cn": "虽然路上花了十几个小时，但是跟家月坐在一起，我觉得时间过得很快。",
+            "en": "Though the journey took more than ten hours, sitting next to Jiayue made the time pass quickly."
+          },
+          {
+            "speaker": "",
+            "cn": "到机场的时候，家月发现行李箱不见了，我带她去服务台，帮助她找到了行李箱。",
+            "en": "When we arrived at the airport, Jiayue found her suitcase missing. So I took her to the service desk and helped her retrieve it."
+          },
+          {
+            "speaker": "",
+            "cn": "走出机场的时候，已经八点多了，我们一出来就看见了王老师的姐姐，她看起来比照片上年轻。",
+            "en": "By the time we left the airport, it was already past 8 p.m. As soon as we stepped outside, we saw Ms. Wang's cousin, who looked younger than in her photos."
+          },
+          {
+            "speaker": "",
+            "cn": "晚上，一雪姐带我们去吃了一家很好吃的中国菜。",
+            "en": "In the evening, Yixue took us to a Chinese restaurant with amazing food."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "李文为什么觉得时间过得很快？"
+          },
+          {
+            "q": "到机场的时候，白家月发现了什么问题？"
+          },
+          {
+            "q": "王一雪带他们去做什么了？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "发现",
+            "pos": "v.",
+            "en": "discover; find"
+          },
+          {
+            "cn": "帮助",
+            "pos": "v.",
+            "en": "help"
+          },
+          {
+            "cn": "不见",
+            "pos": "v.",
+            "en": "be lost"
+          },
+          {
+            "cn": "照片",
+            "pos": "n.",
+            "en": "photo"
+          },
+          {
+            "cn": "带",
+            "pos": "v.",
+            "en": "take; bring, have"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-8.mp3"
+      }
+    ]
+  },
   {
     "name": "L13 · 我的新邻居来自英国",
     "id": "13",
