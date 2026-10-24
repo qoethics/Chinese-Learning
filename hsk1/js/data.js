@@ -568,7 +568,7 @@ window.COURSE_LESSONS = [
           audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-08/hsk1-textbook-0803.mp3',
           lines:[
             {cn:'A：你好！这个杯子多少钱？', en:'A: Hello! How much is this cup?'},
-            {cn:'B：28块钱。', en:'B: 28 yuan.'},
+            {cn:'B：28块。', en:'B: 28 yuan.'},
             {cn:'A：那个杯子多少钱？', en:'A: How much is that cup?'},
             {cn:'B：那个杯子18块钱。', en:'B: That cup is 18 yuan.'}
           ],
@@ -696,7 +696,7 @@ window.COURSE_LESSONS = [
           audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-09/hsk1-textbook-0903.mp3',
           lines:[
             {cn:'A：你爸爸在家吗？', en:'A: Is your dad at home?'},
-            {cn:'B：他在家。', en:'B: He is at home.'},
+            {cn:'B：不在家。', en:'B: He is not at home.'},
             {cn:'A：他在哪儿呢？', en:'A: Where is he?'},
             {cn:'B：他在医院。', en:'B: He is at the hospital.'}
           ],
@@ -963,8 +963,6 @@ window.COURSE_LESSONS = [
           ]
         },
         {id:'11-04', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-11/hsk1-textbook-1104.mp3', lines:[]},
-        {id:'11-05', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-11/hsk1-textbook-1105.mp3', lines:[]},
-        {id:'11-06', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-11/hsk1-textbook-1106.mp3', lines:[]}
       ]
     },
     {
@@ -1099,8 +1097,6 @@ window.COURSE_LESSONS = [
           ]
         },
         {id:'12-04', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-12/hsk1-textbook-1204.mp3', lines:[]},
-        {id:'12-05', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-12/hsk1-textbook-1205.mp3', lines:[]},
-        {id:'12-06', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-12/hsk1-textbook-1206.mp3', lines:[]}
       ]
     },
     {
@@ -1172,7 +1168,7 @@ window.COURSE_LESSONS = [
           lines:[
             {cn:'A：昨天上午你在做什么呢？', en:'A: What were you doing yesterday morning?'},
             {cn:'B：我在睡觉呢。你呢？', en:'B: I was sleeping. And you?'},
-            {cn:'A：在家看电视呢，你喜欢看电视吗？', en:'A: I was watching TV at home. Do you like watching TV?'},
+            {cn:'A：我在家看电视呢。你喜欢看电视吗？', en:'A: I was watching TV at home. Do you like watching TV?'},
             {cn:'B：我不喜欢看电视，我喜欢看电影。', en:"B: I don't like watching TV; I like watching movies."}
           ],
           words:[
@@ -1188,7 +1184,7 @@ window.COURSE_LESSONS = [
           audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-13/hsk1-textbook-1303.mp3',
           lines:[
             {cn:'A：82304155，这是李老师的电话吗？', en:"A: 82304155, is this Teacher Li's phone number?"},
-            {cn:'B：是他的电话是82304156。', en:'B: Yes, his number is 82304156.'},
+            {cn:'B：不是，他的电话是82304156。', en:'B: No, his number is 82304156.'},
             {cn:'A：好，我现在给她打电话。', en:'A: OK, I will call her now.'},
             {cn:'B：她在工作呢，你下午打吧。', en:"B: She is working right now; call her this afternoon."}
           ],
@@ -1199,8 +1195,6 @@ window.COURSE_LESSONS = [
           ]
         },
         {id:'13-04', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-13/hsk1-textbook-1304.mp3', lines:[]},
-        {id:'13-05', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-13/hsk1-textbook-1305.mp3', lines:[]},
-        {id:'13-06', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-13/hsk1-textbook-1306.mp3', lines:[]}
       ]
     },
     {
@@ -1315,8 +1309,6 @@ window.COURSE_LESSONS = [
           ]
         },
         {id:'14-04', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-14/hsk1-textbook-1404.mp3', lines:[]},
-        {id:'14-05', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-14/hsk1-textbook-1405.mp3', lines:[]},
-        {id:'14-06', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-14/hsk1-textbook-1406.mp3', lines:[]}
       ]
     },
     {
@@ -1423,8 +1415,6 @@ window.COURSE_LESSONS = [
           ]
         },
         {id:'15-04', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-15/hsk1-textbook-1504.mp3', lines:[]},
-        {id:'15-05', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-15/hsk1-textbook-1505.mp3', lines:[]},
-        {id:'15-06', audio:'https://cdn.baulchino.com/hsk-books-audios/hsk1-textbook-audios/lesson-15/hsk1-textbook-1506.mp3', lines:[]}
       ]
     },
     {

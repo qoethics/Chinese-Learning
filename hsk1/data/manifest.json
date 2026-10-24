@@ -3,11 +3,12 @@
   "kickoffPrompt": "新任务开场：先读 hsk1/data/manifest.json 和 .github/copilot-instructions.md，别整读 data.js/app.js。用 grep -n 定位后只读相关 40-80 行。先向我复述你理解的结构 + 计划改哪几个文件，我确认后再动手。语料 json/js 是生成物禁止手改。做完在 file:// 和 http:// 各验证一次，控制台零报错，别碰无关的既有改动（.DS_Store、classroom/）。",
   "entry": "hsk1/index.html",
   "entryNote": "只剩 HTML 骨架 + <link>/<script src> 引用，约 170 行。",
-  "loadOrder": ["../shared/assets/china-map.js", "data/sentences/grammar-sentences.js", "js/data.js", "js/app.js"],
+  "loadOrder": ["../shared/assets/china-map.js", "data/sentences/grammar-sentences.js", "data/audio-segments.js", "js/data.js", "js/app.js"],
 
   "globals": {
     "js/data.js": "window.COURSE_LESSONS（别名 window.HSK1_LESSONS）— 课程词汇/课文，每课有唯一 id",
     "data/sentences/grammar-sentences.js": "window.SENTENCE_CORPUS（别名 window.GRAMMAR_SENTENCES）— 句子语料，每项有唯一 key=课 id",
+    "data/audio-segments.js": "window.TEXT_AUDIO_SEGMENTS — 每篇课文的分句时间点 { textId: [{line,start,end,cn}] }，由播放器「✂ A/B」+「⇩ 导出时间点」下载后覆盖到这里（工具产物；改了课文句子要同步改这里的 cn）",
     "../shared/assets/china-map.js": "window.CHINA_MAP_SVG — 中国省界 SVG（仅 hsk1 加载，hsk2 不加载）"
   },
 
@@ -37,7 +38,7 @@
 
   "commonTasks": {
     "改样式": "hsk1/css/app.css",
-    "改单词/课文": "hsk1/js/data.js",
+    "改单词/课文": "hsk1/js/data.js；改了课文句子后，把 data/audio-segments.js 里对应行的 cn 一起改（否则播放器会提示“句子文本已变”）",
     "改句子语料": "改 txt，再跑 manifest.sentenceCorpus.regenerate 里的命令（不要手改 json/js）",
     "补句子拼音/英文": "hsk1/data/sentences/enrichment.json（key=整句中文），再重跑生成命令",
     "改交互/渲染逻辑": "hsk1/js/app.js（先 grep -n 定位，再只读目标 40-80 行）",

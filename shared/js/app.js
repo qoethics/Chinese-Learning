@@ -751,8 +751,11 @@
   //   { "01-01": [ { line: 0, start: 3.2, end: 6.8, cn: "…" } ] }
   // Marks made in the player live in a localStorage draft until "⇩ 导出"
   // writes the file; `cn` lets us notice when a text's lines were reordered.
+  // localStorage is per-origin (not per-folder), and hsk1/hsk2/hsk3 reuse the
+  // same text ids (05-01, …), so the draft key must carry the page's folder —
+  // otherwise one level's draft silently overwrites another level's segments.
   // =====================================================================
-  const SEG_DRAFT_KEY = 'hsk.audiosegs.draft.v1';
+  const SEG_DRAFT_KEY = 'hsk.audiosegs.draft.v2:' + location.pathname.replace(/[^/]*$/, '');
   let segDraftDirty = false;
   let textSegs = loadSegs();
   let segMarks = {};   // in-progress per-text marks (survive re-renders)
@@ -1203,7 +1206,7 @@
   let wordCardView='hanzi';    // word card front: hanzi / pinyin / english
   let showListPinyin=true;     // word/sentence list: global pinyin visibility
   let showListEnglish=false;   // word/sentence list: global english visibility (default OFF)
-  let showVocab=true;          // text view: show the per-text vocabulary rows (default ON)
+  let showVocab=true;          // text view: expand the per-text vocabulary section (default ON)
   let showHl={ core:true, ext:true, 'acc-core':true, 'acc-ext':true };  // grammar highlight categories
   let listRevealed=new Set();  // word list: per-word reveal state
   let textRevealed=new Set();  // text list: per-line English reveal state
@@ -1212,7 +1215,7 @@
   let grammarFocus=null;       // grammar point id flashed after a Topics jump (cleared on next render)
   let grammarSub='all';        // grammar scope: all / core / ext
   let sentenceSub='all';       // sentence-tab scope: all / core / ext
-  let textSub='all';           // texts-tab scope: all / '1' / '2' / ... (position in lessonTexts)
+  let textSub='all';           // texts-tab scope: all / '1' / '2' / ... (position in scopeTexts())
   let noteTimer=null;
 
   let words=[];
@@ -2041,7 +2044,8 @@
       return;
     }
     if (currentMode === 'texts'){
-      if (lessonTexts.length < 2){
+      const scoped = scopeTexts();
+      if (scoped.length < 2){
         if (row) row.style.display = 'flex';
         subModeBar.innerHTML = '<button class="ctx-na" disabled>n/a</button>';
         return;
@@ -2049,7 +2053,7 @@
       if (row) row.style.display = 'flex';
       subModeBar.innerHTML = `
         <button class="${textSub==='all'?'active':''}" data-tsub="all">${chipText('📄', 'All')}</button>
-        ${lessonTexts.map((t, i) => `<button class="${textSub===String(i+1)?'active':''}" data-tsub="${i+1}" title="${escapeHtml((t.title && t.title.cn) || '')}">${chipText('📄', String(i+1))}</button>`).join('')}
+        ${scoped.map((t, i) => `<button class="${textSub===String(i+1)?'active':''}" data-tsub="${i+1}" title="${escapeHtml((t.title && t.title.cn) || '')}">${chipText('📄', String(i+1))}</button>`).join('')}
       `;
       subModeBar.querySelectorAll('button').forEach(btn => {
         btn.addEventListener('click', function(){
@@ -2600,10 +2604,17 @@
     });
   }
 
+  // Audio-only tracks (listening exercises, or audio with no transcript) are not
+  // dialogues: keep them out of the Scope chips so the numbering matches the texts
+  // that actually have lines. They still show under "All".
+  function scopeTexts(){
+    return lessonTexts.filter(t => (t.lines || []).length > 0);
+  }
+
   // Texts honour the Scope row: 'all' shows every dialogue, '1'..'N' only that one.
   function textsInScope(){
     if (textSub === 'all') return lessonTexts;
-    const one = lessonTexts[Number(textSub) - 1];
+    const one = scopeTexts()[Number(textSub) - 1];
     return one ? [one] : lessonTexts;
   }
 
@@ -2644,7 +2655,9 @@
       if (t.title){
         const tcn = showListPinyin ? rubyHtmlChars(t.title.cn) : escapeHtml(t.title.cn);
         const titleSeg = titleSegOf(tId);
-        const titlePlay = (isAudioUrl(t.audio) && titleSeg)
+        // Only when the audio actually has a lead-in before the first line; a
+        // zero-length "title" segment (segments starting at 0) would be a dead button.
+        const titlePlay = (isAudioUrl(t.audio) && titleSeg && titleSeg.end - titleSeg.start >= 0.3)
           ? `<button class="text-title-play" data-text="${escapeHtml(tId)}" data-static-label="1" data-title-base="朗读标题 · ${fmtTime1(titleSeg.start)}–${fmtTime1(titleSeg.end)}" title="朗读标题 · ${fmtTime1(titleSeg.start)}–${fmtTime1(titleSeg.end)}">▶</button>`
           : '';
         html += `<div class="text-title-line">
@@ -2741,25 +2754,21 @@
           </div>
         </div>`;
       });
-      // Vocabulary words (always show English) — legacy per-text t.words rows.
-      if (showVocab && t.words && t.words.length){
-        html += '<div class="text-vocab">';
-        t.words.forEach(w => {
-          // Vocabulary always carries pinyin, independent of the Pinyin toggle.
-          const vcn = rubyHtml(w.cn);
-          html += `<div class="text-vocab-row" data-read="${escapeHtml(w.cn)}">
-            <span class="text-vocab-cn">${vcn}</span>
-            ${w.pos ? `<span class="text-vocab-pos">${escapeHtml(w.pos)}</span>` : ''}
-            <span class="text-vocab-en">${escapeHtml(w.en)}</span>
-          </div>`;
-        });
-        html += '</div>';
-      }
-      // Collapsible vocabulary section shown after each dialogue, containing
-      // only the core words that FIRST appear in this dialogue (each word shows
-      // up exactly once per lesson), styled like the grammar-section. Header
-      // carries a read-aloud button that plays the vocab audio (last B → end).
-      const textVocab = lessonTextVocab[tId] || [];
+      // Collapsible vocabulary section shown after each dialogue, styled like
+      // the grammar-section. The Vocab toggle expands/collapses its body; the
+      // header stays clickable either way. Header also carries a read-aloud
+      // button that plays the vocab audio (last B → end).
+      // Core words assigned to this dialogue, plus any word the textbook lists
+      // for it that is not in this lesson's core (review words, names, …),
+      // deduped so each word shows up once.
+      const textVocab = (lessonTextVocab[tId] || []).slice();
+      const seenVocab = new Set(textVocab.map(w => w.hanzi));
+      (t.words || []).forEach(w => {
+        const hanzi = w.cn || w.hanzi;
+        if (!hanzi || seenVocab.has(hanzi)) return;
+        seenVocab.add(hanzi);
+        textVocab.push({ hanzi, en: w.en, pos: w.pos });
+      });
       if (textVocab.length){
         const vocabSeg = vocabSegOf(tId);
         // HSK3 ships a dedicated vocab-list track per text (wordAudio) — the
@@ -2775,18 +2784,19 @@
           <div class="vocab-head" role="button" tabindex="0">
             <span class="vocab-head-inner">
               ${vPlay}
-              <span class="vocab-caret">▸</span>
+              <span class="vocab-caret">${showVocab ? '▾' : '▸'}</span>
               <span class="vocab-title">📖 单词 · Vocabulary</span>
               <span class="vocab-count">${textVocab.length}</span>
             </span>
           </div>
-          <div class="vocab-body collapsed">
+          <div class="vocab-body${showVocab ? '' : ' collapsed'}">
             <div class="vocab-body-inner">`;
         textVocab.forEach(w => {
           // Vocabulary always carries pinyin, independent of the Pinyin toggle.
           const vcn = rubyHtml(w.hanzi);
           html += `<div class="text-vocab-row" data-read="${escapeHtml(w.hanzi)}">
             <span class="text-vocab-cn">${vcn}</span>
+            ${w.pos ? `<span class="text-vocab-pos">${escapeHtml(w.pos)}</span>` : ''}
             ${w.en ? `<span class="text-vocab-en">${escapeHtml(w.en)}</span>` : ''}
           </div>`;
         });
