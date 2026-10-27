@@ -106,6 +106,50 @@
 
   body.menu-open .menu-btn { opacity: 0; pointer-events: none; }
 
+  /* ================= 右上角浮动工具条 ================= */
+  .float-tools {
+    position: fixed;
+    top: .85rem;
+    right: .85rem;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .ft-btn {
+    width: 44px; height: 44px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 24px -18px rgba(90,100,120,.95);
+    color: var(--ink-2);
+    font-family: inherit;
+    font-size: .86rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease,
+                transform .18s ease, box-shadow .18s ease;
+  }
+  .ft-btn:hover {
+    background: #fff;
+    color: var(--ink);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px -18px rgba(90,100,120,1);
+  }
+  .ft-btn:active { transform: translateY(0); }
+  .ft-btn:disabled { opacity: .38; cursor: default; transform: none; }
+  .ft-btn.on {
+    background: linear-gradient(180deg, #4b5563, #2c2c34);
+    border-color: transparent;
+    color: #fff;
+  }
+
   /* ================= 侧边抽屉 ================= */
   .drawer {
     position: fixed;
@@ -1234,6 +1278,17 @@
 <button class="menu-btn" id="menuBtn" aria-label="打开目录" aria-expanded="false">
   <span class="bars"><i></i><i></i><i></i></span>
 </button>
+
+<!-- ==================== 右上角浮动工具：拼音模式 / 字号 ==================== -->
+<div class="float-tools" id="floatTools" role="toolbar" aria-label="显示设置">
+  <button class="ft-btn" id="pinyinToggle" type="button"
+          aria-pressed="false" title="拼音模式：全文显示拼音"
+          aria-label="拼音模式：全文显示拼音">拼</button>
+  <button class="ft-btn" id="fontMinus" type="button"
+          title="缩小字体" aria-label="缩小字体">A−</button>
+  <button class="ft-btn" id="fontPlus" type="button"
+          title="放大字体" aria-label="放大字体">A+</button>
+</div>
 
 <!-- ==================== 侧边目录 ==================== -->
 <aside class="drawer" id="drawer" aria-hidden="true">
@@ -2695,6 +2750,146 @@
   renderTray();
   if (trayToggle) trayToggle.style.display = 'none';
   closeTray();
+
+  /* ================= 右上角浮动工具：拼音模式 / 字号 ================= */
+  var UI_KEY = 'courseware.ui.v1';
+  var FONT_STEPS = [0.85, 0.925, 1, 1.08, 1.16, 1.25, 1.35];
+  var DEFAULT_FONT_IDX = 2;   // 1.0 倍
+  var uiState = { fontIdx: DEFAULT_FONT_IDX, fullPinyin: false };
+
+  try {
+    var savedUi = JSON.parse(localStorage.getItem(UI_KEY) || 'null');
+    if (savedUi) {
+      if (typeof savedUi.fontIdx === 'number' && FONT_STEPS[savedUi.fontIdx]) {
+        uiState.fontIdx = savedUi.fontIdx;
+      }
+      if (typeof savedUi.fullPinyin === 'boolean') uiState.fullPinyin = savedUi.fullPinyin;
+    }
+  } catch (e) {}
+
+  function saveUi() {
+    try { localStorage.setItem(UI_KEY, JSON.stringify(uiState)); } catch (e) {}
+  }
+
+  var pyToggle   = document.getElementById('pinyinToggle');
+  var fontMinus  = document.getElementById('fontMinus');
+  var fontPlus   = document.getElementById('fontPlus');
+  var HAN_RE     = /[\u3400-\u9fff\uf900-\ufaff]/;
+
+  /* ---------- 字号：整体缩放根字体，rem/em 尺寸一并生效 ---------- */
+  function applyFontScale() {
+    document.documentElement.style.fontSize =
+      (16 * FONT_STEPS[uiState.fontIdx]) + 'px';
+    if (fontMinus) fontMinus.disabled = uiState.fontIdx <= 0;
+    if (fontPlus)  fontPlus.disabled  = uiState.fontIdx >= FONT_STEPS.length - 1;
+  }
+
+  function stepFont(delta) {
+    var next = Math.min(FONT_STEPS.length - 1, Math.max(0, uiState.fontIdx + delta));
+    if (next === uiState.fontIdx) return;
+    uiState.fontIdx = next;
+    applyFontScale();
+    saveUi();
+  }
+
+  if (fontMinus) fontMinus.addEventListener('click', function () { stepFont(-1); });
+  if (fontPlus)  fontPlus.addEventListener('click',  function () { stepFont(1); });
+
+  /* ---------- 拼音模式：给全文所有中文逐字加 ruby ---------- */
+  function autoRuby(text) {
+    var arr = pinyinPro.pinyin(text, { toneType: 'symbol', type: 'array' });
+    if (!arr || arr.length !== text.length) return null;  // 长度不等就整体跳过，避免空 rt 错位
+    var html = '';
+    for (var i = 0; i < text.length; i++) {
+      var syllable = arr[i] || '';
+      var tone = detectTone(syllable);
+      html += '<ruby data-auto="1">' + text[i] +
+              '<rt><span class="' + (tone ? 'tone-' + tone : '') + '">' +
+              syllable + '</span></rt></ruby>';
+    }
+    return html;
+  }
+
+  function pinyinRoots() {
+    return [document.querySelector('.page'), document.getElementById('tocNav')]
+      .filter(function (el) { return !!el; });
+  }
+
+  function enableFullPinyin() {
+    pinyinRoots().forEach(function (root) {
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (node) {
+          if (!node.nodeValue || !HAN_RE.test(node.nodeValue)) return NodeFilter.FILTER_REJECT;
+          var p = node.parentElement;
+          if (!p) return NodeFilter.FILTER_REJECT;
+          /* 已有 ruby、脚本、只读控件都不再注音 */
+          if (p.closest('ruby, rt, rp, script, style, button, .ctrl-btn, .tray-btn')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      var nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+
+      nodes.forEach(function (node) {
+        var text = node.nodeValue;
+        var frag = document.createDocumentFragment();
+        var run = '';
+        function flush() {
+          if (!run) return;
+          var html = autoRuby(run);
+          if (html) {
+            var holder = document.createElement('span');
+            holder.innerHTML = html;
+            while (holder.firstChild) frag.appendChild(holder.firstChild);
+          } else {
+            frag.appendChild(document.createTextNode(run));
+          }
+          run = '';
+        }
+        for (var i = 0; i < text.length; i++) {
+          if (HAN_RE.test(text[i])) { run += text[i]; continue; }
+          flush();
+          frag.appendChild(document.createTextNode(text[i]));
+        }
+        flush();
+        node.parentNode.replaceChild(frag, node);
+      });
+    });
+  }
+
+  function disableFullPinyin() {
+    var parents = [];
+    document.querySelectorAll('ruby[data-auto]').forEach(function (r) {
+      var ch = r.firstChild && r.firstChild.nodeType === 3 ? r.firstChild.nodeValue : '';
+      var parent = r.parentNode;
+      parent.replaceChild(document.createTextNode(ch), r);
+      if (parents.indexOf(parent) === -1) parents.push(parent);
+    });
+    parents.forEach(function (p) { p.normalize(); });
+  }
+
+  function setFullPinyin(on) {
+    if (on && typeof pinyinPro === 'undefined') return;
+    uiState.fullPinyin = !!on;
+    if (on) enableFullPinyin(); else disableFullPinyin();
+    if (pyToggle) {
+      pyToggle.classList.toggle('on', uiState.fullPinyin);
+      pyToggle.setAttribute('aria-pressed', uiState.fullPinyin ? 'true' : 'false');
+    }
+    saveUi();
+  }
+
+  if (pyToggle) {
+    if (typeof pinyinPro === 'undefined') pyToggle.disabled = true;
+    pyToggle.addEventListener('click', function () {
+      setFullPinyin(!uiState.fullPinyin);
+    });
+  }
+
+  applyFontScale();
+  if (uiState.fullPinyin) setFullPinyin(true);
 
 })();
 </script>
