@@ -20,7 +20,7 @@ if (location.protocol !== 'file:') {
 <title>HSK 2 综合练习 · L1-L15</title>
 <link rel="stylesheet" href="../shared/css/app.css" />
 </head>
-<body>
+<body data-level="hsk2">
   <div id="welcomeOverlay">
     <div class="welcome-title">HSK 2 Practice</div>
   </div>
@@ -212,9 +212,13 @@ if (location.protocol !== 'file:') {
 <!-- External modules: sentences → data → app. Order matters. -->
 <script src="js/vendor/pinyin-pro.js"></script>
 <script src="data/sentences/grammar-sentences.js"></script>
+<script src="data/sentences/text-grammar-hits.js"></script>
 <script src="data/sentences/grammar-topics.js"></script>
 <script src="audio-segments.js"></script>
 <script src="js/core-vocab.js"></script>
+<!-- hsk1's vocabulary is the "already learned" baseline of this level (its own
+     alias window.HSK1_LESSONS survives js/data.js overwriting COURSE_LESSONS). -->
+<script src="../hsk1/js/data.js"></script>
 <script src="js/data.js"></script>
   <div class="sound-check-overlay hidden" id="soundCheckOverlay">
     <div class="sound-check-panel" role="dialog" aria-label="Sound Check">

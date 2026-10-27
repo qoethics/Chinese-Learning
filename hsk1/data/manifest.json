@@ -3,26 +3,32 @@
   "kickoffPrompt": "新任务开场：先读 hsk1/data/manifest.json 和 .github/copilot-instructions.md，别整读 data.js/app.js。用 grep -n 定位后只读相关 40-80 行。先向我复述你理解的结构 + 计划改哪几个文件，我确认后再动手。语料 json/js 是生成物禁止手改。做完在 file:// 和 http:// 各验证一次，控制台零报错，别碰无关的既有改动（.DS_Store、classroom/）。",
   "entry": "hsk1/index.html",
   "entryNote": "只剩 HTML 骨架 + <link>/<script src> 引用，约 170 行。",
-  "loadOrder": ["../shared/assets/china-map.js", "data/sentences/grammar-sentences.js", "data/audio-segments.js", "js/data.js", "js/app.js"],
-
+  "loadOrder": [
+    "../shared/assets/china-map.js",
+    "data/sentences/grammar-sentences.js",
+    "data/audio-segments.js",
+    "js/data.js",
+    "js/app.js"
+  ],
   "globals": {
     "js/data.js": "window.COURSE_LESSONS（别名 window.HSK1_LESSONS）— 课程词汇/课文，每课有唯一 id",
     "data/sentences/grammar-sentences.js": "window.SENTENCE_CORPUS（别名 window.GRAMMAR_SENTENCES）— 句子语料，每项有唯一 key=课 id",
     "data/audio-segments.js": "window.TEXT_AUDIO_SEGMENTS — 每篇课文的分句时间点 { textId: [{line,start,end,cn}] }，由播放器「✂ A/B」+「⇩ 导出时间点」下载后覆盖到这里（工具产物；改了课文句子要同步改这里的 cn）",
     "../shared/assets/china-map.js": "window.CHINA_MAP_SVG — 中国省界 SVG（仅 hsk1 加载，hsk2 不加载）"
   },
-
   "files": {
     "hsk1/css/app.css": "全部样式（原 index.html <style> 1332 行）",
     "hsk1/js/data.js": "词汇/课文：window.COURSE_LESSONS（含 L5-L15 课文 texts；每课 id 对应语料 key）",
     "hsk1/js/app.js": "应用逻辑：单个 IIFE（themes + 拼音 + 音频 + 状态 + 渲染 + 游戏 + 事件 + 启动）"
   },
-
   "sentenceCorpus": {
     "status": "ACTIVE — 语料由 txt 自动生成",
     "sourceOfTruth": "HSK 1 语料 20261013.txt",
     "enrichment": "data/sentences/enrichment.json（人工维护 {整句: {py,en}}；txt 只有中文）",
-    "generated": ["data/sentences/grammar-sentences.json", "data/sentences/grammar-sentences.js"],
+    "generated": [
+      "data/sentences/grammar-sentences.json",
+      "data/sentences/grammar-sentences.js"
+    ],
     "regenerate": "python3 hsk1/tools/ingest-sentences.py \"hsk1/HSK 1 语料 <date>.txt\" hsk1/data/sentences/grammar-sentences.json && python3 hsk1/tools/gen-sentences-js.py hsk1/data/sentences/grammar-sentences.json",
     "entrypoint": "js/app.js :: externalLessonGrammar(data) —— 按课程 id 匹配语料 key，缺失则按数组顺序兜底",
     "appShape": "grammar[] = {id,cn,py,en,note,subs?,items:[{c,en,py,sub?}]} —— note 为字符串（多行用 \\n 分隔，渲染成多个 .grammar-intro）；item.sub 存 subs[].id；省份组标题写 `省份：<中文名>`（en = `Province: <English>`）",
@@ -32,10 +38,18 @@
       "fill (填空)": "originalFillItems <- grammarSentenceList()",
       "grammar (语法视图)": "lessonGrammar"
     },
-    "gamesWordsOnly": ["pairs", "picture", "mole", "memory"],
-    "doNotEdit": ["data/sentences/grammar-sentences.json", "data/sentences/grammar-sentences.js"]
+    "gamesWordsOnly": [
+      "pairs",
+      "picture",
+      "mole",
+      "memory"
+    ],
+    "doNotEdit": [
+      "data/sentences/grammar-sentences.json",
+      "data/sentences/grammar-sentences.js"
+    ]
   },
-
+  "vocabOwnership": "虚词按「介绍它的语法点所在课」归入该课 core（不是按教材生词表顺序）：了/千/块→L5（5-3「了」/5-2 数字）、怎么→L6（6-3）、星期/周/日→L7（7-1 日期）、本/口→L8（8-3 量词）、在/里→L9（9-1、9-3）、请/有→L10（10-4、10-1）、前/后→L11（11-3、11-4）、喂/吧→L13（13-1、13-4）。这些词的拼音/英文一并手写在 core 里，属于词汇数据而非生成物。注意 想 仍保留在 L4（L4 教材已在用），若移走会让 L4–L7 含「想」的例句从 core 掉成 ext。改完必须确认 hsk1/js/data.js 能被解析（core 数组最后一项原本无尾逗号，插入时要补）。",
   "commonTasks": {
     "改样式": "hsk1/css/app.css",
     "改单词/课文": "hsk1/js/data.js；改了课文句子后，把 data/audio-segments.js 里对应行的 cn 一起改（否则播放器会提示“句子文本已变”）",
@@ -44,7 +58,6 @@
     "改交互/渲染逻辑": "hsk1/js/app.js（先 grep -n 定位，再只读目标 40-80 行）",
     "新增级别 HSK2": "复制整个 hsk1/ 为 hsk2/，换 data.js 与 txt；app.js/css 无需改（变量名中性）"
   },
-
   "doNot": [
     "不要整文件读取 hsk1/js/app.js（2700 行），用 grep -n 定位后局部读取",
     "不要改 hsk1/index.html 的 <script> 加载顺序（grammar-sentences.js → data.js → app.js）",

@@ -193,7 +193,10 @@ window.COURSE_LESSONS = [
         {hanzi:'十八',pinyin:'shí bā',en:'eighteen'},
         {hanzi:'十九',pinyin:'shí jiǔ',en:'nineteen'},
         {hanzi:'二十',pinyin:'èr shí',en:'twenty'},
-        {hanzi:'三十',pinyin:'sān shí',en:'thirty'}
+        {hanzi:'三十',pinyin:'sān shí',en:'thirty'},
+        {hanzi:'了',pinyin:'le',en:'(particle: change of state)'},
+        {hanzi:'千',pinyin:'qiān',en:'thousand'},
+        {hanzi:'块',pinyin:'kuài',en:'(measure word for money)'},
       ],
       extended:[],
       texts:[
@@ -269,7 +272,8 @@ window.COURSE_LESSONS = [
         {hanzi:'会',pinyin:'huì',en:'can/know how to'},
         {hanzi:'不会',pinyin:'bù huì',en:'cannot'},
         {hanzi:'好吃',pinyin:'hǎo chī',en:'delicious'},
-        {hanzi:'写字',pinyin:'xiě zì',en:'write characters'}
+        {hanzi:'写字',pinyin:'xiě zì',en:'write characters'},
+        {hanzi:'怎么',pinyin:'zěn me',en:'how'},
       ],
       extended:[
         {hanzi:'做饭',pinyin:'zuò fàn',en:'cook'},
@@ -284,7 +288,6 @@ window.COURSE_LESSONS = [
         {hanzi:'荷兰语',pinyin:'Hélán yǔ',en:'Dutch'},
         {hanzi:'日语',pinyin:'Rìyǔ',en:'Japanese'},
         {hanzi:'西班牙语',pinyin:'Xībānyá yǔ',en:'Spanish'},
-        {hanzi:'怎么',pinyin:'zěn me',en:'how'},
         {hanzi:'怎么去',pinyin:'zěn me qù',en:'how to go'},
         {hanzi:'怎么写',pinyin:'zěn me xiě',en:'how to write'},
         {hanzi:'怎么卖',pinyin:'zěn me mài',en:'how to sell'},
@@ -293,7 +296,6 @@ window.COURSE_LESSONS = [
         {hanzi:'怎么做',pinyin:'zěn me zuò',en:'how to do'},
         {hanzi:'水',pinyin:'shuǐ',en:'water'},
         {hanzi:'大',pinyin:'dà',en:'big'},
-        {hanzi:'了',pinyin:'le',en:'(particle)'},
         {hanzi:'多少钱',pinyin:'duō shǎo qián',en:'how much'},
         {hanzi:'电脑',pinyin:'diànnǎo',en:'computer'},
         {hanzi:'房子',pinyin:'fáng zi',en:'house'},
@@ -402,7 +404,10 @@ window.COURSE_LESSONS = [
         {hanzi:'星期四',pinyin:'xīng qī sì',en:'Thursday'},
         {hanzi:'星期六',pinyin:'xīng qī liù',en:'Saturday'},
         {hanzi:'星期日',pinyin:'xīng qī rì',en:'Sunday'},
-        {hanzi:'星期天',pinyin:'xīng qī tiān',en:'Sunday'}
+        {hanzi:'星期天',pinyin:'xīng qī tiān',en:'Sunday'},
+        {hanzi:'星期',pinyin:'xīng qī',en:'week'},
+        {hanzi:'周',pinyin:'zhōu',en:'week'},
+        {hanzi:'日',pinyin:'rì',en:'day (in dates)'},
       ],
       extended:[],
       texts:[
@@ -493,7 +498,9 @@ window.COURSE_LESSONS = [
         {hanzi:'下午',pinyin:'xià wǔ',en:'afternoon'},
         {hanzi:'晚上',pinyin:'wǎn shang',en:'evening'},
         {hanzi:'上班',pinyin:'shàng bān',en:'go to work'},
-        {hanzi:'上课',pinyin:'shàng kè',en:'attend class'}
+        {hanzi:'上课',pinyin:'shàng kè',en:'attend class'},
+        {hanzi:'本',pinyin:'běn',en:'(measure word for books)'},
+        {hanzi:'口',pinyin:'kǒu',en:'mouth / (measure word for people)'},
       ],
       extended:[
         {hanzi:'草莓',pinyin:'cǎo méi',en:'strawberry'},
@@ -620,7 +627,9 @@ window.COURSE_LESSONS = [
         {hanzi:'工作',pinyin:'gōng zuò',en:'work'},
         {hanzi:'工人',pinyin:'gōng rén',en:'worker'},
         {hanzi:'桌子',pinyin:'zhuō zi',en:'table'},
-        {hanzi:'床',pinyin:'chuáng',en:'bed'}
+        {hanzi:'床',pinyin:'chuáng',en:'bed'},
+        {hanzi:'在',pinyin:'zài',en:'be at / in'},
+        {hanzi:'里',pinyin:'lǐ',en:'inside'},
       ],
       extended:[
         {hanzi:'椅子上',pinyin:'yǐ zi shàng',en:'on the chair'},
@@ -717,8 +726,6 @@ window.COURSE_LESSONS = [
         {hanzi:'桌子',pinyin:'zhuō zi',en:'table'},
         {hanzi:'电脑',pinyin:'diàn nǎo',en:'computer'},
         {hanzi:'爸爸和妈妈',pinyin:'bà ba hé mā ma',en:'dad and mom'},
-        {hanzi:'里',pinyin:'lǐ',en:'inside'},
-        {hanzi:'在',pinyin:'zài',en:'at/in'},
         {hanzi:'和',pinyin:'hé',en:'and'},
         {hanzi:'上',pinyin:'shàng',en:'on/up'},
         {hanzi:'一本书',pinyin:'yī běn shū',en:'a book'},
@@ -730,7 +737,9 @@ window.COURSE_LESSONS = [
         {hanzi:'不能',pinyin:'bù néng',en:'cannot'},
         {hanzi:'来',pinyin:'lái',en:'come'},
         {hanzi:'可以',pinyin:'kě yǐ',en:'may/can'},
-        {hanzi:'有事',pinyin:'yǒu shì',en:'have things to do'}
+        {hanzi:'有事',pinyin:'yǒu shì',en:'have things to do'},
+        {hanzi:'请',pinyin:'qǐng',en:'please / invite'},
+        {hanzi:'有',pinyin:'yǒu',en:'have / there is'},
       ],
       extended:[
         {hanzi:'椅子上',pinyin:'yǐ zi shàng',en:'on the chair'},
@@ -893,7 +902,9 @@ window.COURSE_LESSONS = [
         {hanzi:'一个星期前',pinyin:'yī ge xīng qī qián',en:'a week ago'},
         {hanzi:'一周前',pinyin:'yī zhōu qián',en:'a week ago'},
         {hanzi:'四点前',pinyin:'sì diǎn qián',en:'before 4'},
-        {hanzi:'星期五前',pinyin:'xīng qī wǔ qián',en:'before Friday'}
+        {hanzi:'星期五前',pinyin:'xīng qī wǔ qián',en:'before Friday'},
+        {hanzi:'前',pinyin:'qián',en:'front / before'},
+        {hanzi:'后',pinyin:'hòu',en:'back / after'},
       ],
       extended:[
         {hanzi:'多久',pinyin:'duō jiǔ',en:'how long'},
@@ -1110,7 +1121,9 @@ window.COURSE_LESSONS = [
         {hanzi:'做饭',pinyin:'zuò fàn',en:'cook'},
         {hanzi:'学习',pinyin:'xué xí',en:'study'},
         {hanzi:'上午',pinyin:'shàng wǔ',en:'morning'},
-        {hanzi:'给',pinyin:'gěi',en:'give'}
+        {hanzi:'给',pinyin:'gěi',en:'give'},
+        {hanzi:'喂',pinyin:'wèi',en:'hello (on the phone)'},
+        {hanzi:'吧',pinyin:'ba',en:'(suggestion particle)'},
       ],
       extended:[
         {hanzi:'努力',pinyin:'nǔ lì',en:'work hard'},
@@ -1225,7 +1238,6 @@ window.COURSE_LESSONS = [
         {hanzi:'开车',pinyin:'kāi chē',en:'drive'},
         {hanzi:'回来',pinyin:'huí lái',en:'come back'},
         {hanzi:'分钟',pinyin:'fēn zhōng',en:'minute'},
-        {hanzi:'后',pinyin:'hòu',en:'after'},
         {hanzi:'张',pinyin:'Zhāng',en:'Zhang (surname)'},
         {hanzi:'漂亮',pinyin:'piào liang',en:'beautiful'},
         {hanzi:'少',pinyin:'shǎo',en:'few'},

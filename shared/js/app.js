@@ -434,27 +434,25 @@
     }
     return out;
   }
-  // Render Chinese text with tone-coloured ruby where every Han character is
-  // wrapped in a clickable .char-btn (click to read that single character).
-  function rubyHtmlChars(text){
-    if (!text) return '';
+  // One html piece per character: a clickable .char-btn wrapping ruby, or the
+  // bare escaped character for punctuation / latin / digits.
+  function charPieces(text){
+    const pieces = [];
     const proArr = perCharPinyin(text);
     if (proArr){
-      let proOut = '';
       for (let k = 0; k < text.length; k++){
         const c = text[k];
-        if (!/[\u3400-\u9fff\uf900-\ufaff]/.test(c)){ proOut += escapeHtml(c); continue; }
+        if (!/[\u3400-\u9fff\uf900-\ufaff]/.test(c)){ pieces.push(escapeHtml(c)); continue; }
         const s = proArr[k] || '';
-        proOut += `<span class="char-btn" data-ch="${escapeHtml(c)}"><ruby>${escapeHtml(c)}<rt class="tone-${toneOf(s)}">${escapeHtml(s)}</rt></ruby></span>`;
+        pieces.push(`<span class="char-btn" data-ch="${escapeHtml(c)}"><ruby>${escapeHtml(c)}<rt class="tone-${toneOf(s)}">${escapeHtml(s)}</rt></ruby></span>`);
       }
-      return proOut;
+      return pieces;
     }
-    let out = '';
     let i = 0;
     while (i < text.length){
       const ch = text[i];
       if (!/[\u3400-\u9fff\uf900-\ufaff]/.test(ch)){   // punctuation / latin / digits
-        out += escapeHtml(ch);
+        pieces.push(escapeHtml(ch));
         i++;
         continue;
       }
@@ -470,11 +468,94 @@
       for (let k = 0; k < hit.length; k++){
         const s = sylls[k] || '';
         const c = hit[k];
-        out += `<span class="char-btn" data-ch="${escapeHtml(c)}"><ruby>${escapeHtml(c)}<rt class="tone-${toneOf(s)}">${escapeHtml(s)}</rt></ruby></span>`;
+        pieces.push(`<span class="char-btn" data-ch="${escapeHtml(c)}"><ruby>${escapeHtml(c)}<rt class="tone-${toneOf(s)}">${escapeHtml(s)}</rt></ruby></span>`);
       }
       i += hit.length;
     }
+    return pieces;
+  }
+  // Texts highlights grammar points (not vocabulary), so its switches filter the
+  // marks by category: which lesson the point belongs to (this one vs. an earlier
+  // one) × whether the point is textbook core or an `extended` extra. Points that
+  // a later lesson introduces get their own "Ahead" switch, off by default.
+  let showGpHl = { core: true, acc: true, ahead: true };
+  function gpRel(info){
+    const lv = +info.level || LEVEL_NUM;
+    const ls = String(info.lesson || '');
+    const curId = String(((LESSONS[currentLesson - 1] || {}).id) || '');
+    if (lv < LEVEL_NUM) return 'past';
+    if (lv > LEVEL_NUM) return 'ahead';
+    if (ls === curId) return 'now';
+    const target = LESSONS.findIndex(L => L.id === ls);
+    return (target >= 0 && target + 1 < currentLesson) ? 'past' : 'ahead';
+  }
+  function gpCat(info){
+    const rel = gpRel(info);
+    if (rel === 'ahead') return 'ahead';
+    return rel === 'now' ? 'core' : 'acc';
+  }
+  // Render one line of Chinese for the Texts view: per-character ruby, wrapped in
+  // one solid .gp-hit block per grammar mark (grouped, never per-character, so the
+  // tint reads as a single block). Marks whose category switch is off fall back to
+  // plain text.
+  function textLineHtml(text, marks){
+    if (!text) return '';
+    // split('') keeps one entry per UTF-16 unit, so indices stay aligned with
+    // the mark array (Array.from would collapse surrogate pairs).
+    const pieces = showListPinyin ? charPieces(text) : text.split('').map(c => escapeHtml(c));
+    const markAt = new Array(text.length).fill(null);
+    (marks || []).forEach(m => {
+      if (!showGpHl[gpCat(m.info)]) return;
+      for (let k = m.a; k < m.b && k < text.length; k++) markAt[k] = m;
+    });
+    let out = '', i = 0;
+    while (i < text.length){
+      const m = markAt[i];
+      let j = i;
+      while (j < text.length && markAt[j] === m) j++;
+      const body = pieces.slice(i, j).join('');
+      out += m ? `${gpSpanStart(m.info)}${body}</span>` : body;
+      i = j;
+    }
     return out;
+  }
+  function gpSpanStart(info){
+    const lv = +info.level || LEVEL_NUM;
+    const ls = String(info.lesson || '');
+    const rel = gpRel(info);
+    const title = `${levelLabel(lv)} · ${lessonTitle(lv, ls)} · ${info.label || info.point || ''}`;
+    return `<span class="gp-hit gp-${rel}" data-lv="${lv}" data-ls="${escapeHtml(ls)}" data-pt="${escapeHtml(info.point || '')}" data-lb="${escapeHtml(info.label || '')}" data-span="${escapeHtml(info.span || '')}" title="${escapeHtml(title)}">`;
+  }
+  function levelLabel(lv){ return `HSK ${lv}`; }
+  function lessonTitle(lv, lessonId){
+    const n = parseInt(String(lessonId).replace(/\D+/g, ''), 10);
+    if (lv !== LEVEL_NUM) return n ? `L${n}` : String(lessonId);
+    const L = LESSONS.find(x => x.id === lessonId);
+    if (!L) return `L${lessonId}`;
+    return String(L.name || '').split(' · ')[0] || `L${lessonId}`;
+  }
+  // Collect the grammar-hit ranges for one text line. Spans are matched as literal
+  // substrings of the line, so editing a dialogue only drops the annotation that
+  // no longer matches instead of throwing.
+  function hitsForText(text, textId, li){
+    const store = window.TEXT_GRAMMAR_HITS;
+    if (!store || !text) return [];
+    const lid = (LESSONS[currentLesson - 1] || {}).id;
+    const list = store[lid];
+    if (!Array.isArray(list) || !list.length) return [];
+    const marks = [];
+    list.forEach(h => {
+      if (!h || h.t !== textId || +h.line !== li || !h.span) return;
+      let from = 0, at = -1;
+      while ((at = text.indexOf(h.span, from)) >= 0){
+        const clash = marks.some(m => at < m.b && at + h.span.length > m.a);
+        if (!clash) break;
+        from = at + 1;
+      }
+      if (at < 0) return;
+      marks.push({ a: at, b: at + h.span.length, info: h });
+    });
+    return marks.sort((x, y) => x.a - y.a);
   }
   function shuffle(a){
     for (let i=a.length-1; i>0; i--){
@@ -1207,7 +1288,8 @@
   let showListPinyin=true;     // word/sentence list: global pinyin visibility
   let showListEnglish=false;   // word/sentence list: global english visibility (default OFF)
   let showVocab=true;          // text view: expand the per-text vocabulary section (default ON)
-  let showHl={ core:true, ext:true, 'acc-core':true, 'acc-ext':true };  // grammar highlight categories
+  let showHl={ core:true, ext:true, 'acc-core':true, 'acc-ext':true, beyond:true };  // grammar highlight categories
+  let showLv={ 1:true, 2:true, 3:true };  // grammar examples: which difficulty bands are listed (default: all)
   let listRevealed=new Set();  // word list: per-word reveal state
   let textRevealed=new Set();  // text list: per-line English reveal state
   let shadowRevealed=new Set();  // shadowing: lines whose text has been tapped to reveal
@@ -1376,12 +1458,24 @@
   sidebarOverlay.addEventListener('click', closeSidebar);
 
   // ---- Settings drawer (right side) ----
-  const SETTINGS_KEY = 'hsk.settings.v1';
-  const LAST_KEY = 'hsk.last.v1';
+  // Storage keys are namespaced per level: hsk1 and hsk2 share one origin, so a
+  // single 'hsk.last.v1' would make jumping between levels overwrite the other's
+  // saved position. Level comes from <body data-level="hsk1|hsk2">.
+  const LEVEL = (document.body.dataset.level || 'hsk1').toLowerCase();
+  const LEVEL_NUM = parseInt(LEVEL.replace(/\D+/g, ''), 10) || 1;
+  const SETTINGS_KEY = `hsk.${LEVEL}.settings.v1`;
+  const LAST_KEY = `hsk.${LEVEL}.last.v1`;
+  const LEGACY_SETTINGS_KEY = 'hsk.settings.v1';   // pre-namespace key, read once
   const DEFAULT_SETTINGS = { kaiti: false, latin: false, zoomIdx: 2, startMode: 'study', rememberLast: true, shadowFactor: 1.25, segMarking: false };
   const state = Object.assign({}, DEFAULT_SETTINGS);
   function loadSettings(){
-    try { return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || {}; }
+    try {
+      const own = localStorage.getItem(SETTINGS_KEY);
+      if (own) return JSON.parse(own) || {};
+      // First run after the namespace change: inherit the old shared settings.
+      const legacy = localStorage.getItem(LEGACY_SETTINGS_KEY);
+      return legacy ? (JSON.parse(legacy) || {}) : {};
+    }
     catch (e) { return {}; }
   }
   function saveSettings(patch){
@@ -1523,13 +1617,14 @@
   // Resolve the core/extended word lists for a lesson index (1-based).
   // Review lessons carry { reviewRange:[a,b], extraCore:[], extraExtended:[] }
   // and reuse the vocabulary of the referenced lessons.
-  function lessonWordSets(idx){
-    const L = LESSONS[idx-1];
+  function lessonWordSets(idx, list){
+    const LS = list || LESSONS;
+    const L = LS[idx-1];
     if (!L) return { core: [], extended: [] };
     if (L.reviewRange){
       let core=[], ext=[];
       for (let j=L.reviewRange[0]; j<=L.reviewRange[1]; j++){
-        const src = LESSONS[j-1];
+        const src = LS[j-1];
         if (!src) continue;
         core = core.concat(src.core || []);
         ext = ext.concat(src.extended || []);
@@ -1548,12 +1643,42 @@
     return { core: L.core || [], extended: L.extended || [] };
   }
 
+  // Vocabulary of the level below (hsk1), seen from the level under study.
+  // hsk1 runs first, so all of it counts as already learned: hsk1 core folds
+  // into "learned core" and hsk1 extended into "learned ext" — the same two
+  // buckets earlier lessons of the current level feed. Every level keeps its
+  // own alias (window.HSK1_LESSONS) while window.COURSE_LESSONS is overwritten
+  // by the current level, so this identity check separates "a level below
+  // exists" from "this IS hsk1" (hsk1 itself has no baseline).
+  let baselineCache = null;
+  function baselineWordSets(){
+    if (baselineCache) return baselineCache;
+    const base = window.HSK1_LESSONS;
+    if (!base || base === LESSONS){
+      baselineCache = { core: [], extended: [] };
+      return baselineCache;
+    }
+    let core = [], extended = [];
+    for (let i = 1; i <= base.length; i++){
+      const ws = lessonWordSets(i, base);
+      core = core.concat(ws.core);
+      extended = extended.concat(ws.extended);
+    }
+    const coreSet = new Set(core.map(w => w.hanzi));
+    baselineCache = {
+      core: core.filter(w => !BASIC_WORDS.has(w.hanzi)),
+      extended: extended.filter(w => !coreSet.has(w.hanzi) && !BASIC_WORDS.has(w.hanzi))
+    };
+    return baselineCache;
+  }
+
   // =====================================================================
   // Core / Extended classification of whole sentences
   //   A sentence is "core" when it only uses this lesson's Core words plus the
-  //   Core words of earlier lessons. Everything else — this lesson's Extended
-  //   words, previously learned Extended words, later lessons' words, or words
-  //   outside HSK 1 — makes it "extended".
+  //   Core words of earlier lessons (and of the level below, see
+  //   baselineWordSets()). Everything else — this lesson's Extended words,
+  //   previously learned Extended words, later lessons' words, or words in no
+  //   list — makes it "extended".
   //   The lesson word lists only carry teaching vocabulary, so basic function
   //   words and a few everyday words used by the grammar examples are missing
   //   from every list. They are neutral: never "extended", never highlighted.
@@ -1562,6 +1687,42 @@
     '不', '的', '们', '吧', '没', '只', '儿', '哦', '呀', '嘛', '哎',
     '有', '点', '块', '个', '人', '中'
   ]);
+  // Basic words every sentence is built from: particles, adverbs, prepositions,
+  // conjunctions, demonstratives, measure words, time/position nouns. hsk1's
+  // `extended` lists are really "extra chunks from the lessons" (在中国, 有点儿,
+  // 怎么走), so words like 了 / 怎么 end up there — folded into the learned
+  // buckets they would show up as "Learned Ext", which reads wrong. They are
+  // whitelisted: dropped from the baseline and treated as neutral.
+  // Only active when a level below provides the baseline, so hsk1's own
+  // classification stays exactly as it was.
+  const BASIC_WORDS = new Set((
+    '的 了 着 过 吗 呢 吧 啊 呀 嘛 哦 啦 呗' +                       // particles
+    ' 不 没 别 也 都 就 才 再 还 只 太 很 挺 最 更 又 已 刚' +        // adverbs
+    ' 在 从 到 给 对 跟 把 被 比 为 往 向 离 和 但 而 因 所 虽 然' +  // preposition / conjunction
+    ' 这 那 哪 谁 怎 么 什 们 几' +                                 // demonstrative / interrogative
+    ' 个 块 只 张 条 位 件 次 些 点' +                              // measure words
+    ' 天 年 月 日 早 晚 午 号 上 下 前 后 里 外 中 边 面 左 右' +      // time / position
+    ' 怎么 什么 一定 一般 不错 做什么 干什么 多少钱 多久 有点儿 还行' +    // multi-char basics
+    ' 真的 特别 经常 刚刚 以后 非常 一起 可以 很多 一点儿'
+  ).split(' '));
+  let neutralCache = null;
+  function neutralWords(){
+    if (neutralCache) return neutralCache;
+    const base = window.HSK1_LESSONS;
+    neutralCache = (base && base !== LESSONS)
+      ? new Set([...NEUTRAL_WORDS, ...BASIC_WORDS])
+      : NEUTRAL_WORDS;
+    return neutralCache;
+  }
+  // Levels whose own corpus really uses `extended` (hsk1, hsk3) need a separate
+  // colour for words found in no list at all, otherwise "an extended word this
+  // lesson teaches" and "not in the textbook at all" would look identical.
+  // Levels with an empty `extended` list (hsk2) reuse `ext` for both.
+  let levelHasExtCache = null;
+  function levelHasExtended(){
+    if (levelHasExtCache === null) levelHasExtCache = LESSONS.some(L => (L.extended || []).length > 0);
+    return levelHasExtCache;
+  }
   const sentenceClassCache = {};
   function sentenceClassifier(lessonIdx){
     if (sentenceClassCache[lessonIdx]) return sentenceClassCache[lessonIdx];
@@ -1574,13 +1735,16 @@
       p.core.forEach(w => accCore.add(w.hanzi));
       p.extended.forEach(w => accExt.add(w.hanzi));
     }
+    const base = baselineWordSets();
+    base.core.forEach(w => accCore.add(w.hanzi));
+    base.extended.forEach(w => accExt.add(w.hanzi));
     const futWords = new Set();
     for (let i = lessonIdx + 1; i <= LESSONS.length; i++){
       const p = lessonWordSets(i);
       p.core.forEach(w => futWords.add(w.hanzi));
       p.extended.forEach(w => futWords.add(w.hanzi));
     }
-    const known = new Set([...curCore, ...curExt, ...accCore, ...accExt, ...futWords, ...NEUTRAL_WORDS]);
+    const known = new Set([...curCore, ...curExt, ...accCore, ...accExt, ...futWords, ...neutralWords()]);
     const isExtended = cn => {
       if (!cn) return false;
       let i = 0;
@@ -1592,7 +1756,7 @@
           const sub = cn.slice(i, i + len);
           if (known.has(sub)){ hit = sub; break; }
         }
-        if (hit && NEUTRAL_WORDS.has(hit)){ i += hit.length; continue; }
+        if (hit && neutralWords().has(hit)){ i += hit.length; continue; }
         if (!hit || (!curCore.has(hit) && !accCore.has(hit))) return true;
         i += hit.length;
       }
@@ -1935,6 +2099,10 @@
       cn: p.cn || '',
       py: p.py || '',
       en: p.en || '',
+      // 'extended' marks a point that goes beyond the textbook's own grammar
+      // list (default = core). Surfaced as a badge and kept for filtering.
+      tag: p.tag || '',
+      tags: (p.tags || []).map(String).filter(Boolean),
       note: noteText(p.note),
       noteEn: p.noteEn || '',
       practice: p.practice || [],
@@ -1947,6 +2115,10 @@
         if (py) o.py = py;
         if (en) o.en = en;
         if (it.sub) o.sub = it.sub;
+        // lv = slot complexity of the example: 1 word / 2 phrase / 3 clause.
+        // tags = per-sentence labels such as COLLOC (semi-fixed collocation).
+        if (it.lv) o.lv = +it.lv;
+        if (it.tags && it.tags.length) o.tags = it.tags.map(String).filter(Boolean);
         return o;
       })
     }));
@@ -2161,21 +2333,78 @@
   function showListNote(text){
     // The status text row was removed from the UI — these notes are intentionally not shown.
   }
+  // One label column width for the whole menu, so every row's first button —
+  // in the normal rows and under the small captions — starts at the same x.
+  function syncVmCaptionWidth(){
+    if (!viewModeBar.classList.contains('vm-groups')) return;
+    const menu = viewModeBar.closest('.sub-menu') || viewModeBar.parentElement;
+    const probe = document.createElement('span');
+    probe.style.cssText = 'position:absolute;left:-9999px;top:0;visibility:hidden;white-space:nowrap;';
+    document.body.appendChild(probe);
+    const widthOf = (el, cls) => {
+      probe.className = cls;
+      probe.textContent = el.textContent.trim();
+      return probe.getBoundingClientRect().width;
+    };
+    let colW = 104;
+    menu.querySelectorAll('.ctx-label').forEach(l => {
+      colW = Math.max(colW, widthOf(l, 'ctx-label'));
+    });
+    viewModeBar.querySelectorAll('.vm-caption').forEach(c => {
+      colW = Math.max(colW, widthOf(c, 'vm-caption'));
+    });
+    probe.remove();
+    menu.style.setProperty('--vm-col-w', Math.ceil(colW) + 'px');
+  }
+  window.addEventListener('resize', syncVmCaptionWidth);
+
   function renderViewModeBar(){
-    if (currentMode === 'grammar'){
+    if (currentMode === 'texts'){
       viewModeBar.style.display = 'flex';
+      viewModeBar.classList.remove('vm-groups');
       viewModeBar.innerHTML = `
-        <div class="random-toggle"><input type="checkbox" id="hlCoreToggle" data-hl="core" ${showHl['core'] ? 'checked' : ''}><label for="hlCoreToggle"><span class="sw sw-core"></span><span class="btn-text">Core</span></label></div>
-        <div class="random-toggle"><input type="checkbox" id="hlExtToggle" data-hl="ext" ${showHl['ext'] ? 'checked' : ''}><label for="hlExtToggle"><span class="sw sw-ext"></span><span class="btn-text">Extended</span></label></div>
-        <div class="random-toggle"><input type="checkbox" id="hlAccCoreToggle" data-hl="acc-core" ${showHl['acc-core'] ? 'checked' : ''}><label for="hlAccCoreToggle"><span class="sw sw-acc-core"></span><span class="btn-text">Learned Core</span></label></div>
-        <div class="random-toggle"><input type="checkbox" id="hlAccExtToggle" data-hl="acc-ext" ${showHl['acc-ext'] ? 'checked' : ''}><label for="hlAccExtToggle"><span class="sw sw-acc-ext"></span><span class="btn-text">Learned Ext</span></label></div>
+        <div class="random-toggle"><input type="checkbox" id="gpCoreToggle" data-gphl="core" ${showGpHl['core'] ? 'checked' : ''}><label for="gpCoreToggle"><span class="sw sw-gp-now"></span><span class="btn-text">Core</span></label></div>
+        <div class="random-toggle"><input type="checkbox" id="gpAccToggle" data-gphl="acc" ${showGpHl['acc'] ? 'checked' : ''}><label for="gpAccToggle"><span class="sw sw-gp-past"></span><span class="btn-text">Learned Core</span></label></div>
+        <div class="random-toggle"><input type="checkbox" id="gpAheadToggle" data-gphl="ahead" ${showGpHl['ahead'] ? 'checked' : ''}><label for="gpAheadToggle"><span class="sw sw-gp-ahead"></span><span class="btn-text">Ahead</span></label></div>
       `;
       viewModeBar.querySelectorAll('.random-toggle input').forEach(inp => {
         inp.addEventListener('change', function(){
-          showHl[this.dataset.hl] = this.checked;
+          showGpHl[this.dataset.gphl] = this.checked;
           renderPreservingScroll();
         });
       });
+      return;
+    }
+    if (currentMode === 'grammar'){
+      viewModeBar.style.display = 'grid';
+      viewModeBar.classList.add('vm-groups');
+      // Only lessons whose corpus carries a difficulty level get the Lv switches.
+      const hasLv = (lessonGrammar || []).some(g => (g.items || []).some(it => it.lv));
+      const lvBar = hasLv ? `
+        <div class="vm-group"><span class="vm-caption">复杂度 · Complexity</span>
+          <div class="random-toggle"><input type="checkbox" id="lv1Toggle" data-lv="1" ${showLv[1] ? 'checked' : ''}><label for="lv1Toggle" title="Show examples made of one word slot (no phrase, no clause)"><span class="lv-badge lv-1"><i class="on"></i><i></i><i></i></span><span class="btn-text">Lv 1</span></label></div>
+          <div class="random-toggle"><input type="checkbox" id="lv2Toggle" data-lv="2" ${showLv[2] ? 'checked' : ''}><label for="lv2Toggle" title="Show examples with one phrase or one clause"><span class="lv-badge lv-2"><i class="on"></i><i class="on"></i><i></i></span><span class="btn-text">Lv 2</span></label></div>
+          <div class="random-toggle"><input type="checkbox" id="lv3Toggle" data-lv="3" ${showLv[3] ? 'checked' : ''}><label for="lv3Toggle" title="Show examples with a clause plus a separate phrase"><span class="lv-badge lv-3"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="btn-text">Lv 3</span></label></div>
+        </div>` : '';
+      // "Beyond" (words in no list at all) only exists as its own category on
+      // levels that already use `extended` for real vocabulary.
+      const beyondBar = levelHasExtended() ? `
+          <div class="random-toggle"><input type="checkbox" id="hlBeyondToggle" data-hl="beyond" ${showHl['beyond'] ? 'checked' : ''}><label for="hlBeyondToggle"><span class="sw sw-beyond"></span><span class="btn-text">Beyond</span></label></div>` : '';
+      viewModeBar.innerHTML = `
+        <div class="vm-group"><span class="vm-caption">词汇 · Vocab</span>
+          <div class="random-toggle"><input type="checkbox" id="hlCoreToggle" data-hl="core" ${showHl['core'] ? 'checked' : ''}><label for="hlCoreToggle"><span class="sw sw-core"></span><span class="btn-text">Core</span></label></div>
+          <div class="random-toggle"><input type="checkbox" id="hlExtToggle" data-hl="ext" ${showHl['ext'] ? 'checked' : ''}><label for="hlExtToggle"><span class="sw sw-ext"></span><span class="btn-text">Extended</span></label></div>
+          <div class="random-toggle"><input type="checkbox" id="hlAccCoreToggle" data-hl="acc-core" ${showHl['acc-core'] ? 'checked' : ''}><label for="hlAccCoreToggle"><span class="sw sw-acc-core"></span><span class="btn-text">Learned Core</span></label></div>
+          <div class="random-toggle"><input type="checkbox" id="hlAccExtToggle" data-hl="acc-ext" ${showHl['acc-ext'] ? 'checked' : ''}><label for="hlAccExtToggle"><span class="sw sw-acc-ext"></span><span class="btn-text">Learned Ext</span></label></div>${beyondBar}
+        </div>` + lvBar;
+      viewModeBar.querySelectorAll('.random-toggle input').forEach(inp => {
+        inp.addEventListener('change', function(){
+          if (this.dataset.lv) showLv[+this.dataset.lv] = this.checked;
+          else showHl[this.dataset.hl] = this.checked;
+          renderPreservingScroll();
+        });
+      });
+      syncVmCaptionWidth();
       return;
     }
     if (currentMode !== 'wordflash' && currentMode !== 'sentflash'){
@@ -2184,6 +2413,7 @@
       return;
     }
     viewModeBar.style.display = 'flex';
+    viewModeBar.classList.remove('vm-groups');
     viewModeBar.innerHTML = `
       <button class="${listMode ? '' : 'active'}" data-view="card">${chipText('🃏', 'Card')}</button>
       <button class="${listMode ? 'active' : ''}" data-view="list">${chipText('📋', 'List')}</button>
@@ -2218,6 +2448,7 @@
   }
 
   function render(){
+    closeGrammarChip();
     // In sentence-list mode the question area is empty — hide it (no blank row).
     questionArea.style.display = ((currentMode === 'sentflash' && listMode) || currentMode === 'grammar' || currentMode === 'topics') ? 'none' : '';
     // Read-active lists are word/sentence lists, Texts (words in reading order),
@@ -2248,6 +2479,7 @@
     updateScore();
     updateMenuStack();
     updateNavBar();
+    syncReturnBtn();
   }
 
   function getCurrentItem(arr){
@@ -2556,6 +2788,39 @@
 
   // One collapsible grammar section, styled identically to the Grammar tab.
   // Used by renderTextList() to show a text's own grammar points under it.
+  // Badges shown after a grammar point's title. `tag: 'extended'` marks a point
+  // that goes beyond the textbook's own grammar list (it also drives the Texts
+  // highlight switches); `tags[]` carries extra free-form labels saying why the
+  // point was added, e.g. 课文缺口 / 延伸搭配 / 主题：运动.
+  function grammarTagHtml(g){
+    let h = g.tag === 'extended' ? '<span class="grammar-tag">EXT</span>' : '';
+    (g.tags || []).forEach(t => {
+      h += `<span class="grammar-tag grammar-tag-alt">${escapeHtml(String(t))}</span>`;
+    });
+    return h;
+  }
+  // Per-example badges: lv (slot complexity) + free-form tags such as COLLOC.
+  const LV_TITLES = {
+    1: 'Lv 1 · 每个槽位都是单词 / every slot is a single word',
+    2: 'Lv 2 · 至少一个槽位是短语 / one slot is a phrase',
+    3: 'Lv 3 · 至少一个槽位是小句 / one slot is a clause'
+  };
+  const ITEM_TAG_TITLES = {
+    COLLOC: 'COLLOC · 半固定搭配 / semi-fixed collocation'
+  };
+  function itemBadgeHtml(it){
+    let h = '';
+    const lv = +((it || {}).lv || 0);
+    if (lv >= 1 && lv <= 3){
+      const dots = [1, 2, 3].map(i => `<i class="${i <= lv ? 'on' : ''}"></i>`).join('');
+      h += `<span class="lv-badge lv-${lv} tip" data-tip="${escapeHtml(LV_TITLES[lv])}">${dots}</span>`;
+    }
+    ((it || {}).tags || []).forEach(t => {
+      const tip = ITEM_TAG_TITLES[t] || String(t);
+      h += `<span class="grammar-tag grammar-tag-alt item-tag tip" data-tip="${escapeHtml(tip)}">${escapeHtml(String(t))}</span>`;
+    });
+    return h;
+  }
   function grammarPointSectionHtml(g, open){
     const items = g.items || [];
     let h = `<div class="grammar-section" data-point="${escapeHtml(g.id || '')}">
@@ -2563,6 +2828,7 @@
         <span class="grammar-head-inner">
         <span class="grammar-caret">${open ? '▾' : '▸'}</span>
         <span class="grammar-title"><span class="grammar-title-cn">${titleRuby(g.cn, g.py)}</span> <span class="grammar-title-en">${escapeHtml(g.en || '')}</span></span>
+        ${grammarTagHtml(g)}
         <span class="grammar-count">${items.length}</span>
         </span>
       </button>
@@ -2573,7 +2839,7 @@
     items.forEach(it => {
       const en = it.en || '';
       h += `<div class="grammar-item" data-read="${escapeHtml(it.c || '')}">
-        <span class="grammar-cn">${rubyHtml(it.c)}</span>
+        <span class="grammar-cn">${itemBadgeHtml(it)}${rubyHtml(it.c)}</span>
         ${en ? `<span class="grammar-en">${escapeHtml(en)}</span>` : ''}
       </div>`;
     });
@@ -2618,6 +2884,166 @@
     return one ? [one] : lessonTexts;
   }
 
+  // ---- Grammar-occurrence chip (Texts view) --------------------------------
+  // A tap on a .gp-hit highlight opens a small floating chip anchored under the
+  // span: it names the grammar point, reads the span, and jumps on a second tap.
+  // With a mouse the chip opens on hover instead (touch devices keep the tap).
+  // The chip is fixed-positioned and re-placed on scroll so it follows the span.
+  const HOVER_CAPABLE = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  let grammarChip = null;
+  let grammarChipAnchor = null;
+  let chipPlaceRaf = 0;
+  let chipHoverTimer = 0;
+  function closeGrammarChip(){
+    if (chipHoverTimer){ clearTimeout(chipHoverTimer); chipHoverTimer = 0; }
+    if (grammarChip && grammarChip.parentNode) grammarChip.parentNode.removeChild(grammarChip);
+    grammarChip = null;
+    grammarChipAnchor = null;
+  }
+  function scheduleChipClose(delay = 220){
+    if (chipHoverTimer) clearTimeout(chipHoverTimer);
+    chipHoverTimer = setTimeout(() => { chipHoverTimer = 0; closeGrammarChip(); }, delay);
+  }
+  // The chip is fixed-positioned (any ancestor scroll container would clip an
+  // absolute one), so it must be re-placed whenever anything scrolls. The Texts
+  // list is its own scroll container, hence the capture-phase listener.
+  function placeGrammarChip(){
+    if (!grammarChip || !grammarChipAnchor) return;
+    const el = grammarChipAnchor, chip = grammarChip;
+    if (!document.body.contains(el)){ closeGrammarChip(); return; }
+    const r = el.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight){ closeGrammarChip(); return; }
+    const w = chip.offsetWidth, h = chip.offsetHeight;
+    let left = r.left + r.width / 2 - w / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - w - 8));
+    let top = r.bottom + 6;
+    if (r.bottom + 6 + h > window.innerHeight && r.top - h - 6 > 0) top = r.top - h - 6;
+    chip.style.left = left + 'px';
+    chip.style.top = top + 'px';
+  }
+  function schedulePlace(){ if (chipPlaceRaf) return; chipPlaceRaf = requestAnimationFrame(() => { chipPlaceRaf = 0; placeGrammarChip(); }); }
+  document.addEventListener('scroll', schedulePlace, true);
+  function textReturnCtxFor(el){
+    const lineEl = el.closest('.text-line');
+    const itemEl = el.closest('.text-item');
+    if (!lineEl || !itemEl) return null;
+    const lid = (LESSONS[currentLesson - 1] || {}).id;
+    if (!lid) return null;
+    return {
+      lessonId: lid,
+      textSub: textSub,
+      textId: itemEl.dataset.text || '',
+      line: parseInt(lineEl.dataset.line, 10) || 0
+    };
+  }
+  function openGrammarChip(el, opts){
+    const toggle = !opts || opts.toggle !== false;
+    if (chipHoverTimer){ clearTimeout(chipHoverTimer); chipHoverTimer = 0; }
+    if (grammarChip && grammarChipAnchor === el){
+      if (toggle) closeGrammarChip();
+      return;
+    }
+    closeGrammarChip();
+    const lv = Number(el.dataset.lv) || LEVEL_NUM;
+    const ls = el.dataset.ls || '';
+    const pt = el.dataset.pt || '';
+    const lb = el.dataset.lb || pt;
+    const rel = el.classList.contains('gp-ahead') ? '后面才讲'
+      : el.classList.contains('gp-past') ? '已学' : '本课';
+    const chip = document.createElement('div');
+    chip.className = 'gp-chip';
+    chip.innerHTML = `<button class="gp-chip-jump">🔗 ${escapeHtml(levelLabel(lv))} · ${escapeHtml(lessonTitle(lv, ls))} · ${escapeHtml(lb)}</button>
+      <span class="gp-chip-rel">${escapeHtml(rel)}</span>
+      <button class="gp-chip-say" title="朗读">🔊</button>`;
+    document.body.appendChild(chip);
+    grammarChip = chip;
+    grammarChipAnchor = el;
+    placeGrammarChip();
+    chip.querySelector('.gp-chip-jump').addEventListener('click', ev => {
+      ev.stopPropagation();
+      const ctx = textReturnCtxFor(el);
+      closeGrammarChip();
+      jumpToPoint(lv, ls, pt, ctx);
+    });
+    chip.querySelector('.gp-chip-say').addEventListener('click', ev => {
+      ev.stopPropagation();
+      speakChinese(el.dataset.span || '');
+    });
+    if (HOVER_CAPABLE){
+      chip.addEventListener('mouseenter', () => { if (chipHoverTimer){ clearTimeout(chipHoverTimer); chipHoverTimer = 0; } });
+      chip.addEventListener('mouseleave', () => scheduleChipClose());
+    }
+  }
+  window.addEventListener('resize', placeGrammarChip);
+  document.addEventListener('click', ev => {
+    if (!grammarChip) return;
+    if (grammarChip.contains(ev.target)) return;
+    if (grammarChipAnchor && grammarChipAnchor.contains(ev.target)) return;
+    closeGrammarChip();
+  });
+
+  // Jump to a grammar point: same level uses the in-page path (the same route as
+  // the Topics lesson chips); another level navigates to that page with a query
+  // string the startup block below understands.
+  function jumpToPoint(level, lessonId, pointId, returnCtx){
+    const lv = Number(level) || LEVEL_NUM;
+    if (lv !== LEVEL_NUM){
+      const base = lv === 1 ? '../hsk1/index.html' : (lv === 2 ? '../hsk2/index.html' : '');
+      if (!base) return;
+      const q = `?lesson=${encodeURIComponent(lessonId)}&point=${encodeURIComponent(pointId || '')}`;
+      location.href = base + q;
+      return;
+    }
+    const idx = LESSONS.findIndex(L => L.id === lessonId);
+    if (idx < 0) return;
+    gpReturnCtx = returnCtx || null;
+    studyTab = 'grammar';
+    if (pointId) grammarOpen.add(pointId);
+    setLesson(idx + 1);
+    grammarFocus = pointId || null;
+    setMode('grammar');
+  }
+
+  // ---- "Back to the text" (after an in-page grammar jump) -------------------
+  // Jumping to a grammar point replaces the Texts view, so keep where the reader
+  // was and offer a one-tap way back. Cross-level jumps leave the page entirely,
+  // so no context is kept for those.
+  let gpReturnCtx = null;
+  let gpReturnBtn = null;
+  function ensureReturnBtn(){
+    if (gpReturnBtn) return gpReturnBtn;
+    gpReturnBtn = document.createElement('button');
+    gpReturnBtn.className = 'gp-return-btn hidden';
+    gpReturnBtn.type = 'button';
+    gpReturnBtn.textContent = '↩ 回到课文';
+    gpReturnBtn.addEventListener('click', ev => { ev.stopPropagation(); returnToText(); });
+    document.body.appendChild(gpReturnBtn);
+    return gpReturnBtn;
+  }
+  function syncReturnBtn(){
+    const b = ensureReturnBtn();
+    if (gpReturnCtx && currentMode === 'grammar') b.classList.remove('hidden');
+    else b.classList.add('hidden');
+  }
+  function returnToText(){
+    const ctx = gpReturnCtx;
+    gpReturnCtx = null;
+    if (!ctx) return;
+    const idx = LESSONS.findIndex(L => L.id === ctx.lessonId);
+    if (idx < 0) return;
+    studyTab = 'texts';
+    setLesson(idx + 1);
+    textSub = ctx.textSub || 'all';
+    setMode('texts');
+    if (ctx.textId){
+      setTimeout(() => {
+        const el = flashContainer.querySelector(
+          `.text-item[data-text="${cssEscape(ctx.textId)}"] .text-line[data-line="${ctx.line}"]`);
+        if (el) el.scrollIntoView({ block: 'center' });
+      }, 80);
+    }
+  }
+
   function renderTextList(){
     showAutoSpeak();
     if (lessonTexts.length === 0){
@@ -2653,7 +3079,7 @@
       html += `<div class="text-item" data-i="${i}" data-text="${escapeHtml(tId)}">`;
       // Location / title — emoji + Chinese + English always visible inline.
       if (t.title){
-        const tcn = showListPinyin ? rubyHtmlChars(t.title.cn) : escapeHtml(t.title.cn);
+        const tcn = textLineHtml(t.title.cn, null);
         const titleSeg = titleSegOf(tId);
         // Only when the audio actually has a lead-in before the first line; a
         // zero-length "title" segment (segments starting at 0) would be a dead button.
@@ -2732,7 +3158,7 @@
         // Shadowing hides the whole line — Chinese *and* English — until tapped.
         const shadowHide = shadowing && !shadowRevealed.has(key);
         const shown = !shadowHide && (showListEnglish || textRevealed.has(key));
-        const cnHtml = showListPinyin ? rubyHtmlChars(line.cn) : escapeHtml(line.cn);
+        const cnHtml = textLineHtml(line.cn, hitsForText(line.cn, tId, li));
         const spk = line.speaker ? `<div class="text-line-speaker">${escapeHtml(line.speaker)}</div>` : '';
         const seg = segOf(tId, li);
         // Per-line ▶ is data-driven (any device with audio-segments.js sees it)
@@ -3009,6 +3435,21 @@
         speakChinese(this.dataset.ch);
       });
     });
+    // Grammar-occurrence highlights: tap (or hover, with a mouse) shows a chip
+    // naming the grammar point and reading the span; the chip jumps to that
+    // lesson's Grammar tab. Bound in the capture phase because .char-btn stops
+    // propagation in the bubble phase.
+    flashContainer.querySelectorAll('.gp-hit').forEach(hit => {
+      hit.addEventListener('click', function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        openGrammarChip(this, { toggle: !HOVER_CAPABLE });
+      }, true);
+      if (HOVER_CAPABLE){
+        hit.addEventListener('mouseenter', function(){ openGrammarChip(this, { toggle: false }); });
+        hit.addEventListener('mouseleave', function(){ scheduleChipClose(); });
+      }
+    });
     // Vocabulary rows: click to read the word aloud.
     flashContainer.querySelectorAll('.text-vocab-row').forEach(row => {
       row.addEventListener('click', function(){
@@ -3113,8 +3554,17 @@
       p.core.forEach(w => accCore.add(w.hanzi));
       p.extended.forEach(w => accExt.add(w.hanzi));
     }
-    const allWords = new Set([...curCore, ...curExt, ...accCore, ...accExt, ...NEUTRAL_WORDS]);
-    const classifyWord = w => curCore.has(w) ? 'core' : curExt.has(w) ? 'ext' : accCore.has(w) ? 'acc-core' : accExt.has(w) ? 'acc-ext' : null;
+    const base = baselineWordSets();
+    base.core.forEach(w => accCore.add(w.hanzi));
+    base.extended.forEach(w => accExt.add(w.hanzi));
+    const allWords = new Set([...curCore, ...curExt, ...accCore, ...accExt, ...neutralWords()]);
+    // Anything outside every list is beyond the textbook ("超纲"). Levels that
+    // have real `extended` words (hsk1) get their own colour so the two are
+    // distinguishable; levels with none (hsk2) reuse `ext`, which matches what
+    // sentenceClassifier() means by extended. Neutral function words stay
+    // uncoloured — they are known, just not taught.
+    const beyondCat = levelHasExtended() ? 'beyond' : 'ext';
+    const classifyWord = w => curCore.has(w) ? 'core' : curExt.has(w) ? 'ext' : accCore.has(w) ? 'acc-core' : accExt.has(w) ? 'acc-ext' : neutralWords().has(w) ? null : beyondCat;
     // Highlighting must not change the text itself, so every grammar sentence
     // goes through this one path: same segmentation, same pinyin source.
     const renderSentence = (cn, py) => {
@@ -3153,9 +3603,12 @@
     let html = '<div class="grammar-list">';
     let shownSections = 0, shownItems = 0;
     orderedGrammar.forEach(({ g, gi }) => {
+      // Corpora without difficulty levels (hsk1) ignore the Lv switches entirely.
+      const hasLv = (g.items || []).some(it => it.lv);
       const items = g.items.slice()
-        .map(it => ({ c: it.c, py: it.py, en: it.en, sub: it.sub || '', ext: isExtended(it.c) }))
-        .filter(it => grammarSub === 'all' || (grammarSub === 'ext') === it.ext);
+        .map(it => ({ c: it.c, py: it.py, en: it.en, sub: it.sub || '', lv: it.lv, tags: it.tags, ext: isExtended(it.c) }))
+        .filter(it => grammarSub === 'all' || (grammarSub === 'ext') === it.ext)
+        .filter(it => !hasLv || showLv[+(it.lv || 1)] !== false);
       if (!items.length) return;
       shownSections++; shownItems += items.length;
       // Keep sub-groups (a./b./c.) contiguous. When the point declares a subs[]
@@ -3183,7 +3636,8 @@
           bySub.get(it.sub).push(it);
         });
       }
-      groups.forEach(gr => gr.bucket.sort((a, b) => (a.ext ? 1 : 0) - (b.ext ? 1 : 0)));
+      // Easy first: level 1 → 2 → 3, and inside a level keep Core before Extended.
+      groups.forEach(gr => gr.bucket.sort((a, b) => ((a.lv || 1) - (b.lv || 1)) || ((a.ext ? 1 : 0) - (b.ext ? 1 : 0))));
       const focused = !!g.id && g.id === grammarFocus;
       // A Topics jump expands the point it points at, even if it was collapsed.
       const open = grammarOpen.has(g.id) || focused;
@@ -3192,6 +3646,7 @@
           <span class="grammar-head-inner">
           <span class="grammar-caret">${open ? '▾' : '▸'}</span>
           <span class="grammar-title"><span class="grammar-title-cn">${titleRuby(g.cn, g.py)}</span> <span class="grammar-title-en">${escapeHtml(g.en || '')}</span></span>
+          ${grammarTagHtml(g)}
           <span class="grammar-count">${items.length}</span>
           </span>
         </button>
@@ -3209,7 +3664,7 @@
           const en = showListEnglish ? ((pmap[it.c] && pmap[it.c].en) || it.en || '') : '';
           const cn = renderSentence(it.c, it.py);
           html += `<div class="grammar-item${it.ext ? ' ext' : ''}" data-read="${escapeHtml(it.c)}">
-            <span class="grammar-cn">${cn}</span>
+            <span class="grammar-cn">${itemBadgeHtml(it)}${cn}</span>
             ${en ? `<span class="grammar-en">${escapeHtml(en)}</span>` : ''}
           </div>`;
         });
@@ -3364,14 +3819,7 @@
     flashContainer.querySelectorAll('.topic-lesson-chip').forEach(chip => {
       chip.addEventListener('click', function(e){
         e.stopPropagation();
-        const idx = LESSONS.findIndex(L => L.id === this.dataset.lesson);
-        if (idx < 0) return;
-        const point = this.dataset.point || '';
-        studyTab = 'grammar';
-        if (point) grammarOpen.add(point);
-        setLesson(idx + 1);
-        grammarFocus = point || null;
-        setMode('grammar');
+        jumpToPoint(LEVEL_NUM, this.dataset.lesson, this.dataset.point || '');
       });
     });
     statusBadge.textContent = `\ud83d\udd17 Topics \u00b7 ${topics.length} topics \u00b7 ${shownRows} comparisons`;
@@ -4343,6 +4791,8 @@
   // =====================================================================
   function setMode(mode){
     if (mode === 'study') mode = studyTab === 'texts' ? 'texts' : (studyTab === 'grammar' ? 'grammar' : (studyTab === 'topics' ? 'topics' : (studyTab === 'sentence' ? 'sentflash' : 'wordflash')));
+    // Any arrival at the Texts view means the "back to the text" offer is spent.
+    if (mode === 'texts') gpReturnCtx = null;
     currentMode = mode;
     currentIndex = 0;
     isAnswered = false;
@@ -4716,8 +5166,21 @@
   // =====================================================================
   autoSpeak = false;
   autoSpeakToggle.checked = false;
+  // Deep link from a cross-level grammar jump: index.html?lesson=<id>&point=<gid>
+  const qs = (() => { try { return new URLSearchParams(location.search); } catch (e) { return null; } })();
+  const qsLesson = qs ? qs.get('lesson') : '';
+  const qsPoint = qs ? (qs.get('point') || '') : '';
+  const qsIdx = qsLesson ? LESSONS.findIndex(L => L.id === qsLesson) : -1;
   const last = state.rememberLast ? loadLast() : null;
-  if (last && Number.isInteger(last.lesson)){
+  if (qsIdx >= 0){
+    studyTab = 'grammar';
+    if (qsPoint) grammarOpen.add(qsPoint);
+    setLesson(qsIdx + 1);
+    grammarFocus = qsPoint || null;
+    setMode('grammar');
+    dismissWelcome();
+    try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) { /* file:// */ }
+  } else if (last && Number.isInteger(last.lesson)){
     const lesson = Math.min(Math.max(last.lesson, 1), LESSONS.length);
     studyTab = last.studyTab || 'word';
     lastGameMode = last.gameMode || 'pairs';

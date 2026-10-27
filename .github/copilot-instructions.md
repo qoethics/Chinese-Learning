@@ -124,6 +124,12 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 - 交互 / 渲染逻辑 → `shared/js/app.js`
 - 词汇 / 课文 → `hsk1/js/data.js`（`window.COURSE_LESSONS`，兼容别名 `HSK1_LESSONS`）
   每课必须有唯一 `id`，与句子语料的 `key` 对应（如 `'10'` / `'1-10'` / `'all'`）
+- **虚词归属规则**：语法点标题里用引号标出的虚词（`量词"个"、"口"、"本"`、`介词"在"`…），
+  就归到**该语法点所在课**的 `core`。已按此整理过一轮：
+  `了/千/块→L5`、`怎么→L6`、`星期/周/日→L7`、`本/口→L8`、`在/里→L9`、`请/有→L10`、
+  `前/后→L11`、`喂/吧→L13`。这样含这些虚词的例句才判 core，而不是 `ext`/`beyond`。
+  例外：`想` 仍留在 L4（教材 L4 已在用），移到 L8 会让 L4–L7 含「想」的例句掉成 ext。
+  手工插词条时注意：`core` 数组原本最后一项**没有尾逗号**，插入前要先补 `,`，否则 `data.js` 解析失败。
 - 句子语料 → 改 `hsk1/HSK 1 语料 <date>.txt`，再重跑：
   ```
   python3 hsk1/tools/ingest-sentences.py "hsk1/HSK 1 语料 <date>.txt" hsk1/data/sentences/grammar-sentences.json
@@ -148,7 +154,8 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 - **拼音**：`hsk2/js/vendor/pinyin-pro.js`（本地库，离线可用）负责分词+注音。
   `app.js` 里 `perCharPinyin()` / `PINYIN_PRO` 是入口；库缺失时自动退回
   `wordMap` + `SINGLE_CHAR_PINYIN`（会漏字，属预期降级）
-- **无生词表**：`core`/`extended` 为空 → 图片/打地鼠/记忆配对 无素材
+- **生词表**：`core` 来自 `js/core-vocab.js`（147 词，按首次出现分课），`extended` **全为空** →
+  图片/打地鼠/记忆配对 仍无素材；语法例句的着色靠「hsk1 已学基线 + 本课 core」（见下文高亮规则）
 - **语法语料是手写的，不是生成物**（与 hsk1 不同，务必注意）：
   - `hsk2/data/sentences/grammar-sentences.json` 是**唯一真源，直接手改**
   - `hsk2/data/sentences/grammar-sentences.js` 是生成物，改完 json 后重跑：
@@ -192,7 +199,47 @@ cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题
 
 #### hsk2 加载顺序（不要改）
 `js/vendor/pinyin-pro.js` → `data/sentences/grammar-sentences.js` →
-`data/sentences/grammar-topics.js` → `js/core-vocab.js` → `js/data.js` → `../shared/js/app.js`
+`data/sentences/text-grammar-hits.js` → `data/sentences/grammar-topics.js` →
+`audio-segments.js` → `js/core-vocab.js` → `../hsk1/js/data.js` → `js/data.js` → `../shared/js/app.js`
+
+#### 词汇高亮的「已学」基线（hsk1 → hsk2）
+hsk1 先学，所以在 hsk2 页面上 **hsk1 全部词汇都算「已学」**，并且**不新增任何分类**：
+hsk1 的 `core` 并入 `acc-core`（Learned Core 蓝），hsk1 的 `extended` 并入 `acc-ext`（Learned Ext 绿），
+与 hsk2 前面几课的已学拿同一种颜色。
+
+- 实现：`shared/js/app.js` 的 `baselineWordSets()`（紧随 `lessonWordSets()`），只被两处消费——
+  `sentenceClassifier()`（句子 core/ext 判定）和 `renderSentence()`（语法例句着色），各自把
+  baseline 的 `core`/`extended` 加进 `accCore`/`accExt` 两个集合，其余逻辑与样式完全不动。
+- 触发条件：`window.HSK1_LESSONS !== LESSONS`。每个级别的 `data.js` 都保留自己的别名
+  （hsk1 导出 `HSK1_LESSONS`），而 `window.COURSE_LESSONS` 会被当前级别覆盖，所以这个恒等判断
+  能区分「下面还有一级」和「我自己就是 hsk1」。**hsk1 页面基线为空，行为必须保持不变。**
+- `hsk2/index.html` 必须在 `js/data.js` **之前**加载 `../hsk1/js/data.js`；挪到后面或删掉不会报错，
+  只是基线静默变空（少两类高亮）。
+- 优先级：本课 `core` > 本课 `ext` > 已学 `core` > 已学 `ext`。所以 43 个 hsk1/hsk2 共有词
+  （旅游/踢足球/咖啡…）显示为本课颜色，不会被改标成「已学」。
+- `NEUTRAL_WORDS`（`app.js`，17 个功能词：的/不/们/吧/没…）是「不算 extended、也不上色」的中性词集，
+  同时被 `sentenceClassifier()` 与 `renderSentence()` 共用。
+- `BASIC_WORDS`（`app.js`，**109 个** = 88 个单字 + 21 个多字虚词）是「最基本词白名单」：
+  - 单字 88：助词 了/吗/呢、副词 很/都/太、介词连词 在/和/但、指示疑问 这/那/怎/么/什、
+    量词 个/张/些、时间方位 上/下/里/外…
+  - 多字 21：`怎么 什么 一定 一般 不错 做什么 干什么 多少钱 多久 有点儿 还行 真的 特别 经常
+    刚刚 以后 非常 一起 可以 很多 一点儿`
+  - 它管的正是 hsk1 `extended` 里混进来的 `了` / `怎么` 这类虚词：这些词并进 learned 桶会显示成绿色
+    Learned Ext。白名单词 (1) 从 `baselineWordSets()` 里剔除、(2) 并入 `neutralWords()`（不上色、不算 extended）。
+  - **只在存在基线时生效**（`neutralWords()` 只在 `window.HSK1_LESSONS !== LESSONS` 时返回
+    `NEUTRAL_WORDS ∪ BASIC_WORDS`），所以 hsk1 页面仍是原来的 17 词、分类与着色一点不变。
+- 匹配时**整词优先**：`晚上`/`上午`/`昨天`/`早上`/`左边` 都是整词词条，不会被拆成白名单单字。
+  副作用：没有词条的多字词（`中午`/`上面`/`这个`）会拆成单字 → 这些字算中性 → 含它们的**句子**更容易被判 core。
+- 本级别自己 `core` 里的词优先着色：`一起`(L1) / `可以`(L5) / `非常`(L4) 虽在白名单，仍显示本课颜色。
+- **没词条的词 = 超纲**：`classifyWord()` 兜底是 `neutralWords().has(w) ? null : beyondCat`。`beyondCat` 由
+  `levelHasExtended()` 决定：本级别 `extended` 表**全空**（hsk2）→ 复用 `ext`（橙），与句子级「未知词 →
+  extended」一致；本级别**真有** `extended` 词（hsk1 / hsk3）→ 用独立分类 `beyond`（红色 `.hl-beyond`，
+  视图条多一个 Beyond 开关），否则「本课 extended 生词」与「课本里根本没有」会混成一色。
+  实测（语法例句逐字）：hsk2 汉字里 11.0% 是 `ext`，hsk1 17.9% 是 `beyond`。改兜底前这些字是「不上色」。
+- 新增高亮分类的固定步骤：`showHl` 加键 → `renderSentence` 的 `classifyWord` 返回该键 →
+  `shared/css/app.css` 加 `.hl-<cat>` 与 `.sw-<cat>` → 视图条加开关（模板在 `app.js` 里，不用改 index.html）。
+- 新增白名单词只改 `BASIC_WORDS` 一处；**不要**为了消色去改 `hsk1/js/data.js` 的 core/extended 归属
+  （会改变 hsk1 自己的句子分类，属数据层病根，见上条）。
 
 #### hsk1 / hsk2 同步策略
 逻辑与样式已全部收敛到 `shared/`，**不存在两份 app.js 需要同步**。

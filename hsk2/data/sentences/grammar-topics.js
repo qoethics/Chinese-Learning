@@ -97,4 +97,19 @@ window.GRAMMAR_TOPICS = [
       { label: '离 · 距离', cn: '超市离我家两百米。', en: '离 with a measure phrase.' },
     ],
   },
+  {
+    id: 'duole-excess-vs-degree',
+    cn: '…多了：过量 vs 程度加深',
+    en: '…多了 — Excess vs “Much More”',
+    note: '同一个“多了”，前面是动词就是“做过头了”（结果不好），前面是形容词就是“程度大大加深”（往往是好转）。两者不是同一个用法。',
+    lessons: ['5', '2'],
+    points: ['5-g7', ''],
+    rows: [
+      { label: 'V + 多了 · 过量', cn: '咖啡喝多了对身体不好。', en: 'Verb + 多了 — you overdid it, and it shows.' },
+      { label: 'V + 多了 · 补救', cn: '以后我少喝一点儿。', en: 'The fix: 少 + V + 一点儿.' },
+      { label: '形 + 多了 · 程度', cn: '现在好多了。', en: 'Adjective + 多了 — “much better (than before)”.' },
+      { label: '形 + 多了 · 程度', cn: '今天冷多了。', en: 'Adjective + 多了 — “much colder”.' },
+      { label: '怎么分辨', cn: '看“多了”前面是动词还是形容词。', en: 'Check what precedes 多了: verb → excess; adjective → “much more”.' },
+    ],
+  },
 ];

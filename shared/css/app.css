@@ -693,12 +693,14 @@
      (label on its own line above the chips) so all four rows stay consistent. */
   .sub-menu.stacked .ctx-row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .sub-menu.stacked .ctx-label { min-width: 0; }
+  .sub-menu.stacked .view-mode-bar .vm-group { flex-wrap: wrap; }
+  .sub-menu.stacked .view-mode-bar .vm-caption { flex: 0 0 100%; }
   .ctx-label {
     font-size: 0.68rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #8f8578;
-    min-width: 104px;
+    min-width: var(--vm-col-w, 104px);
     flex: 0 0 auto;
     font-weight: 600;
   }
@@ -717,6 +719,8 @@
   @container (max-width: 600px) {
     #learnMenu .ctx-row { flex-direction: column; align-items: flex-start; gap: 6px; }
     #learnMenu .ctx-label { min-width: 0; }
+    #learnMenu .view-mode-bar .vm-group { flex-wrap: wrap; }
+    #learnMenu .view-mode-bar .vm-caption { flex: 0 0 100%; }
   }
   /* ③ the whole menu shrinks together */
   @container (max-width: 484px) {
@@ -1924,12 +1928,48 @@
   .hl-ext { background: #FDBA74; border-radius: 4px; }
   .hl-acc-core { background: #BFDBFE; border-radius: 4px; }
   .hl-acc-ext { background: #BBF7D0; border-radius: 4px; }
-  .hl-core ruby rt, .hl-ext ruby rt, .hl-acc-core ruby rt, .hl-acc-ext ruby rt { font-size: 0.55em; }
+  /* Words in no word list at all (only on levels that use extended for real
+     vocabulary, e.g. hsk1) — deliberately a different hue from .hl-ext. */
+  .hl-beyond { background: #FECACA; border-radius: 4px; }
+  .hl-core ruby rt, .hl-ext ruby rt, .hl-acc-core ruby rt, .hl-acc-ext ruby rt, .hl-beyond ruby rt { font-size: 0.55em; }
   .view-mode-bar .sw { width: 13px; height: 13px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.18); display: inline-block; }
   .sw-core { background: #FDE68A; }
   .sw-ext { background: #FDBA74; }
   .sw-acc-core { background: #BFDBFE; }
   .sw-acc-ext { background: #BBF7D0; }
+  .sw-beyond { background: #FECACA; }
+  /* Grammar toggles: the bar drops below the 视图 label, and each labelled
+     group is one line — caption and its toggles never split. */
+  .view-mode-bar.vm-groups {
+    flex: 1 1 100%;
+    justify-content: start;
+    justify-items: start;
+    grid-template-columns: auto;
+    gap: 6px;
+  }
+  .view-mode-bar .vm-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+  /* Same format as the .ctx-label row heading, one size smaller. */
+  .view-mode-bar .vm-caption {
+    flex: 0 0 var(--vm-col-w, 104px);
+    white-space: nowrap;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8f8578;
+    font-weight: 600;
+  }
+  /* Difficulty-band switches reuse the lv badge dots instead of a colour chip. */
+  .random-toggle .lv-badge { margin-right: 0; cursor: inherit; gap: 2px; }
+  .random-toggle .lv-badge i { width: 7px; height: 7px; }
+  /* Grammar-hit switches (Texts): solid = core, striped = extended. */
+  .sw-gp-now { background: rgba(96, 165, 250, 0.55); }
+  .sw-gp-past { background: rgba(52, 211, 153, 0.55); }
+  .sw-gp-ahead { background: rgba(251, 146, 60, 0.55); }
   .char-btn {
     display: inline-block;
     cursor: pointer;
@@ -1938,6 +1978,158 @@
   }
   .char-btn:hover { background: var(--theme-mid); }
   .char-btn ruby rt { font-size: 0.55em; }
+  /* --- Grammar occurrences inside Texts (window.TEXT_GRAMMAR_HITS) --- */
+  /* One solid block per marked span: the tint is a bottom-anchored band drawn on
+     the .gp-hit itself, so it hugs the characters instead of wrapping each one
+     (per-character tinting reads as a row of blobs, and a full-height box spills
+     below the baseline). Children must stay transparent. */
+  .gp-hit {
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 0 2px;
+    --gp-tint: rgba(96, 165, 250, 0.30);
+    --gp-tint-hover: rgba(59, 130, 246, 0.52);
+    background-image: linear-gradient(var(--gp-tint), var(--gp-tint));
+    background-repeat: no-repeat;
+    background-size: 100% 1em, 100% 0;
+    background-position: 0 100%, 0 100%;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: background-image 0.12s;
+  }
+  .gp-hit.gp-past { --gp-tint: rgba(52, 211, 153, 0.32); --gp-tint-hover: rgba(16, 185, 129, 0.52); }
+  .gp-hit.gp-ahead {
+    --gp-tint: rgba(251, 146, 60, 0.32);
+    --gp-tint-hover: rgba(249, 115, 22, 0.52);
+    /* dashed rule drawn inside the band, never below the characters */
+    background-image:
+      repeating-linear-gradient(90deg, #FB923C 0 3px, transparent 3px 6px),
+      linear-gradient(var(--gp-tint), var(--gp-tint));
+    background-size: 100% 2px, 100% 1em;
+    background-position: 0 100%, 0 100%;
+  }
+  .gp-hit:hover { background-image: linear-gradient(var(--gp-tint-hover), var(--gp-tint-hover)); }
+  .gp-hit.gp-ahead:hover {
+    background-image:
+      repeating-linear-gradient(90deg, #EA580C 0 3px, transparent 3px 6px),
+      linear-gradient(var(--gp-tint-hover), var(--gp-tint-hover));
+  }
+  .gp-hit .char-btn { background: none; }
+  .gp-chip {
+    position: fixed;
+    z-index: 2100;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px 4px 4px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    max-width: calc(100vw - 16px);
+  }
+  .gp-chip-jump {
+    border: 0;
+    background: var(--theme-light);
+    color: inherit;
+    font: inherit;
+    font-size: 0.82rem;
+    padding: 5px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .gp-chip-jump:hover { background: var(--theme-mid); }
+  .gp-chip-rel { font-size: 0.68rem; opacity: 0.6; white-space: nowrap; }
+  .gp-chip-say { border: 0; background: transparent; cursor: pointer; font-size: 0.95rem; padding: 2px 4px; }
+  .gp-return-btn {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 2050;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #fff;
+    color: inherit;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+  }
+  .gp-return-btn:hover { background: var(--theme-light); }
+  .gp-return-btn.hidden { display: none; }
+  .grammar-tag {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #B45309;
+    background: #FEF3C7;
+    border: 1px solid #FCD34D;
+    border-radius: 999px;
+    padding: 1px 6px;
+    margin-right: 6px;
+  }
+  .grammar-tag-alt {
+    color: #1D4ED8;
+    background: #EFF6FF;
+    border-color: #BFDBFE;
+    font-weight: 600;
+  }
+  /* Slot-complexity badge on one example: ●○○ word / ●●○ phrase / ●●● clause. */
+  .lv-badge {
+    display: inline-flex;
+    gap: 3px;
+    align-items: center;
+    margin-right: 6px;
+    vertical-align: middle;
+    line-height: 1;
+    cursor: help;
+  }
+  .lv-badge i {
+    width: 6px;
+    height: 6px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid #CBD5E1;
+    display: block;
+  }
+  .lv-badge.lv-1 i.on { background: #94A3B8; border-color: #94A3B8; }
+  .lv-badge.lv-2 i.on { background: #3B82F6; border-color: #3B82F6; }
+  .lv-badge.lv-3 i.on { background: #7C3AED; border-color: #7C3AED; }
+  /* Hover hint for small badges/tags (native title is unreliable in webviews). */
+  .tip { position: relative; }
+  .tip::after {
+    content: attr(data-tip);
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 6px);
+    white-space: nowrap;
+    background: #111827;
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 3px 8px;
+    border-radius: 6px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+    pointer-events: none;
+    z-index: 60;
+  }
+  .tip:hover::after { opacity: 1; transform: translateY(0); }
+  .grammar-item .item-tag {
+    margin-left: 6px;
+    margin-right: 0;
+    font-size: 0.56rem;
+    vertical-align: middle;
+  }
   .action-bar-top {
     display: flex;
     flex-wrap: wrap;

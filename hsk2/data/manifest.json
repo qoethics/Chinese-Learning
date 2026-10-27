@@ -8,11 +8,13 @@
     "data/sentences/grammar-sentences.js",
     "data/sentences/grammar-topics.js",
     "js/core-vocab.js",
+    "../hsk1/js/data.js",
     "js/data.js",
-    "js/app.js"
+    "../shared/js/app.js"
   ],
   "globals": {
     "js/data.js": "window.COURSE_LESSONS（别名 window.HSK2_LESSONS）— 课程课文，每课有唯一 id",
+    "../hsk1/js/data.js": "window.HSK1_LESSONS — hsk1 全部词汇，作为本级别「已学」基线（见 baselineVocab）",
     "data/sentences/grammar-sentences.js": "window.SENTENCE_CORPUS（别名 window.GRAMMAR_SENTENCES）— 语法语料，每项 key=课 id；由 grammar-sentences.json 生成",
     "data/sentences/grammar-topics.js": "window.GRAMMAR_TOPICS — 跨课专题对比（手写，非生成物）",
     "js/core-vocab.js": "生词表兜底数据"
@@ -39,9 +41,12 @@
     "改跨课专题": "改 hsk2/data/sentences/grammar-topics.js（手写，无生成步骤）",
     "改交互/渲染逻辑": "hsk2/js/app.js（先 grep -n 定位，再只读目标 40-80 行）"
   },
+  "baselineVocab": "hsk1 是本级别的「已学」基线。hsk2/index.html 在 js/data.js 之前加载 ../hsk1/js/data.js（它写 window.HSK1_LESSONS；js/data.js 之后覆盖 window.COURSE_LESSONS，但别名不会丢）。shared/js/app.js 的 baselineWordSets() 只在 base !== LESSONS 时生效：hsk1 的 core 并入 acc-core（Learned Core），hsk1 的 extended 并入 acc-ext（Learned Ext），与 hsk2 前面几课的已学完全相同——不新增分类、不新增样式。hsk1 页面自身 base === LESSONS，基线为空，行为不变。重叠词优先级：本课 core > 本课 ext > 已学 core > 已学 ext（所以 43 个 hsk1/hsk2 共有词仍显示为本课颜色）。",
+  "basicWordsWhitelist": "app.js 的 BASIC_WORDS（109 个：88 个单字虚词 + 21 个多字虚词）是「最基本词白名单」：hsk1 的 extended 装的是课文扩展块（在中国/有点儿/怎么走），里面混着 了/怎么 这类虚词，并进 learned 桶会显示成 Learned Ext（绿）。所以白名单词 (1) 从 baseline 里剔除、(2) 并入中性词集 neutralWords()（不算 extended、不上色）。为保住 hsk1 页面行为，白名单**只在存在基线时生效**（neutralWords() 返回 NEUTRAL_WORDS ∪ BASIC_WORDS，否则只返回原来的 17 词 NEUTRAL_WORDS）。单字 88 个分 6 组：语气助词/副词/介词连词/指示疑问/量词/时间方位；多字 21 个：怎么 什么 一定 一般 不错 做什么 干什么 多少钱 多久 有点儿 还行 真的 特别 经常 刚刚 以后 非常 一起 可以 很多 一点儿。匹配时**整词优先**（晚上/上午/昨天/早上/左边 都是整词词条，不会被拆成白名单单字）。本级别自己 core 里的词仍然优先着色——如 一起/可以（hsk2 L1/L5 core）虽在白名单，仍显示本课颜色。另：**没词条也不在白名单的词 = 超纲**。classifyWord() 兜底走 `levelHasExtended()`：本级别 extended 表全空（hsk2）→ 复用 ext（橙色）；本级别真有 extended 词（hsk1/hsk3）→ 用独立分类 beyond（红色 .hl-beyond，视图条多一个 Beyond 开关），这样「本课 extended 生词」和「课本里根本没有」不会混成同一个颜色。实测语法例句：hsk2 汉字 11.0% 是 ext，hsk1 17.9% 是 beyond。",
   "doNot": [
     "不要整文件读取 hsk2/js/app.js（约 3150 行）或 js/data.js（约 1590 行），用 grep -n 定位后局部读取",
-    "不要改 hsk2/index.html 的 <script> 加载顺序（pinyin-pro → grammar-sentences → grammar-topics → core-vocab → data → app）",
+    "不要改 hsk2/index.html 的 <script> 加载顺序（pinyin-pro → grammar-sentences → text-grammar-hits → grammar-topics → audio-segments → core-vocab → ../hsk1/js/data.js → data → ../shared/js/app.js）",
+    "不要把 ../hsk1/js/data.js 挪到 js/data.js 之后或删掉：它是已学词汇基线，顺序错了基线会静默变为空（不报错，只是高亮少两类）",
     "不要手改 data/sentences/grammar-sentences.js（生成物）；改 .json 后重跑 gen-sentences-js.py",
     "新增语料字段必须同时加进 app.js 的 externalLessonGrammar() 适配器，否则字段会被丢掉",
     "note/sub/exp 必须用 rubyHtml() 渲染（要显示拼音），不要用 escapeHtml()",

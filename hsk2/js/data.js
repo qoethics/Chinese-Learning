@@ -269,7 +269,7 @@ window.COURSE_LESSONS = [
             {cn:'A：今天去不去打球？', en:'A: Are we playing ball today?'},
             {cn:'B：这两天有点儿累，不去打球了。', en:'B: I\'ve been a bit tired these two days, so I won\'t play.'},
             {cn:'A：你在做什么呢？是在想昨天的考试吗？', en:'A: What are you doing? Are you thinking about yesterday\'s exam?'},
-            {cn:'B：是啊，我觉得听和说还可以，读和写不好，很多字我都不知道是', en:'B: Yes. I think my listening and speaking are all right, but my reading and writing are poor, and there are many characters I don\'t even know.'},
+            {cn:'B：是啊，我觉得听和说还可以，读和写不好，很多字我都不知道是什么意思。', en:'B: Yes. I think my listening and speaking are all right, but my reading and writing are poor, and there are many characters whose meaning I don\'t even know.'},
           ],
           words:[]
         },
@@ -1082,7 +1082,7 @@ window.COURSE_LESSONS = [
             {cn:'A：今天去不去打球？', en:'A: Are we playing ball today?'},
             {cn:'B：这两天有点儿累，不去打球了。', en:'B: I\'ve been a bit tired these two days, so I won\'t play.'},
             {cn:'A：你在做什么呢？是在想昨天的考试吗？', en:'A: What are you doing? Are you thinking about yesterday\'s exam?'},
-            {cn:'B：是啊，我觉得听和说还可以，读和写不好，很多字我都不知道是', en:'B: Yes. I think my listening and speaking are all right, but my reading and writing are poor, and there are many characters I don\'t even know.'},
+            {cn:'B：是啊，我觉得听和说还可以，读和写不好，很多字我都不知道是什么意思。', en:'B: Yes. I think my listening and speaking are all right, but my reading and writing are poor, and there are many characters whose meaning I don\'t even know.'},
           ],
           words:[]
         },
