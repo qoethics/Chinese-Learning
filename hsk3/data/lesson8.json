@@ -1,0 +1,770 @@
+{
+  "lesson": 8,
+  "key": "8",
+  "name": "L8 · 今天我出院了",
+  "titleCn": "今天我出院了",
+  "titleEn": "Today I was discharged from the hospital",
+  "texts": [
+    {
+      "id": "8-01",
+      "title": {
+        "cn": "在体育馆遇见陈天中",
+        "en": "Meeting Chen Tianzhong at the gym",
+        "emoji": "🏸"
+      },
+      "intro": {
+        "cn": "在学校的体育馆，李文遇到了陈天中。",
+        "en": "At the school gymnasium, Li Wen met Chen Tianzhong."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "陈天中为什么每天运动？",
+          "options": [
+            "他喜欢跑步",
+            "他要学打羽毛球",
+            "他不想再胖下去了"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "李文要教陈天中做什么？",
+          "options": [
+            "跑步",
+            "打篮球",
+            "打羽毛球"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "李文",
+          "cn": "天中，最近常看见你来体育馆。",
+          "en": "Tianzhong, I've seen you at the gym quite often lately."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "我每天下午都来跑一个小时步。",
+          "en": "I come here to run for an hour every afternoon."
+        },
+        {
+          "speaker": "李文",
+          "cn": "你的运动习惯真不错。",
+          "en": "That's a great exercise habit."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "因为我今年胖了十多斤，不能再胖下去了，有点儿不健康。",
+          "en": "I've gained more than ten jin this year. I really can't afford to get any fatter—it's not very healthy."
+        },
+        {
+          "speaker": "李文",
+          "cn": "我下课以后常去打羽毛球，你也来玩吧。",
+          "en": "I often play badminton after class. Why don't you join us sometime？"
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "我知道，但是你们的水平太高了，我打得不怎么样。",
+          "en": "I know, but you guys are way too good. I'm not very good at it."
+        },
+        {
+          "speaker": "李文",
+          "cn": "没关系，我可以教你。",
+          "en": "That's okay. I can teach you."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "陈天中每天下午去体育馆做什么？"
+        },
+        {
+          "q": "李文下课以后经常做什么？"
+        },
+        {
+          "q": "陈天中羽毛球打得怎么样？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "最近",
+          "pos": "n.",
+          "en": "lately; recently"
+        },
+        {
+          "cn": "常",
+          "pos": "adv.",
+          "en": "often"
+        },
+        {
+          "cn": "体育馆",
+          "pos": "n.",
+          "en": "gymnasium"
+        },
+        {
+          "cn": "习惯",
+          "pos": "n./v.",
+          "en": "habit; be used to"
+        },
+        {
+          "cn": "胖",
+          "pos": "adj.",
+          "en": "fat"
+        },
+        {
+          "cn": "健康",
+          "pos": "adj.",
+          "en": "healthy"
+        },
+        {
+          "cn": "以后",
+          "pos": "adv.",
+          "en": "after; afterward"
+        },
+        {
+          "cn": "羽毛球",
+          "pos": "n.",
+          "en": "badminton"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-2.mp3"
+    },
+    {
+      "id": "8-02",
+      "title": {
+        "cn": "在教室问候陈天中",
+        "en": "Asking after Chen Tianzhong in the classroom",
+        "emoji": "🏫"
+      },
+      "intro": {
+        "cn": "在教室，安妮问候陈天中。",
+        "en": "In the classroom, Annie expressed concern for Chen Tianzhong."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "陈天中怎么了？",
+          "options": [
+            "头疼",
+            "发高烧",
+            "耳朵不舒服"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "如果下午还发烧，应该怎么办？",
+          "options": [
+            "去看医生",
+            "吃点儿药回家休息"
+          ],
+          "answer": "A"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "安妮",
+          "cn": "你怎么了？看上去有点儿不舒服。",
+          "en": "What's wrong? You don't look very well."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "昨天游完泳以后，耳朵一直有点儿疼。",
+          "en": "My ear has been hurting since I went swimming yesterday."
+        },
+        {
+          "speaker": "安妮",
+          "cn": "是不是感冒了？发烧吗？",
+          "en": "Maybe you've caught a cold. Do you have a fever？"
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "好像发低烧了。",
+          "en": "I think I have a mild fever."
+        },
+        {
+          "speaker": "安妮",
+          "cn": "我送你去医院，让医生检查一下吧。",
+          "en": "Let me take you to the hospital so the doctor can check it."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "我先回去睡一觉，可能休息休息就好了。",
+          "en": "I'll go home and take a nap first. Maybe I'll feel better after some rest."
+        },
+        {
+          "speaker": "安妮",
+          "cn": "好吧，如果下午还发烧，就一定要去看医生。",
+          "en": "Alright, but if you still have a fever this afternoon, you must see a doctor."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "谢谢关心，我会注意的。",
+          "en": "Thanks for your concern. I'll take care of myself."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "陈天中是什么时候开始不舒服的？"
+        },
+        {
+          "q": "安妮想怎么帮助他？"
+        },
+        {
+          "q": "陈天中想不想去医院？他想做什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "耳朵",
+          "pos": "n.",
+          "en": "ear"
+        },
+        {
+          "cn": "感冒",
+          "pos": "v./n.",
+          "en": "catch a cold; cold"
+        },
+        {
+          "cn": "发烧",
+          "pos": "v.",
+          "en": "have a fever"
+        },
+        {
+          "cn": "低",
+          "pos": "adj.",
+          "en": "low"
+        },
+        {
+          "cn": "关心",
+          "pos": "v.",
+          "en": "be concerned about"
+        },
+        {
+          "cn": "注意",
+          "pos": "v.",
+          "en": "pay attention to"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-4.mp3"
+    },
+    {
+      "id": "8-03",
+      "title": {
+        "cn": "在医院探望陈天中",
+        "en": "Visiting Chen Tianzhong in hospital",
+        "emoji": "🏥"
+      },
+      "intro": {
+        "cn": "在医院病房，安妮探望陈天中。",
+        "en": "In the hospital ward, Annie visited Chen Tianzhong."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "陈天中上次来医院是什么时候？",
+          "options": [
+            "几个星期前",
+            "一个月前",
+            "两年前"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "陈天中为什么觉得开心多了？",
+          "options": [
+            "有人来看他",
+            "他的腿不疼了",
+            "马上就能回家了"
+          ],
+          "answer": "A"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "安妮",
+          "cn": "你怎么突然住院了？大家都很担心你。",
+          "en": "Why were you suddenly hospitalized? Everyone's really worried about you."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "我的腿疼了几个星期了，医生说需要住院做检查。",
+          "en": "My leg has been hurting for weeks. The doctor said I need to stay in the hospital for some tests."
+        },
+        {
+          "speaker": "安妮",
+          "cn": "你看起来一点儿也不像病人。",
+          "en": "You don't look like a patient at all."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "是啊，我很少生病。我上次来医院已经过去差不多两年了。",
+          "en": "I know, I rarely get sick—the last time I came to the hospital was nearly two years ago."
+        },
+        {
+          "speaker": "安妮",
+          "cn": "你每天跑步，有时候还去游泳，是不是运动太多了？",
+          "en": "You run every day and sometimes go swimming. Could it be that you've been exercising too much？"
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "医生也这么说，但是还得做完检查才能知道。",
+          "en": "The doctor thinks that might be the case, but we will have to wait for the test results to be sure."
+        },
+        {
+          "speaker": "安妮",
+          "cn": "别担心！听医生的话，好好休息，你的腿一定能好。",
+          "en": "Don't worry! Just follow the doctor's advice and get plenty of rest—your leg will soon recover."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "谢谢。有人来看我，我就开心多了。",
+          "en": "Thanks. I always feel much happier when someone comes to visit me."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "陈天中为什么住院了？"
+        },
+        {
+          "q": "安妮觉得陈天中为什么腿疼？"
+        },
+        {
+          "q": "医生是怎么说陈天中的腿的？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "突然",
+          "pos": "adj.",
+          "en": "sudden"
+        },
+        {
+          "cn": "住院",
+          "pos": "v.",
+          "en": "be in hospital"
+        },
+        {
+          "cn": "担心",
+          "pos": "v.",
+          "en": "worry"
+        },
+        {
+          "cn": "腿",
+          "pos": "n.",
+          "en": "leg"
+        },
+        {
+          "cn": "病人",
+          "pos": "n.",
+          "en": "patient"
+        },
+        {
+          "cn": "差不多",
+          "pos": "adv./adj.",
+          "en": "almost; similar"
+        },
+        {
+          "cn": "得",
+          "pos": "mod.",
+          "en": "need; have to"
+        },
+        {
+          "cn": "开心",
+          "pos": "adj.",
+          "en": "happy"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-6.mp3"
+    },
+    {
+      "id": "8-04",
+      "title": {
+        "cn": "在家里吃药休息",
+        "en": "Taking medicine and resting at home",
+        "emoji": "💊"
+      },
+      "intro": {
+        "cn": "在家里，陈天中吃药、休息。",
+        "en": "At home, Chen Tianzhong took medicine and rested."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "陈天中现在怎么样了？",
+          "options": [
+            "出院了",
+            "病都好了",
+            "还不能回家"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "医生说什么最重要？",
+          "options": [
+            "多走路",
+            "多休息",
+            "吃药的方法"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "今天我出院了。",
+          "en": "Today I was discharged from the hospital."
+        },
+        {
+          "speaker": "",
+          "cn": "出院前，医生给我开了几种药，而且告诉了我吃药的方法。",
+          "en": "Before leaving, the doctor prescribed several kinds of medicine and explained how to take them."
+        },
+        {
+          "speaker": "",
+          "cn": "有一种药需要每天睡前吃一次，其他几种每天吃三次，饭后吃。",
+          "en": "One needs to be taken once every night before going to bed, while the others should be taken three times a day after meals."
+        },
+        {
+          "speaker": "",
+          "cn": "除了吃药，医生还说最重要的是多休息。",
+          "en": "In addition to taking medicine, the doctor told me that getting plenty of rest is the most important."
+        },
+        {
+          "speaker": "",
+          "cn": "我都记在心里了，回家以后一定会多注意。",
+          "en": "I've kept that in mind and will take good care of myself after returning home."
+        },
+        {
+          "speaker": "",
+          "cn": "希望我的腿能快一点儿好。",
+          "en": "I hope my leg gets better soon."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "陈天中出院前，医生做什么了？"
+        },
+        {
+          "q": "医生给陈天中开的药应该怎么吃？"
+        },
+        {
+          "q": "陈天中回家以后应该注意什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "出院",
+          "pos": "v.",
+          "en": "(of a patient) leave hospital"
+        },
+        {
+          "cn": "开",
+          "pos": "v.",
+          "en": "prescribe"
+        },
+        {
+          "cn": "种",
+          "pos": "m.",
+          "en": "kind; type"
+        },
+        {
+          "cn": "方法",
+          "pos": "n.",
+          "en": "method"
+        },
+        {
+          "cn": "其他",
+          "pos": "pron.",
+          "en": "other"
+        },
+        {
+          "cn": "心里",
+          "pos": "n.",
+          "en": "mind; heart"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "8-g1",
+      "textId": "8-01",
+      "no": 1,
+      "cn": "趋向补语的引申用法（1）",
+      "en": "Extended Use of the Complement of Direction (1)",
+      "note": "趋向补语“下去”用在动词或形容词后面，表示已经开始的动作或者状态还要继续。",
+      "noteEn": "When the complement of direction “下去” is used after a verb or an adjective, it indicates that an action or a state that has already started is to continue.",
+      "items": [
+        {
+          "c": "我今年胖了十多斤，不能再胖下去了。",
+          "en": "I've gained more than ten jin this year. I really can't afford to get any fatter."
+        },
+        {
+          "c": "她读完了第一个问题，后面的你读下去。",
+          "en": "She has read the first question. You read the rest."
+        },
+        {
+          "c": "这几天太热了，如果再热下去就不能出门了。",
+          "en": "It's been so hot these days. If it gets any hotter, we won't be able to go out."
+        }
+      ]
+    },
+    {
+      "id": "8-g2",
+      "textId": "8-02",
+      "no": 2,
+      "cn": "离合词（2）",
+      "en": "Separable Words (2)",
+      "note": "离合词一般不能直接加宾语。使用离合词的句子中如果有补语，一般都放在离合词的中间。",
+      "noteEn": "Separable words generally cannot directly take an object. If there is a complement in a sentence with a separable word, it is generally placed between the two parts of the separable word.",
+      "items": [
+        {
+          "c": "昨天游完泳以后，我的耳朵一直有点儿疼。",
+          "en": "My ear has been hurting a little since I finished swimming yesterday."
+        },
+        {
+          "c": "今年夏天只下了两次雨。",
+          "en": "It has only rained twice this summer."
+        },
+        {
+          "c": "小张下个月跟他女朋友结婚。",
+          "en": "Xiao Zhang is getting married to his girlfriend next month."
+        }
+      ]
+    },
+    {
+      "id": "8-g3",
+      "textId": "8-03",
+      "no": 3,
+      "cn": "时量补语（2）",
+      "en": "Complement of Duration (2)",
+      "note": "时量补语用在动词的后面，表示动作或者状态持续时间的长短。有些动词不能持续，这时动词后的时量补语表示动作从完成到说话时过了多长时间。",
+      "noteEn": "The complement of duration is used after a verb to indicate the duration of actions or states. For non-durative verbs, the complement of duration following the verb indicates how long it has been from the completion of the action up to the moment of speaking.",
+      "items": [
+        {
+          "c": "我上次来医院已经过去差不多两年了。",
+          "en": "The last time I came to the hospital was nearly two years ago."
+        },
+        {
+          "c": "她回家两个月了。",
+          "en": "She has been home for two months."
+        },
+        {
+          "c": "开学已经三个多星期了。",
+          "en": "It has been more than three weeks since school started."
+        }
+      ]
+    },
+    {
+      "id": "8-g4",
+      "textId": "8-04",
+      "no": 4,
+      "cn": "固定格式“……以前/以后/前/后”",
+      "en": "Fixed Pattern “以前/以后/前/后”",
+      "note": "“时间/事件＋以前/前”表示某个时间或事件之前；“时间/事件＋以后/后”表示某个时间或事件之后。",
+      "noteEn": "“Time/Event + 以前/前” indicates the time before a certain time or event. “Time/Event + 以后/后” indicates the time after a certain time or event.",
+      "items": [
+        {
+          "c": "这种药需要每天睡前吃一次。",
+          "en": "This medicine needs to be taken once every night before going to bed."
+        },
+        {
+          "c": "我们决定下班后一起去看个电影。",
+          "en": "We decided to go see a movie together after work."
+        },
+        {
+          "c": "考完试以后，咱们一起去旅游吧。",
+          "en": "Let's go travelling together after the exam."
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "8-g5",
+      "textId": "8-01",
+      "no": 5,
+      "cn": "小语助力“不怎么样”",
+      "en": "“不怎么样”",
+      "note": "“不怎么样”是一个口语表达，意思是不太好、很一般，带有谦虚或评价不高的语气。",
+      "noteEn": "“不怎么样” is a colloquial expression meaning “not very good” or “just average”. It carries a tone of modesty or low evaluation.",
+      "items": [
+        {
+          "c": "我知道，但是你们的水平太高了，我打得不怎么样。",
+          "en": "I know, but you guys are way too good. I'm not very good at it."
+        }
+      ]
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "开",
+          "得",
+          "种",
+          "关心",
+          "方法"
+        ],
+        "items": [
+          {
+            "cn": "李医生特别______病人。",
+            "answer": "关心"
+          },
+          {
+            "cn": "医生说______你下个星期回来检查一下。",
+            "answer": "得"
+          },
+          {
+            "cn": "您一直很健康，有什么好的锻炼______吗？",
+            "answer": "方法"
+          },
+          {
+            "cn": "如果你的病好了，医生就不会给你______药了。",
+            "answer": "开"
+          },
+          {
+            "cn": "感冒的时候能吃这______药吗？你再问一下医生。",
+            "answer": "种"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "注意",
+          "突然",
+          "差不多",
+          "其他",
+          "以后"
+        ],
+        "items": [
+          {
+            "cn": "A：你什么时候能出院？",
+            "answer": ""
+          },
+          {
+            "cn": "B：______，可能两天我还需要做几个检查。",
+            "answer": "以后"
+          },
+          {
+            "cn": "A：你是不是生病了？",
+            "answer": ""
+          },
+          {
+            "cn": "B：是，我昨天晚上______头疼、发烧，吃完药好多了。",
+            "answer": "突然"
+          },
+          {
+            "cn": "A：你的腿可以走路，但是还不能运动。",
+            "answer": ""
+          },
+          {
+            "cn": "B：______，我知道了，我会的。",
+            "answer": "注意"
+          },
+          {
+            "cn": "A：刘医生，您下个星期来医院吗？",
+            "answer": ""
+          },
+          {
+            "cn": "B：我下个星期一不来，______时间都在。",
+            "answer": "其他"
+          },
+          {
+            "cn": "A：你疼了多长时间了？",
+            "answer": ""
+          },
+          {
+            "cn": "B：有时候疼，有时候不疼，______一个月吧。",
+            "answer": "差不多"
+          }
+        ]
+      }
+    },
+    "describePictures": [
+      {
+        "cn": "A：爷爷最近身体不太舒服，昨天晚上发低烧了，如果再______。",
+        "en": ""
+      },
+      {
+        "cn": "B：别______，你爷爷身体很健康，不会有问题。",
+        "en": ""
+      },
+      {
+        "cn": "A：他上次去医院已经______，我早就想让他再去检查一下。",
+        "en": ""
+      },
+      {
+        "cn": "B：那这次让医生给你爷爷好好检查检查。",
+        "en": ""
+      },
+      {
+        "cn": "A：您看起来真年轻，有什么______？",
+        "en": ""
+      },
+      {
+        "cn": "B：我每天都要锻炼一个小时。",
+        "en": ""
+      },
+      {
+        "cn": "A：这个习惯太好了，我以后吃完早饭也出来运动。",
+        "en": ""
+      },
+      {
+        "cn": "B：只锻炼几天没用，你要一直______。",
+        "en": ""
+      },
+      {
+        "cn": "A：医生说你______？我去医院接你。",
+        "en": ""
+      },
+      {
+        "cn": "B：医生说明天。很多病人等着住院呢，不能再______。",
+        "en": ""
+      },
+      {
+        "cn": "A：你要记住医生的话，______要多休息。",
+        "en": ""
+      },
+      {
+        "cn": "B：放心吧，我会记住的。",
+        "en": ""
+      }
+    ],
+    "classroomActivity": {
+      "cn": "双人活动",
+      "en": "Pair Work",
+      "description": "两人一组，谈论生病的经历和健康的生活习惯。问答时，注意正确使用离合词、时量补语等语言点。",
+      "descriptionEn": "Work in pairs to talk about the experience of being ill and healthy living habits. When asking and answering, make sure to use language points such as separable words and the complement of duration correctly.",
+      "topics": [
+        {
+          "cn": "你怎么锻炼身体？每周锻炼几次？每次锻炼多长时间？"
+        },
+        {
+          "cn": "你最近生过病吗？去了几次医院？"
+        },
+        {
+          "cn": "如果发高烧，你会怎么做？"
+        },
+        {
+          "cn": "你住过院吗？住了几天？为什么？"
+        },
+        {
+          "cn": "你出院的时候，医生说什么了？"
+        },
+        {
+          "cn": "有人说胖一点儿健康，有人说瘦一点儿好看，你怎么看？"
+        }
+      ]
+    }
+  }
+}

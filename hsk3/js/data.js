@@ -1,5 +1,5 @@
 // HSK3 lesson texts. Read-only at runtime.
-// Source: hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
+// Source: hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson8.json + hsk3/data/lesson9.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
 // Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).
 // Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);
 // each point carries a textId so renderTextList can show it under its own text.
@@ -4059,6 +4059,1205 @@ window.COURSE_LESSONS = [
           }
         ],
         "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L8 · 今天我出院了",
+    "id": "8",
+    "core": [
+      {
+        "hanzi": "最近",
+        "en": "lately; recently"
+      },
+      {
+        "hanzi": "常",
+        "en": "often"
+      },
+      {
+        "hanzi": "体育馆",
+        "en": "gymnasium"
+      },
+      {
+        "hanzi": "习惯",
+        "en": "habit; be used to"
+      },
+      {
+        "hanzi": "胖",
+        "en": "fat"
+      },
+      {
+        "hanzi": "健康",
+        "en": "healthy"
+      },
+      {
+        "hanzi": "以后",
+        "en": "after; afterward"
+      },
+      {
+        "hanzi": "羽毛球",
+        "en": "badminton"
+      },
+      {
+        "hanzi": "耳朵",
+        "en": "ear"
+      },
+      {
+        "hanzi": "感冒",
+        "en": "catch a cold; cold"
+      },
+      {
+        "hanzi": "发烧",
+        "en": "have a fever"
+      },
+      {
+        "hanzi": "低",
+        "en": "low"
+      },
+      {
+        "hanzi": "关心",
+        "en": "be concerned about"
+      },
+      {
+        "hanzi": "注意",
+        "en": "pay attention to"
+      },
+      {
+        "hanzi": "突然",
+        "en": "sudden"
+      },
+      {
+        "hanzi": "住院",
+        "en": "be in hospital"
+      },
+      {
+        "hanzi": "担心",
+        "en": "worry"
+      },
+      {
+        "hanzi": "腿",
+        "en": "leg"
+      },
+      {
+        "hanzi": "病人",
+        "en": "patient"
+      },
+      {
+        "hanzi": "差不多",
+        "en": "almost; similar"
+      },
+      {
+        "hanzi": "得",
+        "en": "need; have to"
+      },
+      {
+        "hanzi": "开心",
+        "en": "happy"
+      },
+      {
+        "hanzi": "出院",
+        "en": "(of a patient) leave hospital"
+      },
+      {
+        "hanzi": "开",
+        "en": "prescribe"
+      },
+      {
+        "hanzi": "种",
+        "en": "kind; type"
+      },
+      {
+        "hanzi": "方法",
+        "en": "method"
+      },
+      {
+        "hanzi": "其他",
+        "en": "other"
+      },
+      {
+        "hanzi": "心里",
+        "en": "mind; heart"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "8-01",
+        "title": {
+          "cn": "在体育馆遇见陈天中",
+          "en": "Meeting Chen Tianzhong at the gym",
+          "emoji": "🏸"
+        },
+        "intro": {
+          "cn": "在学校的体育馆，李文遇到了陈天中。",
+          "en": "At the school gymnasium, Li Wen met Chen Tianzhong."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "陈天中为什么每天运动？",
+            "options": [
+              "他喜欢跑步",
+              "他要学打羽毛球",
+              "他不想再胖下去了"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "李文要教陈天中做什么？",
+            "options": [
+              "跑步",
+              "打篮球",
+              "打羽毛球"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "李文",
+            "cn": "天中，最近常看见你来体育馆。",
+            "en": "Tianzhong, I've seen you at the gym quite often lately."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "我每天下午都来跑一个小时步。",
+            "en": "I come here to run for an hour every afternoon."
+          },
+          {
+            "speaker": "李文",
+            "cn": "你的运动习惯真不错。",
+            "en": "That's a great exercise habit."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "因为我今年胖了十多斤，不能再胖下去了，有点儿不健康。",
+            "en": "I've gained more than ten jin this year. I really can't afford to get any fatter—it's not very healthy."
+          },
+          {
+            "speaker": "李文",
+            "cn": "我下课以后常去打羽毛球，你也来玩吧。",
+            "en": "I often play badminton after class. Why don't you join us sometime？"
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "我知道，但是你们的水平太高了，我打得不怎么样。",
+            "en": "I know, but you guys are way too good. I'm not very good at it."
+          },
+          {
+            "speaker": "李文",
+            "cn": "没关系，我可以教你。",
+            "en": "That's okay. I can teach you."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "陈天中每天下午去体育馆做什么？"
+          },
+          {
+            "q": "李文下课以后经常做什么？"
+          },
+          {
+            "q": "陈天中羽毛球打得怎么样？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "最近",
+            "pos": "n.",
+            "en": "lately; recently"
+          },
+          {
+            "cn": "常",
+            "pos": "adv.",
+            "en": "often"
+          },
+          {
+            "cn": "体育馆",
+            "pos": "n.",
+            "en": "gymnasium"
+          },
+          {
+            "cn": "习惯",
+            "pos": "n./v.",
+            "en": "habit; be used to"
+          },
+          {
+            "cn": "胖",
+            "pos": "adj.",
+            "en": "fat"
+          },
+          {
+            "cn": "健康",
+            "pos": "adj.",
+            "en": "healthy"
+          },
+          {
+            "cn": "以后",
+            "pos": "adv.",
+            "en": "after; afterward"
+          },
+          {
+            "cn": "羽毛球",
+            "pos": "n.",
+            "en": "badminton"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-2.mp3"
+      },
+      {
+        "id": "8-02",
+        "title": {
+          "cn": "在教室问候陈天中",
+          "en": "Asking after Chen Tianzhong in the classroom",
+          "emoji": "🏫"
+        },
+        "intro": {
+          "cn": "在教室，安妮问候陈天中。",
+          "en": "In the classroom, Annie expressed concern for Chen Tianzhong."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "陈天中怎么了？",
+            "options": [
+              "头疼",
+              "发高烧",
+              "耳朵不舒服"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "如果下午还发烧，应该怎么办？",
+            "options": [
+              "去看医生",
+              "吃点儿药回家休息"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "安妮",
+            "cn": "你怎么了？看上去有点儿不舒服。",
+            "en": "What's wrong? You don't look very well."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "昨天游完泳以后，耳朵一直有点儿疼。",
+            "en": "My ear has been hurting since I went swimming yesterday."
+          },
+          {
+            "speaker": "安妮",
+            "cn": "是不是感冒了？发烧吗？",
+            "en": "Maybe you've caught a cold. Do you have a fever？"
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "好像发低烧了。",
+            "en": "I think I have a mild fever."
+          },
+          {
+            "speaker": "安妮",
+            "cn": "我送你去医院，让医生检查一下吧。",
+            "en": "Let me take you to the hospital so the doctor can check it."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "我先回去睡一觉，可能休息休息就好了。",
+            "en": "I'll go home and take a nap first. Maybe I'll feel better after some rest."
+          },
+          {
+            "speaker": "安妮",
+            "cn": "好吧，如果下午还发烧，就一定要去看医生。",
+            "en": "Alright, but if you still have a fever this afternoon, you must see a doctor."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "谢谢关心，我会注意的。",
+            "en": "Thanks for your concern. I'll take care of myself."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "陈天中是什么时候开始不舒服的？"
+          },
+          {
+            "q": "安妮想怎么帮助他？"
+          },
+          {
+            "q": "陈天中想不想去医院？他想做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "耳朵",
+            "pos": "n.",
+            "en": "ear"
+          },
+          {
+            "cn": "感冒",
+            "pos": "v./n.",
+            "en": "catch a cold; cold"
+          },
+          {
+            "cn": "发烧",
+            "pos": "v.",
+            "en": "have a fever"
+          },
+          {
+            "cn": "低",
+            "pos": "adj.",
+            "en": "low"
+          },
+          {
+            "cn": "关心",
+            "pos": "v.",
+            "en": "be concerned about"
+          },
+          {
+            "cn": "注意",
+            "pos": "v.",
+            "en": "pay attention to"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-4.mp3"
+      },
+      {
+        "id": "8-03",
+        "title": {
+          "cn": "在医院探望陈天中",
+          "en": "Visiting Chen Tianzhong in hospital",
+          "emoji": "🏥"
+        },
+        "intro": {
+          "cn": "在医院病房，安妮探望陈天中。",
+          "en": "In the hospital ward, Annie visited Chen Tianzhong."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "陈天中上次来医院是什么时候？",
+            "options": [
+              "几个星期前",
+              "一个月前",
+              "两年前"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "陈天中为什么觉得开心多了？",
+            "options": [
+              "有人来看他",
+              "他的腿不疼了",
+              "马上就能回家了"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "安妮",
+            "cn": "你怎么突然住院了？大家都很担心你。",
+            "en": "Why were you suddenly hospitalized? Everyone's really worried about you."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "我的腿疼了几个星期了，医生说需要住院做检查。",
+            "en": "My leg has been hurting for weeks. The doctor said I need to stay in the hospital for some tests."
+          },
+          {
+            "speaker": "安妮",
+            "cn": "你看起来一点儿也不像病人。",
+            "en": "You don't look like a patient at all."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "是啊，我很少生病。我上次来医院已经过去差不多两年了。",
+            "en": "I know, I rarely get sick—the last time I came to the hospital was nearly two years ago."
+          },
+          {
+            "speaker": "安妮",
+            "cn": "你每天跑步，有时候还去游泳，是不是运动太多了？",
+            "en": "You run every day and sometimes go swimming. Could it be that you've been exercising too much？"
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "医生也这么说，但是还得做完检查才能知道。",
+            "en": "The doctor thinks that might be the case, but we will have to wait for the test results to be sure."
+          },
+          {
+            "speaker": "安妮",
+            "cn": "别担心！听医生的话，好好休息，你的腿一定能好。",
+            "en": "Don't worry! Just follow the doctor's advice and get plenty of rest—your leg will soon recover."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "谢谢。有人来看我，我就开心多了。",
+            "en": "Thanks. I always feel much happier when someone comes to visit me."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "陈天中为什么住院了？"
+          },
+          {
+            "q": "安妮觉得陈天中为什么腿疼？"
+          },
+          {
+            "q": "医生是怎么说陈天中的腿的？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "突然",
+            "pos": "adj.",
+            "en": "sudden"
+          },
+          {
+            "cn": "住院",
+            "pos": "v.",
+            "en": "be in hospital"
+          },
+          {
+            "cn": "担心",
+            "pos": "v.",
+            "en": "worry"
+          },
+          {
+            "cn": "腿",
+            "pos": "n.",
+            "en": "leg"
+          },
+          {
+            "cn": "病人",
+            "pos": "n.",
+            "en": "patient"
+          },
+          {
+            "cn": "差不多",
+            "pos": "adv./adj.",
+            "en": "almost; similar"
+          },
+          {
+            "cn": "得",
+            "pos": "mod.",
+            "en": "need; have to"
+          },
+          {
+            "cn": "开心",
+            "pos": "adj.",
+            "en": "happy"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-6.mp3"
+      },
+      {
+        "id": "8-04",
+        "title": {
+          "cn": "在家里吃药休息",
+          "en": "Taking medicine and resting at home",
+          "emoji": "💊"
+        },
+        "intro": {
+          "cn": "在家里，陈天中吃药、休息。",
+          "en": "At home, Chen Tianzhong took medicine and rested."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "陈天中现在怎么样了？",
+            "options": [
+              "出院了",
+              "病都好了",
+              "还不能回家"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "医生说什么最重要？",
+            "options": [
+              "多走路",
+              "多休息",
+              "吃药的方法"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "今天我出院了。",
+            "en": "Today I was discharged from the hospital."
+          },
+          {
+            "speaker": "",
+            "cn": "出院前，医生给我开了几种药，而且告诉了我吃药的方法。",
+            "en": "Before leaving, the doctor prescribed several kinds of medicine and explained how to take them."
+          },
+          {
+            "speaker": "",
+            "cn": "有一种药需要每天睡前吃一次，其他几种每天吃三次，饭后吃。",
+            "en": "One needs to be taken once every night before going to bed, while the others should be taken three times a day after meals."
+          },
+          {
+            "speaker": "",
+            "cn": "除了吃药，医生还说最重要的是多休息。",
+            "en": "In addition to taking medicine, the doctor told me that getting plenty of rest is the most important."
+          },
+          {
+            "speaker": "",
+            "cn": "我都记在心里了，回家以后一定会多注意。",
+            "en": "I've kept that in mind and will take good care of myself after returning home."
+          },
+          {
+            "speaker": "",
+            "cn": "希望我的腿能快一点儿好。",
+            "en": "I hope my leg gets better soon."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "陈天中出院前，医生做什么了？"
+          },
+          {
+            "q": "医生给陈天中开的药应该怎么吃？"
+          },
+          {
+            "q": "陈天中回家以后应该注意什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "出院",
+            "pos": "v.",
+            "en": "(of a patient) leave hospital"
+          },
+          {
+            "cn": "开",
+            "pos": "v.",
+            "en": "prescribe"
+          },
+          {
+            "cn": "种",
+            "pos": "m.",
+            "en": "kind; type"
+          },
+          {
+            "cn": "方法",
+            "pos": "n.",
+            "en": "method"
+          },
+          {
+            "cn": "其他",
+            "pos": "pron.",
+            "en": "other"
+          },
+          {
+            "cn": "心里",
+            "pos": "n.",
+            "en": "mind; heart"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-08/8-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L9 · 打不好没关系",
+    "id": "9",
+    "core": [
+      {
+        "hanzi": "校园",
+        "en": "campus"
+      },
+      {
+        "hanzi": "卡",
+        "en": "card"
+      },
+      {
+        "hanzi": "球场",
+        "en": "court"
+      },
+      {
+        "hanzi": "为了",
+        "en": "for"
+      },
+      {
+        "hanzi": "运动会",
+        "en": "sports meet"
+      },
+      {
+        "hanzi": "男生",
+        "en": "boy student"
+      },
+      {
+        "hanzi": "练",
+        "en": "practice"
+      },
+      {
+        "hanzi": "参加",
+        "en": "join; take part in"
+      },
+      {
+        "hanzi": "网球",
+        "en": "tennis"
+      },
+      {
+        "hanzi": "比赛",
+        "en": "match; have a match"
+      },
+      {
+        "hanzi": "练习",
+        "en": "practice; exercise"
+      },
+      {
+        "hanzi": "好多",
+        "en": "a lot of"
+      },
+      {
+        "hanzi": "几乎",
+        "en": "almost"
+      },
+      {
+        "hanzi": "只是",
+        "en": "just; only"
+      },
+      {
+        "hanzi": "啤酒",
+        "en": "beer"
+      },
+      {
+        "hanzi": "回",
+        "en": "(used for happenings or events) piece"
+      },
+      {
+        "hanzi": "紧张",
+        "en": "nervous"
+      },
+      {
+        "hanzi": "受到",
+        "en": "be subjected to"
+      },
+      {
+        "hanzi": "影响",
+        "en": "effect; affect"
+      },
+      {
+        "hanzi": "得分",
+        "en": "score (points)"
+      },
+      {
+        "hanzi": "主要",
+        "en": "main; major"
+      },
+      {
+        "hanzi": "体育",
+        "en": "sports"
+      },
+      {
+        "hanzi": "世界",
+        "en": "world"
+      },
+      {
+        "hanzi": "运动员",
+        "en": "athlete"
+      },
+      {
+        "hanzi": "得到",
+        "en": "get"
+      },
+      {
+        "hanzi": "成绩",
+        "en": "result; achievement"
+      },
+      {
+        "hanzi": "奥运会",
+        "en": "Olympic Games"
+      },
+      {
+        "hanzi": "刘长春",
+        "en": "Liu Changchun"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "9-01",
+        "title": {
+          "cn": "在图书馆门口",
+          "en": "At the library entrance",
+          "emoji": "📚"
+        },
+        "intro": {
+          "cn": "在图书馆门口，李文向白家月跑过去。",
+          "en": "At the library entrance, Li Wen ran toward Bai Jiayue."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "李文昨天忘了做什么了？",
+            "options": [
+              "去学校打球",
+              "还白家月校园卡",
+              "给白家月打电话"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "运动会的时候，李文要做什么？",
+            "options": [
+              "游泳",
+              "踢足球",
+              "看白家月的比赛"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "李文",
+            "cn": "家月，对不起，我昨天忘了还你校园卡了。",
+            "en": "Jiayue, I'm sorry I forgot to return your campus card yesterday."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "没关系。你怎么这么快就过来了？",
+            "en": "That's OK. How did you get here so quickly？"
+          },
+          {
+            "speaker": "李文",
+            "cn": "我正在球场打球呢，接了你的电话就跑过来了。",
+            "en": "I was playing ball on the court. As soon as you called, I ran right over."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "总听说为了准备运动会，你们几个男生每天都练球。",
+            "en": "I heard that you guys have been practicing every day for the sports meet."
+          },
+          {
+            "speaker": "李文",
+            "cn": "是啊！你打算参加运动会吗？",
+            "en": "Yes, we have! Are you planning to take part in it？"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我想参加网球比赛，最近一直在练习。",
+            "en": "I'm thinking about joining the tennis competition. I've been practicing a lot lately."
+          },
+          {
+            "speaker": "李文",
+            "cn": "好，到时候我去看你的比赛。",
+            "en": "Great! I'll come and watch your match then."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "李文为什么来得很快？"
+          },
+          {
+            "q": "李文每天在做什么？"
+          },
+          {
+            "q": "白家月最近在做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "校园",
+            "pos": "n.",
+            "en": "campus"
+          },
+          {
+            "cn": "卡",
+            "pos": "n.",
+            "en": "card"
+          },
+          {
+            "cn": "球场",
+            "pos": "n.",
+            "en": "court"
+          },
+          {
+            "cn": "为了",
+            "pos": "prep.",
+            "en": "for"
+          },
+          {
+            "cn": "运动会",
+            "pos": "n.",
+            "en": "sports meet"
+          },
+          {
+            "cn": "男生",
+            "pos": "n.",
+            "en": "boy student"
+          },
+          {
+            "cn": "练",
+            "pos": "v.",
+            "en": "practice"
+          },
+          {
+            "cn": "参加",
+            "pos": "v.",
+            "en": "join; take part in"
+          },
+          {
+            "cn": "网球",
+            "pos": "n.",
+            "en": "tennis"
+          },
+          {
+            "cn": "比赛",
+            "pos": "n./v.",
+            "en": "match; have a match"
+          },
+          {
+            "cn": "练习",
+            "pos": "v./n.",
+            "en": "practice; exercise"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-2.mp3"
+      },
+      {
+        "id": "9-02",
+        "title": {
+          "cn": "在校园里聊天儿",
+          "en": "Chatting on campus",
+          "emoji": "🎾"
+        },
+        "intro": {
+          "cn": "在校园里，李文和白家月在聊天儿。",
+          "en": "On campus, Li Wen and Bai Jiayue were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "李文和白家月在说什么？",
+            "options": [
+              "运动会",
+              "打网球",
+              "打羽毛球"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "大家为什么一起打球？",
+            "options": [
+              "为了比赛",
+              "为了锻炼身体",
+              "为了参加运动会"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "李文",
+            "cn": "家月，你跟我们一起打羽毛球吧？",
+            "en": "Jiayue, why don't you come and play badminton with us？"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我好多年没打羽毛球了，几乎忘了怎么打了。",
+            "en": "I haven't played badminton in years. I've almost forgotten how."
+          },
+          {
+            "speaker": "李文",
+            "cn": "不是比赛，打不好没关系。",
+            "en": "It's not a competition. Don't worry if you're not good at it."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "这么多同学一起打，如果总是接不住球，就太不好意思了。",
+            "en": "But there are so many classmates playing, I'd feel embarrassed if I kept missing the shuttlecock."
+          },
+          {
+            "speaker": "李文",
+            "cn": "你想得太多了！大家打球只是为了锻炼身体。",
+            "en": "You're overthinking it! We're just playing for exercise."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我先自己练练吧，下周再跟你们一起打。",
+            "en": "I'd better practice on my own first. I'll join you guys next week."
+          },
+          {
+            "speaker": "李文",
+            "cn": "我在教天中打羽毛球，你可以过来跟我们一起练。",
+            "en": "I'll be playing badminton with Tianzhong. You can come and practice with us."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "李文叫白家月一起做什么？"
+          },
+          {
+            "q": "白家月为什么不想去？"
+          },
+          {
+            "q": "白家月想先做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "好多",
+            "pos": "num.",
+            "en": "a lot of"
+          },
+          {
+            "cn": "几乎",
+            "pos": "adv.",
+            "en": "almost"
+          },
+          {
+            "cn": "只是",
+            "pos": "adv./conj.",
+            "en": "just; only"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-4.mp3"
+      },
+      {
+        "id": "9-03",
+        "title": {
+          "cn": "一起看电视上的足球比赛",
+          "en": "Watching a soccer game on TV together",
+          "emoji": "⚽"
+        },
+        "intro": {
+          "cn": "在李文家，李文、白家月和陈天中一起看电视。",
+          "en": "At Li Wen's home, Li Wen, Bai Jiayue, and Chen Tianzhong were watching TV together."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "他们在做什么？",
+            "options": [
+              "看足球比赛",
+              "准备踢足球",
+              "准备参加比赛"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "白家月为什么着急？",
+            "options": [
+              "老球员生病了",
+              "球一直踢不进去",
+              "看不到比赛的得分"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "陈天中",
+            "cn": "足球比赛已经开始了，快过来看吧！",
+            "en": "The soccer game has started! Hurry up and come watch！"
+          },
+          {
+            "speaker": "李文",
+            "cn": "你们先看，冰箱里有啤酒和饮料，我去拿一下。",
+            "en": "You guys go ahead and watch. There's some beer and drinks in the fridge—I'll grab them."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "今天怎么回事？总是踢不进去！",
+            "en": "What's wrong with them today? They just can't seem to score！"
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "几个老球员生病了，新球员第一次参加这么重要的比赛，太紧张了。",
+            "en": "Several veteran players are sick. The new players are too nervous—it's their first big game."
+          },
+          {
+            "speaker": "李文",
+            "cn": "是啊，主要的球员没参加比赛，所以大家也都受到影响了。",
+            "en": "Yeah, since the main players aren't playing, everyone else seems affected."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "越看越着急。我不看了，你们告诉我得分吧。",
+            "en": "The more I watch, the more anxious I feel. I'm done watching. Just tell me the score later."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "李文要去冰箱里拿什么？"
+          },
+          {
+            "q": "今天的足球比赛踢得怎么样？"
+          },
+          {
+            "q": "球员们受到什么影响了？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "啤酒",
+            "pos": "n.",
+            "en": "beer"
+          },
+          {
+            "cn": "回",
+            "pos": "m.",
+            "en": "(used for happenings or events) piece"
+          },
+          {
+            "cn": "紧张",
+            "pos": "adj.",
+            "en": "nervous"
+          },
+          {
+            "cn": "受到",
+            "pos": "v.",
+            "en": "be subjected to"
+          },
+          {
+            "cn": "影响",
+            "pos": "n./v.",
+            "en": "effect; affect"
+          },
+          {
+            "cn": "得分",
+            "pos": "v./n.",
+            "en": "score (points)"
+          },
+          {
+            "cn": "主要",
+            "pos": "adj.",
+            "en": "main; major"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-6.mp3"
+      },
+      {
+        "id": "9-04",
+        "title": {
+          "cn": "准备关于奥运会的演讲稿",
+          "en": "Preparing a speech about the Olympics",
+          "emoji": "🎤"
+        },
+        "intro": {
+          "cn": "在家里，李文准备演讲稿。",
+          "en": "At home, Li Wen prepared his speech."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "李文在说什么体育比赛？",
+            "options": [
+              "奥运会",
+              "短跑比赛",
+              "中国的体育比赛"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "刘长春参加了哪个比赛？",
+            "options": [
+              "100米短跑",
+              "200米游泳",
+              "5000米长跑"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "我喜欢看体育比赛，最爱看的就是奥运会。",
+            "en": "I love watching sporting events, and my favorite is the Olympic Games."
+          },
+          {
+            "speaker": "",
+            "cn": "奥运会是世界上影响最大的体育比赛。",
+            "en": "The Olympics are the most influential sporting event in the world."
+          },
+          {
+            "speaker": "",
+            "cn": "从1896年到2024年，每次奥运会都有非常多的运动员参加。",
+            "en": "From 1896 to 2024, each edition of the Games has attracted a huge number of athletes from around the globe."
+          },
+          {
+            "speaker": "",
+            "cn": "第一位参加奥运会的中国运动员是刘长春，他1932年参加了100米和200米短跑比赛。",
+            "en": "The first Chinese athlete to take part in the Olympics was Liu Changchun, who competed in the 100 m and 200 m sprint races in 1932."
+          },
+          {
+            "speaker": "",
+            "cn": "虽然他没有得到好成绩，但是他让世界认识了中国。",
+            "en": "Although he didn't achieve great results, he helped introduce China to the world."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "奥运会是一个什么样的体育比赛？"
+          },
+          {
+            "q": "1932年，中国运动员的比赛成绩怎么样？"
+          },
+          {
+            "q": "刘长春的影响是什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "体育",
+            "pos": "n.",
+            "en": "sports"
+          },
+          {
+            "cn": "世界",
+            "pos": "n.",
+            "en": "world"
+          },
+          {
+            "cn": "运动员",
+            "pos": "n.",
+            "en": "athlete"
+          },
+          {
+            "cn": "得到",
+            "pos": "v.",
+            "en": "get"
+          },
+          {
+            "cn": "成绩",
+            "pos": "n.",
+            "en": "result; achievement"
+          },
+          {
+            "cn": "奥运会",
+            "pos": "",
+            "en": "Olympic Games"
+          },
+          {
+            "cn": "刘长春",
+            "pos": "",
+            "en": "Liu Changchun"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-8.mp3"
       }
     ]
   },

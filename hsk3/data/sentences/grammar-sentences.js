@@ -1,5 +1,5 @@
-// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
-// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson2.json / hsk3/data/lesson3.json / hsk3/data/lesson4.json / hsk3/data/lesson5.json / hsk3/data/lesson6.json / hsk3/data/lesson7.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
+// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson8.json + hsk3/data/lesson9.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
+// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson2.json / hsk3/data/lesson3.json / hsk3/data/lesson4.json / hsk3/data/lesson5.json / hsk3/data/lesson6.json / hsk3/data/lesson7.json / hsk3/data/lesson8.json / hsk3/data/lesson9.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
 // Regenerate: python3 tools/gen-lesson-js.py hsk3
 window.SENTENCE_CORPUS = [
   {
@@ -1107,6 +1107,224 @@ window.SENTENCE_CORPUS = [
           {
             "c": "西瓜又大又新鲜，不甜不要钱！",
             "en": "These watermelons are big and fresh. Free if they aren't sweet！"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 8,
+    "key": "8",
+    "review": false,
+    "title": "Today I was discharged from the hospital",
+    "titleCn": "今天我出院了",
+    "points": [
+      {
+        "id": "8-g1",
+        "textId": "8-01",
+        "no": 1,
+        "cn": "趋向补语的引申用法（1）",
+        "en": "Extended Use of the Complement of Direction (1)",
+        "note": "趋向补语“下去”用在动词或形容词后面，表示已经开始的动作或者状态还要继续。",
+        "noteEn": "When the complement of direction “下去” is used after a verb or an adjective, it indicates that an action or a state that has already started is to continue.",
+        "practice": null,
+        "items": [
+          {
+            "c": "我今年胖了十多斤，不能再胖下去了。",
+            "en": "I've gained more than ten jin this year. I really can't afford to get any fatter."
+          },
+          {
+            "c": "她读完了第一个问题，后面的你读下去。",
+            "en": "She has read the first question. You read the rest."
+          },
+          {
+            "c": "这几天太热了，如果再热下去就不能出门了。",
+            "en": "It's been so hot these days. If it gets any hotter, we won't be able to go out."
+          }
+        ]
+      },
+      {
+        "id": "8-g2",
+        "textId": "8-02",
+        "no": 2,
+        "cn": "离合词（2）",
+        "en": "Separable Words (2)",
+        "note": "离合词一般不能直接加宾语。使用离合词的句子中如果有补语，一般都放在离合词的中间。",
+        "noteEn": "Separable words generally cannot directly take an object. If there is a complement in a sentence with a separable word, it is generally placed between the two parts of the separable word.",
+        "practice": null,
+        "items": [
+          {
+            "c": "昨天游完泳以后，我的耳朵一直有点儿疼。",
+            "en": "My ear has been hurting a little since I finished swimming yesterday."
+          },
+          {
+            "c": "今年夏天只下了两次雨。",
+            "en": "It has only rained twice this summer."
+          },
+          {
+            "c": "小张下个月跟他女朋友结婚。",
+            "en": "Xiao Zhang is getting married to his girlfriend next month."
+          }
+        ]
+      },
+      {
+        "id": "8-g3",
+        "textId": "8-03",
+        "no": 3,
+        "cn": "时量补语（2）",
+        "en": "Complement of Duration (2)",
+        "note": "时量补语用在动词的后面，表示动作或者状态持续时间的长短。有些动词不能持续，这时动词后的时量补语表示动作从完成到说话时过了多长时间。",
+        "noteEn": "The complement of duration is used after a verb to indicate the duration of actions or states. For non-durative verbs, the complement of duration following the verb indicates how long it has been from the completion of the action up to the moment of speaking.",
+        "practice": null,
+        "items": [
+          {
+            "c": "我上次来医院已经过去差不多两年了。",
+            "en": "The last time I came to the hospital was nearly two years ago."
+          },
+          {
+            "c": "她回家两个月了。",
+            "en": "She has been home for two months."
+          },
+          {
+            "c": "开学已经三个多星期了。",
+            "en": "It has been more than three weeks since school started."
+          }
+        ]
+      },
+      {
+        "id": "8-g4",
+        "textId": "8-04",
+        "no": 4,
+        "cn": "固定格式“……以前/以后/前/后”",
+        "en": "Fixed Pattern “以前/以后/前/后”",
+        "note": "“时间/事件＋以前/前”表示某个时间或事件之前；“时间/事件＋以后/后”表示某个时间或事件之后。",
+        "noteEn": "“Time/Event + 以前/前” indicates the time before a certain time or event. “Time/Event + 以后/后” indicates the time after a certain time or event.",
+        "practice": null,
+        "items": [
+          {
+            "c": "这种药需要每天睡前吃一次。",
+            "en": "This medicine needs to be taken once every night before going to bed."
+          },
+          {
+            "c": "我们决定下班后一起去看个电影。",
+            "en": "We decided to go see a movie together after work."
+          },
+          {
+            "c": "考完试以后，咱们一起去旅游吧。",
+            "en": "Let's go travelling together after the exam."
+          }
+        ]
+      },
+      {
+        "id": "8-g5",
+        "textId": "8-01",
+        "no": 5,
+        "cn": "小语助力“不怎么样”",
+        "en": "“不怎么样”",
+        "note": "“不怎么样”是一个口语表达，意思是不太好、很一般，带有谦虚或评价不高的语气。",
+        "noteEn": "“不怎么样” is a colloquial expression meaning “not very good” or “just average”. It carries a tone of modesty or low evaluation.",
+        "practice": null,
+        "items": [
+          {
+            "c": "我知道，但是你们的水平太高了，我打得不怎么样。",
+            "en": "I know, but you guys are way too good. I'm not very good at it."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 9,
+    "key": "9",
+    "review": false,
+    "title": "It doesn't matter if you don't play well",
+    "titleCn": "打不好没关系",
+    "points": [
+      {
+        "id": "9-g1",
+        "textId": "9-01",
+        "no": 1,
+        "cn": "目的复句“为了……”",
+        "en": "Purpose Complex Sentence “为了…, …”",
+        "note": "目的复句“为了……，……”中，“为了”后面的小句表示目的，另一个小句表示为了达到目的采取的行动。",
+        "noteEn": "In the purpose complex sentence “为了…, …”, the clause following “为了” indicates the purpose, while the other clause indicates the action taken to achieve that purpose.",
+        "practice": null,
+        "items": [
+          {
+            "c": "听说为了准备运动会，你们几个男生每天都练球。",
+            "en": "I heard that you guys have been practicing every day for the sports meet."
+          },
+          {
+            "c": "为了考上大学，她每天努力学习。",
+            "en": "She studies hard every day in order to get into university."
+          },
+          {
+            "c": "为了早点儿到家，我打算坐飞机回去。",
+            "en": "I plan to fly back so that I can get home earlier."
+          }
+        ]
+      },
+      {
+        "id": "9-g2",
+        "textId": "9-02",
+        "no": 2,
+        "cn": "可能补语",
+        "en": "Complement of Potentiality",
+        "note": "在动词和结果补语或趋向补语之间插入“得”或“不”构成可能补语，表示条件是否容许实现某种结果或趋向。肯定形式是“动词＋得＋补语”，否定形式是“动词＋不＋补语”，疑问形式是“动词＋得＋补语＋动词＋不＋补语”或者“动词＋得＋补语＋吗”。",
+        "noteEn": "Inserting “得” or “不” between a verb and a complement of result or direction forms a complement of potentiality. This indicates whether a condition allows a particular result or direction to be realized. The affirmative form is “Verb+得+Complement”, the negative form is “Verb+不+Complement”, and the interrogative forms are “Verb+得+Complement+Verb+不+Complement” or “Verb+得+Complement+吗”.",
+        "practice": null,
+        "items": [
+          {
+            "c": "打不好没关系。",
+            "en": "It doesn't matter if you don't play well."
+          },
+          {
+            "c": "这本书你看得懂看不懂？",
+            "en": "Can you understand this book？"
+          },
+          {
+            "c": "你只有一个星期的时间，学得会游泳吗？",
+            "en": "You only have one week. Can you learn to swim？"
+          }
+        ]
+      },
+      {
+        "id": "9-g3",
+        "textId": "9-03",
+        "no": 3,
+        "cn": "固定格式“越A越B”",
+        "en": "Fixed Pattern “越A越B”",
+        "note": "固定格式“越A越B”的句子中，A和B可以都是动词性短语或形容词性短语，也可以一个是动词性短语，另一个是形容词性短语，表示B随着A的变化而变化。",
+        "noteEn": "In the fixed pattern “越A越B”, A and B can both be verbal phrases or adjectival phrases, or one can be a verbal phrase and the other an adjectival phrase. This pattern indicates that B changes along with the change of A.",
+        "practice": null,
+        "items": [
+          {
+            "c": "今天的足球比赛我越看越着急。",
+            "en": "The more I watch today's soccer game, the more anxious I feel."
+          },
+          {
+            "c": "妈妈越说，他越不高兴。",
+            "en": "The more his mother talks, the unhappier he gets."
+          },
+          {
+            "c": "我想认识中国朋友，越多越好。",
+            "en": "I want to meet Chinese friends—the more, the better."
+          }
+        ]
+      },
+      {
+        "id": "9-g4",
+        "textId": "9-02",
+        "no": 4,
+        "cn": "小语助力“接球”",
+        "en": "“接球”",
+        "note": "“接”的本义是托住、承受，这里“接球”的意思是回球或者把球打回去。",
+        "noteEn": "The original meaning of “接” is to hold up or receive. Here “接球” means to return the ball or hit it back.",
+        "practice": null,
+        "items": [
+          {
+            "c": "这么多同学一起打，如果总是接不住球，就太不好意思了。",
+            "en": "But there are so many classmates playing, I'd feel embarrassed if I kept missing the shuttlecock."
           }
         ]
       }

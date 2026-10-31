@@ -1,0 +1,728 @@
+{
+  "lesson": 9,
+  "key": "9",
+  "name": "L9 · 打不好没关系",
+  "titleCn": "打不好没关系",
+  "titleEn": "It doesn't matter if you don't play well",
+  "texts": [
+    {
+      "id": "9-01",
+      "title": {
+        "cn": "在图书馆门口",
+        "en": "At the library entrance",
+        "emoji": "📚"
+      },
+      "intro": {
+        "cn": "在图书馆门口，李文向白家月跑过去。",
+        "en": "At the library entrance, Li Wen ran toward Bai Jiayue."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "李文昨天忘了做什么了？",
+          "options": [
+            "去学校打球",
+            "还白家月校园卡",
+            "给白家月打电话"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "运动会的时候，李文要做什么？",
+          "options": [
+            "游泳",
+            "踢足球",
+            "看白家月的比赛"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "李文",
+          "cn": "家月，对不起，我昨天忘了还你校园卡了。",
+          "en": "Jiayue, I'm sorry I forgot to return your campus card yesterday."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "没关系。你怎么这么快就过来了？",
+          "en": "That's OK. How did you get here so quickly？"
+        },
+        {
+          "speaker": "李文",
+          "cn": "我正在球场打球呢，接了你的电话就跑过来了。",
+          "en": "I was playing ball on the court. As soon as you called, I ran right over."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "总听说为了准备运动会，你们几个男生每天都练球。",
+          "en": "I heard that you guys have been practicing every day for the sports meet."
+        },
+        {
+          "speaker": "李文",
+          "cn": "是啊！你打算参加运动会吗？",
+          "en": "Yes, we have! Are you planning to take part in it？"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我想参加网球比赛，最近一直在练习。",
+          "en": "I'm thinking about joining the tennis competition. I've been practicing a lot lately."
+        },
+        {
+          "speaker": "李文",
+          "cn": "好，到时候我去看你的比赛。",
+          "en": "Great! I'll come and watch your match then."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "李文为什么来得很快？"
+        },
+        {
+          "q": "李文每天在做什么？"
+        },
+        {
+          "q": "白家月最近在做什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "校园",
+          "pos": "n.",
+          "en": "campus"
+        },
+        {
+          "cn": "卡",
+          "pos": "n.",
+          "en": "card"
+        },
+        {
+          "cn": "球场",
+          "pos": "n.",
+          "en": "court"
+        },
+        {
+          "cn": "为了",
+          "pos": "prep.",
+          "en": "for"
+        },
+        {
+          "cn": "运动会",
+          "pos": "n.",
+          "en": "sports meet"
+        },
+        {
+          "cn": "男生",
+          "pos": "n.",
+          "en": "boy student"
+        },
+        {
+          "cn": "练",
+          "pos": "v.",
+          "en": "practice"
+        },
+        {
+          "cn": "参加",
+          "pos": "v.",
+          "en": "join; take part in"
+        },
+        {
+          "cn": "网球",
+          "pos": "n.",
+          "en": "tennis"
+        },
+        {
+          "cn": "比赛",
+          "pos": "n./v.",
+          "en": "match; have a match"
+        },
+        {
+          "cn": "练习",
+          "pos": "v./n.",
+          "en": "practice; exercise"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-2.mp3"
+    },
+    {
+      "id": "9-02",
+      "title": {
+        "cn": "在校园里聊天儿",
+        "en": "Chatting on campus",
+        "emoji": "🎾"
+      },
+      "intro": {
+        "cn": "在校园里，李文和白家月在聊天儿。",
+        "en": "On campus, Li Wen and Bai Jiayue were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "李文和白家月在说什么？",
+          "options": [
+            "运动会",
+            "打网球",
+            "打羽毛球"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "大家为什么一起打球？",
+          "options": [
+            "为了比赛",
+            "为了锻炼身体",
+            "为了参加运动会"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "李文",
+          "cn": "家月，你跟我们一起打羽毛球吧？",
+          "en": "Jiayue, why don't you come and play badminton with us？"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我好多年没打羽毛球了，几乎忘了怎么打了。",
+          "en": "I haven't played badminton in years. I've almost forgotten how."
+        },
+        {
+          "speaker": "李文",
+          "cn": "不是比赛，打不好没关系。",
+          "en": "It's not a competition. Don't worry if you're not good at it."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "这么多同学一起打，如果总是接不住球，就太不好意思了。",
+          "en": "But there are so many classmates playing, I'd feel embarrassed if I kept missing the shuttlecock."
+        },
+        {
+          "speaker": "李文",
+          "cn": "你想得太多了！大家打球只是为了锻炼身体。",
+          "en": "You're overthinking it! We're just playing for exercise."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我先自己练练吧，下周再跟你们一起打。",
+          "en": "I'd better practice on my own first. I'll join you guys next week."
+        },
+        {
+          "speaker": "李文",
+          "cn": "我在教天中打羽毛球，你可以过来跟我们一起练。",
+          "en": "I'll be playing badminton with Tianzhong. You can come and practice with us."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "李文叫白家月一起做什么？"
+        },
+        {
+          "q": "白家月为什么不想去？"
+        },
+        {
+          "q": "白家月想先做什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "好多",
+          "pos": "num.",
+          "en": "a lot of"
+        },
+        {
+          "cn": "几乎",
+          "pos": "adv.",
+          "en": "almost"
+        },
+        {
+          "cn": "只是",
+          "pos": "adv./conj.",
+          "en": "just; only"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-4.mp3"
+    },
+    {
+      "id": "9-03",
+      "title": {
+        "cn": "一起看电视上的足球比赛",
+        "en": "Watching a soccer game on TV together",
+        "emoji": "⚽"
+      },
+      "intro": {
+        "cn": "在李文家，李文、白家月和陈天中一起看电视。",
+        "en": "At Li Wen's home, Li Wen, Bai Jiayue, and Chen Tianzhong were watching TV together."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "他们在做什么？",
+          "options": [
+            "看足球比赛",
+            "准备踢足球",
+            "准备参加比赛"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "白家月为什么着急？",
+          "options": [
+            "老球员生病了",
+            "球一直踢不进去",
+            "看不到比赛的得分"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "陈天中",
+          "cn": "足球比赛已经开始了，快过来看吧！",
+          "en": "The soccer game has started! Hurry up and come watch！"
+        },
+        {
+          "speaker": "李文",
+          "cn": "你们先看，冰箱里有啤酒和饮料，我去拿一下。",
+          "en": "You guys go ahead and watch. There's some beer and drinks in the fridge—I'll grab them."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "今天怎么回事？总是踢不进去！",
+          "en": "What's wrong with them today? They just can't seem to score！"
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "几个老球员生病了，新球员第一次参加这么重要的比赛，太紧张了。",
+          "en": "Several veteran players are sick. The new players are too nervous—it's their first big game."
+        },
+        {
+          "speaker": "李文",
+          "cn": "是啊，主要的球员没参加比赛，所以大家也都受到影响了。",
+          "en": "Yeah, since the main players aren't playing, everyone else seems affected."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "越看越着急。我不看了，你们告诉我得分吧。",
+          "en": "The more I watch, the more anxious I feel. I'm done watching. Just tell me the score later."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "李文要去冰箱里拿什么？"
+        },
+        {
+          "q": "今天的足球比赛踢得怎么样？"
+        },
+        {
+          "q": "球员们受到什么影响了？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "啤酒",
+          "pos": "n.",
+          "en": "beer"
+        },
+        {
+          "cn": "回",
+          "pos": "m.",
+          "en": "(used for happenings or events) piece"
+        },
+        {
+          "cn": "紧张",
+          "pos": "adj.",
+          "en": "nervous"
+        },
+        {
+          "cn": "受到",
+          "pos": "v.",
+          "en": "be subjected to"
+        },
+        {
+          "cn": "影响",
+          "pos": "n./v.",
+          "en": "effect; affect"
+        },
+        {
+          "cn": "得分",
+          "pos": "v./n.",
+          "en": "score (points)"
+        },
+        {
+          "cn": "主要",
+          "pos": "adj.",
+          "en": "main; major"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-6.mp3"
+    },
+    {
+      "id": "9-04",
+      "title": {
+        "cn": "准备关于奥运会的演讲稿",
+        "en": "Preparing a speech about the Olympics",
+        "emoji": "🎤"
+      },
+      "intro": {
+        "cn": "在家里，李文准备演讲稿。",
+        "en": "At home, Li Wen prepared his speech."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "李文在说什么体育比赛？",
+          "options": [
+            "奥运会",
+            "短跑比赛",
+            "中国的体育比赛"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "刘长春参加了哪个比赛？",
+          "options": [
+            "100米短跑",
+            "200米游泳",
+            "5000米长跑"
+          ],
+          "answer": "A"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "我喜欢看体育比赛，最爱看的就是奥运会。",
+          "en": "I love watching sporting events, and my favorite is the Olympic Games."
+        },
+        {
+          "speaker": "",
+          "cn": "奥运会是世界上影响最大的体育比赛。",
+          "en": "The Olympics are the most influential sporting event in the world."
+        },
+        {
+          "speaker": "",
+          "cn": "从1896年到2024年，每次奥运会都有非常多的运动员参加。",
+          "en": "From 1896 to 2024, each edition of the Games has attracted a huge number of athletes from around the globe."
+        },
+        {
+          "speaker": "",
+          "cn": "第一位参加奥运会的中国运动员是刘长春，他1932年参加了100米和200米短跑比赛。",
+          "en": "The first Chinese athlete to take part in the Olympics was Liu Changchun, who competed in the 100 m and 200 m sprint races in 1932."
+        },
+        {
+          "speaker": "",
+          "cn": "虽然他没有得到好成绩，但是他让世界认识了中国。",
+          "en": "Although he didn't achieve great results, he helped introduce China to the world."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "奥运会是一个什么样的体育比赛？"
+        },
+        {
+          "q": "1932年，中国运动员的比赛成绩怎么样？"
+        },
+        {
+          "q": "刘长春的影响是什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "体育",
+          "pos": "n.",
+          "en": "sports"
+        },
+        {
+          "cn": "世界",
+          "pos": "n.",
+          "en": "world"
+        },
+        {
+          "cn": "运动员",
+          "pos": "n.",
+          "en": "athlete"
+        },
+        {
+          "cn": "得到",
+          "pos": "v.",
+          "en": "get"
+        },
+        {
+          "cn": "成绩",
+          "pos": "n.",
+          "en": "result; achievement"
+        },
+        {
+          "cn": "奥运会",
+          "pos": "",
+          "en": "Olympic Games"
+        },
+        {
+          "cn": "刘长春",
+          "pos": "",
+          "en": "Liu Changchun"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "9-g1",
+      "textId": "9-01",
+      "no": 1,
+      "cn": "目的复句“为了……”",
+      "en": "Purpose Complex Sentence “为了…, …”",
+      "note": "目的复句“为了……，……”中，“为了”后面的小句表示目的，另一个小句表示为了达到目的采取的行动。",
+      "noteEn": "In the purpose complex sentence “为了…, …”, the clause following “为了” indicates the purpose, while the other clause indicates the action taken to achieve that purpose.",
+      "items": [
+        {
+          "c": "听说为了准备运动会，你们几个男生每天都练球。",
+          "en": "I heard that you guys have been practicing every day for the sports meet."
+        },
+        {
+          "c": "为了考上大学，她每天努力学习。",
+          "en": "She studies hard every day in order to get into university."
+        },
+        {
+          "c": "为了早点儿到家，我打算坐飞机回去。",
+          "en": "I plan to fly back so that I can get home earlier."
+        }
+      ]
+    },
+    {
+      "id": "9-g2",
+      "textId": "9-02",
+      "no": 2,
+      "cn": "可能补语",
+      "en": "Complement of Potentiality",
+      "note": "在动词和结果补语或趋向补语之间插入“得”或“不”构成可能补语，表示条件是否容许实现某种结果或趋向。肯定形式是“动词＋得＋补语”，否定形式是“动词＋不＋补语”，疑问形式是“动词＋得＋补语＋动词＋不＋补语”或者“动词＋得＋补语＋吗”。",
+      "noteEn": "Inserting “得” or “不” between a verb and a complement of result or direction forms a complement of potentiality. This indicates whether a condition allows a particular result or direction to be realized. The affirmative form is “Verb+得+Complement”, the negative form is “Verb+不+Complement”, and the interrogative forms are “Verb+得+Complement+Verb+不+Complement” or “Verb+得+Complement+吗”.",
+      "items": [
+        {
+          "c": "打不好没关系。",
+          "en": "It doesn't matter if you don't play well."
+        },
+        {
+          "c": "这本书你看得懂看不懂？",
+          "en": "Can you understand this book？"
+        },
+        {
+          "c": "你只有一个星期的时间，学得会游泳吗？",
+          "en": "You only have one week. Can you learn to swim？"
+        }
+      ]
+    },
+    {
+      "id": "9-g3",
+      "textId": "9-03",
+      "no": 3,
+      "cn": "固定格式“越A越B”",
+      "en": "Fixed Pattern “越A越B”",
+      "note": "固定格式“越A越B”的句子中，A和B可以都是动词性短语或形容词性短语，也可以一个是动词性短语，另一个是形容词性短语，表示B随着A的变化而变化。",
+      "noteEn": "In the fixed pattern “越A越B”, A and B can both be verbal phrases or adjectival phrases, or one can be a verbal phrase and the other an adjectival phrase. This pattern indicates that B changes along with the change of A.",
+      "items": [
+        {
+          "c": "今天的足球比赛我越看越着急。",
+          "en": "The more I watch today's soccer game, the more anxious I feel."
+        },
+        {
+          "c": "妈妈越说，他越不高兴。",
+          "en": "The more his mother talks, the unhappier he gets."
+        },
+        {
+          "c": "我想认识中国朋友，越多越好。",
+          "en": "I want to meet Chinese friends—the more, the better."
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "9-g4",
+      "textId": "9-02",
+      "no": 4,
+      "cn": "小语助力“接球”",
+      "en": "“接球”",
+      "note": "“接”的本义是托住、承受，这里“接球”的意思是回球或者把球打回去。",
+      "noteEn": "The original meaning of “接” is to hold up or receive. Here “接球” means to return the ball or hit it back.",
+      "items": [
+        {
+          "c": "这么多同学一起打，如果总是接不住球，就太不好意思了。",
+          "en": "But there are so many classmates playing, I'd feel embarrassed if I kept missing the shuttlecock."
+        }
+      ]
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "世界",
+          "成绩",
+          "球场",
+          "参加",
+          "影响"
+        ],
+        "items": [
+          {
+            "cn": "我的腿不舒服，所以没______这次网球比赛。",
+            "answer": "参加"
+          },
+          {
+            "cn": "学校的______上，每天都有很多同学在那儿做运动。",
+            "answer": "球场"
+          },
+          {
+            "cn": "运动员们为了得到好______，每天要练十多个小时。",
+            "answer": "成绩"
+          },
+          {
+            "cn": "受到天气的______，今天的足球比赛要晚两个小时开始。",
+            "answer": "影响"
+          },
+          {
+            "cn": "这位运动员觉得______上最重要的运动会就是奥运会。",
+            "answer": "世界"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "只是",
+          "几乎",
+          "主要",
+          "得到",
+          "受到"
+        ],
+        "items": [
+          {
+            "cn": "A：她游泳游得快吗？",
+            "answer": ""
+          },
+          {
+            "cn": "B：她______每天都游，现在游得特别快。",
+            "answer": "几乎"
+          },
+          {
+            "cn": "A：他们以前每年都是第一名，为什么今年成绩这么不好？",
+            "answer": ""
+          },
+          {
+            "cn": "B：______我觉得是因为好多老球员病了。",
+            "answer": "主要"
+          },
+          {
+            "cn": "A：你打得这么好，是羽毛球运动员吗？",
+            "answer": ""
+          },
+          {
+            "cn": "B：______打羽毛球是我的兴趣，我不是运动员。",
+            "answer": "只是"
+          },
+          {
+            "cn": "A：______我爸爸的影响，我十几岁就开始打网球了。",
+            "answer": "受到"
+          },
+          {
+            "cn": "B：现在你也开始影响我，我也喜欢上了打网球。",
+            "answer": ""
+          },
+          {
+            "cn": "A：我听说你参加了学校的运动会？",
+            "answer": ""
+          },
+          {
+            "cn": "B：是的。虽然没有______很好的成绩，但是我认识了很多新朋友。",
+            "answer": "得到"
+          }
+        ]
+      }
+    },
+    "describePictures": [
+      {
+        "cn": "A：今天你们去______吗？",
+        "en": ""
+      },
+      {
+        "cn": "B：去。为了______，我们每天下课后都去球场练习。",
+        "en": ""
+      },
+      {
+        "cn": "A：我觉得这次______，你们一定能得到好成绩。",
+        "en": ""
+      },
+      {
+        "cn": "B：谢谢。虽然不是最重要的，但是我们也要努力。",
+        "en": ""
+      },
+      {
+        "cn": "A：我看你每天都去打网球，你打得怎么样？",
+        "en": ""
+      },
+      {
+        "cn": "B：我最近才开始学，打得不太好。",
+        "en": ""
+      },
+      {
+        "cn": "A：没关系，你的身体越______。",
+        "en": ""
+      },
+      {
+        "cn": "B：你说得对，我运动只是为了______。",
+        "en": ""
+      },
+      {
+        "cn": "A：为了______，我没吃饭就来了。没想到到现在一个球也没踢进去。",
+        "en": ""
+      },
+      {
+        "cn": "B：可能受到______，每个运动员都很紧张。",
+        "en": ""
+      },
+      {
+        "cn": "A：他们现在好好休息，一会儿一定会得分的。",
+        "en": ""
+      },
+      {
+        "cn": "B：我不想看了，越______。",
+        "en": ""
+      }
+    ],
+    "classroomActivity": {
+      "cn": "多人活动",
+      "en": "Group Work",
+      "description": "四人一组，介绍自己熟悉的运动，可以围绕以下问题讨论。讨论时，使用本课所学的词语和语言点。小组练习结束后，可以选一位同学向全班同学介绍自己熟悉的运动。",
+      "descriptionEn": "Work in groups of four. Introduce a sport you are familiar with and discuss around the following questions. During the discussion, use the words and language points covered in this lesson. After the group practice, select one student from each group to introduce the sport they are familiar with to the whole class.",
+      "topics": [
+        {
+          "cn": "你最喜欢的运动是什么？为什么？"
+        },
+        {
+          "cn": "你是受到谁的影响开始喜欢这个运动的？"
+        },
+        {
+          "cn": "你多久练习一次？每次练习多长时间？"
+        },
+        {
+          "cn": "这个运动对你有什么影响？"
+        },
+        {
+          "cn": "你参加过什么体育比赛？"
+        },
+        {
+          "cn": "你成绩最好的一次比赛是什么？"
+        }
+      ]
+    }
+  }
+}
