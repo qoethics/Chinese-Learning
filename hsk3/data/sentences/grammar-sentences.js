@@ -1,5 +1,5 @@
-// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson8.json + hsk3/data/lesson9.json + hsk3/data/lesson10.json + hsk3/data/lesson11.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
-// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson2.json / hsk3/data/lesson3.json / hsk3/data/lesson4.json / hsk3/data/lesson5.json / hsk3/data/lesson6.json / hsk3/data/lesson7.json / hsk3/data/lesson8.json / hsk3/data/lesson9.json / hsk3/data/lesson10.json / hsk3/data/lesson11.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
+// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson8.json + hsk3/data/lesson9.json + hsk3/data/lesson10.json + hsk3/data/lesson11.json + hsk3/data/lesson12.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
+// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson2.json / hsk3/data/lesson3.json / hsk3/data/lesson4.json / hsk3/data/lesson5.json / hsk3/data/lesson6.json / hsk3/data/lesson7.json / hsk3/data/lesson8.json / hsk3/data/lesson9.json / hsk3/data/lesson10.json / hsk3/data/lesson11.json / hsk3/data/lesson12.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
 // Regenerate: python3 tools/gen-lesson-js.py hsk3
 window.SENTENCE_CORPUS = [
   {
@@ -1543,6 +1543,135 @@ window.SENTENCE_CORPUS = [
           {
             "c": "那到时候咱们早点儿过去，你帮我把电脑接好吧。",
             "en": "Let's go a bit earlier then—can you help me set up the computer？"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 12,
+    "key": "12",
+    "review": false,
+    "title": "The weather changes rapidly in this season",
+    "titleCn": "这个季节天气变化很快",
+    "points": [
+      {
+        "id": "12-g1",
+        "textId": "12-01",
+        "no": 1,
+        "cn": "选择复句“或者……，或者……”",
+        "en": "The Alternative Complex Sentence “或者……，或者……”",
+        "note": "选择复句“或者……，或者……”表示在两个或多个可能的选项中选择一个，多用于口语。",
+        "noteEn": "The alternative complex sentence “或者……，或者……” indicates a choice between two or more possibilities. It is commonly used in colloquial speech.",
+        "practice": null,
+        "items": [
+          {
+            "c": "或者明天去，或者后天去，我给你打电话。",
+            "en": "Either tomorrow or the day after—I'll give you a call."
+          },
+          {
+            "c": "我们或者今天去电影院看电影，或者明天在家看电影。",
+            "en": "We'll either go to the cinema today or watch a movie at home tomorrow."
+          },
+          {
+            "c": "晚饭你自己选，或者吃中国菜，或者吃日本菜，或者吃泰国菜。",
+            "en": "Choose dinner yourself—either Chinese, Japanese, or Thai food."
+          }
+        ]
+      },
+      {
+        "id": "12-g2",
+        "textId": "12-02",
+        "no": 2,
+        "cn": "趋向补语的引申用法（2）",
+        "en": "Extended Use of the Complement of Direction (2)",
+        "note": "趋向补语“起来”用在动词或形容词后，表示动作开始进行或进入一个新的状态。如果动词带宾语，宾语应该在“起”和“来”的中间。",
+        "noteEn": "The complement of direction “起来” is used after a verb or an adjective to indicate the start of an action or entry into a new state. If the verb takes an object, the object should be placed between “起” and “来”.",
+        "practice": null,
+        "items": [
+          {
+            "c": "雨已经下起来了。",
+            "en": "It has already started to rain."
+          },
+          {
+            "c": "最近天气热起来了。",
+            "en": "The weather has gotten hot recently."
+          },
+          {
+            "c": "怎么突然刮起风来了？",
+            "en": "How did it suddenly get so windy？"
+          }
+        ]
+      },
+      {
+        "id": "12-g3",
+        "textId": "12-03",
+        "no": 3,
+        "cn": "范围副词“就”",
+        "en": "The Adverb of Scope “就”",
+        "note": "范围副词“就”用在带有数量词的动词前面，表示说话人认为数量少、程度轻、时间短等意义。“就”用在名词或名词性主语前，表示例外情况。",
+        "noteEn": "The adverb of scope “就” is used before a verb accompanied by a numeral-measure word to indicate that the speaker considers the quantity to be small, the degree low, or the duration short. “就” placed before a noun or a nominal subject indicates an exception.",
+        "practice": null,
+        "items": [
+          {
+            "c": "北京常常下雪，但听说今年就下了一次。",
+            "en": "It usually snows often in Beijing, but I heard it only snowed once this year."
+          },
+          {
+            "c": "他昨天就看了十分钟书。",
+            "en": "Yesterday he only read for ten minutes."
+          },
+          {
+            "c": "我每天书包里都放着雨伞，就今天没带。",
+            "en": "I keep an umbrella in my bag every day—only today I didn't bring it."
+          },
+          {
+            "c": "你们点的菜都挺好吃的，就我点的这个菜不太好吃。",
+            "en": "All the dishes you ordered are quite good—only the one I ordered isn't very tasty."
+          }
+        ]
+      },
+      {
+        "id": "12-g4",
+        "textId": "12-04",
+        "no": 4,
+        "cn": "趋向补语的引申用法（3）",
+        "en": "Extended Use of the Complement of Direction (3)",
+        "note": "趋向补语“下来”用在动词后，表示完成一个费时、费力、需要克服一定困难的动作行为。",
+        "noteEn": "The complement of direction “下来” is used after a verb to indicate the completion of an action requiring considerable time, effort, or the overcoming of difficulties.",
+        "practice": null,
+        "items": [
+          {
+            "c": "这一年多住下来，我还是更喜欢北京的四季。",
+            "en": "After living here for over a year, I still prefer Beijing's four seasons."
+          },
+          {
+            "c": "这半年练下来，他画画的水平提高了不少。",
+            "en": "After half a year of practice, his painting has improved a lot."
+          },
+          {
+            "c": "5000米的长跑比赛，没想到我跑下来了。",
+            "en": "I never thought I could finish the 5,000-meter race."
+          }
+        ]
+      },
+      {
+        "id": "12-g5",
+        "textId": "12-04",
+        "no": 5,
+        "cn": "小语助力“不A不B”",
+        "en": "“不A不B”",
+        "note": "“不A不B”表示某个状态介于A和B之间，既不是A，也不是B，表达适中的程度。常用的有：不大不小、不多不少、不胖不瘦、不冷不热等。",
+        "noteEn": "“不A不B” indicates a state between A and B (neither A nor B), expressing a moderate degree. Common examples are 不大不小, 不多不少, 不胖不瘦, 不冷不热, and so on.",
+        "practice": null,
+        "items": [
+          {
+            "c": "北京的春天最舒服，天气不冷不热。",
+            "en": "Spring in Beijing is the most pleasant—it's neither too cold nor too hot."
+          },
+          {
+            "c": "这雨伞不大不小，可以放在书包里。",
+            "en": "This umbrella is neither too big nor too small—it fits in a schoolbag."
           }
         ]
       }

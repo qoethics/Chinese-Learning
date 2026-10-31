@@ -1,5 +1,5 @@
 // HSK3 lesson texts. Read-only at runtime.
-// Source: hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson8.json + hsk3/data/lesson9.json + hsk3/data/lesson10.json + hsk3/data/lesson11.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
+// Source: hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson8.json + hsk3/data/lesson9.json + hsk3/data/lesson10.json + hsk3/data/lesson11.json + hsk3/data/lesson12.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
 // Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).
 // Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);
 // each point carries a textId so renderTextList can show it under its own text.
@@ -6463,6 +6463,607 @@ window.COURSE_LESSONS = [
           }
         ],
         "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-11/11-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L12 · 这个季节天气变化很快",
+    "id": "12",
+    "core": [
+      {
+        "hanzi": "街",
+        "en": "street"
+      },
+      {
+        "hanzi": "开花",
+        "en": "bloom"
+      },
+      {
+        "hanzi": "公园",
+        "en": "park"
+      },
+      {
+        "hanzi": "船",
+        "en": "boat"
+      },
+      {
+        "hanzi": "工作日",
+        "en": "weekday"
+      },
+      {
+        "hanzi": "地方",
+        "en": "place"
+      },
+      {
+        "hanzi": "刚才",
+        "en": "a moment ago; just now"
+      },
+      {
+        "hanzi": "刮",
+        "en": "(of wind) blow"
+      },
+      {
+        "hanzi": "风",
+        "en": "wind"
+      },
+      {
+        "hanzi": "新闻",
+        "en": "news"
+      },
+      {
+        "hanzi": "伞",
+        "en": "umbrella"
+      },
+      {
+        "hanzi": "借",
+        "en": "lend"
+      },
+      {
+        "hanzi": "把",
+        "en": "for sth with a handle, or with its legs parted, etc."
+      },
+      {
+        "hanzi": "雨衣",
+        "en": "raincoat"
+      },
+      {
+        "hanzi": "变",
+        "en": "change"
+      },
+      {
+        "hanzi": "季节",
+        "en": "season"
+      },
+      {
+        "hanzi": "变化",
+        "en": "change; variation"
+      },
+      {
+        "hanzi": "冬天",
+        "en": "winter"
+      },
+      {
+        "hanzi": "常常",
+        "en": "often"
+      },
+      {
+        "hanzi": "关注",
+        "en": "pay close attention"
+      },
+      {
+        "hanzi": "四季",
+        "en": "four seasons"
+      },
+      {
+        "hanzi": "春天",
+        "en": "spring"
+      },
+      {
+        "hanzi": "夏天",
+        "en": "summer"
+      },
+      {
+        "hanzi": "凉快",
+        "en": "comfortably cool"
+      },
+      {
+        "hanzi": "秋天",
+        "en": "autumn"
+      },
+      {
+        "hanzi": "叶子",
+        "en": "leaf"
+      },
+      {
+        "hanzi": "变成",
+        "en": "become"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "12-01",
+        "title": {
+          "cn": "在街上边聊边走",
+          "en": "Chatting while walking on the street",
+          "emoji": "🌳"
+        },
+        "intro": {
+          "cn": "在街上，王一飞和白家月边走边聊。",
+          "en": "On the street, Wang Yifei and Bai Jiayue were chatting while walking."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-12/12-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "这条街的环境怎么样？",
+            "options": [
+              "人很多",
+              "树很少",
+              "树都开花了"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "她们今天为什么不去公园？",
+            "options": [
+              "今天天气不好",
+              "今天是工作日",
+              "王老师没时间"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "王老师，您看，这条街上的树都开花了。",
+            "en": "Ms. Wang, look! The trees along this street are in bloom."
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "上周我去公园坐船了，公园里的花也开了。",
+            "en": "Last week, I went boating in the park—the flowers there were blooming, too."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "天气这么好，下午我也想去公园坐船。",
+            "en": "The weather is so nice. I'd like to go boating in the park this afternoon."
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "去吧！今天是工作日，人应该不多。",
+            "en": "Go ahead! It's a weekday, so there probably won't be many people."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "您有时间吗？我想跟您一起去。",
+            "en": "Do you have time? I'd like to go with you."
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "我今天下午有课，不能去太远的地方。",
+            "en": "I have classes this afternoon, so I can't go too far."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "那咱们换一天去？",
+            "en": "Then shall we go another day？"
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "行。或者明天去，或者后天去，我给你打电话。",
+            "en": "Sure—either tomorrow or the day after. I'll give you a call."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "上周王一飞去公园做什么了？"
+          },
+          {
+            "q": "白家月今天想做什么？"
+          },
+          {
+            "q": "她们可能什么时候去公园？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "街",
+            "pos": "n.",
+            "en": "street"
+          },
+          {
+            "cn": "开花",
+            "pos": "v.",
+            "en": "bloom"
+          },
+          {
+            "cn": "公园",
+            "pos": "n.",
+            "en": "park"
+          },
+          {
+            "cn": "船",
+            "pos": "n.",
+            "en": "boat"
+          },
+          {
+            "cn": "工作日",
+            "pos": "n.",
+            "en": "weekday"
+          },
+          {
+            "cn": "地方",
+            "pos": "n.",
+            "en": "place"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-12/12-2.mp3"
+      },
+      {
+        "id": "12-02",
+        "title": {
+          "cn": "在街上散步",
+          "en": "Taking a walk on the street",
+          "emoji": "🌬️"
+        },
+        "intro": {
+          "cn": "在街上，王一飞和白家月一起散步。",
+          "en": "On the street, Wang Yifei and Bai Jiayue were taking a walk together."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-12/12-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "新闻里说今天会是什么天气？",
+            "options": [
+              "晴天",
+              "下雪",
+              "下雨"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "这个季节的天气是什么样的？",
+            "options": [
+              "变化很快",
+              "经常下雨",
+              "每天晴天"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "刚才还是大晴天呢，怎么突然就刮起风来了？",
+            "en": "It was sunny just a moment ago. How did it suddenly get so windy？"
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "好像新闻里说今天有雨。",
+            "en": "I think the news said it's going to rain today."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "啊？我每天书包里都放着雨伞，就今天没带。",
+            "en": "Really? I usually keep an umbrella in my bag, but I didn't bring it today."
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "我可以借给你，我车里有一把伞和一件雨衣。",
+            "en": "I can lend you one—I have both an umbrella and a raincoat in my car."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "谢谢，希望下午天气能变好。",
+            "en": "Thanks! I hope the weather clears up this afternoon."
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "这个季节天气变化很快。",
+            "en": "The weather changes quickly at this time of year."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "雨已经下起来了，咱们快点儿走吧。",
+            "en": "It's already starting to rain—let's hurry and go."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "白家月今天带雨伞了吗？"
+          },
+          {
+            "q": "王一飞可以借给白家月什么？"
+          },
+          {
+            "q": "她们现在要做什么？为什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "刚才",
+            "pos": "n.",
+            "en": "a moment ago; just now"
+          },
+          {
+            "cn": "刮",
+            "pos": "v.",
+            "en": "(of wind) blow"
+          },
+          {
+            "cn": "风",
+            "pos": "n.",
+            "en": "wind"
+          },
+          {
+            "cn": "新闻",
+            "pos": "n.",
+            "en": "news"
+          },
+          {
+            "cn": "伞",
+            "pos": "n.",
+            "en": "umbrella"
+          },
+          {
+            "cn": "借",
+            "pos": "v.",
+            "en": "lend"
+          },
+          {
+            "cn": "把",
+            "pos": "m.",
+            "en": "for sth with a handle, or with its legs parted, etc."
+          },
+          {
+            "cn": "雨衣",
+            "pos": "n.",
+            "en": "raincoat"
+          },
+          {
+            "cn": "变",
+            "pos": "v.",
+            "en": "change"
+          },
+          {
+            "cn": "季节",
+            "pos": "n.",
+            "en": "season"
+          },
+          {
+            "cn": "变化",
+            "pos": "v./n.",
+            "en": "change; variation"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-12/12-4.mp3"
+      },
+      {
+        "id": "12-03",
+        "title": {
+          "cn": "在教室里躲雨",
+          "en": "Taking shelter from the rain in the classroom",
+          "emoji": "🌧️"
+        },
+        "intro": {
+          "cn": "在教室里，王一飞和白家月躲雨。",
+          "en": "In the classroom, Wang Yifei and Bai Jiayue were taking shelter from the rain."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-12/12-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一飞来这里多长时间了？",
+            "options": [
+              "一年多了",
+              "两年多了",
+              "好多年了"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "白家月是怎么知道今年很多地方都下雪少的？",
+            "options": [
+              "看新闻",
+              "问王老师",
+              "听朋友说"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "您来这里已经一年多了，习惯了吧？",
+            "en": "You've been here for over a year now—have you gotten used to it？"
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "别的早就习惯了，就是天气我还不太习惯。",
+            "en": "I've gotten used to most things, but I'm still not quite used to the weather."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "为什么？您不喜欢这里的天气吗？",
+            "en": "Why? Don't you like the weather here？"
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "我觉得冬天太冷了。",
+            "en": "I think the winters are too cold."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "冬天虽然冷，但是下雪的时候特别漂亮。",
+            "en": "Winter may be cold, but it's especially beautiful when it snows."
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "我也喜欢雪。北京常常下雪，但听说今年就下了一次。",
+            "en": "I like snow too. It usually snows often in Beijing, but I heard it only snowed once this year."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我没关注过北京的天气，但是新闻里说过，今年冬天很多地方雪下得都少了。",
+            "en": "I haven't kept up with Beijing's weather, but the news said that many places have had less snow this winter."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "王一飞对什么还不太习惯？"
+          },
+          {
+            "q": "白家月为什么喜欢冬天？"
+          },
+          {
+            "q": "新闻里说过什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "冬天",
+            "pos": "n.",
+            "en": "winter"
+          },
+          {
+            "cn": "常常",
+            "pos": "adv.",
+            "en": "often"
+          },
+          {
+            "cn": "关注",
+            "pos": "v.",
+            "en": "pay close attention"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-12/12-6.mp3"
+      },
+      {
+        "id": "12-04",
+        "title": {
+          "cn": "在家里写日记",
+          "en": "Writing a diary at home",
+          "emoji": "📖"
+        },
+        "intro": {
+          "cn": "在家里，王一飞在写日记。",
+          "en": "At home, Wang Yifei was writing in her diary."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-12/12-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一飞喜欢哪个城市的四季？",
+            "options": [
+              "北京",
+              "她工作的地方",
+              "没有冬天的城市"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "王一飞觉得北京哪个季节最舒服？",
+            "options": [
+              "春天",
+              "夏天",
+              "秋天"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "我离开北京到这里工作一年多了。",
+            "en": "It's been over a year since I left Beijing to work here."
+          },
+          {
+            "speaker": "",
+            "cn": "这一年多住下来，我还是更喜欢北京的四季。",
+            "en": "After living here for over a year, I still prefer Beijing's four seasons."
+          },
+          {
+            "speaker": "",
+            "cn": "北京的春天最舒服，天气不冷不热。",
+            "en": "Spring in Beijing is the most pleasant—it's neither too cold nor too hot."
+          },
+          {
+            "speaker": "",
+            "cn": "夏天白天很热，但是晚上比较凉快。",
+            "en": "Summer days are very hot, but the evenings are fairly cool."
+          },
+          {
+            "speaker": "",
+            "cn": "秋天树上的叶子都变成了红色、黄色，非常漂亮。",
+            "en": "In autumn, the leaves on the trees all turn red and yellow—it's very beautiful."
+          },
+          {
+            "speaker": "",
+            "cn": "冬天不但冷，而且风很大，我最不喜欢冬天。",
+            "en": "Winter is not only cold but also very windy—it's my least favorite season."
+          },
+          {
+            "speaker": "",
+            "cn": "每个人都有自己最喜欢的季节，你最喜欢哪个季节呢？",
+            "en": "Everyone has their own favorite season—which one do you like the most？"
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "北京的夏天是什么样的？"
+          },
+          {
+            "q": "北京的秋天是什么样的？"
+          },
+          {
+            "q": "王一飞为什么最不喜欢冬天？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "四季",
+            "pos": "n.",
+            "en": "four seasons"
+          },
+          {
+            "cn": "春天",
+            "pos": "n.",
+            "en": "spring"
+          },
+          {
+            "cn": "夏天",
+            "pos": "n.",
+            "en": "summer"
+          },
+          {
+            "cn": "凉快",
+            "pos": "adj.",
+            "en": "comfortably cool"
+          },
+          {
+            "cn": "秋天",
+            "pos": "n.",
+            "en": "autumn"
+          },
+          {
+            "cn": "叶子",
+            "pos": "n.",
+            "en": "leaf"
+          },
+          {
+            "cn": "变成",
+            "pos": "v.",
+            "en": "become"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-12/12-8.mp3"
       }
     ]
   },
