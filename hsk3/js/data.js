@@ -8988,26 +8988,31 @@ window.COURSE_LESSONS = [
           },
           {
             "speaker": "服务员",
-            "cn": "已经一年多了。第一天看见它的时候，它又脏又小。现在它变得又干净又漂亮了。",
-            "en": "Over a year now. When we first found it, it was dirty and tiny. Now it's so clean and beautiful!"
+            "cn": "已经一年多了。第一天看见它的时候，它又脏又小。",
+            "en": "Over a year now. When we first found it, it was dirty and tiny."
           },
           {
             "speaker": "刘小雪",
+            "cn": "现在它变得又干净又漂亮了。",
+            "en": "Now it's so clean and beautiful!"
+          },
+          {
+            "speaker": "服务员",
             "cn": "是啊。它还特别可爱，一会儿在你脚边睡觉，一会儿在你身上爬。",
             "en": "Exactly! It's also super cute—sometimes it sleeps by your feet, and sometimes it climbs all over you."
           },
           {
-            "speaker": "服务员",
+            "speaker": "刘小雪",
             "cn": "你们把它照顾得真好。",
             "en": "You've really taken great care of it."
           },
           {
-            "speaker": "刘小雪",
+            "speaker": "服务员",
             "cn": "它就好像我们的孩子，我们照顾它，它也认得我们了。",
             "en": "It feels like it's our own child. We take care of it, and now it knows us."
           },
           {
-            "speaker": "服务员",
+            "speaker": "刘小雪",
             "cn": "妈妈，我们家也养一只小猫吧。",
             "en": "Mom, can we get a kitten?"
           },
