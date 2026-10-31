@@ -11,13 +11,13 @@
     "../shared/js/app.js"
   ],
   "globals": {
-    "hsk3/data/lesson1.json": "★真源（手写，直接改）：Lesson 1 全部内容（课文/生词/语法点/practice/exercises），无 tip",
-    "hsk3/data/lesson13.json": "★真源（手写，直接改）：Lesson 13 全部内容（课文/生词/语法点/tip）",
-    "hsk3/data/lesson14.json": "★真源（手写，直接改）：Lesson 14 全部内容（课文/生词/语法点/exercises，无 tip）",
-    "hsk3/data/lesson15.json": "★真源（手写，直接改）：Lesson 15 全部内容（课文/生词/语法点/exercises，无 tip）",
-    "hsk3/data/lesson16.json": "★真源（手写，直接改）：Lesson 16 全部内容（课文/生词/语法点/exercises，含 1 个 tip）",
-    "hsk3/data/lesson17.json": "★真源（手写，直接改）：Lesson 17 全部内容（课文/生词/语法点/exercises，无 tip）",
-    "hsk3/data/lesson18.json": "★真源（手写，直接改）：Lesson 18 全部内容（课文/生词/语法点/exercises，无 tip）",
+    "hsk3/data/lesson1.json": "★真源（手写，直接改）：Lesson 1 全部内容（课文/生词/语法点/practice/exercises，tips 为空数组）",
+    "hsk3/data/lesson13.json": "★真源（手写，直接改）：Lesson 13 全部内容（课文/生词/语法点/tips）",
+    "hsk3/data/lesson14.json": "★真源（手写，直接改）：Lesson 14 全部内容（课文/生词/语法点/exercises，tips 为空数组）",
+    "hsk3/data/lesson15.json": "★真源（手写，直接改）：Lesson 15 全部内容（课文/生词/语法点/exercises，tips 为空数组）",
+    "hsk3/data/lesson16.json": "★真源（手写，直接改）：Lesson 16 全部内容（课文/生词/语法点/exercises，2 个小语助力：十万个为什么 / 又）",
+    "hsk3/data/lesson17.json": "★真源（手写，直接改）：Lesson 17 全部内容（课文/生词/语法点/exercises，tips 为空数组）",
+    "hsk3/data/lesson18.json": "★真源（手写，直接改）：Lesson 18 全部内容（课文/生词/语法点/exercises，tips 为空数组）",
     "hsk3/js/data.js": "window.COURSE_LESSONS（别名 window.HSK3_LESSONS）— 由 lessonNN.json 生成，按课号升序排列（L1 在前，L13 在后）；索引 i 对应 setLesson(i+1)",
     "hsk3/data/sentences/grammar-sentences.js": "window.SENTENCE_CORPUS（别名 window.GRAMMAR_SENTENCES）— 由 lessonNN.json 生成，每课一项，key=课 id",
     "hsk3/data/audio-segments.js": "window.TEXT_AUDIO_SEGMENTS — 每篇课文的分句时间点 { textId: [{line,start,end,cn}] }，由播放器「✂ A/B」+「⇩ 导出时间点」下载后覆盖到这里（工具产物，不是 lessonNN.json 生成的；文件名与 hsk2 一致）",
@@ -29,7 +29,7 @@
   },
   "contentStatus": {
     "texts": "ACTIVE — Lesson 1（pp.1–9）、Lesson 13（pp.116–124）与 Lesson 14（pp.124–132）与 Lesson 15（pp.133–141）、Lesson 16（pp.144–153）、Lesson 17（pp.154–162）、Lesson 18（pp.163–171），各 4 段（Text 1–4）；含 speaker/intro/questions/postQuestions/words(pos)/audio/wordAudio。课文英文用课本自带的《课文英文翻译》（book p.183 起 = PDF index 194 起）",
-    "grammar": "ACTIVE — L1 3 个语法点（无 tip）；L13 3 个 + 1 个小语助力（tip），共 4 个；L14 3 个；L15 4 个；L16 4 个 + 1 个小语助力（tip）；L17 4 个；L18 4 个。每个点带 textId 归属到课文",
+    "grammar": "ACTIVE — L1 3 个语法点；L13 3 个 + 1 个小语助力，共 4 个；L14 3 个；L15 4 个；L16 4 个 + 2 个小语助力，共 6 个；L17 4 个；L18 4 个。语法点在 lessonNN.json 里分两个数组：grammar[]（小语讲堂）+ tips[]（小语助力，数量不限，渲染顺序追加在 grammar 之后）。每个点带 textId 归属到课文",
     "coreVocab": "ACTIVE — 每课的生词表合并去重（L1 27 词 / L13 28 词 / L14 27 词 / L15 26 词 / L16 26 词 / L17 27 词 / L18 29 词；汉字 + 英文，无拼音）",
     "exercises": "未渲染 — lessonNN.json 中有 exercises 数据，但按要求不在页面显示"
   },
@@ -45,9 +45,9 @@
     "summary": "以 Lesson 19 为例（Lesson 18 已完成为最新，可作模板）。真源只是 lessonNN.json 一个文件，加课 = 加一个 lessonNN.json + 重新生成两个 .js。",
     "steps": [
       "1. 定位 PDF 页码：书页 N 对应 PDF index N+11（index 127 → 书页 116；Lesson 1 在 index 12–20，Lesson 13 在 127–135，Lesson 14 在 135–143，Lesson 15 在 144–154）。目录页在 index 9–11，先用它确认每课起止。用 hsk3/tools/ocr-pdf.swift（见 tools）：输出每行带 x 前缀，左栏 0.10/0.17 是对话、右栏 0.47–0.70 是生词表，单栏页整页顺序读。课文英文从书末《课文英文翻译》抄（book p.183 起 = index 194 起）。",
-      "2. 新建 hsk3/data/lessonNN.json：字段照 lesson1.json / lesson13.json —— lesson/key/name/titleCn/titleEn + texts[] + grammar[] + tip（没有小语助力就写 null）+ exercises",
+      "2. 新建 hsk3/data/lessonNN.json：字段照 lesson1.json / lesson13.json —— lesson/key/name/titleCn/titleEn + texts[] + grammar[] + tips[]（数组；没有小语助力就写 []）+ exercises",
       "3. texts[] 每条：id（NN-01…）、title{cn,en,emoji}、intro{cn,en}、audio、wordAudio、questions[]（type/q/options/answer）、postQuestions[]、lines[{speaker,cn,en}]（长段落按「。！？」一句一行，每句都要 en）、words[{cn,pos,en}]",
-      "4. grammar[] 每条：id（NN-g1…）、no、cn、en、note、noteEn、items[{c,en}]、textId（归属到哪篇课文）、practice（可选）；tip 结构同 grammar，textId 照旧",
+      "4. grammar[] 每条：id（NN-g1…）、no、cn、en、note、noteEn、items[{c,en}]、textId（归属到哪篇课文）、practice（可选）；tips[] 结构同 grammar（no 接着 grammar 往下编），textId 照旧",
       "5. 音频：按 audioRules.pairing 填 audio（奇数）/wordAudio（偶数），NN 两位数（lesson-14/14-1.mp3）",
       "6. 重新生成 js/data.js 与 data/sentences/grammar-sentences.js（见 commonTasks.重新生成 JS）",
       "7. hsk3/index.html 的 <title> 只用通用名（「HSK 3 综合练习」）；lessonLabel 由 shared/js/app.js 的 setLesson() 用 data.name 覆盖，占位写第一课即可。多课要同时在 data.js 的 COURSE_LESSONS 里都有（每课 id 与语料 key 一致）；侧边栏课程列表由 buildLessonMenu() 自动按 LESSONS 生成",
@@ -58,7 +58,7 @@
   "findings": {
     "textIdScope": "语法点靠 textId 挂到课文下；修改课文 id 必须同步改 grammar[].textId",
     "namesFixed": "OCR 常见误读已在数据中修正：王一雪（非王一季）、刘小明（第 3 篇，非刘明）",
-    "tipSlots": "lessonNN.json 只有 1 个 tip 槽位：L16 书上有两处小语助力（Text 2“十万个为什么”、p.152“又”），只录了前一处；“又”未录入",
+    "tipSlots": "小语助力用 tips[] 数组，数量不限：生成器把 grammar[] 与 tips[] 顺序拼成 points，app.js 不区分两者，多条自动全部显示。旧的单数 tip 字段已废弃（2026-10-31 起所有 lessonNN.json 统一为 tips）",
     "exerciseBlanks": "综合练习的填空位置在 OCR 文本里看不见（下划线不识别）；L16 第 7、10 题与 L17 第 7 题的填空位置是按选项排除法填的。exercises 页面不渲染，影响面小",
     "pinyinDefault": "hsk3 的 Pinyin 开关默认关闭（hsk3/index.html 里 listPinyinToggle 不带 checked；app.js 的 showListPinyin 初值跟随该 checkbox）",
     "vocabPinyin": "生词表（课文自带 words 与「📖 单词」折叠区）始终显示拼音，不受 Pinyin 开关影响",
@@ -69,7 +69,7 @@
   },
   "commonTasks": {
     "改课文/生词/语法": "改 hsk3/data/lessonNN.json（真源），再重新生成两个 .js",
-    "重新生成 JS": "用 python 读 hsk3/data/lessonNN.json 后生成两个文件（无独立脚本，逻辑照此复现）：① hsk3/js/data.js = window.COURSE_LESSONS = [lesson…]（按课号升序），每课 lesson={name,id:key,core,extended:[],texts}，core 按 texts 顺序合并 words 去重（{hanzi:cn, en}），并加 window.HSK3_LESSONS 别名；② hsk3/data/sentences/grammar-sentences.js = window.SENTENCE_CORPUS，每课 {lesson,key,review:false,title:titleEn,titleCn,points}，points = grammar[] 后接 tip（tip 为 null 就跳过），每点固定带 textId/no/cn/en/note/noteEn/practice(默认[])/items，并加 window.GRAMMAR_SENTENCES 别名。两者都用 json.dumps(ensure_ascii=False, indent=2) 输出；文件头注释列出所有来源 json",
+    "重新生成 JS": "用 python 读 hsk3/data/lessonNN.json 后生成两个文件（无独立脚本，逻辑照此复现）：① hsk3/js/data.js = window.COURSE_LESSONS = [lesson…]（按课号升序），每课 lesson={name,id:key,core,extended:[],texts}，core 按 texts 顺序合并 words 去重（{hanzi:cn, en}），并加 window.HSK3_LESSONS 别名；② hsk3/data/sentences/grammar-sentences.js = window.SENTENCE_CORPUS，每课 {lesson,key,review:false,title:titleEn,titleCn,points}，points = grammar[] 后接 tips[]（按数组顺序全部追加），每点固定带 textId/no/cn/en/note/noteEn/practice(默认[])/items，并加 window.GRAMMAR_SENTENCES 别名。两者都用 json.dumps(ensure_ascii=False, indent=2) 输出；文件头注释列出所有来源 json",
     "改渲染逻辑": "shared/js/app.js（先 grep -n 定位，再只读目标 40-80 行）",
     "改样式": "shared/css/app.css"
   },
@@ -83,7 +83,7 @@
   ],
   "tools": {
     "ocr-pdf.swift": "macOS Vision OCR（不要再用 PDF 自带文本层，那是坏 OCR 层：“突出”→“宋出”、“俩经常”→“俪经”、说话人被写错）。编译：swiftc -O hsk3/tools/ocr-pdf.swift -o /tmp/ocr-pdf。用法：/tmp/ocr-pdf hsk3/hsk-course-3.pdf 135-143（页码是 0-based PDF index，接受 135 / 135,136 / 135-143）。输出为纯文本，每行前缀 `x` 是这一行在页面上的横向位置（0..1）：对话页左栏约 0.10–0.20（0.10 是说话人，0.17 是台词），右栏生词表约 0.47–0.70；语法/练习/课首/翻译附录是整栏，自上而下顺序读即可。**不要按固定比例切左右半页**：每页栏缝位置不同，切了必截字；用 x 前缀自己分组则零截断、零参数。行尾偶尔混入右栏残片（如台词行尾带 “used to indicate”），按行首 x 判断归属即可。遇到形近字（如“重叠”→“車叠”）再单独把该页转图核对。",
-    "gen-lesson-js.py": "从 hsk3/data/lessonNN.json 生成 hsk3/js/data.js 与 hsk3/data/sentences/grammar-sentences.js（按课号排序、core 按汉字去重、tip 非空才并进 points）。--check 只校验生成物是否最新。加课流程：新建 lessonNN.json → 跑本脚本 → 完事。"
+    "gen-lesson-js.py": "从 hsk3/data/lessonNN.json 生成 hsk3/js/data.js 与 hsk3/data/sentences/grammar-sentences.js（按课号排序、core 按汉字去重、tips[] 全部并进 points）。--check 只校验生成物是否最新。加课流程：新建 lessonNN.json → 跑本脚本 → 完事。"
   },
   "manifestNoteTools": "tools 只处理真源与生成物；改 tools/* 属数据管线改动，需用户同意。"
 }

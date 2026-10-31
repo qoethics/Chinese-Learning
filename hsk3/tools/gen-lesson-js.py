@@ -12,7 +12,7 @@
      另写 window.HSK3_LESSONS 别名
   2. hsk3/data/sentences/grammar-sentences.js
      window.SENTENCE_CORPUS = [{lesson, key, review:false, title, titleCn, points}]
-     points = grammar[] + tip（tip 为 null 就不加）
+     points = grammar[] + tips[]（小语助力可以有多条，顺序追加在 grammar 后面）
      另写 window.GRAMMAR_SENTENCES 别名
 
 不要手改上面两个 .js。改完 lessonNN.json 就跑这个脚本。
@@ -60,7 +60,7 @@ def check_lesson(path, data):
                 problems.append(f"{path.name} {t['id']} line {i}: cn 为空")
             if not line.get("en"):
                 problems.append(f"{path.name} {t['id']} line {i}: en 为空（可接受，但会缺译文）")
-    for g in data["grammar"] + ([data["tip"]] if data.get("tip") else []):
+    for g in data["grammar"] + data.get("tips", []):
         if g.get("textId") not in text_ids:
             problems.append(f"{path.name} {g['id']}: textId {g.get('textId')} 不在 texts 里")
     return problems
@@ -86,7 +86,7 @@ def build(data_lessons):
         })
 
         points = []
-        for point in data["grammar"] + ([data["tip"]] if data.get("tip") else []):
+        for point in data["grammar"] + data.get("tips", []):
             points.append({
                 "id": point["id"],
                 "textId": point["textId"],
@@ -169,7 +169,7 @@ def main():
 
     for data in data_lessons:
         texts = sum(len(t["lines"]) for t in data["texts"])
-        points = len(data["grammar"]) + (1 if data.get("tip") else 0)
+        points = len(data["grammar"]) + len(data.get("tips", []))
         print(f"  L{data['lesson']}: {len(data['texts'])} texts / {texts} lines / {points} grammar points")
 
     if warnings:

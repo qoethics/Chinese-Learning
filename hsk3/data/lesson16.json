@@ -654,21 +654,38 @@
       ]
     }
   ],
-  "tip": {
-    "id": "16-g5",
-    "textId": "16-02",
-    "no": 5,
-    "cn": "小语助力“十万个为什么”",
-    "en": "“One Hundred Thousand Whys”",
-    "note": "“十万个为什么”源于中国很受欢迎的少儿科普读物《十万个为什么》，常用来形容孩子充满好奇心，有时以开玩笑的口吻形容对方问题多。",
-    "noteEn": "The term “One Hundred Thousand Whys” originates from a best-selling Chinese children's popular science book series of the same name. It is often used to describe curious children, and sometimes jokingly used to tease someone for asking too many questions.",
-    "items": [
-      {
-        "c": "弟弟，你真是“十万个为什么”！",
-        "en": "Little brother, you're like a walking “One Hundred Thousand Whys”!"
-      }
-    ]
-  },
+  "tips": [
+    {
+      "id": "16-g5",
+      "textId": "16-02",
+      "no": 5,
+      "cn": "小语助力“十万个为什么”",
+      "en": "“One Hundred Thousand Whys”",
+      "note": "“十万个为什么”源于中国很受欢迎的少儿科普读物《十万个为什么》，常用来形容孩子充满好奇心，有时以开玩笑的口吻形容对方问题多。",
+      "noteEn": "The term “One Hundred Thousand Whys” originates from a best-selling Chinese children's popular science book series of the same name. It is often used to describe curious children, and sometimes jokingly used to tease someone for asking too many questions.",
+      "items": [
+        {
+          "c": "弟弟，你真是“十万个为什么”！",
+          "en": "Little brother, you're like a walking “One Hundred Thousand Whys”!"
+        }
+      ]
+    },
+    {
+      "id": "16-g6",
+      "textId": "16-02",
+      "no": 6,
+      "cn": "小语助力“又”",
+      "en": "“又”",
+      "note": "“又”表示又一次，后面的动词是重复的动作。",
+      "noteEn": "“又” indicates “once again”, signifying that an action has been repeated.",
+      "items": [
+        {
+          "c": "你怎么又去动物园了？",
+          "en": "Why did you go to the zoo again?"
+        }
+      ]
+    }
+  ],
   "exercises": {
     "fillInTheBlank": {
       "group1": {

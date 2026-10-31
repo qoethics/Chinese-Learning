@@ -611,29 +611,31 @@
       ]
     }
   ],
-  "tip": {
-    "id": "13-g4",
-    "textId": "13-03",
-    "no": 4,
-    "cn": "前缀、后缀",
-    "en": "Prefixes and Suffixes",
-    "note": "在汉语里，有一些语素可以作为“前缀”或“后缀”来组成新词，这些新词的意思和原来的语素有关系。",
-    "noteEn": "In Chinese, some morphemes can function as prefixes or suffixes to form new words whose meanings are semantically linked to the original morphemes.",
-    "items": [
-      {
-        "c": "前缀“老”放在人的前面，表示这个人年龄大或很有经验：老张、老师。",
-        "en": "The prefix 老, when placed before a person's surname or title, indicates that the person is older or highly experienced, such as 老张 or 老师."
-      },
-      {
-        "c": "后缀“员”表示从事某种工作或有某种身份的人：球员、服务员、运动员。",
-        "en": "The suffix 员 indicates a person with a specific job or role, such as 球员, 服务员 or 运动员."
-      },
-      {
-        "c": "后缀“家”表示在某一领域有专长或成就的人：画家、音乐家。",
-        "en": "The suffix 家 indicates a person with expertise or outstanding achievement in a specific field, such as 画家 or 音乐家."
-      }
-    ]
-  },
+  "tips": [
+    {
+      "id": "13-g4",
+      "textId": "13-03",
+      "no": 4,
+      "cn": "前缀、后缀",
+      "en": "Prefixes and Suffixes",
+      "note": "在汉语里，有一些语素可以作为“前缀”或“后缀”来组成新词，这些新词的意思和原来的语素有关系。",
+      "noteEn": "In Chinese, some morphemes can function as prefixes or suffixes to form new words whose meanings are semantically linked to the original morphemes.",
+      "items": [
+        {
+          "c": "前缀“老”放在人的前面，表示这个人年龄大或很有经验：老张、老师。",
+          "en": "The prefix 老, when placed before a person's surname or title, indicates that the person is older or highly experienced, such as 老张 or 老师."
+        },
+        {
+          "c": "后缀“员”表示从事某种工作或有某种身份的人：球员、服务员、运动员。",
+          "en": "The suffix 员 indicates a person with a specific job or role, such as 球员, 服务员 or 运动员."
+        },
+        {
+          "c": "后缀“家”表示在某一领域有专长或成就的人：画家、音乐家。",
+          "en": "The suffix 家 indicates a person with expertise or outstanding achievement in a specific field, such as 画家 or 音乐家."
+        }
+      ]
+    }
+  ],
   "exercises": {
     "fillInTheBlank": {
       "group1": {

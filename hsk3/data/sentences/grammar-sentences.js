@@ -813,6 +813,22 @@ window.SENTENCE_CORPUS = [
             "en": "Little brother, you're like a walking “One Hundred Thousand Whys”!"
           }
         ]
+      },
+      {
+        "id": "16-g6",
+        "textId": "16-02",
+        "no": 6,
+        "cn": "小语助力“又”",
+        "en": "“又”",
+        "note": "“又”表示又一次，后面的动词是重复的动作。",
+        "noteEn": "“又” indicates “once again”, signifying that an action has been repeated.",
+        "practice": null,
+        "items": [
+          {
+            "c": "你怎么又去动物园了？",
+            "en": "Why did you go to the zoo again?"
+          }
+        ]
       }
     ]
   },
