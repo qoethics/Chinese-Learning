@@ -1,0 +1,742 @@
+{
+  "lesson": 3,
+  "key": "3",
+  "name": "L3 · 这个小区挺好的",
+  "titleCn": "这个小区挺好的",
+  "titleEn": "This neighborhood is pretty nice",
+  "texts": [
+    {
+      "id": "3-01",
+      "title": {
+        "cn": "聊换房子",
+        "en": "Talking about moving",
+        "emoji": "🏠"
+      },
+      "intro": {
+        "cn": "在家里，刘明和王一雪在聊天。",
+        "en": "At home, Liu Ming and Wang Yixue were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "王一雪和刘明想做什么？",
+          "options": [
+            "换房子",
+            "买空调",
+            "去女儿的初中"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "王一雪为什么不喜欢这个房子？",
+          "options": [
+            "房子太远",
+            "她不喜欢住一层",
+            "她不喜欢这个小区"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "王一雪",
+          "cn": "小雪的初中离家有点儿远，咱们换一个近点儿的房子吧。",
+          "en": "Since Xiaoxue's middle school is quite far from home, let's find a place to live that's closer."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "好啊，我上网看看。你觉得这个小区怎么样？",
+          "en": "Sounds good. I'll check online. What do you think about this neighborhood?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "环境挺好的，离地铁站还不远。",
+          "en": "The surroundings look quite nice, and it's not far from the subway station."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "房子里面也不错，空调和洗衣机都是新的。",
+          "en": "The inside of the apartment looks good, too. The air conditioner and washing machine are both new."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "是不错，但是我不喜欢住一层。",
+          "en": "It is nice, but I'm not a fan of living on the first floor."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "这个一层带一个小花园，我觉得咱们可以去看看。",
+          "en": "This first-floor unit has a small garden. I think we should go and take a look anyway."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "他们为什么要换房子？"
+        },
+        {
+          "q": "王一雪觉得新小区怎么样？"
+        },
+        {
+          "q": "刘明为什么喜欢这个房子？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "初中",
+          "pos": "n.",
+          "en": "middle school"
+        },
+        {
+          "cn": "咱们",
+          "pos": "pron.",
+          "en": "we; us"
+        },
+        {
+          "cn": "换",
+          "pos": "v.",
+          "en": "change"
+        },
+        {
+          "cn": "房子",
+          "pos": "n.",
+          "en": "house"
+        },
+        {
+          "cn": "小区",
+          "pos": "n.",
+          "en": "residential complex"
+        },
+        {
+          "cn": "环境",
+          "pos": "n.",
+          "en": "surroundings; environment"
+        },
+        {
+          "cn": "挺",
+          "pos": "adv.",
+          "en": "quite; very"
+        },
+        {
+          "cn": "空调",
+          "pos": "n.",
+          "en": "air conditioner"
+        },
+        {
+          "cn": "洗衣机",
+          "pos": "n.",
+          "en": "washing machine"
+        },
+        {
+          "cn": "层",
+          "pos": "m.",
+          "en": "floor"
+        },
+        {
+          "cn": "花园",
+          "pos": "n.",
+          "en": "garden"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-2.mp3"
+    },
+    {
+      "id": "3-02",
+      "title": {
+        "cn": "新家里的麻烦",
+        "en": "Trouble at the new home",
+        "emoji": "💡"
+      },
+      "intro": {
+        "cn": "在新家，王一雪在收拾房间，刘明进来了。",
+        "en": "In their new home, Wang Yixue was tidying up the room when Liu Ming came in."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "灯为什么开着？",
+          "options": [
+            "灯坏了",
+            "是王一雪打开的",
+            "刘明走的时候忘关了"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "现在新家是什么样的？",
+          "options": [
+            "冰箱是旧的",
+            "洗衣机是坏的",
+            "卫生间没打扫好"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "王一雪",
+          "cn": "我今天早上来的时候，灯还开着。",
+          "en": "When I came in this morning, the lights were still on."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "我这几天忙坏了，可能走的时候忘关了。",
+          "en": "I've been swamped these days. I probably forgot to turn them off when I left."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "冰箱不能用，这些吃的东西放在哪儿？",
+          "en": "The fridge isn't working. Where should I put all this food?"
+        },
+        {
+          "speaker": "刘明",
+          "cn": "不可能吧？冰箱是新买的，我来看看。",
+          "en": "That's impossible! It's brand new. Let me take a look."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "洗衣机也坏了吗？",
+          "en": "Is the washing machine broken, too?"
+        },
+        {
+          "speaker": "刘明",
+          "cn": "没坏，但是卫生间没打扫好，还不能洗衣服。",
+          "en": "No, it's fine. But the bathroom hasn't been cleaned yet, so we can't do the laundry."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "星期天我们真的能搬家吗？",
+          "en": "Will we really be able to move this Sunday?"
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "他们家的冰箱怎么了？"
+        },
+        {
+          "q": "为什么不能洗衣服？"
+        },
+        {
+          "q": "你觉得星期天他们能不能搬家？为什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "灯",
+          "pos": "n.",
+          "en": "light"
+        },
+        {
+          "cn": "关",
+          "pos": "v.",
+          "en": "turn off"
+        },
+        {
+          "cn": "冰箱",
+          "pos": "n.",
+          "en": "refrigerator; fridge"
+        },
+        {
+          "cn": "卫生间",
+          "pos": "n.",
+          "en": "bathroom"
+        },
+        {
+          "cn": "打扫",
+          "pos": "v.",
+          "en": "clean"
+        },
+        {
+          "cn": "搬家",
+          "pos": "v.",
+          "en": "move (house)"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-4.mp3"
+    },
+    {
+      "id": "3-03",
+      "title": {
+        "cn": "聊办信用卡",
+        "en": "Talking about a credit card",
+        "emoji": "💳"
+      },
+      "intro": {
+        "cn": "在家里，刘明和王一雪在客厅聊天儿。",
+        "en": "At home, Liu Ming and Wang Yixue were chatting in the living room."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "王一雪和刘明为什么这个月花了不少钱？",
+          "options": [
+            "买衣服了",
+            "去饭店吃饭了",
+            "买了很多搬家要用的东西"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "王一雪想去中国银行做什么？",
+          "options": [
+            "买东西",
+            "还信用卡",
+            "办信用卡"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "王一雪",
+          "cn": "这个月花了不少钱。",
+          "en": "We've spent quite a lot of money this month."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "是的，我们买了很多搬家时要用的东西。",
+          "en": "Yes, we bought a lot of things for the move."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "咱们办张信用卡吧，花的钱可以慢慢还。听说中国银行的服务不错，办了信用卡买东西还能便宜。",
+          "en": "Let's get a credit card. That way, we can pay it off over time. I heard Bank of China offers good service, and we can even get discounts when shopping with their credit card."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "好啊！中国银行很近，走路几分钟就能到。咱们什么时候去？",
+          "en": "Great! There's a Bank of China branch nearby—just a few minutes' walk from here. When should we go?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "今天下午？",
+          "en": "How about this afternoon?"
+        },
+        {
+          "speaker": "刘明",
+          "cn": "我下午要去医院，很晚才能回来。",
+          "en": "I have to go to the hospital this afternoon. I probably won't be back until late."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "那我下午自己去吧。",
+          "en": "Then I'll go by myself this afternoon."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "王一雪为什么想办信用卡？"
+        },
+        {
+          "q": "王一雪想什么时候去银行？"
+        },
+        {
+          "q": "刘明为什么今天不能去银行？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "办",
+          "pos": "v.",
+          "en": "do; handle"
+        },
+        {
+          "cn": "信用卡",
+          "pos": "n.",
+          "en": "credit card"
+        },
+        {
+          "cn": "还",
+          "pos": "v.",
+          "en": "return"
+        },
+        {
+          "cn": "听说",
+          "pos": "v.",
+          "en": "hear about"
+        },
+        {
+          "cn": "银行",
+          "pos": "n.",
+          "en": "bank"
+        },
+        {
+          "cn": "才",
+          "pos": "adv.",
+          "en": "not until"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-6.mp3"
+    },
+    {
+      "id": "3-04",
+      "title": {
+        "cn": "讨论搬家计划",
+        "en": "Discussing the moving plan",
+        "emoji": "📦"
+      },
+      "intro": {
+        "cn": "在家里，刘明和王一雪讨论搬家计划。",
+        "en": "At home, Liu Ming and Wang Yixue were discussing their moving plans."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "刘明想什么时候搬家？",
+          "options": [
+            "明天",
+            "这个星期",
+            "下个星期"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "王一雪想什么时候搬家？",
+          "options": [
+            "这周",
+            "下周",
+            "下个月"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "刘明",
+          "cn": "我觉得这个星期就能搬家。我明天去买一些纸箱，很快就能准备好。搬家那天，我想请几位朋友来帮忙，最多一天就能搬完。",
+          "en": "I think we can move this week. I'll buy some cardboard boxes tomorrow, and we'll be ready in no time. On moving day, I'd like to ask a few friends to help. We can probably finish everything within a day."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "我觉得下个月才能搬家。这周开始准备，下周去打扫新家，这么多事情最少需要两个星期才能做完。搬家那天，我们应该找一家搬家公司。",
+          "en": "I don't think we can move until next month. We can start preparing this week and clean the new place next week. With so much to do, we'll need at least two weeks to get everything done. On moving day, we should hire a moving company."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "刘明明天去买什么？"
+        },
+        {
+          "q": "王一雪打算下周做什么？"
+        },
+        {
+          "q": "刘明打算找谁搬家？王一雪呢？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "纸",
+          "pos": "n.",
+          "en": "paper"
+        },
+        {
+          "cn": "搬",
+          "pos": "v.",
+          "en": "move"
+        },
+        {
+          "cn": "需要",
+          "pos": "v./n.",
+          "en": "need"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "3-g1",
+      "textId": "3-01",
+      "no": 1,
+      "cn": "程度副词“挺”",
+      "en": "Adverb of Degree “挺”",
+      "note": "程度副词“挺”用在形容词或心理动词前，表示程度较高，常用于口语中。基本结构：挺+形容词/心理动词+的。",
+      "noteEn": "The adverb of degree “挺” is used before adjectives or psychological verbs to indicate a relatively high degree. It is often used in colloquial speech. Basic structure: 挺+Adjective/Psychological Verb+的.",
+      "items": [
+        {
+          "c": "这个小区环境挺好的。",
+          "en": "The surroundings of this neighborhood are pretty nice."
+        },
+        {
+          "c": "这家饭馆的菜挺好吃的。",
+          "en": "The food at this restaurant is quite tasty."
+        },
+        {
+          "c": "买这个吧，我挺喜欢这个颜色的。",
+          "en": "Let's buy this one—I quite like the color."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "你爱游泳吗？",
+          "en": ""
+        },
+        {
+          "cn": "你的床舒服吗？",
+          "en": ""
+        },
+        {
+          "cn": "你觉得现在的天气怎么样？",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "3-g2",
+      "textId": "3-02",
+      "no": 2,
+      "cn": "程度补语（1）",
+      "en": "Complement of Degree (1)",
+      "note": "程度补语“坏了”用在形容词的后面，表示程度非常高，带有夸张的语气，常用在负面的情况中。",
+      "noteEn": "The complement of degree “坏了” is used after adjectives to indicate an extremely high degree, often with an exaggerated tone. It is typically used in negative situations.",
+      "items": [
+        {
+          "c": "我这几天忙坏了。",
+          "en": "I've been incredibly busy these past few days."
+        },
+        {
+          "c": "我渴坏了，哪里能买水？",
+          "en": "I'm dying of thirst—where can I buy water?"
+        },
+        {
+          "c": "这几天非常忙，大家都累坏了。",
+          "en": "These past few days have been really busy—everyone is exhausted."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "今天搬家，我和刘明都______。",
+          "en": ""
+        },
+        {
+          "cn": "我今天没吃午饭和晚饭，______。",
+          "en": ""
+        },
+        {
+          "cn": "房间里没有空调，我们都______。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "3-g3",
+      "textId": "3-03",
+      "no": 3,
+      "cn": "“就”和“才”",
+      "en": "Comparison of “就” and “才”",
+      "note": "副词“就”和“才”用在动词前面作状语，“就”表示说话人认为动作发生得早，进行得快、顺利；“才”表示说话人认为动作发生得晚，进行得慢、不顺利。",
+      "noteEn": "The adverbs “就” and “才” are used as adverbials before verbs. “就” indicates that the speaker perceives the action as happening early, or progressing quickly and smoothly, while “才” indicates that the speaker perceives the action as happening late, progressing slowly, or not going smoothly.",
+      "items": [
+        {
+          "c": "中国银行很近，走路几分钟就能到。",
+          "en": "Bank of China is close by—it's just a few minutes' walk."
+        },
+        {
+          "c": "我下午要去医院，很晚才能回来。",
+          "en": "I have to go to the hospital this afternoon, so I won't be back until late."
+        },
+        {
+          "c": "我早上五点就起床了。",
+          "en": "I got up at five in the morning."
+        },
+        {
+          "c": "坐火车去北京，五个小时才能到。",
+          "en": "Taking the train to Beijing, it takes five hours to get there."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：你昨天几点回的家？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        },
+        {
+          "cn": "A：这本书你是什么时候看完的？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        },
+        {
+          "cn": "A：你觉得搬家要准备多长时间？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        }
+      ]
+    }
+  ],
+  "tips": [],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "才",
+          "挺",
+          "办",
+          "关",
+          "还"
+        ],
+        "items": [
+          {
+            "cn": "你走的时候要______灯。",
+            "answer": "关"
+          },
+          {
+            "cn": "我要去银行______一张信用卡。",
+            "answer": "办"
+          },
+          {
+            "cn": "搬家要准备的东西______多的。",
+            "answer": "挺"
+          },
+          {
+            "cn": "这本书不是我的，明天我要______给朋友。",
+            "answer": "还"
+          },
+          {
+            "cn": "我太忙了，没时间打扫新家，可能下个月______搬家。",
+            "answer": "才"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "环境",
+          "需要",
+          "搬家",
+          "听说",
+          "打扫"
+        ],
+        "items": [
+          {
+            "cn": "A：你去哪儿了？怎么这么晚才回来？",
+            "answer": ""
+          },
+          {
+            "cn": "B：我一直在新家______，今天真是累坏了。",
+            "answer": "打扫"
+          },
+          {
+            "cn": "A：这个小区离学校有点儿远。",
+            "answer": ""
+          },
+          {
+            "cn": "B：虽然有点儿远，但是我们很喜欢这个小区的______。",
+            "answer": "环境"
+          },
+          {
+            "cn": "A：你知道她为什么不喜欢这个房子吗？",
+            "answer": ""
+          },
+          {
+            "cn": "B：我______她不喜欢住一层。",
+            "answer": "听说"
+          },
+          {
+            "cn": "A：这个小区明天不能______，你知道吗？",
+            "answer": "搬家"
+          },
+          {
+            "cn": "B：我知道，我已经告诉搬家公司的人了，他们下周一再来。",
+            "answer": ""
+          },
+          {
+            "cn": "A：她家真大，还有个大花园。",
+            "answer": ""
+          },
+          {
+            "cn": "B：因为她家人多，______一个大房子。",
+            "answer": "需要"
+          }
+        ]
+      }
+    },
+    "describePictures": [
+      {
+        "cn": "A：这个______很新，买东西方便吗？",
+        "en": ""
+      },
+      {
+        "cn": "B：______，一出门就有一个大超市。",
+        "en": ""
+      },
+      {
+        "cn": "A：那真的______。我也喜欢这里的环境，每家都有一个小花园。",
+        "en": ""
+      },
+      {
+        "cn": "B：是。后面的房子有两层，______再上去看看。",
+        "en": ""
+      },
+      {
+        "cn": "A：你知道______？",
+        "en": ""
+      },
+      {
+        "cn": "B：用护照就能办，你想在哪家银行办？",
+        "en": ""
+      },
+      {
+        "cn": "A：北京银行不错，今天下午我______。",
+        "en": ""
+      },
+      {
+        "cn": "B：我也听说______，咱们一起去吧。",
+        "en": ""
+      },
+      {
+        "cn": "A：你们已经______？",
+        "en": ""
+      },
+      {
+        "cn": "B：还没有，我们______也买了很多东西，每天都非常累。",
+        "en": ""
+      },
+      {
+        "cn": "A：我们什么时候去你的新家看看？",
+        "en": ""
+      },
+      {
+        "cn": "B：好啊，______就______，到时候来我家吃饭吧。",
+        "en": ""
+      }
+    ],
+    "classroomActivity": {
+      "cn": "多人活动",
+      "en": "Group Work",
+      "description": "三人一组，参考以下内容，分享一次你最难忘的搬家经历。",
+      "descriptionEn": "Work in groups of three. Refer to the prompts below and share your most unforgettable moving experience.",
+      "topics": [
+        {
+          "cn": "你为什么要搬家？"
+        },
+        {
+          "cn": "搬家前你准备了哪些东西？"
+        },
+        {
+          "cn": "你有没有请搬家公司？为什么？"
+        },
+        {
+          "cn": "搬家的时候遇到了什么问题？"
+        },
+        {
+          "cn": "搬进新家后，你觉得怎么样？"
+        }
+      ]
+    }
+  }
+}

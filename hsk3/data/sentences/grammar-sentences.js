@@ -1,5 +1,5 @@
-// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
-// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
+// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
+// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson2.json / hsk3/data/lesson3.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
 // Regenerate: python3 tools/gen-lesson-js.py hsk3
 window.SENTENCE_CORPUS = [
   {
@@ -137,6 +137,290 @@ window.SENTENCE_CORPUS = [
           {
             "c": "我那件新买的白色的衣服在哪儿？",
             "en": "Where is that white piece of clothing I just bought?"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 2,
+    "key": "2",
+    "review": false,
+    "title": "You can order whatever you feel like",
+    "titleCn": "你们想吃什么就点什么",
+    "points": [
+      {
+        "id": "2-g1",
+        "textId": "2-01",
+        "no": 1,
+        "cn": "并列复句“又……又……”",
+        "en": "Coordinate Complex Sentence “又……又……”",
+        "note": "并列复句“又……又……”与形容词搭配使用，表示人或者事物同时具有两个特点。基本结构：又+形容词1+又+形容词2。",
+        "noteEn": "The coordinate complex sentence “又……又……” is used before adjectives to indicate that a person or thing possesses two characteristics at the same time. Basic structure: 又+Adjective1+又+Adjective2.",
+        "practice": [
+          {
+            "cn": "他的新家很大，也很干净。→ ______",
+            "en": ""
+          },
+          {
+            "cn": "他写汉字写得很快，也很漂亮。→ ______",
+            "en": ""
+          },
+          {
+            "cn": "这个超市里的东西很多，也很便宜。→ ______",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "我现在还真是又饿又渴。",
+            "en": "I'm really hungry and thirsty right now."
+          },
+          {
+            "c": "那个女孩儿又高又漂亮。",
+            "en": "That girl is tall and pretty."
+          },
+          {
+            "c": "这个饭馆的菜又便宜又好吃。",
+            "en": "The food at this restaurant is both cheap and tasty."
+          }
+        ]
+      },
+      {
+        "id": "2-g2",
+        "textId": "2-02",
+        "no": 2,
+        "cn": "疑问代词的非疑问用法（2）",
+        "en": "Non-Interrogative Use of Interrogative Pronouns (2)",
+        "note": "疑问代词“哪、哪儿、什么、谁、怎么”等还可以用来表示任指，比如“谁”指任何一个人，“什么”指任何一件东西，句中常用副词“都”与之呼应。",
+        "noteEn": "Interrogative pronouns such as “哪”, “哪儿”, “什么”, “谁”, and “怎么” can also be used to express general reference. For example, “谁” refers to any person, while “什么” refers to any thing. The adverb “都” is often used in these sentences in combination with them.",
+        "practice": [
+          {
+            "cn": "我喜欢吃中国菜，也喜欢吃外国菜。（什么）→ ______",
+            "en": ""
+          },
+          {
+            "cn": "小李很会做饭，大家都喜欢吃他做的饭。（谁）→ ______",
+            "en": ""
+          },
+          {
+            "cn": "饭馆不太远，我们打车、坐公交车、走路去都可以。（怎么）→ ______",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "哪个菜都好吃。",
+            "en": "Every dish is delicious."
+          },
+          {
+            "c": "这次旅游，我去哪儿都可以。",
+            "en": "For this trip, I can go anywhere."
+          },
+          {
+            "c": "我下午有时间，你想什么时候来都没问题。",
+            "en": "I'm free this afternoon, so you can come whenever you like."
+          }
+        ]
+      },
+      {
+        "id": "2-g3",
+        "textId": "2-03",
+        "no": 3,
+        "cn": "疑问代词的非疑问用法（3）",
+        "en": "Non-Interrogative Use of Interrogative Pronouns (3)",
+        "note": "两个相同的疑问代词可以表示任指，前后呼应，指同一个人、同一件事、同一种方式、同一个时间、同一个地点等。当前后两个分句的主语相同时，后一分句的主语可以省略。当前后两个分句的主语不同时，第二个主语要放在“就”的前面。",
+        "noteEn": "Two identical interrogative pronouns can be used for general reference. They echo each other and refer to the same person, thing, manner, time, or place. When the subjects of the two clauses are the same, the subject of the second clause may be omitted. When the subjects are different, the second subject should be placed before “就”.",
+        "practice": [
+          {
+            "cn": "A：这是菜单，我们点什么？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：我们怎么去电影院？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：我什么时候去找你？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "你们想吃什么就点什么。",
+            "en": "Order whatever you feel like eating."
+          },
+          {
+            "c": "你觉得哪个好看就买哪个。",
+            "en": "Buy whichever one you think looks nice."
+          },
+          {
+            "c": "你想去哪儿，我们就去哪儿。",
+            "en": "Wherever you want to go, we'll go there."
+          }
+        ]
+      },
+      {
+        "id": "2-g4",
+        "textId": "2-03",
+        "no": 4,
+        "cn": "小语助力“上/下+量词”",
+        "en": "“上/下 + Measure Word”",
+        "note": "“上/下+量词”主要用来表示时间顺序，“上”表示过去，“下”表示将来。例如：上次/下次、上周/下周、上个月/下个月。",
+        "noteEn": "The structure “上/下+measure word” is mainly used to indicate time sequence, with “上” referring to past periods and “下” referring to future periods. For example: 上次 (last time) / 下次 (next time), 上个星期 (last week) / 下个星期 (next week), 上个月 (last month) / 下个月 (next month).",
+        "practice": null,
+        "items": [
+          {
+            "c": "上次、下次、上周、下周、上个月、下个月",
+            "en": "last time, next time, last week, next week, last month, next month"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 3,
+    "key": "3",
+    "review": false,
+    "title": "This neighborhood is pretty nice",
+    "titleCn": "这个小区挺好的",
+    "points": [
+      {
+        "id": "3-g1",
+        "textId": "3-01",
+        "no": 1,
+        "cn": "程度副词“挺”",
+        "en": "Adverb of Degree “挺”",
+        "note": "程度副词“挺”用在形容词或心理动词前，表示程度较高，常用于口语中。基本结构：挺+形容词/心理动词+的。",
+        "noteEn": "The adverb of degree “挺” is used before adjectives or psychological verbs to indicate a relatively high degree. It is often used in colloquial speech. Basic structure: 挺+Adjective/Psychological Verb+的.",
+        "practice": [
+          {
+            "cn": "你爱游泳吗？",
+            "en": ""
+          },
+          {
+            "cn": "你的床舒服吗？",
+            "en": ""
+          },
+          {
+            "cn": "你觉得现在的天气怎么样？",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "这个小区环境挺好的。",
+            "en": "The surroundings of this neighborhood are pretty nice."
+          },
+          {
+            "c": "这家饭馆的菜挺好吃的。",
+            "en": "The food at this restaurant is quite tasty."
+          },
+          {
+            "c": "买这个吧，我挺喜欢这个颜色的。",
+            "en": "Let's buy this one—I quite like the color."
+          }
+        ]
+      },
+      {
+        "id": "3-g2",
+        "textId": "3-02",
+        "no": 2,
+        "cn": "程度补语（1）",
+        "en": "Complement of Degree (1)",
+        "note": "程度补语“坏了”用在形容词的后面，表示程度非常高，带有夸张的语气，常用在负面的情况中。",
+        "noteEn": "The complement of degree “坏了” is used after adjectives to indicate an extremely high degree, often with an exaggerated tone. It is typically used in negative situations.",
+        "practice": [
+          {
+            "cn": "今天搬家，我和刘明都______。",
+            "en": ""
+          },
+          {
+            "cn": "我今天没吃午饭和晚饭，______。",
+            "en": ""
+          },
+          {
+            "cn": "房间里没有空调，我们都______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "我这几天忙坏了。",
+            "en": "I've been incredibly busy these past few days."
+          },
+          {
+            "c": "我渴坏了，哪里能买水？",
+            "en": "I'm dying of thirst—where can I buy water?"
+          },
+          {
+            "c": "这几天非常忙，大家都累坏了。",
+            "en": "These past few days have been really busy—everyone is exhausted."
+          }
+        ]
+      },
+      {
+        "id": "3-g3",
+        "textId": "3-03",
+        "no": 3,
+        "cn": "“就”和“才”",
+        "en": "Comparison of “就” and “才”",
+        "note": "副词“就”和“才”用在动词前面作状语，“就”表示说话人认为动作发生得早，进行得快、顺利；“才”表示说话人认为动作发生得晚，进行得慢、不顺利。",
+        "noteEn": "The adverbs “就” and “才” are used as adverbials before verbs. “就” indicates that the speaker perceives the action as happening early, or progressing quickly and smoothly, while “才” indicates that the speaker perceives the action as happening late, progressing slowly, or not going smoothly.",
+        "practice": [
+          {
+            "cn": "A：你昨天几点回的家？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：这本书你是什么时候看完的？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：你觉得搬家要准备多长时间？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "中国银行很近，走路几分钟就能到。",
+            "en": "Bank of China is close by—it's just a few minutes' walk."
+          },
+          {
+            "c": "我下午要去医院，很晚才能回来。",
+            "en": "I have to go to the hospital this afternoon, so I won't be back until late."
+          },
+          {
+            "c": "我早上五点就起床了。",
+            "en": "I got up at five in the morning."
+          },
+          {
+            "c": "坐火车去北京，五个小时才能到。",
+            "en": "Taking the train to Beijing, it takes five hours to get there."
           }
         ]
       }

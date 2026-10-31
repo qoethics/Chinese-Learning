@@ -12,6 +12,8 @@
   ],
   "globals": {
     "hsk3/data/lesson1.json": "★真源（手写，直接改）：Lesson 1 全部内容（课文/生词/语法点/practice/exercises，tips 为空数组）",
+    "hsk3/data/lesson2.json": "★真源（手写，直接改）：Lesson 2 全部内容（课文/生词/语法点/exercises，1 个小语助力）",
+    "hsk3/data/lesson3.json": "★真源（手写，直接改）：Lesson 3 全部内容（课文/生词/语法点/exercises，tips 为空数组）",
     "hsk3/data/lesson13.json": "★真源（手写，直接改）：Lesson 13 全部内容（课文/生词/语法点/tips）",
     "hsk3/data/lesson14.json": "★真源（手写，直接改）：Lesson 14 全部内容（课文/生词/语法点/exercises，tips 为空数组）",
     "hsk3/data/lesson15.json": "★真源（手写，直接改）：Lesson 15 全部内容（课文/生词/语法点/exercises，tips 为空数组）",

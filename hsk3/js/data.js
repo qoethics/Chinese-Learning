@@ -1,5 +1,5 @@
 // HSK3 lesson texts. Read-only at runtime.
-// Source: hsk3/data/lesson1.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
+// Source: hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
 // Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).
 // Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);
 // each point carries a textId so renderTextList can show it under its own text.
@@ -577,6 +577,1148 @@ window.COURSE_LESSONS = [
           }
         ],
         "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-01/1-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L2 · 你们想吃什么就点什么",
+    "id": "2",
+    "core": [
+      {
+        "hanzi": "菜单",
+        "en": "menu"
+      },
+      {
+        "hanzi": "又",
+        "en": "and"
+      },
+      {
+        "hanzi": "饿",
+        "en": "hungry"
+      },
+      {
+        "hanzi": "渴",
+        "en": "thirsty"
+      },
+      {
+        "hanzi": "客气",
+        "en": "be polite, polite"
+      },
+      {
+        "hanzi": "饮料",
+        "en": "drink"
+      },
+      {
+        "hanzi": "好久",
+        "en": "for a long time"
+      },
+      {
+        "hanzi": "服务",
+        "en": "serve"
+      },
+      {
+        "hanzi": "员",
+        "en": "added after a noun or verb to indicate a person"
+      },
+      {
+        "hanzi": "双",
+        "en": "pair"
+      },
+      {
+        "hanzi": "筷子",
+        "en": "chopsticks"
+      },
+      {
+        "hanzi": "勺子",
+        "en": "spoon"
+      },
+      {
+        "hanzi": "碗",
+        "en": "bowl"
+      },
+      {
+        "hanzi": "马上",
+        "en": "immediately"
+      },
+      {
+        "hanzi": "热情",
+        "en": "warm"
+      },
+      {
+        "hanzi": "尝",
+        "en": "taste"
+      },
+      {
+        "hanzi": "记",
+        "en": "remember"
+      },
+      {
+        "hanzi": "用",
+        "en": "eat; drink; use"
+      },
+      {
+        "hanzi": "鸡",
+        "en": "chicken"
+      },
+      {
+        "hanzi": "张",
+        "en": "used for paper, paintings, etc."
+      },
+      {
+        "hanzi": "不用",
+        "en": "need not"
+      },
+      {
+        "hanzi": "选",
+        "en": "choose"
+      },
+      {
+        "hanzi": "外卖",
+        "en": "takeout; a takeout service"
+      },
+      {
+        "hanzi": "方便",
+        "en": "convenient"
+      },
+      {
+        "hanzi": "蛋糕",
+        "en": "cake"
+      },
+      {
+        "hanzi": "方便面",
+        "en": "instant noodles"
+      },
+      {
+        "hanzi": "只",
+        "en": "only"
+      },
+      {
+        "hanzi": "简单",
+        "en": "simple"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "2-01",
+        "title": {
+          "cn": "在饭馆点菜",
+          "en": "Ordering at the restaurant",
+          "emoji": "🍽️"
+        },
+        "intro": {
+          "cn": "在饭馆，王一雪、刘明、白家月和李文在点菜。",
+          "en": "At the restaurant, Wang Yixue, Liu Ming, Bai Jiayue, and Li Wen were deciding what to order."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-02/2-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "他们在做什么？",
+            "options": [
+              "买东西",
+              "在家吃饭",
+              "在饭馆吃饭"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "白家月想吃什么中国菜？",
+            "options": [
+              "饺子",
+              "包子",
+              "面条儿"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "家月、李文，你们看看菜单，想吃点儿什么？",
+            "en": "Jiayue, Li Wen, take a look at the menu. What do you feel like eating?"
+          },
+          {
+            "speaker": "李文",
+            "cn": "谢谢一雪姐，我都可以，你们点吧。",
+            "en": "Thank you, Yixue. I'm good with anything—why don't you go ahead and order?"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "飞了这么远，现在还真是又饿又渴。",
+            "en": "After such a long flight, I'm really hungry and thirsty."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "那多点点儿，别客气。你们喝什么饮料？",
+            "en": "Then let's order plenty—don't be shy. What would you like to drink?"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "好久没喝中国茶，也好久没吃饺子了。我想喝绿茶、吃饺子，可以吗？",
+            "en": "It's been ages since I've had Chinese tea or jiaozi. I'd like some green tea and jiaozi, if that's okay."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "没问题。你们看看还想吃什么。",
+            "en": "No problem. Have another look and see if there's anything else you'd like."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "白家月现在觉得怎么样？"
+          },
+          {
+            "q": "白家月想喝什么？"
+          },
+          {
+            "q": "王一雪要点什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "菜单",
+            "pos": "n.",
+            "en": "menu"
+          },
+          {
+            "cn": "又",
+            "pos": "adv.",
+            "en": "and"
+          },
+          {
+            "cn": "饿",
+            "pos": "adj.",
+            "en": "hungry"
+          },
+          {
+            "cn": "渴",
+            "pos": "adj.",
+            "en": "thirsty"
+          },
+          {
+            "cn": "客气",
+            "pos": "v./adj.",
+            "en": "be polite, polite"
+          },
+          {
+            "cn": "饮料",
+            "pos": "n.",
+            "en": "drink"
+          },
+          {
+            "cn": "好久",
+            "pos": "adj.",
+            "en": "for a long time"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-02/2-2.mp3"
+      },
+      {
+        "id": "2-02",
+        "title": {
+          "cn": "一起吃中餐",
+          "en": "Eating Chinese food together",
+          "emoji": "🥢"
+        },
+        "intro": {
+          "cn": "在饭馆，王一雪、刘明、白家月和李文一起吃饭。",
+          "en": "At the restaurant, Wang Yixue, Liu Ming, Bai Jiayue, and Li Wen were having a meal together."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-02/2-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪让服务员拿什么？",
+            "options": [
+              "筷子和碗",
+              "勺子和筷子",
+              "勺子、筷子和碗"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "这家饭馆的服务怎么样？",
+            "options": [
+              "很慢",
+              "很热情",
+              "不太好"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "服务员，再给我们拿一双筷子、一个勺子和一个碗。",
+            "en": "Waitress, could you please bring another pair of chopsticks, a spoon, and a bowl?"
+          },
+          {
+            "speaker": "服务员",
+            "cn": "好的，请等一下，我马上就去拿。",
+            "en": "Certainly. Please wait a moment—I'll bring them right away."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "这家饭馆的服务很热情，菜也都做得很好吃。你们尝尝，看喜不喜欢这些菜。",
+            "en": "The service here is always warm and welcoming, and all the dishes are delicious. Give it a try and let me know what you think!"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "哪个菜都好吃。您点的这些菜真不错。",
+            "en": "Every dish is delicious. The dishes you ordered are really great."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "这里的饭菜又便宜又好吃，我们经常来，服务员都记住我们爱吃的菜了。",
+            "en": "The food here is both affordable and tasty. We come here so often that the staff already know our favorite dishes."
+          },
+          {
+            "speaker": "服务员",
+            "cn": "王姐，您经常来吃饭，今天送您一些水果，请慢用。",
+            "en": "Ms. Wang, since you're such a regular customer, we'd like to offer you some complimentary fruit today. Please enjoy!"
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "王一雪觉得这家饭馆怎么样？"
+          },
+          {
+            "q": "白家月觉得这家饭馆的菜怎么样？"
+          },
+          {
+            "q": "服务员为什么送了一些水果？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "服务",
+            "pos": "v.",
+            "en": "serve"
+          },
+          {
+            "cn": "员",
+            "pos": "suf.",
+            "en": "added after a noun or verb to indicate a person"
+          },
+          {
+            "cn": "双",
+            "pos": "m.",
+            "en": "pair"
+          },
+          {
+            "cn": "筷子",
+            "pos": "n.",
+            "en": "chopsticks"
+          },
+          {
+            "cn": "勺子",
+            "pos": "n.",
+            "en": "spoon"
+          },
+          {
+            "cn": "碗",
+            "pos": "n.",
+            "en": "bowl"
+          },
+          {
+            "cn": "马上",
+            "pos": "adv.",
+            "en": "immediately"
+          },
+          {
+            "cn": "热情",
+            "pos": "adj.",
+            "en": "warm"
+          },
+          {
+            "cn": "尝",
+            "pos": "v.",
+            "en": "taste"
+          },
+          {
+            "cn": "记",
+            "pos": "v.",
+            "en": "remember"
+          },
+          {
+            "cn": "用",
+            "pos": "v.",
+            "en": "eat; drink; use"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-02/2-4.mp3"
+      },
+      {
+        "id": "2-03",
+        "title": {
+          "cn": "聊外卖",
+          "en": "Talking about takeout",
+          "emoji": "📱"
+        },
+        "intro": {
+          "cn": "在饭馆，王一雪、刘明、白家月和李文继续边吃边聊。",
+          "en": "At the restaurant, Wang Yixue, Liu Ming, Bai Jiayue, and Li Wen carried on chatting over their meal."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-02/2-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "在这家饭馆，白家月喜欢吃什么？",
+            "options": [
+              "包子",
+              "鸡肉饭",
+              "面条儿"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "王一雪为什么说“不用拿菜单”？",
+            "options": [
+              "她有菜单",
+              "她不想再来",
+              "手机上可以看菜单"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "这个鸡肉饭太好吃了，我要再来吃一次。",
+            "en": "This chicken rice is so delicious! I'll definitely come back for it again."
+          },
+          {
+            "speaker": "李文",
+            "cn": "你可以拿走这张菜单，看看下次还吃点儿什么。",
+            "en": "You can take this menu with you and check what else you might want to order next time."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "不用拿菜单，在手机上就能看到，也可以选好了让他们给你送。",
+            "en": "No need to take the menu. You can check it on your phone and even place an order for delivery."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "他们家还能送外卖？",
+            "en": "They do delivery here?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "对，现在很多饭馆都能送外卖，想吃什么就点什么。",
+            "en": "Yes! Many restaurants offer delivery these days. You can order whatever you feel like."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "那真是太方便了！",
+            "en": "That's really convenient!"
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "白家月为什么还要再来吃一次？"
+          },
+          {
+            "q": "这家饭馆可以怎么点菜？"
+          },
+          {
+            "q": "听说很多饭馆都能送外卖，白家月觉得怎么样？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "鸡",
+            "pos": "n.",
+            "en": "chicken"
+          },
+          {
+            "cn": "张",
+            "pos": "m.",
+            "en": "used for paper, paintings, etc."
+          },
+          {
+            "cn": "不用",
+            "pos": "adv.",
+            "en": "need not"
+          },
+          {
+            "cn": "选",
+            "pos": "v.",
+            "en": "choose"
+          },
+          {
+            "cn": "外卖",
+            "pos": "n./v.",
+            "en": "takeout; a takeout service"
+          },
+          {
+            "cn": "方便",
+            "pos": "adj.",
+            "en": "convenient"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-02/2-6.mp3"
+      },
+      {
+        "id": "2-04",
+        "title": {
+          "cn": "李文的日记",
+          "en": "Li Wen's diary",
+          "emoji": "📔"
+        },
+        "intro": {
+          "cn": "在李文家，李文在写日记。",
+          "en": "At home, Li Wen was writing in his diary."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-02/2-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "快要考试的时候，李文怎么吃饭？",
+            "options": [
+              "吃方便面",
+              "出去吃饭",
+              "回妈妈家吃"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "回到中国了，李文为什么很高兴？",
+            "options": [
+              "妈妈每天做很多菜",
+              "可以经常去外面吃饭",
+              "每天能吃到妈妈做的饭"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "这些年在国外，我很少自己做饭。",
+            "en": "Over the years I spent abroad, I rarely cooked for myself."
+          },
+          {
+            "speaker": "",
+            "cn": "早饭我吃一个面包，有时候吃一块蛋糕，再喝一杯咖啡。",
+            "en": "For breakfast, I would usually have a piece of bread, sometimes a slice of cake, and a cup of coffee."
+          },
+          {
+            "speaker": "",
+            "cn": "午饭和晚饭也都在外面吃。",
+            "en": "I ate both lunch and dinner out."
+          },
+          {
+            "speaker": "",
+            "cn": "快要考试的时候又忙又累，没时间出去吃饭，家里又什么吃的都没有，我可能好几天只吃方便面。",
+            "en": "During exam periods, when I was busy and exhausted, with no time to eat out and nothing at home, I could go for days surviving only on instant noodles."
+          },
+          {
+            "speaker": "",
+            "cn": "现在回到中国了，每天能吃到妈妈做的饭，我真是太高兴了！",
+            "en": "Now that I'm back in China, being able to enjoy my mom's cooking every day makes me incredibly happy!"
+          },
+          {
+            "speaker": "",
+            "cn": "有时候妈妈只做几个简单的菜，我也非常爱吃，因为什么都没有妈妈做的饭好吃。",
+            "en": "Even when she prepares just a few simple dishes, I love them all the same, because nothing in the world tastes better than a meal made by Mom."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "李文在国外经常做饭吗？"
+          },
+          {
+            "q": "李文为什么好几天只吃方便面？"
+          },
+          {
+            "q": "回到中国后什么事让他非常高兴？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "蛋糕",
+            "pos": "n.",
+            "en": "cake"
+          },
+          {
+            "cn": "方便面",
+            "pos": "n.",
+            "en": "instant noodles"
+          },
+          {
+            "cn": "只",
+            "pos": "adv.",
+            "en": "only"
+          },
+          {
+            "cn": "简单",
+            "pos": "adj.",
+            "en": "simple"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-02/2-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L3 · 这个小区挺好的",
+    "id": "3",
+    "core": [
+      {
+        "hanzi": "初中",
+        "en": "middle school"
+      },
+      {
+        "hanzi": "咱们",
+        "en": "we; us"
+      },
+      {
+        "hanzi": "换",
+        "en": "change"
+      },
+      {
+        "hanzi": "房子",
+        "en": "house"
+      },
+      {
+        "hanzi": "小区",
+        "en": "residential complex"
+      },
+      {
+        "hanzi": "环境",
+        "en": "surroundings; environment"
+      },
+      {
+        "hanzi": "挺",
+        "en": "quite; very"
+      },
+      {
+        "hanzi": "空调",
+        "en": "air conditioner"
+      },
+      {
+        "hanzi": "洗衣机",
+        "en": "washing machine"
+      },
+      {
+        "hanzi": "层",
+        "en": "floor"
+      },
+      {
+        "hanzi": "花园",
+        "en": "garden"
+      },
+      {
+        "hanzi": "灯",
+        "en": "light"
+      },
+      {
+        "hanzi": "关",
+        "en": "turn off"
+      },
+      {
+        "hanzi": "冰箱",
+        "en": "refrigerator; fridge"
+      },
+      {
+        "hanzi": "卫生间",
+        "en": "bathroom"
+      },
+      {
+        "hanzi": "打扫",
+        "en": "clean"
+      },
+      {
+        "hanzi": "搬家",
+        "en": "move (house)"
+      },
+      {
+        "hanzi": "办",
+        "en": "do; handle"
+      },
+      {
+        "hanzi": "信用卡",
+        "en": "credit card"
+      },
+      {
+        "hanzi": "还",
+        "en": "return"
+      },
+      {
+        "hanzi": "听说",
+        "en": "hear about"
+      },
+      {
+        "hanzi": "银行",
+        "en": "bank"
+      },
+      {
+        "hanzi": "才",
+        "en": "not until"
+      },
+      {
+        "hanzi": "纸",
+        "en": "paper"
+      },
+      {
+        "hanzi": "搬",
+        "en": "move"
+      },
+      {
+        "hanzi": "需要",
+        "en": "need"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "3-01",
+        "title": {
+          "cn": "聊换房子",
+          "en": "Talking about moving",
+          "emoji": "🏠"
+        },
+        "intro": {
+          "cn": "在家里，刘明和王一雪在聊天。",
+          "en": "At home, Liu Ming and Wang Yixue were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪和刘明想做什么？",
+            "options": [
+              "换房子",
+              "买空调",
+              "去女儿的初中"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "王一雪为什么不喜欢这个房子？",
+            "options": [
+              "房子太远",
+              "她不喜欢住一层",
+              "她不喜欢这个小区"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "小雪的初中离家有点儿远，咱们换一个近点儿的房子吧。",
+            "en": "Since Xiaoxue's middle school is quite far from home, let's find a place to live that's closer."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "好啊，我上网看看。你觉得这个小区怎么样？",
+            "en": "Sounds good. I'll check online. What do you think about this neighborhood?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "环境挺好的，离地铁站还不远。",
+            "en": "The surroundings look quite nice, and it's not far from the subway station."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "房子里面也不错，空调和洗衣机都是新的。",
+            "en": "The inside of the apartment looks good, too. The air conditioner and washing machine are both new."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "是不错，但是我不喜欢住一层。",
+            "en": "It is nice, but I'm not a fan of living on the first floor."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "这个一层带一个小花园，我觉得咱们可以去看看。",
+            "en": "This first-floor unit has a small garden. I think we should go and take a look anyway."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "他们为什么要换房子？"
+          },
+          {
+            "q": "王一雪觉得新小区怎么样？"
+          },
+          {
+            "q": "刘明为什么喜欢这个房子？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "初中",
+            "pos": "n.",
+            "en": "middle school"
+          },
+          {
+            "cn": "咱们",
+            "pos": "pron.",
+            "en": "we; us"
+          },
+          {
+            "cn": "换",
+            "pos": "v.",
+            "en": "change"
+          },
+          {
+            "cn": "房子",
+            "pos": "n.",
+            "en": "house"
+          },
+          {
+            "cn": "小区",
+            "pos": "n.",
+            "en": "residential complex"
+          },
+          {
+            "cn": "环境",
+            "pos": "n.",
+            "en": "surroundings; environment"
+          },
+          {
+            "cn": "挺",
+            "pos": "adv.",
+            "en": "quite; very"
+          },
+          {
+            "cn": "空调",
+            "pos": "n.",
+            "en": "air conditioner"
+          },
+          {
+            "cn": "洗衣机",
+            "pos": "n.",
+            "en": "washing machine"
+          },
+          {
+            "cn": "层",
+            "pos": "m.",
+            "en": "floor"
+          },
+          {
+            "cn": "花园",
+            "pos": "n.",
+            "en": "garden"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-2.mp3"
+      },
+      {
+        "id": "3-02",
+        "title": {
+          "cn": "新家里的麻烦",
+          "en": "Trouble at the new home",
+          "emoji": "💡"
+        },
+        "intro": {
+          "cn": "在新家，王一雪在收拾房间，刘明进来了。",
+          "en": "In their new home, Wang Yixue was tidying up the room when Liu Ming came in."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "灯为什么开着？",
+            "options": [
+              "灯坏了",
+              "是王一雪打开的",
+              "刘明走的时候忘关了"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "现在新家是什么样的？",
+            "options": [
+              "冰箱是旧的",
+              "洗衣机是坏的",
+              "卫生间没打扫好"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "我今天早上来的时候，灯还开着。",
+            "en": "When I came in this morning, the lights were still on."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "我这几天忙坏了，可能走的时候忘关了。",
+            "en": "I've been swamped these days. I probably forgot to turn them off when I left."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "冰箱不能用，这些吃的东西放在哪儿？",
+            "en": "The fridge isn't working. Where should I put all this food?"
+          },
+          {
+            "speaker": "刘明",
+            "cn": "不可能吧？冰箱是新买的，我来看看。",
+            "en": "That's impossible! It's brand new. Let me take a look."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "洗衣机也坏了吗？",
+            "en": "Is the washing machine broken, too?"
+          },
+          {
+            "speaker": "刘明",
+            "cn": "没坏，但是卫生间没打扫好，还不能洗衣服。",
+            "en": "No, it's fine. But the bathroom hasn't been cleaned yet, so we can't do the laundry."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "星期天我们真的能搬家吗？",
+            "en": "Will we really be able to move this Sunday?"
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "他们家的冰箱怎么了？"
+          },
+          {
+            "q": "为什么不能洗衣服？"
+          },
+          {
+            "q": "你觉得星期天他们能不能搬家？为什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "灯",
+            "pos": "n.",
+            "en": "light"
+          },
+          {
+            "cn": "关",
+            "pos": "v.",
+            "en": "turn off"
+          },
+          {
+            "cn": "冰箱",
+            "pos": "n.",
+            "en": "refrigerator; fridge"
+          },
+          {
+            "cn": "卫生间",
+            "pos": "n.",
+            "en": "bathroom"
+          },
+          {
+            "cn": "打扫",
+            "pos": "v.",
+            "en": "clean"
+          },
+          {
+            "cn": "搬家",
+            "pos": "v.",
+            "en": "move (house)"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-4.mp3"
+      },
+      {
+        "id": "3-03",
+        "title": {
+          "cn": "聊办信用卡",
+          "en": "Talking about a credit card",
+          "emoji": "💳"
+        },
+        "intro": {
+          "cn": "在家里，刘明和王一雪在客厅聊天儿。",
+          "en": "At home, Liu Ming and Wang Yixue were chatting in the living room."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪和刘明为什么这个月花了不少钱？",
+            "options": [
+              "买衣服了",
+              "去饭店吃饭了",
+              "买了很多搬家要用的东西"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "王一雪想去中国银行做什么？",
+            "options": [
+              "买东西",
+              "还信用卡",
+              "办信用卡"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "这个月花了不少钱。",
+            "en": "We've spent quite a lot of money this month."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "是的，我们买了很多搬家时要用的东西。",
+            "en": "Yes, we bought a lot of things for the move."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "咱们办张信用卡吧，花的钱可以慢慢还。听说中国银行的服务不错，办了信用卡买东西还能便宜。",
+            "en": "Let's get a credit card. That way, we can pay it off over time. I heard Bank of China offers good service, and we can even get discounts when shopping with their credit card."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "好啊！中国银行很近，走路几分钟就能到。咱们什么时候去？",
+            "en": "Great! There's a Bank of China branch nearby—just a few minutes' walk from here. When should we go?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "今天下午？",
+            "en": "How about this afternoon?"
+          },
+          {
+            "speaker": "刘明",
+            "cn": "我下午要去医院，很晚才能回来。",
+            "en": "I have to go to the hospital this afternoon. I probably won't be back until late."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "那我下午自己去吧。",
+            "en": "Then I'll go by myself this afternoon."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "王一雪为什么想办信用卡？"
+          },
+          {
+            "q": "王一雪想什么时候去银行？"
+          },
+          {
+            "q": "刘明为什么今天不能去银行？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "办",
+            "pos": "v.",
+            "en": "do; handle"
+          },
+          {
+            "cn": "信用卡",
+            "pos": "n.",
+            "en": "credit card"
+          },
+          {
+            "cn": "还",
+            "pos": "v.",
+            "en": "return"
+          },
+          {
+            "cn": "听说",
+            "pos": "v.",
+            "en": "hear about"
+          },
+          {
+            "cn": "银行",
+            "pos": "n.",
+            "en": "bank"
+          },
+          {
+            "cn": "才",
+            "pos": "adv.",
+            "en": "not until"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-6.mp3"
+      },
+      {
+        "id": "3-04",
+        "title": {
+          "cn": "讨论搬家计划",
+          "en": "Discussing the moving plan",
+          "emoji": "📦"
+        },
+        "intro": {
+          "cn": "在家里，刘明和王一雪讨论搬家计划。",
+          "en": "At home, Liu Ming and Wang Yixue were discussing their moving plans."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "刘明想什么时候搬家？",
+            "options": [
+              "明天",
+              "这个星期",
+              "下个星期"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "王一雪想什么时候搬家？",
+            "options": [
+              "这周",
+              "下周",
+              "下个月"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "刘明",
+            "cn": "我觉得这个星期就能搬家。我明天去买一些纸箱，很快就能准备好。搬家那天，我想请几位朋友来帮忙，最多一天就能搬完。",
+            "en": "I think we can move this week. I'll buy some cardboard boxes tomorrow, and we'll be ready in no time. On moving day, I'd like to ask a few friends to help. We can probably finish everything within a day."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "我觉得下个月才能搬家。这周开始准备，下周去打扫新家，这么多事情最少需要两个星期才能做完。搬家那天，我们应该找一家搬家公司。",
+            "en": "I don't think we can move until next month. We can start preparing this week and clean the new place next week. With so much to do, we'll need at least two weeks to get everything done. On moving day, we should hire a moving company."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "刘明明天去买什么？"
+          },
+          {
+            "q": "王一雪打算下周做什么？"
+          },
+          {
+            "q": "刘明打算找谁搬家？王一雪呢？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "纸",
+            "pos": "n.",
+            "en": "paper"
+          },
+          {
+            "cn": "搬",
+            "pos": "v.",
+            "en": "move"
+          },
+          {
+            "cn": "需要",
+            "pos": "v./n.",
+            "en": "need"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-8.mp3"
       }
     ]
   },
