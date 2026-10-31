@@ -1,5 +1,5 @@
-// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
-// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson2.json / hsk3/data/lesson3.json / hsk3/data/lesson4.json / hsk3/data/lesson5.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
+// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
+// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson2.json / hsk3/data/lesson3.json / hsk3/data/lesson4.json / hsk3/data/lesson5.json / hsk3/data/lesson6.json / hsk3/data/lesson7.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
 // Regenerate: python3 tools/gen-lesson-js.py hsk3
 window.SENTENCE_CORPUS = [
   {
@@ -742,6 +742,371 @@ window.SENTENCE_CORPUS = [
           {
             "c": "明天又是星期天，我不知道应该干什么。",
             "en": "Tomorrow is Sunday again, and I don't know what to do."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 6,
+    "key": "6",
+    "review": false,
+    "title": "You can even order takeout on a high-speed train",
+    "titleCn": "高铁上还可以点外卖",
+    "points": [
+      {
+        "id": "6-g1",
+        "textId": "6-01",
+        "no": 1,
+        "cn": "固定格式“该……了”",
+        "en": "Fixed Pattern “该…了”",
+        "note": "固定格式“该……了”表示到了需要做某事的时候，多在口语中使用。",
+        "noteEn": "The fixed pattern “该…了” indicates that it is time to do something, and it is often used in colloquial speech.",
+        "practice": [
+          {
+            "cn": "天已经黑了，______。",
+            "en": ""
+          },
+          {
+            "cn": "电影就要开始了，______。",
+            "en": ""
+          },
+          {
+            "cn": "他下个星期过生日，______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "咱们该买去上海的票了。",
+            "en": "It's time for us to buy the tickets to Shanghai."
+          },
+          {
+            "c": "八点了，该上课了。",
+            "en": "It's eight o'clock—time for class."
+          },
+          {
+            "c": "已经很晚了，我该睡觉了。",
+            "en": "It's very late. I should go to bed."
+          }
+        ]
+      },
+      {
+        "id": "6-g2",
+        "textId": "6-02",
+        "no": 2,
+        "cn": "假设复句“如果……，就……”",
+        "en": "Hypothetical Complex Sentence “如果…，就…”",
+        "note": "假设复句“如果……，就……”中，“如果”后面的分句是一个假设，“就”后面的分句是在这种假设情况下产生的结果。注意，第二个分句的主语要放在“就”的前面。",
+        "noteEn": "In the hypothetical complex sentence “如果…，就…”, the clause following “如果” is a hypothesis, while the clause following “就” is the result under that condition. Note that the subject of the second clause is placed before “就”.",
+        "practice": [
+          {
+            "cn": "如果明天下雨，______。",
+            "en": ""
+          },
+          {
+            "cn": "如果我觉得太累了，______。",
+            "en": ""
+          },
+          {
+            "cn": "______，就跟朋友一起去旅游。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "如果没走错，二十分钟以前就到了。",
+            "en": "If we hadn't taken the wrong turn, we would have arrived twenty minutes ago."
+          },
+          {
+            "c": "如果你需要帮忙，就给我打电话。",
+            "en": "If you need help, give me a call."
+          },
+          {
+            "c": "如果有时间，我就去上海玩几天。",
+            "en": "If I have time, I'll go to Shanghai for a few days."
+          }
+        ]
+      },
+      {
+        "id": "6-g3",
+        "textId": "6-03",
+        "no": 3,
+        "cn": "固定短语“越来越”",
+        "en": "Set Phrase “越来越”",
+        "note": "固定短语“越来越”的后面加上形容词或心理动词，表示随着时间的推移而在程度上发生变化。形容词或心理动词前都不能再加程度副词。",
+        "noteEn": "The set phrase “越来越” is followed by an adjective or a psychological verb, indicating a change in degree over time. No adverb of degree can be added before the adjective or psychological verb.",
+        "practice": [
+          {
+            "cn": "这些年的天气______。",
+            "en": ""
+          },
+          {
+            "cn": "他每天都运动，现在______。",
+            "en": ""
+          },
+          {
+            "cn": "孩子还没有到家，妈妈______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "前面的人越来越多。",
+            "en": "There are more and more people ahead."
+          },
+          {
+            "c": "我越来越喜欢这里的生活了。",
+            "en": "I like the life here more and more."
+          },
+          {
+            "c": "她越来越高，也越来越漂亮了。",
+            "en": "She's getting taller and prettier."
+          }
+        ]
+      },
+      {
+        "id": "6-g4",
+        "textId": "6-01",
+        "no": 4,
+        "cn": "小语助力“上”",
+        "en": "“上”",
+        "note": "“上”在这里不是表示方向，而是表示实现了某个目标或愿望。",
+        "noteEn": "In this context, “上” does not indicate direction, but signifies the realization of a certain goal or desire.",
+        "practice": null,
+        "items": [
+          {
+            "c": "终于可以坐上高铁了。",
+            "en": "I can finally take the high-speed train."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 7,
+    "key": "7",
+    "review": false,
+    "title": "That skirt looks better than the shorts",
+    "titleCn": "那条裙子比短裤更好看",
+    "points": [
+      {
+        "id": "7-g1",
+        "textId": "7-01",
+        "no": 1,
+        "cn": "连动句（2）",
+        "en": "Serial Verb Sentences (2)",
+        "note": "动态助词“着”用于连动句的第一个动词后面，表示进行第二个动作时的状态或方式。基本结构：动词1＋着＋（宾语1）＋动词2＋（宾语2）。",
+        "noteEn": "The aspect particle “着” is used after the first verb in a serial verb sentence to indicate the state or manner of the second action. Basic structure: Verb1+着+(Object1)+Verb2+(Object2).",
+        "practice": [
+          {
+            "cn": "王一雪______。",
+            "en": ""
+          },
+          {
+            "cn": "刘小雪______。",
+            "en": ""
+          },
+          {
+            "cn": "服务员______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "咱们可以走着去。",
+            "en": "We can walk there."
+          },
+          {
+            "c": "弟弟吃着苹果写作业。",
+            "en": "My little brother does his homework while eating an apple."
+          },
+          {
+            "c": "他们坐着看电视。",
+            "en": "They are sitting and watching TV."
+          }
+        ]
+      },
+      {
+        "id": "7-g2",
+        "textId": "7-02",
+        "no": 2,
+        "cn": "比较句（10）",
+        "en": "Comparative Sentences (10)",
+        "note": "“A不比B＋形容词”的意思是A和B差不多。这个结构通常用于强调两者情况接近，或反驳别人说法的语境中。",
+        "noteEn": "The pattern “A不比B+Adjective” means that A and B are about the same. It is often used to emphasize that the two situations are close, or to refute someone else's statement.",
+        "practice": [
+          {
+            "cn": "A：天中学中文的时间更长，他的中文水平比家月高吗？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：你姐姐一个人住，她一定比你更会做饭吧？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：我觉得篮球比足球更有意思，你觉得呢？",
+            "en": ""
+          },
+          {
+            "cn": "B：______，你多跟我去踢一踢足球就知道了。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "裙子不比短裤贵多少。",
+            "en": "The skirt isn't much more expensive than the shorts."
+          },
+          {
+            "c": "他的中文不比你好。",
+            "en": "His Chinese isn't better than yours."
+          },
+          {
+            "c": "他跑得不比我快多少。",
+            "en": "He doesn't run much faster than I do."
+          }
+        ]
+      },
+      {
+        "id": "7-g3",
+        "textId": "7-03",
+        "no": 3,
+        "cn": "程度补语（3）",
+        "en": "Complement of Degree (3)",
+        "note": "程度补语“极了”用在形容词或心理动词后面，表示人或事物的性质或者状态，或人的心理感受达到很高的程度。",
+        "noteEn": "The complement of degree “极了” is used after an adjective or a psychological verb to indicate that the nature or state of a person or thing, or a person's psychological feeling, reaches a very high degree.",
+        "practice": [
+          {
+            "cn": "她做的中国菜______。",
+            "en": ""
+          },
+          {
+            "cn": "我昨天晚上睡得______。",
+            "en": ""
+          },
+          {
+            "cn": "这些水果五块钱，真是______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "这块冰西瓜甜极了。",
+            "en": "This piece of chilled watermelon is extremely sweet."
+          },
+          {
+            "c": "今年夏天热极了。",
+            "en": "It's extremely hot this summer."
+          },
+          {
+            "c": "这本书我喜欢极了。",
+            "en": "I like this book very much."
+          }
+        ]
+      },
+      {
+        "id": "7-g4",
+        "textId": "7-04",
+        "no": 4,
+        "cn": "递进复句“不但……，而且……”",
+        "en": "Progressive Complex Sentence “不但…，而且…”",
+        "note": "递进复句“不但……，而且……”连接两个分句，表示递进关系。如果两个分句的主语相同，那么“不但”要放在第一个主语后面；如果两个分句的主语不同，那么“不但”要放在第一个主语的前面。",
+        "noteEn": "The progressive complex sentence “不但…，而且…” connects two clauses to indicate a progressive relationship. If the subjects of the two clauses are the same, “不但” is placed after the first subject. If the subjects are different, “不但” should be placed before the first subject.",
+        "practice": [
+          {
+            "cn": "A：为什么很多人喜欢坐高铁？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：你为什么喜欢在网上买东西？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：你们班谁会打篮球？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "现在的电视不但便宜，而且用着非常方便。",
+            "en": "Today's TVs are not only cheap but also very convenient to use."
+          },
+          {
+            "c": "家月不但喜欢唱歌，而且唱得很好听。",
+            "en": "Jiayue not only likes singing but also sings beautifully."
+          },
+          {
+            "c": "不但家月会说汉语，而且天中也会说汉语。",
+            "en": "Not only Jiayue can speak Chinese, but Tianzhong can too."
+          }
+        ]
+      },
+      {
+        "id": "7-g5",
+        "textId": "7-02",
+        "no": 5,
+        "cn": "小语助力“还/更”",
+        "en": "“还/更”",
+        "note": "比较句中的形容词前面可以用副词“还”或者“更”表示程度加深。",
+        "noteEn": "In comparative sentences, the adverb “还” or “更” can be placed before the adjective to indicate a deeper degree.",
+        "practice": null,
+        "items": [
+          {
+            "c": "那条裙子比短裤更好看。",
+            "en": "That skirt looks even better than the shorts."
+          }
+        ]
+      },
+      {
+        "id": "7-g6",
+        "textId": "7-02",
+        "no": 6,
+        "cn": "小语助力“买二送一”",
+        "en": "“买二送一”",
+        "note": "“买二送一”是商店打折时常用的表达，意思是“你买两个东西，我送你一个东西”。当然有时候你也会看到“买一送一”“买三送一”这样的打折活动。",
+        "noteEn": "“Buy Two, Get One Free” is a common expression used when stores offer discounts. It means “You buy two items, I give you one item for free”. Sometimes you may also see discount activities like “Buy One, Get One Free” or “Buy Three, Get One Free”.",
+        "practice": null,
+        "items": [
+          {
+            "c": "你看，那边有买二送一！",
+            "en": "Look, there's a “Buy Two, Get One Free” offer over there！"
+          }
+        ]
+      },
+      {
+        "id": "7-g7",
+        "textId": "7-03",
+        "no": 7,
+        "cn": "小语助力“不甜不要钱”",
+        "en": "“不甜不要钱”",
+        "note": "“不甜不要钱”常用在广告语中，这句话省略了主语，完整语句应该是：“如果这个西瓜不甜，我们就不要钱。”",
+        "noteEn": "“Free if it isn't sweet” is a phrase commonly used in advertising slogans, with its subject omitted. The complete sentence should be: “If this watermelon isn't sweet, we won't charge you.”",
+        "practice": null,
+        "items": [
+          {
+            "c": "西瓜又大又新鲜，不甜不要钱！",
+            "en": "These watermelons are big and fresh. Free if they aren't sweet！"
           }
         ]
       }

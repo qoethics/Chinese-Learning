@@ -1,0 +1,853 @@
+{
+  "lesson": 7,
+  "key": "7",
+  "name": "L7 · 那条裙子比短裤更好看",
+  "titleCn": "那条裙子比短裤更好看",
+  "titleEn": "That skirt looks better than the shorts",
+  "texts": [
+    {
+      "id": "7-01",
+      "title": {
+        "cn": "商量去买东西",
+        "en": "Talking about going shopping",
+        "emoji": "🚲"
+      },
+      "intro": {
+        "cn": "在家里，王一雪和刘明商量去买东西。",
+        "en": "At home, Wang Yixue and Liu Ming were talking about going shopping."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "小雪的自行车是什么时候买的？",
+          "options": [
+            "昨天买的",
+            "今天买的",
+            "她八岁的时候买的"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "他们怎么去商场？",
+          "options": [
+            "走路",
+            "打车",
+            "骑自行车"
+          ],
+          "answer": "A"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "王一雪",
+          "cn": "这辆自行车是小雪八岁的时候买的，看起来有点儿旧了。",
+          "en": "We bought this bicycle when Xiaoxue was eight years old. It's starting to look a bit old now."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "是啊，她现在长高了，这辆车已经太矮了。",
+          "en": "Yeah, she's grown taller, and the bike is too small for her now."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "商场里开了一家自行车店，咱们给她买辆新的吧。",
+          "en": "A new bicycle shop just opened in the mall. Let's get her a new one."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "好，咱们带小雪一起去，让她试一下。",
+          "en": "Sure. Let's take Xiaoxue with us so she can try it out."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "那今天就去吧！我也想再看看衣服。咱们怎么去？",
+          "en": "Let's go today, then! I also want to check out some clothes. How should we get there？"
+        },
+        {
+          "speaker": "刘明",
+          "cn": "商场不远，咱们可以走着去。",
+          "en": "The mall isn't far—we can walk there."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "他们为什么想给小雪买新自行车？"
+        },
+        {
+          "q": "他们为什么想带小雪一起去？"
+        },
+        {
+          "q": "王一雪还想买什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "辆",
+          "pos": "m.",
+          "en": "(for vehicles)"
+        },
+        {
+          "cn": "自行车",
+          "pos": "n.",
+          "en": "bicycle; bike"
+        },
+        {
+          "cn": "旧",
+          "pos": "adj.",
+          "en": "old"
+        },
+        {
+          "cn": "矮",
+          "pos": "adj.",
+          "en": "low (in height); short (in stature)"
+        },
+        {
+          "cn": "试",
+          "pos": "v.",
+          "en": "try"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-2.mp3"
+    },
+    {
+      "id": "7-02",
+      "title": {
+        "cn": "在商场挑衣服",
+        "en": "Choosing clothes at the mall",
+        "emoji": "👗"
+      },
+      "intro": {
+        "cn": "在商场，刘明和王一雪买完自行车，又来挑选衣服。",
+        "en": "At the mall, after buying a bicycle, Liu Ming and Wang Yixue came to choose some clothes."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "课文里说，下面哪个更贵？",
+          "options": [
+            "短裤",
+            "裙子",
+            "运动鞋"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "王一雪后来是怎么决定的？",
+          "options": [
+            "买裙子",
+            "买裤子",
+            "看看再说"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "王一雪",
+          "cn": "你看我穿这条黄色的短裤好看吗？",
+          "en": "Do you think these yellow shorts look good on me？"
+        },
+        {
+          "speaker": "刘明",
+          "cn": "大小合适，但我觉得那条裙子比短裤更好看。",
+          "en": "The size fits well, but I think that skirt looks better than the shorts."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "裙子比短裤贵一点儿。",
+          "en": "The skirt is a bit more expensive than the shorts."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "贵多少？",
+          "en": "How much more expensive？"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "裙子480，短裤400。",
+          "en": "The skirt is 480 yuan, and the shorts are 400 yuan."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "裙子不比短裤贵多少，还是买裙子吧，你穿裙子更好看。",
+          "en": "The skirt isn't much more expensive than the shorts. Let's get the skirt—you look better in skirts."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "我多看看再决定。你看，那边有买二送一！",
+          "en": "I'll look around a bit more before deciding. Look, there's a “Buy Two, Get One Free” offer over there！"
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "刘明觉得短裤怎么样？"
+        },
+        {
+          "q": "王一雪为什么不想买裙子？"
+        },
+        {
+          "q": "裙子比短裤贵多少？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "黄色",
+          "pos": "n.",
+          "en": "yellow"
+        },
+        {
+          "cn": "短裤",
+          "pos": "n.",
+          "en": "shorts"
+        },
+        {
+          "cn": "大小",
+          "pos": "n.",
+          "en": "size"
+        },
+        {
+          "cn": "合适",
+          "pos": "adj.",
+          "en": "suitable"
+        },
+        {
+          "cn": "裙子",
+          "pos": "n.",
+          "en": "skirt"
+        },
+        {
+          "cn": "更",
+          "pos": "adv.",
+          "en": "more; still/even more"
+        },
+        {
+          "cn": "决定",
+          "pos": "v./n.",
+          "en": "decide; decision"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-4.mp3"
+    },
+    {
+      "id": "7-03",
+      "title": {
+        "cn": "在商店买水果",
+        "en": "Buying fruit at the store",
+        "emoji": "🍉"
+      },
+      "intro": {
+        "cn": "在商店，王一雪在买东西。",
+        "en": "At the store, Wang Yixue was buying things."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "王一雪在买什么？",
+          "options": [
+            "苹果",
+            "牛奶",
+            "西瓜和香蕉"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "这些水果一共花了多少钱？",
+          "options": [
+            "五十五块",
+            "五十八块",
+            "五十八块五毛"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "店员",
+          "cn": "西瓜又大又新鲜，不甜不要钱！",
+          "en": "These watermelons are big and fresh. Free if they aren't sweet！"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "西瓜看起来不错，怎么卖？",
+          "en": "The watermelons look great. How much are they？"
+        },
+        {
+          "speaker": "店员",
+          "cn": "五块钱一公斤。来，您先尝尝这块冰西瓜，甜极了！",
+          "en": "Five yuan per kilo. Here, try this piece of chilled watermelon—it's super sweet！"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "是挺甜的！帮我选个大点儿的，再来两斤香蕉。",
+          "en": "It really is sweet! Please help me pick a bigger one, and I'll take two jin of bananas as well."
+        },
+        {
+          "speaker": "店员",
+          "cn": "一共五十八块五毛。",
+          "en": "That's 58.5 yuan in total."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "我买了这么多，便宜点儿吧。",
+          "en": "I'm buying so much. Can you give me a discount？"
+        },
+        {
+          "speaker": "店员",
+          "cn": "您给我五十五吧，不能再便宜了。",
+          "en": "Make it 55 yuan. That's the best I can do."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "西瓜多少钱一斤？"
+        },
+        {
+          "q": "王一雪买了什么水果？"
+        },
+        {
+          "q": "店员给王一雪便宜了多少钱？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "西瓜",
+          "pos": "n.",
+          "en": "watermelon"
+        },
+        {
+          "cn": "新鲜",
+          "pos": "adj.",
+          "en": "fresh"
+        },
+        {
+          "cn": "甜",
+          "pos": "adj.",
+          "en": "sweet"
+        },
+        {
+          "cn": "公斤",
+          "pos": "m.",
+          "en": "kilogram"
+        },
+        {
+          "cn": "冰",
+          "pos": "v./n.",
+          "en": "freeze; ice"
+        },
+        {
+          "cn": "极",
+          "pos": "adv.",
+          "en": "extremely"
+        },
+        {
+          "cn": "斤",
+          "pos": "m.",
+          "en": "jin"
+        },
+        {
+          "cn": "香蕉",
+          "pos": "n.",
+          "en": "banana"
+        },
+        {
+          "cn": "一共",
+          "pos": "adv.",
+          "en": "in all"
+        },
+        {
+          "cn": "毛",
+          "pos": "m.",
+          "en": "mao"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-6.mp3"
+    },
+    {
+      "id": "7-04",
+      "title": {
+        "cn": "刘明看电视",
+        "en": "Liu Ming is watching TV",
+        "emoji": "📺"
+      },
+      "intro": {
+        "cn": "在家里，刘明在看电视。",
+        "en": "At home, Liu Ming was watching TV."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "刘明发现了什么新问题？",
+          "options": [
+            "电视太旧了",
+            "房子太大了",
+            "电视有点儿小"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "刘明选电视的时候发现了什么？",
+          "options": [
+            "新电视很方便",
+            "新电视不便宜",
+            "不能在网上选电视"
+          ],
+          "answer": "A"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "这几天我们在新家坐着看电视的时候，又发现了新问题。",
+          "en": "These past few days, while watching TV in our new home, we discovered another problem."
+        },
+        {
+          "speaker": "",
+          "cn": "房子大了，电视看起来就有点儿小。",
+          "en": "Now that the house is bigger, the TV looks a bit too small."
+        },
+        {
+          "speaker": "",
+          "cn": "这个电视是我们结婚时买的，是时候换个新电视了。",
+          "en": "We bought it when we got married, so I think it's time for an upgrade."
+        },
+        {
+          "speaker": "",
+          "cn": "今天我一直在网上选电视，没想到，现在的电视不但便宜，而且用着非常方便，有的电视叫它一声就能开机。",
+          "en": "I've been shopping for TVs online all day, and to my surprise, they're not only more affordable but also much smarter—some even turn on when you talk to them."
+        },
+        {
+          "speaker": "",
+          "cn": "我看了好几个，都很满意，晚上让一雪来决定吧。",
+          "en": "I found several I really like, but I'll let Yixue make the final call tonight."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "刘明家的电视是什么时候买的？"
+        },
+        {
+          "q": "刘明想在哪儿买新电视？"
+        },
+        {
+          "q": "刘明为什么觉得新电视用着很方便？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "结婚",
+          "pos": "v.",
+          "en": "marry"
+        },
+        {
+          "cn": "不但",
+          "pos": "conj.",
+          "en": "not only"
+        },
+        {
+          "cn": "而且",
+          "pos": "conj.",
+          "en": "and; but also"
+        },
+        {
+          "cn": "声",
+          "pos": "m./n.",
+          "en": "(used for sounds); sound"
+        },
+        {
+          "cn": "开机",
+          "pos": "v.",
+          "en": "start; be power-on"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "7-g1",
+      "textId": "7-01",
+      "no": 1,
+      "cn": "连动句（2）",
+      "en": "Serial Verb Sentences (2)",
+      "note": "动态助词“着”用于连动句的第一个动词后面，表示进行第二个动作时的状态或方式。基本结构：动词1＋着＋（宾语1）＋动词2＋（宾语2）。",
+      "noteEn": "The aspect particle “着” is used after the first verb in a serial verb sentence to indicate the state or manner of the second action. Basic structure: Verb1+着+(Object1)+Verb2+(Object2).",
+      "items": [
+        {
+          "c": "咱们可以走着去。",
+          "en": "We can walk there."
+        },
+        {
+          "c": "弟弟吃着苹果写作业。",
+          "en": "My little brother does his homework while eating an apple."
+        },
+        {
+          "c": "他们坐着看电视。",
+          "en": "They are sitting and watching TV."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "王一雪______。",
+          "en": ""
+        },
+        {
+          "cn": "刘小雪______。",
+          "en": ""
+        },
+        {
+          "cn": "服务员______。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "7-g2",
+      "textId": "7-02",
+      "no": 2,
+      "cn": "比较句（10）",
+      "en": "Comparative Sentences (10)",
+      "note": "“A不比B＋形容词”的意思是A和B差不多。这个结构通常用于强调两者情况接近，或反驳别人说法的语境中。",
+      "noteEn": "The pattern “A不比B+Adjective” means that A and B are about the same. It is often used to emphasize that the two situations are close, or to refute someone else's statement.",
+      "items": [
+        {
+          "c": "裙子不比短裤贵多少。",
+          "en": "The skirt isn't much more expensive than the shorts."
+        },
+        {
+          "c": "他的中文不比你好。",
+          "en": "His Chinese isn't better than yours."
+        },
+        {
+          "c": "他跑得不比我快多少。",
+          "en": "He doesn't run much faster than I do."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：天中学中文的时间更长，他的中文水平比家月高吗？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        },
+        {
+          "cn": "A：你姐姐一个人住，她一定比你更会做饭吧？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        },
+        {
+          "cn": "A：我觉得篮球比足球更有意思，你觉得呢？",
+          "en": ""
+        },
+        {
+          "cn": "B：______，你多跟我去踢一踢足球就知道了。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "7-g3",
+      "textId": "7-03",
+      "no": 3,
+      "cn": "程度补语（3）",
+      "en": "Complement of Degree (3)",
+      "note": "程度补语“极了”用在形容词或心理动词后面，表示人或事物的性质或者状态，或人的心理感受达到很高的程度。",
+      "noteEn": "The complement of degree “极了” is used after an adjective or a psychological verb to indicate that the nature or state of a person or thing, or a person's psychological feeling, reaches a very high degree.",
+      "items": [
+        {
+          "c": "这块冰西瓜甜极了。",
+          "en": "This piece of chilled watermelon is extremely sweet."
+        },
+        {
+          "c": "今年夏天热极了。",
+          "en": "It's extremely hot this summer."
+        },
+        {
+          "c": "这本书我喜欢极了。",
+          "en": "I like this book very much."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "她做的中国菜______。",
+          "en": ""
+        },
+        {
+          "cn": "我昨天晚上睡得______。",
+          "en": ""
+        },
+        {
+          "cn": "这些水果五块钱，真是______。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "7-g4",
+      "textId": "7-04",
+      "no": 4,
+      "cn": "递进复句“不但……，而且……”",
+      "en": "Progressive Complex Sentence “不但…，而且…”",
+      "note": "递进复句“不但……，而且……”连接两个分句，表示递进关系。如果两个分句的主语相同，那么“不但”要放在第一个主语后面；如果两个分句的主语不同，那么“不但”要放在第一个主语的前面。",
+      "noteEn": "The progressive complex sentence “不但…，而且…” connects two clauses to indicate a progressive relationship. If the subjects of the two clauses are the same, “不但” is placed after the first subject. If the subjects are different, “不但” should be placed before the first subject.",
+      "items": [
+        {
+          "c": "现在的电视不但便宜，而且用着非常方便。",
+          "en": "Today's TVs are not only cheap but also very convenient to use."
+        },
+        {
+          "c": "家月不但喜欢唱歌，而且唱得很好听。",
+          "en": "Jiayue not only likes singing but also sings beautifully."
+        },
+        {
+          "c": "不但家月会说汉语，而且天中也会说汉语。",
+          "en": "Not only Jiayue can speak Chinese, but Tianzhong can too."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：为什么很多人喜欢坐高铁？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        },
+        {
+          "cn": "A：你为什么喜欢在网上买东西？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        },
+        {
+          "cn": "A：你们班谁会打篮球？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "7-g5",
+      "textId": "7-02",
+      "no": 5,
+      "cn": "小语助力“还/更”",
+      "en": "“还/更”",
+      "note": "比较句中的形容词前面可以用副词“还”或者“更”表示程度加深。",
+      "noteEn": "In comparative sentences, the adverb “还” or “更” can be placed before the adjective to indicate a deeper degree.",
+      "items": [
+        {
+          "c": "那条裙子比短裤更好看。",
+          "en": "That skirt looks even better than the shorts."
+        }
+      ]
+    },
+    {
+      "id": "7-g6",
+      "textId": "7-02",
+      "no": 6,
+      "cn": "小语助力“买二送一”",
+      "en": "“买二送一”",
+      "note": "“买二送一”是商店打折时常用的表达，意思是“你买两个东西，我送你一个东西”。当然有时候你也会看到“买一送一”“买三送一”这样的打折活动。",
+      "noteEn": "“Buy Two, Get One Free” is a common expression used when stores offer discounts. It means “You buy two items, I give you one item for free”. Sometimes you may also see discount activities like “Buy One, Get One Free” or “Buy Three, Get One Free”.",
+      "items": [
+        {
+          "c": "你看，那边有买二送一！",
+          "en": "Look, there's a “Buy Two, Get One Free” offer over there！"
+        }
+      ]
+    },
+    {
+      "id": "7-g7",
+      "textId": "7-03",
+      "no": 7,
+      "cn": "小语助力“不甜不要钱”",
+      "en": "“不甜不要钱”",
+      "note": "“不甜不要钱”常用在广告语中，这句话省略了主语，完整语句应该是：“如果这个西瓜不甜，我们就不要钱。”",
+      "noteEn": "“Free if it isn't sweet” is a phrase commonly used in advertising slogans, with its subject omitted. The complete sentence should be: “If this watermelon isn't sweet, we won't charge you.”",
+      "items": [
+        {
+          "c": "西瓜又大又新鲜，不甜不要钱！",
+          "en": "These watermelons are big and fresh. Free if they aren't sweet！"
+        }
+      ]
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "试",
+          "更",
+          "矮",
+          "旧",
+          "声"
+        ],
+        "items": [
+          {
+            "cn": "你的手机很______，买个新的吧。",
+            "answer": "旧"
+          },
+          {
+            "cn": "她比我大两岁，但是比我还______一点儿。",
+            "answer": "矮"
+          },
+          {
+            "cn": "这条短裤比那条______合适，买这条吧。",
+            "answer": "更"
+          },
+          {
+            "cn": "我们都听见了他在教室外面的笑______。",
+            "answer": "声"
+          },
+          {
+            "cn": "上网买东西很方便，你应该______一下。",
+            "answer": "试"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "一共",
+          "合适",
+          "决定",
+          "结婚",
+          "开机"
+        ],
+        "items": [
+          {
+            "cn": "A：假期的时候你们去哪儿旅游？",
+            "answer": ""
+          },
+          {
+            "cn": "B：我想去看海，不知道这个时间是不是______。",
+            "answer": "合适"
+          },
+          {
+            "cn": "A：你们两个准备什么时候______？",
+            "answer": "结婚"
+          },
+          {
+            "cn": "B：可能今年10月，到时候一定告诉你。",
+            "answer": ""
+          },
+          {
+            "cn": "A：你帮我看看，我的手机为什么不能______？",
+            "answer": "开机"
+          },
+          {
+            "cn": "B：让小李帮你看，你新买的这个手机跟他的一样。",
+            "answer": ""
+          },
+          {
+            "cn": "A：网上的房子太多了，我还没有______去看哪一个。",
+            "answer": "决定"
+          },
+          {
+            "cn": "B：你可以先在网上看房，我教你。",
+            "answer": ""
+          },
+          {
+            "cn": "A：请问，这些水果多少钱？",
+            "answer": ""
+          },
+          {
+            "cn": "B：苹果两斤，八块；香蕉四斤，十二块。______二十块。",
+            "answer": "一共"
+          }
+        ]
+      }
+    },
+    "describePictures": [
+      {
+        "cn": "A：你觉得哪双鞋______？",
+        "en": ""
+      },
+      {
+        "cn": "B：都挺好看的，我也不知道怎么决定。",
+        "en": ""
+      },
+      {
+        "cn": "A：我觉得那双白色的______。",
+        "en": ""
+      },
+      {
+        "cn": "B：这几个颜色的鞋你都______着。",
+        "en": ""
+      },
+      {
+        "cn": "A：这些西瓜看起来很新鲜，______？",
+        "en": ""
+      },
+      {
+        "cn": "B：两块五一斤。今天的西瓜不但______。",
+        "en": ""
+      },
+      {
+        "cn": "A：那我要两个大的，多少钱？",
+        "en": ""
+      },
+      {
+        "cn": "B：______四十六块五毛。",
+        "en": ""
+      },
+      {
+        "cn": "A：你站在这儿，试着______“小天，小天，我要看电视”。",
+        "en": ""
+      },
+      {
+        "cn": "B：小天小天，我要看电视。",
+        "en": ""
+      },
+      {
+        "cn": "A：你看！你一______，它就______。",
+        "en": ""
+      },
+      {
+        "cn": "B：是啊，方便______。买这个吧。",
+        "en": ""
+      }
+    ],
+    "classroomActivity": {
+      "cn": "多人活动",
+      "en": "Group Work",
+      "description": "四人一组，每位同学使用动态助词“着”描述照片中某个人物的外貌、动作或状态，其他同学根据描述猜测所指的是谁。",
+      "descriptionEn": "Work in groups of four. Each student uses the aspect particle “着” to describe a person's appearance, actions, or state in the photos. The other students guess who is being described based on the clues.",
+      "topics": [
+        {
+          "cn": "先选一张照片，想好要描述谁。"
+        },
+        {
+          "cn": "用“动词＋着”描述他/她的外貌、动作或状态。"
+        },
+        {
+          "cn": "不要提这个人最特别的地方，免得别人一下就猜到。"
+        },
+        {
+          "cn": "如：他穿着一件白衣服。"
+        },
+        {
+          "cn": "如：他跟朋友一起坐着聊天儿。"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,777 @@
+{
+  "lesson": 6,
+  "key": "6",
+  "name": "L6 · 高铁上还可以点外卖",
+  "titleCn": "高铁上还可以点外卖",
+  "titleEn": "You can even order takeout on a high-speed train",
+  "texts": [
+    {
+      "id": "6-01",
+      "title": {
+        "cn": "商量买高铁票",
+        "en": "Talking about buying train tickets",
+        "emoji": "🚄"
+      },
+      "intro": {
+        "cn": "在咖啡厅里，李文和白家月在聊天儿。",
+        "en": "In the cafe, Li Wen and Bai Jiayue were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "李文和白家月打算怎么去上海？",
+          "options": [
+            "开车",
+            "坐飞机",
+            "坐高铁"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "李文觉得高铁怎么样？",
+          "options": [
+            "高铁票很贵",
+            "又快又舒服",
+            "买票不方便"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "李文",
+          "cn": "家月，咱们该买去上海的票了。你打算怎么去上海？",
+          "en": "Jiayue, it's time to buy our tickets to Shanghai. How do you want to get there？"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我还没坐过高铁，咱们坐高铁去，怎么样？",
+          "en": "I've never taken a high-speed train before. How about we go by high-speed train？"
+        },
+        {
+          "speaker": "李文",
+          "cn": "没问题，从北京到上海的高铁很多，非常方便。",
+          "en": "No problem. There are many high-speed trains from Beijing to Shanghai—it's very convenient."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "行！怎么买高铁票？",
+          "en": "Great! How do we buy the tickets？"
+        },
+        {
+          "speaker": "李文",
+          "cn": "用手机App就能买。给我你的护照，我帮你买。",
+          "en": "We can buy them on a mobile App. Give me your passport, and I'll get them for you."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我早就听说过高铁，终于可以坐上了。",
+          "en": "I've heard about the high-speed train for a long time. I'm glad I can finally take it."
+        },
+        {
+          "speaker": "李文",
+          "cn": "高铁又快又舒服，你一定会喜欢的。",
+          "en": "It's fast and comfortable—you're going to love it."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "李文和白家月打算去哪个城市？"
+        },
+        {
+          "q": "白家月为什么想坐高铁？"
+        },
+        {
+          "q": "他们打算怎么买高铁票？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "该",
+          "pos": "mod.",
+          "en": "should"
+        },
+        {
+          "cn": "打算",
+          "pos": "v./n.",
+          "en": "plan; intention"
+        },
+        {
+          "cn": "高铁",
+          "pos": "n.",
+          "en": "high-speed train"
+        },
+        {
+          "cn": "行",
+          "pos": "v./adj.",
+          "en": "be all right; capable"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-2.mp3"
+    },
+    {
+      "id": "6-02",
+      "title": {
+        "cn": "去高铁站的路上",
+        "en": "On the way to the station",
+        "emoji": "🚗"
+      },
+      "intro": {
+        "cn": "在车上，刘明开车送白家月和李文去高铁站。",
+        "en": "In the car, Liu Ming was driving Bai Jiayue and Li Wen to the high-speed train station."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "李文和白家月现在在哪儿？",
+          "options": [
+            "在高铁站",
+            "在出租车上",
+            "在刘明的车上"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "如果没走错，他们什么时候到？",
+          "options": [
+            "马上就到了",
+            "二十分钟以前就到了",
+            "一个小时以前就到了"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "刘明",
+          "cn": "过了前面的路口就到高铁站了。",
+          "en": "Once we pass the intersection up ahead, we'll reach the high-speed train station."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我看见了。马上就到了，这条路车很多，您小心点儿。",
+          "en": "I see it. We'll be there soon. There are a lot of cars on this road. Please drive carefully."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "好，你们还有一个小时，应该不会迟到的。",
+          "en": "Okay. You still have an hour, so you probably won't be late."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我发现这条路车多，红绿灯也多。",
+          "en": "I've noticed that this road not only has heavy traffic but also many traffic lights."
+        },
+        {
+          "speaker": "刘明",
+          "cn": "是啊，这条路我走过一次，后来再也不走了。",
+          "en": "Yeah, I took this road once before and never used it again afterward."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "那您今天为什么走了这条路？",
+          "en": "Then why did you take it today？"
+        },
+        {
+          "speaker": "刘明",
+          "cn": "我一急就走错了。如果没走错，二十分钟以前就到了。",
+          "en": "I got anxious and took a wrong turn. If I hadn't, we would've arrived twenty minutes earlier."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "刘明为什么说“应该不会迟到”？"
+        },
+        {
+          "q": "白家月觉得这条路有什么问题？"
+        },
+        {
+          "q": "刘明为什么今天走了这条路？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "路口",
+          "pos": "n.",
+          "en": "intersection; crossing"
+        },
+        {
+          "cn": "小心",
+          "pos": "v./adj.",
+          "en": "take care; careful"
+        },
+        {
+          "cn": "迟到",
+          "pos": "v.",
+          "en": "be late"
+        },
+        {
+          "cn": "红绿灯",
+          "pos": "n.",
+          "en": "traffic lights"
+        },
+        {
+          "cn": "后来",
+          "pos": "n.",
+          "en": "afterward; later"
+        },
+        {
+          "cn": "急",
+          "pos": "adj./v.",
+          "en": "urgent; be anxious"
+        },
+        {
+          "cn": "如果",
+          "pos": "conj.",
+          "en": "if"
+        },
+        {
+          "cn": "以前",
+          "pos": "n.",
+          "en": "earlier times"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-4.mp3"
+    },
+    {
+      "id": "6-03",
+      "title": {
+        "cn": "在高铁站检票",
+        "en": "Ticket check at the station",
+        "emoji": "🎫"
+      },
+      "intro": {
+        "cn": "在高铁站，李文和白家月排队安检、检票。",
+        "en": "At the high-speed train station, Li Wen and Bai Jiayue were waiting in line for security check and ticket inspection."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "常用的东西李文放在哪里？",
+          "options": [
+            "手里",
+            "包里",
+            "行李箱里"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "他们在哪里检票进站？",
+          "options": [
+            "车站门口",
+            "一层门口",
+            "二层检票口"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "白家月",
+          "cn": "李文，我的耳机没电了，你有充电宝吗？",
+          "en": "Li Wen, my earphones are out of battery. Do you have a power bank？"
+        },
+        {
+          "speaker": "李文",
+          "cn": "有，这些常用的东西我都放在包里了，我给你拿。",
+          "en": "Yes, I keep all these daily essentials in my bag. Let me get it for you."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "前面的人越来越多。",
+          "en": "There are more and more people ahead of us."
+        },
+        {
+          "speaker": "李文",
+          "cn": "对，马上就进高铁站了。咱们一起走，别分开。",
+          "en": "Right, we're about to enter the high-speed train station. Let's stay together and don't get separated."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "好，你检查一下，高铁票都拿好了吗？",
+          "en": "Okay, could you check if we've got all the high-speed train tickets？"
+        },
+        {
+          "speaker": "李文",
+          "cn": "不用拿票，刷护照就能检票进站。",
+          "en": "No need for a paper ticket. You can just scan your passport to enter."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "去哪里检票？",
+          "en": "Where do we do the ticket check？"
+        },
+        {
+          "speaker": "李文",
+          "cn": "检票口在二层，我们一会儿坐电梯上去。",
+          "en": "The ticket gates are on the second floor. We'll take the elevator up in a moment."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "白家月为什么要用充电宝？"
+        },
+        {
+          "q": "他们怎么检票进站？"
+        },
+        {
+          "q": "他们怎么去检票口？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "耳机",
+          "pos": "n.",
+          "en": "earphone; headphone"
+        },
+        {
+          "cn": "充电宝",
+          "pos": "n.",
+          "en": "power bank"
+        },
+        {
+          "cn": "常用",
+          "pos": "",
+          "en": "commonly used"
+        },
+        {
+          "cn": "越",
+          "pos": "adv.",
+          "en": "the more...the more..."
+        },
+        {
+          "cn": "分开",
+          "pos": "v.",
+          "en": "separate"
+        },
+        {
+          "cn": "检查",
+          "pos": "v.",
+          "en": "check (up); inspect"
+        },
+        {
+          "cn": "刷",
+          "pos": "v.",
+          "en": "scan"
+        },
+        {
+          "cn": "检票",
+          "pos": "v.",
+          "en": "check/inspect tickets"
+        },
+        {
+          "cn": "电梯",
+          "pos": "n.",
+          "en": "elevator; escalator"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-6.mp3"
+    },
+    {
+      "id": "6-04",
+      "title": {
+        "cn": "白家月的旅行",
+        "en": "Bai Jiayue's trip",
+        "emoji": "🍜"
+      },
+      "intro": {
+        "cn": "在家里，白家月给安妮打电话介绍自己的旅行。",
+        "en": "At home, Bai Jiayue was calling Annie to tell her about her trip."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "白家月觉得坐高铁怎么样？",
+          "options": [
+            "高铁站很远",
+            "高铁上很舒服",
+            "高铁上人很多"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "喜欢坐高铁的人多不多？",
+          "options": [
+            "不太多",
+            "有点儿多",
+            "越来越多"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "这次放假，我去了北京，还去了上海。",
+          "en": "During the vacation, I went to Beijing and also visited Shanghai."
+        },
+        {
+          "speaker": "",
+          "cn": "我是从北京南站坐高铁去的上海。",
+          "en": "I took the high-speed train from Beijing South Railway Station to Shanghai."
+        },
+        {
+          "speaker": "",
+          "cn": "我觉得坐在高铁上跟坐在家里的沙发上一样，又安静又舒服。",
+          "en": "Sitting on the train felt just like sitting on my sofa at home. It's quiet and comfortable."
+        },
+        {
+          "speaker": "",
+          "cn": "坐累了就站一会儿，饿了就点外卖。",
+          "en": "When I got tired of sitting, I stood up for a while; when I got hungry, I ordered takeout."
+        },
+        {
+          "speaker": "",
+          "cn": "对，你没听错，高铁上可以点外卖，只需要选择好车站和想吃的东西，到站时不用下车，服务员就会给你拿过来。",
+          "en": "Yes, you heard that right—you can order takeout on a high-speed train! Just select your station and the food you want, and you don't need to get off the train when it arrives—the staff will bring it to you."
+        },
+        {
+          "speaker": "",
+          "cn": "现在喜欢坐高铁的人越来越多。",
+          "en": "Now, more and more people prefer traveling by high-speed train."
+        },
+        {
+          "speaker": "",
+          "cn": "我爸妈来中国旅游的时候，必须带他们也坐一次高铁。",
+          "en": "When my parents come to China for a visit, I'll definitely take them on a high-speed train ride."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "白家月是怎么去上海的？"
+        },
+        {
+          "q": "高铁上怎么点外卖？"
+        },
+        {
+          "q": "白家月想带谁坐高铁？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "放假",
+          "pos": "v.",
+          "en": "have a vacation"
+        },
+        {
+          "cn": "沙发",
+          "pos": "n.",
+          "en": "sofa"
+        },
+        {
+          "cn": "安静",
+          "pos": "adj.",
+          "en": "quiet"
+        },
+        {
+          "cn": "选择",
+          "pos": "v.",
+          "en": "choose"
+        },
+        {
+          "cn": "必须",
+          "pos": "adv.",
+          "en": "have to; must"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "6-g1",
+      "textId": "6-01",
+      "no": 1,
+      "cn": "固定格式“该……了”",
+      "en": "Fixed Pattern “该…了”",
+      "note": "固定格式“该……了”表示到了需要做某事的时候，多在口语中使用。",
+      "noteEn": "The fixed pattern “该…了” indicates that it is time to do something, and it is often used in colloquial speech.",
+      "items": [
+        {
+          "c": "咱们该买去上海的票了。",
+          "en": "It's time for us to buy the tickets to Shanghai."
+        },
+        {
+          "c": "八点了，该上课了。",
+          "en": "It's eight o'clock—time for class."
+        },
+        {
+          "c": "已经很晚了，我该睡觉了。",
+          "en": "It's very late. I should go to bed."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "天已经黑了，______。",
+          "en": ""
+        },
+        {
+          "cn": "电影就要开始了，______。",
+          "en": ""
+        },
+        {
+          "cn": "他下个星期过生日，______。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "6-g2",
+      "textId": "6-02",
+      "no": 2,
+      "cn": "假设复句“如果……，就……”",
+      "en": "Hypothetical Complex Sentence “如果…，就…”",
+      "note": "假设复句“如果……，就……”中，“如果”后面的分句是一个假设，“就”后面的分句是在这种假设情况下产生的结果。注意，第二个分句的主语要放在“就”的前面。",
+      "noteEn": "In the hypothetical complex sentence “如果…，就…”, the clause following “如果” is a hypothesis, while the clause following “就” is the result under that condition. Note that the subject of the second clause is placed before “就”.",
+      "items": [
+        {
+          "c": "如果没走错，二十分钟以前就到了。",
+          "en": "If we hadn't taken the wrong turn, we would have arrived twenty minutes ago."
+        },
+        {
+          "c": "如果你需要帮忙，就给我打电话。",
+          "en": "If you need help, give me a call."
+        },
+        {
+          "c": "如果有时间，我就去上海玩几天。",
+          "en": "If I have time, I'll go to Shanghai for a few days."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "如果明天下雨，______。",
+          "en": ""
+        },
+        {
+          "cn": "如果我觉得太累了，______。",
+          "en": ""
+        },
+        {
+          "cn": "______，就跟朋友一起去旅游。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "6-g3",
+      "textId": "6-03",
+      "no": 3,
+      "cn": "固定短语“越来越”",
+      "en": "Set Phrase “越来越”",
+      "note": "固定短语“越来越”的后面加上形容词或心理动词，表示随着时间的推移而在程度上发生变化。形容词或心理动词前都不能再加程度副词。",
+      "noteEn": "The set phrase “越来越” is followed by an adjective or a psychological verb, indicating a change in degree over time. No adverb of degree can be added before the adjective or psychological verb.",
+      "items": [
+        {
+          "c": "前面的人越来越多。",
+          "en": "There are more and more people ahead."
+        },
+        {
+          "c": "我越来越喜欢这里的生活了。",
+          "en": "I like the life here more and more."
+        },
+        {
+          "c": "她越来越高，也越来越漂亮了。",
+          "en": "She's getting taller and prettier."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "这些年的天气______。",
+          "en": ""
+        },
+        {
+          "cn": "他每天都运动，现在______。",
+          "en": ""
+        },
+        {
+          "cn": "孩子还没有到家，妈妈______。",
+          "en": ""
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "6-g4",
+      "textId": "6-01",
+      "no": 4,
+      "cn": "小语助力“上”",
+      "en": "“上”",
+      "note": "“上”在这里不是表示方向，而是表示实现了某个目标或愿望。",
+      "noteEn": "In this context, “上” does not indicate direction, but signifies the realization of a certain goal or desire.",
+      "items": [
+        {
+          "c": "终于可以坐上高铁了。",
+          "en": "I can finally take the high-speed train."
+        }
+      ]
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "该",
+          "刷",
+          "急",
+          "后来",
+          "以前"
+        ],
+        "items": [
+          {
+            "cn": "我没带钱，可以______信用卡吗？",
+            "answer": "刷"
+          },
+          {
+            "cn": "______不用太早，星期五买票就可以。",
+            "answer": "以前"
+          },
+          {
+            "cn": "飞机马上就要起飞了，你的手机______关机了。",
+            "answer": "该"
+          },
+          {
+            "cn": "前面的路口人很多，你开慢一点儿，别______。",
+            "answer": "急"
+          },
+          {
+            "cn": "她开始的时候说要来，______打电话说不来了。",
+            "answer": "后来"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "选择",
+          "检查",
+          "小心",
+          "必须",
+          "打算"
+        ],
+        "items": [
+          {
+            "cn": "A：你一个人开车，路上要______。",
+            "answer": "小心"
+          },
+          {
+            "cn": "B：好的，谢谢。",
+            "answer": ""
+          },
+          {
+            "cn": "A：马上就要出门了，你再______一下，护照什么的都带了吧？",
+            "answer": "检查"
+          },
+          {
+            "cn": "B：都带了，放在包里了。",
+            "answer": ""
+          },
+          {
+            "cn": "A：明天晚上六点的火车，你几点出门？",
+            "answer": ""
+          },
+          {
+            "cn": "B：______我四点半出门，晚一点儿也没关系。",
+            "answer": "打算"
+          },
+          {
+            "cn": "A：坐高铁四个多小时，坐飞机两个小时，你想坐什么？",
+            "answer": ""
+          },
+          {
+            "cn": "B：高铁站比机场近多了，我还是想______高铁。",
+            "answer": "选择"
+          },
+          {
+            "cn": "A：我能坐在你旁边吗？",
+            "answer": ""
+          },
+          {
+            "cn": "B：不行，咱们的票是分开的，你______坐在前面。",
+            "answer": "必须"
+          }
+        ]
+      }
+    },
+    "describePictures": [
+      {
+        "cn": "A：现在路上的车______，我觉得咱们可能会______。",
+        "en": ""
+      },
+      {
+        "cn": "B：别急，现在八点半，还早呢。",
+        "en": ""
+      },
+      {
+        "cn": "A：但是车站的人可能很多，我们需要______。",
+        "en": ""
+      },
+      {
+        "cn": "B：我知道，______就到了。",
+        "en": ""
+      },
+      {
+        "cn": "A：你再______，必须带在身上的是护照和手机。",
+        "en": ""
+      },
+      {
+        "cn": "B：都在这个小包里。高铁上不______的东西我放在行李箱里了。",
+        "en": ""
+      },
+      {
+        "cn": "A：______，咱们就走吧。",
+        "en": ""
+      },
+      {
+        "cn": "B：行，我已经准备好了。",
+        "en": ""
+      },
+      {
+        "cn": "A：还有半个多小时，你______。",
+        "en": ""
+      },
+      {
+        "cn": "B：真不想跟你们______。",
+        "en": ""
+      },
+      {
+        "cn": "A：______，就给我们打电话。",
+        "en": ""
+      },
+      {
+        "cn": "B：好的。谢谢你们送我，咱们下次见。",
+        "en": ""
+      }
+    ],
+    "classroomActivity": {
+      "cn": "多人活动",
+      "en": "Group Work",
+      "description": "四人一组，围绕以下几个方面，介绍自己乘坐交通工具出行的经历。回答时，使用本课所学的词语和语言点。",
+      "descriptionEn": "Work in groups of four. Share your travel experiences taking different means of transportation, focusing on the following aspects. When responding, use the words and language points covered in this lesson.",
+      "topics": [
+        {
+          "cn": "你是怎么买票的？"
+        },
+        {
+          "cn": "你是怎么去车站或者机场的？"
+        },
+        {
+          "cn": "怎么检票进站？不能带什么东西？"
+        },
+        {
+          "cn": "如果你不能和朋友坐在一起，你们会怎么办？"
+        },
+        {
+          "cn": "如果你的朋友第一次坐高铁或者飞机，你想告诉他/她什么？"
+        }
+      ]
+    }
+  }
+}

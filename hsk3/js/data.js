@@ -1,5 +1,5 @@
 // HSK3 lesson texts. Read-only at runtime.
-// Source: hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
+// Source: hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
 // Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).
 // Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);
 // each point carries a textId so renderTextList can show it under its own text.
@@ -2886,6 +2886,1179 @@ window.COURSE_LESSONS = [
           }
         ],
         "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L6 · 高铁上还可以点外卖",
+    "id": "6",
+    "core": [
+      {
+        "hanzi": "该",
+        "en": "should"
+      },
+      {
+        "hanzi": "打算",
+        "en": "plan; intention"
+      },
+      {
+        "hanzi": "高铁",
+        "en": "high-speed train"
+      },
+      {
+        "hanzi": "行",
+        "en": "be all right; capable"
+      },
+      {
+        "hanzi": "路口",
+        "en": "intersection; crossing"
+      },
+      {
+        "hanzi": "小心",
+        "en": "take care; careful"
+      },
+      {
+        "hanzi": "迟到",
+        "en": "be late"
+      },
+      {
+        "hanzi": "红绿灯",
+        "en": "traffic lights"
+      },
+      {
+        "hanzi": "后来",
+        "en": "afterward; later"
+      },
+      {
+        "hanzi": "急",
+        "en": "urgent; be anxious"
+      },
+      {
+        "hanzi": "如果",
+        "en": "if"
+      },
+      {
+        "hanzi": "以前",
+        "en": "earlier times"
+      },
+      {
+        "hanzi": "耳机",
+        "en": "earphone; headphone"
+      },
+      {
+        "hanzi": "充电宝",
+        "en": "power bank"
+      },
+      {
+        "hanzi": "常用",
+        "en": "commonly used"
+      },
+      {
+        "hanzi": "越",
+        "en": "the more...the more..."
+      },
+      {
+        "hanzi": "分开",
+        "en": "separate"
+      },
+      {
+        "hanzi": "检查",
+        "en": "check (up); inspect"
+      },
+      {
+        "hanzi": "刷",
+        "en": "scan"
+      },
+      {
+        "hanzi": "检票",
+        "en": "check/inspect tickets"
+      },
+      {
+        "hanzi": "电梯",
+        "en": "elevator; escalator"
+      },
+      {
+        "hanzi": "放假",
+        "en": "have a vacation"
+      },
+      {
+        "hanzi": "沙发",
+        "en": "sofa"
+      },
+      {
+        "hanzi": "安静",
+        "en": "quiet"
+      },
+      {
+        "hanzi": "选择",
+        "en": "choose"
+      },
+      {
+        "hanzi": "必须",
+        "en": "have to; must"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "6-01",
+        "title": {
+          "cn": "商量买高铁票",
+          "en": "Talking about buying train tickets",
+          "emoji": "🚄"
+        },
+        "intro": {
+          "cn": "在咖啡厅里，李文和白家月在聊天儿。",
+          "en": "In the cafe, Li Wen and Bai Jiayue were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "李文和白家月打算怎么去上海？",
+            "options": [
+              "开车",
+              "坐飞机",
+              "坐高铁"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "李文觉得高铁怎么样？",
+            "options": [
+              "高铁票很贵",
+              "又快又舒服",
+              "买票不方便"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "李文",
+            "cn": "家月，咱们该买去上海的票了。你打算怎么去上海？",
+            "en": "Jiayue, it's time to buy our tickets to Shanghai. How do you want to get there？"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我还没坐过高铁，咱们坐高铁去，怎么样？",
+            "en": "I've never taken a high-speed train before. How about we go by high-speed train？"
+          },
+          {
+            "speaker": "李文",
+            "cn": "没问题，从北京到上海的高铁很多，非常方便。",
+            "en": "No problem. There are many high-speed trains from Beijing to Shanghai—it's very convenient."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "行！怎么买高铁票？",
+            "en": "Great! How do we buy the tickets？"
+          },
+          {
+            "speaker": "李文",
+            "cn": "用手机App就能买。给我你的护照，我帮你买。",
+            "en": "We can buy them on a mobile App. Give me your passport, and I'll get them for you."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我早就听说过高铁，终于可以坐上了。",
+            "en": "I've heard about the high-speed train for a long time. I'm glad I can finally take it."
+          },
+          {
+            "speaker": "李文",
+            "cn": "高铁又快又舒服，你一定会喜欢的。",
+            "en": "It's fast and comfortable—you're going to love it."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "李文和白家月打算去哪个城市？"
+          },
+          {
+            "q": "白家月为什么想坐高铁？"
+          },
+          {
+            "q": "他们打算怎么买高铁票？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "该",
+            "pos": "mod.",
+            "en": "should"
+          },
+          {
+            "cn": "打算",
+            "pos": "v./n.",
+            "en": "plan; intention"
+          },
+          {
+            "cn": "高铁",
+            "pos": "n.",
+            "en": "high-speed train"
+          },
+          {
+            "cn": "行",
+            "pos": "v./adj.",
+            "en": "be all right; capable"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-2.mp3"
+      },
+      {
+        "id": "6-02",
+        "title": {
+          "cn": "去高铁站的路上",
+          "en": "On the way to the station",
+          "emoji": "🚗"
+        },
+        "intro": {
+          "cn": "在车上，刘明开车送白家月和李文去高铁站。",
+          "en": "In the car, Liu Ming was driving Bai Jiayue and Li Wen to the high-speed train station."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "李文和白家月现在在哪儿？",
+            "options": [
+              "在高铁站",
+              "在出租车上",
+              "在刘明的车上"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "如果没走错，他们什么时候到？",
+            "options": [
+              "马上就到了",
+              "二十分钟以前就到了",
+              "一个小时以前就到了"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "刘明",
+            "cn": "过了前面的路口就到高铁站了。",
+            "en": "Once we pass the intersection up ahead, we'll reach the high-speed train station."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我看见了。马上就到了，这条路车很多，您小心点儿。",
+            "en": "I see it. We'll be there soon. There are a lot of cars on this road. Please drive carefully."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "好，你们还有一个小时，应该不会迟到的。",
+            "en": "Okay. You still have an hour, so you probably won't be late."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我发现这条路车多，红绿灯也多。",
+            "en": "I've noticed that this road not only has heavy traffic but also many traffic lights."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "是啊，这条路我走过一次，后来再也不走了。",
+            "en": "Yeah, I took this road once before and never used it again afterward."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "那您今天为什么走了这条路？",
+            "en": "Then why did you take it today？"
+          },
+          {
+            "speaker": "刘明",
+            "cn": "我一急就走错了。如果没走错，二十分钟以前就到了。",
+            "en": "I got anxious and took a wrong turn. If I hadn't, we would've arrived twenty minutes earlier."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "刘明为什么说“应该不会迟到”？"
+          },
+          {
+            "q": "白家月觉得这条路有什么问题？"
+          },
+          {
+            "q": "刘明为什么今天走了这条路？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "路口",
+            "pos": "n.",
+            "en": "intersection; crossing"
+          },
+          {
+            "cn": "小心",
+            "pos": "v./adj.",
+            "en": "take care; careful"
+          },
+          {
+            "cn": "迟到",
+            "pos": "v.",
+            "en": "be late"
+          },
+          {
+            "cn": "红绿灯",
+            "pos": "n.",
+            "en": "traffic lights"
+          },
+          {
+            "cn": "后来",
+            "pos": "n.",
+            "en": "afterward; later"
+          },
+          {
+            "cn": "急",
+            "pos": "adj./v.",
+            "en": "urgent; be anxious"
+          },
+          {
+            "cn": "如果",
+            "pos": "conj.",
+            "en": "if"
+          },
+          {
+            "cn": "以前",
+            "pos": "n.",
+            "en": "earlier times"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-4.mp3"
+      },
+      {
+        "id": "6-03",
+        "title": {
+          "cn": "在高铁站检票",
+          "en": "Ticket check at the station",
+          "emoji": "🎫"
+        },
+        "intro": {
+          "cn": "在高铁站，李文和白家月排队安检、检票。",
+          "en": "At the high-speed train station, Li Wen and Bai Jiayue were waiting in line for security check and ticket inspection."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "常用的东西李文放在哪里？",
+            "options": [
+              "手里",
+              "包里",
+              "行李箱里"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "他们在哪里检票进站？",
+            "options": [
+              "车站门口",
+              "一层门口",
+              "二层检票口"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "李文，我的耳机没电了，你有充电宝吗？",
+            "en": "Li Wen, my earphones are out of battery. Do you have a power bank？"
+          },
+          {
+            "speaker": "李文",
+            "cn": "有，这些常用的东西我都放在包里了，我给你拿。",
+            "en": "Yes, I keep all these daily essentials in my bag. Let me get it for you."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "前面的人越来越多。",
+            "en": "There are more and more people ahead of us."
+          },
+          {
+            "speaker": "李文",
+            "cn": "对，马上就进高铁站了。咱们一起走，别分开。",
+            "en": "Right, we're about to enter the high-speed train station. Let's stay together and don't get separated."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "好，你检查一下，高铁票都拿好了吗？",
+            "en": "Okay, could you check if we've got all the high-speed train tickets？"
+          },
+          {
+            "speaker": "李文",
+            "cn": "不用拿票，刷护照就能检票进站。",
+            "en": "No need for a paper ticket. You can just scan your passport to enter."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "去哪里检票？",
+            "en": "Where do we do the ticket check？"
+          },
+          {
+            "speaker": "李文",
+            "cn": "检票口在二层，我们一会儿坐电梯上去。",
+            "en": "The ticket gates are on the second floor. We'll take the elevator up in a moment."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "白家月为什么要用充电宝？"
+          },
+          {
+            "q": "他们怎么检票进站？"
+          },
+          {
+            "q": "他们怎么去检票口？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "耳机",
+            "pos": "n.",
+            "en": "earphone; headphone"
+          },
+          {
+            "cn": "充电宝",
+            "pos": "n.",
+            "en": "power bank"
+          },
+          {
+            "cn": "常用",
+            "pos": "",
+            "en": "commonly used"
+          },
+          {
+            "cn": "越",
+            "pos": "adv.",
+            "en": "the more...the more..."
+          },
+          {
+            "cn": "分开",
+            "pos": "v.",
+            "en": "separate"
+          },
+          {
+            "cn": "检查",
+            "pos": "v.",
+            "en": "check (up); inspect"
+          },
+          {
+            "cn": "刷",
+            "pos": "v.",
+            "en": "scan"
+          },
+          {
+            "cn": "检票",
+            "pos": "v.",
+            "en": "check/inspect tickets"
+          },
+          {
+            "cn": "电梯",
+            "pos": "n.",
+            "en": "elevator; escalator"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-6.mp3"
+      },
+      {
+        "id": "6-04",
+        "title": {
+          "cn": "白家月的旅行",
+          "en": "Bai Jiayue's trip",
+          "emoji": "🍜"
+        },
+        "intro": {
+          "cn": "在家里，白家月给安妮打电话介绍自己的旅行。",
+          "en": "At home, Bai Jiayue was calling Annie to tell her about her trip."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "白家月觉得坐高铁怎么样？",
+            "options": [
+              "高铁站很远",
+              "高铁上很舒服",
+              "高铁上人很多"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "喜欢坐高铁的人多不多？",
+            "options": [
+              "不太多",
+              "有点儿多",
+              "越来越多"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "这次放假，我去了北京，还去了上海。",
+            "en": "During the vacation, I went to Beijing and also visited Shanghai."
+          },
+          {
+            "speaker": "",
+            "cn": "我是从北京南站坐高铁去的上海。",
+            "en": "I took the high-speed train from Beijing South Railway Station to Shanghai."
+          },
+          {
+            "speaker": "",
+            "cn": "我觉得坐在高铁上跟坐在家里的沙发上一样，又安静又舒服。",
+            "en": "Sitting on the train felt just like sitting on my sofa at home. It's quiet and comfortable."
+          },
+          {
+            "speaker": "",
+            "cn": "坐累了就站一会儿，饿了就点外卖。",
+            "en": "When I got tired of sitting, I stood up for a while; when I got hungry, I ordered takeout."
+          },
+          {
+            "speaker": "",
+            "cn": "对，你没听错，高铁上可以点外卖，只需要选择好车站和想吃的东西，到站时不用下车，服务员就会给你拿过来。",
+            "en": "Yes, you heard that right—you can order takeout on a high-speed train! Just select your station and the food you want, and you don't need to get off the train when it arrives—the staff will bring it to you."
+          },
+          {
+            "speaker": "",
+            "cn": "现在喜欢坐高铁的人越来越多。",
+            "en": "Now, more and more people prefer traveling by high-speed train."
+          },
+          {
+            "speaker": "",
+            "cn": "我爸妈来中国旅游的时候，必须带他们也坐一次高铁。",
+            "en": "When my parents come to China for a visit, I'll definitely take them on a high-speed train ride."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "白家月是怎么去上海的？"
+          },
+          {
+            "q": "高铁上怎么点外卖？"
+          },
+          {
+            "q": "白家月想带谁坐高铁？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "放假",
+            "pos": "v.",
+            "en": "have a vacation"
+          },
+          {
+            "cn": "沙发",
+            "pos": "n.",
+            "en": "sofa"
+          },
+          {
+            "cn": "安静",
+            "pos": "adj.",
+            "en": "quiet"
+          },
+          {
+            "cn": "选择",
+            "pos": "v.",
+            "en": "choose"
+          },
+          {
+            "cn": "必须",
+            "pos": "adv.",
+            "en": "have to; must"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-06/6-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L7 · 那条裙子比短裤更好看",
+    "id": "7",
+    "core": [
+      {
+        "hanzi": "辆",
+        "en": "(for vehicles)"
+      },
+      {
+        "hanzi": "自行车",
+        "en": "bicycle; bike"
+      },
+      {
+        "hanzi": "旧",
+        "en": "old"
+      },
+      {
+        "hanzi": "矮",
+        "en": "low (in height); short (in stature)"
+      },
+      {
+        "hanzi": "试",
+        "en": "try"
+      },
+      {
+        "hanzi": "黄色",
+        "en": "yellow"
+      },
+      {
+        "hanzi": "短裤",
+        "en": "shorts"
+      },
+      {
+        "hanzi": "大小",
+        "en": "size"
+      },
+      {
+        "hanzi": "合适",
+        "en": "suitable"
+      },
+      {
+        "hanzi": "裙子",
+        "en": "skirt"
+      },
+      {
+        "hanzi": "更",
+        "en": "more; still/even more"
+      },
+      {
+        "hanzi": "决定",
+        "en": "decide; decision"
+      },
+      {
+        "hanzi": "西瓜",
+        "en": "watermelon"
+      },
+      {
+        "hanzi": "新鲜",
+        "en": "fresh"
+      },
+      {
+        "hanzi": "甜",
+        "en": "sweet"
+      },
+      {
+        "hanzi": "公斤",
+        "en": "kilogram"
+      },
+      {
+        "hanzi": "冰",
+        "en": "freeze; ice"
+      },
+      {
+        "hanzi": "极",
+        "en": "extremely"
+      },
+      {
+        "hanzi": "斤",
+        "en": "jin"
+      },
+      {
+        "hanzi": "香蕉",
+        "en": "banana"
+      },
+      {
+        "hanzi": "一共",
+        "en": "in all"
+      },
+      {
+        "hanzi": "毛",
+        "en": "mao"
+      },
+      {
+        "hanzi": "结婚",
+        "en": "marry"
+      },
+      {
+        "hanzi": "不但",
+        "en": "not only"
+      },
+      {
+        "hanzi": "而且",
+        "en": "and; but also"
+      },
+      {
+        "hanzi": "声",
+        "en": "(used for sounds); sound"
+      },
+      {
+        "hanzi": "开机",
+        "en": "start; be power-on"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "7-01",
+        "title": {
+          "cn": "商量去买东西",
+          "en": "Talking about going shopping",
+          "emoji": "🚲"
+        },
+        "intro": {
+          "cn": "在家里，王一雪和刘明商量去买东西。",
+          "en": "At home, Wang Yixue and Liu Ming were talking about going shopping."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "小雪的自行车是什么时候买的？",
+            "options": [
+              "昨天买的",
+              "今天买的",
+              "她八岁的时候买的"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "他们怎么去商场？",
+            "options": [
+              "走路",
+              "打车",
+              "骑自行车"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "这辆自行车是小雪八岁的时候买的，看起来有点儿旧了。",
+            "en": "We bought this bicycle when Xiaoxue was eight years old. It's starting to look a bit old now."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "是啊，她现在长高了，这辆车已经太矮了。",
+            "en": "Yeah, she's grown taller, and the bike is too small for her now."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "商场里开了一家自行车店，咱们给她买辆新的吧。",
+            "en": "A new bicycle shop just opened in the mall. Let's get her a new one."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "好，咱们带小雪一起去，让她试一下。",
+            "en": "Sure. Let's take Xiaoxue with us so she can try it out."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "那今天就去吧！我也想再看看衣服。咱们怎么去？",
+            "en": "Let's go today, then! I also want to check out some clothes. How should we get there？"
+          },
+          {
+            "speaker": "刘明",
+            "cn": "商场不远，咱们可以走着去。",
+            "en": "The mall isn't far—we can walk there."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "他们为什么想给小雪买新自行车？"
+          },
+          {
+            "q": "他们为什么想带小雪一起去？"
+          },
+          {
+            "q": "王一雪还想买什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "辆",
+            "pos": "m.",
+            "en": "(for vehicles)"
+          },
+          {
+            "cn": "自行车",
+            "pos": "n.",
+            "en": "bicycle; bike"
+          },
+          {
+            "cn": "旧",
+            "pos": "adj.",
+            "en": "old"
+          },
+          {
+            "cn": "矮",
+            "pos": "adj.",
+            "en": "low (in height); short (in stature)"
+          },
+          {
+            "cn": "试",
+            "pos": "v.",
+            "en": "try"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-2.mp3"
+      },
+      {
+        "id": "7-02",
+        "title": {
+          "cn": "在商场挑衣服",
+          "en": "Choosing clothes at the mall",
+          "emoji": "👗"
+        },
+        "intro": {
+          "cn": "在商场，刘明和王一雪买完自行车，又来挑选衣服。",
+          "en": "At the mall, after buying a bicycle, Liu Ming and Wang Yixue came to choose some clothes."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "课文里说，下面哪个更贵？",
+            "options": [
+              "短裤",
+              "裙子",
+              "运动鞋"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "王一雪后来是怎么决定的？",
+            "options": [
+              "买裙子",
+              "买裤子",
+              "看看再说"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "你看我穿这条黄色的短裤好看吗？",
+            "en": "Do you think these yellow shorts look good on me？"
+          },
+          {
+            "speaker": "刘明",
+            "cn": "大小合适，但我觉得那条裙子比短裤更好看。",
+            "en": "The size fits well, but I think that skirt looks better than the shorts."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "裙子比短裤贵一点儿。",
+            "en": "The skirt is a bit more expensive than the shorts."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "贵多少？",
+            "en": "How much more expensive？"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "裙子480，短裤400。",
+            "en": "The skirt is 480 yuan, and the shorts are 400 yuan."
+          },
+          {
+            "speaker": "刘明",
+            "cn": "裙子不比短裤贵多少，还是买裙子吧，你穿裙子更好看。",
+            "en": "The skirt isn't much more expensive than the shorts. Let's get the skirt—you look better in skirts."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "我多看看再决定。你看，那边有买二送一！",
+            "en": "I'll look around a bit more before deciding. Look, there's a “Buy Two, Get One Free” offer over there！"
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "刘明觉得短裤怎么样？"
+          },
+          {
+            "q": "王一雪为什么不想买裙子？"
+          },
+          {
+            "q": "裙子比短裤贵多少？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "黄色",
+            "pos": "n.",
+            "en": "yellow"
+          },
+          {
+            "cn": "短裤",
+            "pos": "n.",
+            "en": "shorts"
+          },
+          {
+            "cn": "大小",
+            "pos": "n.",
+            "en": "size"
+          },
+          {
+            "cn": "合适",
+            "pos": "adj.",
+            "en": "suitable"
+          },
+          {
+            "cn": "裙子",
+            "pos": "n.",
+            "en": "skirt"
+          },
+          {
+            "cn": "更",
+            "pos": "adv.",
+            "en": "more; still/even more"
+          },
+          {
+            "cn": "决定",
+            "pos": "v./n.",
+            "en": "decide; decision"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-4.mp3"
+      },
+      {
+        "id": "7-03",
+        "title": {
+          "cn": "在商店买水果",
+          "en": "Buying fruit at the store",
+          "emoji": "🍉"
+        },
+        "intro": {
+          "cn": "在商店，王一雪在买东西。",
+          "en": "At the store, Wang Yixue was buying things."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪在买什么？",
+            "options": [
+              "苹果",
+              "牛奶",
+              "西瓜和香蕉"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "这些水果一共花了多少钱？",
+            "options": [
+              "五十五块",
+              "五十八块",
+              "五十八块五毛"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "店员",
+            "cn": "西瓜又大又新鲜，不甜不要钱！",
+            "en": "These watermelons are big and fresh. Free if they aren't sweet！"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "西瓜看起来不错，怎么卖？",
+            "en": "The watermelons look great. How much are they？"
+          },
+          {
+            "speaker": "店员",
+            "cn": "五块钱一公斤。来，您先尝尝这块冰西瓜，甜极了！",
+            "en": "Five yuan per kilo. Here, try this piece of chilled watermelon—it's super sweet！"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "是挺甜的！帮我选个大点儿的，再来两斤香蕉。",
+            "en": "It really is sweet! Please help me pick a bigger one, and I'll take two jin of bananas as well."
+          },
+          {
+            "speaker": "店员",
+            "cn": "一共五十八块五毛。",
+            "en": "That's 58.5 yuan in total."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "我买了这么多，便宜点儿吧。",
+            "en": "I'm buying so much. Can you give me a discount？"
+          },
+          {
+            "speaker": "店员",
+            "cn": "您给我五十五吧，不能再便宜了。",
+            "en": "Make it 55 yuan. That's the best I can do."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "西瓜多少钱一斤？"
+          },
+          {
+            "q": "王一雪买了什么水果？"
+          },
+          {
+            "q": "店员给王一雪便宜了多少钱？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "西瓜",
+            "pos": "n.",
+            "en": "watermelon"
+          },
+          {
+            "cn": "新鲜",
+            "pos": "adj.",
+            "en": "fresh"
+          },
+          {
+            "cn": "甜",
+            "pos": "adj.",
+            "en": "sweet"
+          },
+          {
+            "cn": "公斤",
+            "pos": "m.",
+            "en": "kilogram"
+          },
+          {
+            "cn": "冰",
+            "pos": "v./n.",
+            "en": "freeze; ice"
+          },
+          {
+            "cn": "极",
+            "pos": "adv.",
+            "en": "extremely"
+          },
+          {
+            "cn": "斤",
+            "pos": "m.",
+            "en": "jin"
+          },
+          {
+            "cn": "香蕉",
+            "pos": "n.",
+            "en": "banana"
+          },
+          {
+            "cn": "一共",
+            "pos": "adv.",
+            "en": "in all"
+          },
+          {
+            "cn": "毛",
+            "pos": "m.",
+            "en": "mao"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-6.mp3"
+      },
+      {
+        "id": "7-04",
+        "title": {
+          "cn": "刘明看电视",
+          "en": "Liu Ming is watching TV",
+          "emoji": "📺"
+        },
+        "intro": {
+          "cn": "在家里，刘明在看电视。",
+          "en": "At home, Liu Ming was watching TV."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "刘明发现了什么新问题？",
+            "options": [
+              "电视太旧了",
+              "房子太大了",
+              "电视有点儿小"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "刘明选电视的时候发现了什么？",
+            "options": [
+              "新电视很方便",
+              "新电视不便宜",
+              "不能在网上选电视"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "这几天我们在新家坐着看电视的时候，又发现了新问题。",
+            "en": "These past few days, while watching TV in our new home, we discovered another problem."
+          },
+          {
+            "speaker": "",
+            "cn": "房子大了，电视看起来就有点儿小。",
+            "en": "Now that the house is bigger, the TV looks a bit too small."
+          },
+          {
+            "speaker": "",
+            "cn": "这个电视是我们结婚时买的，是时候换个新电视了。",
+            "en": "We bought it when we got married, so I think it's time for an upgrade."
+          },
+          {
+            "speaker": "",
+            "cn": "今天我一直在网上选电视，没想到，现在的电视不但便宜，而且用着非常方便，有的电视叫它一声就能开机。",
+            "en": "I've been shopping for TVs online all day, and to my surprise, they're not only more affordable but also much smarter—some even turn on when you talk to them."
+          },
+          {
+            "speaker": "",
+            "cn": "我看了好几个，都很满意，晚上让一雪来决定吧。",
+            "en": "I found several I really like, but I'll let Yixue make the final call tonight."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "刘明家的电视是什么时候买的？"
+          },
+          {
+            "q": "刘明想在哪儿买新电视？"
+          },
+          {
+            "q": "刘明为什么觉得新电视用着很方便？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "结婚",
+            "pos": "v.",
+            "en": "marry"
+          },
+          {
+            "cn": "不但",
+            "pos": "conj.",
+            "en": "not only"
+          },
+          {
+            "cn": "而且",
+            "pos": "conj.",
+            "en": "and; but also"
+          },
+          {
+            "cn": "声",
+            "pos": "m./n.",
+            "en": "(used for sounds); sound"
+          },
+          {
+            "cn": "开机",
+            "pos": "v.",
+            "en": "start; be power-on"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-07/7-8.mp3"
       }
     ]
   },
