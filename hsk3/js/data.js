@@ -1,5 +1,5 @@
 // HSK3 lesson texts. Read-only at runtime.
-// Source: hsk3/data/lesson1.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json (hand-authored; book page ranges in hsk3/data/manifest.json).
+// Source: hsk3/data/lesson1.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json (hand-authored; book page ranges in hsk3/data/manifest.json).
 // Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).
 // Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);
 // each point carries a textId so renderTextList can show it under its own text.
@@ -1763,6 +1763,588 @@ window.COURSE_LESSONS = [
           }
         ],
         "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-14/14-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L15 · 我是半个南京人",
+    "id": "15",
+    "core": [
+      {
+        "hanzi": "蓝",
+        "en": "blue"
+      },
+      {
+        "hanzi": "段",
+        "en": "used to indicate a period or section of sth that is continuous, such as time or distance"
+      },
+      {
+        "hanzi": "附近",
+        "en": "nearby"
+      },
+      {
+        "hanzi": "马路",
+        "en": "road"
+      },
+      {
+        "hanzi": "平时",
+        "en": "usually; normal times"
+      },
+      {
+        "hanzi": "放学",
+        "en": "(of school) let out"
+      },
+      {
+        "hanzi": "游戏",
+        "en": "game"
+      },
+      {
+        "hanzi": "老人",
+        "en": "elderly people"
+      },
+      {
+        "hanzi": "根据",
+        "en": "according to; depend on"
+      },
+      {
+        "hanzi": "了解",
+        "en": "understand; know"
+      },
+      {
+        "hanzi": "可是",
+        "en": "but; yet"
+      },
+      {
+        "hanzi": "以上",
+        "en": "more than; over"
+      },
+      {
+        "hanzi": "有名",
+        "en": "famous; well-known"
+      },
+      {
+        "hanzi": "景点",
+        "en": "scenic spot"
+      },
+      {
+        "hanzi": "游客",
+        "en": "tourist"
+      },
+      {
+        "hanzi": "外地",
+        "en": "other place"
+      },
+      {
+        "hanzi": "聊",
+        "en": "chat"
+      },
+      {
+        "hanzi": "南京",
+        "en": "Nanjing"
+      },
+      {
+        "hanzi": "河",
+        "en": "river"
+      },
+      {
+        "hanzi": "关系",
+        "en": "relationship"
+      },
+      {
+        "hanzi": "养",
+        "en": "raise; keep"
+      },
+      {
+        "hanzi": "黄河",
+        "en": "the Yellow River"
+      },
+      {
+        "hanzi": "西北",
+        "en": "northwest"
+      },
+      {
+        "hanzi": "经过",
+        "en": "pass by; process"
+      },
+      {
+        "hanzi": "草地",
+        "en": "meadow"
+      },
+      {
+        "hanzi": "遇见",
+        "en": "meet"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "15-01",
+        "title": {
+          "cn": "在办公室里聊天",
+          "en": "Chatting in the office",
+          "emoji": "🏢"
+        },
+        "intro": {
+          "cn": "在办公室里，王一雪和杨同乐在聊天儿。",
+          "en": "In the office, Wang Yixue and Yang Tongle were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-15/15-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "杨同乐和王一雪在说什么？",
+            "options": [
+              "小区里的老人",
+              "小区里的孩子",
+              "蓝天小区怎么样"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "杨同乐为什么对蓝天小区感兴趣？",
+            "options": [
+              "他想搬家",
+              "他想买房子",
+              "他想跟王一雪做邻居"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "杨同乐",
+            "cn": "您搬到蓝天小区一段时间了，觉得怎么样？",
+            "en": "You've been living in the Lantian Neighborhood for a while now. How do you like it?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "小区环境挺好的，附近买东西也很方便，过马路就是超市。",
+            "en": "The surroundings are quite nice, and it's very convenient for shopping. There's a supermarket right across the street."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "平时孩子们在哪儿玩？",
+            "en": "Where do the kids usually play?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "小区里有很多树，孩子们放学后就在树下做游戏。你想买房子吗？",
+            "en": "There are plenty of trees in the community, so after school, the kids play games under them. Are you thinking about buying a house?"
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "是。我想买一个大房子，让我爸妈过来跟我一起住。",
+            "en": "Yes, I want to buy a big house so my parents can come and live with me."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "蓝天小区的老人挺多的，这几年小区根据他们的需要，有了很多变化。",
+            "en": "There are quite a few elderly people in Lantian Neighborhood, and in recent years the community has made many changes to suit them."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "真不错！过几天我去蓝天小区看看。",
+            "en": "That sounds great! I'll go check out Lantian Neighborhood in a few days."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "蓝天小区附近买东西方便吗？"
+          },
+          {
+            "q": "蓝天小区的孩子们放学后都在哪里玩？"
+          },
+          {
+            "q": "蓝天小区为老人做什么了？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "蓝",
+            "pos": "adj.",
+            "en": "blue"
+          },
+          {
+            "cn": "段",
+            "pos": "m.",
+            "en": "used to indicate a period or section of sth that is continuous, such as time or distance"
+          },
+          {
+            "cn": "附近",
+            "pos": "n.",
+            "en": "nearby"
+          },
+          {
+            "cn": "马路",
+            "pos": "n.",
+            "en": "road"
+          },
+          {
+            "cn": "平时",
+            "pos": "n.",
+            "en": "usually; normal times"
+          },
+          {
+            "cn": "放学",
+            "pos": "v.",
+            "en": "(of school) let out"
+          },
+          {
+            "cn": "游戏",
+            "pos": "n.",
+            "en": "game"
+          },
+          {
+            "cn": "老人",
+            "pos": "n.",
+            "en": "elderly people"
+          },
+          {
+            "cn": "根据",
+            "pos": "prep./v.",
+            "en": "according to; depend on"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-15/15-2.mp3"
+      },
+      {
+        "id": "15-02",
+        "title": {
+          "cn": "聊南京",
+          "en": "Talking about Nanjing",
+          "emoji": "🏙️"
+        },
+        "intro": {
+          "cn": "在办公室里，王一雪和杨同乐在聊天儿。",
+          "en": "In the office, Wang Yixue and Yang Tongle were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-15/15-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪和杨同乐在聊什么？",
+            "options": [
+              "在南京旅游",
+              "下班后吃什么",
+              "杨同乐的大学"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "南京是一个什么样的城市？",
+            "options": [
+              "有很多游客去旅游",
+              "有一千年以上的历史",
+              "有很多南京人不知道的景点"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "假期我想去南京旅游，但是我不太了解那里。",
+            "en": "I'm thinking of going to Nanjing for the vacation, but I don't know much about it."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "我虽然不是南京人，可是我是在南京上的大学，可以说是半个南京人。",
+            "en": "Although I'm not from Nanjing, I went to university there, so I'm basically half a local."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "太好了！你快给我介绍一下南京吧。",
+            "en": "That's great! Could you tell me more about Nanjing?"
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "南京有两千年以上的历史，有老城、老街，还有很多有名的景点，每年去旅游的游客特别多。",
+            "en": "Nanjing has a history of over 2000 years. It's got ancient city walls, historic streets, and famous landmarks. It attracts countless tourists every year."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "除了这些以外，你再告诉我一些外地人不知道的地方。",
+            "en": "Besides those popular tourist spots, do you have any recommendations for hidden gems?"
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "那太多了，我得一点儿一点儿给您讲。",
+            "en": "There are so many! It would take a while to list them all."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "行，下班后我请你吃晚饭，咱们边吃边聊。",
+            "en": "Sounds good. Let me buy you dinner after work, and we can chat over a meal."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "王一雪了解南京吗？"
+          },
+          {
+            "q": "杨同乐为什么了解南京？"
+          },
+          {
+            "q": "王一雪为什么请杨同乐吃晚饭？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "了解",
+            "pos": "v.",
+            "en": "understand; know"
+          },
+          {
+            "cn": "可是",
+            "pos": "conj.",
+            "en": "but; yet"
+          },
+          {
+            "cn": "以上",
+            "pos": "n.",
+            "en": "more than; over"
+          },
+          {
+            "cn": "有名",
+            "pos": "adj.",
+            "en": "famous; well-known"
+          },
+          {
+            "cn": "景点",
+            "pos": "n.",
+            "en": "scenic spot"
+          },
+          {
+            "cn": "游客",
+            "pos": "n.",
+            "en": "tourist"
+          },
+          {
+            "cn": "外地",
+            "pos": "n.",
+            "en": "other place"
+          },
+          {
+            "cn": "聊",
+            "pos": "v.",
+            "en": "chat"
+          },
+          {
+            "cn": "南京",
+            "pos": "",
+            "en": "Nanjing"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-15/15-4.mp3"
+      },
+      {
+        "id": "15-03",
+        "title": {
+          "cn": "聊黄河",
+          "en": "Talking about the Yellow River",
+          "emoji": "🌊"
+        },
+        "intro": {
+          "cn": "在家里，王一雪和刘小明在聊天儿。",
+          "en": "At home, Wang Yixue and Liu Xiaoming were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-15/15-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪和刘小明在聊什么？",
+            "options": [
+              "最长的河",
+              "黄河的历史",
+              "学校的作业"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "刘小明对黄河了解多少？",
+            "options": [
+              "一点儿都不了解",
+              "了解一些",
+              "什么都知道"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "小明，中国有一条大河，它的名字跟颜色有关系，你知道是什么河吗？",
+            "en": "Xiaoming, there is a major river in China named after a color. Do you know which river it is?"
+          },
+          {
+            "speaker": "刘小明",
+            "cn": "我知道，是黄河！",
+            "en": "I know! It's the Yellow River!"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "你说对了。我再问问你，你知道它为什么叫黄河吗？",
+            "en": "That's right. Here's another question—do you know why it's called the Yellow River?"
+          },
+          {
+            "speaker": "刘小明",
+            "cn": "因为河水看起来是黄色的，所以叫这个名字。黄河是中国最长的河吗？",
+            "en": "It's because the water looks yellow! By the way, is the Yellow River the longest river in China?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "不是。黄河虽然不是最长的河，可是在历史上很重要。",
+            "en": "No, the Yellow River isn't the longest, but it is historically very important."
+          },
+          {
+            "speaker": "刘小明",
+            "cn": "这个我知道。很久以前，很多中国人都住在黄河边上。",
+            "en": "I know! A long time ago, many Chinese people lived along the Yellow River."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "对。在我们中国人看来，黄河像妈妈一样，养了我们几千年。",
+            "en": "Exactly. To us Chinese, the Yellow River is like a mother—it has nurtured us for thousands of years."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "黄河的名字为什么跟“黄”这个颜色有关系？"
+          },
+          {
+            "q": "黄河是中国最长的河吗？"
+          },
+          {
+            "q": "在中国人看来，黄河像什么一样？为什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "河",
+            "pos": "n.",
+            "en": "river"
+          },
+          {
+            "cn": "关系",
+            "pos": "n.",
+            "en": "relationship"
+          },
+          {
+            "cn": "养",
+            "pos": "v.",
+            "en": "raise; keep"
+          },
+          {
+            "cn": "黄河",
+            "pos": "",
+            "en": "the Yellow River"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-15/15-6.mp3"
+      },
+      {
+        "id": "15-04",
+        "title": {
+          "cn": "王一雪的日记",
+          "en": "Wang Yixue's diary",
+          "emoji": "📔"
+        },
+        "intro": {
+          "cn": "在家里，王一雪在写日记。",
+          "en": "At home, Wang Yixue was writing in her diary."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-15/15-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪小时候住的地方是什么样的？",
+            "options": [
+              "她家住在河边",
+              "她家在北京的南边",
+              "离她家很远的地方有一条河"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "遇到不开心的事情，王一雪怎么办？",
+            "options": [
+              "去河里游泳",
+              "去河边坐着",
+              "一个人在家"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "我小时候住在北京的西北边，有一条非常有名的河经过那里。",
+            "en": "When I was little, I lived in the northwest part of Beijing, where a very famous river flowed by."
+          },
+          {
+            "speaker": "",
+            "cn": "我家就住在河边。那里有高高的大树和绿绿的草地。",
+            "en": "My home was right by the river. There were tall trees and lush green grass all around."
+          },
+          {
+            "speaker": "",
+            "cn": "春天，河边的花都开了，看起来特别漂亮。",
+            "en": "In spring, flowers along the riverbank would bloom, making the scenery especially beautiful."
+          },
+          {
+            "speaker": "",
+            "cn": "还记得小时候，一到夏天我就去河里游泳。",
+            "en": "I still remember that every summer, I would go swimming in the river."
+          },
+          {
+            "speaker": "",
+            "cn": "长大以后，遇到什么不开心的事情，我就去河边的树下坐着，听听鸟叫，看看河水，跟遇见的朋友聊聊天儿，难过的事情不一会儿就忘了。",
+            "en": "As I grew older, whenever I felt unhappy, I would sit under the trees by the river, listening to the birds, watching the flowing water, and chatting with friends I met there. My sadness would melt away in no time."
+          },
+          {
+            "speaker": "",
+            "cn": "那是我最喜欢的地方。",
+            "en": "That's my favorite place."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "王一雪小时候住的地方环境怎么样？"
+          },
+          {
+            "q": "小时候，王一雪一到夏天就做什么？"
+          },
+          {
+            "q": "长大以后，王一雪会去河边做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "西北",
+            "pos": "n.",
+            "en": "northwest"
+          },
+          {
+            "cn": "经过",
+            "pos": "v./n.",
+            "en": "pass by; process"
+          },
+          {
+            "cn": "草地",
+            "pos": "n.",
+            "en": "meadow"
+          },
+          {
+            "cn": "遇见",
+            "pos": "v.",
+            "en": "meet"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-15/15-8.mp3"
       }
     ]
   }

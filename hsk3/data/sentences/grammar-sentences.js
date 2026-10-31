@@ -1,5 +1,5 @@
-// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json — do not edit by hand.
-// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json
+// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json — do not edit by hand.
+// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json
 // Regenerate: python3 hsk3/tools/gen-lesson-js.py
 window.SENTENCE_CORPUS = [
   {
@@ -445,6 +445,175 @@ window.SENTENCE_CORPUS = [
           {
             "c": "急什么啊，马上就到了。",
             "en": "What's the rush? We'll be there soon."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 15,
+    "key": "15",
+    "review": false,
+    "title": "I'm half a Nanjing local",
+    "titleCn": "我是半个南京人",
+    "points": [
+      {
+        "id": "15-g1",
+        "textId": "15-01",
+        "no": 1,
+        "cn": "介词“根据”",
+        "en": "Preposition “根据”",
+        "note": "介词“根据”在句子中引出事情的依据或理由。",
+        "noteEn": "The preposition “根据” is used to introduce the basis or reason for an action in a sentence.",
+        "practice": [
+          {
+            "cn": "我们会______决定买什么时候的机票。",
+            "en": ""
+          },
+          {
+            "cn": "你应该______选择合适的衣服。",
+            "en": ""
+          },
+          {
+            "cn": "老师会______，给每个学生不同的作业。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "这几年小区根据他们的需要，有了很多变化。",
+            "en": "In recent years, the community has made many changes according to their needs."
+          },
+          {
+            "c": "根据要求，我们必须参加明天的会议。",
+            "en": "According to the requirements, we must attend tomorrow's meeting."
+          },
+          {
+            "c": "老师根据每个学生的兴趣，选择了不一样的书。",
+            "en": "The teacher chose different books according to each student's interests."
+          }
+        ]
+      },
+      {
+        "id": "15-g2",
+        "textId": "15-02",
+        "no": 2,
+        "cn": "数量重叠“数词+量词+数词+量词”",
+        "en": "Reduplication of Numeral-Measure Word Phrases",
+        "note": "数量短语可以重叠，重叠后可作状语，一般表示动作的方式，有形象化的作用。基本结构：数词+量词+数词+量词+（地）+动词。",
+        "noteEn": "Numeral-measure word phrases can be reduplicated and used as adverbials. The reduplication usually indicates the manner of an action and adds a vivid, descriptive effect. Basic structure: Numeral+Measure Word+Numeral+Measure Word+(地)+Verb.",
+        "practice": [
+          {
+            "cn": "A：你女儿喜欢看外语书吗？",
+            "en": ""
+          },
+          {
+            "cn": "B：喜欢，虽然有点儿难，她______，已经看完十多本了。（本）",
+            "en": ""
+          },
+          {
+            "cn": "A：你现在能选好用哪张照片吗？",
+            "en": ""
+          },
+          {
+            "cn": "B：别着急，我要______。（张）",
+            "en": ""
+          },
+          {
+            "cn": "A：这么多的练习题，什么时候能做完啊？",
+            "en": ""
+          },
+          {
+            "cn": "B：______，慢慢就做完了。（个）",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "我得一点儿一点儿给您讲。",
+            "en": "I'll have to explain it to you bit by bit."
+          },
+          {
+            "c": "学生们的汉语水平一天一天地提高了。",
+            "en": "The students' Chinese level has been improving day by day."
+          },
+          {
+            "c": "他们两个两个地走进去了。",
+            "en": "They walked in two by two."
+          }
+        ]
+      },
+      {
+        "id": "15-g3",
+        "textId": "15-03",
+        "no": 3,
+        "cn": "固定短语“在……看来”",
+        "en": "Set Phrase “在……看来”",
+        "note": "固定短语“在……看来”表示个人或某个群体的观点。",
+        "noteEn": "The set phrase “在……看来” is used to express the viewpoint of an individual or a group.",
+        "practice": [
+          {
+            "cn": "______，时间比钱更重要。",
+            "en": ""
+          },
+          {
+            "cn": "______，每天运动对身体很好。",
+            "en": ""
+          },
+          {
+            "cn": "______，这个城市的环境非常好。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "在我们中国人看来，黄河像妈妈一样，养了我们几千年。",
+            "en": "To us Chinese, the Yellow River is like a mother—it has nurtured us for thousands of years."
+          },
+          {
+            "c": "在同事们看来，她工作非常认真。",
+            "en": "In the eyes of her colleagues, she works very conscientiously."
+          },
+          {
+            "c": "在我看来，每天读书是一种很好的习惯。",
+            "en": "In my opinion, reading every day is a very good habit."
+          }
+        ]
+      },
+      {
+        "id": "15-g4",
+        "textId": "15-04",
+        "no": 4,
+        "cn": "固定短语“不一会儿”",
+        "en": "Set Phrase “不一会儿”",
+        "note": "固定短语“不一会儿”表示很短的时间，在句中作状语，多用于口语。",
+        "noteEn": "The set phrase “不一会儿” means “in a short while”. It functions as an adverbial in sentences and is commonly used in colloquial speech.",
+        "practice": [
+          {
+            "cn": "我只想看半个小时电视，可是______，一个小时就过去了。",
+            "en": ""
+          },
+          {
+            "cn": "他们在门口站着，出租车______。",
+            "en": ""
+          },
+          {
+            "cn": "我们坐在会议室里，______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "难过的事情不一会儿就忘了。",
+            "en": "Sad things are forgotten in no time."
+          },
+          {
+            "c": "不一会儿，张校长就来了。",
+            "en": "In a short while, Principal Zhang arrived."
+          },
+          {
+            "c": "两个小时看起来长，但是不一会儿就过去了。",
+            "en": "Two hours seem long, but they pass in no time."
           }
         ]
       }
