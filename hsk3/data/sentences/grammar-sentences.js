@@ -1,5 +1,5 @@
-// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson13.json — do not edit by hand.
-// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson13.json
+// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json — do not edit by hand.
+// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json
 window.SENTENCE_CORPUS = [
   {
     "lesson": 1,
@@ -275,7 +275,7 @@ window.SENTENCE_CORPUS = [
         "en": "Prefixes and Suffixes",
         "note": "在汉语里，有一些语素可以作为“前缀”或“后缀”来组成新词，这些新词的意思和原来的语素有关系。",
         "noteEn": "In Chinese, some morphemes can function as prefixes or suffixes to form new words whose meanings are semantically linked to the original morphemes.",
-        "practice": [],
+        "practice": null,
         "items": [
           {
             "c": "前缀“老”放在人的前面，表示这个人年龄大或很有经验：老张、老师。",
@@ -288,6 +288,162 @@ window.SENTENCE_CORPUS = [
           {
             "c": "后缀“家”表示在某一领域有专长或成就的人：画家、音乐家。",
             "en": "The suffix 家 indicates a person with expertise or outstanding achievement in a specific field, such as 画家 or 音乐家."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 14,
+    "key": "14",
+    "review": false,
+    "title": "This book is checked out",
+    "titleCn": "这本书被别人借走了",
+    "points": [
+      {
+        "id": "14-g1",
+        "textId": "14-01",
+        "no": 1,
+        "cn": "被动句（1）",
+        "en": "Passive Sentences (1)",
+        "note": "汉语中用带“被”字的句子表达被动意义，突出主语受到了某个动作的影响，语气常带有被动、无奈、负面等色彩。副词和能愿动词放在“被”字前面，“被”字后面的宾语可以省略。基本结构：主语+被+宾语+动词+其他成分。",
+        "noteEn": "In Chinese, sentences with “被” express the passive voice, emphasizing that the subject is affected by an action. These sentences often convey a sense of passivity, helplessness, or negativity. Adverbs and modal verbs are placed before “被”, and the object following “被” can be omitted. Basic structure: Subject+被+Object+Verb+Other Elements.",
+        "practice": [
+          {
+            "cn": "A：你的自行车呢？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：你怎么没带照相机？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：我刚买的咖啡呢？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "这本书被别人借走了。",
+            "en": "This book was borrowed by someone else."
+          },
+          {
+            "c": "水果可能被弟弟吃了。",
+            "en": "The fruit may have been eaten by my younger brother."
+          },
+          {
+            "c": "我们俩经常被叫错名字。",
+            "en": "The two of us are often called by the wrong names."
+          }
+        ]
+      },
+      {
+        "id": "14-g2",
+        "textId": "14-02",
+        "no": 2,
+        "cn": "承接复句“先……，再/然后……”",
+        "en": "Successive Complex Sentence “先……，再/然后……”",
+        "note": "承接复句“先……，再/然后……”中，两个分句表示动作的先后顺序。",
+        "noteEn": "In a successive complex sentence “先……，再/然后……”, the clauses indicate the chronological order of actions.",
+        "practice": [
+          {
+            "cn": "A：下课以后，你做什么？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：考完试了，你有什么打算？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          },
+          {
+            "cn": "A：听说你妈妈要来北京，你打算带她去哪儿玩？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "我要先去图书馆借书，然后去游泳。",
+            "en": "First, I need to go to the library to borrow some books, and then I'm going swimming."
+          },
+          {
+            "c": "你先去买门票，再来这里找我。",
+            "en": "First go buy the tickets, then come back here to find me."
+          },
+          {
+            "c": "你们先回房间休息一会儿，然后再出来吃晚饭。",
+            "en": "First go back to your rooms and rest for a while, then come out for dinner."
+          }
+        ]
+      },
+      {
+        "id": "14-g3",
+        "textId": "14-03",
+        "no": 3,
+        "cn": "固定格式“×什么（啊）”",
+        "en": "Fixed Pattern “×什么（啊）”",
+        "note": "固定格式“×什么（啊）”通常用于否定对方的担忧、疑问或强调事实，带有反驳或安慰的语气。",
+        "noteEn": "The fixed pattern “×什么（啊）” is often used to dismiss someone's concerns or doubts, or to emphasize a fact. It carries a tone of refutation or reassurance.",
+        "practice": [
+          {
+            "cn": "A：这个地方太远了，走过去要很久。",
+            "en": ""
+          },
+          {
+            "cn": "B：______，走路十几分钟就到了。",
+            "en": ""
+          },
+          {
+            "cn": "A：这家饭馆的菜挺贵的，咱们换一家吧。",
+            "en": ""
+          },
+          {
+            "cn": "B：______，今天你生日，想吃什么就吃什么。",
+            "en": ""
+          },
+          {
+            "cn": "A：明天就要考试了，我好紧张。",
+            "en": ""
+          },
+          {
+            "cn": "B：______，我们都相信你。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "紧张什么啊，我们都喜欢听你唱歌，你要相信自己。",
+            "en": "What's there to be nervous about? We all love hearing you sing. You just need to believe in yourself."
+          },
+          {
+            "c": "胖什么啊，你看起来不胖也不瘦。",
+            "en": "What's there to be fat about? You don't look fat or thin."
+          },
+          {
+            "c": "急什么啊，马上就到了。",
+            "en": "What's the rush? We'll be there soon."
           }
         ]
       }

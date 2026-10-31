@@ -1,5 +1,6 @@
 // HSK3 lesson texts. Read-only at runtime.
-// Source: hsk3/data/lesson1.json (Lesson 1, book pp.1-9) + hsk3/data/lesson13.json (Lesson 13, book pp.116-124).
+// Source: hsk3/data/lesson1.json (Lesson 1, book pp.1-9) + hsk3/data/lesson13.json (Lesson 13, book pp.116-124)
+//         + hsk3/data/lesson14.json (Lesson 14, book pp.124-132).
 // Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).
 // Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);
 // each point carries a textId so renderTextList can show it under its own text.
@@ -1182,6 +1183,587 @@ window.COURSE_LESSONS = [
           }
         ],
         "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-13/13-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L14 · 这本书被别人借走了",
+    "id": "14",
+    "core": [
+      {
+        "hanzi": "词典",
+        "en": "dictionary"
+      },
+      {
+        "hanzi": "最好",
+        "en": "had better"
+      },
+      {
+        "hanzi": "节",
+        "en": "commonly used to count class periods or sections of lessons"
+      },
+      {
+        "hanzi": "图书馆",
+        "en": "library"
+      },
+      {
+        "hanzi": "被",
+        "en": "(used to indicate the passive voice) by"
+      },
+      {
+        "hanzi": "名人",
+        "en": "celebrity"
+      },
+      {
+        "hanzi": "故事",
+        "en": "story"
+      },
+      {
+        "hanzi": "然后",
+        "en": "then"
+      },
+      {
+        "hanzi": "报纸",
+        "en": "newspaper"
+      },
+      {
+        "hanzi": "忘记",
+        "en": "forget"
+      },
+      {
+        "hanzi": "电子书",
+        "en": "e-book"
+      },
+      {
+        "hanzi": "女生",
+        "en": "girl student"
+      },
+      {
+        "hanzi": "表演",
+        "en": "perform"
+      },
+      {
+        "hanzi": "节目",
+        "en": "program"
+      },
+      {
+        "hanzi": "怎么办",
+        "en": "what to do"
+      },
+      {
+        "hanzi": "校长",
+        "en": "principal"
+      },
+      {
+        "hanzi": "面前",
+        "en": "presence"
+      },
+      {
+        "hanzi": "有些",
+        "en": "somewhat; rather"
+      },
+      {
+        "hanzi": "相信",
+        "en": "believe"
+      },
+      {
+        "hanzi": "新年",
+        "en": "New Year"
+      },
+      {
+        "hanzi": "班级",
+        "en": "classes and grades (in school)"
+      },
+      {
+        "hanzi": "跳",
+        "en": "jump"
+      },
+      {
+        "hanzi": "留学生",
+        "en": "international student; overseas student"
+      },
+      {
+        "hanzi": "最后",
+        "en": "the last; in the end"
+      },
+      {
+        "hanzi": "一块儿",
+        "en": "together; the same place"
+      },
+      {
+        "hanzi": "网站",
+        "en": "website"
+      },
+      {
+        "hanzi": "视频",
+        "en": "video"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "14-01",
+        "title": {
+          "cn": "在校园餐厅聊天",
+          "en": "Chatting in the campus cafeteria",
+          "emoji": "🍽️"
+        },
+        "intro": {
+          "cn": "在校园餐厅，李文和白家月正在聊天儿。",
+          "en": "In the campus cafeteria, Li Wen and Bai Jiayue were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-14/14-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "白家月下午要帮李文做什么？",
+            "options": [
+              "借词典",
+              "还词典",
+              "找一本书"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "白家月是怎么知道《名人的故事》这本书的？",
+            "options": [
+              "她有一本",
+              "她听说过",
+              "她在图书馆借过"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "李文",
+            "cn": "我借的这本词典最好今天还，但是我没时间去。",
+            "en": "The dictionary I borrowed is due today, but I don't have time to return it."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "下午我只有两节课，可以帮你去图书馆还书。",
+            "en": "I only have two classes this afternoon, so I can help you return it to the library."
+          },
+          {
+            "speaker": "李文",
+            "cn": "那太谢谢了。你能再帮我借本书吗？",
+            "en": "Thank you so much! Could you also help me borrow another book?"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "行，你告诉我书名。",
+            "en": "Sure, just tell me the title."
+          },
+          {
+            "speaker": "李文",
+            "cn": "我把名字写在纸上吧。我去了好几次图书馆，这本书都被别人借走了。",
+            "en": "I'll write it down for you. I've been to the library several times, but this book is always checked out."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "《名人的故事》？我有这本书。明天我借给你吧。",
+            "en": "Stories of Celebrities? I have that book—I'll lend it to you tomorrow."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "李文请白家月帮他借什么书？"
+          },
+          {
+            "q": "李文为什么没借到这本书？"
+          },
+          {
+            "q": "李文把书名写在哪儿了？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "词典",
+            "pos": "n.",
+            "en": "dictionary"
+          },
+          {
+            "cn": "最好",
+            "pos": "adv.",
+            "en": "had better"
+          },
+          {
+            "cn": "节",
+            "pos": "m.",
+            "en": "commonly used to count class periods or sections of lessons"
+          },
+          {
+            "cn": "图书馆",
+            "pos": "n.",
+            "en": "library"
+          },
+          {
+            "cn": "被",
+            "pos": "prep.",
+            "en": "(used to indicate the passive voice) by"
+          },
+          {
+            "cn": "名人",
+            "pos": "n.",
+            "en": "celebrity"
+          },
+          {
+            "cn": "故事",
+            "pos": "n.",
+            "en": "story"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-14/14-2.mp3"
+      },
+      {
+        "id": "14-02",
+        "title": {
+          "cn": "在校园里",
+          "en": "On campus",
+          "emoji": "🎓"
+        },
+        "intro": {
+          "cn": "在校园里，白家月和安妮在聊天儿。",
+          "en": "On campus, Bai Jiayue and Annie were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-14/14-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "下课以后白家月要做什么？",
+            "options": [
+              "去图书馆",
+              "找校园卡",
+              "跟陈天中去游泳"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "安妮觉得进不去图书馆可以怎么做？",
+            "options": [
+              "找李文借书",
+              "上网借电子书",
+              "借朋友的校园卡"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "安妮",
+            "cn": "今天下课早，你一会儿做什么？",
+            "en": "Classes ended early today. What are your plans for later?"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我今天忙得很，要先去图书馆借书，然后去游泳。",
+            "en": "I'm really busy today. First, I need to go to the library to borrow some books, and then I'm going swimming."
+          },
+          {
+            "speaker": "安妮",
+            "cn": "咱们一起走吧，我想去图书馆看看中文报纸。",
+            "en": "Let's go together. I want to check out some Chinese newspapers at the library."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "等等，我的校园卡不见了，没有卡进不去图书馆。",
+            "en": "Wait a minute—my campus card is missing. I won't be able to enter the library without it."
+          },
+          {
+            "speaker": "安妮",
+            "cn": "你想想上一次用是什么时候？",
+            "en": "Do you remember when you last used it?"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我忘记了，可能被我放在家里了。",
+            "en": "I don't remember. Maybe I left it at home."
+          },
+          {
+            "speaker": "安妮",
+            "cn": "进不去图书馆也没关系，上网看看有没有电子书。",
+            "en": "It's okay if you can't get into the library. You can look for e-books online instead."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "不行，我必须去，我还得帮李文还书呢。",
+            "en": "No, I have to go. I have to return Li Wen's book."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "下课以后安妮要做什么？"
+          },
+          {
+            "q": "白家月为什么不能进图书馆？"
+          },
+          {
+            "q": "白家月觉得校园卡可能在哪儿？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "然后",
+            "pos": "conj.",
+            "en": "then"
+          },
+          {
+            "cn": "报纸",
+            "pos": "n.",
+            "en": "newspaper"
+          },
+          {
+            "cn": "忘记",
+            "pos": "v.",
+            "en": "forget"
+          },
+          {
+            "cn": "电子书",
+            "pos": "n.",
+            "en": "e-book"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-14/14-4.mp3"
+      },
+      {
+        "id": "14-03",
+        "title": {
+          "cn": "学校晚会",
+          "en": "The school party",
+          "emoji": "🎤"
+        },
+        "intro": {
+          "cn": "在校园餐厅，李文和白家月边吃边聊。",
+          "en": "In the campus cafeteria, Li Wen and Bai Jiayue were chatting while eating."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-14/14-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "李文和白家月在说什么？",
+            "options": [
+              "学校的晚会",
+              "学唱中文歌",
+              "参加唱歌比赛"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "李文想怎么表演节目？",
+            "options": [
+              "自己跳舞",
+              "一个人唱歌",
+              "找人一起表演"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "李文",
+            "cn": "下周学校有晚会，你知道吗？",
+            "en": "There's a school party next week. Have you heard about it?"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "知道，我和几个女生要表演一个节目。你也参加吗？",
+            "en": "Yes, a few other girls and I are going to perform. Are you joining too?"
+          },
+          {
+            "speaker": "李文",
+            "cn": "我想唱中文歌，但是还没找到人一起表演，不知道怎么办。",
+            "en": "I want to sing a Chinese song, but I haven't found anyone to perform with yet. I'm not sure what to do."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "找不到人，你就一个人唱吧。",
+            "en": "If you can't find anyone, just perform solo."
+          },
+          {
+            "speaker": "李文",
+            "cn": "一想到要在校长、老师和那么多同学面前表演，我就有些紧张。",
+            "en": "Just thinking about performing in front of the principal, teachers, and so many classmates makes me a bit nervous."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "紧张什么啊，我们都喜欢听你唱歌，你要相信自己。",
+            "en": "What's there to be nervous about? We all love hearing you sing. You just need to believe in yourself."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "白家月要在晚上做什么？"
+          },
+          {
+            "q": "李文为什么紧张？"
+          },
+          {
+            "q": "听说李文有点儿紧张，白家月是怎么说的？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "女生",
+            "pos": "n.",
+            "en": "girl student"
+          },
+          {
+            "cn": "表演",
+            "pos": "v.",
+            "en": "perform"
+          },
+          {
+            "cn": "节目",
+            "pos": "n.",
+            "en": "program"
+          },
+          {
+            "cn": "怎么办",
+            "pos": "",
+            "en": "what to do"
+          },
+          {
+            "cn": "校长",
+            "pos": "n.",
+            "en": "principal"
+          },
+          {
+            "cn": "面前",
+            "pos": "n.",
+            "en": "presence"
+          },
+          {
+            "cn": "有些",
+            "pos": "adv.",
+            "en": "somewhat; rather"
+          },
+          {
+            "cn": "相信",
+            "pos": "v.",
+            "en": "believe"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-14/14-6.mp3"
+      },
+      {
+        "id": "14-04",
+        "title": {
+          "cn": "白家月的日记",
+          "en": "Bai Jiayue's diary",
+          "emoji": "📔"
+        },
+        "intro": {
+          "cn": "在家里，白家月在写日记。",
+          "en": "At home, Bai Jiayue was writing in her diary."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-14/14-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "昨天的晚会谁表演节目了？",
+            "options": [
+              "校长",
+              "一些老师",
+              "每个班级的同学"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "白家月为什么累坏了？",
+            "options": [
+              "又唱又跳",
+              "给同学们拍照",
+              "表演了很多节目"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "昨天是我们学校的新年晚会，每个班级的同学都表演节目了。",
+            "en": "Yesterday was our school's New Year's party, and students from every class put on performances."
+          },
+          {
+            "speaker": "",
+            "cn": "晚会是八点开始的，差不多十二点才结束。",
+            "en": "The party started at 8 p.m. and didn't end until nearly midnight."
+          },
+          {
+            "speaker": "",
+            "cn": "我一个晚上跟大家又唱又跳，开心极了，也累坏了。",
+            "en": "I spent the whole evening singing and dancing with everyone—it was so much fun, but I was completely worn out."
+          },
+          {
+            "speaker": "",
+            "cn": "我最喜欢的节目是留学生们跳舞，最后老师和校长也被叫起来一块儿跳，特别有意思。",
+            "en": "My favorite act was the dance by the international students. Toward the end, even the teachers and the principal were invited to join the dance floor, which made it especially entertaining."
+          },
+          {
+            "speaker": "",
+            "cn": "过几天学校的网站上会有晚会的视频，我打算再看一遍。",
+            "en": "In a few days, the videos will be uploaded to the school's website, and I'm planning to watch them again."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "晚会是什么时候开始的？什么时候结束的？"
+          },
+          {
+            "q": "白家月最喜欢哪个节目？为什么？"
+          },
+          {
+            "q": "过几天白家月打算做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "新年",
+            "pos": "n.",
+            "en": "New Year"
+          },
+          {
+            "cn": "班级",
+            "pos": "n.",
+            "en": "classes and grades (in school)"
+          },
+          {
+            "cn": "跳",
+            "pos": "v.",
+            "en": "jump"
+          },
+          {
+            "cn": "留学生",
+            "pos": "n.",
+            "en": "international student; overseas student"
+          },
+          {
+            "cn": "最后",
+            "pos": "n.",
+            "en": "the last; in the end"
+          },
+          {
+            "cn": "一块儿",
+            "pos": "adv./n.",
+            "en": "together; the same place"
+          },
+          {
+            "cn": "网站",
+            "pos": "n.",
+            "en": "website"
+          },
+          {
+            "cn": "视频",
+            "pos": "n.",
+            "en": "video"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-14/14-8.mp3"
       }
     ]
   }
