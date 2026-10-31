@@ -1,5 +1,5 @@
 // HSK3 lesson texts. Read-only at runtime.
-// Source: hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
+// Source: hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
 // Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).
 // Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);
 // each point carries a textId so renderTextList can show it under its own text.
@@ -1719,6 +1719,1173 @@ window.COURSE_LESSONS = [
           }
         ],
         "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-03/3-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L4 · 这家宾馆跟别的都不一样",
+    "id": "4",
+    "core": [
+      {
+        "hanzi": "假期",
+        "en": "vacation; holiday"
+      },
+      {
+        "hanzi": "海",
+        "en": "sea"
+      },
+      {
+        "hanzi": "草原",
+        "en": "grassland"
+      },
+      {
+        "hanzi": "主意",
+        "en": "idea"
+      },
+      {
+        "hanzi": "骑",
+        "en": "ride"
+      },
+      {
+        "hanzi": "马",
+        "en": "horse"
+      },
+      {
+        "hanzi": "羊",
+        "en": "sheep; goat"
+      },
+      {
+        "hanzi": "月亮",
+        "en": "moon"
+      },
+      {
+        "hanzi": "一定",
+        "en": "certainly"
+      },
+      {
+        "hanzi": "刻",
+        "en": "(of an hour) quarter"
+      },
+      {
+        "hanzi": "起飞",
+        "en": "take off"
+      },
+      {
+        "hanzi": "宾馆",
+        "en": "hotel"
+      },
+      {
+        "hanzi": "特别",
+        "en": "special; adv. especially"
+      },
+      {
+        "hanzi": "别的",
+        "en": "other"
+      },
+      {
+        "hanzi": "一样",
+        "en": "the same"
+      },
+      {
+        "hanzi": "牛",
+        "en": "cattle"
+      },
+      {
+        "hanzi": "相机",
+        "en": "camera"
+      },
+      {
+        "hanzi": "欢迎",
+        "en": "welcome"
+      },
+      {
+        "hanzi": "司机",
+        "en": "driver"
+      },
+      {
+        "hanzi": "晚点",
+        "en": "(of a train, ship, etc.) be late"
+      },
+      {
+        "hanzi": "久",
+        "en": "long"
+      },
+      {
+        "hanzi": "除了",
+        "en": "besides; except; other than"
+      },
+      {
+        "hanzi": "以外",
+        "en": "except"
+      },
+      {
+        "hanzi": "先",
+        "en": "first"
+      },
+      {
+        "hanzi": "一直",
+        "en": "all along"
+      },
+      {
+        "hanzi": "干净",
+        "en": "clean"
+      },
+      {
+        "hanzi": "满意",
+        "en": "be satisfied"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "4-01",
+        "title": {
+          "cn": "假期去哪儿玩",
+          "en": "Where to go for vacation",
+          "emoji": "🏖️"
+        },
+        "intro": {
+          "cn": "在王一飞家客厅，杨同乐和王一飞在聊天儿。",
+          "en": "In Wang Yifei's living room, Yang Tongle and Wang Yifei were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一飞和杨同乐在说什么？",
+            "options": [
+              "明天的天气",
+              "喜欢吃什么",
+              "假期做什么"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "杨同乐觉得草原怎么样？",
+            "options": [
+              "草原天气不好",
+              "草原比海边冷",
+              "草原很有意思"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "杨同乐",
+            "cn": "这个假期咱们去哪儿玩吧。",
+            "en": "How about going somewhere for a vacation？"
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "好啊，你想去哪儿，咱们就去哪儿。",
+            "en": "Sure, we can go wherever you'd like."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "你喜欢海，找个海边住几天，怎么样？",
+            "en": "You like the sea—how about staying by the coast for a few days？"
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "现在去海边有点儿冷。",
+            "en": "It's a bit too cold to go to the seaside now."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "那去草原吧？草原一点儿也不冷。",
+            "en": "Then let's go to the grasslands. It's not cold there at all."
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "这个主意好！我好久没骑马了。",
+            "en": "Great idea! I haven't ridden a horse in ages."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "对，在草原上骑马、吃羊肉、看月亮，一定很有意思。",
+            "en": "Exactly! Riding horses, eating mutton, and watching the moon on the grasslands must be wonderful."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "王一飞为什么不想去海边？"
+          },
+          {
+            "q": "王一飞为什么觉得去草原好？"
+          },
+          {
+            "q": "他们在草原上可以做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "假期",
+            "pos": "n.",
+            "en": "vacation; holiday"
+          },
+          {
+            "cn": "海",
+            "pos": "n.",
+            "en": "sea"
+          },
+          {
+            "cn": "草原",
+            "pos": "n.",
+            "en": "grassland"
+          },
+          {
+            "cn": "主意",
+            "pos": "n.",
+            "en": "idea"
+          },
+          {
+            "cn": "骑",
+            "pos": "v.",
+            "en": "ride"
+          },
+          {
+            "cn": "马",
+            "pos": "n.",
+            "en": "horse"
+          },
+          {
+            "cn": "羊",
+            "pos": "n.",
+            "en": "sheep; goat"
+          },
+          {
+            "cn": "月亮",
+            "pos": "n.",
+            "en": "moon"
+          },
+          {
+            "cn": "一定",
+            "pos": "adv.",
+            "en": "certainly"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-2.mp3"
+      },
+      {
+        "id": "4-02",
+        "title": {
+          "cn": "机票和宾馆都订好了",
+          "en": "Tickets and hotel are booked",
+          "emoji": "✈️"
+        },
+        "intro": {
+          "cn": "在王一飞家客厅，杨同乐和王一飞在聊天儿。",
+          "en": "In Wang Yifei's living room, Yang Tongle and Wang Yifei were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一飞觉得这次出去玩要带什么东西？",
+            "options": [
+              "什么都不用带",
+              "带新买的相机",
+              "要带很多东西"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "杨同乐现在去做什么？",
+            "options": [
+              "买机票",
+              "选宾馆",
+              "准备行李"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "杨同乐",
+            "cn": "出去玩的机票买好了吗？",
+            "en": "Have you booked the plane tickets for our trip？"
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "买好了。星期六上午十点一刻起飞。",
+            "en": "Yes, I have. The flight departs at a quarter past ten on Saturday morning."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "宾馆也选好了吗？",
+            "en": "Have you chosen the hotel as well？"
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "是的，这家宾馆很特别，跟别的都不一样，一出门就能看见牛和羊！",
+            "en": "Yes. This hotel is really special—it's unlike any other. The moment you step outside, you can see cows and sheep！"
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "太好了！你看看要带什么东西？",
+            "en": "Perfect! Let's check what we need to take."
+          },
+          {
+            "speaker": "王一飞",
+            "cn": "我们不用带太多东西，别忘了拿上新买的相机。",
+            "en": "We don't need to bring too much. Just don't forget the new camera we bought."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "一定不会忘带的。我现在就去准备行李。",
+            "en": "I definitely won't. I'll go pack right now."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "他们什么时候坐飞机出去玩？"
+          },
+          {
+            "q": "王一飞选的宾馆怎么样？"
+          },
+          {
+            "q": "杨同乐说一定不会忘带什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "刻",
+            "pos": "m.",
+            "en": "(of an hour) quarter"
+          },
+          {
+            "cn": "起飞",
+            "pos": "v.",
+            "en": "take off"
+          },
+          {
+            "cn": "宾馆",
+            "pos": "n.",
+            "en": "hotel"
+          },
+          {
+            "cn": "特别",
+            "pos": "adj.",
+            "en": "special; adv. especially"
+          },
+          {
+            "cn": "别的",
+            "pos": "pron.",
+            "en": "other"
+          },
+          {
+            "cn": "一样",
+            "pos": "adj.",
+            "en": "the same"
+          },
+          {
+            "cn": "牛",
+            "pos": "n.",
+            "en": "cattle"
+          },
+          {
+            "cn": "相机",
+            "pos": "n.",
+            "en": "camera"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-4.mp3"
+      },
+      {
+        "id": "4-03",
+        "title": {
+          "cn": "见到司机小李",
+          "en": "Meeting driver Xiao Li",
+          "emoji": "🚗"
+        },
+        "intro": {
+          "cn": "在机场，杨同乐和王一飞走出来，跟他们预约的司机兼导游见面。",
+          "en": "At the airport, Yang Tongle and Wang Yifei came out and met the driver-guide they had booked."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "小李是谁？",
+            "options": [
+              "同乐的朋友",
+              "同乐的司机",
+              "宾馆的服务员"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "他们到宾馆后先做什么？",
+            "options": [
+              "休息",
+              "吃晚饭",
+              "等朋友"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "小李",
+            "cn": "欢迎你们！我是你们的司机，我姓李，叫我小李就可以。",
+            "en": "Welcome! I'm your driver. My last name is Li—just call me Xiao Li."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "您好！不好意思，飞机晚点了，让您久等了。",
+            "en": "Hello! I'm sorry our flight was delayed, and you've been waiting for a long time."
+          },
+          {
+            "speaker": "小李",
+            "cn": "没关系。除了这个行李箱以外，还有别的东西吗？",
+            "en": "That's all right. Besides this suitcase, do you have anything else？"
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "还有一个包，我自己拿就可以。",
+            "en": "Just one more bag—I can carry it myself."
+          },
+          {
+            "speaker": "小李",
+            "cn": "车在一层，请跟我来。",
+            "en": "The car is on the first floor. Please follow me."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "我们住的宾馆离机场远吗？",
+            "en": "Is our hotel far from the airport？"
+          },
+          {
+            "speaker": "小李",
+            "cn": "不远，三十分钟就能到。两位到了可以先休息休息，晚饭的时候我叫你们。",
+            "en": "Not far—we'll get there in about thirty minutes. Once you arrive, you can take a short rest first. I'll call you when it's time for dinner."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "他们为什么到晚了？"
+          },
+          {
+            "q": "他们有几个行李箱？"
+          },
+          {
+            "q": "宾馆离机场远吗？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "欢迎",
+            "pos": "v.",
+            "en": "welcome"
+          },
+          {
+            "cn": "司机",
+            "pos": "n.",
+            "en": "driver"
+          },
+          {
+            "cn": "晚点",
+            "pos": "v.",
+            "en": "(of a train, ship, etc.) be late"
+          },
+          {
+            "cn": "久",
+            "pos": "adj.",
+            "en": "long"
+          },
+          {
+            "cn": "除了",
+            "pos": "prep.",
+            "en": "besides; except; other than"
+          },
+          {
+            "cn": "以外",
+            "pos": "n.",
+            "en": "except"
+          },
+          {
+            "cn": "先",
+            "pos": "adv.",
+            "en": "first"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-6.mp3"
+      },
+      {
+        "id": "4-04",
+        "title": {
+          "cn": "王一飞的日记",
+          "en": "Wang Yifei's diary",
+          "emoji": "📔"
+        },
+        "intro": {
+          "cn": "在宾馆房间，王一飞在写日记。",
+          "en": "In the hotel room, Wang Yifei was writing in her diary."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "飞机晚点后，司机做什么了？",
+            "options": [
+              "去宾馆了",
+              "去买水果了",
+              "一直在机场等"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "他们是什么时候到的？",
+            "options": [
+              "上午",
+              "中午",
+              "晚上"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "今天是我们旅游的第一天。",
+            "en": "Today is the first day of our trip."
+          },
+          {
+            "speaker": "",
+            "cn": "我们很早就起床去机场了，没想到飞机晚点了。",
+            "en": "We got up very early to go to the airport, but to our surprise, the flight was delayed."
+          },
+          {
+            "speaker": "",
+            "cn": "我们到的时候，天已经黑了，但是司机小李一直在机场等我们，一点儿也没着急。",
+            "en": "By the time we arrived, it was already dark. Fortunately, our driver, Xiao Li, had been waiting for us at the airport all along and wasn't the least bit impatient."
+          },
+          {
+            "speaker": "",
+            "cn": "他特别热情，路上给我们介绍了很多东西，还准备了水果。",
+            "en": "He was extremely warm and friendly, telling us a lot about the local area along the way and even preparing some fruit for us."
+          },
+          {
+            "speaker": "",
+            "cn": "宾馆的房间跟我想的一样漂亮，又大又干净，我非常满意。",
+            "en": "The hotel room is just as beautiful as I imagined—spacious and clean. I'm very satisfied with it."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "他们是怎么去宾馆的？"
+          },
+          {
+            "q": "王一飞为什么觉得小李很热情？"
+          },
+          {
+            "q": "宾馆的房间怎么样？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "一直",
+            "pos": "adv.",
+            "en": "all along"
+          },
+          {
+            "cn": "干净",
+            "pos": "adj.",
+            "en": "clean"
+          },
+          {
+            "cn": "满意",
+            "pos": "v.",
+            "en": "be satisfied"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L5 · 这样的照片才好看",
+    "id": "5",
+    "core": [
+      {
+        "hanzi": "总是",
+        "en": "always"
+      },
+      {
+        "hanzi": "终于",
+        "en": "finally"
+      },
+      {
+        "hanzi": "爬",
+        "en": "climb"
+      },
+      {
+        "hanzi": "山",
+        "en": "mountain; hill"
+      },
+      {
+        "hanzi": "锻炼",
+        "en": "take exercise"
+      },
+      {
+        "hanzi": "照",
+        "en": "take a picture"
+      },
+      {
+        "hanzi": "鞋",
+        "en": "shoe"
+      },
+      {
+        "hanzi": "大衣",
+        "en": "overcoat"
+      },
+      {
+        "hanzi": "拍照",
+        "en": "take a picture"
+      },
+      {
+        "hanzi": "感兴趣",
+        "en": "be interested in"
+      },
+      {
+        "hanzi": "照相",
+        "en": "take a picture"
+      },
+      {
+        "hanzi": "难看",
+        "en": "bad-looking; ugly"
+      },
+      {
+        "hanzi": "比较",
+        "en": "compare; relatively"
+      },
+      {
+        "hanzi": "水平",
+        "en": "level"
+      },
+      {
+        "hanzi": "太阳",
+        "en": "sun"
+      },
+      {
+        "hanzi": "树",
+        "en": "tree"
+      },
+      {
+        "hanzi": "干",
+        "en": "do"
+      },
+      {
+        "hanzi": "电",
+        "en": "electricity"
+      },
+      {
+        "hanzi": "收到",
+        "en": "receive"
+      },
+      {
+        "hanzi": "封",
+        "en": "(for letters or mail)"
+      },
+      {
+        "hanzi": "邮件",
+        "en": "email"
+      },
+      {
+        "hanzi": "难过",
+        "en": "sad"
+      },
+      {
+        "hanzi": "哈哈",
+        "en": "(indicating laughter)"
+      },
+      {
+        "hanzi": "音乐",
+        "en": "music"
+      },
+      {
+        "hanzi": "兴趣",
+        "en": "interest"
+      },
+      {
+        "hanzi": "会",
+        "en": "gathering; party"
+      },
+      {
+        "hanzi": "结束",
+        "en": "finish"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "5-01",
+        "title": {
+          "cn": "约着去爬山",
+          "en": "Planning to go hiking",
+          "emoji": "⛰️"
+        },
+        "intro": {
+          "cn": "在街上，白家月和李文边散步边聊天儿。",
+          "en": "On the street, Bai Jiayue and Li Wen were chatting while walking."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "今天天气怎么样？",
+            "options": [
+              "阴天",
+              "很热",
+              "晴天"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "白家月为什么要给王一雪打电话？",
+            "options": [
+              "找她吃饭",
+              "问她天气",
+              "找她爬山"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "这个星期总是阴天，今天终于晴了。",
+            "en": "It's been cloudy all week, but it's sunny today."
+          },
+          {
+            "speaker": "李文",
+            "cn": "现在天气好得很！我们去爬山怎么样？",
+            "en": "The weather is perfect now! How about going hiking？"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "好啊！又能锻炼身体，又能照好看的照片。",
+            "en": "Great idea! We can get some exercise and take some nice photos."
+          },
+          {
+            "speaker": "李文",
+            "cn": "那我带点儿水和吃的，咱们现在就去？",
+            "en": "I'll bring some water and snacks. Shall we go now？"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我回去穿上运动鞋，拿上大衣。要不要叫一雪姐一起去？",
+            "en": "I'll go back to change into my sneakers and grab my overcoat. Should we invite Yixue to join us？"
+          },
+          {
+            "speaker": "李文",
+            "cn": "好主意。给她打个电话吧。",
+            "en": "Good idea. Let's give her a call."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "白家月觉得爬山怎么样？"
+          },
+          {
+            "q": "李文要带什么东西？"
+          },
+          {
+            "q": "白家月要先回去做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "总是",
+            "pos": "adv.",
+            "en": "always"
+          },
+          {
+            "cn": "终于",
+            "pos": "adv.",
+            "en": "finally"
+          },
+          {
+            "cn": "爬",
+            "pos": "v.",
+            "en": "climb"
+          },
+          {
+            "cn": "山",
+            "pos": "n.",
+            "en": "mountain; hill"
+          },
+          {
+            "cn": "锻炼",
+            "pos": "v.",
+            "en": "take exercise"
+          },
+          {
+            "cn": "照",
+            "pos": "v.",
+            "en": "take a picture"
+          },
+          {
+            "cn": "鞋",
+            "pos": "n.",
+            "en": "shoe"
+          },
+          {
+            "cn": "大衣",
+            "pos": "n.",
+            "en": "overcoat"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-2.mp3"
+      },
+      {
+        "id": "5-02",
+        "title": {
+          "cn": "出租车上看照片",
+          "en": "Looking at photos in the taxi",
+          "emoji": "📷"
+        },
+        "intro": {
+          "cn": "在出租车上，王一雪和白家月在聊天儿。",
+          "en": "In the taxi, Wang Yixue and Bai Jiayue were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪和白家月在做什么？",
+            "options": [
+              "拍照",
+              "买相机",
+              "看照片"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "白家月和王一飞都喜欢做什么？",
+            "options": [
+              "拍照",
+              "爬山",
+              "比较拍照水平"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "这些照片是谁给您照的？张张都非常好看。",
+            "en": "Who took these photos for you？ Every one of them looks great."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "一飞。她对拍照一直很感兴趣，经常给我照相。",
+            "en": "Yifei. She's always been interested in photography and often takes pictures of me."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我喜欢您大笑的这张，看起来很漂亮。",
+            "en": "I really like this one where you're laughing—you look so pretty."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "我觉得这张有点儿难看，那时候我不知道她在给我照相。",
+            "en": "I think this one is a bit unflattering. I didn't realize she was taking a picture of me at the time."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "这样的照片才好看。我也喜欢拍照，爬山的时候我给您照几张照片吧。",
+            "en": "That's exactly what makes it so great! I like taking photos too. How about I take some pictures of you when we go hiking？"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "好，我可以比较一下你们两个谁的水平高。",
+            "en": "Great! Then I can compare which of you two has the better photography skills."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "白家月喜欢哪张照片？为什么？"
+          },
+          {
+            "q": "王一雪为什么不喜欢这张照片？"
+          },
+          {
+            "q": "爬山的时候，白家月打算做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "拍照",
+            "pos": "v.",
+            "en": "take a picture"
+          },
+          {
+            "cn": "感兴趣",
+            "pos": "",
+            "en": "be interested in"
+          },
+          {
+            "cn": "照相",
+            "pos": "v.",
+            "en": "take a picture"
+          },
+          {
+            "cn": "难看",
+            "pos": "adj.",
+            "en": "bad-looking; ugly"
+          },
+          {
+            "cn": "比较",
+            "pos": "v./adv.",
+            "en": "compare; relatively"
+          },
+          {
+            "cn": "水平",
+            "pos": "n.",
+            "en": "level"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-4.mp3"
+      },
+      {
+        "id": "5-03",
+        "title": {
+          "cn": "在山上拍照",
+          "en": "Taking photos on the hill",
+          "emoji": "🌳"
+        },
+        "intro": {
+          "cn": "在山上，王一雪和白家月边走边聊。",
+          "en": "On the hill, Wang Yixue and Bai Jiayue were chatting while walking."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "白家月和王一雪在做什么？",
+            "options": [
+              "拍照",
+              "看鸟",
+              "找手机"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "拍照的时候，白家月让王一雪干什么？",
+            "options": [
+              "看着她",
+              "看着鸟",
+              "想干什么就干什么"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "家月，这里挺漂亮的，咱们在这里拍照吧。",
+            "en": "Jiayue, it's really beautiful here. Let's take some pictures at this spot."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "这边没有太阳，咱们去那边吧。",
+            "en": "There's no sunlight here. Let's go over there instead."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "好。你觉得我站在这些树中间怎么样？",
+            "en": "Alright. What do you think of me standing among these trees？"
+          },
+          {
+            "speaker": "白家月",
+            "cn": "挺好的。等一下，后边走过去两个人。",
+            "en": "That looks good. Wait a moment—two people are walking behind you."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "我准备好了，你照的时候告诉我。",
+            "en": "I'm ready. Tell me when you're going to take the photo."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "你不用看着我，想干什么都可以。",
+            "en": "You don't have to look at me. Just do whatever feels natural."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "树上飞来了几只鸟，我就看它们吧。",
+            "en": "Some birds just flew onto the tree. I'll watch them then."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "啊，手机没电了。",
+            "en": "Oh no, the phone's out of battery."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "王一雪想站在哪儿拍照？"
+          },
+          {
+            "q": "白家月为什么要等一下再照？"
+          },
+          {
+            "q": "白家月的手机怎么了？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "太阳",
+            "pos": "n.",
+            "en": "sun"
+          },
+          {
+            "cn": "树",
+            "pos": "n.",
+            "en": "tree"
+          },
+          {
+            "cn": "干",
+            "pos": "v.",
+            "en": "do"
+          },
+          {
+            "cn": "电",
+            "pos": "n.",
+            "en": "electricity"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-6.mp3"
+      },
+      {
+        "id": "5-04",
+        "title": {
+          "cn": "王一雪的短信",
+          "en": "Wang Yixue's text message",
+          "emoji": "💬"
+        },
+        "intro": {
+          "cn": "在咖啡厅里，王一雪给白家月发短信。",
+          "en": "In the cafe, Wang Yixue sent a text message to Bai Jiayue."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪觉得照片怎么样？",
+            "options": [
+              "她还没看到",
+              "每张都很漂亮",
+              "没有一飞照得好"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "王一雪送给白家月什么了？",
+            "options": [
+              "一些照片",
+              "一张门票",
+              "她做的中国菜"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "家月，我收到了你的那封邮件，也看到了你给我照的照片，张张都很漂亮。",
+            "en": "Jiayue, I received your email and saw the photos you took of me—every single one is beautiful."
+          },
+          {
+            "speaker": "",
+            "cn": "我已经告诉了一飞，你的拍照水平比她高，她难过得很，哈哈。",
+            "en": "I've already told Yifei that your photography skills are better than hers, and she's quite upset about it. Haha."
+          },
+          {
+            "speaker": "",
+            "cn": "不知道你对中国的音乐有没有兴趣？我送你一张明天下午音乐会的门票。",
+            "en": "I'm wondering if you're interested in Chinese music. I have a ticket for tomorrow afternoon's concert for you."
+          },
+          {
+            "speaker": "",
+            "cn": "音乐会七点多结束，你听完了音乐会就来我家吃饭，尝尝我做的中国菜。",
+            "en": "The concert will finish a little after 7 p.m. Once it's over, come to my place for dinner and try some of my homemade Chinese dishes."
+          },
+          {
+            "speaker": "",
+            "cn": "你觉得怎么样？",
+            "en": "What do you think？"
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "王一雪觉得白家月的拍照水平怎么样？"
+          },
+          {
+            "q": "音乐会什么时候结束？"
+          },
+          {
+            "q": "听完音乐会，白家月可能做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "收到",
+            "pos": "v.",
+            "en": "receive"
+          },
+          {
+            "cn": "封",
+            "pos": "m.",
+            "en": "(for letters or mail)"
+          },
+          {
+            "cn": "邮件",
+            "pos": "n.",
+            "en": "email"
+          },
+          {
+            "cn": "难过",
+            "pos": "adj.",
+            "en": "sad"
+          },
+          {
+            "cn": "哈哈",
+            "pos": "",
+            "en": "(indicating laughter)"
+          },
+          {
+            "cn": "音乐",
+            "pos": "n.",
+            "en": "music"
+          },
+          {
+            "cn": "兴趣",
+            "pos": "n.",
+            "en": "interest"
+          },
+          {
+            "cn": "会",
+            "pos": "n.",
+            "en": "gathering; party"
+          },
+          {
+            "cn": "结束",
+            "pos": "v.",
+            "en": "finish"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-8.mp3"
       }
     ]
   },

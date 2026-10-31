@@ -1,5 +1,5 @@
-// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
-// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson2.json / hsk3/data/lesson3.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
+// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
+// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson2.json / hsk3/data/lesson3.json / hsk3/data/lesson4.json / hsk3/data/lesson5.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
 // Regenerate: python3 tools/gen-lesson-js.py hsk3
 window.SENTENCE_CORPUS = [
   {
@@ -421,6 +421,327 @@ window.SENTENCE_CORPUS = [
           {
             "c": "坐火车去北京，五个小时才能到。",
             "en": "Taking the train to Beijing, it takes five hours to get there."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 4,
+    "key": "4",
+    "review": false,
+    "title": "This hotel is unlike any other",
+    "titleCn": "这家宾馆跟别的都不一样",
+    "points": [
+      {
+        "id": "4-g1",
+        "textId": "4-01",
+        "no": 1,
+        "cn": "固定格式“一……也/都＋不/没……”",
+        "en": "Fixed Pattern “一…也/都＋不/没…”",
+        "note": "固定格式“一……也/都＋不/没……”表示完全否定。有时候“一＋量词”还可以用“一点儿”来表示；当谓语是形容词时，通常用“一点儿也/都＋不/没＋形容词”。",
+        "noteEn": "The fixed pattern “一…也/都＋不/没…” expresses complete negation. Sometimes “一+Measure Word” can be replaced by “一点儿”. When the predicate is an adjective, “一点儿也/都＋不/没+Adjective” is commonly used to express complete negation.",
+        "practice": [
+          {
+            "cn": "这件衣服______，你买吧。（贵）",
+            "en": ""
+          },
+          {
+            "cn": "我们上个月搬家了，______。（认识）",
+            "en": ""
+          },
+          {
+            "cn": "这个星期我太忙了，______。（时间）",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "她一件衣服都不想买。",
+            "en": "She doesn't want to buy a single piece of clothing."
+          },
+          {
+            "c": "我一个中国电影也没看过。",
+            "en": "I haven't seen a single Chinese movie."
+          },
+          {
+            "c": "我一点儿东西也不想吃。",
+            "en": "I don't want to eat anything at all."
+          },
+          {
+            "c": "他对打球一点儿兴趣也没有。",
+            "en": "He isn't the least bit interested in ball games."
+          },
+          {
+            "c": "草原一点儿也不冷。",
+            "en": "The grasslands aren't cold at all."
+          },
+          {
+            "c": "他们一点儿也没着急。",
+            "en": "They weren't worried in the least."
+          }
+        ]
+      },
+      {
+        "id": "4-g2",
+        "textId": "4-02",
+        "no": 2,
+        "cn": "比较句（9）",
+        "en": "Comparative Sentences (9)",
+        "note": "比较句“A跟B一样”表示A和B比较后，结果相同。“一样”的后面可以用形容词表示比较的某一方面，基本结构：A跟B一样＋形容词。否定形式是在“一样”的前面加“不”。",
+        "noteEn": "The comparative sentence “A跟B一样” indicates that A and B are the same after comparison. “一样” can be followed by an adjective to specify the aspect being compared. Basic structure: A跟B一样+Adjective. In the negative form, “不” is placed before “一样”.",
+        "practice": [
+          {
+            "cn": "我的杯子______。",
+            "en": ""
+          },
+          {
+            "cn": "今天学习的词______。",
+            "en": ""
+          },
+          {
+            "cn": "______一样高。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "这家宾馆跟别的都不一样。",
+            "en": "This hotel is unlike any other."
+          },
+          {
+            "c": "他买的新手机跟我的一样。",
+            "en": "The new phone he bought is the same as mine."
+          },
+          {
+            "c": "这个房间跟那个房间一样大。",
+            "en": "This room is as big as that one."
+          }
+        ]
+      },
+      {
+        "id": "4-g3",
+        "textId": "4-03",
+        "no": 3,
+        "cn": "固定格式“除了……（以外），……都/还/也……”",
+        "en": "Fixed Pattern “除了…（以外），…都/还/也…”",
+        "note": "“除了……（以外），……都……”表示在一个范围内，排除一部分，其他的都存在相同的情况，其中“以外”可以省略。“除了……（以外），……还/也……”表示排除一部分，补充其他的，句子的主语放在句首，或者放在“还/也”的前面。",
+        "noteEn": "“除了…（以外），…都…” indicates that within a certain scope, one part is excluded while all the others share the same situation; “以外” can be omitted. “除了…（以外），…还/也…” excludes one part and adds others; the subject is placed at the beginning of the sentence or before “还/也”.",
+        "practice": [
+          {
+            "cn": "妈妈喜欢喝咖啡，也喜欢喝茶。→ ______",
+            "en": ""
+          },
+          {
+            "cn": "王老师是中国人，别的老师都是外国人。→ ______",
+            "en": ""
+          },
+          {
+            "cn": "我只想吃水果，别的东西都不想吃。→ ______",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "除了我以外，大家都在玩手机。",
+            "en": "Everyone except me is playing on their phones."
+          },
+          {
+            "c": "除了这个汉字，别的汉字我都会写。",
+            "en": "Except for this character, I can write all the others."
+          },
+          {
+            "c": "除了这个行李箱以外，还有别的东西吗？",
+            "en": "Besides this suitcase, do you have anything else？"
+          },
+          {
+            "c": "除了唱歌以外，他也喜欢跳舞。",
+            "en": "Besides singing, he also likes dancing."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 5,
+    "key": "5",
+    "review": false,
+    "title": "Photos like these are the best",
+    "titleCn": "这样的照片才好看",
+    "points": [
+      {
+        "id": "5-g1",
+        "textId": "5-01",
+        "no": 1,
+        "cn": "程度补语（2）",
+        "en": "Complement of Degree (2)",
+        "note": "程度补语“得很”用在形容词的后面，表示程度高，一般用在口语中。",
+        "noteEn": "The complement of degree “得很” is used after an adjective to indicate a high degree. It is commonly used in colloquial speech.",
+        "practice": [
+          {
+            "cn": "这里的东西很贵，我什么也不想买。→ ______",
+            "en": ""
+          },
+          {
+            "cn": "超市里的水果特别多，想吃什么有什么。→ ______",
+            "en": ""
+          },
+          {
+            "cn": "我好多天没看见他了，他这个月非常忙。→ ______",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "现在天气好得很。",
+            "en": "The weather is great now."
+          },
+          {
+            "c": "房间里面热得很。",
+            "en": "It's very hot inside the room."
+          },
+          {
+            "c": "我觉得爬山累得很。",
+            "en": "I think hiking is very tiring."
+          }
+        ]
+      },
+      {
+        "id": "5-g2",
+        "textId": "5-02",
+        "no": 2,
+        "cn": "量词重叠",
+        "en": "Reduplication of Measure Words",
+        "note": "汉语中很多量词可以重叠，用来强调在某个范围内的每个成员都具有某种特征，后面一般用“都”。",
+        "noteEn": "In Chinese, many measure words can be reduplicated to emphasize that each member within a certain scope has a certain characteristic. The word “都” is usually used after them.",
+        "practice": [
+          {
+            "cn": "A：你喜欢哪个菜？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。（个）",
+            "en": ""
+          },
+          {
+            "cn": "A：你觉得这些衣服怎么样？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。（件）",
+            "en": ""
+          },
+          {
+            "cn": "A：你今年回北京过年吗？",
+            "en": ""
+          },
+          {
+            "cn": "B：______。（年）",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "这些照片张张都非常好看。",
+            "en": "Every one of these photos looks great."
+          },
+          {
+            "c": "这些苹果个个都很大。",
+            "en": "Every one of these apples is big."
+          },
+          {
+            "c": "我想出去拍照，但是天天下雨。",
+            "en": "I want to go out and take photos, but it rains every day."
+          }
+        ]
+      },
+      {
+        "id": "5-g3",
+        "textId": "5-03",
+        "no": 3,
+        "cn": "存现句（3）",
+        "en": "Existential Sentences (3)",
+        "note": "汉语中，叙述某个处所有人、事物出现或消失，可以用存现句。基本结构：处所词语＋动词＋趋向补语/结果补语＋（动态助词）＋数量短语＋人/物。",
+        "noteEn": "In Chinese, existential sentences are used to describe the appearance or disappearance of people or things in a certain place. Basic structure: Locative Word/Phrase + Verb + Complement of Direction/Result + (Aspect Particle) + Numeral-Measure Word Phrase + Person/Thing.",
+        "practice": [
+          {
+            "cn": "教室里______。",
+            "en": ""
+          },
+          {
+            "cn": "______一个人。",
+            "en": ""
+          },
+          {
+            "cn": "______飞过来。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "后边走过去两个人。",
+            "en": "Two people walked past behind."
+          },
+          {
+            "c": "前面开过来很多车。",
+            "en": "Many cars are coming from ahead."
+          },
+          {
+            "c": "楼上下来了几个人。",
+            "en": "A few people came down from upstairs."
+          }
+        ]
+      },
+      {
+        "id": "5-g4",
+        "textId": "5-04",
+        "no": 4,
+        "cn": "紧缩复句“……了……就……”",
+        "en": "Contracted Complex Sentence “…了…就…”",
+        "note": "紧缩复句“……了……就……”表示两个动作行为紧接着发生。如果第二个动作行为也已经完成，则需要在句尾再加一个“了”。基本结构：动词1＋了……就＋动词2……。",
+        "noteEn": "The contracted complex sentence “…了…就…” indicates that two actions occur in immediate succession. If the second action is also completed, another “了” should be added at the end of the sentence. Basic structure: Verb1+了…就+Verb2…",
+        "practice": [
+          {
+            "cn": "爸爸每次上了飞机就______。",
+            "en": ""
+          },
+          {
+            "cn": "今天我没吃早饭，所以下了课就______。",
+            "en": ""
+          },
+          {
+            "cn": "我今天有点儿不舒服，______。",
+            "en": ""
+          }
+        ],
+        "items": [
+          {
+            "c": "你听完了音乐会就来我家吃饭。",
+            "en": "Come to my place for dinner once you've finished the concert."
+          },
+          {
+            "c": "我吃了早饭就去学校了。",
+            "en": "I went to school right after breakfast."
+          },
+          {
+            "c": "昨天我们下了课就回家了。",
+            "en": "Yesterday we went home as soon as class was over."
+          }
+        ]
+      },
+      {
+        "id": "5-g5",
+        "textId": "5-04",
+        "no": 5,
+        "cn": "小语助力“又”",
+        "en": "“又”",
+        "note": "“又”在这个句子中表示这个情况规律性地重复出现。",
+        "noteEn": "In this sentence, “又” indicates that the situation repeats regularly.",
+        "practice": null,
+        "items": [
+          {
+            "c": "明天又是星期天，我不知道应该干什么。",
+            "en": "Tomorrow is Sunday again, and I don't know what to do."
           }
         ]
       }

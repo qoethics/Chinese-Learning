@@ -1,0 +1,808 @@
+{
+  "lesson": 5,
+  "key": "5",
+  "name": "L5 · 这样的照片才好看",
+  "titleCn": "这样的照片才好看",
+  "titleEn": "Photos like these are the best",
+  "texts": [
+    {
+      "id": "5-01",
+      "title": {
+        "cn": "约着去爬山",
+        "en": "Planning to go hiking",
+        "emoji": "⛰️"
+      },
+      "intro": {
+        "cn": "在街上，白家月和李文边散步边聊天儿。",
+        "en": "On the street, Bai Jiayue and Li Wen were chatting while walking."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "今天天气怎么样？",
+          "options": [
+            "阴天",
+            "很热",
+            "晴天"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "白家月为什么要给王一雪打电话？",
+          "options": [
+            "找她吃饭",
+            "问她天气",
+            "找她爬山"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "白家月",
+          "cn": "这个星期总是阴天，今天终于晴了。",
+          "en": "It's been cloudy all week, but it's sunny today."
+        },
+        {
+          "speaker": "李文",
+          "cn": "现在天气好得很！我们去爬山怎么样？",
+          "en": "The weather is perfect now! How about going hiking？"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "好啊！又能锻炼身体，又能照好看的照片。",
+          "en": "Great idea! We can get some exercise and take some nice photos."
+        },
+        {
+          "speaker": "李文",
+          "cn": "那我带点儿水和吃的，咱们现在就去？",
+          "en": "I'll bring some water and snacks. Shall we go now？"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我回去穿上运动鞋，拿上大衣。要不要叫一雪姐一起去？",
+          "en": "I'll go back to change into my sneakers and grab my overcoat. Should we invite Yixue to join us？"
+        },
+        {
+          "speaker": "李文",
+          "cn": "好主意。给她打个电话吧。",
+          "en": "Good idea. Let's give her a call."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "白家月觉得爬山怎么样？"
+        },
+        {
+          "q": "李文要带什么东西？"
+        },
+        {
+          "q": "白家月要先回去做什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "总是",
+          "pos": "adv.",
+          "en": "always"
+        },
+        {
+          "cn": "终于",
+          "pos": "adv.",
+          "en": "finally"
+        },
+        {
+          "cn": "爬",
+          "pos": "v.",
+          "en": "climb"
+        },
+        {
+          "cn": "山",
+          "pos": "n.",
+          "en": "mountain; hill"
+        },
+        {
+          "cn": "锻炼",
+          "pos": "v.",
+          "en": "take exercise"
+        },
+        {
+          "cn": "照",
+          "pos": "v.",
+          "en": "take a picture"
+        },
+        {
+          "cn": "鞋",
+          "pos": "n.",
+          "en": "shoe"
+        },
+        {
+          "cn": "大衣",
+          "pos": "n.",
+          "en": "overcoat"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-2.mp3"
+    },
+    {
+      "id": "5-02",
+      "title": {
+        "cn": "出租车上看照片",
+        "en": "Looking at photos in the taxi",
+        "emoji": "📷"
+      },
+      "intro": {
+        "cn": "在出租车上，王一雪和白家月在聊天儿。",
+        "en": "In the taxi, Wang Yixue and Bai Jiayue were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "王一雪和白家月在做什么？",
+          "options": [
+            "拍照",
+            "买相机",
+            "看照片"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "白家月和王一飞都喜欢做什么？",
+          "options": [
+            "拍照",
+            "爬山",
+            "比较拍照水平"
+          ],
+          "answer": "A"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "白家月",
+          "cn": "这些照片是谁给您照的？张张都非常好看。",
+          "en": "Who took these photos for you？ Every one of them looks great."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "一飞。她对拍照一直很感兴趣，经常给我照相。",
+          "en": "Yifei. She's always been interested in photography and often takes pictures of me."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我喜欢您大笑的这张，看起来很漂亮。",
+          "en": "I really like this one where you're laughing—you look so pretty."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "我觉得这张有点儿难看，那时候我不知道她在给我照相。",
+          "en": "I think this one is a bit unflattering. I didn't realize she was taking a picture of me at the time."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "这样的照片才好看。我也喜欢拍照，爬山的时候我给您照几张照片吧。",
+          "en": "That's exactly what makes it so great! I like taking photos too. How about I take some pictures of you when we go hiking？"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "好，我可以比较一下你们两个谁的水平高。",
+          "en": "Great! Then I can compare which of you two has the better photography skills."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "白家月喜欢哪张照片？为什么？"
+        },
+        {
+          "q": "王一雪为什么不喜欢这张照片？"
+        },
+        {
+          "q": "爬山的时候，白家月打算做什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "拍照",
+          "pos": "v.",
+          "en": "take a picture"
+        },
+        {
+          "cn": "感兴趣",
+          "pos": "",
+          "en": "be interested in"
+        },
+        {
+          "cn": "照相",
+          "pos": "v.",
+          "en": "take a picture"
+        },
+        {
+          "cn": "难看",
+          "pos": "adj.",
+          "en": "bad-looking; ugly"
+        },
+        {
+          "cn": "比较",
+          "pos": "v./adv.",
+          "en": "compare; relatively"
+        },
+        {
+          "cn": "水平",
+          "pos": "n.",
+          "en": "level"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-4.mp3"
+    },
+    {
+      "id": "5-03",
+      "title": {
+        "cn": "在山上拍照",
+        "en": "Taking photos on the hill",
+        "emoji": "🌳"
+      },
+      "intro": {
+        "cn": "在山上，王一雪和白家月边走边聊。",
+        "en": "On the hill, Wang Yixue and Bai Jiayue were chatting while walking."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "白家月和王一雪在做什么？",
+          "options": [
+            "拍照",
+            "看鸟",
+            "找手机"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "拍照的时候，白家月让王一雪干什么？",
+          "options": [
+            "看着她",
+            "看着鸟",
+            "想干什么就干什么"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "王一雪",
+          "cn": "家月，这里挺漂亮的，咱们在这里拍照吧。",
+          "en": "Jiayue, it's really beautiful here. Let's take some pictures at this spot."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "这边没有太阳，咱们去那边吧。",
+          "en": "There's no sunlight here. Let's go over there instead."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "好。你觉得我站在这些树中间怎么样？",
+          "en": "Alright. What do you think of me standing among these trees？"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "挺好的。等一下，后边走过去两个人。",
+          "en": "That looks good. Wait a moment—two people are walking behind you."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "我准备好了，你照的时候告诉我。",
+          "en": "I'm ready. Tell me when you're going to take the photo."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "你不用看着我，想干什么都可以。",
+          "en": "You don't have to look at me. Just do whatever feels natural."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "树上飞来了几只鸟，我就看它们吧。",
+          "en": "Some birds just flew onto the tree. I'll watch them then."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "啊，手机没电了。",
+          "en": "Oh no, the phone's out of battery."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "王一雪想站在哪儿拍照？"
+        },
+        {
+          "q": "白家月为什么要等一下再照？"
+        },
+        {
+          "q": "白家月的手机怎么了？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "太阳",
+          "pos": "n.",
+          "en": "sun"
+        },
+        {
+          "cn": "树",
+          "pos": "n.",
+          "en": "tree"
+        },
+        {
+          "cn": "干",
+          "pos": "v.",
+          "en": "do"
+        },
+        {
+          "cn": "电",
+          "pos": "n.",
+          "en": "electricity"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-6.mp3"
+    },
+    {
+      "id": "5-04",
+      "title": {
+        "cn": "王一雪的短信",
+        "en": "Wang Yixue's text message",
+        "emoji": "💬"
+      },
+      "intro": {
+        "cn": "在咖啡厅里，王一雪给白家月发短信。",
+        "en": "In the cafe, Wang Yixue sent a text message to Bai Jiayue."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "王一雪觉得照片怎么样？",
+          "options": [
+            "她还没看到",
+            "每张都很漂亮",
+            "没有一飞照得好"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "王一雪送给白家月什么了？",
+          "options": [
+            "一些照片",
+            "一张门票",
+            "她做的中国菜"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "家月，我收到了你的那封邮件，也看到了你给我照的照片，张张都很漂亮。",
+          "en": "Jiayue, I received your email and saw the photos you took of me—every single one is beautiful."
+        },
+        {
+          "speaker": "",
+          "cn": "我已经告诉了一飞，你的拍照水平比她高，她难过得很，哈哈。",
+          "en": "I've already told Yifei that your photography skills are better than hers, and she's quite upset about it. Haha."
+        },
+        {
+          "speaker": "",
+          "cn": "不知道你对中国的音乐有没有兴趣？我送你一张明天下午音乐会的门票。",
+          "en": "I'm wondering if you're interested in Chinese music. I have a ticket for tomorrow afternoon's concert for you."
+        },
+        {
+          "speaker": "",
+          "cn": "音乐会七点多结束，你听完了音乐会就来我家吃饭，尝尝我做的中国菜。",
+          "en": "The concert will finish a little after 7 p.m. Once it's over, come to my place for dinner and try some of my homemade Chinese dishes."
+        },
+        {
+          "speaker": "",
+          "cn": "你觉得怎么样？",
+          "en": "What do you think？"
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "王一雪觉得白家月的拍照水平怎么样？"
+        },
+        {
+          "q": "音乐会什么时候结束？"
+        },
+        {
+          "q": "听完音乐会，白家月可能做什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "收到",
+          "pos": "v.",
+          "en": "receive"
+        },
+        {
+          "cn": "封",
+          "pos": "m.",
+          "en": "(for letters or mail)"
+        },
+        {
+          "cn": "邮件",
+          "pos": "n.",
+          "en": "email"
+        },
+        {
+          "cn": "难过",
+          "pos": "adj.",
+          "en": "sad"
+        },
+        {
+          "cn": "哈哈",
+          "pos": "",
+          "en": "(indicating laughter)"
+        },
+        {
+          "cn": "音乐",
+          "pos": "n.",
+          "en": "music"
+        },
+        {
+          "cn": "兴趣",
+          "pos": "n.",
+          "en": "interest"
+        },
+        {
+          "cn": "会",
+          "pos": "n.",
+          "en": "gathering; party"
+        },
+        {
+          "cn": "结束",
+          "pos": "v.",
+          "en": "finish"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-05/5-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "5-g1",
+      "textId": "5-01",
+      "no": 1,
+      "cn": "程度补语（2）",
+      "en": "Complement of Degree (2)",
+      "note": "程度补语“得很”用在形容词的后面，表示程度高，一般用在口语中。",
+      "noteEn": "The complement of degree “得很” is used after an adjective to indicate a high degree. It is commonly used in colloquial speech.",
+      "items": [
+        {
+          "c": "现在天气好得很。",
+          "en": "The weather is great now."
+        },
+        {
+          "c": "房间里面热得很。",
+          "en": "It's very hot inside the room."
+        },
+        {
+          "c": "我觉得爬山累得很。",
+          "en": "I think hiking is very tiring."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "这里的东西很贵，我什么也不想买。→ ______",
+          "en": ""
+        },
+        {
+          "cn": "超市里的水果特别多，想吃什么有什么。→ ______",
+          "en": ""
+        },
+        {
+          "cn": "我好多天没看见他了，他这个月非常忙。→ ______",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "5-g2",
+      "textId": "5-02",
+      "no": 2,
+      "cn": "量词重叠",
+      "en": "Reduplication of Measure Words",
+      "note": "汉语中很多量词可以重叠，用来强调在某个范围内的每个成员都具有某种特征，后面一般用“都”。",
+      "noteEn": "In Chinese, many measure words can be reduplicated to emphasize that each member within a certain scope has a certain characteristic. The word “都” is usually used after them.",
+      "items": [
+        {
+          "c": "这些照片张张都非常好看。",
+          "en": "Every one of these photos looks great."
+        },
+        {
+          "c": "这些苹果个个都很大。",
+          "en": "Every one of these apples is big."
+        },
+        {
+          "c": "我想出去拍照，但是天天下雨。",
+          "en": "I want to go out and take photos, but it rains every day."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：你喜欢哪个菜？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。（个）",
+          "en": ""
+        },
+        {
+          "cn": "A：你觉得这些衣服怎么样？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。（件）",
+          "en": ""
+        },
+        {
+          "cn": "A：你今年回北京过年吗？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。（年）",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "5-g3",
+      "textId": "5-03",
+      "no": 3,
+      "cn": "存现句（3）",
+      "en": "Existential Sentences (3)",
+      "note": "汉语中，叙述某个处所有人、事物出现或消失，可以用存现句。基本结构：处所词语＋动词＋趋向补语/结果补语＋（动态助词）＋数量短语＋人/物。",
+      "noteEn": "In Chinese, existential sentences are used to describe the appearance or disappearance of people or things in a certain place. Basic structure: Locative Word/Phrase + Verb + Complement of Direction/Result + (Aspect Particle) + Numeral-Measure Word Phrase + Person/Thing.",
+      "items": [
+        {
+          "c": "后边走过去两个人。",
+          "en": "Two people walked past behind."
+        },
+        {
+          "c": "前面开过来很多车。",
+          "en": "Many cars are coming from ahead."
+        },
+        {
+          "c": "楼上下来了几个人。",
+          "en": "A few people came down from upstairs."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "教室里______。",
+          "en": ""
+        },
+        {
+          "cn": "______一个人。",
+          "en": ""
+        },
+        {
+          "cn": "______飞过来。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "5-g4",
+      "textId": "5-04",
+      "no": 4,
+      "cn": "紧缩复句“……了……就……”",
+      "en": "Contracted Complex Sentence “…了…就…”",
+      "note": "紧缩复句“……了……就……”表示两个动作行为紧接着发生。如果第二个动作行为也已经完成，则需要在句尾再加一个“了”。基本结构：动词1＋了……就＋动词2……。",
+      "noteEn": "The contracted complex sentence “…了…就…” indicates that two actions occur in immediate succession. If the second action is also completed, another “了” should be added at the end of the sentence. Basic structure: Verb1+了…就+Verb2…",
+      "items": [
+        {
+          "c": "你听完了音乐会就来我家吃饭。",
+          "en": "Come to my place for dinner once you've finished the concert."
+        },
+        {
+          "c": "我吃了早饭就去学校了。",
+          "en": "I went to school right after breakfast."
+        },
+        {
+          "c": "昨天我们下了课就回家了。",
+          "en": "Yesterday we went home as soon as class was over."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "爸爸每次上了飞机就______。",
+          "en": ""
+        },
+        {
+          "cn": "今天我没吃早饭，所以下了课就______。",
+          "en": ""
+        },
+        {
+          "cn": "我今天有点儿不舒服，______。",
+          "en": ""
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "5-g5",
+      "textId": "5-04",
+      "no": 5,
+      "cn": "小语助力“又”",
+      "en": "“又”",
+      "note": "“又”在这个句子中表示这个情况规律性地重复出现。",
+      "noteEn": "In this sentence, “又” indicates that the situation repeats regularly.",
+      "items": [
+        {
+          "c": "明天又是星期天，我不知道应该干什么。",
+          "en": "Tomorrow is Sunday again, and I don't know what to do."
+        }
+      ]
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "照",
+          "干",
+          "水平",
+          "难看",
+          "收到"
+        ],
+        "items": [
+          {
+            "cn": "他的拍照______比我高多了。",
+            "answer": "水平"
+          },
+          {
+            "cn": "我______了一封学校的邮件。",
+            "answer": "收到"
+          },
+          {
+            "cn": "明天又是星期天，我不知道应该______什么。",
+            "answer": "干"
+          },
+          {
+            "cn": "我还没准备好呢，我看着你的时候你再______。",
+            "answer": "照"
+          },
+          {
+            "cn": "我觉得前两张照片好看，第三张有点儿______，你选前两张吧。",
+            "answer": "难看"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "结束",
+          "总是",
+          "终于",
+          "感兴趣",
+          "比较"
+        ],
+        "items": [
+          {
+            "cn": "A：他们的飞机到了吗？",
+            "answer": ""
+          },
+          {
+            "cn": "B：______到了，晚点了五个多小时。",
+            "answer": "终于"
+          },
+          {
+            "cn": "A：为什么我照的照片______不好看？",
+            "answer": "总是"
+          },
+          {
+            "cn": "B：我姐姐会拍照，我让她教教你。",
+            "answer": ""
+          },
+          {
+            "cn": "A：喂，你在哪儿？怎么没接电话？",
+            "answer": ""
+          },
+          {
+            "cn": "B：我在看电影呢，还有十分钟就______了。",
+            "answer": "结束"
+          },
+          {
+            "cn": "A：假期我想去北京，也想去上海，不知道怎么选。",
+            "answer": ""
+          },
+          {
+            "cn": "B：我帮你______一下。",
+            "answer": "比较"
+          },
+          {
+            "cn": "A：我有两张音乐会的票，咱们一起去吧。",
+            "answer": ""
+          },
+          {
+            "cn": "B：我对音乐不______。家月喜欢，你问问她。",
+            "answer": "感兴趣"
+          }
+        ]
+      }
+    },
+    "describePictures": [
+      {
+        "cn": "A：我______一本书，是你买的吗？",
+        "en": ""
+      },
+      {
+        "cn": "B：对，我昨天看了一个电影，特别好看，所以我______就上网买了这本书。",
+        "en": ""
+      },
+      {
+        "cn": "A：你这么说，我也______了。",
+        "en": ""
+      },
+      {
+        "cn": "B：你一定会喜欢的。",
+        "en": ""
+      },
+      {
+        "cn": "A：这些照片好看得很。都是你照的吗？",
+        "en": ""
+      },
+      {
+        "cn": "B：对，我喜欢______，但是经常没时间出去。",
+        "en": ""
+      },
+      {
+        "cn": "A：你的水平很高啊，下次给我照几张。",
+        "en": ""
+      },
+      {
+        "cn": "B：我今天也带着相机呢，咱们______。",
+        "en": ""
+      },
+      {
+        "cn": "A：假期______过得这么快，还有两天就要______了。",
+        "en": ""
+      },
+      {
+        "cn": "B：是啊，我真想______都休息。",
+        "en": ""
+      },
+      {
+        "cn": "A：邮箱里______一封新邮件，我看看。",
+        "en": ""
+      },
+      {
+        "cn": "B：别看了，现在是假期，不应该工作。",
+        "en": ""
+      }
+    ],
+    "classroomActivity": {
+      "cn": "双人活动",
+      "en": "Pair Work",
+      "description": "两人一组，互相问答，完成表格。在交流中，需要介绍自己的兴趣爱好并说明原因，同时尽量多使用本课所学的词语和语言点。",
+      "descriptionEn": "Work in pairs. Ask each other questions to complete the table. During the conversation, introduce your hobbies and explain why you like them. Try to use as many of the words and language points covered in this lesson as possible.",
+      "topics": [
+        {
+          "cn": "你对拍照感兴趣吗？为什么？"
+        },
+        {
+          "cn": "天气好的时候，你会去爬山吗？为什么？"
+        },
+        {
+          "cn": "你喜欢听什么样的音乐？为什么？"
+        },
+        {
+          "cn": "你最近做的有意思的事情是什么？"
+        }
+      ]
+    }
+  }
+}

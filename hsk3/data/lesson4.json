@@ -1,0 +1,767 @@
+{
+  "lesson": 4,
+  "key": "4",
+  "name": "L4 · 这家宾馆跟别的都不一样",
+  "titleCn": "这家宾馆跟别的都不一样",
+  "titleEn": "This hotel is unlike any other",
+  "texts": [
+    {
+      "id": "4-01",
+      "title": {
+        "cn": "假期去哪儿玩",
+        "en": "Where to go for vacation",
+        "emoji": "🏖️"
+      },
+      "intro": {
+        "cn": "在王一飞家客厅，杨同乐和王一飞在聊天儿。",
+        "en": "In Wang Yifei's living room, Yang Tongle and Wang Yifei were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "王一飞和杨同乐在说什么？",
+          "options": [
+            "明天的天气",
+            "喜欢吃什么",
+            "假期做什么"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "杨同乐觉得草原怎么样？",
+          "options": [
+            "草原天气不好",
+            "草原比海边冷",
+            "草原很有意思"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "杨同乐",
+          "cn": "这个假期咱们去哪儿玩吧。",
+          "en": "How about going somewhere for a vacation？"
+        },
+        {
+          "speaker": "王一飞",
+          "cn": "好啊，你想去哪儿，咱们就去哪儿。",
+          "en": "Sure, we can go wherever you'd like."
+        },
+        {
+          "speaker": "杨同乐",
+          "cn": "你喜欢海，找个海边住几天，怎么样？",
+          "en": "You like the sea—how about staying by the coast for a few days？"
+        },
+        {
+          "speaker": "王一飞",
+          "cn": "现在去海边有点儿冷。",
+          "en": "It's a bit too cold to go to the seaside now."
+        },
+        {
+          "speaker": "杨同乐",
+          "cn": "那去草原吧？草原一点儿也不冷。",
+          "en": "Then let's go to the grasslands. It's not cold there at all."
+        },
+        {
+          "speaker": "王一飞",
+          "cn": "这个主意好！我好久没骑马了。",
+          "en": "Great idea! I haven't ridden a horse in ages."
+        },
+        {
+          "speaker": "杨同乐",
+          "cn": "对，在草原上骑马、吃羊肉、看月亮，一定很有意思。",
+          "en": "Exactly! Riding horses, eating mutton, and watching the moon on the grasslands must be wonderful."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "王一飞为什么不想去海边？"
+        },
+        {
+          "q": "王一飞为什么觉得去草原好？"
+        },
+        {
+          "q": "他们在草原上可以做什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "假期",
+          "pos": "n.",
+          "en": "vacation; holiday"
+        },
+        {
+          "cn": "海",
+          "pos": "n.",
+          "en": "sea"
+        },
+        {
+          "cn": "草原",
+          "pos": "n.",
+          "en": "grassland"
+        },
+        {
+          "cn": "主意",
+          "pos": "n.",
+          "en": "idea"
+        },
+        {
+          "cn": "骑",
+          "pos": "v.",
+          "en": "ride"
+        },
+        {
+          "cn": "马",
+          "pos": "n.",
+          "en": "horse"
+        },
+        {
+          "cn": "羊",
+          "pos": "n.",
+          "en": "sheep; goat"
+        },
+        {
+          "cn": "月亮",
+          "pos": "n.",
+          "en": "moon"
+        },
+        {
+          "cn": "一定",
+          "pos": "adv.",
+          "en": "certainly"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-2.mp3"
+    },
+    {
+      "id": "4-02",
+      "title": {
+        "cn": "机票和宾馆都订好了",
+        "en": "Tickets and hotel are booked",
+        "emoji": "✈️"
+      },
+      "intro": {
+        "cn": "在王一飞家客厅，杨同乐和王一飞在聊天儿。",
+        "en": "In Wang Yifei's living room, Yang Tongle and Wang Yifei were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "王一飞觉得这次出去玩要带什么东西？",
+          "options": [
+            "什么都不用带",
+            "带新买的相机",
+            "要带很多东西"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "杨同乐现在去做什么？",
+          "options": [
+            "买机票",
+            "选宾馆",
+            "准备行李"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "杨同乐",
+          "cn": "出去玩的机票买好了吗？",
+          "en": "Have you booked the plane tickets for our trip？"
+        },
+        {
+          "speaker": "王一飞",
+          "cn": "买好了。星期六上午十点一刻起飞。",
+          "en": "Yes, I have. The flight departs at a quarter past ten on Saturday morning."
+        },
+        {
+          "speaker": "杨同乐",
+          "cn": "宾馆也选好了吗？",
+          "en": "Have you chosen the hotel as well？"
+        },
+        {
+          "speaker": "王一飞",
+          "cn": "是的，这家宾馆很特别，跟别的都不一样，一出门就能看见牛和羊！",
+          "en": "Yes. This hotel is really special—it's unlike any other. The moment you step outside, you can see cows and sheep！"
+        },
+        {
+          "speaker": "杨同乐",
+          "cn": "太好了！你看看要带什么东西？",
+          "en": "Perfect! Let's check what we need to take."
+        },
+        {
+          "speaker": "王一飞",
+          "cn": "我们不用带太多东西，别忘了拿上新买的相机。",
+          "en": "We don't need to bring too much. Just don't forget the new camera we bought."
+        },
+        {
+          "speaker": "杨同乐",
+          "cn": "一定不会忘带的。我现在就去准备行李。",
+          "en": "I definitely won't. I'll go pack right now."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "他们什么时候坐飞机出去玩？"
+        },
+        {
+          "q": "王一飞选的宾馆怎么样？"
+        },
+        {
+          "q": "杨同乐说一定不会忘带什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "刻",
+          "pos": "m.",
+          "en": "(of an hour) quarter"
+        },
+        {
+          "cn": "起飞",
+          "pos": "v.",
+          "en": "take off"
+        },
+        {
+          "cn": "宾馆",
+          "pos": "n.",
+          "en": "hotel"
+        },
+        {
+          "cn": "特别",
+          "pos": "adj.",
+          "en": "special; adv. especially"
+        },
+        {
+          "cn": "别的",
+          "pos": "pron.",
+          "en": "other"
+        },
+        {
+          "cn": "一样",
+          "pos": "adj.",
+          "en": "the same"
+        },
+        {
+          "cn": "牛",
+          "pos": "n.",
+          "en": "cattle"
+        },
+        {
+          "cn": "相机",
+          "pos": "n.",
+          "en": "camera"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-4.mp3"
+    },
+    {
+      "id": "4-03",
+      "title": {
+        "cn": "见到司机小李",
+        "en": "Meeting driver Xiao Li",
+        "emoji": "🚗"
+      },
+      "intro": {
+        "cn": "在机场，杨同乐和王一飞走出来，跟他们预约的司机兼导游见面。",
+        "en": "At the airport, Yang Tongle and Wang Yifei came out and met the driver-guide they had booked."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "小李是谁？",
+          "options": [
+            "同乐的朋友",
+            "同乐的司机",
+            "宾馆的服务员"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "他们到宾馆后先做什么？",
+          "options": [
+            "休息",
+            "吃晚饭",
+            "等朋友"
+          ],
+          "answer": "A"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "小李",
+          "cn": "欢迎你们！我是你们的司机，我姓李，叫我小李就可以。",
+          "en": "Welcome! I'm your driver. My last name is Li—just call me Xiao Li."
+        },
+        {
+          "speaker": "杨同乐",
+          "cn": "您好！不好意思，飞机晚点了，让您久等了。",
+          "en": "Hello! I'm sorry our flight was delayed, and you've been waiting for a long time."
+        },
+        {
+          "speaker": "小李",
+          "cn": "没关系。除了这个行李箱以外，还有别的东西吗？",
+          "en": "That's all right. Besides this suitcase, do you have anything else？"
+        },
+        {
+          "speaker": "杨同乐",
+          "cn": "还有一个包，我自己拿就可以。",
+          "en": "Just one more bag—I can carry it myself."
+        },
+        {
+          "speaker": "小李",
+          "cn": "车在一层，请跟我来。",
+          "en": "The car is on the first floor. Please follow me."
+        },
+        {
+          "speaker": "杨同乐",
+          "cn": "我们住的宾馆离机场远吗？",
+          "en": "Is our hotel far from the airport？"
+        },
+        {
+          "speaker": "小李",
+          "cn": "不远，三十分钟就能到。两位到了可以先休息休息，晚饭的时候我叫你们。",
+          "en": "Not far—we'll get there in about thirty minutes. Once you arrive, you can take a short rest first. I'll call you when it's time for dinner."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "他们为什么到晚了？"
+        },
+        {
+          "q": "他们有几个行李箱？"
+        },
+        {
+          "q": "宾馆离机场远吗？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "欢迎",
+          "pos": "v.",
+          "en": "welcome"
+        },
+        {
+          "cn": "司机",
+          "pos": "n.",
+          "en": "driver"
+        },
+        {
+          "cn": "晚点",
+          "pos": "v.",
+          "en": "(of a train, ship, etc.) be late"
+        },
+        {
+          "cn": "久",
+          "pos": "adj.",
+          "en": "long"
+        },
+        {
+          "cn": "除了",
+          "pos": "prep.",
+          "en": "besides; except; other than"
+        },
+        {
+          "cn": "以外",
+          "pos": "n.",
+          "en": "except"
+        },
+        {
+          "cn": "先",
+          "pos": "adv.",
+          "en": "first"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-6.mp3"
+    },
+    {
+      "id": "4-04",
+      "title": {
+        "cn": "王一飞的日记",
+        "en": "Wang Yifei's diary",
+        "emoji": "📔"
+      },
+      "intro": {
+        "cn": "在宾馆房间，王一飞在写日记。",
+        "en": "In the hotel room, Wang Yifei was writing in her diary."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "飞机晚点后，司机做什么了？",
+          "options": [
+            "去宾馆了",
+            "去买水果了",
+            "一直在机场等"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "他们是什么时候到的？",
+          "options": [
+            "上午",
+            "中午",
+            "晚上"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "今天是我们旅游的第一天。",
+          "en": "Today is the first day of our trip."
+        },
+        {
+          "speaker": "",
+          "cn": "我们很早就起床去机场了，没想到飞机晚点了。",
+          "en": "We got up very early to go to the airport, but to our surprise, the flight was delayed."
+        },
+        {
+          "speaker": "",
+          "cn": "我们到的时候，天已经黑了，但是司机小李一直在机场等我们，一点儿也没着急。",
+          "en": "By the time we arrived, it was already dark. Fortunately, our driver, Xiao Li, had been waiting for us at the airport all along and wasn't the least bit impatient."
+        },
+        {
+          "speaker": "",
+          "cn": "他特别热情，路上给我们介绍了很多东西，还准备了水果。",
+          "en": "He was extremely warm and friendly, telling us a lot about the local area along the way and even preparing some fruit for us."
+        },
+        {
+          "speaker": "",
+          "cn": "宾馆的房间跟我想的一样漂亮，又大又干净，我非常满意。",
+          "en": "The hotel room is just as beautiful as I imagined—spacious and clean. I'm very satisfied with it."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "他们是怎么去宾馆的？"
+        },
+        {
+          "q": "王一飞为什么觉得小李很热情？"
+        },
+        {
+          "q": "宾馆的房间怎么样？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "一直",
+          "pos": "adv.",
+          "en": "all along"
+        },
+        {
+          "cn": "干净",
+          "pos": "adj.",
+          "en": "clean"
+        },
+        {
+          "cn": "满意",
+          "pos": "v.",
+          "en": "be satisfied"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-04/4-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "4-g1",
+      "textId": "4-01",
+      "no": 1,
+      "cn": "固定格式“一……也/都＋不/没……”",
+      "en": "Fixed Pattern “一…也/都＋不/没…”",
+      "note": "固定格式“一……也/都＋不/没……”表示完全否定。有时候“一＋量词”还可以用“一点儿”来表示；当谓语是形容词时，通常用“一点儿也/都＋不/没＋形容词”。",
+      "noteEn": "The fixed pattern “一…也/都＋不/没…” expresses complete negation. Sometimes “一+Measure Word” can be replaced by “一点儿”. When the predicate is an adjective, “一点儿也/都＋不/没+Adjective” is commonly used to express complete negation.",
+      "items": [
+        {
+          "c": "她一件衣服都不想买。",
+          "en": "She doesn't want to buy a single piece of clothing."
+        },
+        {
+          "c": "我一个中国电影也没看过。",
+          "en": "I haven't seen a single Chinese movie."
+        },
+        {
+          "c": "我一点儿东西也不想吃。",
+          "en": "I don't want to eat anything at all."
+        },
+        {
+          "c": "他对打球一点儿兴趣也没有。",
+          "en": "He isn't the least bit interested in ball games."
+        },
+        {
+          "c": "草原一点儿也不冷。",
+          "en": "The grasslands aren't cold at all."
+        },
+        {
+          "c": "他们一点儿也没着急。",
+          "en": "They weren't worried in the least."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "这件衣服______，你买吧。（贵）",
+          "en": ""
+        },
+        {
+          "cn": "我们上个月搬家了，______。（认识）",
+          "en": ""
+        },
+        {
+          "cn": "这个星期我太忙了，______。（时间）",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "4-g2",
+      "textId": "4-02",
+      "no": 2,
+      "cn": "比较句（9）",
+      "en": "Comparative Sentences (9)",
+      "note": "比较句“A跟B一样”表示A和B比较后，结果相同。“一样”的后面可以用形容词表示比较的某一方面，基本结构：A跟B一样＋形容词。否定形式是在“一样”的前面加“不”。",
+      "noteEn": "The comparative sentence “A跟B一样” indicates that A and B are the same after comparison. “一样” can be followed by an adjective to specify the aspect being compared. Basic structure: A跟B一样+Adjective. In the negative form, “不” is placed before “一样”.",
+      "items": [
+        {
+          "c": "这家宾馆跟别的都不一样。",
+          "en": "This hotel is unlike any other."
+        },
+        {
+          "c": "他买的新手机跟我的一样。",
+          "en": "The new phone he bought is the same as mine."
+        },
+        {
+          "c": "这个房间跟那个房间一样大。",
+          "en": "This room is as big as that one."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "我的杯子______。",
+          "en": ""
+        },
+        {
+          "cn": "今天学习的词______。",
+          "en": ""
+        },
+        {
+          "cn": "______一样高。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "4-g3",
+      "textId": "4-03",
+      "no": 3,
+      "cn": "固定格式“除了……（以外），……都/还/也……”",
+      "en": "Fixed Pattern “除了…（以外），…都/还/也…”",
+      "note": "“除了……（以外），……都……”表示在一个范围内，排除一部分，其他的都存在相同的情况，其中“以外”可以省略。“除了……（以外），……还/也……”表示排除一部分，补充其他的，句子的主语放在句首，或者放在“还/也”的前面。",
+      "noteEn": "“除了…（以外），…都…” indicates that within a certain scope, one part is excluded while all the others share the same situation; “以外” can be omitted. “除了…（以外），…还/也…” excludes one part and adds others; the subject is placed at the beginning of the sentence or before “还/也”.",
+      "items": [
+        {
+          "c": "除了我以外，大家都在玩手机。",
+          "en": "Everyone except me is playing on their phones."
+        },
+        {
+          "c": "除了这个汉字，别的汉字我都会写。",
+          "en": "Except for this character, I can write all the others."
+        },
+        {
+          "c": "除了这个行李箱以外，还有别的东西吗？",
+          "en": "Besides this suitcase, do you have anything else？"
+        },
+        {
+          "c": "除了唱歌以外，他也喜欢跳舞。",
+          "en": "Besides singing, he also likes dancing."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "妈妈喜欢喝咖啡，也喜欢喝茶。→ ______",
+          "en": ""
+        },
+        {
+          "cn": "王老师是中国人，别的老师都是外国人。→ ______",
+          "en": ""
+        },
+        {
+          "cn": "我只想吃水果，别的东西都不想吃。→ ______",
+          "en": ""
+        }
+      ]
+    }
+  ],
+  "tips": [],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "先",
+          "久",
+          "刻",
+          "满意",
+          "特别"
+        ],
+        "items": [
+          {
+            "cn": "已经八点一______了，快起床吧。",
+            "answer": "刻"
+          },
+          {
+            "cn": "飞机晚点了，小李在机场等了很______。",
+            "answer": "久"
+          },
+          {
+            "cn": "我打车过去，你们可以______慢慢走过去。",
+            "answer": "先"
+          },
+          {
+            "cn": "我对这里的服务非常______，下次还会再来。",
+            "answer": "满意"
+          },
+          {
+            "cn": "我们这次在草原上住的宾馆很______，跟别的都不一样。",
+            "answer": "特别"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "一直",
+          "一样",
+          "一定",
+          "欢迎",
+          "别的"
+        ],
+        "items": [
+          {
+            "cn": "A：草原真是太漂亮了，跟我想的______。",
+            "answer": "一样"
+          },
+          {
+            "cn": "B：我觉得草原比我想的更漂亮。",
+            "answer": ""
+          },
+          {
+            "cn": "A：我们搬家了，______你来我们的新家玩。",
+            "answer": "欢迎"
+          },
+          {
+            "cn": "B：好啊，有时间我一定去。",
+            "answer": ""
+          },
+          {
+            "cn": "A：除了要买几个纸箱，还______买东西吗？",
+            "answer": "别的"
+          },
+          {
+            "cn": "B：没有了，谢谢你帮我买。",
+            "answer": ""
+          },
+          {
+            "cn": "A：喂，小李，这边天气不好，我们还没起飞呢。",
+            "answer": ""
+          },
+          {
+            "cn": "B：没关系，我会______在机场等您。",
+            "answer": "一直"
+          },
+          {
+            "cn": "A：行李准备好了，你看看还需要带什么东西？",
+            "answer": ""
+          },
+          {
+            "cn": "B：______别忘了带护照。",
+            "answer": "一定"
+          }
+        ]
+      }
+    },
+    "describePictures": [
+      {
+        "cn": "A：这几个月累坏了，每天除了工作，______。",
+        "en": ""
+      },
+      {
+        "cn": "B：马上就要到了，你想去哪儿玩？",
+        "en": ""
+      },
+      {
+        "cn": "A：我______，都听你的吧。",
+        "en": ""
+      },
+      {
+        "cn": "B：好吧，我上网看看，咱们去哪儿休息休息。",
+        "en": ""
+      },
+      {
+        "cn": "A：你觉得咱们去海边怎么样？找一个______多住几天。",
+        "en": ""
+      },
+      {
+        "cn": "B：每次旅游都去海边，能不能看看______？",
+        "en": ""
+      },
+      {
+        "cn": "A：除了______，还______，但是要坐飞机去。",
+        "en": ""
+      },
+      {
+        "cn": "B：这个主意好，我早就想去了。",
+        "en": ""
+      },
+      {
+        "cn": "A：你们怎么这么晚才到宾馆？______，别的人都到了。",
+        "en": ""
+      },
+      {
+        "cn": "B：______我们的飞机晚点了三个多小时。",
+        "en": ""
+      },
+      {
+        "cn": "A：你们一定累坏了吧，来，看看房间喜欢不喜欢？",
+        "en": ""
+      },
+      {
+        "cn": "B：太漂亮了，这个房间______。我觉得______。",
+        "en": ""
+      }
+    ],
+    "classroomActivity": {
+      "cn": "多人活动",
+      "en": "Group Work",
+      "description": "四人一组，设计一个假期旅游计划。计划内容包括旅游的地点、交通方式、住宿安排、每日活动等，并说明这样设计的原因。",
+      "descriptionEn": "Work in groups of four. Design a vacation travel plan that includes the destination, means of transportation, accommodation arrangements and daily activities, and explain the reasons for your design.",
+      "topics": [
+        {
+          "cn": "你们打算去哪儿旅游？"
+        },
+        {
+          "cn": "怎么去？坐飞机还是坐火车？"
+        },
+        {
+          "cn": "住在哪儿？宾馆还是朋友家？"
+        },
+        {
+          "cn": "每天做什么？"
+        },
+        {
+          "cn": "为什么这样安排？"
+        }
+      ]
+    }
+  }
+}
