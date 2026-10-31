@@ -3103,7 +3103,7 @@
       // Audio: HSK3 stores a track ID ("13-1"), not an mp3 URL. Only render the
       // player when a real URL is present; otherwise show a read-only badge.
       if (isAudioUrl(t.audio)){
-        html += `<div class="text-audio" data-audio="${escapeHtml(t.audio)}" data-text="${escapeHtml(tId)}">
+        let player = `<div class="text-audio" data-audio="${escapeHtml(t.audio)}" data-text="${escapeHtml(tId)}">
           <button class="text-play-btn" data-label="${escapeHtml(tId)}">▶ ${escapeHtml(tId)}</button>
           <input type="range" class="text-seek" min="0" max="0" value="0" step="0.1">
           <span class="text-time">0:00</span>
@@ -3112,7 +3112,7 @@
         // separate from time-marking. Fine-tune tools are collapsed by default.
         // Only shown when the sentence-recording setting (✂) is enabled.
         if (segMarking){
-          html += `<div class="text-mark" data-text="${escapeHtml(tId)}">
+          player += `<div class="text-mark" data-text="${escapeHtml(tId)}">
             <button class="text-mark-btn rec" data-act="rec" title="Mark A（录制）：按下记这一句开头，随后自动继续播">⏺ 录制</button>
             <span class="text-mark-progress" title="已切句数 / 本课总句数"></span>
             <button class="text-mark-tune" data-act="tune" title="展开精调工具">✎ 精调</button>
@@ -3131,6 +3131,9 @@
             <button class="text-mark-btn save" data-act="save" title="Save this range to the selected sentence">保存</button>
           </div>`;
         }
+        // Player (and the recording row when shown) stays pinned to the top of the
+        // scrolling text list — same trick as .grammar-head.
+        html += `<div class="text-sticky-bar">${player}</div>`;
       } else if (t.audio){
         html += `<div class="text-audio-id" title="Textbook audio track">🔊 ${escapeHtml(t.audio)}</div>`;
       }
@@ -4898,9 +4901,11 @@
   function renderPreservingScroll(){
     const el = activityScroller();
     const top = el ? el.scrollTop : 0;
+    const boxTop = sentenceBox.scrollTop;
     render();
     const nl = activityScroller();
     if (nl) nl.scrollTop = top;
+    sentenceBox.scrollTop = boxTop;
   }
   listPinyinToggle.addEventListener('change', e => {
     showListPinyin = e.target.checked;
