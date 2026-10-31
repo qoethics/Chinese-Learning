@@ -1,0 +1,62 @@
+{
+  "lesson": 0,
+  "key": "0",
+  "name": "L0 · 课文中文标题",
+  "titleCn": "课文中文标题",
+  "titleEn": "English title as printed in the textbook",
+  "texts": [
+    {
+      "id": "0-01",
+      "title": { "cn": "短场景标题", "en": "Short scene title", "emoji": "🏢" },
+      "intro": { "cn": "在……，A 和 B 在聊天儿。", "en": "At ..., A and B were chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-0/0-1.mp3",
+      "questions": [
+        { "type": "choice", "q": "题目？", "options": ["A 选项", "B 选项", "C 选项"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "A", "cn": "台词。", "en": "English line." },
+        { "speaker": "B", "cn": "台词。", "en": "English line." }
+      ],
+      "postQuestions": [{ "q": "读后问题？" }],
+      "words": [{ "cn": "词", "pos": "n.", "en": "meaning" }],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-0/0-2.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "0-g1",
+      "textId": "0-01",
+      "no": 1,
+      "cn": "语法点名",
+      "en": "Grammar Point Name",
+      "note": "中文解释（可多句）。",
+      "noteEn": "English explanation.",
+      "items": [{ "c": "例句。", "en": "Example." }],
+      "practice": [{ "cn": "A：____。", "en": "" }]
+    }
+  ],
+  "tips": [],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["选项一", "选项二", "选项三", "选项四", "选项五"],
+        "items": [{ "cn": "句子______。", "answer": "选项一" }]
+      },
+      "group2": {
+        "options": ["选项一", "选项二", "选项三", "选项四", "选项五"],
+        "items": [
+          { "cn": "A：问句？", "answer": "" },
+          { "cn": "B：答句______。", "answer": "选项二" }
+        ]
+      }
+    },
+    "describePictures": [{ "cn": "A：______？", "en": "" }],
+    "classroomActivity": {
+      "cn": "双人活动",
+      "en": "Pair Work",
+      "description": "中文活动说明。",
+      "descriptionEn": "English activity description.",
+      "topics": [{ "cn": "要点一" }]
+    }
+  }
+}

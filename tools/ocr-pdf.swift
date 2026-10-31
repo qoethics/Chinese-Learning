@@ -1,4 +1,5 @@
-// macOS Vision OCR helper for the HSK3 textbook (hsk3/hsk-course-3.pdf).
+// macOS Vision OCR helper for HSK textbook PDFs (e.g. hsk3/hsk-course-3.pdf).
+// Pipeline and rules: tools/README.md
 //
 // Why this exists: the PDF's own text layer is a bad OCR layer ("突出" -> "宋出",
 // "俩经常" -> "俪经", speaker names mangled), so it cannot be used.

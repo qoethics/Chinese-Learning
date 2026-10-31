@@ -64,6 +64,15 @@
 4. 改完只跑 build 并报结果；`file://`/`http://` 浏览器验证需用户明确要求（见“验证”）。
 5. 不碰无关的既有改动（`.DS_Store`、`classroom/` 等）。
 
+## 课本录入管线（hsk3 及以后，改数据前必读）
+要**新增/修改某一课的课文、生词、语法点**时，先读 `tools/README.md`（完整协议 + 成本规则）。
+一句话版：
+- 真源是 `<level>/data/lessonNN.json`（字段骨架见 `tools/lesson-template.json`）；
+  生成物 `<level>/js/data.js`、`<level>/data/sentences/grammar-sentences.js` **禁止手改**。
+- 取字只能用 `tools/ocr-pdf.swift`（整页一次 + 每行 `x` 前缀）；**不要用 PDF 文本层，不要按比例切双栏**。
+- 改完跑 `python3 tools/gen-lesson-js.py <level>`，再 `--check` 确认。
+- 省钱要点：OCR 先落 `/tmp` 文件、不整页转图、不重复读模板、不猜参数（不确定就停下来问）。
+
 ## 课件构建（每次改完必须执行，除非用户说不要 build）
 cd courseware && python3 build.py --meta meta.json --out out/<当前文章标题>.html
 - 输出只用于本地查看，不要提交 out/ 下的 HTML

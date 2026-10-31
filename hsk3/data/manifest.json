@@ -42,14 +42,14 @@
     "render": "shared/js/app.js：生词表折叠区的 🔊 优先用 texts[].wordAudio（isAudioUrl 判定为完整 URL 时），用独立 Audio 播放（toggleVocabAudio）；没有 wordAudio 的级别退回旧逻辑，播放对话音频的「最后一句 B → 结尾」片段"
   },
   "addNextLesson": {
-    "summary": "以 Lesson 19 为例（Lesson 18 已完成为最新，可作模板）。真源只是 lessonNN.json 一个文件，加课 = 加一个 lessonNN.json + 重新生成两个 .js。",
+    "summary": "以 Lesson 19 为例（Lesson 18 已完成为最新，可作模板）。真源只是 lessonNN.json 一个文件，加课 = 加一个 lessonNN.json + 重新生成两个 .js。完整协议见 tools/README.md",
     "steps": [
-      "1. 定位 PDF 页码：书页 N 对应 PDF index N+11（index 127 → 书页 116；Lesson 1 在 index 12–20，Lesson 13 在 127–135，Lesson 14 在 135–143，Lesson 15 在 144–154）。目录页在 index 9–11，先用它确认每课起止。用 hsk3/tools/ocr-pdf.swift（见 tools）：输出每行带 x 前缀，左栏 0.10/0.17 是对话、右栏 0.47–0.70 是生词表，单栏页整页顺序读。课文英文从书末《课文英文翻译》抄（book p.183 起 = index 194 起）。",
+      "1. 定位 PDF 页码：书页 N 对应 PDF index N+11（index 127 → 书页 116；Lesson 1 在 index 12–20，Lesson 13 在 127–135，Lesson 14 在 135–143，Lesson 15 在 144–154）。目录页在 index 9–11，先用它确认每课起止。用 tools/ocr-pdf.swift（协议见 tools/README.md）：输出每行带 x 前缀，左栏 0.10/0.17 是对话、右栏 0.47–0.70 是生词表，单栏页整页顺序读。课文英文从书末《课文英文翻译》抄（book p.183 起 = index 194 起）。",
       "2. 新建 hsk3/data/lessonNN.json：字段照 lesson1.json / lesson13.json —— lesson/key/name/titleCn/titleEn + texts[] + grammar[] + tips[]（数组；没有小语助力就写 []）+ exercises",
       "3. texts[] 每条：id（NN-01…）、title{cn,en,emoji}、intro{cn,en}、audio、wordAudio、questions[]（type/q/options/answer）、postQuestions[]、lines[{speaker,cn,en}]（长段落按「。！？」一句一行，每句都要 en）、words[{cn,pos,en}]",
       "4. grammar[] 每条：id（NN-g1…）、no、cn、en、note、noteEn、items[{c,en}]、textId（归属到哪篇课文）、practice（可选）；tips[] 结构同 grammar（no 接着 grammar 往下编），textId 照旧",
       "5. 音频：按 audioRules.pairing 填 audio（奇数）/wordAudio（偶数），NN 两位数（lesson-14/14-1.mp3）",
-      "6. 重新生成 js/data.js 与 data/sentences/grammar-sentences.js（见 commonTasks.重新生成 JS）",
+      "6. 重新生成 js/data.js 与 data/sentences/grammar-sentences.js：python3 tools/gen-lesson-js.py hsk3（见 commonTasks.重新生成 JS）",
       "7. hsk3/index.html 的 <title> 只用通用名（「HSK 3 综合练习」）；lessonLabel 由 shared/js/app.js 的 setLesson() 用 data.name 覆盖，占位写第一课即可。多课要同时在 data.js 的 COURSE_LESSONS 里都有（每课 id 与语料 key 一致）；侧边栏课程列表由 buildLessonMenu() 自动按 LESSONS 生成",
       "8. 校验：用 jsc 载入生成物（var window={}; load(...)）确认课数/行数/无空 en；CSS 花括号配平"
     ],
@@ -82,8 +82,9 @@
     "每课 id 与语料 key 必须一致"
   ],
   "tools": {
-    "ocr-pdf.swift": "macOS Vision OCR（不要再用 PDF 自带文本层，那是坏 OCR 层：“突出”→“宋出”、“俩经常”→“俪经”、说话人被写错）。编译：swiftc -O hsk3/tools/ocr-pdf.swift -o /tmp/ocr-pdf。用法：/tmp/ocr-pdf hsk3/hsk-course-3.pdf 135-143（页码是 0-based PDF index，接受 135 / 135,136 / 135-143）。输出为纯文本，每行前缀 `x` 是这一行在页面上的横向位置（0..1）：对话页左栏约 0.10–0.20（0.10 是说话人，0.17 是台词），右栏生词表约 0.47–0.70；语法/练习/课首/翻译附录是整栏，自上而下顺序读即可。**不要按固定比例切左右半页**：每页栏缝位置不同，切了必截字；用 x 前缀自己分组则零截断、零参数。行尾偶尔混入右栏残片（如台词行尾带 “used to indicate”），按行首 x 判断归属即可。遇到形近字（如“重叠”→“車叠”）再单独把该页转图核对。",
-    "gen-lesson-js.py": "从 hsk3/data/lessonNN.json 生成 hsk3/js/data.js 与 hsk3/data/sentences/grammar-sentences.js（按课号排序、core 按汉字去重、tips[] 全部并进 points）。--check 只校验生成物是否最新。加课流程：新建 lessonNN.json → 跑本脚本 → 完事。"
+    "ocr-pdf.swift": "macOS Vision OCR（放在仓库根 tools/ocr-pdf.swift，各级别通用）。**不要用 PDF 自带文本层**，那是坏 OCR 层（“突出”→“宋出”、“俩经常”→“俪经”、说话人被写错）。编译：swiftc -O tools/ocr-pdf.swift -o /tmp/ocr-pdf。用法：/tmp/ocr-pdf hsk3/hsk-course-3.pdf 135-143（页码是 0-based PDF index，接受 135 / 135,136 / 135-143）。输出为纯文本，每行前缀 `x` 是这一行在页面上的横向位置（0..1）：对话页左栏约 0.10–0.20（0.10 是说话人，0.17 是台词），右栏生词表约 0.47–0.70；语法/练习/课首/翻译附录是整栏，自上而下顺序读。**不要按固定比例切左右半页**：每页栏缝位置不同，切了必截字；用 x 前缀自己分组则零截断、零参数。行尾偶尔混入右栏残片，按行首 x 判断归属。遇到形近字（如“重叠”→“車叠”）再把该页单独转图核对。",
+    "gen-lesson-js.py": "仓库根 tools/gen-lesson-js.py，各级别通用：`python3 tools/gen-lesson-js.py hsk3`。从 <level>/data/lessonNN.json 生成 <level>/js/data.js 与 <level>/data/sentences/grammar-sentences.js（按课号排序、core 按汉字去重、tips[] 全部并进 points、别名 HSK<N> 自动推导）。--check 只校验生成物是否最新。旧路径 hsk3/tools/gen-lesson-js.py 是兼容壳，等价于 hsk3。",
+    "README.md": "仓库根 tools/README.md：完整录入协议、字段表、成本规则、新级别接入步骤。加课前先读它。"
   },
   "manifestNoteTools": "tools 只处理真源与生成物；改 tools/* 属数据管线改动，需用户同意。"
 }
