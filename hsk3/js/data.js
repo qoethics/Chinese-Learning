@@ -1,6 +1,5 @@
 // HSK3 lesson texts. Read-only at runtime.
-// Source: hsk3/data/lesson1.json (Lesson 1, book pp.1-9) + hsk3/data/lesson13.json (Lesson 13, book pp.116-124)
-//         + hsk3/data/lesson14.json (Lesson 14, book pp.124-132).
+// Source: hsk3/data/lesson1.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json (hand-authored; book page ranges in hsk3/data/manifest.json).
 // Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).
 // Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);
 // each point carries a textId so renderTextList can show it under its own text.

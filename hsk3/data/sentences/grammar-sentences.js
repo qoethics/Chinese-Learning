@@ -1,5 +1,6 @@
 // AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json — do not edit by hand.
 // Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json
+// Regenerate: python3 hsk3/tools/gen-lesson-js.py
 window.SENTENCE_CORPUS = [
   {
     "lesson": 1,
