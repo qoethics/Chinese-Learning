@@ -1,5 +1,5 @@
 // HSK3 lesson texts. Read-only at runtime.
-// Source: hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson8.json + hsk3/data/lesson9.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
+// Source: hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson8.json + hsk3/data/lesson9.json + hsk3/data/lesson10.json + hsk3/data/lesson11.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
 // Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).
 // Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);
 // each point carries a textId so renderTextList can show it under its own text.
@@ -5258,6 +5258,1211 @@ window.COURSE_LESSONS = [
           }
         ],
         "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-09/9-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L10 · 你明天再把书还给我",
+    "id": "10",
+    "core": [
+      {
+        "hanzi": "数学",
+        "en": "mathematics; maths"
+      },
+      {
+        "hanzi": "认真",
+        "en": "conscientious"
+      },
+      {
+        "hanzi": "笔记",
+        "en": "notes"
+      },
+      {
+        "hanzi": "清楚",
+        "en": "clear; know"
+      },
+      {
+        "hanzi": "黑板",
+        "en": "blackboard"
+      },
+      {
+        "hanzi": "把",
+        "en": "(used to advance the object of a verb to the position before it)"
+      },
+      {
+        "hanzi": "作业",
+        "en": "homework"
+      },
+      {
+        "hanzi": "遍",
+        "en": "(for actions) once through; one time"
+      },
+      {
+        "hanzi": "提高",
+        "en": "improve; enhance"
+      },
+      {
+        "hanzi": "历史",
+        "en": "history"
+      },
+      {
+        "hanzi": "难",
+        "en": "hard; difficult"
+      },
+      {
+        "hanzi": "要求",
+        "en": "requirement; require"
+      },
+      {
+        "hanzi": "差",
+        "en": "poor; be short of"
+      },
+      {
+        "hanzi": "复习",
+        "en": "review"
+      },
+      {
+        "hanzi": "外语",
+        "en": "foreign language"
+      },
+      {
+        "hanzi": "当然",
+        "en": "certainly"
+      },
+      {
+        "hanzi": "遇到",
+        "en": "encounter"
+      },
+      {
+        "hanzi": "办公室",
+        "en": "office"
+      },
+      {
+        "hanzi": "页",
+        "en": "page"
+      },
+      {
+        "hanzi": "对话",
+        "en": "converse"
+      },
+      {
+        "hanzi": "明白",
+        "en": "understand; clear"
+      },
+      {
+        "hanzi": "讲",
+        "en": "explain"
+      },
+      {
+        "hanzi": "句",
+        "en": "(used for sentences or spoken lines)"
+      },
+      {
+        "hanzi": "句子",
+        "en": "sentence"
+      },
+      {
+        "hanzi": "年级",
+        "en": "grade"
+      },
+      {
+        "hanzi": "后年",
+        "en": "the year after next"
+      },
+      {
+        "hanzi": "一般",
+        "en": "general"
+      },
+      {
+        "hanzi": "努力",
+        "en": "hard-working; make an effort (to do sth)"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "10-01",
+        "title": {
+          "cn": "在教室聊学习方法",
+          "en": "Talking about study methods in the classroom",
+          "emoji": "📓"
+        },
+        "intro": {
+          "cn": "在教室里，刘小雪跟同学聊学习方法。",
+          "en": "In the classroom, Liu Xiaoxue was talking with her classmate about study methods."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "同学让刘小雪做什么？",
+            "options": [
+              "看笔记",
+              "认真记笔记",
+              "介绍学习方法"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "同学听了刘小雪的学习方法后，有什么打算？",
+            "options": [
+              "认真听课",
+              "认真记笔记",
+              "每天写作业"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "同学",
+            "cn": "你的数学越来越好，能不能介绍一下学习方法？",
+            "en": "Your math is getting better and better. Could you share your study methods？"
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "没有什么特别的方法，认真听课，认真记笔记。",
+            "en": "Nothing special—I just pay close attention in class and take detailed notes."
+          },
+          {
+            "speaker": "同学",
+            "cn": "我看过你的笔记，记得非常清楚。",
+            "en": "I've seen your notes—they're really clear and well-organized."
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "老师写在黑板上的题都很重要，所以我会把这些题都记在本子上。",
+            "en": "The questions the teacher writes on the blackboard are all important, so I make sure to write them all down in my notebook."
+          },
+          {
+            "speaker": "同学",
+            "cn": "你说得对。我没有记笔记的习惯。",
+            "en": "You're absolutely right. I don't really have the habit of taking notes."
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "笔记挺重要的，我每天写作业以前，都要看一遍。",
+            "en": "Notes are really important. I review them once before doing my homework every day."
+          },
+          {
+            "speaker": "同学",
+            "cn": "这个方法真好！我以后也试试，希望能提高成绩。",
+            "en": "That's such a great method! I'll try it too—hopefully it'll help improve my grades."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "刘小雪的数学为什么越来越好？"
+          },
+          {
+            "q": "刘小雪觉得老师写在黑板上的题重要吗？"
+          },
+          {
+            "q": "刘小雪的同学打算怎么做？为什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "数学",
+            "pos": "n.",
+            "en": "mathematics; maths"
+          },
+          {
+            "cn": "认真",
+            "pos": "adj.",
+            "en": "conscientious"
+          },
+          {
+            "cn": "笔记",
+            "pos": "n.",
+            "en": "notes"
+          },
+          {
+            "cn": "清楚",
+            "pos": "adj./v.",
+            "en": "clear; know"
+          },
+          {
+            "cn": "黑板",
+            "pos": "n.",
+            "en": "blackboard"
+          },
+          {
+            "cn": "把",
+            "pos": "prep.",
+            "en": "(used to advance the object of a verb to the position before it)"
+          },
+          {
+            "cn": "作业",
+            "pos": "n.",
+            "en": "homework"
+          },
+          {
+            "cn": "遍",
+            "pos": "m.",
+            "en": "(for actions) once through; one time"
+          },
+          {
+            "cn": "提高",
+            "pos": "v.",
+            "en": "improve; enhance"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-2.mp3"
+      },
+      {
+        "id": "10-02",
+        "title": {
+          "cn": "在教室聊昨天的考试",
+          "en": "Talking about yesterday's exam in the classroom",
+          "emoji": "📝"
+        },
+        "intro": {
+          "cn": "在教室里，刘小雪跟同学聊昨天的考试。",
+          "en": "In the classroom, Liu Xiaoxue was talking with her classmate about yesterday's exam."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "刘小雪觉得昨天的考试怎么样？",
+            "options": [
+              "外语没考好",
+              "历史有点儿难",
+              "数学考得还可以"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "关于那几个外语题，可以知道什么？",
+            "options": [
+              "小雪会做",
+              "要去问老师",
+              "小雪的同学会做"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "同学",
+            "cn": "小雪，昨天的考试，你考得怎么样？",
+            "en": "Xiaoxue, how did you do on yesterday's exam？"
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "我觉得历史有点儿难，你呢？",
+            "en": "I thought the history exam was a bit difficult. What about you？"
+          },
+          {
+            "speaker": "同学",
+            "cn": "数学考试我没看清楚要求，做错了好几个题，考得挺差的。",
+            "en": "On the math test, I didn't read the instructions carefully and got several questions wrong. I didn't do very well."
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "明天还有考试呢，别想那么多了，先复习外语吧。",
+            "en": "There's another exam tomorrow—don't dwell on it too much. Let's focus on reviewing the foreign language for now."
+          },
+          {
+            "speaker": "同学",
+            "cn": "外语作业里有几个问题，我可以问问你吗？",
+            "en": "I have a few questions about the foreign language homework. Can I ask you for help？"
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "当然可以。在学习上，遇到什么问题都可以问我。",
+            "en": "Of course! Feel free to ask me anything related to studying."
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "不好意思，这几个题我也不会。咱们还是一起去办公室问问李老师吧。",
+            "en": "Sorry, I don't know how to solve these questions either. Let's go to Ms. Li's office together and ask her for help."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "明天还有什么考试？"
+          },
+          {
+            "q": "同学要问刘小雪什么问题？"
+          },
+          {
+            "q": "刘小雪和同学为什么一起去办公室？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "历史",
+            "pos": "n.",
+            "en": "history"
+          },
+          {
+            "cn": "难",
+            "pos": "adj.",
+            "en": "hard; difficult"
+          },
+          {
+            "cn": "要求",
+            "pos": "n./v.",
+            "en": "requirement; require"
+          },
+          {
+            "cn": "差",
+            "pos": "adj./v.",
+            "en": "poor; be short of"
+          },
+          {
+            "cn": "复习",
+            "pos": "v.",
+            "en": "review"
+          },
+          {
+            "cn": "外语",
+            "pos": "n.",
+            "en": "foreign language"
+          },
+          {
+            "cn": "当然",
+            "pos": "adv.",
+            "en": "certainly"
+          },
+          {
+            "cn": "遇到",
+            "pos": "v.",
+            "en": "encounter"
+          },
+          {
+            "cn": "办公室",
+            "pos": "n.",
+            "en": "office"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-4.mp3"
+      },
+      {
+        "id": "10-03",
+        "title": {
+          "cn": "在李老师办公室问问题",
+          "en": "Asking questions in Ms. Li's office",
+          "emoji": "🏫"
+        },
+        "intro": {
+          "cn": "在李老师办公室，刘小雪跟同学问问题。",
+          "en": "In Ms. Li's office, Liu Xiaoxue and her classmate were asking questions."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "他们的问题在书上第几页？",
+            "options": [
+              "第五页",
+              "第七页",
+              "第十五页"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "李老师讲完，刘小雪和同学听懂了吗？",
+            "options": [
+              "没听懂",
+              "都明白了",
+              "还有几个不明白"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "同学",
+            "cn": "李老师，书上有几个问题，我们想问问您。",
+            "en": "Ms. Li, we have a few questions from the textbook that we'd like to ask you."
+          },
+          {
+            "speaker": "李老师",
+            "cn": "好，坐下说吧，哪个题不会？",
+            "en": "Sure, have a seat. Which questions are you struggling with？"
+          },
+          {
+            "speaker": "同学",
+            "cn": "书上第五页的这个对话我看不懂，小雪也不明白。",
+            "en": "I don't understand this dialogue on page 5, and Xiaoxue doesn't get it either."
+          },
+          {
+            "speaker": "李老师",
+            "cn": "我课上讲过这几句话，再给你们讲一遍。",
+            "en": "I went over these sentences in class—let me explain them again."
+          },
+          {
+            "speaker": "",
+            "cn": "（李老师给学生讲题。）",
+            "en": "(Ms. Li explains the questions to the students.)"
+          },
+          {
+            "speaker": "同学",
+            "cn": "我终于懂了。这些句子一点儿也不难。",
+            "en": "I finally get it now. These questions aren't difficult at all！"
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "我也明白了，谢谢您，李老师。",
+            "en": "I understand too. Thank you, Ms. Li."
+          },
+          {
+            "speaker": "李老师",
+            "cn": "我这本书上还有几个练习，你们回家也做一做，明天再把书还给我。",
+            "en": "There are a few more exercises in this book of mine. Try working on them at home, and return the book to me tomorrow."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "刘小雪的同学听明白了吗？"
+          },
+          {
+            "q": "李老师上课的时候讲过这几句话吗？"
+          },
+          {
+            "q": "李老师为什么给他们一本书？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "页",
+            "pos": "m.",
+            "en": "page"
+          },
+          {
+            "cn": "对话",
+            "pos": "v.",
+            "en": "converse"
+          },
+          {
+            "cn": "明白",
+            "pos": "v./adj.",
+            "en": "understand; clear"
+          },
+          {
+            "cn": "讲",
+            "pos": "v.",
+            "en": "explain"
+          },
+          {
+            "cn": "句",
+            "pos": "m.",
+            "en": "(used for sentences or spoken lines)"
+          },
+          {
+            "cn": "句子",
+            "pos": "n.",
+            "en": "sentence"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-6.mp3"
+      },
+      {
+        "id": "10-04",
+        "title": {
+          "cn": "在家里给家月姐姐写邮件",
+          "en": "Writing an email to Sister Jiayue at home",
+          "emoji": "✉️"
+        },
+        "intro": {
+          "cn": "在家里，刘小雪在写邮件。",
+          "en": "At home, Liu Xiaoxue was writing an email."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "刘小雪现在读几年级？",
+            "options": [
+              "小学六年级",
+              "初中二年级",
+              "高中一年级"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "在白家月的影响下，刘小雪喜欢做什么了？",
+            "options": [
+              "拍照",
+              "努力学习",
+              "给朋友看照片"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "家月姐姐：",
+            "en": "Dear Sister Jiayue,"
+          },
+          {
+            "speaker": "",
+            "cn": "你最近怎么样？忙不忙？",
+            "en": "How have you been lately? Are you busy these days？"
+          },
+          {
+            "speaker": "",
+            "cn": "我现在上初中二年级，学习越来越忙，后年就要考高中了。",
+            "en": "I'm now in my second year of middle school, and my studies are becoming more and more demanding. The year after next, I'll be taking the high school entrance exams."
+          },
+          {
+            "speaker": "",
+            "cn": "中国的学校一般是小学六年，初中三年，高中三年。",
+            "en": "In China, schools generally consist of six years of elementary school, three years of middle school, and three years of high school."
+          },
+          {
+            "speaker": "",
+            "cn": "妈妈说想考上好大学，就得上一个好高中；为了考上好高中，初中就得有一个不错的成绩，所以我现在非常努力。",
+            "en": "My mom says that to get into a good university, you first need to attend a good high school—and to enter a good high school, you need to have strong grades in middle school. That's why I'm working very hard now."
+          },
+          {
+            "speaker": "",
+            "cn": "家月姐姐，你知道吗？在你的影响下，我也开始喜欢拍照了。",
+            "en": "Sister Jiayue, did you know that, thanks to your influence, I've started to enjoy photography？"
+          },
+          {
+            "speaker": "",
+            "cn": "下次你再来北京，我给你看看我照的照片。",
+            "en": "Next time you visit Beijing, I'll show you some of the photos I've taken."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "刘小雪现在读几年级？"
+          },
+          {
+            "q": "中国的学校一般是怎么分段的？"
+          },
+          {
+            "q": "刘小雪为什么现在非常努力？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "年级",
+            "pos": "n.",
+            "en": "grade"
+          },
+          {
+            "cn": "后年",
+            "pos": "n.",
+            "en": "the year after next"
+          },
+          {
+            "cn": "一般",
+            "pos": "adj.",
+            "en": "general"
+          },
+          {
+            "cn": "努力",
+            "pos": "adj./v.",
+            "en": "hard-working; make an effort (to do sth)"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L11 · 看来我没办法解决这个问题",
+    "id": "11",
+    "core": [
+      {
+        "hanzi": "会议",
+        "en": "meeting; conference"
+      },
+      {
+        "hanzi": "经理",
+        "en": "manager"
+      },
+      {
+        "hanzi": "开会",
+        "en": "have a meeting"
+      },
+      {
+        "hanzi": "后天",
+        "en": "the day after tomorrow"
+      },
+      {
+        "hanzi": "地点",
+        "en": "place"
+      },
+      {
+        "hanzi": "室",
+        "en": "room"
+      },
+      {
+        "hanzi": "发",
+        "en": "send"
+      },
+      {
+        "hanzi": "笔记本（电脑）",
+        "en": "laptop"
+      },
+      {
+        "hanzi": "或者",
+        "en": "or"
+      },
+      {
+        "hanzi": "声音",
+        "en": "sound"
+      },
+      {
+        "hanzi": "看来",
+        "en": "it seems"
+      },
+      {
+        "hanzi": "办法",
+        "en": "way; approach"
+      },
+      {
+        "hanzi": "解决",
+        "en": "solve"
+      },
+      {
+        "hanzi": "只能",
+        "en": "can only"
+      },
+      {
+        "hanzi": "别人",
+        "en": "someone else; other people"
+      },
+      {
+        "hanzi": "请假",
+        "en": "ask for leave"
+      },
+      {
+        "hanzi": "同事",
+        "en": "colleague"
+      },
+      {
+        "hanzi": "休假",
+        "en": "take a vacation"
+      },
+      {
+        "hanzi": "怕",
+        "en": "be afraid of, fear"
+      },
+      {
+        "hanzi": "邮箱",
+        "en": "email address; mailbox"
+      },
+      {
+        "hanzi": "老张",
+        "en": "Lao Zhang"
+      },
+      {
+        "hanzi": "愿意",
+        "en": "be willing"
+      },
+      {
+        "hanzi": "城市",
+        "en": "city"
+      },
+      {
+        "hanzi": "生活",
+        "en": "life; live"
+      },
+      {
+        "hanzi": "为",
+        "en": "for"
+      },
+      {
+        "hanzi": "离开",
+        "en": "leave"
+      },
+      {
+        "hanzi": "或",
+        "en": "or"
+      },
+      {
+        "hanzi": "机会",
+        "en": "opportunity"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "11-01",
+        "title": {
+          "cn": "在办公室讨论会议安排",
+          "en": "Discussing the meeting arrangements in the office",
+          "emoji": "📅"
+        },
+        "intro": {
+          "cn": "在办公室里，王一雪跟杨同乐在讨论工作。",
+          "en": "In the office, Wang Yixue and Yang Tongle were discussing work."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-11/11-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪和杨同乐在说什么？",
+            "options": [
+              "下午的会议",
+              "经理在哪儿",
+              "怎么发邮件"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "杨同乐为什么要给大家发邮件？",
+            "options": [
+              "找大家来开会",
+              "告诉大家带笔记本电脑",
+              "告诉大家会议时间和地点"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "会议下午几点开始？",
+            "en": "What time does the meeting start this afternoon？"
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "今天下午经理不在，不开会了。",
+            "en": "The manager isn't available this afternoon, so the meeting has been canceled."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "那什么时候开会？",
+            "en": "Then when will it be held？"
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "后天上午十点，会议地点换到第一会议室。我正要给大家发邮件。",
+            "en": "At 10 a.m. the day after tomorrow. The location has been changed to Meeting Room 1. I'm about to send everyone an email."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "开会的时候，我们用会议室的电脑还是自己的笔记本电脑？",
+            "en": "For the meeting, should we use the room's computer or bring our own？"
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "会议室的电脑或者自己的电脑都可以。",
+            "en": "Either works."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "那到时候咱们早点儿过去，你帮我把电脑接好吧。",
+            "en": "Let's go a bit earlier then—can you help me set up the computer？"
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "今天为什么不开会了？"
+          },
+          {
+            "q": "会议换到了什么时间和地点？"
+          },
+          {
+            "q": "王一雪需要杨同乐帮忙做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "会议",
+            "pos": "n.",
+            "en": "meeting; conference"
+          },
+          {
+            "cn": "经理",
+            "pos": "n.",
+            "en": "manager"
+          },
+          {
+            "cn": "开会",
+            "pos": "v.",
+            "en": "have a meeting"
+          },
+          {
+            "cn": "后天",
+            "pos": "n.",
+            "en": "the day after tomorrow"
+          },
+          {
+            "cn": "地点",
+            "pos": "n.",
+            "en": "place"
+          },
+          {
+            "cn": "室",
+            "pos": "n.",
+            "en": "room"
+          },
+          {
+            "cn": "发",
+            "pos": "v.",
+            "en": "send"
+          },
+          {
+            "cn": "笔记本（电脑）",
+            "pos": "n.",
+            "en": "laptop"
+          },
+          {
+            "cn": "或者",
+            "pos": "conj.",
+            "en": "or"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-11/11-2.mp3"
+      },
+      {
+        "id": "11-02",
+        "title": {
+          "cn": "在会议室做会前准备",
+          "en": "Preparing for the meeting in the meeting room",
+          "emoji": "💻"
+        },
+        "intro": {
+          "cn": "在会议室，王一雪跟杨同乐在做会前准备。",
+          "en": "In the meeting room, Wang Yixue and Yang Tongle were preparing for the meeting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-11/11-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "杨同乐在帮助王一雪做什么？",
+            "options": [
+              "发邮件",
+              "看邮件",
+              "解决电脑的问题"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "杨同乐解决这个问题了吗？",
+            "options": [
+              "解决了",
+              "没有，要上网查一下",
+              "没有，要找别人来帮忙"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "电脑接好了吗？",
+            "en": "Is the computer set up？"
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "已经接好了，您开机看看有没有问题。",
+            "en": "It's already set up. Go ahead and turn it on to see if there's any issue."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "现在什么都看不见。",
+            "en": "I can't see anything at the moment."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "我检查一下哪里出问题了……您再试一下。",
+            "en": "Let me check what's wrong… Try again."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "看见了，但是听不见声音。",
+            "en": "Now I can see, but there's no sound."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "现在呢？",
+            "en": "How about now？"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "听得见声音，但是声音有点儿小，听不清楚。",
+            "en": "I can hear it now, but it's still too quiet to hear clearly."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "看来我没办法解决这个问题，只能找别人来帮帮忙了。",
+            "en": "Looks like I can't fix this problem. We'll have to ask someone else for help."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "开机以后，电脑有什么问题？"
+          },
+          {
+            "q": "杨同乐检查以后，电脑怎么样了？"
+          },
+          {
+            "q": "听见声音以后，又出现了什么问题？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "声音",
+            "pos": "n.",
+            "en": "sound"
+          },
+          {
+            "cn": "看来",
+            "pos": "v.",
+            "en": "it seems"
+          },
+          {
+            "cn": "办法",
+            "pos": "n.",
+            "en": "way; approach"
+          },
+          {
+            "cn": "解决",
+            "pos": "v.",
+            "en": "solve"
+          },
+          {
+            "cn": "只能",
+            "pos": "adv.",
+            "en": "can only"
+          },
+          {
+            "cn": "别人",
+            "pos": "pron.",
+            "en": "someone else; other people"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-11/11-4.mp3"
+      },
+      {
+        "id": "11-03",
+        "title": {
+          "cn": "在办公室聊工作进度",
+          "en": "Chatting about work progress in the office",
+          "emoji": "☕"
+        },
+        "intro": {
+          "cn": "在办公室里，王一雪跟杨同乐在聊天儿。",
+          "en": "In the office, Wang Yixue and Yang Tongle were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-11/11-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪这几天为什么特别忙？",
+            "options": [
+              "经理不在",
+              "每天开会",
+              "好几个同事没来"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "杨同乐吃完饭要做什么？",
+            "options": [
+              "帮同事请假",
+              "给公司发邮件",
+              "帮王一雪把工作做完"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "王一雪",
+            "cn": "同乐，你看见老张了吗？",
+            "en": "Tongle, have you seen Lao Zhang？"
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "老张没来。他说家里有点儿事，所以请假了。",
+            "en": "He didn't come in today. He said he had some family matters to take care of, so he took the day off."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "好几个同事都休假了，开会前这么多工作我怕干不完。",
+            "en": "Quite a few colleagues are on leave. I'm worried I won't be able to finish all this work before the meeting."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "十二点多了，咱们先去吃饭吧。吃完饭，我跟您一起把这些工作做完。",
+            "en": "It's already past twelve. Let's grab some lunch first. After we eat, I'll help you finish these tasks."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "你先去吃，我想再干一会儿。明天开会前要发到公司的邮箱里。",
+            "en": "You go ahead—I'll keep working for a bit longer. I need to send this to the company's email address before tomorrow's meeting."
+          },
+          {
+            "speaker": "杨同乐",
+            "cn": "您没看到邮件吗？经理还没回来呢，下周才能开会。",
+            "en": "Didn't you see the email? The manager isn't back yet, so the meeting's been postponed to next week."
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "那不着急了。走，吃饭去。",
+            "en": "That's a relief! Let's go eat."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "老张今天为什么没来上班？"
+          },
+          {
+            "q": "王一雪为什么没时间吃饭？"
+          },
+          {
+            "q": "明天公司开会吗？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "请假",
+            "pos": "v.",
+            "en": "ask for leave"
+          },
+          {
+            "cn": "同事",
+            "pos": "n.",
+            "en": "colleague"
+          },
+          {
+            "cn": "休假",
+            "pos": "v.",
+            "en": "take a vacation"
+          },
+          {
+            "cn": "怕",
+            "pos": "v.",
+            "en": "be afraid of, fear"
+          },
+          {
+            "cn": "邮箱",
+            "pos": "n.",
+            "en": "email address; mailbox"
+          },
+          {
+            "cn": "老张",
+            "pos": "",
+            "en": "Lao Zhang"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-11/11-6.mp3"
+      },
+      {
+        "id": "11-04",
+        "title": {
+          "cn": "在家里写日记",
+          "en": "Writing a diary at home",
+          "emoji": "📖"
+        },
+        "intro": {
+          "cn": "在家里，王一雪在写日记。",
+          "en": "At home, Wang Yixue was writing in her diary."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-11/11-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪最近在想什么问题？",
+            "options": [
+              "上海的机会多不多",
+              "喜欢不喜欢现在的工作",
+              "愿意不愿意去别的城市工作"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "王一雪为什么不想去上海工作？",
+            "options": [
+              "上海没有什么机会",
+              "她不愿意离开家人",
+              "她不认识上海的同事"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "前几天，上海的同事来北京了。",
+            "en": "A few days ago, some colleagues from Shanghai visited Beijing."
+          },
+          {
+            "speaker": "",
+            "cn": "一起吃饭时，他们跟我说最近有不少同事去上海工作了，问我愿意不愿意也去上海。",
+            "en": "During dinner, they told me that many coworkers had recently moved to Shanghai for work and asked if I'd be willing to go there too."
+          },
+          {
+            "speaker": "",
+            "cn": "我是这样想的：现在丈夫和孩子都在北京，刘明的工作很忙，小雪和小明也还小，我去别的城市工作就要离开他们。",
+            "en": "Here's how I feel about it: Right now, my husband and children are in Beijing. Liu Ming's job is very demanding, and Xiaoxue and Xiaoming are still young. If I were to work in another city, I'd have to leave them behind."
+          },
+          {
+            "speaker": "",
+            "cn": "虽然去上海可能会有更好的机会，但是对我来说，生活也很重要，我不愿意为工作或学习离开家人。",
+            "en": "While Shanghai might offer better career opportunities, life itself is just as important to me. I'm not willing to leave my family behind for work or study."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "上海的同事告诉王一雪什么了？"
+          },
+          {
+            "q": "王一雪觉得去上海工作有什么好处？"
+          },
+          {
+            "q": "对王一雪来说，工作和生活哪个更重要？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "愿意",
+            "pos": "mod.",
+            "en": "be willing"
+          },
+          {
+            "cn": "城市",
+            "pos": "n.",
+            "en": "city"
+          },
+          {
+            "cn": "生活",
+            "pos": "n./v.",
+            "en": "life; live"
+          },
+          {
+            "cn": "为",
+            "pos": "prep.",
+            "en": "for"
+          },
+          {
+            "cn": "离开",
+            "pos": "v.",
+            "en": "leave"
+          },
+          {
+            "cn": "或",
+            "pos": "conj.",
+            "en": "or"
+          },
+          {
+            "cn": "机会",
+            "pos": "n.",
+            "en": "opportunity"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-11/11-8.mp3"
       }
     ]
   },

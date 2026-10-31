@@ -1,5 +1,5 @@
-// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson8.json + hsk3/data/lesson9.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
-// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson2.json / hsk3/data/lesson3.json / hsk3/data/lesson4.json / hsk3/data/lesson5.json / hsk3/data/lesson6.json / hsk3/data/lesson7.json / hsk3/data/lesson8.json / hsk3/data/lesson9.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
+// AUTO-GENERATED from hsk3/data/lesson1.json + hsk3/data/lesson2.json + hsk3/data/lesson3.json + hsk3/data/lesson4.json + hsk3/data/lesson5.json + hsk3/data/lesson6.json + hsk3/data/lesson7.json + hsk3/data/lesson8.json + hsk3/data/lesson9.json + hsk3/data/lesson10.json + hsk3/data/lesson11.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json — do not edit by hand.
+// Hand-authored source of truth: hsk3/data/lesson1.json / hsk3/data/lesson2.json / hsk3/data/lesson3.json / hsk3/data/lesson4.json / hsk3/data/lesson5.json / hsk3/data/lesson6.json / hsk3/data/lesson7.json / hsk3/data/lesson8.json / hsk3/data/lesson9.json / hsk3/data/lesson10.json / hsk3/data/lesson11.json / hsk3/data/lesson13.json / hsk3/data/lesson14.json / hsk3/data/lesson15.json / hsk3/data/lesson16.json / hsk3/data/lesson17.json / hsk3/data/lesson18.json
 // Regenerate: python3 tools/gen-lesson-js.py hsk3
 window.SENTENCE_CORPUS = [
   {
@@ -1325,6 +1325,224 @@ window.SENTENCE_CORPUS = [
           {
             "c": "这么多同学一起打，如果总是接不住球，就太不好意思了。",
             "en": "But there are so many classmates playing, I'd feel embarrassed if I kept missing the shuttlecock."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 10,
+    "key": "10",
+    "review": false,
+    "title": "You can return the book to me tomorrow",
+    "titleCn": "你明天再把书还给我",
+    "points": [
+      {
+        "id": "10-g1",
+        "textId": "10-01",
+        "no": 1,
+        "cn": "“把”字句（1）",
+        "en": "“把” Sentence (1)",
+        "note": "“把”字句表示对确定的人或事物做出相应的动作，使其发生位置上的改变，否定副词“不/没”和能愿动词应该放在“把”字的前面。基本结构：主语＋（不/没/能愿动词）＋把＋宾语＋动词＋在/到＋地点。",
+        "noteEn": "The “把” sentence indicates performing an action on a definite person or thing, resulting in a change in position. Adverbs of negation “不/没” and modal verbs should be placed before “把” in a sentence. Basic structure: Subject+(不/没/Modal Verb)+把+Object+Verb+在/到+Location.",
+        "practice": null,
+        "items": [
+          {
+            "c": "我会把这些题都记在本子上。",
+            "en": "I'll write all these questions down in my notebook."
+          },
+          {
+            "c": "老师把作业本放到桌子上了。",
+            "en": "The teacher put the exercise books on the desk."
+          },
+          {
+            "c": "你不能把名字写在这里。",
+            "en": "You can't write your name here."
+          }
+        ]
+      },
+      {
+        "id": "10-g2",
+        "textId": "10-02",
+        "no": 2,
+        "cn": "固定格式“在……上/中/下”",
+        "en": "Fixed Pattern “在…上/中/下”",
+        "note": "介词“在”和方位词“上”“中”“下”组成的“在……上/中/下”格式可表示范围、时间、条件等。“在＋名词/名词性短语＋上”表示范围、方面；“在……中”表示动作发生或状态存在的环境、时间等；“在＋有定语的双音节动词＋下”表示条件。",
+        "noteEn": "The fixed pattern “在…上/中/下”, formed by the preposition “在” and the positional words “上”, “中”, and “下”, can indicate scope, time, condition, and so on. “在+Noun/Nominal Phrase+上” indicates scope or aspect; “在…中” indicates the environment or time in which an action takes place or a state exists; “在+Disyllabic Verbs with Attributives+下” indicates a condition.",
+        "practice": null,
+        "items": [
+          {
+            "c": "在学习上，遇到什么问题都可以问我。",
+            "en": "When it comes to studying, you can ask me about any problem you meet."
+          },
+          {
+            "c": "在工作上，他总是能给我很多帮助。",
+            "en": "At work, he can always give me a lot of help."
+          },
+          {
+            "c": "在比赛中，他得分最高。",
+            "en": "In the match, he scored the highest."
+          },
+          {
+            "c": "在假期中，我认识了几个新朋友。",
+            "en": "During the holiday, I made a few new friends."
+          },
+          {
+            "c": "在她的影响下，我开始喜欢拍照。",
+            "en": "Under her influence, I started to enjoy taking photos."
+          },
+          {
+            "c": "在老师的帮助下，我的成绩提高很快。",
+            "en": "With the teacher's help, my grades improved quickly."
+          }
+        ]
+      },
+      {
+        "id": "10-g3",
+        "textId": "10-03",
+        "no": 3,
+        "cn": "“把”字句（2）",
+        "en": "“把” Sentence (2)",
+        "note": "“把”字句表示通过动作使确定的事物发生关系上的转移。基本结构：主语＋把＋宾语1＋动词＋给＋宾语2。",
+        "noteEn": "The “把” sentence indicates the relational transfer of a definite thing through an action. Basic structure: Subject+把+Object 1+Verb+给+Object 2.",
+        "practice": null,
+        "items": [
+          {
+            "c": "你明天再把书还给我。",
+            "en": "Return the book to me tomorrow."
+          },
+          {
+            "c": "我把礼物送给她了。",
+            "en": "I gave the gift to her."
+          },
+          {
+            "c": "请你把这本书带给老师。",
+            "en": "Please take this book to the teacher."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "lesson": 11,
+    "key": "11",
+    "review": false,
+    "title": "It seems I can't solve this problem",
+    "titleCn": "看来我没办法解决这个问题",
+    "points": [
+      {
+        "id": "11-g1",
+        "textId": "11-01",
+        "no": 1,
+        "cn": "“还是”和“或者”",
+        "en": "Comparison of “还是” and “或者”",
+        "note": "“还是”一般用在疑问句中，提出两个或多个选项，希望对方从中做出选择。“或者”主要用在陈述句中，不能用在疑问句中。",
+        "noteEn": "“还是” is typically used in interrogative sentences to present two or more options, asking the listener to choose one. “或者” is usually used in declarative sentences, not in interrogative ones.",
+        "practice": null,
+        "items": [
+          {
+            "c": "我们用会议室的电脑还是自己的笔记本电脑？",
+            "en": "Should we use the room's computer or bring our own laptop？"
+          },
+          {
+            "c": "我们今天去、明天去还是后天去？",
+            "en": "Are we going today, tomorrow, or the day after tomorrow？"
+          },
+          {
+            "c": "会议室的电脑或者自己的电脑都可以。",
+            "en": "Either the room's computer or your own computer is fine."
+          },
+          {
+            "c": "你可以坐地铁或者打车去学校。",
+            "en": "You can go to school by subway or by taxi."
+          }
+        ]
+      },
+      {
+        "id": "11-g2",
+        "textId": "11-02",
+        "no": 2,
+        "cn": "固定短语“看来”",
+        "en": "Set Phrase “看来”",
+        "note": "固定短语“看来”后面加上一个结论，表示说话人通过观察、思考后，对当前情况的分析或推测。",
+        "noteEn": "The set phrase “看来” is used to introduce a conclusion expressing the speaker's analysis or inference of the current situation, based on observation or reflection.",
+        "practice": null,
+        "items": [
+          {
+            "c": "看来我没办法解决这个问题。",
+            "en": "It seems I can't solve this problem."
+          },
+          {
+            "c": "这么晚了，看来他今天不会来了。",
+            "en": "It's so late—it looks like he isn't coming today."
+          },
+          {
+            "c": "电梯坏了，看来咱们只能走下去了。",
+            "en": "The elevator is broken, so it looks like we'll have to walk down."
+          }
+        ]
+      },
+      {
+        "id": "11-g3",
+        "textId": "11-03",
+        "no": 3,
+        "cn": "“把”字句（3）",
+        "en": "“把” Sentence (3)",
+        "note": "“把”字句表示动作对确定的人或事物产生某种结果。基本结构：主语＋把＋宾语＋动词＋结果补语。",
+        "noteEn": "The “把” sentence is used to indicate that an action performed on a definite person or thing produces a certain result. Basic structure: Subject+把+Object+Verb+Complement of Result.",
+        "practice": null,
+        "items": [
+          {
+            "c": "我跟您一起把这些工作做完。",
+            "en": "I'll finish this work together with you."
+          },
+          {
+            "c": "妈妈把衣服洗干净了。",
+            "en": "Mom washed the clothes clean."
+          },
+          {
+            "c": "他还没把笔记本电脑接好呢。",
+            "en": "He hasn't finished setting up the laptop yet."
+          }
+        ]
+      },
+      {
+        "id": "11-g4",
+        "textId": "11-04",
+        "no": 4,
+        "cn": "固定格式“对……来说”",
+        "en": "Fixed Pattern “对…来说”",
+        "note": "固定格式“对……来说”指明观点、感受或情况所属的对象。",
+        "noteEn": "The fixed pattern “对…来说” indicates the person or group to whom a viewpoint, feeling, or situation applies.",
+        "practice": null,
+        "items": [
+          {
+            "c": "对我来说，生活也很重要，我不愿意为工作或学习离开家人。",
+            "en": "To me, life is also important. I'm not willing to leave my family behind for work or study."
+          },
+          {
+            "c": "对她来说，学习汉语很有意思。",
+            "en": "For her, learning Chinese is very interesting."
+          },
+          {
+            "c": "对孩子来说，玩也是一种学习。",
+            "en": "For children, playing is also a kind of learning."
+          }
+        ]
+      },
+      {
+        "id": "11-g5",
+        "textId": "11-01",
+        "no": 5,
+        "cn": "小语助力“接”",
+        "en": "“接”",
+        "note": "这里“接”的意思是“连接”。",
+        "noteEn": "Here “接” means “to connect” / “to set up”.",
+        "practice": null,
+        "items": [
+          {
+            "c": "那到时候咱们早点儿过去，你帮我把电脑接好吧。",
+            "en": "Let's go a bit earlier then—can you help me set up the computer？"
           }
         ]
       }

@@ -1,0 +1,725 @@
+{
+  "lesson": 10,
+  "key": "10",
+  "name": "L10 · 你明天再把书还给我",
+  "titleCn": "你明天再把书还给我",
+  "titleEn": "You can return the book to me tomorrow",
+  "texts": [
+    {
+      "id": "10-01",
+      "title": {
+        "cn": "在教室聊学习方法",
+        "en": "Talking about study methods in the classroom",
+        "emoji": "📓"
+      },
+      "intro": {
+        "cn": "在教室里，刘小雪跟同学聊学习方法。",
+        "en": "In the classroom, Liu Xiaoxue was talking with her classmate about study methods."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "同学让刘小雪做什么？",
+          "options": [
+            "看笔记",
+            "认真记笔记",
+            "介绍学习方法"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "同学听了刘小雪的学习方法后，有什么打算？",
+          "options": [
+            "认真听课",
+            "认真记笔记",
+            "每天写作业"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "同学",
+          "cn": "你的数学越来越好，能不能介绍一下学习方法？",
+          "en": "Your math is getting better and better. Could you share your study methods？"
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "没有什么特别的方法，认真听课，认真记笔记。",
+          "en": "Nothing special—I just pay close attention in class and take detailed notes."
+        },
+        {
+          "speaker": "同学",
+          "cn": "我看过你的笔记，记得非常清楚。",
+          "en": "I've seen your notes—they're really clear and well-organized."
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "老师写在黑板上的题都很重要，所以我会把这些题都记在本子上。",
+          "en": "The questions the teacher writes on the blackboard are all important, so I make sure to write them all down in my notebook."
+        },
+        {
+          "speaker": "同学",
+          "cn": "你说得对。我没有记笔记的习惯。",
+          "en": "You're absolutely right. I don't really have the habit of taking notes."
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "笔记挺重要的，我每天写作业以前，都要看一遍。",
+          "en": "Notes are really important. I review them once before doing my homework every day."
+        },
+        {
+          "speaker": "同学",
+          "cn": "这个方法真好！我以后也试试，希望能提高成绩。",
+          "en": "That's such a great method! I'll try it too—hopefully it'll help improve my grades."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "刘小雪的数学为什么越来越好？"
+        },
+        {
+          "q": "刘小雪觉得老师写在黑板上的题重要吗？"
+        },
+        {
+          "q": "刘小雪的同学打算怎么做？为什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "数学",
+          "pos": "n.",
+          "en": "mathematics; maths"
+        },
+        {
+          "cn": "认真",
+          "pos": "adj.",
+          "en": "conscientious"
+        },
+        {
+          "cn": "笔记",
+          "pos": "n.",
+          "en": "notes"
+        },
+        {
+          "cn": "清楚",
+          "pos": "adj./v.",
+          "en": "clear; know"
+        },
+        {
+          "cn": "黑板",
+          "pos": "n.",
+          "en": "blackboard"
+        },
+        {
+          "cn": "把",
+          "pos": "prep.",
+          "en": "(used to advance the object of a verb to the position before it)"
+        },
+        {
+          "cn": "作业",
+          "pos": "n.",
+          "en": "homework"
+        },
+        {
+          "cn": "遍",
+          "pos": "m.",
+          "en": "(for actions) once through; one time"
+        },
+        {
+          "cn": "提高",
+          "pos": "v.",
+          "en": "improve; enhance"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-2.mp3"
+    },
+    {
+      "id": "10-02",
+      "title": {
+        "cn": "在教室聊昨天的考试",
+        "en": "Talking about yesterday's exam in the classroom",
+        "emoji": "📝"
+      },
+      "intro": {
+        "cn": "在教室里，刘小雪跟同学聊昨天的考试。",
+        "en": "In the classroom, Liu Xiaoxue was talking with her classmate about yesterday's exam."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "刘小雪觉得昨天的考试怎么样？",
+          "options": [
+            "外语没考好",
+            "历史有点儿难",
+            "数学考得还可以"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "关于那几个外语题，可以知道什么？",
+          "options": [
+            "小雪会做",
+            "要去问老师",
+            "小雪的同学会做"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "同学",
+          "cn": "小雪，昨天的考试，你考得怎么样？",
+          "en": "Xiaoxue, how did you do on yesterday's exam？"
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "我觉得历史有点儿难，你呢？",
+          "en": "I thought the history exam was a bit difficult. What about you？"
+        },
+        {
+          "speaker": "同学",
+          "cn": "数学考试我没看清楚要求，做错了好几个题，考得挺差的。",
+          "en": "On the math test, I didn't read the instructions carefully and got several questions wrong. I didn't do very well."
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "明天还有考试呢，别想那么多了，先复习外语吧。",
+          "en": "There's another exam tomorrow—don't dwell on it too much. Let's focus on reviewing the foreign language for now."
+        },
+        {
+          "speaker": "同学",
+          "cn": "外语作业里有几个问题，我可以问问你吗？",
+          "en": "I have a few questions about the foreign language homework. Can I ask you for help？"
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "当然可以。在学习上，遇到什么问题都可以问我。",
+          "en": "Of course! Feel free to ask me anything related to studying."
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "不好意思，这几个题我也不会。咱们还是一起去办公室问问李老师吧。",
+          "en": "Sorry, I don't know how to solve these questions either. Let's go to Ms. Li's office together and ask her for help."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "明天还有什么考试？"
+        },
+        {
+          "q": "同学要问刘小雪什么问题？"
+        },
+        {
+          "q": "刘小雪和同学为什么一起去办公室？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "历史",
+          "pos": "n.",
+          "en": "history"
+        },
+        {
+          "cn": "难",
+          "pos": "adj.",
+          "en": "hard; difficult"
+        },
+        {
+          "cn": "要求",
+          "pos": "n./v.",
+          "en": "requirement; require"
+        },
+        {
+          "cn": "差",
+          "pos": "adj./v.",
+          "en": "poor; be short of"
+        },
+        {
+          "cn": "复习",
+          "pos": "v.",
+          "en": "review"
+        },
+        {
+          "cn": "外语",
+          "pos": "n.",
+          "en": "foreign language"
+        },
+        {
+          "cn": "当然",
+          "pos": "adv.",
+          "en": "certainly"
+        },
+        {
+          "cn": "遇到",
+          "pos": "v.",
+          "en": "encounter"
+        },
+        {
+          "cn": "办公室",
+          "pos": "n.",
+          "en": "office"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-4.mp3"
+    },
+    {
+      "id": "10-03",
+      "title": {
+        "cn": "在李老师办公室问问题",
+        "en": "Asking questions in Ms. Li's office",
+        "emoji": "🏫"
+      },
+      "intro": {
+        "cn": "在李老师办公室，刘小雪跟同学问问题。",
+        "en": "In Ms. Li's office, Liu Xiaoxue and her classmate were asking questions."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "他们的问题在书上第几页？",
+          "options": [
+            "第五页",
+            "第七页",
+            "第十五页"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "李老师讲完，刘小雪和同学听懂了吗？",
+          "options": [
+            "没听懂",
+            "都明白了",
+            "还有几个不明白"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "同学",
+          "cn": "李老师，书上有几个问题，我们想问问您。",
+          "en": "Ms. Li, we have a few questions from the textbook that we'd like to ask you."
+        },
+        {
+          "speaker": "李老师",
+          "cn": "好，坐下说吧，哪个题不会？",
+          "en": "Sure, have a seat. Which questions are you struggling with？"
+        },
+        {
+          "speaker": "同学",
+          "cn": "书上第五页的这个对话我看不懂，小雪也不明白。",
+          "en": "I don't understand this dialogue on page 5, and Xiaoxue doesn't get it either."
+        },
+        {
+          "speaker": "李老师",
+          "cn": "我课上讲过这几句话，再给你们讲一遍。",
+          "en": "I went over these sentences in class—let me explain them again."
+        },
+        {
+          "speaker": "",
+          "cn": "（李老师给学生讲题。）",
+          "en": "(Ms. Li explains the questions to the students.)"
+        },
+        {
+          "speaker": "同学",
+          "cn": "我终于懂了。这些句子一点儿也不难。",
+          "en": "I finally get it now. These questions aren't difficult at all！"
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "我也明白了，谢谢您，李老师。",
+          "en": "I understand too. Thank you, Ms. Li."
+        },
+        {
+          "speaker": "李老师",
+          "cn": "我这本书上还有几个练习，你们回家也做一做，明天再把书还给我。",
+          "en": "There are a few more exercises in this book of mine. Try working on them at home, and return the book to me tomorrow."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "刘小雪的同学听明白了吗？"
+        },
+        {
+          "q": "李老师上课的时候讲过这几句话吗？"
+        },
+        {
+          "q": "李老师为什么给他们一本书？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "页",
+          "pos": "m.",
+          "en": "page"
+        },
+        {
+          "cn": "对话",
+          "pos": "v.",
+          "en": "converse"
+        },
+        {
+          "cn": "明白",
+          "pos": "v./adj.",
+          "en": "understand; clear"
+        },
+        {
+          "cn": "讲",
+          "pos": "v.",
+          "en": "explain"
+        },
+        {
+          "cn": "句",
+          "pos": "m.",
+          "en": "(used for sentences or spoken lines)"
+        },
+        {
+          "cn": "句子",
+          "pos": "n.",
+          "en": "sentence"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-6.mp3"
+    },
+    {
+      "id": "10-04",
+      "title": {
+        "cn": "在家里给家月姐姐写邮件",
+        "en": "Writing an email to Sister Jiayue at home",
+        "emoji": "✉️"
+      },
+      "intro": {
+        "cn": "在家里，刘小雪在写邮件。",
+        "en": "At home, Liu Xiaoxue was writing an email."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "刘小雪现在读几年级？",
+          "options": [
+            "小学六年级",
+            "初中二年级",
+            "高中一年级"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "在白家月的影响下，刘小雪喜欢做什么了？",
+          "options": [
+            "拍照",
+            "努力学习",
+            "给朋友看照片"
+          ],
+          "answer": "A"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "家月姐姐：",
+          "en": "Dear Sister Jiayue,"
+        },
+        {
+          "speaker": "",
+          "cn": "你最近怎么样？忙不忙？",
+          "en": "How have you been lately? Are you busy these days？"
+        },
+        {
+          "speaker": "",
+          "cn": "我现在上初中二年级，学习越来越忙，后年就要考高中了。",
+          "en": "I'm now in my second year of middle school, and my studies are becoming more and more demanding. The year after next, I'll be taking the high school entrance exams."
+        },
+        {
+          "speaker": "",
+          "cn": "中国的学校一般是小学六年，初中三年，高中三年。",
+          "en": "In China, schools generally consist of six years of elementary school, three years of middle school, and three years of high school."
+        },
+        {
+          "speaker": "",
+          "cn": "妈妈说想考上好大学，就得上一个好高中；为了考上好高中，初中就得有一个不错的成绩，所以我现在非常努力。",
+          "en": "My mom says that to get into a good university, you first need to attend a good high school—and to enter a good high school, you need to have strong grades in middle school. That's why I'm working very hard now."
+        },
+        {
+          "speaker": "",
+          "cn": "家月姐姐，你知道吗？在你的影响下，我也开始喜欢拍照了。",
+          "en": "Sister Jiayue, did you know that, thanks to your influence, I've started to enjoy photography？"
+        },
+        {
+          "speaker": "",
+          "cn": "下次你再来北京，我给你看看我照的照片。",
+          "en": "Next time you visit Beijing, I'll show you some of the photos I've taken."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "刘小雪现在读几年级？"
+        },
+        {
+          "q": "中国的学校一般是怎么分段的？"
+        },
+        {
+          "q": "刘小雪为什么现在非常努力？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "年级",
+          "pos": "n.",
+          "en": "grade"
+        },
+        {
+          "cn": "后年",
+          "pos": "n.",
+          "en": "the year after next"
+        },
+        {
+          "cn": "一般",
+          "pos": "adj.",
+          "en": "general"
+        },
+        {
+          "cn": "努力",
+          "pos": "adj./v.",
+          "en": "hard-working; make an effort (to do sth)"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-10/10-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "10-g1",
+      "textId": "10-01",
+      "no": 1,
+      "cn": "“把”字句（1）",
+      "en": "“把” Sentence (1)",
+      "note": "“把”字句表示对确定的人或事物做出相应的动作，使其发生位置上的改变，否定副词“不/没”和能愿动词应该放在“把”字的前面。基本结构：主语＋（不/没/能愿动词）＋把＋宾语＋动词＋在/到＋地点。",
+      "noteEn": "The “把” sentence indicates performing an action on a definite person or thing, resulting in a change in position. Adverbs of negation “不/没” and modal verbs should be placed before “把” in a sentence. Basic structure: Subject+(不/没/Modal Verb)+把+Object+Verb+在/到+Location.",
+      "items": [
+        {
+          "c": "我会把这些题都记在本子上。",
+          "en": "I'll write all these questions down in my notebook."
+        },
+        {
+          "c": "老师把作业本放到桌子上了。",
+          "en": "The teacher put the exercise books on the desk."
+        },
+        {
+          "c": "你不能把名字写在这里。",
+          "en": "You can't write your name here."
+        }
+      ]
+    },
+    {
+      "id": "10-g2",
+      "textId": "10-02",
+      "no": 2,
+      "cn": "固定格式“在……上/中/下”",
+      "en": "Fixed Pattern “在…上/中/下”",
+      "note": "介词“在”和方位词“上”“中”“下”组成的“在……上/中/下”格式可表示范围、时间、条件等。“在＋名词/名词性短语＋上”表示范围、方面；“在……中”表示动作发生或状态存在的环境、时间等；“在＋有定语的双音节动词＋下”表示条件。",
+      "noteEn": "The fixed pattern “在…上/中/下”, formed by the preposition “在” and the positional words “上”, “中”, and “下”, can indicate scope, time, condition, and so on. “在+Noun/Nominal Phrase+上” indicates scope or aspect; “在…中” indicates the environment or time in which an action takes place or a state exists; “在+Disyllabic Verbs with Attributives+下” indicates a condition.",
+      "items": [
+        {
+          "c": "在学习上，遇到什么问题都可以问我。",
+          "en": "When it comes to studying, you can ask me about any problem you meet."
+        },
+        {
+          "c": "在工作上，他总是能给我很多帮助。",
+          "en": "At work, he can always give me a lot of help."
+        },
+        {
+          "c": "在比赛中，他得分最高。",
+          "en": "In the match, he scored the highest."
+        },
+        {
+          "c": "在假期中，我认识了几个新朋友。",
+          "en": "During the holiday, I made a few new friends."
+        },
+        {
+          "c": "在她的影响下，我开始喜欢拍照。",
+          "en": "Under her influence, I started to enjoy taking photos."
+        },
+        {
+          "c": "在老师的帮助下，我的成绩提高很快。",
+          "en": "With the teacher's help, my grades improved quickly."
+        }
+      ]
+    },
+    {
+      "id": "10-g3",
+      "textId": "10-03",
+      "no": 3,
+      "cn": "“把”字句（2）",
+      "en": "“把” Sentence (2)",
+      "note": "“把”字句表示通过动作使确定的事物发生关系上的转移。基本结构：主语＋把＋宾语1＋动词＋给＋宾语2。",
+      "noteEn": "The “把” sentence indicates the relational transfer of a definite thing through an action. Basic structure: Subject+把+Object 1+Verb+给+Object 2.",
+      "items": [
+        {
+          "c": "你明天再把书还给我。",
+          "en": "Return the book to me tomorrow."
+        },
+        {
+          "c": "我把礼物送给她了。",
+          "en": "I gave the gift to her."
+        },
+        {
+          "c": "请你把这本书带给老师。",
+          "en": "Please take this book to the teacher."
+        }
+      ]
+    }
+  ],
+  "tips": [],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "遍",
+          "难",
+          "差",
+          "讲",
+          "清楚"
+        ],
+        "items": [
+          {
+            "cn": "我再说一______，请大家认真听。",
+            "answer": "遍"
+          },
+          {
+            "cn": "你的汉字写得太______了，要多练习才能写得好。",
+            "answer": "差"
+          },
+          {
+            "cn": "老师上课说什么我没听______，你再告诉我一下吧。",
+            "answer": "清楚"
+          },
+          {
+            "cn": "李老师，可以给我______一下我做错的这几个题吗？",
+            "answer": "讲"
+          },
+          {
+            "cn": "今天这几个题有点儿______，好多同学都没听明白。",
+            "answer": "难"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "认真",
+          "复习",
+          "提高",
+          "要求",
+          "当然"
+        ],
+        "items": [
+          {
+            "cn": "A：今天的作业你写完了吗？",
+            "answer": ""
+          },
+          {
+            "cn": "B：没有，老师______写500个字，我只写了一半。",
+            "answer": "要求"
+          },
+          {
+            "cn": "A：你有什么______外语水平的好方法吗？",
+            "answer": ""
+          },
+          {
+            "cn": "B：没什么特别的，多听多说就行了。",
+            "answer": "提高"
+          },
+          {
+            "cn": "A：你还在想考试的事吗？一次考试没考好没关系。",
+            "answer": ""
+          },
+          {
+            "cn": "B：好，我不想了。我以后会好好______的。",
+            "answer": "复习"
+          },
+          {
+            "cn": "A：我高中的时候没遇到好老师，所以成绩越来越差。",
+            "answer": ""
+          },
+          {
+            "cn": "B：老师______重要，但是自己的努力也很重要。",
+            "answer": "当然"
+          },
+          {
+            "cn": "A：这次你数学考试考了100分，你是怎么做到的？",
+            "answer": ""
+          },
+          {
+            "cn": "B：做完以后，我又______地检查了一遍。",
+            "answer": "认真"
+          }
+        ]
+      }
+    },
+    "describePictures": [
+      {
+        "cn": "A：你觉得汉字难写吗？",
+        "en": ""
+      },
+      {
+        "cn": "B：______，除了我，同学们也觉得汉字不好写。",
+        "en": ""
+      },
+      {
+        "cn": "A：我有一个好办法，我把______，有时间就看看。",
+        "en": ""
+      },
+      {
+        "cn": "B：谢谢你把这个好办法______。",
+        "en": ""
+      },
+      {
+        "cn": "A：听说这次考试你的成绩______。",
+        "en": ""
+      },
+      {
+        "cn": "B：对，这还要谢谢您的帮助。",
+        "en": ""
+      },
+      {
+        "cn": "A：别客气。最重要的是______。",
+        "en": ""
+      },
+      {
+        "cn": "B：在______下，我越来越喜欢历史课了。",
+        "en": ""
+      },
+      {
+        "cn": "A：昨天的外语作业______，我好几个题都不会写。",
+        "en": ""
+      },
+      {
+        "cn": "B：你可以把______，我帮你看看。",
+        "en": ""
+      },
+      {
+        "cn": "A：行，就是这几个题不会。",
+        "en": ""
+      },
+      {
+        "cn": "B：这几个句子老师上课讲过，我把______，你先自己学一下。",
+        "en": ""
+      }
+    ],
+    "classroomActivity": {
+      "cn": "多人活动",
+      "en": "Group Work",
+      "description": "四人一组，交流学习外语的方法，然后向全班分享。全班投票选出三种最有效的学习方法。讨论时，使用本课所学的词语和语言点。",
+      "descriptionEn": "Work in groups of four. Exchange foreign language learning methods and then share your ideas with the class. The class votes for the three most effective methods. During the discussion, use the words and language points covered in this lesson.",
+      "topics": []
+    }
+  }
+}
