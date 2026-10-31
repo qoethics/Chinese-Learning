@@ -1,0 +1,806 @@
+{
+  "lesson": 17,
+  "key": "17",
+  "name": "L17 · 我要多向认真的人学习",
+  "titleCn": "我要多向认真的人学习",
+  "titleEn": "I will learn from people who are careful",
+  "texts": [
+    {
+      "id": "17-01",
+      "title": {
+        "cn": "在教学楼里",
+        "en": "In the teaching building",
+        "emoji": "🏫"
+      },
+      "intro": {
+        "cn": "在教学楼里，刘小雪和同学边走边聊。",
+        "en": "In the teaching building, Liu Xiaoxue and her classmate were chatting while walking."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "小雪的同学为什么到了李老师办公室后还向前走？",
+          "options": [
+            "走错了",
+            "想去楼梯那儿",
+            "害怕见李老师"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "小雪的同学认为自己是一个什么样的人？",
+          "options": [
+            "简单的",
+            "不认真的",
+            "不聪明的"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "刘小雪",
+          "cn": "别再向前走了，李老师的办公室已经到了。",
+          "en": "Let's stop here. We've already reached Ms. Li's office."
+        },
+        {
+          "speaker": "同学",
+          "cn": "你进去吧，我在楼梯那儿等你。我害怕见李老师。",
+          "en": "You go in. I'll wait for you by the stairs. I'm scared to see Ms. Li."
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "怎么回事？",
+          "en": "What's the matter?"
+        },
+        {
+          "speaker": "同学",
+          "cn": "最近我做错了好几件事，我怕李老师生气。",
+          "en": "I've made quite a few mistakes recently, and I'm afraid Ms. Li will be upset."
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "你想多了，做错事情是很常见的。",
+          "en": "You're overthinking it. Everyone makes mistakes."
+        },
+        {
+          "speaker": "同学",
+          "cn": "我把简单的事情做错了，李老师一定觉得我不认真。",
+          "en": "But I got some simple things wrong. Ms. Li must think I'm not careful."
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "有的人虽然很聪明，但是会在简单的事情中出错，因为他们认为事情简单，就不会认真去做了。",
+          "en": "Some people, even though they're very smart, still make mistakes on simple tasks because they think the tasks are easy and don't take them seriously."
+        },
+        {
+          "speaker": "同学",
+          "cn": "你说的就是我，以后我要多向认真的人学习。",
+          "en": "That sounds just like me. From now on, I'll learn from people who are careful."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "小雪的同学为什么害怕见李老师？"
+        },
+        {
+          "q": "小雪认为她的同学为什么做错事？"
+        },
+        {
+          "q": "小雪的同学打算以后怎么做？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "向",
+          "pos": "prep.",
+          "en": "to; toward"
+        },
+        {
+          "cn": "楼梯",
+          "pos": "n.",
+          "en": "stairs"
+        },
+        {
+          "cn": "害怕",
+          "pos": "v.",
+          "en": "fear; be afraid"
+        },
+        {
+          "cn": "生气",
+          "pos": "v.",
+          "en": "get angry"
+        },
+        {
+          "cn": "常见",
+          "pos": "adj.",
+          "en": "common"
+        },
+        {
+          "cn": "聪明",
+          "pos": "adj.",
+          "en": "smart; clever"
+        },
+        {
+          "cn": "错",
+          "pos": "n.",
+          "en": "mistake"
+        },
+        {
+          "cn": "认为",
+          "pos": "v.",
+          "en": "think; consider"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-2.mp3"
+    },
+    {
+      "id": "17-02",
+      "title": {
+        "cn": "在阅览室门口",
+        "en": "At the reading room",
+        "emoji": "📚"
+      },
+      "intro": {
+        "cn": "在阅览室门口，白家月碰到了陈天中。",
+        "en": "At the entrance of the reading room, Bai Jiayue ran into Chen Tianzhong."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "同学们最近都在做什么？",
+          "options": [
+            "玩电脑",
+            "找工作",
+            "去图书馆学习"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "陈天中的爸妈希望他做什么？",
+          "options": [
+            "工作",
+            "继续学习",
+            "多去图书馆"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "白家月",
+          "cn": "太阳从西边出来了？这几天怎么总是在图书馆看见你？",
+          "en": "Has the sun risen in the west? I've been seeing you in the library almost every day lately."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "这有什么奇怪的？我是来学习的。",
+          "en": "What's so strange about that? I come here to study."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "你怎么还来图书馆学习？同学们都在到处找工作呢。",
+          "en": "Why are you still studying in the library? Everyone else is busy looking for jobs!"
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "我不想现在就工作，还想继续学习，我爸妈也同意。可我还没想好学什么，所以来图书馆看看。",
+          "en": "I'm not ready to start working yet—I want to keep studying, and my parents agree with me. But I haven't decided what to study, so I'm coming here to see what's available."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "你不是喜欢玩电脑吗？你可以去看看跟电脑有关系的书。",
+          "en": "Don't you like computers? You could check out some books about them."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "你说得对，我记得那个屋子里有些跟电脑有关的书，我去找找。",
+          "en": "Good idea. I remember seeing some computer books in that room—I'll go and have a look."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "白家月为什么说“太阳从西边出来了”？"
+        },
+        {
+          "q": "陈天中为什么不去找工作？"
+        },
+        {
+          "q": "白家月觉得陈天中可以学什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "到处",
+          "pos": "adv.",
+          "en": "everywhere"
+        },
+        {
+          "cn": "继续",
+          "pos": "v.",
+          "en": "go on; continue"
+        },
+        {
+          "cn": "同意",
+          "pos": "v.",
+          "en": "agree (with/to)"
+        },
+        {
+          "cn": "可",
+          "pos": "conj.",
+          "en": "but"
+        },
+        {
+          "cn": "屋子",
+          "pos": "n.",
+          "en": "room"
+        },
+        {
+          "cn": "有关",
+          "pos": "v./prep.",
+          "en": "have something to do with; about"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-4.mp3"
+    },
+    {
+      "id": "17-03",
+      "title": {
+        "cn": "在校园里聊留学",
+        "en": "Talking about studying abroad",
+        "emoji": "✈️"
+      },
+      "intro": {
+        "cn": "在校园里，李文和陈天中在聊天儿。",
+        "en": "On campus, Li Wen and Chen Tianzhong were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "李文找陈天中有什么事？",
+          "options": [
+            "给他出一些主意",
+            "告诉他手机没电了",
+            "告诉他家月也要留学"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "陈天中想好学什么了吗？",
+          "options": [
+            "他想学中文",
+            "他想学历史",
+            "他还没想好"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "李文",
+          "cn": "天中，你的手机怎么关机了？",
+          "en": "Tianzhong, why is your phone off?"
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "我的手机没电了。你找我有事吗？",
+          "en": "My phone ran out of battery. Is something wrong?"
+        },
+        {
+          "speaker": "李文",
+          "cn": "前天我看见家月了，她告诉我你打算继续留学？",
+          "en": "I saw Jiayue the day before yesterday, and she told me you're planning to continue your studies abroad."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "是，可是我还没想好学什么，更没想好去哪个国家。",
+          "en": "Yes, but I haven't decided what to study yet, let alone which country to go to."
+        },
+        {
+          "speaker": "李文",
+          "cn": "你可以去中国学中文啊。比如可以去北京、上海这样的大城市，那里有很多好大学，也有很多留学生。",
+          "en": "Why not go to China to study Chinese? Big cities like Beijing and Shanghai have many excellent universities and lots of international students."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "好，那我上网查一查。",
+          "en": "Sounds good. I'll check it out online."
+        },
+        {
+          "speaker": "李文",
+          "cn": "我给你介绍几个有用的网站。",
+          "en": "I can recommend a few useful websites to you."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "陈天中打算做什么？"
+        },
+        {
+          "q": "李文给他出了什么主意？"
+        },
+        {
+          "q": "李文为什么给陈天中介绍几个网站？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "关机",
+          "pos": "v.",
+          "en": "turn off a mobile phone"
+        },
+        {
+          "cn": "前天",
+          "pos": "n.",
+          "en": "the day before yesterday"
+        },
+        {
+          "cn": "留学",
+          "pos": "v.",
+          "en": "study abroad"
+        },
+        {
+          "cn": "国家",
+          "pos": "n.",
+          "en": "country"
+        },
+        {
+          "cn": "比如",
+          "pos": "v.",
+          "en": "for example; such as"
+        },
+        {
+          "cn": "查",
+          "pos": "v.",
+          "en": "look up; consult"
+        },
+        {
+          "cn": "有用",
+          "pos": "adj.",
+          "en": "useful"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-6.mp3"
+    },
+    {
+      "id": "17-04",
+      "title": {
+        "cn": "陈天中的日记",
+        "en": "Chen Tianzhong's diary",
+        "emoji": "📔"
+      },
+      "intro": {
+        "cn": "在家里，陈天中在写日记。",
+        "en": "At home, Chen Tianzhong was writing in his diary."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "陈天中最近在想什么？",
+          "options": [
+            "怎么找工作",
+            "真正喜欢的同学",
+            "大学结束后做什么"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "陈天中觉得怎么才能做出最合适的选择？",
+          "options": [
+            "听老师的话",
+            "看别人怎么做",
+            "想清楚自己真正喜欢什么"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "大学生活马上就要结束了，我最近经常被问到一个问题——“你以后想做什么”，这个问题真不容易回答。",
+          "en": "My university life is about to end, and I've often been asked recently, “What do you want to do after graduation?”—a question that's truly not easy to answer."
+        },
+        {
+          "speaker": "",
+          "cn": "我也问了几个同学，大家选择的方向都不同。",
+          "en": "I've asked several classmates too, and each has chosen a different path."
+        },
+        {
+          "speaker": "",
+          "cn": "有的想继续在学校学习，有的打算出国留学，还有的决定先找工作。",
+          "en": "Some want to pursue graduate studies, some plan to study abroad, and others have decided to look for a job first."
+        },
+        {
+          "speaker": "",
+          "cn": "我认为只有想清楚自己真正喜欢什么，才能做出最合适的选择。",
+          "en": "I believe only by figuring out what you truly enjoy can you make the best decision."
+        },
+        {
+          "speaker": "",
+          "cn": "对我来说，想清楚“真正喜欢什么”是个难题。",
+          "en": "For me, however, finding the answer to “what I truly enjoy” remains a tough question."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "陈天中最近经常被问到什么问题？"
+        },
+        {
+          "q": "同学们有哪些不同的选择？"
+        },
+        {
+          "q": "陈天中知道自己真正喜欢什么吗？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "容易",
+          "pos": "adj.",
+          "en": "easy"
+        },
+        {
+          "cn": "回答",
+          "pos": "v.",
+          "en": "answer"
+        },
+        {
+          "cn": "方向",
+          "pos": "n.",
+          "en": "direction"
+        },
+        {
+          "cn": "只有",
+          "pos": "conj.",
+          "en": "only"
+        },
+        {
+          "cn": "真正",
+          "pos": "adv.",
+          "en": "really; indeed"
+        },
+        {
+          "cn": "难题",
+          "pos": "n.",
+          "en": "difficult problem"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "17-g1",
+      "textId": "17-01",
+      "no": 1,
+      "cn": "介词“向”",
+      "en": "Preposition “向”",
+      "note": "介词“向”后加代词、名词或名词性短语，表示动作的方向或对象。",
+      "noteEn": "The preposition “向” is followed by a pronoun, noun, or nominal phrase to indicate the direction or target of an action.",
+      "items": [
+        {
+          "c": "别再向前走了。",
+          "en": "Don't walk any further forward."
+        },
+        {
+          "c": "以后我要多向认真的人学习。",
+          "en": "From now on I'll learn more from people who are careful."
+        },
+        {
+          "c": "孩子一看见妈妈，就向她跑过去了。",
+          "en": "As soon as the child saw his mother, he ran over to her."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "如果有事不能上课，你就应该______。",
+          "en": ""
+        },
+        {
+          "cn": "突然下雨了，他一下车就______。",
+          "en": ""
+        },
+        {
+          "cn": "我是新来的，不懂的东西我会多______。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "17-g2",
+      "textId": "17-02",
+      "no": 2,
+      "cn": "反问句“不是……吗？”",
+      "en": "Rhetorical Question “不是……吗？”",
+      "note": "反问句“不是……吗？”一般用来表达说话人的不理解或者不满，有时候也表示提醒或确认等。否定形式表达肯定的意思。",
+      "noteEn": "The rhetorical question “不是……吗？” is generally used to express the speaker's confusion or dissatisfaction, and sometimes to remind or confirm. It is negative in form but expresses an affirmative meaning.",
+      "items": [
+        {
+          "c": "你不是喜欢玩电脑吗？你可以去看看跟电脑有关系的书。",
+          "en": "Don't you like computers? You could check out some books about them."
+        },
+        {
+          "c": "你不是说今天有事吗？为什么来了？",
+          "en": "Didn't you say you had something to do today? Why did you come?"
+        },
+        {
+          "c": "考试不是下个月吗？你怎么今天就开始复习了？",
+          "en": "Isn't the exam next month? Why did you start reviewing today?"
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：今年放假我还想去南京。",
+          "en": ""
+        },
+        {
+          "cn": "B：______？",
+          "en": ""
+        },
+        {
+          "cn": "A：______？",
+          "en": ""
+        },
+        {
+          "cn": "B：对不起，我没带。我把作业放在家里了。",
+          "en": ""
+        },
+        {
+          "cn": "A：我下午上班，这件事明天再说吧。",
+          "en": ""
+        },
+        {
+          "cn": "B：今天是星期天，______？",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "17-g3",
+      "textId": "17-03",
+      "no": 3,
+      "cn": "递进复句“……，更……”",
+      "en": "Progressive Complex Sentence “……，更……”",
+      "note": "递进复句“……，更……”中，第二个分句表示程度上更深一层。",
+      "noteEn": "In a progressive complex sentence “……，更……”, the second clause expresses a deeper degree of meaning.",
+      "items": [
+        {
+          "c": "我还没想好学什么，更没想好去哪个国家。",
+          "en": "I haven't decided what to study yet, let alone which country to go to."
+        },
+        {
+          "c": "想提高中文水平要多听多看，更要多说多练。",
+          "en": "To improve your Chinese, you need to listen and read more, and even more importantly, speak and practice more."
+        },
+        {
+          "c": "来中国学习，我学会了中文，更了解了中国文化。",
+          "en": "Studying in China, I learned Chinese and, even more, came to understand Chinese culture."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "找工作的时候需要别人的帮助，更需要______。",
+          "en": ""
+        },
+        {
+          "cn": "要想身体健康，应该______。",
+          "en": ""
+        },
+        {
+          "cn": "明天参加重要的比赛，今天要______。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "17-g4",
+      "textId": "17-04",
+      "no": 4,
+      "cn": "条件复句“只有……，才……”",
+      "en": "Conditional Complex Sentence “只有……，才……”",
+      "note": "条件复句“只有……，才……”中，“只有”后面是实现结果的唯一条件，没有这个条件就不会产生“才”后面的结果。",
+      "noteEn": "In a conditional complex sentence “只有……，才……”, the clause following “只有” presents the sole condition for the result. Without this condition, the result after “才” cannot occur.",
+      "items": [
+        {
+          "c": "只有想清楚自己真正喜欢什么，才能做出最合适的选择。",
+          "en": "Only by figuring out what you truly enjoy can you make the best decision."
+        },
+        {
+          "c": "只有每天锻炼身体，才会越来越健康。",
+          "en": "Only by exercising every day will you become healthier and healthier."
+        },
+        {
+          "c": "只有多听、多说、多看，你的中文水平才能提高。",
+          "en": "Only by listening, speaking and reading more can your Chinese improve."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：你每天都去球场练习吗？",
+          "en": ""
+        },
+        {
+          "cn": "B：对，只有每天练习，______。",
+          "en": ""
+        },
+        {
+          "cn": "A：你觉得怎么才能找到满意的工作？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        },
+        {
+          "cn": "A：听说你妈妈最近不让你玩手机了？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        }
+      ]
+    }
+  ],
+  "tip": null,
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "常见",
+          "方向",
+          "回答",
+          "难题",
+          "同意"
+        ],
+        "items": [
+          {
+            "cn": "在生活中，因为不认真做错事情是很______的。",
+            "answer": "常见"
+          },
+          {
+            "cn": "我认为大学的时候就应该选好以后工作的______。",
+            "answer": "方向"
+          },
+          {
+            "cn": "他说的话我一句也不______，你也不要受他的影响。",
+            "answer": "同意"
+          },
+          {
+            "cn": "这个问题我还没想清楚怎么______他。",
+            "answer": "回答"
+          },
+          {
+            "cn": "对我来说，怎么让父母同意我的选择是一个______。",
+            "answer": "难题"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "到处",
+          "比如",
+          "继续",
+          "有关",
+          "认为"
+        ],
+        "items": [
+          {
+            "cn": "A：已经下课了，同学们都走了吗？",
+            "answer": ""
+          },
+          {
+            "cn": "B：没有，还有几个人在______问李老师问题。",
+            "answer": "到处"
+          },
+          {
+            "cn": "A：你为什么找我？有什么急事？",
+            "answer": ""
+          },
+          {
+            "cn": "B：______，我要告诉你一件很重要的事。",
+            "answer": "继续"
+          },
+          {
+            "cn": "A：你觉得中文难学吗？",
+            "answer": ""
+          },
+          {
+            "cn": "B：我______汉字有点儿难，但是也非常有意思。",
+            "answer": "认为"
+          },
+          {
+            "cn": "A：今天下午的会议跟留学生______吗？",
+            "answer": "有关"
+          },
+          {
+            "cn": "B：没有，留学生都不用参加。",
+            "answer": ""
+          },
+          {
+            "cn": "A：______中国的很多城市历史都很长，______北京、南京、西安。",
+            "answer": "比如"
+          },
+          {
+            "cn": "B：谢谢，我打算夏天先去西安看一看。",
+            "answer": ""
+          }
+        ]
+      }
+    },
+    "describePictures": [
+      {
+        "cn": "A：学校的网站上说昨天有一个关于留学的会议。你参加了吗？",
+        "en": ""
+      },
+      {
+        "cn": "B：我参加了，昨天没开完，所以今天下午______。",
+        "en": ""
+      },
+      {
+        "cn": "A：你觉得他们的______吗？",
+        "en": ""
+      },
+      {
+        "cn": "B：有些______，有些没用。可是只有______，才______。",
+        "en": ""
+      },
+      {
+        "cn": "A：你知道她要去留学吗？",
+        "en": ""
+      },
+      {
+        "cn": "B：她不是______吗？我们大家都知道。",
+        "en": ""
+      },
+      {
+        "cn": "A：我刚听说。你跟我说说她为什么要去中国。",
+        "en": ""
+      },
+      {
+        "cn": "B：在她看来，______，更______。",
+        "en": ""
+      },
+      {
+        "cn": "A：我下午给小王打了几次电话，她的手机______。",
+        "en": ""
+      },
+      {
+        "cn": "B：我中午看见她一个人向______。",
+        "en": ""
+      },
+      {
+        "cn": "A：你知道她去哪儿了吗？",
+        "en": ""
+      },
+      {
+        "cn": "B：不知道，______，才能______。",
+        "en": ""
+      }
+    ],
+    "classroomActivity": {
+      "cn": "双人活动",
+      "en": "Pair Work",
+      "description": "上面是一组展示不同情绪的表情图片，选择其中一种情绪，围绕以下内容，和同学分享一次真实的经历。回答时，使用本课所学的词语和语言点。",
+      "descriptionEn": "The images above show various emotions. Choose one and share a real-life experience with your classmates based on the following aspects. When responding, use the words and language points covered in this lesson.",
+      "topics": [
+        {
+          "cn": "你上一次有这样的感受是什么时候？"
+        },
+        {
+          "cn": "那时候发生了什么事情？"
+        },
+        {
+          "cn": "最后你是怎么解决的？"
+        }
+      ]
+    }
+  }
+}

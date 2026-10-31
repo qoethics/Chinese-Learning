@@ -1,0 +1,821 @@
+{
+  "lesson": 18,
+  "key": "18",
+  "name": "L18 · 我学会了包饺子",
+  "titleCn": "我学会了包饺子",
+  "titleEn": "I've learned how to make jiaozi",
+  "texts": [
+    {
+      "id": "18-01",
+      "title": {
+        "cn": "在飞机上",
+        "en": "On the plane",
+        "emoji": "✈️"
+      },
+      "intro": {
+        "cn": "在飞机上，白家月和李文在聊天儿。",
+        "en": "On the plane, Bai Jiayue and Li Wen were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "白家月为什么很开心？",
+          "options": [
+            "可以去北京",
+            "可以去李文家",
+            "可以在中国过春节"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "中国人一般怎么过春节？",
+          "options": [
+            "去朋友家过节",
+            "出去旅游过节",
+            "跟家人一起过节"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "白家月",
+          "cn": "我要在中国过年，真开心。",
+          "en": "I'm going to spend Spring Festival in China. I'm so excited!"
+        },
+        {
+          "speaker": "李文",
+          "cn": "第一次请外国朋友来家里过春节，我也很高兴。",
+          "en": "This is the first time I've invited a foreign friend to my home for the Spring Festival. I'm really happy too."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "你们怎样过节？",
+          "en": "How do you usually celebrate the festival?"
+        },
+        {
+          "speaker": "李文",
+          "cn": "春节是中国最重要的节日，我们一般会回家，跟家人一起过。",
+          "en": "Spring Festival is the most important holiday in China. We usually go back home and celebrate it with our families."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "那你跟家人会一起做什么？",
+          "en": "And what do you do with your family?"
+        },
+        {
+          "speaker": "李文",
+          "cn": "我们家会一边包饺子，一边看春节联欢晚会，一直到十二点以后才睡觉。",
+          "en": "We make jiaozi while watching the Spring Festival Gala, and we stay up past midnight."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "听起来很有意思。春节大概放几天假？",
+          "en": "That sounds really fun. How many days off do you get for Spring Festival?"
+        },
+        {
+          "speaker": "李文",
+          "cn": "大概七八天。",
+          "en": "About seven or eight days."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "李文为什么很高兴？"
+        },
+        {
+          "q": "李文和家人春节的时候会做什么？"
+        },
+        {
+          "q": "春节大概放几天假？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "怎样",
+          "pos": "pron.",
+          "en": "(used to inquire about the nature, condition, manner, etc. of sth) how"
+        },
+        {
+          "cn": "过节",
+          "pos": "v.",
+          "en": "celebrate a festival"
+        },
+        {
+          "cn": "节",
+          "pos": "n.",
+          "en": "festival"
+        },
+        {
+          "cn": "节日",
+          "pos": "n.",
+          "en": "festival"
+        },
+        {
+          "cn": "联欢",
+          "pos": "v.",
+          "en": "have a get-together"
+        },
+        {
+          "cn": "大概",
+          "pos": "adv./adj.",
+          "en": "probably; rough"
+        },
+        {
+          "cn": "春节",
+          "pos": "",
+          "en": "Spring Festival"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-2.mp3"
+    },
+    {
+      "id": "18-02",
+      "title": {
+        "cn": "在李文家拜年",
+        "en": "New Year greetings at Li Wen's home",
+        "emoji": "🧧"
+      },
+      "intro": {
+        "cn": "在李文家，白家月给李文的父母拜年。",
+        "en": "At Li Wen's home, Bai Jiayue wished Li Wen's parents a Happy New Year."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "白家月为什么去李文家？",
+          "options": [
+            "送礼物",
+            "学包饺子",
+            "一起过年"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "李文家今天晚上吃什么？",
+          "options": [
+            "饺子",
+            "包子",
+            "面条儿"
+          ],
+          "answer": "A"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "白家月",
+          "cn": "张阿姨，李叔叔，过年好！这是我准备的礼物，请收下。",
+          "en": "Auntie Zhang, Uncle Li—Happy New Year! I brought a gift for you. I hope you like it."
+        },
+        {
+          "speaker": "李叔叔",
+          "cn": "谢谢家月，你太客气了！",
+          "en": "Thank you, Jiayue. That's very kind of you!"
+        },
+        {
+          "speaker": "张阿姨",
+          "cn": "总听小文说起你，今天终于有机会见面了。",
+          "en": "Xiaowen always talks about you. I'm so glad we finally get to meet."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "谢谢您和叔叔请我来家里做客。",
+          "en": "Thank you for having me over."
+        },
+        {
+          "speaker": "李叔叔",
+          "cn": "桌子上有饮料，还有矿泉水，你想喝什么就自己拿。",
+          "en": "There are drinks and bottled water on the table—help yourself to whatever you'd like."
+        },
+        {
+          "speaker": "张阿姨",
+          "cn": "你先坐着看会儿电视，饺子很快就包好了。",
+          "en": "Have a seat and watch some TV for a bit. The jiaozi will be ready soon."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我刚刚看视频学会了包饺子，我跟你们一起包吧。",
+          "en": "I learned how to make jiaozi from a video. Let me help you make them!"
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "白家月送礼物的时候说什么了？"
+        },
+        {
+          "q": "李文的家人是怎么欢迎白家月的？"
+        },
+        {
+          "q": "白家月想跟李文的家人一起做什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "阿姨",
+          "pos": "n.",
+          "en": "aunt"
+        },
+        {
+          "cn": "叔叔",
+          "pos": "n.",
+          "en": "uncle"
+        },
+        {
+          "cn": "收",
+          "pos": "v.",
+          "en": "accept"
+        },
+        {
+          "cn": "总",
+          "pos": "adv.",
+          "en": "always"
+        },
+        {
+          "cn": "起",
+          "pos": "v.",
+          "en": "used after a verb to indicate the person or thing involved in the action"
+        },
+        {
+          "cn": "见面",
+          "pos": "v.",
+          "en": "meet"
+        },
+        {
+          "cn": "矿泉水",
+          "pos": "n.",
+          "en": "mineral water"
+        },
+        {
+          "cn": "刚刚",
+          "pos": "adv.",
+          "en": "just now"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-4.mp3"
+    },
+    {
+      "id": "18-03",
+      "title": {
+        "cn": "看老照片",
+        "en": "Looking at old photos",
+        "emoji": "📷"
+      },
+      "intro": {
+        "cn": "在李文家，李文妈妈和白家月在聊天儿。",
+        "en": "At Li Wen's home, Li Wen's mother and Bai Jiayue were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "白家月和李文妈妈在做什么？",
+          "options": [
+            "一起看电视",
+            "一起看视频",
+            "一起看照片"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "李文什么时候毕业？",
+          "options": [
+            "一个月以后",
+            "一个学期以后",
+            "三四年以后"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "白家月",
+          "cn": "这张照片是李文出国前照的吗？",
+          "en": "Was this photo taken before Li Wen went abroad?"
+        },
+        {
+          "speaker": "张阿姨",
+          "cn": "对，这是他从北京出发时，我们全家在机场照的。",
+          "en": "Yes, it was taken at the airport in Beijing when our whole family saw him off."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "那是三四年前吧？",
+          "en": "That was about three or four years ago, right?"
+        },
+        {
+          "speaker": "张阿姨",
+          "cn": "是啊，时间过得真快，好像是不久前发生的一样。",
+          "en": "Yes, time really flies—it feels like it happened just yesterday."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "您一定特别想李文吧？",
+          "en": "You must really miss Li Wen, don't you?"
+        },
+        {
+          "speaker": "张阿姨",
+          "cn": "他刚离开家时，我很不习惯，只要几天不跟他视频，就很想他。",
+          "en": "When he first left home, it was hard for me to get used to it. If I didn't video chat with him for a few days, I'd miss him terribly."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "还有最后一个学期就要毕业了，他很快就会回来了。",
+          "en": "Well, just one more semester until he graduates. He'll be back soon."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "李文第一次出国留学，是从哪儿出发的？"
+        },
+        {
+          "q": "李文全家的照片是什么时候照的？"
+        },
+        {
+          "q": "李文刚离开家的时候，张阿姨怎么样？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "出发",
+          "pos": "v.",
+          "en": "depart"
+        },
+        {
+          "cn": "不久",
+          "pos": "adj.",
+          "en": "soon"
+        },
+        {
+          "cn": "发生",
+          "pos": "v.",
+          "en": "happen"
+        },
+        {
+          "cn": "刚",
+          "pos": "adv.",
+          "en": "(only a very short time ago) just"
+        },
+        {
+          "cn": "只要",
+          "pos": "conj.",
+          "en": "as long as"
+        },
+        {
+          "cn": "学期",
+          "pos": "n.",
+          "en": "semester"
+        },
+        {
+          "cn": "毕业",
+          "pos": "v.",
+          "en": "graduate"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-6.mp3"
+    },
+    {
+      "id": "18-04",
+      "title": {
+        "cn": "白家月的日记",
+        "en": "Bai Jiayue's diary",
+        "emoji": "📔"
+      },
+      "intro": {
+        "cn": "在家里，白家月在写日记。",
+        "en": "At home, Bai Jiayue was writing in her diary."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "白家月这次来中国，让她最高兴的事是什么？",
+          "options": [
+            "过春节",
+            "吃饺子",
+            "认识李文的父母"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "在李文身上，白家月学到什么了？",
+          "options": [
+            "如果想学医，就要努力学习",
+            "只有成绩好，才能出国留学",
+            "只要坚持努力，就能完成目标"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "这次来中国，我最高兴的是认识了李文的父母。",
+          "en": "What made me happiest during this trip to China was getting to know Li Wen's parents."
+        },
+        {
+          "speaker": "",
+          "cn": "他们给我看了李文出生时的照片，还给我讲了很多他过去的故事。",
+          "en": "They showed me photos taken when Li Wen was born and told me many stories about his past."
+        },
+        {
+          "speaker": "",
+          "cn": "李文高中的时候想学医，从那时起就努力学习。",
+          "en": "In high school, he wanted to study medicine and has worked hard ever since."
+        },
+        {
+          "speaker": "",
+          "cn": "高三的时候，因为成绩特别好，他得到了出国留学的机会。",
+          "en": "In his senior year, his outstanding grades earned him the opportunity to study abroad."
+        },
+        {
+          "speaker": "",
+          "cn": "在他身上，我懂得了，只要一直坚持，就能完成自己的目标。",
+          "en": "Through his story, I learned that as long as you persevere, you can achieve your goals."
+        },
+        {
+          "speaker": "",
+          "cn": "我相信，他以后一定会发展得更好。",
+          "en": "I believe he will go on to accomplish even greater things in the future."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "李文的父母给白家月看什么了？"
+        },
+        {
+          "q": "白家月从李文的父母那里了解到什么了？"
+        },
+        {
+          "q": "李文为什么能得到出国留学的机会？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "出生",
+          "pos": "v.",
+          "en": "be born"
+        },
+        {
+          "cn": "过去",
+          "pos": "n.",
+          "en": "past"
+        },
+        {
+          "cn": "懂得",
+          "pos": "v.",
+          "en": "understand; know"
+        },
+        {
+          "cn": "坚持",
+          "pos": "v.",
+          "en": "persevere in"
+        },
+        {
+          "cn": "完成",
+          "pos": "v.",
+          "en": "complete; finish"
+        },
+        {
+          "cn": "目标",
+          "pos": "n.",
+          "en": "goal"
+        },
+        {
+          "cn": "发展",
+          "pos": "v.",
+          "en": "develop"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "18-g1",
+      "textId": "18-01",
+      "no": 1,
+      "cn": "概数表达法",
+      "en": "Approximate Numbers",
+      "note": "汉语中相邻的两个数字连用，表示不确定的数量。",
+      "noteEn": "In Chinese, two adjacent numbers used together indicate an approximate quantity.",
+      "items": [
+        {
+          "c": "春节大概放七八天假。",
+          "en": "You get about seven or eight days off for Spring Festival."
+        },
+        {
+          "c": "教室里来了五六个学生。",
+          "en": "Five or six students came into the classroom."
+        },
+        {
+          "c": "这些照片是三四年前照的吧？",
+          "en": "These photos were taken about three or four years ago, right?"
+        }
+      ],
+      "practice": [
+        {
+          "cn": "你一般晚上几点睡觉？",
+          "en": ""
+        },
+        {
+          "cn": "你每天学习多长时间汉语？",
+          "en": ""
+        },
+        {
+          "cn": "你们国家新年一般放几天假？",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "18-g2",
+      "textId": "18-02",
+      "no": 2,
+      "cn": "“刚才”和“刚刚”",
+      "en": "Comparison of “刚才” and “刚刚”",
+      "note": "“刚才”是时间名词，表示很短的时间以前，一般来说就是几分钟以前。“刚才”可以放在句首，也可以放在主语后面，动词前面。“刚刚”是时间副词，表示对说话人来说事情发生的时间不长，可能是几分钟、几天甚至几个月。“刚刚”应该放在主语后面，动词前面。",
+      "noteEn": "“刚才” is a time noun that refers to the immediate past, usually just a few minutes ago. It can be placed at the beginning of a sentence, or between the subject and the verb. “刚刚” is an adverb of time indicating that an event happened not long ago from the speaker's perspective. It could be minutes, days, or even months ago. It is placed after the subject, before the verb.",
+      "items": [
+        {
+          "c": "刚才的电话是我妈妈打来的。",
+          "en": "The phone call just now was from my mother."
+        },
+        {
+          "c": "我刚才看过一遍，不想再看了。",
+          "en": "I just watched it once, and I don't want to watch it again."
+        },
+        {
+          "c": "我刚刚看视频学会了包饺子。",
+          "en": "I just learned how to make jiaozi from a video."
+        },
+        {
+          "c": "他刚刚来北京两个月。",
+          "en": "He has only been in Beijing for two months."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "请你再说一遍______的问题。",
+          "en": ""
+        },
+        {
+          "cn": "你______来了两三天就要走，为什么？",
+          "en": ""
+        },
+        {
+          "cn": "我不是______开始学习中文的，我已经学了一年了。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "18-g3",
+      "textId": "18-03",
+      "no": 3,
+      "cn": "条件复句“只要……，就……”",
+      "en": "Conditional Complex Sentence “只要……，就……”",
+      "note": "“只要……，就……”中，“只要”后面是所需要的充分条件，有这个条件就能产生“就”后面的结果。主语可以放在“只要”前，也可以放在“只要”后。如果句子有两个主语，第二个主语要放在“就”前面。",
+      "noteEn": "In the conditional complex sentence “只要……，就……”, the clause after “只要” presents a sufficient condition that guarantees the result following “就”. The subject can be placed either before or after “只要”. If there are two subjects, the second subject must be placed before “就”.",
+      "items": [
+        {
+          "c": "我只要几天不跟他视频，就很想他。",
+          "en": "If I don't video chat with him for a few days, I miss him terribly."
+        },
+        {
+          "c": "只要你同意，我们就这么决定了。",
+          "en": "As long as you agree, we'll decide it this way."
+        },
+        {
+          "c": "只要你坚持每天早睡，身体就一定会好起来。",
+          "en": "As long as you keep going to bed early every day, your health will definitely improve."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：你对大家都这么好啊？",
+          "en": ""
+        },
+        {
+          "cn": "B：我相信只要我对别人好，______。",
+          "en": ""
+        },
+        {
+          "cn": "A：只要你努力学习，______。",
+          "en": ""
+        },
+        {
+          "cn": "B：老师，我一定会努力的。",
+          "en": ""
+        },
+        {
+          "cn": "A：张阿姨，谢谢您做了这么多菜，一定累得很。",
+          "en": ""
+        },
+        {
+          "cn": "B：不累，______，我就不觉得累。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "18-g4",
+      "textId": "18-04",
+      "no": 4,
+      "cn": "固定格式“从……起”",
+      "en": "Fixed Pattern “从……起”",
+      "note": "固定格式“从……起”有“从……开始”的意思，多表示时间。常用在句首，作状语。",
+      "noteEn": "The fixed pattern “从……起” means “从……开始” (starting from...) and is often used to indicate time. It is usually placed at the beginning of a sentence as an adverbial.",
+      "items": [
+        {
+          "c": "他从那时起就努力学习。",
+          "en": "From that time on, he studied hard."
+        },
+        {
+          "c": "从那天起，我们就变成了好朋友。",
+          "en": "From that day on, we became good friends."
+        },
+        {
+          "c": "从那次旅游起，我对中国文化更有兴趣了。",
+          "en": "Since that trip, I've become more interested in Chinese culture."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "从搬到北京起，______。",
+          "en": ""
+        },
+        {
+          "cn": "从______起，我每天都锻炼二三十分钟。",
+          "en": ""
+        },
+        {
+          "cn": "______，我就开始喜欢拍照了。",
+          "en": ""
+        }
+      ]
+    }
+  ],
+  "tip": null,
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "刚",
+          "总",
+          "起",
+          "收",
+          "见面"
+        ],
+        "items": [
+          {
+            "cn": "我来中国______几个月，还没在中国过过春节。",
+            "answer": "刚"
+          },
+          {
+            "cn": "这是我给您和叔叔准备的小礼物，请您______下。",
+            "answer": "收"
+          },
+          {
+            "cn": "过年的时候，小孩子会______收到大人给的红包。",
+            "answer": "总"
+          },
+          {
+            "cn": "从上个月______，妈妈就开始为春节做准备了。",
+            "answer": "起"
+          },
+          {
+            "cn": "春节的时候只要有时间，就一定要跟小时候的朋友们______。",
+            "answer": "见面"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "完成",
+          "坚持",
+          "发生",
+          "怎样",
+          "大概"
+        ],
+        "items": [
+          {
+            "cn": "A：你想______过今年的春节？",
+            "answer": "怎样"
+          },
+          {
+            "cn": "B：我好几年没回爸爸妈妈家了，今年打算回去过节。",
+            "answer": ""
+          },
+          {
+            "cn": "A：这一年______了很多开心的事。",
+            "answer": "发生"
+          },
+          {
+            "cn": "B：希望明年更好，祝我们大家都新年快乐！",
+            "answer": ""
+          },
+          {
+            "cn": "A：你今年怎么过春节？",
+            "answer": ""
+          },
+          {
+            "cn": "B：我回家住______三四天，然后出去旅游。",
+            "answer": "大概"
+          },
+          {
+            "cn": "A：快12点了，你是不是想睡觉了？",
+            "answer": ""
+          },
+          {
+            "cn": "B：______，我一定要到12点，新的一年开始以后再睡觉。",
+            "answer": "坚持"
+          },
+          {
+            "cn": "A：新年就要到了，可是今年的目标还没______呢。",
+            "answer": "完成"
+          },
+          {
+            "cn": "B：没关系，明年我们一起努力吧。",
+            "answer": ""
+          }
+        ]
+      }
+    },
+    "describePictures": [
+      {
+        "cn": "A：马上就要过春节了，你______？",
+        "en": ""
+      },
+      {
+        "cn": "B：我刚刚______，要和家人一起过。",
+        "en": ""
+      },
+      {
+        "cn": "A：太好了，你和家人已经很久没______吧？",
+        "en": ""
+      },
+      {
+        "cn": "B：是啊，我大概______没回家过春节了。",
+        "en": ""
+      },
+      {
+        "cn": "A：行李都准备好了吗？什么时候______？",
+        "en": ""
+      },
+      {
+        "cn": "B：______还有大概______。我一想到自己在外国生活就难过。",
+        "en": ""
+      },
+      {
+        "cn": "A：别难过，你______，就跟我视频。",
+        "en": ""
+      },
+      {
+        "cn": "B：好的。从______，我要学会照顾自己。",
+        "en": ""
+      },
+      {
+        "cn": "A：你是在______哪儿的？",
+        "en": ""
+      },
+      {
+        "cn": "B：在一个小城市，那里这几年______。",
+        "en": ""
+      },
+      {
+        "cn": "A：我听说你们国家工作机会很多，______就能找到好工作。",
+        "en": ""
+      },
+      {
+        "cn": "B：没错，所以你应该从______努力学习，以后______来我们国家。",
+        "en": ""
+      }
+    ],
+    "classroomActivity": {
+      "cn": "多人活动",
+      "en": "Group Work",
+      "description": "四人一组，每人介绍自己国家的一个传统节日。介绍内容包括：节日名称、节日的时间、怎么庆祝这个节日、节日的特色食物和意义等。练习时，使用本课所学的词语和语言点。",
+      "descriptionEn": "Work in groups of four. Each person introduces a traditional festival from their own country. The introduction should cover the festival's name, date, celebrations, special foods, and its significance. During the activity, use the words and language points covered in this lesson.",
+      "topics": [
+        {
+          "cn": "节日名称"
+        },
+        {
+          "cn": "节日的时间"
+        },
+        {
+          "cn": "怎么庆祝这个节日"
+        },
+        {
+          "cn": "节日的特色食物和意义"
+        }
+      ]
+    }
+  }
+}

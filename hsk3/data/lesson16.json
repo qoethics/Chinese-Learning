@@ -1,0 +1,825 @@
+{
+  "lesson": 16,
+  "key": "16",
+  "name": "L16 · 我听说有的熊猫出国了",
+  "titleCn": "我听说有的熊猫出国了",
+  "titleEn": "I heard that some pandas have gone abroad",
+  "texts": [
+    {
+      "id": "16-01",
+      "title": {
+        "cn": "在宠物领养店",
+        "en": "At the pet adoption center",
+        "emoji": "🐱"
+      },
+      "intro": {
+        "cn": "在一家宠物领养店，王一雪和孩子们在看动物。",
+        "en": "At a pet adoption center, Wang Yixue and the children were looking at the animals."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-1.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "这只小猫养了多久了？",
+          "options": [
+            "第一天养",
+            "养了一年多了",
+            "养了很多年了"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "现在这只小猫是什么样的？",
+          "options": [
+            "特别小",
+            "特别可爱",
+            "不太干净"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "刘小雪",
+          "cn": "这只小猫你们养了多久了？",
+          "en": "How long have you been taking care of this kitten?"
+        },
+        {
+          "speaker": "服务员",
+          "cn": "已经一年多了。第一天看见它的时候，它又脏又小。现在它变得又干净又漂亮了。",
+          "en": "Over a year now. When we first found it, it was dirty and tiny. Now it's so clean and beautiful!"
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "是啊。它还特别可爱，一会儿在你脚边睡觉，一会儿在你身上爬。",
+          "en": "Exactly! It's also super cute—sometimes it sleeps by your feet, and sometimes it climbs all over you."
+        },
+        {
+          "speaker": "服务员",
+          "cn": "你们把它照顾得真好。",
+          "en": "You've really taken great care of it."
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "它就好像我们的孩子，我们照顾它，它也认得我们了。",
+          "en": "It feels like it's our own child. We take care of it, and now it knows us."
+        },
+        {
+          "speaker": "服务员",
+          "cn": "妈妈，我们家也养一只小猫吧。",
+          "en": "Mom, can we get a kitten?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "咱们没时间照顾，还是别养了，我周末带你们去北京动物园看动物吧。",
+          "en": "We don't have time to take care of one. How about I take you to the Beijing Zoo this weekend to see the animals instead?"
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "服务员第一天看见这只小猫的时候，它是什么样的？"
+        },
+        {
+          "q": "服务员为什么觉得小猫很可爱？"
+        },
+        {
+          "q": "服务员和小猫的关系怎么样？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "脏",
+          "pos": "adj.",
+          "en": "dirty"
+        },
+        {
+          "cn": "可爱",
+          "pos": "adj.",
+          "en": "cute; lovely"
+        },
+        {
+          "cn": "一会儿",
+          "pos": "adv.",
+          "en": "now...now/then..."
+        },
+        {
+          "cn": "脚",
+          "pos": "n.",
+          "en": "foot"
+        },
+        {
+          "cn": "照顾",
+          "pos": "v.",
+          "en": "take care of; look after"
+        },
+        {
+          "cn": "好像",
+          "pos": "v.",
+          "en": "seem; be like"
+        },
+        {
+          "cn": "认得",
+          "pos": "v.",
+          "en": "know; recognize"
+        },
+        {
+          "cn": "周末",
+          "pos": "n.",
+          "en": "weekend"
+        },
+        {
+          "cn": "动物园",
+          "pos": "n.",
+          "en": "zoo"
+        },
+        {
+          "cn": "动物",
+          "pos": "n.",
+          "en": "animal"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-2.mp3"
+    },
+    {
+      "id": "16-02",
+      "title": {
+        "cn": "聊大熊猫",
+        "en": "Talking about giant pandas",
+        "emoji": "🐼"
+      },
+      "intro": {
+        "cn": "在动物园，王一雪和孩子们边走边聊。",
+        "en": "At the zoo, Wang Yixue and her children were chatting while walking."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-3.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "王一雪和孩子们在聊什么？",
+          "options": [
+            "大熊猫",
+            "北京动物园",
+            "动物和人的不同"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "刘小雪为什么说弟弟是“十万个为什么”？",
+          "options": [
+            "弟弟喜欢看书",
+            "弟弟喜欢听故事",
+            "弟弟喜欢问问题"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "刘小明",
+          "cn": "妈妈，大熊猫这个名字很奇怪，它们跟猫有什么关系？",
+          "en": "Mom, the Chinese name “giant panda” sounds so strange. What do they have to do with cats?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "这个问题问得好，它们跟猫没什么关系，其实应该叫大猫熊。",
+          "en": "That's a great question. They have nothing to do with cats. Actually, they should be called “Giant Cat-Bears”."
+        },
+        {
+          "speaker": "刘小明",
+          "cn": "大熊猫为什么只吃竹子不吃肉？",
+          "en": "Why do giant pandas only eat bamboo and not meat?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "它们跟人一样，也可以吃肉，但是对肉不感兴趣。",
+          "en": "They can eat meat, just like us, but they're simply not interested in it."
+        },
+        {
+          "speaker": "刘小明",
+          "cn": "大熊猫为什么是中国的国宝？",
+          "en": "Why are giant pandas considered China's national treasure?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "全世界只有中国有野生大熊猫，中国是大熊猫的家。",
+          "en": "China is the only country with wild giant pandas—it's their natural home."
+        },
+        {
+          "speaker": "刘小明",
+          "cn": "我听说有的熊猫出国了，他们去哪儿了？",
+          "en": "I heard some pandas have been sent abroad. Where did they go?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "关于这个问题，我得慢慢给你讲。",
+          "en": "That's a long story! I'll have to tell you about it bit by bit."
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "弟弟，你真是“十万个为什么”！",
+          "en": "Little brother, you're like a walking “One Hundred Thousand Whys”."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "大熊猫跟猫有关系吗？"
+        },
+        {
+          "q": "大熊猫为什么只吃竹子不吃肉？"
+        },
+        {
+          "q": "大熊猫为什么是中国的国宝？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "大熊猫",
+          "pos": "n.",
+          "en": "giant panda"
+        },
+        {
+          "cn": "奇怪",
+          "pos": "adj.",
+          "en": "strange"
+        },
+        {
+          "cn": "其实",
+          "pos": "adv.",
+          "en": "actually"
+        },
+        {
+          "cn": "竹子",
+          "pos": "n.",
+          "en": "bamboo"
+        },
+        {
+          "cn": "国宝",
+          "pos": "n.",
+          "en": "national treasure"
+        },
+        {
+          "cn": "全",
+          "pos": "adj.",
+          "en": "whole; entire"
+        },
+        {
+          "cn": "野生",
+          "pos": "adj.",
+          "en": "wild"
+        },
+        {
+          "cn": "关于",
+          "pos": "prep.",
+          "en": "about"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-4.mp3"
+    },
+    {
+      "id": "16-03",
+      "title": {
+        "cn": "在熊猫馆",
+        "en": "At the Panda House",
+        "emoji": "🎋"
+      },
+      "intro": {
+        "cn": "在熊猫馆，王一雪和孩子们在看大熊猫。",
+        "en": "At the Panda House, Wang Yixue and the children were watching the giant pandas."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-5.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "一般来说，大熊猫每天做什么？",
+          "options": [
+            "爬来爬去",
+            "跟人拍照",
+            "吃东西和睡觉"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "刘小雪让妈妈帮她做什么？",
+          "options": [
+            "照一张照片",
+            "买一些吃的",
+            "找一只熊猫"
+          ],
+          "answer": "A"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "刘小雪",
+          "cn": "这只大熊猫一会儿爬上去，一会儿跳下来，可爱极了！",
+          "en": "This giant panda keeps climbing up and down—it's so adorable!"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "它好像还没吃饱，站起来张着嘴找吃的呢。",
+          "en": "It seems like it's still hungry. Look, it's standing up with its mouth open, trying to find something to eat."
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "它身边那只熊猫半天没动，是不是在睡觉呢？",
+          "en": "The panda next to it hasn't moved in a while. Is it sleeping?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "我看不见它的脸，可能是吧。一般来说，熊猫每天要睡很多次觉。",
+          "en": "I can't see its face, so maybe it is. You know, pandas usually nap a lot during the day."
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "对，除了睡觉以外，很多时间都在吃东西。",
+          "en": "Right, and when they are not sleeping, they spend most of their time eating."
+        },
+        {
+          "speaker": "刘小明",
+          "cn": "大熊猫的生活真舒服啊！",
+          "en": "What a relaxing life!"
+        },
+        {
+          "speaker": "刘小雪",
+          "cn": "妈妈，您帮我和这两只大熊猫照一张照片吧。",
+          "en": "Mom, can you take a picture of me with these two giant pandas?"
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "刘小雪为什么觉得这只大熊猫可爱极了？"
+        },
+        {
+          "q": "王一雪为什么觉得它没吃饱？"
+        },
+        {
+          "q": "刘小明觉得大熊猫的生活怎么样？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "饱",
+          "pos": "adj.",
+          "en": "full"
+        },
+        {
+          "cn": "张",
+          "pos": "v.",
+          "en": "open"
+        },
+        {
+          "cn": "嘴",
+          "pos": "n.",
+          "en": "mouth"
+        },
+        {
+          "cn": "身边",
+          "pos": "n.",
+          "en": "one's side"
+        },
+        {
+          "cn": "半天",
+          "pos": "num.-m.",
+          "en": "quite a while"
+        },
+        {
+          "cn": "脸",
+          "pos": "n.",
+          "en": "face"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-6.mp3"
+    },
+    {
+      "id": "16-04",
+      "title": {
+        "cn": "王一雪的日记",
+        "en": "Wang Yixue's diary",
+        "emoji": "📔"
+      },
+      "intro": {
+        "cn": "在家里，王一雪在写日记。",
+        "en": "At home, Wang Yixue was writing in her diary."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-7.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "游客最喜欢去北京动物园看什么动物？",
+          "options": [
+            "牛",
+            "羊",
+            "大熊猫"
+          ],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "北京动物园早上几点开门？",
+          "options": [
+            "六点",
+            "七点",
+            "七点半"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "今天我带小雪和小明去动物园玩了。",
+          "en": "Today, I took Xiaoxue and Xiaoming to the zoo."
+        },
+        {
+          "speaker": "",
+          "cn": "北京动物园是中国很有名的动物园，里面有非常多的动物，当然，大人和孩子最喜爱的还是大熊猫。",
+          "en": "The Beijing Zoo is one of the most famous zoos in China and is home to a wide variety of animals. Of course, the giant pandas are favorites among both adults and children."
+        },
+        {
+          "speaker": "",
+          "cn": "每天有很多游客去熊猫馆，他们带着相机去给可爱的大熊猫拍照。",
+          "en": "Every day, many visitors flock to the Panda House, bringing their cameras to take photos of these adorable animals."
+        },
+        {
+          "speaker": "",
+          "cn": "动物园早上七点半开门，晚上七点关门，冬天比夏天游客少，所以也比平时早关门一个小时。",
+          "en": "The zoo opens at 7:30 a.m. and closes at 7:00 p.m. In winter, there are fewer visitors than in summer, so it closes an hour earlier."
+        },
+        {
+          "speaker": "",
+          "cn": "如果第一次来北京旅游，跟家人一起去北京动物园是个不错的选择。",
+          "en": "If it's your first time visiting Beijing, a trip to the Beijing Zoo with your family is definitely a great choice."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "今天王一雪带孩子们去哪儿了？"
+        },
+        {
+          "q": "很多游客去动物园做什么？"
+        },
+        {
+          "q": "北京动物园夏天和冬天的关门时间有什么不同？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "大人",
+          "pos": "n.",
+          "en": "adult"
+        },
+        {
+          "cn": "喜爱",
+          "pos": "v.",
+          "en": "love; be fond of"
+        }
+      ],
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-8.mp3"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "16-g1",
+      "textId": "16-01",
+      "no": 1,
+      "cn": "并列复句“一会儿……，一会儿……”",
+      "en": "Coordinate Complex Sentence “一会儿……，一会儿……”",
+      "note": "并列复句“一会儿……，一会儿……”表示短时间内发生的不同动作，或者一种对立的情况。",
+      "noteEn": "The coordinate complex sentence “一会儿……，一会儿……” indicates different actions occurring within a short period, or alternating states.",
+      "items": [
+        {
+          "c": "它一会儿在你脚边睡觉，一会儿在你身上爬。",
+          "en": "Sometimes it sleeps by your feet, and sometimes it climbs all over you."
+        },
+        {
+          "c": "他一会儿进来，一会儿出去，忙得很。",
+          "en": "He keeps coming in and going out—he's really busy."
+        },
+        {
+          "c": "最近天气变化很快，一会儿冷，一会儿热。",
+          "en": "The weather has been changing quickly lately—cold one moment, hot the next."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "她的想法总是变，______，一会儿说想学跳舞。",
+          "en": ""
+        },
+        {
+          "cn": "运动会上，他一会儿参加跑步比赛，______。",
+          "en": ""
+        },
+        {
+          "cn": "这只猫很可爱，一会儿躺在沙发上睡觉，______。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "16-g2",
+      "textId": "16-02",
+      "no": 2,
+      "cn": "介词“关于”",
+      "en": "Preposition “关于”",
+      "note": "介词“关于”后面加名词，引出涉及的对象。",
+      "noteEn": "The preposition “关于” is typically followed by a noun to introduce a topic or subject.",
+      "items": [
+        {
+          "c": "关于这个问题，我得慢慢给你讲。",
+          "en": "As for this question, I'll have to explain it to you bit by bit."
+        },
+        {
+          "c": "关于他的要求，我们还要开会以后再决定。",
+          "en": "As for his request, we'll decide after our meeting."
+        },
+        {
+          "c": "关于比赛的时间，我明天一定告诉大家。",
+          "en": "About the time of the competition, I'll definitely tell everyone tomorrow."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "______，我还有一些问题想问你。",
+          "en": ""
+        },
+        {
+          "cn": "经理要跟你谈一谈______的事情。",
+          "en": ""
+        },
+        {
+          "cn": "你去找李老师吧，他可以告诉你一些______的方法。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "16-g3",
+      "textId": "16-03",
+      "no": 3,
+      "cn": "固定短语“一般来说”",
+      "en": "Set Phrase “一般来说”",
+      "note": "“一般来说”是一个固定短语，意思是大多数情况下是这样，常用于句子的开头。",
+      "noteEn": "“一般来说” is a set phrase that means “generally speaking” or “in most cases”. It is often used at the beginning of a sentence.",
+      "items": [
+        {
+          "c": "一般来说，熊猫每天要睡很多次觉。",
+          "en": "Generally speaking, pandas nap many times a day."
+        },
+        {
+          "c": "一般来说，这种树每年开一次花。",
+          "en": "Generally speaking, this kind of tree blooms once a year."
+        },
+        {
+          "c": "一般来说，学习外语需要多练习。",
+          "en": "Generally speaking, learning a foreign language requires a lot of practice."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：你喜欢早上锻炼还是晚上锻炼？",
+          "en": ""
+        },
+        {
+          "cn": "B：______，因为我早上起床起得很早。",
+          "en": ""
+        },
+        {
+          "cn": "A：你觉得下班时坐地铁和坐出租车哪个更快？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        },
+        {
+          "cn": "A：周末你喜欢做什么？",
+          "en": ""
+        },
+        {
+          "cn": "B：______。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "16-g4",
+      "textId": "16-04",
+      "no": 4,
+      "cn": "比较句（11）",
+      "en": "Comparative Sentences (11)",
+      "note": "用“比”表示的比较句中，谓语为一般动词时，前面可以用“多、少、早、晚”，表示两者在数量或时间上的差异。基本结构：A比B+多/少/早/晚+动词+数量短语。",
+      "noteEn": "In comparative sentences using “比”, when the predicate is a general verb, “多”, “少”, “早”, or “晚” can be placed before the verb to indicate a difference in quantity or time between two things. Basic structure: A比B+多/少/早/晚+Verb+Numeral-Measure Word Phrase.",
+      "items": [
+        {
+          "c": "冬天比夏天早关门一个小时。",
+          "en": "It closes an hour earlier in winter than in summer."
+        },
+        {
+          "c": "哥哥比弟弟多吃了三个饺子。",
+          "en": "The older brother ate three more dumplings than the younger brother."
+        },
+        {
+          "c": "我比他晚到了十分钟。",
+          "en": "I arrived ten minutes later than he did."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：你今天怎么来得这么早？",
+          "en": ""
+        },
+        {
+          "cn": "B：我是坐地铁来的，所以______。",
+          "en": ""
+        },
+        {
+          "cn": "A：已经十一点了，你怎么还不睡？",
+          "en": ""
+        },
+        {
+          "cn": "B：明天不上课，我想______。",
+          "en": ""
+        },
+        {
+          "cn": "A：我们该还信用卡了。",
+          "en": ""
+        },
+        {
+          "cn": "B：对，这个月______。",
+          "en": ""
+        }
+      ]
+    }
+  ],
+  "tip": {
+    "id": "16-g5",
+    "textId": "16-02",
+    "no": 5,
+    "cn": "小语助力“十万个为什么”",
+    "en": "“One Hundred Thousand Whys”",
+    "note": "“十万个为什么”源于中国很受欢迎的少儿科普读物《十万个为什么》，常用来形容孩子充满好奇心，有时以开玩笑的口吻形容对方问题多。",
+    "noteEn": "The term “One Hundred Thousand Whys” originates from a best-selling Chinese children's popular science book series of the same name. It is often used to describe curious children, and sometimes jokingly used to tease someone for asking too many questions.",
+    "items": [
+      {
+        "c": "弟弟，你真是“十万个为什么”！",
+        "en": "Little brother, you're like a walking “One Hundred Thousand Whys”!"
+      }
+    ]
+  },
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "照顾",
+          "张",
+          "饱",
+          "奇怪",
+          "脏"
+        ],
+        "items": [
+          {
+            "cn": "小猫看到妈妈后马上______开嘴要吃的。",
+            "answer": "张"
+          },
+          {
+            "cn": "这个电影介绍了怎么______离开爸爸妈妈的小动物。",
+            "answer": "照顾"
+          },
+          {
+            "cn": "这只大熊猫没吃______，你看它还在找吃的东西呢。",
+            "answer": "饱"
+          },
+          {
+            "cn": "这个饭馆的桌子这么______，碗也不干净，咱们换一家吧。",
+            "answer": "脏"
+          },
+          {
+            "cn": "这只鸟好像飞不起来，而且吃东西的时候看起来也很______。",
+            "answer": "奇怪"
+          }
+        ]
+      },
+      "group2": {
+        "options": [
+          "认得",
+          "关于",
+          "其实",
+          "一般",
+          "半天"
+        ],
+        "items": [
+          {
+            "cn": "A：小王，你在找什么？",
+            "answer": ""
+          },
+          {
+            "cn": "B：我的手机不见了，我找了______也没找到。",
+            "answer": "半天"
+          },
+          {
+            "cn": "A：你想借哪本书？",
+            "answer": ""
+          },
+          {
+            "cn": "B：______，我忘了名字，是一本动物的书。",
+            "answer": "关于"
+          },
+          {
+            "cn": "A：这只小猫在小区里好几天了，是不是找不到家了？",
+            "answer": ""
+          },
+          {
+            "cn": "B：我______它，这是我邻居家的小猫。",
+            "answer": "认得"
+          },
+          {
+            "cn": "A：你周末带孩子做什么？",
+            "answer": ""
+          },
+          {
+            "cn": "B：______如果天气好，我带孩子去公园里玩。",
+            "answer": "一般"
+          },
+          {
+            "cn": "A：你怎么又去动物园了？",
+            "answer": ""
+          },
+          {
+            "cn": "B：我______也不想去，但是妈妈希望我和弟弟一起去。",
+            "answer": "其实"
+          }
+        ]
+      }
+    },
+    "describePictures": [
+      {
+        "cn": "A：已经晚上11点了，你比以前______。",
+        "en": ""
+      },
+      {
+        "cn": "B：我去动物医院帮忙了。",
+        "en": ""
+      },
+      {
+        "cn": "A：你看起来很累。",
+        "en": ""
+      },
+      {
+        "cn": "B：今天新来了几只生病的小猫，一会儿______，一会儿______。我们都累得不得了。",
+        "en": ""
+      },
+      {
+        "cn": "A：你看，那只大熊猫______，好像在找吃的。",
+        "en": ""
+      },
+      {
+        "cn": "B：是啊，它身边的那只好像也______。",
+        "en": ""
+      },
+      {
+        "cn": "A：它们刚才已经吃了半天了，应该吃饱了吧？",
+        "en": ""
+      },
+      {
+        "cn": "B：______，它们一天要吃十几个小时呢。",
+        "en": ""
+      },
+      {
+        "cn": "A：老师让我们写一个关于______，我还没想好写什么。",
+        "en": ""
+      },
+      {
+        "cn": "B：我也没想好。动物园里什么动物都有，咱们去看看吧。",
+        "en": ""
+      },
+      {
+        "cn": "A：都五点了，动物园是不是快关门了？",
+        "en": ""
+      },
+      {
+        "cn": "B：夏天比冬天______。咱们现在就去。",
+        "en": ""
+      }
+    ],
+    "classroomActivity": {
+      "cn": "多人活动",
+      "en": "Group Work",
+      "description": "四人一组，每组选一个比较有特色的动物，围绕以下问题进行讨论。最后，每组选一名代表向全班介绍，其他同学可以提问。回答时，使用本课所学的词语和语言点。",
+      "descriptionEn": "Work in groups of four. Choose a distinctive animal and discuss the following questions. Then, each group selects one representative to introduce it to the class, and other students can ask questions. When responding, use the words and language points covered in this lesson.",
+      "topics": [
+        {
+          "cn": "这种动物长什么样？"
+        },
+        {
+          "cn": "它们一般生活在什么地方？"
+        },
+        {
+          "cn": "它们的生活习惯是什么样的？"
+        }
+      ]
+    }
+  }
+}

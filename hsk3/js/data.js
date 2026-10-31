@@ -1,5 +1,5 @@
 // HSK3 lesson texts. Read-only at runtime.
-// Source: hsk3/data/lesson1.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json (hand-authored; book page ranges in hsk3/data/manifest.json).
+// Source: hsk3/data/lesson1.json + hsk3/data/lesson13.json + hsk3/data/lesson14.json + hsk3/data/lesson15.json + hsk3/data/lesson16.json + hsk3/data/lesson17.json + hsk3/data/lesson18.json (hand-authored; book page ranges in hsk3/data/manifest.json).
 // Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).
 // Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);
 // each point carries a textId so renderTextList can show it under its own text.
@@ -2345,6 +2345,1793 @@ window.COURSE_LESSONS = [
           }
         ],
         "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-15/15-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L16 · 我听说有的熊猫出国了",
+    "id": "16",
+    "core": [
+      {
+        "hanzi": "脏",
+        "en": "dirty"
+      },
+      {
+        "hanzi": "可爱",
+        "en": "cute; lovely"
+      },
+      {
+        "hanzi": "一会儿",
+        "en": "now...now/then..."
+      },
+      {
+        "hanzi": "脚",
+        "en": "foot"
+      },
+      {
+        "hanzi": "照顾",
+        "en": "take care of; look after"
+      },
+      {
+        "hanzi": "好像",
+        "en": "seem; be like"
+      },
+      {
+        "hanzi": "认得",
+        "en": "know; recognize"
+      },
+      {
+        "hanzi": "周末",
+        "en": "weekend"
+      },
+      {
+        "hanzi": "动物园",
+        "en": "zoo"
+      },
+      {
+        "hanzi": "动物",
+        "en": "animal"
+      },
+      {
+        "hanzi": "大熊猫",
+        "en": "giant panda"
+      },
+      {
+        "hanzi": "奇怪",
+        "en": "strange"
+      },
+      {
+        "hanzi": "其实",
+        "en": "actually"
+      },
+      {
+        "hanzi": "竹子",
+        "en": "bamboo"
+      },
+      {
+        "hanzi": "国宝",
+        "en": "national treasure"
+      },
+      {
+        "hanzi": "全",
+        "en": "whole; entire"
+      },
+      {
+        "hanzi": "野生",
+        "en": "wild"
+      },
+      {
+        "hanzi": "关于",
+        "en": "about"
+      },
+      {
+        "hanzi": "饱",
+        "en": "full"
+      },
+      {
+        "hanzi": "张",
+        "en": "open"
+      },
+      {
+        "hanzi": "嘴",
+        "en": "mouth"
+      },
+      {
+        "hanzi": "身边",
+        "en": "one's side"
+      },
+      {
+        "hanzi": "半天",
+        "en": "quite a while"
+      },
+      {
+        "hanzi": "脸",
+        "en": "face"
+      },
+      {
+        "hanzi": "大人",
+        "en": "adult"
+      },
+      {
+        "hanzi": "喜爱",
+        "en": "love; be fond of"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "16-01",
+        "title": {
+          "cn": "在宠物领养店",
+          "en": "At the pet adoption center",
+          "emoji": "🐱"
+        },
+        "intro": {
+          "cn": "在一家宠物领养店，王一雪和孩子们在看动物。",
+          "en": "At a pet adoption center, Wang Yixue and the children were looking at the animals."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "这只小猫养了多久了？",
+            "options": [
+              "第一天养",
+              "养了一年多了",
+              "养了很多年了"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "现在这只小猫是什么样的？",
+            "options": [
+              "特别小",
+              "特别可爱",
+              "不太干净"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "刘小雪",
+            "cn": "这只小猫你们养了多久了？",
+            "en": "How long have you been taking care of this kitten?"
+          },
+          {
+            "speaker": "服务员",
+            "cn": "已经一年多了。第一天看见它的时候，它又脏又小。现在它变得又干净又漂亮了。",
+            "en": "Over a year now. When we first found it, it was dirty and tiny. Now it's so clean and beautiful!"
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "是啊。它还特别可爱，一会儿在你脚边睡觉，一会儿在你身上爬。",
+            "en": "Exactly! It's also super cute—sometimes it sleeps by your feet, and sometimes it climbs all over you."
+          },
+          {
+            "speaker": "服务员",
+            "cn": "你们把它照顾得真好。",
+            "en": "You've really taken great care of it."
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "它就好像我们的孩子，我们照顾它，它也认得我们了。",
+            "en": "It feels like it's our own child. We take care of it, and now it knows us."
+          },
+          {
+            "speaker": "服务员",
+            "cn": "妈妈，我们家也养一只小猫吧。",
+            "en": "Mom, can we get a kitten?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "咱们没时间照顾，还是别养了，我周末带你们去北京动物园看动物吧。",
+            "en": "We don't have time to take care of one. How about I take you to the Beijing Zoo this weekend to see the animals instead?"
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "服务员第一天看见这只小猫的时候，它是什么样的？"
+          },
+          {
+            "q": "服务员为什么觉得小猫很可爱？"
+          },
+          {
+            "q": "服务员和小猫的关系怎么样？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "脏",
+            "pos": "adj.",
+            "en": "dirty"
+          },
+          {
+            "cn": "可爱",
+            "pos": "adj.",
+            "en": "cute; lovely"
+          },
+          {
+            "cn": "一会儿",
+            "pos": "adv.",
+            "en": "now...now/then..."
+          },
+          {
+            "cn": "脚",
+            "pos": "n.",
+            "en": "foot"
+          },
+          {
+            "cn": "照顾",
+            "pos": "v.",
+            "en": "take care of; look after"
+          },
+          {
+            "cn": "好像",
+            "pos": "v.",
+            "en": "seem; be like"
+          },
+          {
+            "cn": "认得",
+            "pos": "v.",
+            "en": "know; recognize"
+          },
+          {
+            "cn": "周末",
+            "pos": "n.",
+            "en": "weekend"
+          },
+          {
+            "cn": "动物园",
+            "pos": "n.",
+            "en": "zoo"
+          },
+          {
+            "cn": "动物",
+            "pos": "n.",
+            "en": "animal"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-2.mp3"
+      },
+      {
+        "id": "16-02",
+        "title": {
+          "cn": "聊大熊猫",
+          "en": "Talking about giant pandas",
+          "emoji": "🐼"
+        },
+        "intro": {
+          "cn": "在动物园，王一雪和孩子们边走边聊。",
+          "en": "At the zoo, Wang Yixue and her children were chatting while walking."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "王一雪和孩子们在聊什么？",
+            "options": [
+              "大熊猫",
+              "北京动物园",
+              "动物和人的不同"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "刘小雪为什么说弟弟是“十万个为什么”？",
+            "options": [
+              "弟弟喜欢看书",
+              "弟弟喜欢听故事",
+              "弟弟喜欢问问题"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "刘小明",
+            "cn": "妈妈，大熊猫这个名字很奇怪，它们跟猫有什么关系？",
+            "en": "Mom, the Chinese name “giant panda” sounds so strange. What do they have to do with cats?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "这个问题问得好，它们跟猫没什么关系，其实应该叫大猫熊。",
+            "en": "That's a great question. They have nothing to do with cats. Actually, they should be called “Giant Cat-Bears”."
+          },
+          {
+            "speaker": "刘小明",
+            "cn": "大熊猫为什么只吃竹子不吃肉？",
+            "en": "Why do giant pandas only eat bamboo and not meat?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "它们跟人一样，也可以吃肉，但是对肉不感兴趣。",
+            "en": "They can eat meat, just like us, but they're simply not interested in it."
+          },
+          {
+            "speaker": "刘小明",
+            "cn": "大熊猫为什么是中国的国宝？",
+            "en": "Why are giant pandas considered China's national treasure?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "全世界只有中国有野生大熊猫，中国是大熊猫的家。",
+            "en": "China is the only country with wild giant pandas—it's their natural home."
+          },
+          {
+            "speaker": "刘小明",
+            "cn": "我听说有的熊猫出国了，他们去哪儿了？",
+            "en": "I heard some pandas have been sent abroad. Where did they go?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "关于这个问题，我得慢慢给你讲。",
+            "en": "That's a long story! I'll have to tell you about it bit by bit."
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "弟弟，你真是“十万个为什么”！",
+            "en": "Little brother, you're like a walking “One Hundred Thousand Whys”."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "大熊猫跟猫有关系吗？"
+          },
+          {
+            "q": "大熊猫为什么只吃竹子不吃肉？"
+          },
+          {
+            "q": "大熊猫为什么是中国的国宝？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "大熊猫",
+            "pos": "n.",
+            "en": "giant panda"
+          },
+          {
+            "cn": "奇怪",
+            "pos": "adj.",
+            "en": "strange"
+          },
+          {
+            "cn": "其实",
+            "pos": "adv.",
+            "en": "actually"
+          },
+          {
+            "cn": "竹子",
+            "pos": "n.",
+            "en": "bamboo"
+          },
+          {
+            "cn": "国宝",
+            "pos": "n.",
+            "en": "national treasure"
+          },
+          {
+            "cn": "全",
+            "pos": "adj.",
+            "en": "whole; entire"
+          },
+          {
+            "cn": "野生",
+            "pos": "adj.",
+            "en": "wild"
+          },
+          {
+            "cn": "关于",
+            "pos": "prep.",
+            "en": "about"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-4.mp3"
+      },
+      {
+        "id": "16-03",
+        "title": {
+          "cn": "在熊猫馆",
+          "en": "At the Panda House",
+          "emoji": "🎋"
+        },
+        "intro": {
+          "cn": "在熊猫馆，王一雪和孩子们在看大熊猫。",
+          "en": "At the Panda House, Wang Yixue and the children were watching the giant pandas."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "一般来说，大熊猫每天做什么？",
+            "options": [
+              "爬来爬去",
+              "跟人拍照",
+              "吃东西和睡觉"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "刘小雪让妈妈帮她做什么？",
+            "options": [
+              "照一张照片",
+              "买一些吃的",
+              "找一只熊猫"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "刘小雪",
+            "cn": "这只大熊猫一会儿爬上去，一会儿跳下来，可爱极了！",
+            "en": "This giant panda keeps climbing up and down—it's so adorable!"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "它好像还没吃饱，站起来张着嘴找吃的呢。",
+            "en": "It seems like it's still hungry. Look, it's standing up with its mouth open, trying to find something to eat."
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "它身边那只熊猫半天没动，是不是在睡觉呢？",
+            "en": "The panda next to it hasn't moved in a while. Is it sleeping?"
+          },
+          {
+            "speaker": "王一雪",
+            "cn": "我看不见它的脸，可能是吧。一般来说，熊猫每天要睡很多次觉。",
+            "en": "I can't see its face, so maybe it is. You know, pandas usually nap a lot during the day."
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "对，除了睡觉以外，很多时间都在吃东西。",
+            "en": "Right, and when they are not sleeping, they spend most of their time eating."
+          },
+          {
+            "speaker": "刘小明",
+            "cn": "大熊猫的生活真舒服啊！",
+            "en": "What a relaxing life!"
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "妈妈，您帮我和这两只大熊猫照一张照片吧。",
+            "en": "Mom, can you take a picture of me with these two giant pandas?"
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "刘小雪为什么觉得这只大熊猫可爱极了？"
+          },
+          {
+            "q": "王一雪为什么觉得它没吃饱？"
+          },
+          {
+            "q": "刘小明觉得大熊猫的生活怎么样？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "饱",
+            "pos": "adj.",
+            "en": "full"
+          },
+          {
+            "cn": "张",
+            "pos": "v.",
+            "en": "open"
+          },
+          {
+            "cn": "嘴",
+            "pos": "n.",
+            "en": "mouth"
+          },
+          {
+            "cn": "身边",
+            "pos": "n.",
+            "en": "one's side"
+          },
+          {
+            "cn": "半天",
+            "pos": "num.-m.",
+            "en": "quite a while"
+          },
+          {
+            "cn": "脸",
+            "pos": "n.",
+            "en": "face"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-6.mp3"
+      },
+      {
+        "id": "16-04",
+        "title": {
+          "cn": "王一雪的日记",
+          "en": "Wang Yixue's diary",
+          "emoji": "📔"
+        },
+        "intro": {
+          "cn": "在家里，王一雪在写日记。",
+          "en": "At home, Wang Yixue was writing in her diary."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "游客最喜欢去北京动物园看什么动物？",
+            "options": [
+              "牛",
+              "羊",
+              "大熊猫"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "北京动物园早上几点开门？",
+            "options": [
+              "六点",
+              "七点",
+              "七点半"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "今天我带小雪和小明去动物园玩了。",
+            "en": "Today, I took Xiaoxue and Xiaoming to the zoo."
+          },
+          {
+            "speaker": "",
+            "cn": "北京动物园是中国很有名的动物园，里面有非常多的动物，当然，大人和孩子最喜爱的还是大熊猫。",
+            "en": "The Beijing Zoo is one of the most famous zoos in China and is home to a wide variety of animals. Of course, the giant pandas are favorites among both adults and children."
+          },
+          {
+            "speaker": "",
+            "cn": "每天有很多游客去熊猫馆，他们带着相机去给可爱的大熊猫拍照。",
+            "en": "Every day, many visitors flock to the Panda House, bringing their cameras to take photos of these adorable animals."
+          },
+          {
+            "speaker": "",
+            "cn": "动物园早上七点半开门，晚上七点关门，冬天比夏天游客少，所以也比平时早关门一个小时。",
+            "en": "The zoo opens at 7:30 a.m. and closes at 7:00 p.m. In winter, there are fewer visitors than in summer, so it closes an hour earlier."
+          },
+          {
+            "speaker": "",
+            "cn": "如果第一次来北京旅游，跟家人一起去北京动物园是个不错的选择。",
+            "en": "If it's your first time visiting Beijing, a trip to the Beijing Zoo with your family is definitely a great choice."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "今天王一雪带孩子们去哪儿了？"
+          },
+          {
+            "q": "很多游客去动物园做什么？"
+          },
+          {
+            "q": "北京动物园夏天和冬天的关门时间有什么不同？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "大人",
+            "pos": "n.",
+            "en": "adult"
+          },
+          {
+            "cn": "喜爱",
+            "pos": "v.",
+            "en": "love; be fond of"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-16/16-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L17 · 我要多向认真的人学习",
+    "id": "17",
+    "core": [
+      {
+        "hanzi": "向",
+        "en": "to; toward"
+      },
+      {
+        "hanzi": "楼梯",
+        "en": "stairs"
+      },
+      {
+        "hanzi": "害怕",
+        "en": "fear; be afraid"
+      },
+      {
+        "hanzi": "生气",
+        "en": "get angry"
+      },
+      {
+        "hanzi": "常见",
+        "en": "common"
+      },
+      {
+        "hanzi": "聪明",
+        "en": "smart; clever"
+      },
+      {
+        "hanzi": "错",
+        "en": "mistake"
+      },
+      {
+        "hanzi": "认为",
+        "en": "think; consider"
+      },
+      {
+        "hanzi": "到处",
+        "en": "everywhere"
+      },
+      {
+        "hanzi": "继续",
+        "en": "go on; continue"
+      },
+      {
+        "hanzi": "同意",
+        "en": "agree (with/to)"
+      },
+      {
+        "hanzi": "可",
+        "en": "but"
+      },
+      {
+        "hanzi": "屋子",
+        "en": "room"
+      },
+      {
+        "hanzi": "有关",
+        "en": "have something to do with; about"
+      },
+      {
+        "hanzi": "关机",
+        "en": "turn off a mobile phone"
+      },
+      {
+        "hanzi": "前天",
+        "en": "the day before yesterday"
+      },
+      {
+        "hanzi": "留学",
+        "en": "study abroad"
+      },
+      {
+        "hanzi": "国家",
+        "en": "country"
+      },
+      {
+        "hanzi": "比如",
+        "en": "for example; such as"
+      },
+      {
+        "hanzi": "查",
+        "en": "look up; consult"
+      },
+      {
+        "hanzi": "有用",
+        "en": "useful"
+      },
+      {
+        "hanzi": "容易",
+        "en": "easy"
+      },
+      {
+        "hanzi": "回答",
+        "en": "answer"
+      },
+      {
+        "hanzi": "方向",
+        "en": "direction"
+      },
+      {
+        "hanzi": "只有",
+        "en": "only"
+      },
+      {
+        "hanzi": "真正",
+        "en": "really; indeed"
+      },
+      {
+        "hanzi": "难题",
+        "en": "difficult problem"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "17-01",
+        "title": {
+          "cn": "在教学楼里",
+          "en": "In the teaching building",
+          "emoji": "🏫"
+        },
+        "intro": {
+          "cn": "在教学楼里，刘小雪和同学边走边聊。",
+          "en": "In the teaching building, Liu Xiaoxue and her classmate were chatting while walking."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "小雪的同学为什么到了李老师办公室后还向前走？",
+            "options": [
+              "走错了",
+              "想去楼梯那儿",
+              "害怕见李老师"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "小雪的同学认为自己是一个什么样的人？",
+            "options": [
+              "简单的",
+              "不认真的",
+              "不聪明的"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "刘小雪",
+            "cn": "别再向前走了，李老师的办公室已经到了。",
+            "en": "Let's stop here. We've already reached Ms. Li's office."
+          },
+          {
+            "speaker": "同学",
+            "cn": "你进去吧，我在楼梯那儿等你。我害怕见李老师。",
+            "en": "You go in. I'll wait for you by the stairs. I'm scared to see Ms. Li."
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "怎么回事？",
+            "en": "What's the matter?"
+          },
+          {
+            "speaker": "同学",
+            "cn": "最近我做错了好几件事，我怕李老师生气。",
+            "en": "I've made quite a few mistakes recently, and I'm afraid Ms. Li will be upset."
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "你想多了，做错事情是很常见的。",
+            "en": "You're overthinking it. Everyone makes mistakes."
+          },
+          {
+            "speaker": "同学",
+            "cn": "我把简单的事情做错了，李老师一定觉得我不认真。",
+            "en": "But I got some simple things wrong. Ms. Li must think I'm not careful."
+          },
+          {
+            "speaker": "刘小雪",
+            "cn": "有的人虽然很聪明，但是会在简单的事情中出错，因为他们认为事情简单，就不会认真去做了。",
+            "en": "Some people, even though they're very smart, still make mistakes on simple tasks because they think the tasks are easy and don't take them seriously."
+          },
+          {
+            "speaker": "同学",
+            "cn": "你说的就是我，以后我要多向认真的人学习。",
+            "en": "That sounds just like me. From now on, I'll learn from people who are careful."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "小雪的同学为什么害怕见李老师？"
+          },
+          {
+            "q": "小雪认为她的同学为什么做错事？"
+          },
+          {
+            "q": "小雪的同学打算以后怎么做？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "向",
+            "pos": "prep.",
+            "en": "to; toward"
+          },
+          {
+            "cn": "楼梯",
+            "pos": "n.",
+            "en": "stairs"
+          },
+          {
+            "cn": "害怕",
+            "pos": "v.",
+            "en": "fear; be afraid"
+          },
+          {
+            "cn": "生气",
+            "pos": "v.",
+            "en": "get angry"
+          },
+          {
+            "cn": "常见",
+            "pos": "adj.",
+            "en": "common"
+          },
+          {
+            "cn": "聪明",
+            "pos": "adj.",
+            "en": "smart; clever"
+          },
+          {
+            "cn": "错",
+            "pos": "n.",
+            "en": "mistake"
+          },
+          {
+            "cn": "认为",
+            "pos": "v.",
+            "en": "think; consider"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-2.mp3"
+      },
+      {
+        "id": "17-02",
+        "title": {
+          "cn": "在阅览室门口",
+          "en": "At the reading room",
+          "emoji": "📚"
+        },
+        "intro": {
+          "cn": "在阅览室门口，白家月碰到了陈天中。",
+          "en": "At the entrance of the reading room, Bai Jiayue ran into Chen Tianzhong."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "同学们最近都在做什么？",
+            "options": [
+              "玩电脑",
+              "找工作",
+              "去图书馆学习"
+            ],
+            "answer": "B"
+          },
+          {
+            "type": "choice",
+            "q": "陈天中的爸妈希望他做什么？",
+            "options": [
+              "工作",
+              "继续学习",
+              "多去图书馆"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "太阳从西边出来了？这几天怎么总是在图书馆看见你？",
+            "en": "Has the sun risen in the west? I've been seeing you in the library almost every day lately."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "这有什么奇怪的？我是来学习的。",
+            "en": "What's so strange about that? I come here to study."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "你怎么还来图书馆学习？同学们都在到处找工作呢。",
+            "en": "Why are you still studying in the library? Everyone else is busy looking for jobs!"
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "我不想现在就工作，还想继续学习，我爸妈也同意。可我还没想好学什么，所以来图书馆看看。",
+            "en": "I'm not ready to start working yet—I want to keep studying, and my parents agree with me. But I haven't decided what to study, so I'm coming here to see what's available."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "你不是喜欢玩电脑吗？你可以去看看跟电脑有关系的书。",
+            "en": "Don't you like computers? You could check out some books about them."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "你说得对，我记得那个屋子里有些跟电脑有关的书，我去找找。",
+            "en": "Good idea. I remember seeing some computer books in that room—I'll go and have a look."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "白家月为什么说“太阳从西边出来了”？"
+          },
+          {
+            "q": "陈天中为什么不去找工作？"
+          },
+          {
+            "q": "白家月觉得陈天中可以学什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "到处",
+            "pos": "adv.",
+            "en": "everywhere"
+          },
+          {
+            "cn": "继续",
+            "pos": "v.",
+            "en": "go on; continue"
+          },
+          {
+            "cn": "同意",
+            "pos": "v.",
+            "en": "agree (with/to)"
+          },
+          {
+            "cn": "可",
+            "pos": "conj.",
+            "en": "but"
+          },
+          {
+            "cn": "屋子",
+            "pos": "n.",
+            "en": "room"
+          },
+          {
+            "cn": "有关",
+            "pos": "v./prep.",
+            "en": "have something to do with; about"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-4.mp3"
+      },
+      {
+        "id": "17-03",
+        "title": {
+          "cn": "在校园里聊留学",
+          "en": "Talking about studying abroad",
+          "emoji": "✈️"
+        },
+        "intro": {
+          "cn": "在校园里，李文和陈天中在聊天儿。",
+          "en": "On campus, Li Wen and Chen Tianzhong were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "李文找陈天中有什么事？",
+            "options": [
+              "给他出一些主意",
+              "告诉他手机没电了",
+              "告诉他家月也要留学"
+            ],
+            "answer": "A"
+          },
+          {
+            "type": "choice",
+            "q": "陈天中想好学什么了吗？",
+            "options": [
+              "他想学中文",
+              "他想学历史",
+              "他还没想好"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "李文",
+            "cn": "天中，你的手机怎么关机了？",
+            "en": "Tianzhong, why is your phone off?"
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "我的手机没电了。你找我有事吗？",
+            "en": "My phone ran out of battery. Is something wrong?"
+          },
+          {
+            "speaker": "李文",
+            "cn": "前天我看见家月了，她告诉我你打算继续留学？",
+            "en": "I saw Jiayue the day before yesterday, and she told me you're planning to continue your studies abroad."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "是，可是我还没想好学什么，更没想好去哪个国家。",
+            "en": "Yes, but I haven't decided what to study yet, let alone which country to go to."
+          },
+          {
+            "speaker": "李文",
+            "cn": "你可以去中国学中文啊。比如可以去北京、上海这样的大城市，那里有很多好大学，也有很多留学生。",
+            "en": "Why not go to China to study Chinese? Big cities like Beijing and Shanghai have many excellent universities and lots of international students."
+          },
+          {
+            "speaker": "陈天中",
+            "cn": "好，那我上网查一查。",
+            "en": "Sounds good. I'll check it out online."
+          },
+          {
+            "speaker": "李文",
+            "cn": "我给你介绍几个有用的网站。",
+            "en": "I can recommend a few useful websites to you."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "陈天中打算做什么？"
+          },
+          {
+            "q": "李文给他出了什么主意？"
+          },
+          {
+            "q": "李文为什么给陈天中介绍几个网站？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "关机",
+            "pos": "v.",
+            "en": "turn off a mobile phone"
+          },
+          {
+            "cn": "前天",
+            "pos": "n.",
+            "en": "the day before yesterday"
+          },
+          {
+            "cn": "留学",
+            "pos": "v.",
+            "en": "study abroad"
+          },
+          {
+            "cn": "国家",
+            "pos": "n.",
+            "en": "country"
+          },
+          {
+            "cn": "比如",
+            "pos": "v.",
+            "en": "for example; such as"
+          },
+          {
+            "cn": "查",
+            "pos": "v.",
+            "en": "look up; consult"
+          },
+          {
+            "cn": "有用",
+            "pos": "adj.",
+            "en": "useful"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-6.mp3"
+      },
+      {
+        "id": "17-04",
+        "title": {
+          "cn": "陈天中的日记",
+          "en": "Chen Tianzhong's diary",
+          "emoji": "📔"
+        },
+        "intro": {
+          "cn": "在家里，陈天中在写日记。",
+          "en": "At home, Chen Tianzhong was writing in his diary."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "陈天中最近在想什么？",
+            "options": [
+              "怎么找工作",
+              "真正喜欢的同学",
+              "大学结束后做什么"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "陈天中觉得怎么才能做出最合适的选择？",
+            "options": [
+              "听老师的话",
+              "看别人怎么做",
+              "想清楚自己真正喜欢什么"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "大学生活马上就要结束了，我最近经常被问到一个问题——“你以后想做什么”，这个问题真不容易回答。",
+            "en": "My university life is about to end, and I've often been asked recently, “What do you want to do after graduation?”—a question that's truly not easy to answer."
+          },
+          {
+            "speaker": "",
+            "cn": "我也问了几个同学，大家选择的方向都不同。",
+            "en": "I've asked several classmates too, and each has chosen a different path."
+          },
+          {
+            "speaker": "",
+            "cn": "有的想继续在学校学习，有的打算出国留学，还有的决定先找工作。",
+            "en": "Some want to pursue graduate studies, some plan to study abroad, and others have decided to look for a job first."
+          },
+          {
+            "speaker": "",
+            "cn": "我认为只有想清楚自己真正喜欢什么，才能做出最合适的选择。",
+            "en": "I believe only by figuring out what you truly enjoy can you make the best decision."
+          },
+          {
+            "speaker": "",
+            "cn": "对我来说，想清楚“真正喜欢什么”是个难题。",
+            "en": "For me, however, finding the answer to “what I truly enjoy” remains a tough question."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "陈天中最近经常被问到什么问题？"
+          },
+          {
+            "q": "同学们有哪些不同的选择？"
+          },
+          {
+            "q": "陈天中知道自己真正喜欢什么吗？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "容易",
+            "pos": "adj.",
+            "en": "easy"
+          },
+          {
+            "cn": "回答",
+            "pos": "v.",
+            "en": "answer"
+          },
+          {
+            "cn": "方向",
+            "pos": "n.",
+            "en": "direction"
+          },
+          {
+            "cn": "只有",
+            "pos": "conj.",
+            "en": "only"
+          },
+          {
+            "cn": "真正",
+            "pos": "adv.",
+            "en": "really; indeed"
+          },
+          {
+            "cn": "难题",
+            "pos": "n.",
+            "en": "difficult problem"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-17/17-8.mp3"
+      }
+    ]
+  },
+  {
+    "name": "L18 · 我学会了包饺子",
+    "id": "18",
+    "core": [
+      {
+        "hanzi": "怎样",
+        "en": "(used to inquire about the nature, condition, manner, etc. of sth) how"
+      },
+      {
+        "hanzi": "过节",
+        "en": "celebrate a festival"
+      },
+      {
+        "hanzi": "节",
+        "en": "festival"
+      },
+      {
+        "hanzi": "节日",
+        "en": "festival"
+      },
+      {
+        "hanzi": "联欢",
+        "en": "have a get-together"
+      },
+      {
+        "hanzi": "大概",
+        "en": "probably; rough"
+      },
+      {
+        "hanzi": "春节",
+        "en": "Spring Festival"
+      },
+      {
+        "hanzi": "阿姨",
+        "en": "aunt"
+      },
+      {
+        "hanzi": "叔叔",
+        "en": "uncle"
+      },
+      {
+        "hanzi": "收",
+        "en": "accept"
+      },
+      {
+        "hanzi": "总",
+        "en": "always"
+      },
+      {
+        "hanzi": "起",
+        "en": "used after a verb to indicate the person or thing involved in the action"
+      },
+      {
+        "hanzi": "见面",
+        "en": "meet"
+      },
+      {
+        "hanzi": "矿泉水",
+        "en": "mineral water"
+      },
+      {
+        "hanzi": "刚刚",
+        "en": "just now"
+      },
+      {
+        "hanzi": "出发",
+        "en": "depart"
+      },
+      {
+        "hanzi": "不久",
+        "en": "soon"
+      },
+      {
+        "hanzi": "发生",
+        "en": "happen"
+      },
+      {
+        "hanzi": "刚",
+        "en": "(only a very short time ago) just"
+      },
+      {
+        "hanzi": "只要",
+        "en": "as long as"
+      },
+      {
+        "hanzi": "学期",
+        "en": "semester"
+      },
+      {
+        "hanzi": "毕业",
+        "en": "graduate"
+      },
+      {
+        "hanzi": "出生",
+        "en": "be born"
+      },
+      {
+        "hanzi": "过去",
+        "en": "past"
+      },
+      {
+        "hanzi": "懂得",
+        "en": "understand; know"
+      },
+      {
+        "hanzi": "坚持",
+        "en": "persevere in"
+      },
+      {
+        "hanzi": "完成",
+        "en": "complete; finish"
+      },
+      {
+        "hanzi": "目标",
+        "en": "goal"
+      },
+      {
+        "hanzi": "发展",
+        "en": "develop"
+      }
+    ],
+    "extended": [],
+    "texts": [
+      {
+        "id": "18-01",
+        "title": {
+          "cn": "在飞机上",
+          "en": "On the plane",
+          "emoji": "✈️"
+        },
+        "intro": {
+          "cn": "在飞机上，白家月和李文在聊天儿。",
+          "en": "On the plane, Bai Jiayue and Li Wen were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-1.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "白家月为什么很开心？",
+            "options": [
+              "可以去北京",
+              "可以去李文家",
+              "可以在中国过春节"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "中国人一般怎么过春节？",
+            "options": [
+              "去朋友家过节",
+              "出去旅游过节",
+              "跟家人一起过节"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "我要在中国过年，真开心。",
+            "en": "I'm going to spend Spring Festival in China. I'm so excited!"
+          },
+          {
+            "speaker": "李文",
+            "cn": "第一次请外国朋友来家里过春节，我也很高兴。",
+            "en": "This is the first time I've invited a foreign friend to my home for the Spring Festival. I'm really happy too."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "你们怎样过节？",
+            "en": "How do you usually celebrate the festival?"
+          },
+          {
+            "speaker": "李文",
+            "cn": "春节是中国最重要的节日，我们一般会回家，跟家人一起过。",
+            "en": "Spring Festival is the most important holiday in China. We usually go back home and celebrate it with our families."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "那你跟家人会一起做什么？",
+            "en": "And what do you do with your family?"
+          },
+          {
+            "speaker": "李文",
+            "cn": "我们家会一边包饺子，一边看春节联欢晚会，一直到十二点以后才睡觉。",
+            "en": "We make jiaozi while watching the Spring Festival Gala, and we stay up past midnight."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "听起来很有意思。春节大概放几天假？",
+            "en": "That sounds really fun. How many days off do you get for Spring Festival?"
+          },
+          {
+            "speaker": "李文",
+            "cn": "大概七八天。",
+            "en": "About seven or eight days."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "李文为什么很高兴？"
+          },
+          {
+            "q": "李文和家人春节的时候会做什么？"
+          },
+          {
+            "q": "春节大概放几天假？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "怎样",
+            "pos": "pron.",
+            "en": "(used to inquire about the nature, condition, manner, etc. of sth) how"
+          },
+          {
+            "cn": "过节",
+            "pos": "v.",
+            "en": "celebrate a festival"
+          },
+          {
+            "cn": "节",
+            "pos": "n.",
+            "en": "festival"
+          },
+          {
+            "cn": "节日",
+            "pos": "n.",
+            "en": "festival"
+          },
+          {
+            "cn": "联欢",
+            "pos": "v.",
+            "en": "have a get-together"
+          },
+          {
+            "cn": "大概",
+            "pos": "adv./adj.",
+            "en": "probably; rough"
+          },
+          {
+            "cn": "春节",
+            "pos": "",
+            "en": "Spring Festival"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-2.mp3"
+      },
+      {
+        "id": "18-02",
+        "title": {
+          "cn": "在李文家拜年",
+          "en": "New Year greetings at Li Wen's home",
+          "emoji": "🧧"
+        },
+        "intro": {
+          "cn": "在李文家，白家月给李文的父母拜年。",
+          "en": "At Li Wen's home, Bai Jiayue wished Li Wen's parents a Happy New Year."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-3.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "白家月为什么去李文家？",
+            "options": [
+              "送礼物",
+              "学包饺子",
+              "一起过年"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "李文家今天晚上吃什么？",
+            "options": [
+              "饺子",
+              "包子",
+              "面条儿"
+            ],
+            "answer": "A"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "张阿姨，李叔叔，过年好！这是我准备的礼物，请收下。",
+            "en": "Auntie Zhang, Uncle Li—Happy New Year! I brought a gift for you. I hope you like it."
+          },
+          {
+            "speaker": "李叔叔",
+            "cn": "谢谢家月，你太客气了！",
+            "en": "Thank you, Jiayue. That's very kind of you!"
+          },
+          {
+            "speaker": "张阿姨",
+            "cn": "总听小文说起你，今天终于有机会见面了。",
+            "en": "Xiaowen always talks about you. I'm so glad we finally get to meet."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "谢谢您和叔叔请我来家里做客。",
+            "en": "Thank you for having me over."
+          },
+          {
+            "speaker": "李叔叔",
+            "cn": "桌子上有饮料，还有矿泉水，你想喝什么就自己拿。",
+            "en": "There are drinks and bottled water on the table—help yourself to whatever you'd like."
+          },
+          {
+            "speaker": "张阿姨",
+            "cn": "你先坐着看会儿电视，饺子很快就包好了。",
+            "en": "Have a seat and watch some TV for a bit. The jiaozi will be ready soon."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "我刚刚看视频学会了包饺子，我跟你们一起包吧。",
+            "en": "I learned how to make jiaozi from a video. Let me help you make them!"
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "白家月送礼物的时候说什么了？"
+          },
+          {
+            "q": "李文的家人是怎么欢迎白家月的？"
+          },
+          {
+            "q": "白家月想跟李文的家人一起做什么？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "阿姨",
+            "pos": "n.",
+            "en": "aunt"
+          },
+          {
+            "cn": "叔叔",
+            "pos": "n.",
+            "en": "uncle"
+          },
+          {
+            "cn": "收",
+            "pos": "v.",
+            "en": "accept"
+          },
+          {
+            "cn": "总",
+            "pos": "adv.",
+            "en": "always"
+          },
+          {
+            "cn": "起",
+            "pos": "v.",
+            "en": "used after a verb to indicate the person or thing involved in the action"
+          },
+          {
+            "cn": "见面",
+            "pos": "v.",
+            "en": "meet"
+          },
+          {
+            "cn": "矿泉水",
+            "pos": "n.",
+            "en": "mineral water"
+          },
+          {
+            "cn": "刚刚",
+            "pos": "adv.",
+            "en": "just now"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-4.mp3"
+      },
+      {
+        "id": "18-03",
+        "title": {
+          "cn": "看老照片",
+          "en": "Looking at old photos",
+          "emoji": "📷"
+        },
+        "intro": {
+          "cn": "在李文家，李文妈妈和白家月在聊天儿。",
+          "en": "At Li Wen's home, Li Wen's mother and Bai Jiayue were chatting."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-5.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "白家月和李文妈妈在做什么？",
+            "options": [
+              "一起看电视",
+              "一起看视频",
+              "一起看照片"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "李文什么时候毕业？",
+            "options": [
+              "一个月以后",
+              "一个学期以后",
+              "三四年以后"
+            ],
+            "answer": "B"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "白家月",
+            "cn": "这张照片是李文出国前照的吗？",
+            "en": "Was this photo taken before Li Wen went abroad?"
+          },
+          {
+            "speaker": "张阿姨",
+            "cn": "对，这是他从北京出发时，我们全家在机场照的。",
+            "en": "Yes, it was taken at the airport in Beijing when our whole family saw him off."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "那是三四年前吧？",
+            "en": "That was about three or four years ago, right?"
+          },
+          {
+            "speaker": "张阿姨",
+            "cn": "是啊，时间过得真快，好像是不久前发生的一样。",
+            "en": "Yes, time really flies—it feels like it happened just yesterday."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "您一定特别想李文吧？",
+            "en": "You must really miss Li Wen, don't you?"
+          },
+          {
+            "speaker": "张阿姨",
+            "cn": "他刚离开家时，我很不习惯，只要几天不跟他视频，就很想他。",
+            "en": "When he first left home, it was hard for me to get used to it. If I didn't video chat with him for a few days, I'd miss him terribly."
+          },
+          {
+            "speaker": "白家月",
+            "cn": "还有最后一个学期就要毕业了，他很快就会回来了。",
+            "en": "Well, just one more semester until he graduates. He'll be back soon."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "李文第一次出国留学，是从哪儿出发的？"
+          },
+          {
+            "q": "李文全家的照片是什么时候照的？"
+          },
+          {
+            "q": "李文刚离开家的时候，张阿姨怎么样？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "出发",
+            "pos": "v.",
+            "en": "depart"
+          },
+          {
+            "cn": "不久",
+            "pos": "adj.",
+            "en": "soon"
+          },
+          {
+            "cn": "发生",
+            "pos": "v.",
+            "en": "happen"
+          },
+          {
+            "cn": "刚",
+            "pos": "adv.",
+            "en": "(only a very short time ago) just"
+          },
+          {
+            "cn": "只要",
+            "pos": "conj.",
+            "en": "as long as"
+          },
+          {
+            "cn": "学期",
+            "pos": "n.",
+            "en": "semester"
+          },
+          {
+            "cn": "毕业",
+            "pos": "v.",
+            "en": "graduate"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-6.mp3"
+      },
+      {
+        "id": "18-04",
+        "title": {
+          "cn": "白家月的日记",
+          "en": "Bai Jiayue's diary",
+          "emoji": "📔"
+        },
+        "intro": {
+          "cn": "在家里，白家月在写日记。",
+          "en": "At home, Bai Jiayue was writing in her diary."
+        },
+        "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-7.mp3",
+        "questions": [
+          {
+            "type": "choice",
+            "q": "白家月这次来中国，让她最高兴的事是什么？",
+            "options": [
+              "过春节",
+              "吃饺子",
+              "认识李文的父母"
+            ],
+            "answer": "C"
+          },
+          {
+            "type": "choice",
+            "q": "在李文身上，白家月学到什么了？",
+            "options": [
+              "如果想学医，就要努力学习",
+              "只有成绩好，才能出国留学",
+              "只要坚持努力，就能完成目标"
+            ],
+            "answer": "C"
+          }
+        ],
+        "lines": [
+          {
+            "speaker": "",
+            "cn": "这次来中国，我最高兴的是认识了李文的父母。",
+            "en": "What made me happiest during this trip to China was getting to know Li Wen's parents."
+          },
+          {
+            "speaker": "",
+            "cn": "他们给我看了李文出生时的照片，还给我讲了很多他过去的故事。",
+            "en": "They showed me photos taken when Li Wen was born and told me many stories about his past."
+          },
+          {
+            "speaker": "",
+            "cn": "李文高中的时候想学医，从那时起就努力学习。",
+            "en": "In high school, he wanted to study medicine and has worked hard ever since."
+          },
+          {
+            "speaker": "",
+            "cn": "高三的时候，因为成绩特别好，他得到了出国留学的机会。",
+            "en": "In his senior year, his outstanding grades earned him the opportunity to study abroad."
+          },
+          {
+            "speaker": "",
+            "cn": "在他身上，我懂得了，只要一直坚持，就能完成自己的目标。",
+            "en": "Through his story, I learned that as long as you persevere, you can achieve your goals."
+          },
+          {
+            "speaker": "",
+            "cn": "我相信，他以后一定会发展得更好。",
+            "en": "I believe he will go on to accomplish even greater things in the future."
+          }
+        ],
+        "postQuestions": [
+          {
+            "q": "李文的父母给白家月看什么了？"
+          },
+          {
+            "q": "白家月从李文的父母那里了解到什么了？"
+          },
+          {
+            "q": "李文为什么能得到出国留学的机会？"
+          }
+        ],
+        "words": [
+          {
+            "cn": "出生",
+            "pos": "v.",
+            "en": "be born"
+          },
+          {
+            "cn": "过去",
+            "pos": "n.",
+            "en": "past"
+          },
+          {
+            "cn": "懂得",
+            "pos": "v.",
+            "en": "understand; know"
+          },
+          {
+            "cn": "坚持",
+            "pos": "v.",
+            "en": "persevere in"
+          },
+          {
+            "cn": "完成",
+            "pos": "v.",
+            "en": "complete; finish"
+          },
+          {
+            "cn": "目标",
+            "pos": "n.",
+            "en": "goal"
+          },
+          {
+            "cn": "发展",
+            "pos": "v.",
+            "en": "develop"
+          }
+        ],
+        "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-3-textbook/lesson-18/18-8.mp3"
       }
     ]
   }
