@@ -1,0 +1,215 @@
+{
+  "lesson": 8,
+  "key": "8",
+  "name": "L8 · 虽然你忘了，但是我记得",
+  "titleCn": "虽然你忘了，但是我记得",
+  "titleEn": "Even though you forgot, I remembered",
+  "texts": [
+    {
+      "id": "08-01",
+      "title": { "cn": "在商场购物", "en": "Shopping in the mall", "emoji": "⌚" },
+      "intro": { "cn": "在商场，王一雪和刘明在购物。", "en": "In the mall, Wang Yixue and Liu Ming were shopping." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-08/8-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-08/8-2.mp3",
+      "questions": [
+        { "type": "choice", "q": "王一雪和刘明在看什么？", "options": ["钱", "手表", "裤子"], "answer": "B" },
+        { "type": "choice", "q": "王一雪和刘明看的东西多少钱？", "options": ["5800元", "6800元", "8800元"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "王一雪", "cn": "你看，这两块手表怎么样？", "en": "Look, what do you think of these two watches?" },
+        { "speaker": "刘明", "cn": "都不错！", "en": "They're nice!" },
+        { "speaker": "王一雪", "cn": "我喜欢左边这个。", "en": "I prefer the one on the left." },
+        { "speaker": "刘明", "cn": "我也觉得左边的比右边的好看。", "en": "I think the one on the left looks better than the one on the right, too." },
+        { "speaker": "王一雪", "cn": "你看看要多少钱！", "en": "Check the price!" },
+        { "speaker": "刘明", "cn": "真不便宜！八千八百块！", "en": "It's not cheap! 8,800 yuan!" }
+      ],
+      "postQuestions": [
+        { "q": "王一雪和刘明觉得哪块手表好看？" },
+        { "q": "王一雪和刘明觉得手表贵不贵？" }
+      ],
+      "words": [
+        { "cn": "手表", "pos": "n.", "en": "(wrist) watch" },
+        { "cn": "左边", "pos": "n.", "en": "left; left side" },
+        { "cn": "左", "pos": "n.", "en": "left" },
+        { "cn": "比", "pos": "prep./v.", "en": "than; compare" },
+        { "cn": "右边", "pos": "n.", "en": "right; right side" },
+        { "cn": "右", "pos": "n.", "en": "right" }
+      ]
+    },
+    {
+      "id": "08-02",
+      "title": { "cn": "在电影院外面", "en": "Outside the cinema", "emoji": "🎬" },
+      "intro": { "cn": "在电影院外面，王一雪和刘明在聊天儿。", "en": "Outside the cinema, Wang Yixue and Liu Ming were chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-08/8-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-08/8-4.mp3",
+      "questions": [
+        { "type": "choice", "q": "王一雪和刘明要去做什么？", "options": ["去吃饭", "看电影", "买东西"], "answer": "B" },
+        { "type": "choice", "q": "王一雪要在哪儿买票？", "options": ["网上", "电影院", "商场里"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "刘明", "cn": "今天有不少电影，我们看个电影吧。", "en": "There are quite a few movies showing today. Let's watch one." },
+        { "speaker": "王一雪", "cn": "好啊！我们看哪个？", "en": "Great! Which one should we watch?" },
+        { "speaker": "刘明", "cn": "我记得你喜欢看爱情片，我们看那个爱情片，怎么样？", "en": "I remember you like romantic movies. How about that romantic one?" },
+        { "speaker": "王一雪", "cn": "还是看这个吧，我看网上说这个电影比那个爱情片更有意思。", "en": "Let's watch this one instead. I read online that it's more interesting than that romantic one." },
+        { "speaker": "刘明", "cn": "好。我去买票。", "en": "Okay. I'll go buy the tickets." },
+        { "speaker": "王一雪", "cn": "到网上买吧，网上买比在这里买便宜。", "en": "Buy them online. It's cheaper to buy tickets online than here." }
+      ],
+      "postQuestions": [
+        { "q": "王一雪喜欢看什么电影？" },
+        { "q": "王一雪为什么到网上买票？" }
+      ],
+      "words": [
+        { "cn": "记得", "pos": "v.", "en": "remember" },
+        { "cn": "爱情片", "pos": "n.", "en": "romantic movie" },
+        { "cn": "有意思", "pos": "", "en": "interesting" }
+      ]
+    },
+    {
+      "id": "08-03",
+      "title": { "cn": "在饭馆点菜", "en": "Ordering food at a restaurant", "emoji": "🍽️" },
+      "intro": { "cn": "在饭馆，王一雪和刘明在点菜。", "en": "At the restaurant, Wang Yixue and Liu Ming were ordering food." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-08/8-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-08/8-6.mp3",
+      "questions": [
+        { "type": "choice", "q": "今天是几月几号？", "options": ["1月21号", "1月27号", "8月27号"], "answer": "C" },
+        { "type": "choice", "q": "刘明给王一雪买了什么礼物？", "options": ["手表", "电影票", "好吃的"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "刘明", "cn": "您好！就要这几个菜吧，谢谢！", "en": "Hello! We'll have these dishes, thank you!" },
+        { "speaker": "王一雪", "cn": "怎么点这么多菜？", "en": "Why did you order so much?" },
+        { "speaker": "刘明", "cn": "你想想，今天是几月几号？", "en": "Think about it—what's the date today?" },
+        { "speaker": "王一雪", "cn": "8月27号。啊！我的生日！", "en": "August 27th. Ah! My birthday!" },
+        { "speaker": "刘明", "cn": "生日快乐！虽然你忘了，但是我记得。看看这是什么？", "en": "Happy birthday! Even though you forgot, I remembered. Look, what's this?" },
+        { "speaker": "王一雪", "cn": "手表！吃饭、看电影、买手表，今天花了不少钱吧？", "en": "The watch! Having a dinner, watching a movie, and buying the watch. You must have spent quite a lot today, right?" },
+        { "speaker": "刘明", "cn": "虽然花了一些钱，但是我们过了一个快乐的生日。", "en": "Although we spent some money, we celebrated a happy birthday." }
+      ],
+      "postQuestions": [
+        { "q": "刘明为什么点很多菜？" },
+        { "q": "王一雪记得今天是自己的生日吗？" }
+      ],
+      "words": [
+        { "cn": "点", "pos": "v.", "en": "select" },
+        { "cn": "虽然", "pos": "conj.", "en": "though; although" },
+        { "cn": "但是", "pos": "conj.", "en": "but; yet" },
+        { "cn": "花", "pos": "v.", "en": "spend" }
+      ]
+    },
+    {
+      "id": "08-04",
+      "title": { "cn": "小语讲述这一天", "en": "Xiaoyu tells the story of the day", "emoji": "🗣️" },
+      "intro": { "cn": "小语在讲述王一雪和刘明的一天。", "en": "Xiaoyu was telling the story of Wang Yixue and Liu Ming's day." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-08/8-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-08/8-8.mp3",
+      "questions": [
+        { "type": "choice", "q": "判断正误：丈夫忘了妻子的生日。", "options": ["对", "错"], "answer": "B" },
+        { "type": "choice", "q": "判断正误：妻子给丈夫买了一块手表。", "options": ["对", "错"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "", "cn": "虽然妻子忘了今天是自己的生日，但是丈夫记得。", "en": "Although the wife forgot that today was her birthday, the husband still remembered." },
+        { "speaker": "", "cn": "丈夫请妻子去饭馆吃饭、去电影院看电影，还给妻子买了一块非常漂亮的手表。", "en": "He took her to a restaurant, watched a movie, and even bought her a beautiful watch." },
+        { "speaker": "", "cn": "妻子觉得今天很快乐。", "en": "She felt truly happy today." }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "妻子", "pos": "n.", "en": "wife" },
+        { "cn": "丈夫", "pos": "n.", "en": "husband" },
+        { "cn": "饭馆", "pos": "n.", "en": "restaurant" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "8-g1",
+      "textId": "08-01",
+      "no": 1,
+      "cn": "比较句（1）",
+      "en": "Comparative Sentences (1)",
+      "note": "本课学习用介词“比”来比较性质和状态差别的比较句。基本结构：A 比 B＋形容词或形容词性短语。",
+      "noteEn": "In this lesson, we learn to use the preposition “比” in comparative sentences to compare differences in nature and state. Basic structure: A 比 B + Adjective or Adjectival Phrase.",
+      "items": [
+        { "c": "我也觉得左边的比右边的好看。", "en": "I think the one on the left looks better than the one on the right, too." },
+        { "c": "今天比昨天冷。", "en": "Today is colder than yesterday." },
+        { "c": "他觉得踢足球比打篮球有意思。", "en": "He thinks playing soccer is more interesting than playing basketball." }
+      ],
+      "practice": [
+        { "cn": "A：这家饭店有包子、饺子和面条儿。你想吃什么？ B：饺子吧，我觉得____。", "en": "" },
+        { "cn": "A：这家书店____。 B：对，前边那家书店太小了。", "en": "" },
+        { "cn": "A：这条黑色的裤子____。 B：是，我也觉得有点儿长，还是买那条白色的吧。", "en": "" }
+      ]
+    },
+    {
+      "id": "8-g2",
+      "textId": "08-02",
+      "no": 2,
+      "cn": "比较句（2）",
+      "en": "Comparative Sentences (2)",
+      "note": "在用“比”的比较句中，形容词前不能用“很”“非常”等程度副词，可以用“还”和“更”表示程度加深。",
+      "noteEn": "In comparative sentences with “比”, adverbs of degree such as “很” and “非常” cannot be used before the adjective, but “还” and “更” can be used to enhance the degree.",
+      "items": [
+        { "c": "我看网上说这个电影比那个爱情片更有意思。", "en": "I read online that this movie is more interesting than that romantic one." },
+        { "c": "今天比昨天更热。", "en": "Today is even hotter than yesterday." },
+        { "c": "我觉得奶茶比牛奶还好喝。", "en": "I think bubble tea is even tastier than milk." }
+      ],
+      "practice": [
+        { "cn": "A：你想不想喝红茶？我家的红茶很好喝。 B：我喜欢绿茶，____。", "en": "" },
+        { "cn": "A：今天晚上真冷啊！ B：____，你明天早上起床后多穿点儿。", "en": "" },
+        { "cn": "A：妈妈，您的床____。 B：你觉得我的床更舒服，那你就在这儿睡吧。", "en": "" }
+      ]
+    },
+    {
+      "id": "8-g3",
+      "textId": "08-03",
+      "no": 3,
+      "cn": "转折复句“虽然……，但是……”",
+      "en": "Adversative Complex Sentence “虽然……，但是……”",
+      "note": "“虽然……但是……”构成转折复句，“虽然”和“但是”可以成对使用，也可以只用其中一个。",
+      "noteEn": "“虽然……但是……” forms an adversative complex sentence. The two words can be used in pairs or singly.",
+      "items": [
+        { "c": "虽然你忘了，但是我记得。", "en": "Even though you forgot, I remembered." },
+        { "c": "外边下雪了，但是不太冷。", "en": "It's snowing outside, but it's not very cold." },
+        { "c": "虽然觉得有点儿累，我还是走回家了。", "en": "Although I felt a bit tired, I still walked home." }
+      ],
+      "practice": [
+        { "cn": "A：这儿有到学校的公交车吗？ B：虽然有，但是____", "en": "" },
+        { "cn": "A：你喜欢打篮球吗？ B：____，但是打得不太好。", "en": "" },
+        { "cn": "A：你觉得这条白色的裤子怎么样？ B：____", "en": "" }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "8-t1",
+      "textId": "08-04",
+      "no": 4,
+      "cn": "“请”＝“请客”",
+      "en": "“请” Means “Treat Someone”",
+      "note": "这里“请”是“请客”的意思。",
+      "noteEn": "Here, “请” means “to treat someone to a meal or something similar”.",
+      "items": [],
+      "practice": []
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["左边", "记得", "手表", "有意思", "花"],
+        "items": [
+          { "cn": "我的____在哪儿？你看见了吗？", "answer": "" },
+          { "cn": "我____那个超市卖画笔，我们过去看看。", "answer": "" },
+          { "cn": "我们在商场买了很多东西，____了很多钱。", "answer": "" },
+          { "cn": "A：我昨天看的那个电影很____。 B：有时间我也去看看。", "answer": "" },
+          { "cn": "A：____这个人是你妹妹吗？ B：是我姐姐，她比我大。", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "角色扮演",
+      "en": "Role-Play",
+      "description": "三人一组，一人扮演服务员，另外两人扮演客人。客人来饭馆吃饭。点菜时，他们询问菜的价格、味道，并对比饭馆的菜和自己家里做的菜，等等。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in groups of three. One student plays the waiter/waitress, and the other two play customers. The customers come to the restaurant for a meal. While ordering, they ask about the prices and tastes of the dishes, compare the restaurant's food with the dishes they cook at home, and so on. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

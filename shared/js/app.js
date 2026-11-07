@@ -1305,6 +1305,7 @@
   let lessonPhrases=[];        // original sentence list for the lesson
   let lessonTexts=[];          // lesson texts (dialogues/passages) with audio
   let lessonGrammar=[];        // lesson grammar sections (grammar view)
+  let lessonExercises=null;    // end-of-lesson comprehension exercises (optional)
   let lessonCoreWords=[];
   let lessonExtendedWords=[];
   let lessonTextVocab={};   // tId -> [vocab words] (each core word assigned to the first dialogue where it appears)
@@ -1408,8 +1409,12 @@
   const shadowDownBtn = $('shadowDownBtn');
   const shadowUpBtn = $('shadowUpBtn');
   const startModeSeg = $('startModeSeg');
+  const textbookSeg = $('textbookSeg');
+  const textbookSection = $('textbookSection');
+  const textbookRow = $('textbookRow');
   const rememberLastToggle = $('rememberLastToggle');
   const segMarkingToggle = $('segMarkingToggle');
+  const exercisesToggle = $('exercisesToggle');
   const shadowingToggle = $('shadowingToggle');
   const settingsResetBtn = $('settingsResetBtn');
   const settingsNote = $('settingsNote');
@@ -1466,7 +1471,7 @@
   const SETTINGS_KEY = `hsk.${LEVEL}.settings.v1`;
   const LAST_KEY = `hsk.${LEVEL}.last.v1`;
   const LEGACY_SETTINGS_KEY = 'hsk.settings.v1';   // pre-namespace key, read once
-  const DEFAULT_SETTINGS = { kaiti: false, latin: false, zoomIdx: 2, startMode: 'study', rememberLast: true, shadowFactor: 1.25, segMarking: false };
+  const DEFAULT_SETTINGS = { kaiti: false, latin: false, zoomIdx: 2, startMode: 'study', rememberLast: true, shadowFactor: 1.25, segMarking: false, showExercises: false };
   const state = Object.assign({}, DEFAULT_SETTINGS);
   function loadSettings(){
     try {
@@ -1519,6 +1524,24 @@
     saveSettings({ startMode: state.startMode });
     syncStartModeSeg();
   });
+  // Course-book switch: only rendered when a level ships a second textbook set
+  // (hsk2 loads window.COURSE_LESSONS_NEW). Changing it needs a reload because
+  // LESSONS is captured once at startup.
+  if (textbookSeg && window.HAS_SECOND_TEXTBOOK){
+    const bookKey = window.TEXTBOOK_STORAGE_KEY || 'hsk2.textbook';
+    const currentBook = window.TEXTBOOK_CHOICE === 'new' ? 'new' : 'legacy';
+    if (textbookSection) textbookSection.hidden = false;
+    if (textbookRow) textbookRow.hidden = false;
+    textbookSeg.querySelectorAll('button').forEach(b => {
+      b.classList.toggle('active', b.dataset.book === currentBook);
+    });
+    textbookSeg.addEventListener('click', e => {
+      const btn = e.target.closest('button[data-book]');
+      if (!btn || btn.dataset.book === currentBook) return;
+      try { localStorage.setItem(bookKey, btn.dataset.book); } catch (err) { /* ignore */ }
+      location.reload();
+    });
+  }
   rememberLastToggle.addEventListener('change', e => {
     state.rememberLast = e.target.checked;
     saveSettings({ rememberLast: state.rememberLast });
@@ -1527,6 +1550,11 @@
     segMarking = e.target.checked;
     saveSettings({ segMarking: segMarking });
     renderTextList();
+  });
+  if (exercisesToggle) exercisesToggle.addEventListener('change', e => {
+    state.showExercises = e.target.checked;
+    saveSettings({ showExercises: state.showExercises });
+    if (currentMode === 'texts') renderTextList();
   });
   if (shadowingToggle) shadowingToggle.addEventListener('change', e => {
     shadowing = e.target.checked;
@@ -1561,6 +1589,8 @@
     rememberLastToggle.checked = DEFAULT_SETTINGS.rememberLast;
     if (segMarkingToggle) segMarkingToggle.checked = DEFAULT_SETTINGS.segMarking;
     segMarking = DEFAULT_SETTINGS.segMarking;
+    if (exercisesToggle) exercisesToggle.checked = DEFAULT_SETTINGS.showExercises;
+    if (currentMode === 'texts') renderTextList();
     state.shadowFactor = DEFAULT_SETTINGS.shadowFactor;
     syncShadowFactor();
     syncStartModeSeg();
@@ -1590,9 +1620,11 @@
   state.rememberLast = saved.rememberLast !== false;
   state.segMarking = !!saved.segMarking;
   state.shadowFactor = SHADOW_FACTORS.includes(saved.shadowFactor) ? saved.shadowFactor : DEFAULT_SETTINGS.shadowFactor;
+  state.showExercises = !!saved.showExercises;
   rememberLastToggle.checked = state.rememberLast;
   segMarking = state.segMarking;
   if (segMarkingToggle) segMarkingToggle.checked = segMarking;
+  if (exercisesToggle) exercisesToggle.checked = state.showExercises;
   syncShadowFactor();
   syncStartModeSeg();
   kaitiMode = kaitiToggle.checked;
@@ -2066,6 +2098,7 @@
     // Falls back to the inline LESSONS[].grammar when unavailable.
     const ext = externalLessonGrammar(currentLesson);
     lessonGrammar = (ext && ext.length) ? ext : (data.grammar || []);
+    lessonExercises = data.exercises || null;
     lessonLabel.textContent = data.name;
     applyTheme(currentLesson);
 
@@ -3044,6 +3077,50 @@
     }
   }
 
+  // End-of-lesson comprehensive exercises (optional data). Rendered at the
+  // bottom of the Texts view when Settings → 📝 Comprehensive exercises is on.
+  function exercisesHtml(ex){
+    const groups = [];
+    const fib = ex.fillInTheBlank || {};
+    ['group1', 'group2'].forEach(k => {
+      const g = fib[k];
+      if (g && ((g.items && g.items.length) || (g.options && g.options.length))) groups.push(g);
+    });
+    const pics = (ex.describePictures || []).filter(p => p && p.cn);
+    const act = ex.classroomActivity;
+    const hasAct = !!(act && (act.cn || act.description || act.en));
+    if (!groups.length && !pics.length && !hasAct) return '';
+    let html = '<div class="text-exercises">'
+      + '<div class="text-exercises-head">📝 综合练习 · Comprehensive Exercises</div>';
+    groups.forEach(g => {
+      html += '<div class="ex-subhead">选词填空 · Fill in the blanks</div>';
+      if (g.options && g.options.length){
+        html += '<div class="ex-bank">' + g.options.map((o, i) =>
+          `<span class="ex-chip"><b>${String.fromCharCode(65 + i)}</b> ${escapeHtml(o)}</span>`).join('') + '</div>';
+      }
+      html += '<ol class="ex-list">';
+      (g.items || []).forEach(it => {
+        html += `<li class="ex-item">${rubyHtml((it && it.cn) || '')}` +
+          (it && it.answer ? `<span class="ex-answer">${escapeHtml(it.answer)}</span>` : '') + '</li>';
+      });
+      html += '</ol>';
+    });
+    if (pics.length){
+      html += '<div class="ex-subhead">看图说话 · Describe the pictures</div><ul class="ex-list">';
+      pics.forEach(p => { html += `<li class="ex-item">${rubyHtml(p.cn || '')}</li>`; });
+      html += '</ul>';
+    }
+    if (hasAct){
+      html += '<div class="ex-subhead">课堂活动 · Classroom Activity</div><div class="ex-activity">';
+      if (act.cn) html += `<div class="ex-activity-title">${rubyHtml(act.cn)}${act.en ? ` · ${escapeHtml(act.en)}` : ''}</div>`;
+      if (act.description) html += `<div class="ex-item">${rubyHtml(act.description)}</div>`;
+      if (act.descriptionEn) html += `<div class="ex-en">${escapeHtml(act.descriptionEn)}</div>`;
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
   function renderTextList(){
     showAutoSpeak();
     if (lessonTexts.length === 0){
@@ -3251,6 +3328,7 @@
       html += '</div>';
     });
     html += '</div>';
+    if (state.showExercises && lessonExercises) html += exercisesHtml(lessonExercises);
     flashContainer.innerHTML = html;
 
     // Collapsible grammar sections shown under each text.

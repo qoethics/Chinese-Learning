@@ -1,0 +1,373 @@
+{
+  "lesson": 2,
+  "key": "2",
+  "name": "L2 · 还是打车去北大吧",
+  "titleCn": "还是打车去北大吧",
+  "titleEn": "Let's take a taxi to Peking University instead",
+  "texts": [
+    {
+      "id": "02-01",
+      "title": {
+        "cn": "在宾馆前台",
+        "en": "At the hotel reception",
+        "emoji": "🏨"
+      },
+      "intro": {
+        "cn": "在宾馆前台，白家月和安妮向服务员咨询。",
+        "en": "At the hotel reception, Bai Jiayue and Annie were asking the receptionist for information."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-02/2-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-02/2-2.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "白家月和安妮想去哪儿？",
+          "options": ["饭店", "车站", "北京大学"],
+          "answer": "C"
+        },
+        {
+          "type": "choice",
+          "q": "白家月和安妮怎么去那儿？",
+          "options": ["开车", "坐出租车", "坐公交车"],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "白家月",
+          "cn": "请问，这儿有到北京大学的公交车吗？",
+          "en": "Excuse me, is there a bus from here to Peking University?"
+        },
+        {
+          "speaker": "服务员",
+          "cn": "有，但车站有点儿远。",
+          "en": "Yes, but the bus stop is a bit far."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "这儿好打车吗？",
+          "en": "Is it easy to get a taxi around here?"
+        },
+        {
+          "speaker": "服务员",
+          "cn": "好打车。",
+          "en": "Yes, it is."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "谢谢。安妮，我们还是打车去吧。",
+          "en": "Thank you. Annie, let's take a taxi instead."
+        },
+        {
+          "speaker": "安妮",
+          "cn": "好，没问题。",
+          "en": "Okay, no problem."
+        }
+      ],
+      "postQuestions": [
+        { "q": "这儿有没有到北京大学的公交车？" },
+        { "q": "她们为什么打车去北京大学？" }
+      ],
+      "words": [
+        { "cn": "公交车", "pos": "n.", "en": "bus" },
+        { "cn": "但", "pos": "conj.", "en": "but; yet" },
+        { "cn": "车站", "pos": "n.", "en": "stop; station" },
+        { "cn": "远", "pos": "adj.", "en": "far away" },
+        { "cn": "打车", "pos": "v.", "en": "take/hail a taxi" },
+        { "cn": "还是", "pos": "adv.", "en": "had better" },
+        { "cn": "北京大学", "pos": "", "en": "Peking University" }
+      ]
+    },
+    {
+      "id": "02-02",
+      "title": {
+        "cn": "参观校园",
+        "en": "Touring the campus",
+        "emoji": "🏫"
+      },
+      "intro": {
+        "cn": "在北京大学，白家月和安妮在参观校园。",
+        "en": "At Peking University, Bai Jiayue and Annie were touring the campus."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-02/2-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-02/2-4.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "北京大学有多少学生？",
+          "options": ["三千多", "四万多", "十万多"],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "白家月想在北京大学做什么？",
+          "options": ["玩", "学习", "找教室"],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "白家月",
+          "cn": "学校里人真多啊！",
+          "en": "It's so crowded on campus!"
+        },
+        {
+          "speaker": "安妮",
+          "cn": "是啊，北京大学有四万多名学生呢！",
+          "en": "Yeah! Peking University has over 40,000 students."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "你是怎么知道的？",
+          "en": "How do you know?"
+        },
+        {
+          "speaker": "安妮",
+          "cn": "是网上说的，网上还说北京大学有三千多名外国学生。",
+          "en": "I read it online. It also says there are more than 3,000 international students at Peking University."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我也想来这儿学习。",
+          "en": "I'd love to study here too."
+        },
+        {
+          "speaker": "安妮",
+          "cn": "那边就有一间教室，我们去看一下吧。",
+          "en": "There's a classroom right over there. Let's go and have a look."
+        }
+      ],
+      "postQuestions": [
+        { "q": "北京大学里人多不多？" },
+        { "q": "北京大学有多少外国学生？安妮是怎么知道的？" }
+      ],
+      "words": [
+        { "cn": "啊", "pos": "part.", "en": "used at the end of a sentence to express appreciation, agreement, etc." },
+        { "cn": "万", "pos": "num.", "en": "ten thousand" },
+        { "cn": "名", "pos": "m./n.", "en": "used for people; place in a competition; name" },
+        { "cn": "网上", "pos": "n.", "en": "online" },
+        { "cn": "外国", "pos": "n.", "en": "foreign country" },
+        { "cn": "间", "pos": "m.", "en": "used of smallest units of housing" },
+        { "cn": "教室", "pos": "n.", "en": "classroom" }
+      ]
+    },
+    {
+      "id": "02-03",
+      "title": {
+        "cn": "校园里的电影院",
+        "en": "The cinema on campus",
+        "emoji": "🎬"
+      },
+      "intro": {
+        "cn": "在北京大学，白家月和安妮在参观校园。",
+        "en": "At Peking University, Bai Jiayue and Annie were touring the campus."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-02/2-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-02/2-6.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "安妮说北京大学里有什么？",
+          "options": ["银行", "电影院", "公交车站"],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "有的电影票还不到多少钱？",
+          "options": ["十块钱", "二十块钱", "三十块钱"],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "安妮",
+          "cn": "家月，你看，学校里有家电影院！",
+          "en": "Jiayue, look! There is a cinema on campus!"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "是啊，电影院还不小。",
+          "en": "Yeah, and it's pretty big."
+        },
+        {
+          "speaker": "安妮",
+          "cn": "他们卖的电影票也很便宜。",
+          "en": "The movie tickets they sell are also very affordable."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "天啊！有的还不到二十块钱。",
+          "en": "Goodness! Some are less than 20 yuan."
+        },
+        {
+          "speaker": "安妮",
+          "cn": "那你想不想去看个电影？",
+          "en": "So, do you want to watch a movie?"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "还是别看电影了，北京大学就很好看！",
+          "en": "Let's not watch a movie now. Peking University itself is already fascinating!"
+        }
+      ],
+      "postQuestions": [
+        { "q": "白家月和安妮觉得电影票贵不贵？" },
+        { "q": "白家月为什么不想去看电影？" }
+      ],
+      "words": [
+        { "cn": "票", "pos": "n.", "en": "ticket" },
+        { "cn": "别", "pos": "adv.", "en": "don't; had better not" }
+      ]
+    },
+    {
+      "id": "02-04",
+      "title": {
+        "cn": "在校门口发信息",
+        "en": "Sending a message at the gate",
+        "emoji": "🚪"
+      },
+      "intro": {
+        "cn": "在北京大学门口，白家月给陈天中发信息。",
+        "en": "At the gate of Peking University, Bai Jiayue was sending a message to Chen Tianzhong."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-02/2-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-02/2-8.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "判断正误：北京大学有四万多名外国学生。",
+          "options": ["对", "错"],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "判断正误：白家月和安妮现在要在北京大学看电影。",
+          "options": ["对", "错"],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "北京大学很大，有四万多名学生。",
+          "en": "Peking University is large, with a student population of over 40,000."
+        },
+        {
+          "speaker": "",
+          "cn": "学校很漂亮，里边还有一家电影院，电影票也不贵，我们有时间还想再过来看个电影。",
+          "en": "The campus is beautiful, and there is a cinema on campus. Movie tickets are quite affordable, and when we have time, we'd like to come back to watch a movie."
+        }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "过来", "pos": "v.", "en": "come here" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "2-g1",
+      "textId": "02-01",
+      "no": 1,
+      "cn": "固定格式“还是……吧”",
+      "en": "Fixed Pattern “还是……吧”",
+      "note": "固定格式“还是……吧”表示倾向性选择，有“这么办比较好”的意思。",
+      "noteEn": "The fixed pattern “还是……吧” is used to express a preferential choice, with the connotation that “this way is better”.",
+      "items": [
+        { "c": "我们还是打车去吧。", "en": "Let's take a taxi instead." },
+        { "c": "那件衣服很好看，还是买那件吧。", "en": "That piece of clothing looks nice; you'd better buy that one." },
+        { "c": "你第一次去北京，还是找个人接你吧。", "en": "It's your first time in Beijing, so you'd better have someone pick you up." }
+      ],
+      "practice": [
+        { "cn": "A：今天你怎么去公司？ B：打车太贵了，____", "en": "" },
+        { "cn": "A：不好意思，我今天太忙了，你____ B：好的，我们去找天中帮忙。", "en": "" },
+        { "cn": "A：明天有雨，我们____。 B：好的，那就今天去。", "en": "" }
+      ]
+    },
+    {
+      "id": "2-g2",
+      "textId": "02-02",
+      "no": 2,
+      "cn": "用“多”表达概数",
+      "en": "Expressing Approximate Numbers with “多”",
+      "note": "“多”用在数词或数量词后，表示有零头。当数字是 10 的整数倍时，“多”一般用在数词后面；当数字不是 10 的整数倍时，“多”一般用在量词后面。",
+      "noteEn": "Adding “多” after a number or a numeral phrase indicates that the quantity is slightly greater than the stated number. When the number is a multiple of ten, “多” is usually placed directly after the numeral. When the number is not a multiple of ten, “多” is usually placed after the measure word.",
+      "items": [
+        { "c": "北京大学有四万多名学生呢！", "en": "Peking University has over 40,000 students!" },
+        { "c": "教室里有二十多个学生。", "en": "There are more than twenty students in the classroom." },
+        { "c": "这两个苹果五块多钱。", "en": "These two apples cost more than five yuan." }
+      ],
+      "practice": [
+        { "cn": "A：你这件衣服多少钱？ B：____", "en": "" },
+        { "cn": "A：家里还有苹果吗？ B：还有____", "en": "" },
+        { "cn": "A：你家的小狗几岁了？ B：____", "en": "" }
+      ]
+    },
+    {
+      "id": "2-g3",
+      "textId": "02-03",
+      "no": 3,
+      "cn": "动词或动词性短语、主谓短语作定语",
+      "en": "Verbs, Verbal Phrases, and Subject-Predicate Phrases as Attributives",
+      "note": "动词或动词性短语、主谓短语用在名词前面，表示名词的特征或状态。",
+      "noteEn": "Verbs, verbal phrases, or subject-predicate phrases can be placed before a noun to indicate the characteristics or state of that noun.",
+      "items": [
+        { "c": "他们卖的电影票也很便宜。", "en": "The movie tickets they sell are also very affordable." },
+        { "c": "现在学中文的学生很多。", "en": "There are many students studying Chinese now." },
+        { "c": "这是朋友给我的杯子。", "en": "This is the cup a friend gave me." }
+      ],
+      "practice": [
+        { "cn": "A：这是谁的苹果？ B：____我买的，很好吃。", "en": "" },
+        { "cn": "A：我觉得____很好看。 B：你穿也好看，想不想买一件？", "en": "" },
+        { "cn": "A：____？ B：很好吃，我很喜欢你做的菜。", "en": "" }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "2-t1",
+      "textId": "02-01",
+      "no": 4,
+      "cn": "“好”＝“容易”",
+      "en": "“好” Means “Easy”",
+      "note": "这里“好”的意思是“容易”。",
+      "noteEn": "Here, “好” means “easy”.",
+      "items": [],
+      "practice": []
+    },
+    {
+      "id": "2-t2",
+      "textId": "02-03",
+      "no": 5,
+      "cn": "“天啊”“到”",
+      "en": "“天啊” and “到”",
+      "note": "“天啊”表示惊讶。这里“到”是“达到”的意思。",
+      "noteEn": "“天啊” is an exclamation showing surprise or amazement. Here, “到” means “reach”.",
+      "items": [],
+      "practice": []
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["但", "间", "车站", "打车", "过来"],
+        "items": [
+          { "cn": "你家太远了，我们是____过来的。", "answer": "" },
+          { "cn": "那是一____大教室，我们明天要去那儿上课。", "answer": "" },
+          { "cn": "李文让我去接他的朋友，____我太忙了，没时间。", "answer": "" },
+          { "cn": "A：请问，去北京大学的____在哪儿？ B：就在前边，不远。", "answer": "" },
+          { "cn": "A：家月，我想请你帮个忙，你有时间吗？ B：不好意思，我在外边旅游呢。", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "角色扮演",
+      "en": "Role-Play",
+      "description": "两人一组，一人问路，一人回答。问路的人询问附近有没有到新新电影院的公交车，车站远不远，到电影院要多长时间，等等。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in pairs. One student asks for directions, and the other answers. The student asking for directions asks questions such as whether there is a bus nearby to Xinxin Cinema, whether the bus stop is far, and how long it takes to get to the cinema. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

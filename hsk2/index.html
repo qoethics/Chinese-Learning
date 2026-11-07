@@ -61,6 +61,22 @@ if (location.protocol !== 'file:') {
         <button id="fontUpBtn" title="Enlarge content text">+</button>
       </div>
     </div>
+    <div class="settings-section">Content</div>
+    <div class="settings-row">
+      <span class="settings-row-label">📝 Comprehensive exercises</span>
+      <div class="random-toggle">
+        <input type="checkbox" id="exercisesToggle">
+        <label for="exercisesToggle" class="settings-switch"><span class="settings-switch-dot"></span></label>
+      </div>
+    </div>
+    <div class="settings-section" id="textbookSection" hidden>Textbook</div>
+    <div class="settings-row" id="textbookRow" hidden>
+      <span class="settings-row-label">📚 Course book</span>
+      <div class="settings-seg" id="textbookSeg">
+        <button type="button" data-book="legacy">Legacy HSK 2</button>
+        <button type="button" data-book="new">New HSK 2</button>
+      </div>
+    </div>
     <div class="settings-section">Startup</div>
     <div class="settings-row">
       <span class="settings-row-label">🚀 Start in</span>
@@ -220,6 +236,28 @@ if (location.protocol !== 'file:') {
      alias window.HSK1_LESSONS survives js/data.js overwriting COURSE_LESSONS). -->
 <script src="../hsk1/js/data.js"></script>
 <script src="js/data.js"></script>
+<!-- Second textbook set: 《新HSK教程2》/ New HSK Course 2 (HSK 3.0), generated from
+     hsk2/data/new/lessonNN.json via `python3 tools/gen-lesson-js.py hsk2 --set new`.
+     Loaded after the legacy data so the stored preference can swap globals before app.js. -->
+<script src="js/data-new.js"></script>
+<script src="data/sentences/grammar-sentences-new.js"></script>
+<script>
+(function () {
+  var pick = 'legacy';
+  try { pick = localStorage.getItem('hsk2.textbook') || 'legacy'; } catch (e) {}
+  if (pick === 'new' && window.COURSE_LESSONS_NEW) {
+    window.COURSE_LESSONS = window.COURSE_LESSONS_NEW;
+    window.SENTENCE_CORPUS = window.SENTENCE_CORPUS_NEW;
+    window.GRAMMAR_SENTENCES = window.SENTENCE_CORPUS_NEW;
+    // Legacy overlays are keyed by the old book's text ids — never reuse them.
+    window.TEXT_GRAMMAR_HITS = {};
+    window.TEXT_AUDIO_SEGMENTS = {};
+  }
+  window.TEXTBOOK_CHOICE = pick;
+  window.TEXTBOOK_STORAGE_KEY = 'hsk2.textbook';
+  window.HAS_SECOND_TEXTBOOK = !!window.COURSE_LESSONS_NEW;
+})();
+</script>
   <div class="sound-check-overlay hidden" id="soundCheckOverlay">
     <div class="sound-check-panel" role="dialog" aria-label="Sound Check">
       <div class="sound-check-head">

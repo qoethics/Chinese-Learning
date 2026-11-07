@@ -1,0 +1,213 @@
+{
+  "lesson": 13,
+  "key": "13",
+  "name": "L13 · 我们爱上中文课",
+  "titleCn": "我们爱上中文课",
+  "titleEn": "We love attending Chinese class",
+  "texts": [
+    {
+      "id": "13-01",
+      "title": { "cn": "在教室商量新年礼物", "en": "Choosing a New Year gift", "emoji": "🌸" },
+      "intro": { "cn": "在教室，白家月和陈天中在聊天儿。", "en": "In the classroom, Bai Jiayue and Chen Tianzhong were chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-13/13-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-13/13-2.mp3",
+      "questions": [
+        { "type": "choice", "q": "同学们想送给王老师什么？", "options": ["花", "衣服", "中文书"], "answer": "A" },
+        { "type": "choice", "q": "同学们今天要去哪儿看看？", "options": ["教室", "花店", "商店"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "白家月", "cn": "时间过得真快啊！新年就要到了。", "en": "Time flies! The New Year is almost here." },
+        { "speaker": "陈天中", "cn": "这一年王老师教我们中文，每天工作都很累。", "en": "This year, Ms. Wang has been teaching us Chinese, and she works so hard every day." },
+        { "speaker": "白家月", "cn": "是啊，她教得很好。因为她，我们都非常爱上中文课。", "en": "Yes, she teaches very well. Because of her, we all love attending Chinese class." },
+        { "speaker": "陈天中", "cn": "我们给她准备个新年礼物吧。你觉得送给她什么好呢？", "en": "Let's prepare a New Year's gift for her. What do you think we can present to her?" },
+        { "speaker": "白家月", "cn": "王老师喜欢花，就送给她花吧。", "en": "Ms. Wang likes flowers. I think we can give her flowers." },
+        { "speaker": "陈天中", "cn": "那我们去花店看看，现在买花的人多，希望花店还有漂亮的花。", "en": "Then let's go to the flower shop; there are many people buying flowers now. I hope there are still some beautiful flowers in the shop." }
+      ],
+      "postQuestions": [
+        { "q": "同学们为什么爱上中文课？" },
+        { "q": "陈天中希望花店现在还有什么？" }
+      ],
+      "words": [
+        { "cn": "新年", "pos": "n.", "en": "New Year" },
+        { "cn": "教", "pos": "v.", "en": "teach" },
+        { "cn": "花", "pos": "n.", "en": "flower" },
+        { "cn": "希望", "pos": "v.", "en": "hope; wish" }
+      ]
+    },
+    {
+      "id": "13-02",
+      "title": { "cn": "在上课", "en": "In class", "emoji": "✍️" },
+      "intro": { "cn": "在教室，王一飞在上课。", "en": "In the classroom, Wang Yifei was teaching." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-13/13-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-13/13-4.mp3",
+      "questions": [
+        { "type": "choice", "q": "今天的词比昨天多多少？", "options": ["四个", "七个", "十个"], "answer": "C" },
+        { "type": "choice", "q": "同学们写错了哪个字？", "options": ["口", "日", "间"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "白家月", "cn": "王老师，今天的词比昨天多了十个。", "en": "Ms. Wang, today's vocabulary has ten more words than yesterday's." },
+        { "speaker": "王一飞", "cn": "是啊！你们都学会了吗？", "en": "Yes! Have you all learned them?" },
+        { "speaker": "白家月", "cn": "学会了，没有问题。", "en": "We've learned them. No problem." },
+        { "speaker": "王一飞", "cn": "好。现在我来说，你们在本子上面写。", "en": "Good. Now I'll say them, and you write them down in your notebooks." },
+        { "speaker": "王一飞", "cn": "同学们，“洗手间”的“间”字写错了，它的里面是“日”，不是“口”。", "en": "Class, the character “间” in “洗手间” is wrong. The part inside is “日”, not “口”." },
+        { "speaker": "白家月", "cn": "“日”比“口”多一笔，写“口”就是“问题”的“问”了。", "en": "“日” has one more stroke than “口”. Writing “口” turns it into the “问” in “问题”." },
+        { "speaker": "王一飞", "cn": "没错，你说得很对。", "en": "Yes, you are right." }
+      ],
+      "postQuestions": [
+        { "q": "王老师让同学们在哪儿写字？" },
+        { "q": "“间”比“问”多几笔？" }
+      ],
+      "words": [
+        { "cn": "上面", "pos": "n.", "en": "surface of an object" },
+        { "cn": "洗手间", "pos": "n.", "en": "washroom; restroom" },
+        { "cn": "里面", "pos": "n.", "en": "inside" },
+        { "cn": "笔", "pos": "m.", "en": "stroke" }
+      ]
+    },
+    {
+      "id": "13-03",
+      "title": { "cn": "在教室聊本子", "en": "Talking about a notebook", "emoji": "📓" },
+      "intro": { "cn": "在教室，安妮和白家月在聊天儿。", "en": "In the classroom, Annie and Bai Jiayue were chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-13/13-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-13/13-6.mp3",
+      "questions": [
+        { "type": "choice", "q": "这个本子是在哪儿买的？", "options": ["商店", "超市", "网上"], "answer": "C" },
+        { "type": "choice", "q": "安妮让白家月送给她什么礼物？", "options": ["本子", "咖啡", "咖啡杯"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "安妮", "cn": "家月，你觉得这个本子怎么样？", "en": "Jiayue, what do you think of this notebook?" },
+        { "speaker": "白家月", "cn": "很漂亮，多少钱一个？", "en": "It's very pretty. How much is it?" },
+        { "speaker": "安妮", "cn": "比我们一起买的那个本子贵一点儿。", "en": "It's a bit more expensive than the notebook we bought together." },
+        { "speaker": "白家月", "cn": "这么漂亮的本子，不可能贵一点儿吧？", "en": "For such a beautiful notebook, it couldn't be just a little more expensive, right?" },
+        { "speaker": "安妮", "cn": "我是上网买的，真没那么贵。我买了两个，送你一个。", "en": "I bought it online, and it's really not that expensive. I bought two and will give you one." },
+        { "speaker": "白家月", "cn": "谢谢！那我送给你什么呢？", "en": "Thank you! Then what should I give you in return?" },
+        { "speaker": "安妮", "cn": "咖啡杯吧，我最喜欢喝咖啡了。", "en": "A coffee cup would be great. I like drinking coffee the most." },
+        { "speaker": "白家月", "cn": "好，那样我们就都有新年礼物了！", "en": "Alright! Then we'll both have New Year's gifts!" }
+      ],
+      "postQuestions": [
+        { "q": "白家月觉得这个本子怎么样？" },
+        { "q": "白家月和安妮都有新年礼物了吗？" }
+      ],
+      "words": [
+        { "cn": "可能", "pos": "v.", "en": "probably; can" },
+        { "cn": "上网", "pos": "v.", "en": "go online" },
+        { "cn": "那样", "pos": "pron.", "en": "so that" }
+      ]
+    },
+    {
+      "id": "13-04",
+      "title": { "cn": "在房间写日记", "en": "Writing a diary in the room", "emoji": "📔" },
+      "intro": { "cn": "在房间，白家月在写日记。", "en": "In the room, Bai Jiayue was writing in her diary." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-13/13-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-13/13-8.mp3",
+      "questions": [
+        { "type": "choice", "q": "判断正误：安妮送了白家月一个新年礼物。", "options": ["对", "错"], "answer": "A" },
+        { "type": "choice", "q": "判断正误：白家月送了王老师漂亮的花。", "options": ["对", "错"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "", "cn": "新年就要到了，安妮送给我一个新本子。她告诉我是在网上买的，比我的本子贵一点儿。", "en": "The New Year is almost here. Annie gave me a new notebook. She told me she bought it online, and it's a bit more expensive than mine." },
+        { "speaker": "", "cn": "我们班同学也送了王老师漂亮的花，希望她高高兴兴地过个新年。", "en": "Our classmates also gave Ms. Wang beautiful flowers, hoping she will have a happy New Year." }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "告诉", "pos": "v.", "en": "tell" },
+        { "cn": "班", "pos": "n.", "en": "class" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "13-g1",
+      "textId": "13-01",
+      "no": 1,
+      "cn": "双宾语句（2）",
+      "en": "Double-Object Sentences (2)",
+      "note": "双宾语句是一个动词带两个宾语的句子，一般前一个宾语指人，后一个宾语指事物。本课学习动词“拿、送、卖”加“给”构成的双宾语句。",
+      "noteEn": "A double-object sentence is a sentence in which a verb takes two objects. Generally, the first object refers to a person, while the second object refers to a thing. In this lesson, we learn double-object sentences formed with the verbs “拿”, “送”, and “卖” combined with “给”.",
+      "items": [
+        { "c": "王老师喜欢花，就送给她花吧。", "en": "Ms. Wang likes flowers, so let's give her flowers." },
+        { "c": "她拿给我一杯水。", "en": "She brought me a glass of water." },
+        { "c": "他卖给我一本中文书。", "en": "He sold me a Chinese book." }
+      ],
+      "practice": [
+        { "cn": "A：我想送给____，她会喜欢吗？ B：没问题，她的爱好就是读书。", "en": "" },
+        { "cn": "A：昨天过生日，爸爸送____。 B：我看看。这个手机很好啊！", "en": "" },
+        { "cn": "A：小雪，你爸爸回来了吗？ B：回来了，他还拿____", "en": "" }
+      ]
+    },
+    {
+      "id": "13-g2",
+      "textId": "13-02",
+      "no": 2,
+      "cn": "比较句（7）",
+      "en": "Comparative Sentences (7)",
+      "note": "用“比”表示的比较句中，数量短语放在形容词后面，表示具体差别。基本结构：A 比 B＋形容词＋数量短语。",
+      "noteEn": "In comparative sentences using “比”, numeral-measure word phrases are placed after the adjective to indicate the specific difference. Basic structure: A 比 B + Adjective + Numeral-Measure Word Phrase.",
+      "items": [
+        { "c": "今天的词比昨天多了十个。", "en": "Today's vocabulary has ten more words than yesterday's." },
+        { "c": "姐姐比我大三岁。", "en": "My older sister is three years older than me." },
+        { "c": "坐飞机比坐火车快五个多小时。", "en": "Taking a plane is more than five hours faster than taking a train." }
+      ],
+      "practice": [
+        { "cn": "A：今天你是几点起床的？ B：七点半，比昨天早____", "en": "" },
+        { "cn": "A：这一课的汉字真多啊！ B：是啊，比第十课多____", "en": "" },
+        { "cn": "A：你比弟弟大几岁？ B：____", "en": "" }
+      ]
+    },
+    {
+      "id": "13-g3",
+      "textId": "13-03",
+      "no": 3,
+      "cn": "比较句（8）",
+      "en": "Comparative Sentences (8)",
+      "note": "用“比”表示的比较句中，“一点儿”或“一些”用在形容词后面，表示差别不大。基本结构：A 比 B＋形容词＋一点儿/一些。",
+      "noteEn": "In comparative sentences using “比”, “一点儿” or “一些” are placed after the adjective to indicate a small difference. Basic structure: A 比 B + Adjective + 一点儿/一些.",
+      "items": [
+        { "c": "比我们一起买的那个本子贵一点儿。", "en": "It's a bit more expensive than the notebook we bought together." },
+        { "c": "姐姐比我高一点儿。", "en": "My older sister is a little taller than me." },
+        { "c": "那间教室比这间大一些。", "en": "That classroom is a bit bigger than this one." }
+      ],
+      "practice": [
+        { "cn": "A：你觉得这条白色的裤子长不长？ B：____，那条黑色的____，还是买那条吧。", "en": "" },
+        { "cn": "A：今天的苹果____昨天的____。 B：便宜的也很好吃。", "en": "" },
+        { "cn": "A：姐姐的书和本子比我多，所以她的书包____ B：也比你的书包贵一点儿。", "en": "" }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "13-t1",
+      "textId": "13-03",
+      "no": 4,
+      "cn": "“咖啡杯”",
+      "en": "“咖啡杯”",
+      "note": "我们学过“咖啡”和“杯子”，猜一猜“咖啡杯”是什么意思。",
+      "noteEn": "We have learned the words “咖啡” and “杯子”; guess what “咖啡杯” means.",
+      "items": [],
+      "practice": []
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["上网", "可能", "班", "告诉", "里面"],
+        "items": [
+          { "cn": "你们____有多少学生？", "answer": "" },
+          { "cn": "我经常____听歌、看电影。", "answer": "" },
+          { "cn": "教室的门开着，但是____没有人。", "answer": "" },
+          { "cn": "A：小李呢？我找她有点儿事。 B：____去洗手间了。她回来后，我让她去找你。", "answer": "" },
+          { "cn": "A：姐姐，家月____我你已经接到她们了。谢谢你！ B：不客气，你的朋友就是我的朋友。", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "双人活动",
+      "en": "Pair Work",
+      "description": "新年就要到了，两人一组，互相赠送礼物，并邀请对方来家里聚会，等等。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "The New Year is approaching. Work in pairs and exchange gifts, invite your partner to a party at your home, and so on. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

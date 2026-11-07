@@ -1,0 +1,229 @@
+{
+  "lesson": 11,
+  "key": "11",
+  "name": "L11 · 我最喜欢吃中国菜",
+  "titleCn": "我最喜欢吃中国菜",
+  "titleEn": "I like Chinese food the most",
+  "texts": [
+    {
+      "id": "11-01",
+      "title": { "cn": "在教室", "en": "In the classroom", "emoji": "🏫" },
+      "intro": { "cn": "在教室，王一飞和白家月在聊天儿。", "en": "In the classroom, Wang Yifei and Bai Jiayue were chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-11/11-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-11/11-2.mp3",
+      "questions": [
+        { "type": "choice", "q": "白家月现在在哪儿？", "options": ["医院", "家里", "教室"], "answer": "C" },
+        { "type": "choice", "q": "王一飞现在去做什么？", "options": ["开车", "回家", "找医生"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "王一飞", "cn": "家月，都下课了，你怎么还不回家？", "en": "Jiayue, class is over. Why aren't you going home?" },
+        { "speaker": "白家月", "cn": "我头疼，不太舒服。", "en": "I have a headache. I'm not feeling well." },
+        { "speaker": "王一飞", "cn": "你这几天经常头疼，去医院看看吧。", "en": "You've been having headaches frequently these days. You should go to the hospital." },
+        { "speaker": "白家月", "cn": "我想休息一下，现在不能动，一动就疼。", "en": "I want to rest for a while. I can't move right now—it hurts whenever I move." },
+        { "speaker": "王一飞", "cn": "那你在这儿坐着，我去开车，一会儿送你去医院。", "en": "Then stay here and sit. I'll go get the car and take you to the hospital in a bit." },
+        { "speaker": "白家月", "cn": "谢谢王老师。", "en": "Thank you, Ms. Wang." }
+      ],
+      "postQuestions": [
+        { "q": "白家月为什么不回家？" },
+        { "q": "白家月现在能不能动？为什么？" }
+      ],
+      "words": [
+        { "cn": "头", "pos": "n.", "en": "head" },
+        { "cn": "疼", "pos": "adj.", "en": "hurt" },
+        { "cn": "经常", "pos": "adv.", "en": "frequently; often" },
+        { "cn": "动", "pos": "v.", "en": "move" },
+        { "cn": "着", "pos": "part.", "en": "used after a verb or an adjective to indicate the continuation of an action or a state" }
+      ]
+    },
+    {
+      "id": "11-02",
+      "title": { "cn": "在王一飞车里", "en": "In Wang Yifei's car", "emoji": "🚗" },
+      "intro": { "cn": "在王一飞车里，王一飞和白家月在聊天儿，李文打来一个电话。", "en": "In Wang Yifei's car, Wang Yifei and Bai Jiayue were chatting, and Li Wen made a phone call." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-11/11-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-11/11-4.mp3",
+      "questions": [
+        { "type": "choice", "q": "王一飞在做什么？", "options": ["开车", "看病", "接电话"], "answer": "A" },
+        { "type": "choice", "q": "今天天气怎么样？", "options": ["很好", "下雨", "下雪"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "王一飞", "cn": "现在路上车多，还下着雪，我开慢一点儿。", "en": "There are a lot of cars on the road right now, and it's snowing. I'll drive a bit slower." },
+        { "speaker": "白家月", "cn": "没问题，现在头没那么疼了。", "en": "No problem. My head doesn't hurt as much now." },
+        { "speaker": "王一飞", "cn": "好。李文来电话了，你帮我接一下。", "en": "Okay. Li Wen is calling; please answer it for me." },
+        { "speaker": "白家月", "cn": "喂，李文，王老师开着车呢，你找她有事吗？", "en": "Hello, Li Wen. Ms. Wang is driving right now. Do you need to talk to her?" },
+        { "speaker": "李文", "cn": "没什么事。今天雪这么大，你们开车去哪儿啊？", "en": "It's nothing important. The snow is so heavy today. Where are you driving to?" },
+        { "speaker": "白家月", "cn": "去医院，我头有点儿疼。", "en": "To the hospital. I have a bit of a headache." },
+        { "speaker": "李文", "cn": "那我一会儿去看看你。", "en": "Then I'll come visit you later." }
+      ],
+      "postQuestions": [
+        { "q": "王一飞为什么开慢一点儿？" },
+        { "q": "李文一会儿要做什么？" }
+      ],
+      "words": [
+        { "cn": "路上", "pos": "n.", "en": "road; trip" },
+        { "cn": "慢", "pos": "adj.", "en": "slow" }
+      ]
+    },
+    {
+      "id": "11-03",
+      "title": { "cn": "在房间看望白家月", "en": "Visiting Bai Jiayue in her room", "emoji": "🛏️" },
+      "intro": { "cn": "在房间，李文来看望白家月。", "en": "In the room, Li Wen came to visit Bai Jiayue." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-11/11-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-11/11-6.mp3",
+      "questions": [
+        { "type": "choice", "q": "白家月现在怎么样了？", "options": ["不想吃饭", "身体不舒服", "头不那么疼了"], "answer": "C" },
+        { "type": "choice", "q": "王一飞现在要做什么？", "options": ["去买药", "找医生", "去做菜"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "白家月", "cn": "李文，快请进！", "en": "Li Wen, please come in!" },
+        { "speaker": "李文", "cn": "家月，你怎么样了？头还疼吗？", "en": "Jiayue, how are you feeling? Does your head still hurt?" },
+        { "speaker": "白家月", "cn": "不那么疼了。医生开了一些药，吃完就好多了。", "en": "It doesn't hurt much. The doctor prescribed some medicine, and I feel much better after taking it." },
+        { "speaker": "李文", "cn": "那就好！", "en": "That's good to hear!" },
+        { "speaker": "王一飞", "cn": "家月，你想不想吃点儿东西？", "en": "Jiayue, do you want something to eat?" },
+        { "speaker": "李文", "cn": "吃点儿吧，身体不舒服时更要好好吃饭。", "en": "Eat some. You should eat well when you feel uncomfortable." },
+        { "speaker": "白家月", "cn": "吃点儿什么呢？", "en": "What should I eat?" },
+        { "speaker": "王一飞", "cn": "你最喜欢吃中国菜，我做几个中国菜吧。", "en": "You like Chinese food the most, so I'll cook some Chinese dishes." },
+        { "speaker": "白家月", "cn": "好的，谢谢王老师。", "en": "Okay, thank you, Ms. Wang." }
+      ],
+      "postQuestions": [
+        { "q": "白家月为什么头不那么疼了？" },
+        { "q": "李文让白家月做什么？" }
+      ],
+      "words": [
+        { "cn": "进", "pos": "v.", "en": "come into" },
+        { "cn": "药", "pos": "n.", "en": "medicine" },
+        { "cn": "身体", "pos": "n.", "en": "body; health" },
+        { "cn": "时", "pos": "n.", "en": "a period of time" },
+        { "cn": "最", "pos": "adv.", "en": "most" }
+      ]
+    },
+    {
+      "id": "11-04",
+      "title": { "cn": "在房间写日记", "en": "Writing a diary in the room", "emoji": "📔" },
+      "intro": { "cn": "在房间，白家月在写日记。", "en": "In the room, Bai Jiayue was writing in her diary." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-11/11-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-11/11-8.mp3",
+      "questions": [
+        { "type": "choice", "q": "判断正误：这几天天气不好，所以白家月生病了。", "options": ["对", "错"], "answer": "B" },
+        { "type": "choice", "q": "判断正误：因为头疼，所以白家月自己去了医院。", "options": ["对", "错"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "", "cn": "我这几天经常头疼，从药店买了点儿药，没去医院。", "en": "I've been having frequent headaches these days, so I bought some medicine at the pharmacy and didn't go to the hospital." },
+        { "speaker": "", "cn": "今天下课后，王老师看我不舒服，就送我去医院了。", "en": "After class today, Ms. Wang noticed I wasn't feeling well and took me to the hospital." },
+        { "speaker": "", "cn": "从医院回来，李文也来看我了。现在他们都回去了，我也要睡觉了。", "en": "When I got back from the hospital, Li Wen came to visit me. Now they've gone back home, and I am going to bed." }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "药店", "pos": "n.", "en": "pharmacy" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "11-g1",
+      "textId": "11-01",
+      "no": 1,
+      "cn": "动态助词“着”（1）",
+      "en": "Aspect Particle “着” (1)",
+      "note": "动态助词“着”用在动词后面，表示动作或状态的持续，否定形式是在动词前面加“没（有）”。",
+      "noteEn": "The aspect particle “着” is used after a verb to indicate the continuation of an action or a state. The negative form is created by adding “没（有）” before the verb.",
+      "items": [
+        { "c": "那你在这儿坐着。", "en": "Then sit here." },
+        { "c": "教室的门开着。", "en": "The classroom door is open." },
+        { "c": "教室的门没开着。", "en": "The classroom door is not open." }
+      ],
+      "practice": [
+        { "cn": "A：你看见我的手机了吗？ B：别找了，____我呢。", "en": "" },
+        { "cn": "A：小雪回来了吗？ B：回来了，在____她的房间呢。", "en": "" },
+        { "cn": "A：房间的门____，但是刘爷爷没在里边。 B：他出去了吧？我给他打个电话。", "en": "" }
+      ]
+    },
+    {
+      "id": "11-g2",
+      "textId": "11-02",
+      "no": 2,
+      "cn": "动态助词“着”（2）",
+      "en": "Aspect Particle “着” (2)",
+      "note": "表示动作或状态持续的句子中，宾语要在动态助词“着”的后面。疑问形式有三种：句尾加“吗”；句尾加“没有”；动词＋没＋动词＋着。",
+      "noteEn": "In sentences indicating the continuation of an action or a state, the object must be placed after the aspect particle “着”. There are three interrogative forms: add “吗” at the end; add “没有” at the end; or Verb + 没 + Verb + 着.",
+      "items": [
+        { "c": "现在路上车多，还下着雪，我开慢一点儿。", "en": "There are a lot of cars on the road right now, and it's snowing. I'll drive a bit slower." },
+        { "c": "她穿着白色的裤子。", "en": "She is wearing white pants." },
+        { "c": "陈天中没拿着咖啡。", "en": "Chen Tianzhong isn't holding coffee." },
+        { "c": "教室的门开着吗？", "en": "Is the classroom door open?" },
+        { "c": "白家月坐着没有？", "en": "Is Bai Jiayue sitting?" },
+        { "c": "她拿没拿着手机？", "en": "Is she holding her phone?" }
+      ],
+      "practice": [
+        { "cn": "A：安妮，你看见我了吗？我穿着____。 B：看见了，你快过来吧。", "en": "" },
+        { "cn": "A：外边____，你别出去跑步了。 B：好吧，那就在家运动运动。", "en": "" },
+        { "cn": "A：小明，电视____？ B：没有，我们都没看电视。", "en": "" }
+      ]
+    },
+    {
+      "id": "11-g3",
+      "textId": "11-03",
+      "no": 3,
+      "cn": "程度副词“最”",
+      "en": "Adverb of Degree “最”",
+      "note": "程度副词“最”用在形容词或心理动词前面，表示某种属性超过所有同类的人或事物。",
+      "noteEn": "The adverb of degree “最” is used before adjectives or psychological verbs to indicate that a certain attribute surpasses all similar people or things.",
+      "items": [
+        { "c": "你最喜欢吃中国菜。", "en": "You like Chinese food the most." },
+        { "c": "在我们家，爸爸最高。", "en": "In our family, dad is the tallest." },
+        { "c": "你们班谁说中文说得最好？", "en": "Who speaks Chinese the best in your class?" }
+      ],
+      "practice": [
+        { "cn": "A：你来过这家饭馆吗？ B：来过，这里的鱼做得____", "en": "" },
+        { "cn": "A：你最想去哪儿旅游？ B：我____", "en": "" },
+        { "cn": "A：你最喜欢什么颜色？ B：我____", "en": "" }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "11-t1",
+      "textId": "11-02",
+      "no": 4,
+      "cn": "“没什么事”",
+      "en": "“没什么事”",
+      "note": "“没什么事”的意思是“没有重要的事”。",
+      "noteEn": "The meaning of “没什么事” is “there is nothing important”.",
+      "items": [],
+      "practice": []
+    },
+    {
+      "id": "11-t2",
+      "textId": "11-03",
+      "no": 5,
+      "cn": "“开”＝写出药方",
+      "en": "“开” Means to Write Out a Prescription",
+      "note": "这里的“开”表示写出（药方）。",
+      "noteEn": "Here, “开” means to write out (a prescription).",
+      "items": [],
+      "practice": []
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["经常", "慢", "时", "身体", "路上"],
+        "items": [
+          { "cn": "____车多人多，你慢点儿开。", "answer": "" },
+          { "cn": "他今天____不舒服，所以没来上课。", "answer": "" },
+          { "cn": "我游泳游得很____，但我跑步跑得很快。", "answer": "" },
+          { "cn": "A：____星期天我跟朋友去踢球。 B：我也喜欢踢球，下次叫我一起去吧。", "answer": "" },
+          { "cn": "A：昨天雪太大，公交车开得很慢。 B：是啊，我到家都快9点了。", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "角色扮演",
+      "en": "Role-Play",
+      "description": "两人一组，一人扮演医生，一人扮演病人。病人头疼，所以来医院看病，医生询问什么时候开始疼的、吃过药没有、最近做过什么，等等。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in pairs. One student plays the doctor and the other plays the patient. The patient has a headache and comes to the hospital for treatment. The doctor asks questions such as when the headache started, whether the patient has taken any medicine, what the patient has been doing recently, and so on. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

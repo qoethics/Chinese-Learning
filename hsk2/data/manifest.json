@@ -10,10 +10,14 @@
     "js/core-vocab.js",
     "../hsk1/js/data.js",
     "js/data.js",
+    "js/data-new.js",
+    "data/sentences/grammar-sentences-new.js",
     "../shared/js/app.js"
   ],
   "globals": {
     "js/data.js": "window.COURSE_LESSONS（别名 window.HSK2_LESSONS）— 课程课文，每课有唯一 id",
+    "js/data-new.js": "window.COURSE_LESSONS_NEW（别名 window.HSK2_NEW_LESSONS）— 第二套教材（新HSK教程2），由 hsk2/data/new/lessonNN.json 生成",
+    "data/sentences/grammar-sentences-new.js": "window.SENTENCE_CORPUS_NEW（别名 window.GRAMMAR_SENTENCES_NEW）— 第二套教材的语法语料，生成物",
     "../hsk1/js/data.js": "window.HSK1_LESSONS — hsk1 全部词汇，作为本级别「已学」基线（见 baselineVocab）",
     "data/sentences/grammar-sentences.js": "window.SENTENCE_CORPUS（别名 window.GRAMMAR_SENTENCES）— 语法语料，每项 key=课 id；由 grammar-sentences.json 生成",
     "data/sentences/grammar-topics.js": "window.GRAMMAR_TOPICS — 跨课专题对比（手写，非生成物）",
@@ -52,5 +56,40 @@
     "note/sub/exp 必须用 rubyHtml() 渲染（要显示拼音），不要用 escapeHtml()",
     "每课 id 与语料 key 必须一致",
     "不要用 hsk1 的 txt → ingest 流程来改 hsk2 语法；hsk2 语法是直接手写 json 的"
-  ]
+  ],
+  "newTextbook": {
+    "status": "ACTIVE — L1–L15 全部录入（hsk2/data/new/lessonNN.json），15 课 × 4 篇课文 / 45 个语言点",
+    "book": "hsk2/hsk-course-2.pdf —《新HSK教程2》/ New HSK Course 2（HSK 3.0，外研社，2025-12）。164 页，15 课，45 个语言点。PDF 已加进 .gitignore，不提交",
+    "pageRule": "书页 N = PDF index N + 15；目录 PDF index 12–14；词语表 书页 141",
+    "sourceOfTruth": "hsk2/data/new/lessonNN.json（手写）",
+    "generated": "hsk2/js/data-new.js（window.COURSE_LESSONS_NEW）+ hsk2/data/sentences/grammar-sentences-new.js（window.SENTENCE_CORPUS_NEW）",
+    "regenerate": "python3 tools/gen-lesson-js.py hsk2 --set new",
+    "check": "python3 tools/gen-lesson-js.py hsk2 --set new --check",
+    "switch": "Settings → 📚 Course book；localStorage['hsk2.textbook'] = 'legacy' | 'new'，切换后整页 reload（LESSONS 在启动时绑定）。无新版数据时该行自动隐藏（hsk1/hsk3 不受影响）",
+    "pageMap": {
+      "L1": 1,
+      "L2": 10,
+      "L3": 19,
+      "L4": 29,
+      "L5": 37,
+      "L6": 46,
+      "L7": 56,
+      "L8": 64,
+      "L9": 73,
+      "L10": 84,
+      "L11": 93,
+      "L12": 102,
+      "L13": 112,
+      "L14": 121,
+      "L15": 130
+    },
+    "findings": [
+      "L1–L15 已录：每课 4 篇课文（3 对话 + 1 叙述/信息），共 45 个语言点，另录小语助力",
+      "综合练习填空题的空白位置 OCR 未识别：exercises.fillInTheBlank.items 暂存整句，answer 为空，需对照书页人工补",
+      "语法 practice 的空白位置按 OCR 可见空格插 ____，个别题原句本身不完整，需人工核对",
+      "课文 4 为叙述/信息/日记体（无说话人）；判断正误题用 choice + 对/错 两选项表达",
+      "audio 按 hsk3 同一 CDN 规则拼：new-hsk-books-audios/hsk-2-textbook/lesson-NN/{N-1..N-8}.mp3（未逐条试听）",
+      "描述图片题（describePictures）与学习小结未录入（SVG/图片内容 OCR 不可读）"
+    ]
+  }
 }

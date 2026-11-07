@@ -1,0 +1,545 @@
+{
+  "lesson": 1,
+  "key": "1",
+  "name": "L1 · 她请我们吃了北京烤鸭",
+  "titleCn": "她请我们吃了北京烤鸭",
+  "titleEn": "She treated us to Peking Duck",
+  "texts": [
+    {
+      "id": "01-01",
+      "title": {
+        "cn": "在机场",
+        "en": "At the airport",
+        "emoji": "✈️"
+      },
+      "intro": {
+        "cn": "在机场，王一雪接到了白家月和安妮。",
+        "en": "At the airport, Wang Yixue picked up Bai Jiayue and Annie."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-01/1-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-01/1-2.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "谁来接白家月了？",
+          "options": [
+            "王一飞",
+            "王一雪",
+            "她的姐姐"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "王一飞给谁打电话了？",
+          "options": [
+            "安妮",
+            "白家月",
+            "王一雪"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "白家月",
+          "cn": "请问，您是王一飞老师的姐姐吗？",
+          "en": "Excuse me, are you Ms. Wang Yifei's cousin?"
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "是的，你们就是她的学生吧？",
+          "en": "Yes, I am. You two must be her students, right?"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "对。我是白家月，她是安妮。",
+          "en": "Exactly. I'm Bai Jiayue, and this is Annie."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "你们好，我叫王一雪。一飞给我打电话了，让我来接你们。",
+          "en": "Hello, I'm Wang Yixue. Yifei called me and asked me to pick you up."
+        },
+        {
+          "speaker": "白家月、安妮",
+          "cn": "谢谢您。",
+          "en": "Thank you very much."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "不客气。",
+          "en": "You're welcome."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "来北京前，白家月认识王一雪吗？"
+        },
+        {
+          "q": "王一雪在做什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "就",
+          "pos": "adv.",
+          "en": "exactly; precisely"
+        },
+        {
+          "cn": "给",
+          "pos": "prep.",
+          "en": "to; for (used to introduce the recipient of an action)"
+        },
+        {
+          "cn": "让",
+          "pos": "v.",
+          "en": "let; allow"
+        },
+        {
+          "cn": "接",
+          "pos": "v.",
+          "en": "meet; welcome; receive"
+        }
+      ]
+    },
+    {
+      "id": "01-02",
+      "title": {
+        "cn": "在车里",
+        "en": "In the car",
+        "emoji": "🚗"
+      },
+      "intro": {
+        "cn": "在王一雪的车里，白家月、安妮和王一雪在聊天儿。",
+        "en": "In Wang Yixue's car, Bai Jiayue, Annie, and Wang Yixue were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-01/1-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-01/1-4.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "白家月是第几次来北京？",
+          "options": [
+            "第一次",
+            "第四次",
+            "第七次"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "白家月和安妮是来北京做什么的？",
+          "options": [
+            "旅游",
+            "学中文",
+            "找王一雪"
+          ],
+          "answer": "A"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "王一雪",
+          "cn": "你们是第一次来北京吗？",
+          "en": "Is this your first visit to Beijing?"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "是的，我们都是第一次来。",
+          "en": "Yes, it's the first time for both of us."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "你们是来学中文的吗？",
+          "en": "Are you here to learn Chinese?"
+        },
+        {
+          "speaker": "安妮",
+          "cn": "不是，我们是来旅游的。",
+          "en": "No, we're here for sightseeing."
+        },
+        {
+          "speaker": "王一雪",
+          "cn": "我这几天都不忙，你们有事就找我。",
+          "en": "I'm not busy these days. If you need anything, just let me know."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "好的，谢谢您。",
+          "en": "Okay, thank you."
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "王一雪这几天忙不忙？"
+        },
+        {
+          "q": "白家月有事可以找谁？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "次",
+          "pos": "",
+          "en": "(indicating how many times or which time something happens) time; occurrence"
+        },
+        {
+          "cn": "旅游",
+          "pos": "v.",
+          "en": "travel; make a tour"
+        }
+      ]
+    },
+    {
+      "id": "01-03",
+      "title": {
+        "cn": "在车上接电话",
+        "en": "A phone call in the car",
+        "emoji": "📞"
+      },
+      "intro": {
+        "cn": "在王一雪的车上，白家月接了个电话。",
+        "en": "In Wang Yixue's car, Bai Jiayue was receiving a phone call."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-01/1-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-01/1-6.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "陈天中为什么给白家月打电话？",
+          "options": [
+            "找她帮忙",
+            "请她吃饭",
+            "让她接个朋友"
+          ],
+          "answer": "A"
+        },
+        {
+          "type": "choice",
+          "q": "白家月是什么时候到北京的？",
+          "options": [
+            "昨天中午",
+            "昨天晚上",
+            "今天早上"
+          ],
+          "answer": "C"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "陈天中",
+          "cn": "喂，家月，你明天有时间吗？我想请你帮个忙。",
+          "en": "Hello, Jiayue. Do you have time tomorrow? I'd like to ask you for a favor."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "不好意思，天中，我已经到北京了。",
+          "en": "Sorry, Tianzhong. I'm already in Beijing."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "你是什么时候到的？",
+          "en": "When did you get there?"
+        },
+        {
+          "speaker": "白家月",
+          "cn": "我是今天早上到的。你有事可以叫李文帮忙，他还在学校呢。",
+          "en": "I arrived this morning. If you need anything, you can ask Li Wen for help—he's still at school."
+        },
+        {
+          "speaker": "陈天中",
+          "cn": "好的，那我给他打个电话。",
+          "en": "Okay. Then I'll give him a call."
+        },
+        {
+          "speaker": "白家月",
+          "cn": "好，再见！",
+          "en": "All right. Goodbye!"
+        }
+      ],
+      "postQuestions": [
+        {
+          "q": "白家月现在在哪儿？"
+        },
+        {
+          "q": "白家月让陈天中找谁帮忙？为什么？"
+        }
+      ],
+      "words": [
+        {
+          "cn": "帮忙",
+          "pos": "v.",
+          "en": "help; do a favor"
+        },
+        {
+          "cn": "不好意思",
+          "pos": "",
+          "en": "embarrassing (to do sth)"
+        },
+        {
+          "cn": "已经",
+          "pos": "adv.",
+          "en": "already"
+        },
+        {
+          "cn": "那",
+          "pos": "conj.",
+          "en": "then"
+        }
+      ]
+    },
+    {
+      "id": "01-04",
+      "title": {
+        "cn": "在酒店发信息",
+        "en": "Sending a message at the hotel",
+        "emoji": "🏨"
+      },
+      "intro": {
+        "cn": "在酒店，白家月给王一飞发信息。",
+        "en": "At the hotel, Bai Jiayue was sending a message to Wang Yifei."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-01/1-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-01/1-8.mp3",
+      "questions": [
+        {
+          "type": "choice",
+          "q": "判断正误：王老师到北京了，是她姐姐来接的她。",
+          "options": [
+            "对",
+            "错"
+          ],
+          "answer": "B"
+        },
+        {
+          "type": "choice",
+          "q": "判断正误：白家月现在要去饭店吃北京烤鸭。",
+          "options": [
+            "对",
+            "错"
+          ],
+          "answer": "B"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "",
+          "cn": "王老师，我们已经到北京了，是您姐姐来接的我们。",
+          "en": "Ms. Wang, we've already arrived in Beijing. Your cousin came to pick us up."
+        },
+        {
+          "speaker": "",
+          "cn": "她请我们吃了北京烤鸭，还给我们介绍了很多东西。",
+          "en": "She treated us to Peking Duck and told us about many things."
+        },
+        {
+          "speaker": "",
+          "cn": "我们的中文不太好，有时不太懂她的意思。",
+          "en": "Our Chinese isn't very good, so sometimes we don't quite understand her."
+        }
+      ],
+      "postQuestions": [],
+      "words": [
+        {
+          "cn": "介绍",
+          "pos": "v.",
+          "en": "introduce"
+        },
+        {
+          "cn": "有时",
+          "pos": "adv.",
+          "en": "sometimes"
+        },
+        {
+          "cn": "懂",
+          "pos": "v.",
+          "en": "understand; know"
+        },
+        {
+          "cn": "意思",
+          "pos": "n.",
+          "en": "meaning; idea"
+        },
+        {
+          "cn": "北京烤鸭",
+          "pos": "",
+          "en": "Peking Duck"
+        }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "1-g1",
+      "textId": "01-01",
+      "no": 1,
+      "cn": "语气助词“吧”（2）",
+      "en": "Modal Particle “吧”(2)",
+      "note": "语气助词“吧”用在疑问句末尾，表达揣测、估计的语气。",
+      "noteEn": "The modal particle “吧” is used at the end of an interrogative sentence to express a tone of speculation or estimation.",
+      "items": [
+        {
+          "c": "你们就是她的学生吧？",
+          "en": "You two must be her students, right?"
+        },
+        {
+          "c": "她唱歌很好听吧？",
+          "en": "She sings beautifully, doesn't she?"
+        },
+        {
+          "c": "陈天中是泰国人吧？",
+          "en": "Chen Tianzhong is Thai, right?"
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：这是____？ B：对，是我的手机，谢谢你！",
+          "en": ""
+        },
+        {
+          "cn": "A：你____？认识你很高兴。 B：是。认识你，我也很高兴。",
+          "en": ""
+        },
+        {
+          "cn": "A：很晚了，老师____？ B：那我们明天再去学校找她。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "1-g2",
+      "textId": "01-02",
+      "no": 2,
+      "cn": "“是……的”句",
+      "en": "The “是……的” Sentence",
+      "note": "“是……的”句用来强调事情发生的时间、地点、方式、动作者、目的等。肯定句和疑问句中可以省略“是”，否定句中不能省略“是”。",
+      "noteEn": "The “是……的” sentence can be used to emphasize the time, place, manner, agent, purpose, etc., of an event. In affirmative and interrogative sentences, “是” can be omitted, but it cannot be omitted in negative sentences.",
+      "items": [
+        {
+          "c": "我们是来旅游的。",
+          "en": "We are here for sightseeing."
+        },
+        {
+          "c": "苹果在哪儿买的？",
+          "en": "Where did you buy the apples?"
+        },
+        {
+          "c": "我们不是坐出租车去的。",
+          "en": "We didn't go by taxi."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：你是坐车来学校的吗？ B：____",
+          "en": ""
+        },
+        {
+          "cn": "A：你今天是几点到学校的？ B：____",
+          "en": ""
+        },
+        {
+          "cn": "A：____ B：我是在书店看见安妮的。",
+          "en": ""
+        }
+      ]
+    },
+    {
+      "id": "1-g3",
+      "textId": "01-03",
+      "no": 3,
+      "cn": "兼语句",
+      "en": "Pivotal Sentences",
+      "note": "兼语句的谓语由两个动词短语组成，前一个动词的宾语是第二个动词的主语。前一个动词是“请、让、叫”时，表示让某人做某事。基本结构：主语＋请/让/叫＋宾语（＝主语）＋动词或动词性短语。",
+      "noteEn": "A pivotal sentence consists of two verbal phrases, in which the object of the first verb serves as the subject of the second verb. When the preceding verb is “请”, “让”, or “叫”, it indicates asking or having someone do something. Basic structure: Subject + 请/让/叫 + Object (= Subject) + Verb or Verbal Phrase.",
+      "items": [
+        {
+          "c": "我想请你帮个忙。",
+          "en": "I'd like to ask you for a favor."
+        },
+        {
+          "c": "王老师让我们说中文。",
+          "en": "Teacher Wang asks us to speak Chinese."
+        },
+        {
+          "c": "妈妈叫孩子们回家。",
+          "en": "Mom calls the children home."
+        }
+      ],
+      "practice": [
+        {
+          "cn": "A：明天我想请____来____。 B：好的，我下班后去买点儿菜。",
+          "en": ""
+        },
+        {
+          "cn": "A：家月，王老师让____去____。 B：好的，我现在就去找她。",
+          "en": ""
+        },
+        {
+          "cn": "A：小雪，你去哪儿？ B：我去超市。妈妈叫____。",
+          "en": ""
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "1-t1",
+      "textId": "01-04",
+      "no": 4,
+      "cn": "“多听、多说”",
+      "en": "“多听、多说”",
+      "note": "此处“多听、多说”表示反复多次地听和说。",
+      "noteEn": "Here, “多听、多说” denotes repeated listening and speaking.",
+      "items": [],
+      "practice": []
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": [
+          "帮忙",
+          "已经",
+          "意思",
+          "介绍",
+          "有时"
+        ],
+        "items": [
+          {
+            "cn": "我去电影院看个电影。",
+            "answer": ""
+          },
+          {
+            "cn": "上课要多听、多说，你懂我的吗？",
+            "answer": ""
+          },
+          {
+            "cn": "我很喜欢北京，这是我第三次来北京了。",
+            "answer": ""
+          },
+          {
+            "cn": "A：安妮，我给你一下，这是我的中国朋友李文。",
+            "answer": ""
+          },
+          {
+            "cn": "A：今天的工作太多了！ B：那你找个人来吧。",
+            "answer": ""
+          }
+        ]
+      },
+      "group2": {
+        "options": [],
+        "items": []
+      }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "角色扮演",
+      "en": "Role-Play",
+      "description": "两人一组，一人来火车站接朋友，一人刚出站、是接站人的朋友。接站人向朋友询问来这里的目的和现在要去的地方，等等。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in pairs. One student plays the person picking up a friend at the train station, and the other plays the friend who has just got out of the station. The student picking up the friend asks about the purpose of the visit, the place the friend is going to, and other related information. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

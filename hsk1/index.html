@@ -61,6 +61,22 @@ if (location.protocol !== 'file:') {
         <button id="fontUpBtn" title="Enlarge content text">+</button>
       </div>
     </div>
+    <div class="settings-section">Content</div>
+    <div class="settings-row">
+      <span class="settings-row-label">📝 Comprehensive exercises</span>
+      <div class="random-toggle">
+        <input type="checkbox" id="exercisesToggle">
+        <label for="exercisesToggle" class="settings-switch"><span class="settings-switch-dot"></span></label>
+      </div>
+    </div>
+    <div class="settings-section" id="textbookSection" hidden>Textbook</div>
+    <div class="settings-row" id="textbookRow" hidden>
+      <span class="settings-row-label">📚 Course book</span>
+      <div class="settings-seg" id="textbookSeg">
+        <button type="button" data-book="legacy">Legacy HSK 2</button>
+        <button type="button" data-book="new">New HSK 2</button>
+      </div>
+    </div>
     <div class="settings-section">Startup</div>
     <div class="settings-row">
       <span class="settings-row-label">🚀 Start in</span>

@@ -1,0 +1,220 @@
+{
+  "lesson": 9,
+  "key": "9",
+  "name": "L9 · 我去买杯奶茶",
+  "titleCn": "我去买杯奶茶",
+  "titleEn": "I'm going to buy a cup of bubble tea",
+  "texts": [
+    {
+      "id": "09-01",
+      "title": { "cn": "在商店看裤子", "en": "Looking at pants in a store", "emoji": "👖" },
+      "intro": { "cn": "在商店，王一雪和刘明在看裤子。", "en": "In the store, Wang Yixue and Liu Ming were looking at pants." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-09/9-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-09/9-2.mp3",
+      "questions": [
+        { "type": "choice", "q": "王一雪为什么想给儿子买裤子？", "options": ["儿子的裤子坏了", "儿子喜欢新裤子", "儿子明天过生日"], "answer": "A" },
+        { "type": "choice", "q": "刘明觉得哪条裤子好看？", "options": ["黑色的裤子", "白色的裤子", "上次买的裤子"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "王一雪", "cn": "儿子的裤子坏了，我们给他买条新的吧。", "en": "Our son's pants are torn. Let's buy him a new pair." },
+        { "speaker": "刘明", "cn": "好啊。", "en": "Okay." },
+        { "speaker": "王一雪", "cn": "你看这条黑色的怎么样？", "en": "How about this pair of black ones?" },
+        { "speaker": "刘明", "cn": "没有你上次买的那条好看。", "en": "They're not as nice as the ones you bought last time." },
+        { "speaker": "王一雪", "cn": "旁边那个男孩儿就穿了这样的裤子，我觉得很好看啊！", "en": "The boy next to us is wearing pants like these, and I think they look great!" },
+        { "speaker": "刘明", "cn": "儿子的个子没有他那么高，穿上就不会太好看。", "en": "Our son isn't as tall as him, so they wouldn't look so good on him." },
+        { "speaker": "王一雪", "cn": "好吧，我们再去那边看看。", "en": "Alright, let's go over there and take another look." }
+      ],
+      "postQuestions": [
+        { "q": "刘明觉得儿子穿这条裤子好看吗？为什么？" },
+        { "q": "王一雪和刘明给儿子买裤子了吗？" }
+      ],
+      "words": [
+        { "cn": "坏", "pos": "adj.", "en": "bad; ruined" },
+        { "cn": "旁边", "pos": "n.", "en": "side; adjacent place" },
+        { "cn": "男孩儿", "pos": "n.", "en": "boy" },
+        { "cn": "这样", "pos": "pron.", "en": "such; like this; so" },
+        { "cn": "个子", "pos": "n.", "en": "height" },
+        { "cn": "那么", "pos": "pron.", "en": "like that" },
+        { "cn": "高", "pos": "adj.", "en": "tall; high" }
+      ]
+    },
+    {
+      "id": "09-02",
+      "title": { "cn": "在商店门口", "en": "At the store entrance", "emoji": "🧋" },
+      "intro": { "cn": "在商店门口，王一雪和刘明往外走。", "en": "At the entrance of the store, Wang Yixue and Liu Ming were walking out." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-09/9-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-09/9-4.mp3",
+      "questions": [
+        { "type": "choice", "q": "王一雪想喝什么？", "options": ["牛奶", "奶茶", "咖啡"], "answer": "B" },
+        { "type": "choice", "q": "刘明现在想去哪儿？", "options": ["家里", "奶茶店", "咖啡店"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "王一雪", "cn": "门口有家奶茶店。你想喝杯奶茶吗？", "en": "There's a bubble tea shop at the entrance. Do you want a cup of bubble tea?" },
+        { "speaker": "刘明", "cn": "我想喝咖啡，还是去咖啡店吧。", "en": "I'd prefer coffee. Let's go to a coffee shop." },
+        { "speaker": "王一雪", "cn": "咖啡店离这儿有点儿远。", "en": "The coffee shop is a bit far from here." },
+        { "speaker": "刘明", "cn": "没关系，那家店的咖啡很好喝。", "en": "That's fine. The coffee in that shop is very good." },
+        { "speaker": "王一雪", "cn": "那你等一下，我去买杯奶茶。", "en": "Then wait here for a moment while I go and buy a cup of bubble tea." },
+        { "speaker": "刘明", "cn": "你不想喝咖啡吗？", "en": "Don't you want to drink coffee?" },
+        { "speaker": "王一雪", "cn": "喝了咖啡，晚上就别想睡觉了。", "en": "I can't fall asleep if I drink coffee." }
+      ],
+      "postQuestions": [
+        { "q": "咖啡店离这儿远不远？" },
+        { "q": "王一雪为什么不想喝咖啡？" }
+      ],
+      "words": [
+        { "cn": "门口", "pos": "n.", "en": "doorway; entrance" },
+        { "cn": "咖啡", "pos": "n.", "en": "coffee" },
+        { "cn": "离", "pos": "v.", "en": "be apart/away from" }
+      ]
+    },
+    {
+      "id": "09-03",
+      "title": { "cn": "在咖啡店门口", "en": "At the coffee shop entrance", "emoji": "☕" },
+      "intro": { "cn": "在咖啡店门口，王一雪和刘明在聊天儿。", "en": "At the entrance of a coffee shop, Wang Yixue and Liu Ming were chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-09/9-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-09/9-6.mp3",
+      "questions": [
+        { "type": "choice", "q": "刘明想怎么回家？", "options": ["打车", "走路", "跑步"], "answer": "A" },
+        { "type": "choice", "q": "走路回家要多长时间？", "options": ["半个多小时", "一个多小时", "一个半小时"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "刘明", "cn": "我们打车回去吧。", "en": "Let's take a taxi home." },
+        { "speaker": "王一雪", "cn": "这里离家很近，还是走路吧。", "en": "It's close to home. Let's walk." },
+        { "speaker": "刘明", "cn": "要走多长时间？", "en": "How long will it take?" },
+        { "speaker": "王一雪", "cn": "走半个多小时就到了。", "en": "Walking will take a little more than half an hour." },
+        { "speaker": "刘明", "cn": "好的。每天上下班都坐车，今天运动运动吧。", "en": "Alright. I take the car to and from work every day, so I'll get some exercise today." }
+      ],
+      "postQuestions": [
+        { "q": "王一雪为什么想走路回家？" },
+        { "q": "刘明每天怎么上下班？" }
+      ],
+      "words": [
+        { "cn": "近", "pos": "adj.", "en": "close; nearby" },
+        { "cn": "走路", "pos": "v.", "en": "walk" }
+      ]
+    },
+    {
+      "id": "09-04",
+      "title": { "cn": "在房间写日记", "en": "Writing a diary in the room", "emoji": "📔" },
+      "intro": { "cn": "在房间，王一雪在写日记。", "en": "In the room, Wang Yixue was writing in her diary." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-09/9-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-09/9-8.mp3",
+      "questions": [
+        { "type": "choice", "q": "判断正误：王一雪和刘明给儿子买了几件衣服。", "options": ["对", "错"], "answer": "B" },
+        { "type": "choice", "q": "判断正误：因为想运动，所以王一雪和刘明是走回家的。", "options": ["对", "错"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "", "cn": "这周刘明休息，我下班后跟他去了一家商店。", "en": "Liu Ming has the whole week off, so I went to a store with him after work." },
+        { "speaker": "", "cn": "商店里边的衣服没有大商场里的好看。我们没有买到喜欢的衣服，从商店出来就到咖啡店坐了坐。", "en": "The clothes in the store weren't as nice as those in big shopping malls. We didn't find any clothes we liked, so after leaving the store, we went to a coffee shop to sit for a while." },
+        { "speaker": "", "cn": "因为想运动运动，所以喝完东西，我们就走回家了。", "en": "Since we wanted to get some exercise, we walked home after finishing our drinks." }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "周", "pos": "n.", "en": "week" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "9-g1",
+      "textId": "09-01",
+      "no": 1,
+      "cn": "比较句（3）",
+      "en": "Comparative Sentences (3)",
+      "note": "用“没有”表示比较的比较句，意思是“不如”“不及”。基本结构：A 没有 B＋形容词或形容词性短语。形容词前面可以加“这么”或者“那么”，表示 B 的程度更高。“没有”的肯定形式“有”常用在表示比较的疑问句中。",
+      "noteEn": "“没有” in comparative sentences expresses the meaning of “not as … as” or “inferior to”. Basic structure: A 没有 B + Adjective or Adjectival Phrase. The adjective can be preceded by “这么” or “那么” to indicate that B has a higher degree. The affirmative form “有” is often used in interrogative sentences to indicate comparison.",
+      "items": [
+        { "c": "儿子的个子没有他那么高。", "en": "Our son isn't as tall as him." },
+        { "c": "昨天没有今天这么冷。", "en": "Yesterday wasn't as cold as today." },
+        { "c": "这块手表没有那块好看。", "en": "This watch isn't as nice as that one." },
+        { "c": "妹妹有姐姐高吗？", "en": "Is the younger sister as tall as the older sister?" },
+        { "c": "那件衣服有这件好看吗？", "en": "Is that piece of clothing as nice as this one?" }
+      ],
+      "practice": [
+        { "cn": "A：我女儿今年六岁多了，你儿子几岁了？ B：四岁多，没有____", "en": "" },
+        { "cn": "A：这件黑色的衣服好看吗？ B：____好看，但____，还是买那件白色的吧。", "en": "" },
+        { "cn": "A：今天____昨天那么____吗？ B：没有，我觉得昨天更热。", "en": "" }
+      ]
+    },
+    {
+      "id": "9-g2",
+      "textId": "09-02",
+      "no": 2,
+      "cn": "动词“离”",
+      "en": "Verb “离”",
+      "note": "动词“离”表示处所、时间的距离。基本结构：A 离 B……。",
+      "noteEn": "The verb “离” is used to indicate spatial or temporal distance. Basic structure: A 离 B……",
+      "items": [
+        { "c": "咖啡店离这儿有点儿远。", "en": "The coffee shop is a bit far from here." },
+        { "c": "学校离医院不远。", "en": "The school is not far from the hospital." },
+        { "c": "现在离我的生日还有三天。", "en": "It's still three days until my birthday." }
+      ],
+      "practice": [
+        { "cn": "A：你每天都开车去上班吗？ B：是啊，公司____", "en": "" },
+        { "cn": "A：我们酒店____。 B：太好了，我很想去商场看看。", "en": "" },
+        { "cn": "A：____现在还有一个小时。 B：那想想下班后我们去哪儿吃饭吧。", "en": "" }
+      ]
+    },
+    {
+      "id": "9-g3",
+      "textId": "09-03",
+      "no": 3,
+      "cn": "时量补语（1）",
+      "en": "Complement of Duration (1)",
+      "note": "表示时间段的词语用在动词后面构成时量补语，说明动作或状态持续的时间。基本结构：主语＋动词＋时量补语。动词带宾语时，事物名词一般在时量补语后，称呼或代词一般在时量补语前；也可以重复动词后再加时量补语。动词是离合词时，需要重复动词性语素。动词后有“了”、句尾还有语气助词“了”，表示动作仍在进行。",
+      "noteEn": "Time expressions are used after verbs to form complements of duration, indicating the length of time an action or a state lasts. Basic structure: Subject + Verb + Complement of Duration. If the object is a thing noun, it is usually placed after the complement; if it is a term of address or a pronoun, it is usually placed before. The verb can also be repeated before adding the complement, and a separable word repeats its verbal morpheme. With “了” after the verb and another “了” at the end, the action is still ongoing.",
+      "items": [
+        { "c": "走半个多小时就到了。", "en": "Walking for a little more than half an hour gets you there." },
+        { "c": "他们学了两年。", "en": "They studied for two years." },
+        { "c": "我们休息十分钟。", "en": "Let's rest for ten minutes." },
+        { "c": "我看了一个晚上电视。", "en": "I watched TV for a whole evening." },
+        { "c": "李文等了她一个小时。", "en": "Li Wen waited for her for an hour." },
+        { "c": "我找了陈天中二十多分钟。", "en": "I looked for Chen Tianzhong for over twenty minutes." },
+        { "c": "他们学中文学了两年。", "en": "They studied Chinese for two years." },
+        { "c": "安妮游泳游了一个下午。", "en": "Annie swam for a whole afternoon." },
+        { "c": "他写了半个小时汉字了。", "en": "He has been writing Chinese characters for half an hour." }
+      ],
+      "practice": [
+        { "cn": "A：儿子今天出去打了____。 B：这是他的爱好，一有时间就去打球。", "en": "" },
+        { "cn": "A：你____，我去给你拿杯水来。 B：你别忙了，我说完话就回去了。", "en": "" },
+        { "cn": "A：你的小猫找到了吗？ B：没有，我都找____。", "en": "" }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "9-t1",
+      "textId": "09-04",
+      "no": 4,
+      "cn": "“动词＋到”",
+      "en": "“Verb + 到”",
+      "note": "“动词＋到”表示动作达到了目的。",
+      "noteEn": "“Verb + 到” indicates that an action has achieved its purpose.",
+      "items": [],
+      "practice": []
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["旁边", "走路", "那么", "个子", "这样"],
+        "items": [
+          { "cn": "你女儿十多岁，____这么高啊！", "answer": "" },
+          { "cn": "咖啡店不远，我们是____过去的。", "answer": "" },
+          { "cn": "我们住的酒店____有个公交站，那儿有到火车站的公交车。", "answer": "" },
+          { "cn": "A：我也喜欢____的茶杯，你是在哪儿买的？ B：我是在公司门口那家商店买的。", "answer": "" },
+          { "cn": "A：虽然今天的工作也不少，但是我觉得没有昨天累。 B：那我们出去走一走吧。", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "双人活动",
+      "en": "Pair Work",
+      "description": "两人一组，商量一起旅游的出行方式，比较一下不同出行方式的优缺点。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in pairs. Discuss travel methods for a trip and compare the advantages and disadvantages of different travel methods. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

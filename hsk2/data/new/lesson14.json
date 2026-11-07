@@ -1,0 +1,214 @@
+{
+  "lesson": 14,
+  "key": "14",
+  "name": "L14 · 一个人过年多没意思啊",
+  "titleCn": "一个人过年多没意思啊",
+  "titleEn": "It's boring to celebrate the Spring Festival alone",
+  "texts": [
+    {
+      "id": "14-01",
+      "title": { "cn": "在回家路上", "en": "On the way home", "emoji": "🚶" },
+      "intro": { "cn": "在回家路上，李文和王一飞边走边聊。", "en": "On their way home, Li Wen and Wang Yifei were walking and chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-14/14-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-14/14-2.mp3",
+      "questions": [
+        { "type": "choice", "q": "李文看见哪儿有一个人？", "options": ["教室外面", "王一飞家里", "王一飞家楼下"], "answer": "C" },
+        { "type": "choice", "q": "那个人手里拿着什么？", "options": ["黑色的包", "黑色的裤子", "黑色的本子"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "李文", "cn": "王老师，你家楼下站着一个人。", "en": "Ms. Wang, there's someone standing downstairs at your building." },
+        { "speaker": "王一飞", "cn": "我家楼下？我看看。", "en": "Downstairs at my building? Let me take a look." },
+        { "speaker": "李文", "cn": "那个人穿着黑色的裤子，手里还拿着一个黑色的包。", "en": "That person is wearing black pants and holding a black bag." },
+        { "speaker": "王一飞", "cn": "我看见那个人了，他是我的男朋友。", "en": "I see him. He is my boyfriend." },
+        { "speaker": "李文", "cn": "那我们快过去吧。", "en": "Let's go over quickly then." }
+      ],
+      "postQuestions": [
+        { "q": "那个人穿着什么？" },
+        { "q": "那个人是来找谁的？" }
+      ],
+      "words": [
+        { "cn": "站", "pos": "v.", "en": "stand" },
+        { "cn": "包", "pos": "n./v./m.", "en": "bag; wrap; bundle" }
+      ]
+    },
+    {
+      "id": "14-02",
+      "title": { "cn": "在楼下见面", "en": "Meeting downstairs", "emoji": "🤝" },
+      "intro": { "cn": "在楼下，王一飞见到杨同乐。", "en": "Downstairs, Wang Yifei met Yang Tongle." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-14/14-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-14/14-4.mp3",
+      "questions": [
+        { "type": "choice", "q": "杨同乐为什么来找王一飞？", "options": ["跟她一起过年", "来见她的朋友", "送给她新年礼物"], "answer": "A" },
+        { "type": "choice", "q": "李文住在哪儿？", "options": ["这个楼", "前面那个楼", "旁边那个楼"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "王一飞", "cn": "同乐，真是你啊！上次打电话，你说有时间过来看我，没想到这么快就来了！", "en": "Tongle, it really is you! Last time we talked on the phone, you said you'd visit me when you had time. I didn't expect you to come so soon!" },
+        { "speaker": "杨同乐", "cn": "就要过年了，你一个人在这儿多没意思啊，所以我就早早过来了。", "en": "The Spring Festival is almost here. It's no fun for you to be here all alone, so I came here as soon as possible." },
+        { "speaker": "王一飞", "cn": "你能来，我太高兴了！", "en": "I'm so happy you could come!" },
+        { "speaker": "杨同乐", "cn": "一飞，你旁边这位是？", "en": "Yifei, who's this next to you?" },
+        { "speaker": "王一飞", "cn": "同乐，这是李文，他在我们学校学医。李文，这是我男朋友杨同乐。", "en": "Tongle, this is Li Wen. He's studying medicine at our school. Li Wen, this is my boyfriend, Yang Tongle." },
+        { "speaker": "杨同乐", "cn": "李文，很高兴认识你！", "en": "Li Wen, nice to meet you!" },
+        { "speaker": "李文", "cn": "认识你我也很高兴！我家就在前面那个楼，有时间来玩。", "en": "Nice to meet you too! My home is just in that building up ahead. Feel free to come over when you have time." }
+      ],
+      "postQuestions": [
+        { "q": "杨同乐来了，王一飞高兴吗？" },
+        { "q": "王一飞是怎么给他们介绍的？" }
+      ],
+      "words": [
+        { "cn": "过年", "pos": "v.", "en": "celebrate the Spring Festival" },
+        { "cn": "没意思", "pos": "", "en": "boring" },
+        { "cn": "位", "pos": "m.", "en": "used in deferential reference to people" },
+        { "cn": "前面", "pos": "n.", "en": "front" }
+      ]
+    },
+    {
+      "id": "14-03",
+      "title": { "cn": "在客厅聊天", "en": "Chatting in the living room", "emoji": "🛋️" },
+      "intro": { "cn": "在王一飞家里，王一飞和杨同乐在客厅聊天儿。", "en": "At Wang Yifei's home, Wang Yifei and Yang Tongle were chatting in the living room." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-14/14-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-14/14-6.mp3",
+      "questions": [
+        { "type": "choice", "q": "王一飞的房子怎么样？", "options": ["很不错", "不太大", "离学校不近"], "answer": "A" },
+        { "type": "choice", "q": "王一飞教楼下的小孩儿做什么？", "options": ["打篮球", "学中文", "做中国菜"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "杨同乐", "cn": "一飞，你住的房子真不错，很大，离学校也不远。", "en": "Yifei, your house is really nice, very big, and not far from school." },
+        { "speaker": "王一飞", "cn": "是啊！我楼下还住着一家中国人，他们人很好。", "en": "Yes! There's a Chinese family living downstairs, and they are very nice." },
+        { "speaker": "杨同乐", "cn": "这样你有事情就可以找他们帮忙。", "en": "Then you can ask them for help if you ever need anything." },
+        { "speaker": "王一飞", "cn": "对，我也帮他们家的小孩儿学中文。", "en": "Yes, I also help their child learn Chinese." },
+        { "speaker": "杨同乐", "cn": "我记得你跟我说过，是个女孩儿，学得也很好。", "en": "I remember you told me that child was a girl, and she learned so well." },
+        { "speaker": "王一飞", "cn": "没错，她经常跑上来找我玩。", "en": "Exactly, she often comes upstairs to play with me." },
+        { "speaker": "杨同乐", "cn": "你问问他们什么时候有时间，我请他们吃个饭。", "en": "You can ask them when they're free, and I'll treat them to a meal." }
+      ],
+      "postQuestions": [
+        { "q": "王一飞家楼下住着什么人？" },
+        { "q": "杨同乐要请楼下的人做什么？" }
+      ],
+      "words": [
+        { "cn": "房子", "pos": "n.", "en": "house" },
+        { "cn": "小孩儿", "pos": "n.", "en": "child; kid" },
+        { "cn": "女孩儿", "pos": "n.", "en": "girl" }
+      ]
+    },
+    {
+      "id": "14-04",
+      "title": { "cn": "在房间写日记", "en": "Writing a diary in the room", "emoji": "📔" },
+      "intro": { "cn": "在房间，王一飞在写日记。", "en": "In the room, Wang Yifei was writing in her diary." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-14/14-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-14/14-8.mp3",
+      "questions": [
+        { "type": "choice", "q": "判断正误：王一飞很喜欢唱歌跳舞。", "options": ["对", "错"], "answer": "B" },
+        { "type": "choice", "q": "判断正误：王一飞认识杨同乐的姐姐。", "options": ["对", "错"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "", "cn": "我男朋友姓杨，叫杨同乐。他高个子、大眼睛，唱歌唱得很好，跳舞跳得也不错。", "en": "My boyfriend's last name is Yang, and his full name is Yang Tongle. He is tall, has big eyes, sings very well, and is also good at dancing." },
+        { "speaker": "", "cn": "他和我姐姐一起工作，是姐姐介绍我们认识的。", "en": "He and my cousin work together, and it was my cousin who introduced us." },
+        { "speaker": "", "cn": "他告诉我，从见到我的第一天开始，他就喜欢上我了。", "en": "He told me that he liked me from the very first day he met me." }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "姓", "pos": "v.", "en": "be surnamed" },
+        { "cn": "眼睛", "pos": "n.", "en": "eye" },
+        { "cn": "跳舞", "pos": "v.", "en": "dance" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "14-g1",
+      "textId": "14-01",
+      "no": 1,
+      "cn": "存现句（2）",
+      "en": "Existential Sentences (2)",
+      "note": "动态助词“着”用在动词后面可以构成存现句，动词前面是表示处所的短语，后面一般是不确指的人或事物。基本结构：处所＋动词＋着＋人/事物。",
+      "noteEn": "The aspect particle “着” is placed after a verb to form an existential sentence. The phrase before the verb usually indicates a location, and the phrase after the verb generally refers to unspecified people or things. Basic structure: Location + Verb + 着 + People/Things.",
+      "items": [
+        { "c": "你家楼下站着一个人。", "en": "Someone is standing downstairs at your building." },
+        { "c": "爸爸手里拿着一杯咖啡。", "en": "Dad is holding a cup of coffee." },
+        { "c": "那间教室里坐着不少学生。", "en": "Quite a few students are sitting in that classroom." }
+      ],
+      "practice": [
+        { "cn": "A：楼下____，他说他是来找你的。 B：好，我下去看看。", "en": "" },
+        { "cn": "A：本子上面写着什么？ B：____", "en": "" },
+        { "cn": "A：天中，你的椅子上____，你认识他吗？ B：不认识，我们过去问问他。", "en": "" }
+      ]
+    },
+    {
+      "id": "14-g2",
+      "textId": "14-02",
+      "no": 2,
+      "cn": "程度副词“多”",
+      "en": "Adverb of Degree “多”",
+      "note": "“多”用在感叹句中，表示程度很高。",
+      "noteEn": "“多” is used in exclamatory sentences to express a high degree.",
+      "items": [
+        { "c": "你一个人在这儿多没意思啊！", "en": "It's so boring for you to be here all alone!" },
+        { "c": "我们一起去多好啊！", "en": "How nice it would be if we went together!" },
+        { "c": "多好看啊！买这件吧。", "en": "How pretty! Let's buy this one." }
+      ],
+      "practice": [
+        { "cn": "A：你这本书____啊！ B：是很新，可能没人爱看吧。", "en": "" },
+        { "cn": "A：你看，孩子们____啊！ B：是啊，他们最喜欢在外边玩了。", "en": "" },
+        { "cn": "A：别买了，这块手表____！ B：没关系，你喜欢就买。", "en": "" }
+      ]
+    },
+    {
+      "id": "14-g3",
+      "textId": "14-03",
+      "no": 3,
+      "cn": "复合趋向补语",
+      "en": "Compound Complement of Direction",
+      "note": "“上、下、进、出、回、过”加上“来/去”，以及“起来”，用在动词后，可以构成复合趋向补语，表示动作的方向。当动词带宾语时：宾语是地点名词，放在“来/去”前面；宾语是事物名词，放在“来/去”前后都可以。",
+      "noteEn": "Verbs “上”, “下”, “进”, “出”, “回”, and “过”, combined with “来”, “去”, and “起来”, are used after a verb to form compound complements of direction, indicating the direction of an action. When the verb takes an object: a location noun is placed before “来/去”; a thing noun can be placed either before or after “来/去”.",
+      "items": [
+        { "c": "她经常跑上来找我玩。", "en": "She often runs upstairs to play with me." },
+        { "c": "楼不高，我们走上去吧。", "en": "The building isn't tall; let's walk up." },
+        { "c": "一听到老师叫他的名字，他就站起来了。", "en": "As soon as he heard the teacher call his name, he stood up." },
+        { "c": "同学们都走出教室去了。", "en": "All the students walked out of the classroom." },
+        { "c": "妈妈让我买回一些菜来。", "en": "Mom asked me to buy some vegetables and bring them back." },
+        { "c": "白家月从书包里找出来一个漂亮的本子。", "en": "Bai Jiayue found a beautiful notebook in her schoolbag." }
+      ],
+      "practice": [
+        { "cn": "A：小雪呢？她不去商场吗？ B：她早都____了，在楼下等我们呢。", "en": "" },
+        { "cn": "A：包里是什么东西，快____吧。 B：就是些吃的、喝的，还能有什么？", "en": "" },
+        { "cn": "A：家月病了，我买了点儿药，现在给她____。 B：你等我一下，我跟你一起过去。", "en": "" }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "14-t1",
+      "textId": "14-04",
+      "no": 4,
+      "cn": "“喜欢上”",
+      "en": "“喜欢上”",
+      "note": "“喜欢上”表示开始喜欢，并一直喜欢下去。",
+      "noteEn": "“喜欢上” means to start liking something and continue to like it.",
+      "items": [],
+      "practice": []
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["位", "过年", "跳舞", "姓", "眼睛"],
+        "items": [
+          { "cn": "他儿子的____大大的，很漂亮。", "answer": "" },
+          { "cn": "他已经几年没回国了，今年想回国____。", "answer": "" },
+          { "cn": "我从小就跟老师学____，学了十多年了。", "answer": "" },
+          { "cn": "A：请你介绍一下自己。 B：我____李，叫李明，是从上海来的。", "answer": "" },
+          { "cn": "A：您好！请问，就您一____吗？ B：还有个朋友，他一来我们就点菜。", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "双人活动",
+      "en": "Pair Work",
+      "description": "两人一组，模拟帮朋友看房子的场景，互相说明房子的优点、缺点，等等。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in pairs. Role-play a scenario where you help a friend look at a house, and explain its advantages and disadvantages, and so on. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

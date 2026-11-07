@@ -1,0 +1,227 @@
+{
+  "lesson": 3,
+  "key": "3",
+  "name": "L3 · 我想去西安旅游",
+  "titleCn": "我想去西安旅游",
+  "titleEn": "I want to visit Xi'an",
+  "texts": [
+    {
+      "id": "03-01",
+      "title": { "cn": "在家门口", "en": "At the doorway", "emoji": "🚪" },
+      "intro": {
+        "cn": "在家门口，刘明开门进到家里。",
+        "en": "At the doorway, Liu Ming opened the door and went into the house."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-03/3-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-03/3-2.mp3",
+      "questions": [
+        { "type": "choice", "q": "刘明为什么回来晚了？", "options": ["没做完工作", "去外边吃饭", "在公司休息"], "answer": "A" },
+        { "type": "choice", "q": "刘明现在要做什么？", "options": ["吃饭", "喝水", "工作"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "王一雪", "cn": "今天回来这么晚啊！", "en": "You're back so late today!" },
+        { "speaker": "刘明", "cn": "工作太多了，下班的时候没做完。", "en": "I had too much work to do, and I hadn't finished it when it was time to get off work." },
+        { "speaker": "王一雪", "cn": "菜都做好了，过来吃饭吧。", "en": "Dinner's ready. Come and eat." },
+        { "speaker": "刘明", "cn": "我想休息一下，喝杯水。", "en": "I'd like to take a break and have a glass of water first." },
+        { "speaker": "王一雪", "cn": "好的。", "en": "Okay." }
+      ],
+      "postQuestions": [
+        { "q": "今天刘明的工作多不多？" },
+        { "q": "王一雪已经做好什么了？" }
+      ],
+      "words": [
+        { "cn": "回来", "pos": "v.", "en": "come back" },
+        { "cn": "这么", "pos": "pron.", "en": "so" },
+        { "cn": "完", "pos": "v.", "en": "end; complete" }
+      ]
+    },
+    {
+      "id": "03-02",
+      "title": { "cn": "在客厅商量旅游", "en": "Planning a trip in the living room", "emoji": "🛋️" },
+      "intro": {
+        "cn": "在客厅，刘明和王一雪在聊天儿。",
+        "en": "In the living room, Liu Ming and Wang Yixue were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-03/3-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-03/3-4.mp3",
+      "questions": [
+        { "type": "choice", "q": "刘明想找时间做什么？", "options": ["去吃饭", "去旅游", "买东西"], "answer": "B" },
+        { "type": "choice", "q": "刘明让王一雪做什么？", "options": ["去买票", "看一下时间", "想想去哪儿玩"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "刘明", "cn": "我们找个时间去旅游，怎么样？", "en": "Why don't we find some time to go on a trip?" },
+        { "speaker": "王一雪", "cn": "好啊，我也很想一起出去玩。", "en": "Great! I also really want to go traveling with you." },
+        { "speaker": "刘明", "cn": "你想去哪儿？", "en": "Where do you want to go?" },
+        { "speaker": "王一雪", "cn": "我还没想好呢。", "en": "I haven't figured it out yet." },
+        { "speaker": "刘明", "cn": "那你再想一想，你想好了，我来买票。", "en": "Then think about it further. Once you've made up your mind, I'll buy the tickets." }
+      ],
+      "postQuestions": [
+        { "q": "王一雪想好去哪儿了吗？" },
+        { "q": "谁来买票？" }
+      ],
+      "words": [
+        { "cn": "一起", "pos": "adv.", "en": "together" },
+        { "cn": "出去", "pos": "v.", "en": "go/get out" }
+      ]
+    },
+    {
+      "id": "03-03",
+      "title": { "cn": "在客厅吃苹果", "en": "Eating apples in the living room", "emoji": "🍎" },
+      "intro": {
+        "cn": "在客厅，刘明和王一雪在聊天儿。",
+        "en": "In the living room, Liu Ming and Wang Yixue were chatting."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-03/3-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-03/3-6.mp3",
+      "questions": [
+        { "type": "choice", "q": "刘明让王一雪做什么？", "options": ["洗手", "洗苹果", "吃苹果"], "answer": "C" },
+        { "type": "choice", "q": "王一雪想去哪儿旅游？", "options": ["西安", "北京", "上海"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "刘明", "cn": "吃个苹果吧，我都洗好了。", "en": "Have an apple. I've already washed them." },
+        { "speaker": "王一雪", "cn": "好的。", "en": "Okay." },
+        { "speaker": "刘明", "cn": "就在桌子上，你自己拿。", "en": "They're on the table. Help yourself." },
+        { "speaker": "王一雪", "cn": "我去洗洗手。对了，我们去西安旅游，怎么样？", "en": "I'm going to wash my hands first. By the way, how about taking a trip to Xi'an?" },
+        { "speaker": "刘明", "cn": "为什么想去西安？", "en": "Why do you want to go to Xi'an?" },
+        { "speaker": "王一雪", "cn": "我看了看网上的介绍，这个时候去西安很不错！", "en": "I read some introductions online—it's a great time to visit Xi'an!" }
+      ],
+      "postQuestions": [
+        { "q": "苹果在哪儿？" },
+        { "q": "王一雪为什么想去西安旅游？" }
+      ],
+      "words": [
+        { "cn": "洗", "pos": "v.", "en": "wash" },
+        { "cn": "自己", "pos": "pron.", "en": "oneself" },
+        { "cn": "拿", "pos": "v.", "en": "take; hold" },
+        { "cn": "手", "pos": "n.", "en": "hand" },
+        { "cn": "为什么", "pos": "", "en": "why" },
+        { "cn": "不错", "pos": "adj.", "en": "not bad; pretty good" }
+      ]
+    },
+    {
+      "id": "03-04",
+      "title": { "cn": "给好朋友打电话", "en": "Calling a good friend", "emoji": "📱" },
+      "intro": {
+        "cn": "在家里，王一雪给好朋友打电话。",
+        "en": "At home, Wang Yixue was calling her best friend."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-03/3-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-03/3-8.mp3",
+      "questions": [
+        { "type": "choice", "q": "判断正误：刘明今天没去医院上班。", "options": ["对", "错"], "answer": "B" },
+        { "type": "choice", "q": "判断正误：今天早上是刘明送孩子去学校的。", "options": ["对", "错"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "", "cn": "早上，刘明开车送孩子去学校，送完孩子回家后，医院就来电话了，让他回去上班。", "en": "In the morning, Liu Ming drove the child to school. But just after he got home, the hospital called—they asked him to go back to work." },
+        { "speaker": "", "cn": "我觉得他这个月每天都很累，真想让他休息休息。", "en": "I think he's been very tired every day this month. I really wish he could get some rest." }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "送", "pos": "v.", "en": "accompany sb to his destination; give (as a gift)" },
+        { "cn": "回去", "pos": "v.", "en": "return; go back" },
+        { "cn": "每", "pos": "pron.", "en": "each; every" },
+        { "cn": "累", "pos": "adj.", "en": "tired; weary" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "3-g1",
+      "textId": "03-01",
+      "no": 1,
+      "cn": "结果补语",
+      "en": "Complement of Result",
+      "note": "一些动词或者形容词用在动词后面，表示动作的结果。否定形式是在动词前面加“没（有）”，同时要去掉“了”。疑问形式有三种：句尾加“了吗”；句尾加“（了）没有”；动词+没+动词+结果补语。",
+      "noteEn": "Some verbs or adjectives can be placed after a verb to indicate the result of the action. The negative form is formed by adding “没（有）” before the verb and removing “了”. There are three interrogative forms: add “了吗” at the end; add “（了）没有” at the end; or Verb + 没 + Verb + Complement of Result.",
+      "items": [
+        { "c": "菜都做好了。", "en": "The dishes are all ready." },
+        { "c": "我吃完饭了。", "en": "I've finished eating." },
+        { "c": "小雪今天来晚了。", "en": "Xiaoxue came late today." },
+        { "c": "我没吃完饭。", "en": "I haven't finished eating." },
+        { "c": "小雪没来晚。", "en": "Xiaoxue didn't come late." },
+        { "c": "你吃完饭了吗？", "en": "Have you finished eating?" },
+        { "c": "小雪来晚了没有？", "en": "Did Xiaoxue come late?" },
+        { "c": "你学没学会？", "en": "Have you learned it or not?" }
+      ],
+      "practice": [
+        { "cn": "A：小明，你____衣服没有？ B：我穿好了。", "en": "" },
+        { "cn": "A：老师，我写完了。 B：很好，这几个字都____了。", "en": "" },
+        { "cn": "A：这本书你____？ B：没看懂，我有很多问题。", "en": "" }
+      ]
+    },
+    {
+      "id": "3-g2",
+      "textId": "03-02",
+      "no": 2,
+      "cn": "动词重叠（1）",
+      "en": "Verb Reduplication (1)",
+      "note": "动作性比较强、能重复或持续的动词重叠使用，表示时间短、数量少、尝试等意思，语气比较轻松、随意，多用于口语。单音节动词的重叠形式是“A（一）A”，双音节动词的重叠形式是“ABAB”，离合词的重叠形式是“AAB”。",
+      "noteEn": "Action verbs that are dynamic, repeatable or continuous may appear in a reduplicated form. Such reduplication usually indicates brief actions, limited repetitions, or simple attempts. It conveys a relaxed and casual tone and is mostly used in spoken Chinese. The reduplicated form of a monosyllabic verb is “A（一）A”; that of a disyllabic verb is “ABAB”; and that of a separable word is “AAB”.",
+      "items": [
+        { "c": "那你再想一想，你想好了，我来买票。", "en": "Then think about it further. Once you've made up your mind, I'll buy the tickets." },
+        { "c": "我有点儿累，现在想休息休息。", "en": "I'm a bit tired and want to rest for a while." },
+        { "c": "你能过来帮帮忙吗？", "en": "Could you come over and help?" }
+      ],
+      "practice": [
+        { "cn": "A：家月，学校里有没有超市？ B：我也不知道，你去____老师吧。", "en": "" },
+        { "cn": "A：那个人是谁？ B：你不认识？那我给你____。", "en": "" },
+        { "cn": "A：他的歌真好听！ B：是吗？让我____。", "en": "" }
+      ]
+    },
+    {
+      "id": "3-g3",
+      "textId": "03-03",
+      "no": 3,
+      "cn": "动词重叠（2）",
+      "en": "Verb Reduplication (2)",
+      "note": "表达已经发生的情况时，单音节动词的重叠形式是“A了A”；双音节动词一般不能用重叠形式，只能用“AB了一下”；离合词的重叠形式是“A了AB”。",
+      "noteEn": "When describing an action that has already taken place, the reduplicated form of a monosyllabic verb is “A了A”. Generally, a disyllabic verb cannot be used in its reduplicated form; instead, “AB了一下” is used. The reduplicated form of a separable word is “A了AB”.",
+      "items": [
+        { "c": "我看了看网上的介绍。", "en": "I took a look at the introductions online." },
+        { "c": "我休息了一下，现在觉得不累了。", "en": "I rested for a while, and now I don't feel tired." },
+        { "c": "他昨天来帮了帮忙。", "en": "He came to help yesterday." }
+      ],
+      "practice": [
+        { "cn": "A：昨天你在家吗？ B：我有点儿事，____了一下。", "en": "" },
+        { "cn": "A：你的手机是不是在桌子上？ B：我在桌子上____，但没有。", "en": "" },
+        { "cn": "A：昨天下午你做什么了？ B：我在房间____书，____字。", "en": "" }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "3-t1",
+      "textId": "03-03",
+      "no": 4,
+      "cn": "“对了”",
+      "en": "“对了”",
+      "note": "“对了”表示突然想起另外一件事或提出另一个话题。",
+      "noteEn": "“对了” is used when you suddenly remember something else or bring up another topic.",
+      "items": [],
+      "practice": []
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["一起", "送", "回去", "拿", "累"],
+        "items": [
+          { "cn": "已经下班了，你为什么还不____？", "answer": "" },
+          { "cn": "他每天早上都____女朋友去上班。", "answer": "" },
+          { "cn": "爸爸____了一些水果给孩子们吃。", "answer": "" },
+          { "cn": "A：我昨天晚上没睡好，今天觉得很____。 B：那你休息休息吧。", "answer": "" },
+          { "cn": "A：你认识家月吗？ B：认识啊，我们每天____坐公交车来学校。", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "双人活动",
+      "en": "Pair Work",
+      "description": "两人一组，互相询问：想不想去旅游？想好去哪儿旅游了吗？为什么选择该旅游地？等等。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in pairs. Ask each other: Do you want to travel? Have you decided on a destination? Why did you choose this place? etc. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

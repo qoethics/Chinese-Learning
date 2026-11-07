@@ -1,0 +1,216 @@
+{
+  "lesson": 10,
+  "key": "10",
+  "name": "L10 · 就要考试了",
+  "titleCn": "就要考试了",
+  "titleEn": "The exam is coming",
+  "texts": [
+    {
+      "id": "10-01",
+      "title": { "cn": "在房间准备东西", "en": "Getting things ready in the room", "emoji": "🎒" },
+      "intro": { "cn": "在房间，刘明在帮刘小明准备东西。", "en": "In the room, Liu Ming was helping Liu Xiaoming prepare things." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-10/10-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-10/10-2.mp3",
+      "questions": [
+        { "type": "choice", "q": "书包在哪儿？", "options": ["床上", "桌子上", "门后面"], "answer": "C" },
+        { "type": "choice", "q": "笔在哪儿？", "options": ["床上", "桌子上", "门后面"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "刘明", "cn": "小明，你们明天开学，你准备好了吗？", "en": "Xiaoming, school will start tomorrow. Are you ready?" },
+        { "speaker": "刘小明", "cn": "明天就开学啊？爸爸，我的书包你看见了吗？", "en": "School starts tomorrow? Dad, did you see my schoolbag?" },
+        { "speaker": "刘明", "cn": "书包在门后面。", "en": "It's behind the door." },
+        { "speaker": "刘小明", "cn": "书在哪儿呢？笔呢？", "en": "Where are my books? And my pens?" },
+        { "speaker": "刘明", "cn": "书在床上，笔在桌子上。", "en": "The books are on the bed, and the pens are on the table." },
+        { "speaker": "刘小明", "cn": "太好了！现在都准备好了。", "en": "Great! Everything is ready now." },
+        { "speaker": "刘明", "cn": "这次爸爸帮你，下次你自己准备，好不好？", "en": "Dad helped you this time. Next time, you prepare it by yourself, okay?" },
+        { "speaker": "刘小明", "cn": "好！", "en": "Okay!" }
+      ],
+      "postQuestions": [
+        { "q": "刘小明什么时候开学？" },
+        { "q": "刘小明准备好了吗？为什么？" }
+      ],
+      "words": [
+        { "cn": "开学", "pos": "v.", "en": "school begins" },
+        { "cn": "门", "pos": "n.", "en": "door" },
+        { "cn": "后面", "pos": "n.", "en": "back" },
+        { "cn": "笔", "pos": "n.", "en": "pen; pencil" },
+        { "cn": "帮", "pos": "v.", "en": "help" }
+      ]
+    },
+    {
+      "id": "10-02",
+      "title": { "cn": "在房间聊学习", "en": "Talking about studying", "emoji": "📚" },
+      "intro": { "cn": "在房间，王一雪和刘小雪在聊学习。", "en": "In the room, Wang Yixue and Liu Xiaoxue were talking about studying." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-10/10-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-10/10-4.mp3",
+      "questions": [
+        { "type": "choice", "q": "刘小雪在做什么？", "options": ["看书", "考试", "找本子"], "answer": "A" },
+        { "type": "choice", "q": "做错的题在哪儿？", "options": ["书上", "本子上", "书包里"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "王一雪", "cn": "小雪，你在做什么呢？", "en": "Xiaoxue, what are you doing?" },
+        { "speaker": "刘小雪", "cn": "明天考试，我在看书呢。", "en": "I have an exam tomorrow, so I'm reading." },
+        { "speaker": "王一雪", "cn": "这些词要好好看看。", "en": "You should review these words carefully." },
+        { "speaker": "刘小雪", "cn": "我看过了，意思也都懂了。", "en": "I've already reviewed them, and I understand their meanings." },
+        { "speaker": "王一雪", "cn": "你的本子呢？本子上做错的题也要看一看。", "en": "Where's your notebook? You should also go over the questions you got wrong in it." },
+        { "speaker": "刘小雪", "cn": "妈妈，是您准备考试还是我准备考试？", "en": "Mom! Are you the one preparing for the exam or am I?" }
+      ],
+      "postQuestions": [
+        { "q": "刘小雪明天要做什么？" },
+        { "q": "这些词的意思刘小雪都懂了吗？" }
+      ],
+      "words": [
+        { "cn": "考试", "pos": "v./n.", "en": "take an examination; examination" },
+        { "cn": "词", "pos": "n.", "en": "word" },
+        { "cn": "本子", "pos": "n.", "en": "notebook" },
+        { "cn": "错", "pos": "adj.", "en": "wrong; mistaken" },
+        { "cn": "题", "pos": "n.", "en": "question; problem" },
+        { "cn": "还是", "pos": "conj.", "en": "or" }
+      ]
+    },
+    {
+      "id": "10-03",
+      "title": { "cn": "在客厅聊考试", "en": "Talking about the exam in the living room", "emoji": "🍵" },
+      "intro": { "cn": "在客厅，王一雪和孩子们在聊天儿。", "en": "In the living room, Wang Yixue was chatting with the children." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-10/10-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-10/10-6.mp3",
+      "questions": [
+        { "type": "choice", "q": "刘小雪考试考得怎么样？", "options": ["很不好", "没上次好", "比上次好"], "answer": "C" },
+        { "type": "choice", "q": "王一雪正在做什么？", "options": ["考试", "做菜", "洗手"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "刘小雪", "cn": "妈妈，我回来了！", "en": "Mom, I'm back!" },
+        { "speaker": "王一雪", "cn": "我买了奶茶，就在桌子上，自己去拿吧。", "en": "I bought you a cup of bubble tea; it's on the table, get it by yourself." },
+        { "speaker": "刘小雪", "cn": "谢谢妈妈！", "en": "Thank you, Mom!" },
+        { "speaker": "王一雪", "cn": "今天考试考得怎么样？", "en": "How was your exam today?" },
+        { "speaker": "刘小雪", "cn": "我觉得比上次好。", "en": "I think I did better than last time." },
+        { "speaker": "王一雪", "cn": "真不错！饭菜快要做好了，你叫弟弟一起去洗手吧。", "en": "You are amazing! The food is almost ready. Go ask your little brother to wash his hands together with you." },
+        { "speaker": "刘小明", "cn": "妈妈，我是第一名，姐姐还没洗完呢。", "en": "Mom, I'm the first one done; my sister hasn't finished yet." },
+        { "speaker": "王一雪", "cn": "你洗得真快啊！", "en": "You washed your hands so quickly!" }
+      ],
+      "postQuestions": [
+        { "q": "王一雪叫刘小雪做什么？" },
+        { "q": "孩子们洗完手了吗？" }
+      ],
+      "words": [
+        { "cn": "考", "pos": "v.", "en": "take an examination" },
+        { "cn": "快要", "pos": "adv.", "en": "on the verge of, about to" }
+      ]
+    },
+    {
+      "id": "10-04",
+      "title": { "cn": "在房间写日记", "en": "Writing a diary in the room", "emoji": "📔" },
+      "intro": { "cn": "在房间，刘小雪在写日记。", "en": "In the room, Liu Xiaoxue was writing in her diary." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-10/10-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-10/10-8.mp3",
+      "questions": [
+        { "type": "choice", "q": "判断正误：刘小雪考试前，爸爸帮她准备考试。", "options": ["对", "错"], "answer": "B" },
+        { "type": "choice", "q": "判断正误：刘小雪和弟弟上学，爸爸、妈妈比他们还忙。", "options": ["对", "错"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "", "cn": "快要开学了，爸爸帮弟弟准备书包、本子和笔。", "en": "School is about to start, and dad is helping my younger brother prepare his schoolbag, notebooks, and pens." },
+        { "speaker": "", "cn": "我就要考试了，妈妈让我看书、看做错的题。", "en": "I'm about to take an exam, and mom asked me to read the books and review the questions I got wrong." },
+        { "speaker": "", "cn": "我们上学，爸爸、妈妈比我们还忙。我问他们：“是我和弟弟上学还是你们上学？”我问完，他们都笑了。", "en": "It feels like our parents are even busier than us when it comes to school. I asked them, “Is it my younger brother and me going to school, or is it you?” After I asked, they both burst out laughing." }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "笑", "pos": "v.", "en": "smile; laugh" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "10-g1",
+      "textId": "10-01",
+      "no": 1,
+      "cn": "主谓谓语句",
+      "en": "Sentences with a Subject-Predicate Phrase as the Predicate",
+      "note": "主谓短语可以作谓语，对主语加以说明或描写，构成主谓谓语句。一般来说，主谓短语中的主语是全句主语的一部分或跟它相关。基本结构：主语＋主谓短语。",
+      "noteEn": "A subject-predicate phrase can function as a predicate, providing an explanation or description of the subject, thereby forming a sentence with a subject-predicate phrase as the predicate. Generally speaking, the subject in the subject-predicate phrase is either a part of the whole sentence's subject or related to it. Basic structure: Subject + Subject-Predicate Phrase.",
+      "items": [
+        { "c": "我的书包你看见了吗？", "en": "Did you see my schoolbag?" },
+        { "c": "弟弟手很小。", "en": "My little brother has very small hands." },
+        { "c": "这件事他知道。", "en": "He knows about this matter." }
+      ],
+      "practice": [
+        { "cn": "A：刘明工作忙吗？ B：____", "en": "" },
+        { "cn": "A：你知道哪个电影好看吗？ B：这个电影____，很好看。", "en": "" },
+        { "cn": "A：陈天中学习怎么样？ B：____", "en": "" }
+      ]
+    },
+    {
+      "id": "10-g2",
+      "textId": "10-02",
+      "no": 2,
+      "cn": "选择问句",
+      "en": "Alternative Questions",
+      "note": "连词“还是”用在疑问句中，表示选择。基本结构：（是）A 还是 B。",
+      "noteEn": "The conjunction “还是” is used in interrogative sentences to indicate a choice. Basic structure: (是) A 还是 B.",
+      "items": [
+        { "c": "妈妈，是您准备考试还是我准备考试？", "en": "Mom, are you the one preparing for the exam or am I?" },
+        { "c": "你更喜欢打篮球、踢足球还是游泳？", "en": "Do you prefer playing basketball, playing soccer, or swimming?" },
+        { "c": "我们什么时候去看电影？今天还是明天？", "en": "When shall we go to the movies? Today or tomorrow?" }
+      ],
+      "practice": [
+        { "cn": "A：你吃____？ B：饺子，我觉得饺子比包子更好吃。", "en": "" },
+        { "cn": "A：你想____？ B：打车吧，坐公交车没有打车快。", "en": "" },
+        { "cn": "A：你喝____？ B：奶茶吧，我觉得奶茶比茶和咖啡好喝。", "en": "" }
+      ]
+    },
+    {
+      "id": "10-g3",
+      "textId": "10-03",
+      "no": 3,
+      "cn": "固定格式“要/快/快要/就要……了”",
+      "en": "Fixed Pattern “要/快/快要/就要……了”",
+      "note": "固定格式“要/快/快要/就要……了”表示某事将要发生。如果句子中有时间状语，一般用“就要……了”。",
+      "noteEn": "The fixed pattern “要/快/快要/就要……了” is used to indicate that something is about to happen. If the sentence includes a time adverbial, “就要……了” is typically used.",
+      "items": [
+        { "c": "饭菜快要做好了。", "en": "The food is almost ready." },
+        { "c": "火车快开了。", "en": "The train is about to leave." },
+        { "c": "我们下星期就要考试了。", "en": "We're going to have an exam next week." }
+      ],
+      "practice": [
+        { "cn": "A：____，你别出去吃了。 B：那不好，小王还在饭馆等我呢。", "en": "" },
+        { "cn": "A：____，陈天中怎么还没来？ B：他说今天不舒服，不来上课了。", "en": "" },
+        { "cn": "A：儿子10号过生日，今天都7号了。 B：是啊，____。", "en": "" }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "10-t1",
+      "textId": "10-01",
+      "no": 4,
+      "cn": "“呢”的提醒语气",
+      "en": "The Reminding Tone of “呢”",
+      "note": "这里“呢”表示提醒或深究的语气。",
+      "noteEn": "Here, “呢” indicates a tone of reminder or inquiry.",
+      "items": [],
+      "practice": []
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["后面", "错", "帮", "考试", "笑"],
+        "items": [
+          { "cn": "看到生日礼物，儿子高兴地____了。", "answer": "" },
+          { "cn": "小雪，你们什么时候____？你准备好了吗？", "answer": "" },
+          { "cn": "我们公司____有一个商店，下班后我就去那儿买东西。", "answer": "" },
+          { "cn": "A：不好意思，你能____我叫一下白家月吗？ B：没问题，你等一下。", "answer": "" },
+          { "cn": "A：这个字写____了，左边是“口”，不是“日”。 B：好的，我知道了。", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "双人活动",
+      "en": "Pair Work",
+      "description": "两人一组，讨论学习情况，互相询问学会了什么，学得怎么样，有没有做错的题，等等。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in pairs. Discuss your learning progress by asking each other about what you have learned, how you are doing, and if you made any mistakes in your work, among other things. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

@@ -34,6 +34,19 @@
    python3 tools/gen-lesson-js.py hsk3 --check  # 生成物是否最新（CI 式校验）
    ```
 
+## 同一级别的第二套教材（`--set`）
+
+`hsk2` 同时保留旧版《HSK 2 标准教程》与新版《新HSK教程 2》：新版真源放
+`hsk2/data/new/lessonNN.json`，生成物是 `hsk2/js/data-new.js` 与
+`hsk2/data/sentences/grammar-sentences-new.js`，全局量带 `_NEW` 后缀，**不会覆盖主课本**。
+
+```bash
+python3 tools/gen-lesson-js.py hsk2 --set new          # 生成
+python3 tools/gen-lesson-js.py hsk2 --set new --check  # 只校验
+```
+
+界面切换在 Settings → 📚 Course book（`localStorage['hsk2.textbook']`，切换后整页 reload）。
+
 ## OCR 文本怎么读
 
 每行形如 `0.17  台词` 或 `0.63  ① 蓝 lán adj. blue`：
@@ -57,7 +70,8 @@
   生成器把 `grammar[] + tips[]` 顺序拼成 `points`，`shared/js/app.js` 不区分两者。
   没有小语助力就写 `[]`（旧的单数 `tip` 字段已废弃）。
 - `exercises`：`fillInTheBlank{group1,group2}` / `describePictures[]` / `classroomActivity`。
-  **页面不渲染**，但仍要录全（数据留档）。
+  生成器会把它带进 `data.js`；页面默认不显示，Settings → 📝 Comprehensive exercises
+  打开后在 Texts 视图末尾渲染（仍是数据留档，不参与判分）。
 
 示例见 `hsk3/data/lesson16.json`（含 tips 两条）与 `hsk3/data/lesson18.json`（tips 为空数组）。
 

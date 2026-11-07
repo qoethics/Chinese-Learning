@@ -30,20 +30,35 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LEVEL = ""            # 命令行给的级别目录名，如 "hsk3"
 ALIAS = ""            # 由 LEVEL 推导的全局别名，如 "HSK3"
+SUFFIX = ""           # 数据子集后缀（--set new → "_NEW"），主课本为空
 DATA = DATA_JS = CORPUS_JS = None
 
 
-def set_level(level):
-    """确定本次要处理的级别目录（相对仓库根）。"""
-    global LEVEL, ALIAS, DATA, DATA_JS, CORPUS_JS
+def set_level(level, subset=""):
+    """确定本次要处理的级别目录（相对仓库根）。
+
+    subset 非空时表示同一级别下的第二套教材，真源在 <level>/data/<subset>/，
+    生成物带 -<subset> 后缀，全局量也带 _<SUBSET> 后缀（避免覆盖主课本）。
+    """
+    global LEVEL, ALIAS, SUFFIX, DATA, DATA_JS, CORPUS_JS
     base = ROOT / level
     if not (base / "data").is_dir():
         sys.exit(f"找不到 {level}/data —— 级别目录名要相对仓库根，例如 hsk3")
     LEVEL = level
     ALIAS = level.upper()
-    DATA = base / "data"
-    DATA_JS = base / "js" / "data.js"
-    CORPUS_JS = DATA / "sentences" / "grammar-sentences.js"
+    SUFFIX = ""
+    if subset:
+        DATA = base / "data" / subset
+        if not DATA.is_dir():
+            sys.exit(f"找不到 {level}/data/{subset}")
+        SUFFIX = f"_{subset.upper()}"
+        ALIAS = f"{level.upper()}_{subset.upper()}"
+        DATA_JS = base / "js" / f"data-{subset}.js"
+        CORPUS_JS = base / "data" / "sentences" / f"grammar-sentences-{subset}.js"
+    else:
+        DATA = base / "data"
+        DATA_JS = base / "js" / "data.js"
+        CORPUS_JS = DATA / "sentences" / "grammar-sentences.js"
 
 LESSON_RE = re.compile(r"^lesson(\d+)\.json$")
 
@@ -63,7 +78,7 @@ def load_lessons():
                 sys.exit(f"{path.name}: 缺少字段 {field}")
         lessons.append((path, data))
     if not lessons:
-        sys.exit("hsk3/data 下没有 lessonNN.json")
+        sys.exit(f"{LEVEL}/data 下没有 lessonNN.json")
     lessons.sort(key=lambda pair: pair[1]["lesson"])
     return lessons
 
@@ -94,13 +109,16 @@ def build(data_lessons):
                     continue
                 seen.add(word["cn"])
                 core.append({"hanzi": word["cn"], "en": word["en"]})
-        lessons_out.append({
+        entry = {
             "name": data["name"],
             "id": data["key"],
             "core": core,
             "extended": [],
             "texts": data["texts"],
-        })
+        }
+        if data.get("exercises"):
+            entry["exercises"] = data["exercises"]
+        lessons_out.append(entry)
 
         points = []
         for point in data["grammar"] + data.get("tips", []):
@@ -131,17 +149,18 @@ def source_line(names):
 
 
 def render_data_js(lessons_out, names):
+    corpus_file = f"grammar-sentences{'-' + SUFFIX[1:].lower() if SUFFIX else ''}.js"
     head = (
         f"// {ALIAS} lesson texts. Read-only at runtime.\n"
         f"// Source: {source_line(names)} (hand-authored; book page ranges in {LEVEL}/data/manifest.json).\n"
         "// Pinyin is NOT stored: shared/js/app.js derives it with pinyin-pro (window.pinyinPro).\n"
-        "// Grammar points live in data/sentences/grammar-sentences.js (window.SENTENCE_CORPUS);\n"
+        f"// Grammar points live in data/sentences/{corpus_file} (window.SENTENCE_CORPUS{SUFFIX});\n"
         "// each point carries a textId so renderTextList can show it under its own text.\n"
-        "window.COURSE_LESSONS = "
+        f"window.COURSE_LESSONS{SUFFIX} = "
     )
     tail = (
         ";\n\n// Backwards-compatible alias (neutral name is COURSE_LESSONS).\n"
-        f"window.{ALIAS}_LESSONS = window.COURSE_LESSONS;\n"
+        f"window.{ALIAS}_LESSONS = window.COURSE_LESSONS{SUFFIX};\n"
     )
     return head + json.dumps(lessons_out, indent=2, ensure_ascii=False) + tail
 
@@ -150,26 +169,34 @@ def render_corpus_js(corpus_out, names):
     head = (
         f"// AUTO-GENERATED from {source_line(names)} — do not edit by hand.\n"
         f"// Hand-authored source of truth: {' / '.join(names)}\n"
-        f"// Regenerate: python3 tools/gen-lesson-js.py {LEVEL}\n"
-        "window.SENTENCE_CORPUS = "
+        f"// Regenerate: python3 tools/gen-lesson-js.py {LEVEL}{f' --set {SUFFIX[1:].lower()}' if SUFFIX else ''}\n"
+        f"window.SENTENCE_CORPUS{SUFFIX} = "
     )
-    tail = ";\n\n// Backwards-compatible alias.\nwindow.GRAMMAR_SENTENCES = window.SENTENCE_CORPUS;\n"
+    tail = f";\n\n// Backwards-compatible alias.\nwindow.GRAMMAR_SENTENCES{SUFFIX} = window.SENTENCE_CORPUS{SUFFIX};\n"
     return head + json.dumps(corpus_out, indent=2, ensure_ascii=False) + tail
 
 
 def main():
-    check_only = "--check" in sys.argv
-    level = next((a for a in sys.argv[1:] if not a.startswith("-")), None)
+    argv = sys.argv[1:]
+    check_only = "--check" in argv
+    subset = ""
+    if "--set" in argv:
+        i = argv.index("--set")
+        if i + 1 >= len(argv):
+            sys.exit("--set 后面要跟子集名，例如 --set new")
+        subset = argv[i + 1]
+        del argv[i:i + 2]
+    level = next((a for a in argv if not a.startswith("-")), None)
     if not level:
-        sys.exit("用法：python3 tools/gen-lesson-js.py <level> [--check]   例如 hsk3")
-    set_level(level)
+        sys.exit("用法：python3 tools/gen-lesson-js.py <level> [--set <subset>] [--check]   例如 hsk3 / hsk2 --set new")
+    set_level(level, subset)
     loaded = load_lessons()
     warnings = []
     for path, data in loaded:
         warnings.extend(check_lesson(path, data))
 
     data_lessons = [data for _, data in loaded]
-    names = [f"{LEVEL}/data/{path.name}" for path, _ in loaded]
+    names = [str(path.relative_to(ROOT)) for path, _ in loaded]
 
     lessons_out, corpus_out = build(data_lessons)
     files = {

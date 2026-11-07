@@ -1,0 +1,224 @@
+{
+  "lesson": 5,
+  "key": "5",
+  "name": "L5 · 第一次去中国朋友家",
+  "titleCn": "第一次去中国朋友家",
+  "titleEn": "Visiting a Chinese friend's home for the first time",
+  "texts": [
+    {
+      "id": "05-01",
+      "title": { "cn": "在宾馆楼下打电话", "en": "A phone call downstairs", "emoji": "📞" },
+      "intro": {
+        "cn": "在宾馆楼下，安妮给白家月打电话。",
+        "en": "Downstairs in the hotel, Annie was calling Bai Jiayue."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-05/5-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-05/5-2.mp3",
+      "questions": [
+        { "type": "choice", "q": "白家月要去哪儿？", "options": ["安妮家", "男朋友家", "中国朋友家"], "answer": "C" },
+        { "type": "choice", "q": "王一雪让她们什么时候到？", "options": ["1点前", "10点前", "11点前"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "安妮", "cn": "家月，快下来吧，第一次去中国朋友家，别晚了。", "en": "Jiayue, come down quickly. It's our first time visiting a Chinese friend's home. Don't be late." },
+        { "speaker": "白家月", "cn": "还有时间，你上来吧。", "en": "We still have time. Why don't you come up?" },
+        { "speaker": "安妮", "cn": "我不上去了，就在下面等你。", "en": "I'm not going up. I'll wait for you downstairs." },
+        { "speaker": "白家月", "cn": "那我一会儿就下去。", "en": "Okay, I'll come down in a few minutes." },
+        { "speaker": "安妮", "cn": "你快点儿吧。", "en": "Hurry up." },
+        { "speaker": "白家月", "cn": "没事，一雪姐说11点前到就可以。", "en": "It's fine. Sister Yixue said we just need to get there before 11 o'clock." }
+      ],
+      "postQuestions": [
+        { "q": "安妮在等谁？" },
+        { "q": "安妮为什么让白家月快点儿？" }
+      ],
+      "words": [
+        { "cn": "快", "pos": "adv./adj.", "en": "hurry up; fast" },
+        { "cn": "下来", "pos": "v.", "en": "come down" },
+        { "cn": "上来", "pos": "v.", "en": "come up" },
+        { "cn": "上去", "pos": "v.", "en": "go up" },
+        { "cn": "下面", "pos": "n.", "en": "downstairs" },
+        { "cn": "面", "pos": "suf.", "en": "used to form a noun of locality" },
+        { "cn": "等", "pos": "v.", "en": "wait for" },
+        { "cn": "一会儿", "pos": "num.-m.", "en": "soon" },
+        { "cn": "下去", "pos": "v.", "en": "go down" }
+      ]
+    },
+    {
+      "id": "05-02",
+      "title": { "cn": "在王一雪家做客", "en": "Visiting Wang Yixue's home", "emoji": "🏠" },
+      "intro": {
+        "cn": "在王一雪家，白家月和安妮来做客。",
+        "en": "Bai Jiayue and Annie were visiting Wang Yixue at home."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-05/5-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-05/5-4.mp3",
+      "questions": [
+        { "type": "choice", "q": "王一雪给白家月和安妮介绍谁了？", "options": ["她的孩子们", "孩子们的爸爸", "孩子们的爷爷和奶奶"], "answer": "C" },
+        { "type": "choice", "q": "王一雪觉得白家月和安妮怎么样？", "options": ["很漂亮", "很客气", "很不好意思"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "王一雪", "cn": "家月、安妮，快进来！我给你们介绍一下，这是孩子们的爷爷、奶奶。", "en": "Jiayue, Annie, come on in! Let me introduce everyone. These are the children's grandfather and grandmother." },
+        { "speaker": "白家月、安妮", "cn": "你们好！", "en": "Hello!" },
+        { "speaker": "王一雪", "cn": "爸，妈，这是白家月，这是安妮。她们都是一飞的学生。", "en": "Dad, Mom, this is Bai Jiayue, and this is Annie. They're both Yifei's students." },
+        { "speaker": "刘爷爷", "cn": "家月、安妮，你们好！", "en": "Hello, Jiayue! Hello, Annie!" },
+        { "speaker": "白家月", "cn": "这是送你们的礼物。", "en": "These gifts are for you." },
+        { "speaker": "刘爷爷", "cn": "你们太客气了，还拿这么多礼物来！", "en": "You're too kind! You didn't have to bring so many gifts." },
+        { "speaker": "白家月", "cn": "一雪姐，这是给孩子们准备的礼物。", "en": "Sister Yixue, here's the gift we prepared for the children." },
+        { "speaker": "王一雪", "cn": "谢谢！你们别客气，快坐吧！", "en": "Thank you very much! Please make yourselves at home and have a seat!" }
+      ],
+      "postQuestions": [
+        { "q": "白家月和安妮准备什么了？" },
+        { "q": "刘爷爷觉得白家月和安妮怎么样？" }
+      ],
+      "words": [
+        { "cn": "进来", "pos": "v.", "en": "come/get in" },
+        { "cn": "爷爷", "pos": "n.", "en": "grandfather" },
+        { "cn": "奶奶", "pos": "n.", "en": "grandmother" },
+        { "cn": "礼物", "pos": "n.", "en": "gift; present" },
+        { "cn": "准备", "pos": "v.", "en": "prepare" }
+      ]
+    },
+    {
+      "id": "05-03",
+      "title": { "cn": "在王一雪家吃饭", "en": "Having a meal at Wang Yixue's home", "emoji": "🍽️" },
+      "intro": {
+        "cn": "在王一雪家，白家月和安妮在吃饭。",
+        "en": "At Wang Yixue's home, Bai Jiayue and Annie were having a meal."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-05/5-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-05/5-6.mp3",
+      "questions": [
+        { "type": "choice", "q": "今天的菜是谁做的？", "options": ["爷爷", "奶奶", "王一雪"], "answer": "C" },
+        { "type": "choice", "q": "爷爷买什么了？", "options": ["奶茶", "绿茶", "牛奶"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "王一雪", "cn": "都12点了，我们吃饭吧。", "en": "It's already 12 o'clock. Let's eat." },
+        { "speaker": "白家月", "cn": "这么多好吃的，您太客气了！", "en": "There are so many delicious dishes. You're really too kind!" },
+        { "speaker": "王一雪", "cn": "都是我自己做的，你们多吃点儿。", "en": "I cooked all of these myself. Please help yourselves and eat as much as you like." },
+        { "speaker": "白家月", "cn": "奶茶也很好喝，是您自己做的吗？", "en": "The bubble tea tastes amazing. Did you make it yourself?" },
+        { "speaker": "王一雪", "cn": "不是，奶茶是爷爷买的。", "en": "No, Grandpa bought it." },
+        { "speaker": "白家月", "cn": "在哪儿买的？我还没喝过这么好喝的奶茶。", "en": "Where did he buy it? I've never had bubble tea this good before." },
+        { "speaker": "王一雪", "cn": "就在前边的商场，吃完饭你们可以跟我去看看。", "en": "He bought it from the mall up ahead. After we finish eating, you can come with me to check it out." }
+      ],
+      "postQuestions": [
+        { "q": "奶茶是在哪儿买的？" },
+        { "q": "吃完饭，白家月她们要做什么？" }
+      ],
+      "words": [
+        { "cn": "奶茶", "pos": "n.", "en": "bubble tea" },
+        { "cn": "跟", "pos": "prep./conj.", "en": "with; and" }
+      ]
+    },
+    {
+      "id": "05-04",
+      "title": { "cn": "在宾馆发信息", "en": "Sending a message at the hotel", "emoji": "🏨" },
+      "intro": {
+        "cn": "在宾馆，白家月给李文发信息。",
+        "en": "At the hotel, Bai Jiayue was sending a message to Li Wen."
+      },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-05/5-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-05/5-8.mp3",
+      "questions": [
+        { "type": "choice", "q": "判断正误：回国前，白家月请王一雪到饭店吃饭。", "options": ["对", "错"], "answer": "B" },
+        { "type": "choice", "q": "判断正误：因为白家月喜欢喝奶茶，所以爷爷准备了奶茶。", "options": ["对", "错"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "", "cn": "回国前一天，我们去一雪姐家了。到她家的时候，饭菜都做好了。", "en": "The day before we returned to our countries, we visited Sister Yixue's home. When we arrived, the food was already prepared." },
+        { "speaker": "", "cn": "刘爷爷还准备了奶茶。因为吃了太多东西，我们吃完饭是走回酒店的。", "en": "Grandpa Liu had also prepared bubble tea for us. Since we ate so much, we walked back to the hotel after the meal." }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "走", "pos": "v.", "en": "walk; go" },
+        { "cn": "酒店", "pos": "n.", "en": "hotel" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "5-g1",
+      "textId": "05-01",
+      "no": 1,
+      "cn": "简单趋向补语（1）",
+      "en": "Simple Complement of Direction (1)",
+      "note": "简单趋向补语的基本结构是“动词＋来/去”。“来”表示动作朝着说话人的方向进行，“去”表示动作背离说话人的方向进行。最常用的动词有“上、下、进、出、回、过”。",
+      "noteEn": "The basic structure of simple complements of direction is “Verb + 来/去”. Here, “来” indicates that the action is moving toward the speaker, while “去” indicates that the action is moving away from the speaker. The most commonly used verbs include “上”, “下”, “进”, “出”, “回”, and “过”.",
+      "items": [
+        { "c": "我不上去了，就在下面等你。", "en": "I'm not going up. I'll wait for you downstairs." },
+        { "c": "家月到下边了，你下去接她吧。", "en": "Jiayue is downstairs. Go down and meet her." },
+        { "c": "我在外边呢，你出来吧。", "en": "I'm outside. Come out." },
+        { "c": "她拿来一本中文书。", "en": "She brought a Chinese book." },
+        { "c": "你别过来拿了，我给你送去。", "en": "Don't come over to get it; I'll bring it to you." },
+        { "c": "今天早上5点她就起来了。", "en": "She got up at 5 this morning." },
+        { "c": "你起来吧，让小妹妹坐这儿。", "en": "Get up and let your little sister sit here." }
+      ],
+      "practice": [
+        { "cn": "A：这就是我家，____看看吧。 B：你家真漂亮！", "en": "" },
+        { "cn": "A：这些人都是你的____吗？ B：对，他们都是我的朋友，你有事可以让他们帮忙。", "en": "" },
+        { "cn": "A：喂！刘小雪，你什么时候____？我们都在下面等你呢。 B：不好意思，我现在就____。", "en": "" }
+      ]
+    },
+    {
+      "id": "5-g2",
+      "textId": "05-02",
+      "no": 2,
+      "cn": "简单趋向补语（2）",
+      "en": "Simple Complement of Direction (2)",
+      "note": "动词既带简单趋向补语，又带宾语时，如果宾语是地点名词，放在“来/去”前面；宾语是事物名词，放在“来/去”前后都可以。另外，动词“开、买、拿、请、送、要、找、走”等也可以加上“上、下、进、出、回、过”等简单趋向补语，宾语放在这些词后面。",
+      "noteEn": "When a verb takes both a simple complement of direction and an object: if the object is a location noun, place it before “来/去”; if the object is a thing noun, it can be placed either before or after “来/去”. In addition, verbs such as “开”, “买”, “拿”, “请”, “送”, “要”, “找”, and “走” can also combine with complements of direction like “上”, “下”, “进”, “出”, “回”, and “过”; in this case the object is placed after them.",
+      "items": [
+        { "c": "你们太客气了，还拿这么多礼物来！", "en": "You're too kind! You didn't have to bring so many gifts." },
+        { "c": "家月给我送来了一本书。", "en": "Jiayue brought me a book." },
+        { "c": "上课了，你们快进教室来吧。", "en": "Class has started. Come into the classroom quickly." },
+        { "c": "爸爸今天买回了很多水果。", "en": "Dad bought back a lot of fruit today." },
+        { "c": "妈妈拿出了二十块钱，让小雪自己去买点儿吃的。", "en": "Mom took out twenty yuan and let Xiaoxue buy something to eat herself." }
+      ],
+      "practice": [
+        { "cn": "A：小李没来吃饭吗？ B：他吃完了，已经____公司了。", "en": "" },
+        { "cn": "A：这么多水果是谁____的？ B：家月和李文。你现在想吃吗？我去洗一洗。", "en": "" },
+        { "cn": "A：你看见天中了吗？ B：我看见他____书店了。", "en": "" }
+      ]
+    },
+    {
+      "id": "5-g3",
+      "textId": "05-03",
+      "no": 3,
+      "cn": "固定格式“都……了”",
+      "en": "Fixed Pattern “都……了”",
+      "note": "固定格式“都……了”表示已经、达到，一般含有强调或者不满的语气。",
+      "noteEn": "The fixed pattern “都……了” conveys meanings such as “already” or “up to a certain point”, and generally carries a tone of emphasis or dissatisfaction.",
+      "items": [
+        { "c": "都12点了，我们吃饭吧。", "en": "It's already 12 o'clock. Let's eat." },
+        { "c": "都8点半了，你还不起床吗？", "en": "It's already 8:30. Aren't you getting up?" },
+        { "c": "我都去过北京了，不想再去了。", "en": "I've already been to Beijing; I don't want to go again." }
+      ],
+      "practice": [
+        { "cn": "A：____，我们快走吧。 B：没事，9点前到就不晚。", "en": "" },
+        { "cn": "A：你这么晚回来，我们____。 B：没关系，我在公司吃饭了。", "en": "" },
+        { "cn": "A：你的病____，为什么还不去上班？ B：我想再休息休息。", "en": "" }
+      ]
+    }
+  ],
+  "tips": [],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["奶茶", "下面", "等", "走", "跟"],
+        "items": [
+          { "cn": "你喝过____吗？好不好喝？", "answer": "" },
+          { "cn": "桌子____有一个绿色的书包。", "answer": "" },
+          { "cn": "同学们，____我来。看，这是我们的新教室。", "answer": "" },
+          { "cn": "A：家月，我不想打车，想____回学校。 B：好啊，没问题。", "answer": "" },
+          { "cn": "A：公交车还没来，我们还是打车去吧。 B：再____一下吧。", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "角色扮演",
+      "en": "Role-Play",
+      "description": "四人一组，一人扮演主人，两人扮演家庭成员，一人扮演客人。客人来家里做客，大家互相打招呼，主人给家里人介绍客人，主人招待客人，等等。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in groups of four. One student plays the host, two play family members, and one plays the guest. The guest comes to visit the host's home. Everyone exchanges greetings; the host introduces the guest to the family members and entertains the guest, and so on. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

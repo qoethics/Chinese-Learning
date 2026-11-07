@@ -152,6 +152,8 @@
     font-size: 0.84rem;
     color: var(--theme-text);
   }
+  /* Attribute `hidden` loses to the class rules above; make it win. */
+  .settings-row[hidden], .settings-section[hidden] { display: none; }
   .settings-row-label { display: inline-flex; align-items: center; gap: 6px; }
   .settings-switch {
     position: relative;
@@ -1723,6 +1725,38 @@
   }
   .text-postquestion { font-size: 1rem; line-height: 1.9; }
   .text-postquestion ruby rt { font-size: 0.55em; }
+
+  /* End-of-lesson comprehensive exercises (Settings → 📝 Comprehensive exercises) */
+  .text-exercises {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: var(--theme-light);
+    border: 1px solid var(--theme-mid);
+  }
+  .text-exercises-head { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+  .ex-subhead {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #9ca3af;
+    letter-spacing: 0.03em;
+    margin: 12px 0 6px;
+  }
+  .ex-bank { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .ex-chip {
+    font-size: 0.9rem;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: white;
+    border: 1px solid var(--theme-mid);
+  }
+  .ex-chip b { margin-right: 4px; color: var(--theme-accent); }
+  .ex-list { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+  .ex-item { font-size: 0.98rem; line-height: 1.9; }
+  .ex-item ruby rt { font-size: 0.55em; }
+  .ex-answer { margin-left: 6px; color: #16a34a; font-weight: 700; }
+  .ex-activity-title { font-weight: 600; margin-bottom: 4px; }
+  .ex-en { color: #8a8175; font-size: 0.85rem; margin-top: 4px; }
 
   .text-grammar {
     display: flex;

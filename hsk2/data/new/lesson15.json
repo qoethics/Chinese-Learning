@@ -1,0 +1,202 @@
+{
+  "lesson": 15,
+  "key": "15",
+  "name": "L15 · 我想再去一次中国",
+  "titleCn": "我想再去一次中国",
+  "titleEn": "I want to go to China again",
+  "texts": [
+    {
+      "id": "15-01",
+      "title": { "cn": "在教室考试", "en": "Taking an exam in the classroom", "emoji": "📝" },
+      "intro": { "cn": "在教室，同学们在考试。", "en": "In the classroom, the students were taking an exam." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-15/15-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-15/15-2.mp3",
+      "questions": [
+        { "type": "choice", "q": "同学们要开始做什么？", "options": ["学习", "考试", "跑步"], "answer": "B" },
+        { "type": "choice", "q": "白家月去过几次中国？", "options": ["一次", "两次", "七次"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "王一飞", "cn": "考试就要开始了，请大家写上姓名，写好后就可以做题了。", "en": "The exam is about to begin. Please write down your name, and once you're done, you can start answering the questions." },
+        { "speaker": "白家月", "cn": "老师，我做完了。", "en": "Teacher, I'm finished." },
+        { "speaker": "陈天中", "cn": "老师，我也做完了。", "en": "Teacher, I'm finished too." },
+        { "speaker": "王一飞", "cn": "……对了，你们考完试想做什么？", "en": "…Oh, what are you going to do after the exam?" },
+        { "speaker": "白家月", "cn": "我很想去中国，虽然去过一次，但是很想再去一次。", "en": "I want to go to China. I've been there once, but I really want to go again." },
+        { "speaker": "王一飞", "cn": "不错，到中国后你就可以经常说中文了。", "en": "Good, you can often speak Chinese in China." }
+      ],
+      "postQuestions": [
+        { "q": "考试开始前，王一飞让同学们做什么？" },
+        { "q": "王一飞说到中国后可以经常做什么？" }
+      ],
+      "words": [
+        { "cn": "姓名", "pos": "n.", "en": "name" }
+      ]
+    },
+    {
+      "id": "15-02",
+      "title": { "cn": "在咖啡店聊旅游", "en": "Talking about travel in the cafe", "emoji": "☕" },
+      "intro": { "cn": "在咖啡店，李文和白家月在聊天儿。", "en": "In the cafe, Li Wen and Bai Jiayue were chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-15/15-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-15/15-4.mp3",
+      "questions": [
+        { "type": "choice", "q": "白家月要去哪儿？", "options": ["北京", "学校", "同学家"], "answer": "A" },
+        { "type": "choice", "q": "李文的高中同学在哪儿工作？", "options": ["饭店", "电影院", "颐和园"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "白家月", "cn": "考完试了，我现在可以出国旅游了。", "en": "The exam is over, so now I can travel abroad." },
+        { "speaker": "李文", "cn": "你要去哪儿？", "en": "Where are you planning to go?" },
+        { "speaker": "白家月", "cn": "我要再去一次北京。", "en": "I want to go to Beijing again." },
+        { "speaker": "李文", "cn": "为什么还去北京？", "en": "Why Beijing again?" },
+        { "speaker": "白家月", "cn": "因为我想再吃一次烤鸭，再喝一次奶茶，再去北京大学看一次电影……", "en": "Because I want to eat Peking Duck again, drink bubble tea again, and watch a movie at Peking University again…" },
+        { "speaker": "李文", "cn": "你想做的事情很多啊！", "en": "You want to do a lot of things!" },
+        { "speaker": "白家月", "cn": "是啊，你看，我还在网上买好颐和园的门票了呢。", "en": "Yes, look, I've already bought a ticket for the Summer Palace online." },
+        { "speaker": "李文", "cn": "我的高中同学就在颐和园上班，可以让他给你好好介绍介绍。", "en": "One of my high school classmates works at the Summer Palace, and he can give you a great tour." },
+        { "speaker": "白家月", "cn": "太好了！出门旅游，多个朋友多条路。", "en": "That's amazing! When you travel, the more friends you have, the more paths you have." }
+      ],
+      "postQuestions": [
+        { "q": "白家月为什么还要去北京？" },
+        { "q": "白家月在哪儿买的门票？" }
+      ],
+      "words": [
+        { "cn": "出国", "pos": "v.", "en": "go abroad" },
+        { "cn": "门票", "pos": "n.", "en": "entrance ticket" },
+        { "cn": "高中", "pos": "n.", "en": "high school" },
+        { "cn": "出门", "pos": "v.", "en": "leave home" },
+        { "cn": "路", "pos": "n.", "en": "road; way" },
+        { "cn": "颐和园", "pos": "", "en": "Summer Palace (in Beijing)" }
+      ]
+    },
+    {
+      "id": "15-03",
+      "title": { "cn": "在咖啡店聊机票", "en": "Talking about air tickets", "emoji": "✈️" },
+      "intro": { "cn": "在咖啡店，李文和白家月在聊天儿。", "en": "In the cafe, Li Wen and Bai Jiayue were chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-15/15-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-15/15-6.mp3",
+      "questions": [
+        { "type": "choice", "q": "李文多长时间没回国了？", "options": ["一年", "六个月", "不到一年"], "answer": "C" },
+        { "type": "choice", "q": "白家月这次买的机票怎么样？", "options": ["很贵", "很便宜", "有点儿贵"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "白家月", "cn": "李文，你有一年没回国了吧？", "en": "Li Wen, you haven't been back to China for a year, right?" },
+        { "speaker": "李文", "cn": "不到一年。我六月的时候回去了一次。", "en": "Not quite a year. I went back once this June." },
+        { "speaker": "白家月", "cn": "我怎么忘了？还是我送你去的机场呢。", "en": "How could I forget? I was the one who took you to the airport." },
+        { "speaker": "李文", "cn": "是啊。", "en": "Yes." },
+        { "speaker": "白家月", "cn": "我记得你那次的机票很便宜。", "en": "I remember your air ticket was very cheap." },
+        { "speaker": "李文", "cn": "没错，可能因为那个时候去北京的人不多吧。", "en": "Exactly. Maybe it was because there weren't many people going to Beijing at that time." },
+        { "speaker": "白家月", "cn": "这次的机票虽然有点儿贵，但想到就要飞北京了，我还是很高兴的。", "en": "The air ticket is a little expensive this time, but I am so happy thinking about flying to Beijing." }
+      ],
+      "postQuestions": [
+        { "q": "上次回国，是谁送李文去机场的？" },
+        { "q": "白家月为什么很高兴？" }
+      ],
+      "words": [
+        { "cn": "机场", "pos": "n.", "en": "airport" },
+        { "cn": "机票", "pos": "n.", "en": "air ticket" },
+        { "cn": "飞", "pos": "v.", "en": "fly" }
+      ]
+    },
+    {
+      "id": "15-04",
+      "title": { "cn": "在房间写日记", "en": "Writing a diary in the room", "emoji": "📔" },
+      "intro": { "cn": "在房间，李文在写日记。", "en": "In the room, Li Wen was writing in his diary." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-15/15-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-15/15-8.mp3",
+      "questions": [
+        { "type": "choice", "q": "判断正误：李文经常回北京，所以不想家。", "options": ["对", "错"], "answer": "B" },
+        { "type": "choice", "q": "判断正误：李文、白家月跟鸟一起回北京。", "options": ["对", "错"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "", "cn": "我六月的时候回过一次北京，现在有半年多没回去了，我有点儿想家。", "en": "I went back to Beijing once this June, and now it has been over six months since I last went back. I miss home a bit." },
+        { "speaker": "", "cn": "就要过年了，我要回家过年。家月这次也要去北京，我们都是星期五的飞机。", "en": "The Spring Festival is coming, and I'll be going back to celebrate it. Jiayue is also going to Beijing—we're both on the same flight this Friday." },
+        { "speaker": "", "cn": "家月说我们好像小鸟，一起飞到北京，再一起飞回这里。", "en": "Jiayue said we are like little birds, flying to Beijing together and then flying back here together." }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "好像", "pos": "v.", "en": "be like" },
+        { "cn": "鸟", "pos": "n.", "en": "bird" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "15-g1",
+      "textId": "15-01",
+      "no": 1,
+      "cn": "动量补语（1）",
+      "en": "Complement of Frequency (1)",
+      "note": "“数词＋次”用在动词后面，构成动量补语，表示动作发生的次数。动词同时带宾语时，如果宾语是人名或地名，放在动量补语前后都可以。",
+      "noteEn": "“Numeral + 次” is used after a verb to form a complement of frequency, indicating the number of times an action occurs. When the verb is followed by an object, if the object is a person's name or a place name, it can be placed either before or after the complement of frequency.",
+      "items": [
+        { "c": "我想去中国，虽然去过一次，但是很想再去一次。", "en": "I want to go to China. I've been there once, but I really want to go again." },
+        { "c": "安妮去过一次北京。", "en": "Annie has been to Beijing once." },
+        { "c": "李文见了杨同乐两次。", "en": "Li Wen met Yang Tongle twice." }
+      ],
+      "practice": [
+        { "cn": "A：你去过上海____，觉得怎么样？ B：很不错，吃得好，玩得好。", "en": "" },
+        { "cn": "A：安妮来过我们家____，她知道怎么走。 B：好，我跟安妮一起过去。", "en": "" },
+        { "cn": "A：你吃过北京烤鸭吗？ B：我吃过____，很好吃。", "en": "" }
+      ]
+    },
+    {
+      "id": "15-g2",
+      "textId": "15-02",
+      "no": 2,
+      "cn": "动量补语（2）",
+      "en": "Complement of Frequency (2)",
+      "note": "动词既带动量补语，又带宾语时，如果宾语是事物名词，一般放在动量补语后面；如果宾语是代词，放在动量补语前面。",
+      "noteEn": "When a verb is followed by both a complement of frequency and an object: if the object is a thing noun, it is generally placed after the complement of frequency; if the object is a pronoun, it is placed before the complement of frequency.",
+      "items": [
+        { "c": "因为我想再吃一次烤鸭，再喝一次奶茶。", "en": "Because I want to eat Peking Duck again and drink bubble tea again." },
+        { "c": "我想找他一次。", "en": "I want to look for him once." },
+        { "c": "安妮来过这儿两次。", "en": "Annie has been here twice." }
+      ],
+      "practice": [
+        { "cn": "A：你们去北京的时候见到一雪姐姐了吗？ B：我们见了两次，还去了____她家。", "en": "" },
+        { "cn": "A：____？ B：我每个星期给家里打两次电话。", "en": "" },
+        { "cn": "A：____？ B：就下过一次雪。我觉得今年没有去年冷。", "en": "" }
+      ]
+    },
+    {
+      "id": "15-g3",
+      "textId": "15-03",
+      "no": 3,
+      "cn": "“有”字句（2）",
+      "en": "“有” Sentence (2)",
+      "note": "“有＋数量短语”表示达到一定的数量。",
+      "noteEn": "“有 + Numeral-Measure Word Phrase” indicates reaching a certain quantity.",
+      "items": [
+        { "c": "你有一年没回国了吧？", "en": "You haven't been back to China for a year, right?" },
+        { "c": "你女儿今年有10岁了吗？", "en": "Is your daughter ten years old this year?" },
+        { "c": "我有一个月没给家里打电话了。", "en": "I haven't called home for a month." }
+      ],
+      "practice": [
+        { "cn": "A：飞北京的机票____8000块钱吗？ B：没有，现在机票便宜。", "en": "" },
+        { "cn": "A：你男朋友____？ B：没有，他今年29岁，比我还小一岁呢。", "en": "" },
+        { "cn": "A：我们两个____？ B：是啊，一年没见，你还是那样。", "en": "" }
+      ]
+    }
+  ],
+  "tips": [],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["出国", "姓名", "门票", "鸟", "机票"],
+        "items": [
+          { "cn": "你看，那只小____多漂亮啊！", "answer": "" },
+          { "cn": "我记得这里的____不到10块钱，现在怎么这么贵了？", "answer": "" },
+          { "cn": "儿子就要上大学了，你给他准备了什么____东西啊？", "answer": "" },
+          { "cn": "A：你买的是什么时候的____？ B：明天早上的，下午就到北京了。", "answer": "" },
+          { "cn": "A：请您说一下他的____，我看看有没有这个人。 B：王大明。 A：不好意思，他没住在我们酒店。", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "双人活动",
+      "en": "Pair Work",
+      "description": "两人一组，谈论旅游经历，介绍去过哪里、去过几次、吃得怎么样、玩得怎么样以及旅游的感受，等等。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in pairs. Discuss your travel experiences, including where you've been, how many times you've visited, how the food was, how the activities were, and your overall impressions of the trip, and so on. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

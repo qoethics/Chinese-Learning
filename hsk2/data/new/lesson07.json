@@ -1,0 +1,202 @@
+{
+  "lesson": 7,
+  "key": "7",
+  "name": "L7 · 他篮球打得很好",
+  "titleCn": "他篮球打得很好",
+  "titleEn": "He plays basketball very well",
+  "texts": [
+    {
+      "id": "07-01",
+      "title": { "cn": "在教室", "en": "In the classroom", "emoji": "🏫" },
+      "intro": { "cn": "在教室，安妮和陈天中在聊天儿。", "en": "In the classroom, Annie and Chen Tianzhong were chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-07/7-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-07/7-2.mp3",
+      "questions": [
+        { "type": "choice", "q": "安妮是什么时候回来的？", "options": ["昨天早上", "昨天上午", "昨天下午"], "answer": "C" },
+        { "type": "choice", "q": "安妮想跟陈天中去做什么？", "options": ["去教室", "打篮球", "去北京"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "陈天中", "cn": "安妮，你是什么时候从北京回来的？", "en": "Annie, when did you get back from Beijing?" },
+        { "speaker": "安妮", "cn": "昨天下午。天中，你怎么一下课就往外跑？", "en": "Yesterday afternoon. Tianzhong, why do you rush out as soon as class ends?" },
+        { "speaker": "陈天中", "cn": "我跟同学说好了，一起去打篮球。", "en": "I made an appointment with my classmates to play basketball together." },
+        { "speaker": "安妮", "cn": "我也想跟你们一起玩。", "en": "I want to join you too." },
+        { "speaker": "陈天中", "cn": "没问题，走吧。", "en": "No problem, let's go!" }
+      ],
+      "postQuestions": [
+        { "q": "陈天中为什么一下课就往外跑？" },
+        { "q": "安妮想去做什么？" }
+      ],
+      "words": [
+        { "cn": "从", "pos": "prep.", "en": "from" },
+        { "cn": "往", "pos": "prep./v.", "en": "towards; go" },
+        { "cn": "跑", "pos": "v.", "en": "run; go to play (games); hit" },
+        { "cn": "打", "pos": "v.", "en": "play (games)" },
+        { "cn": "篮球", "pos": "n.", "en": "basketball" }
+      ]
+    },
+    {
+      "id": "07-02",
+      "title": { "cn": "在校园聊运动", "en": "Talking about sports on campus", "emoji": "⚽" },
+      "intro": { "cn": "在校园，安妮和陈天中边走边聊。", "en": "On campus, Annie and Chen Tianzhong were chatting as they walked." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-07/7-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-07/7-4.mp3",
+      "questions": [
+        { "type": "choice", "q": "星期天陈天中做什么？", "options": ["学中文", "踢足球", "打篮球"], "answer": "B" },
+        { "type": "choice", "q": "星期天陈天中跟谁去玩？", "options": ["李文", "同学们", "朋友们"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "安妮", "cn": "天中，你是不是很喜欢打篮球？", "en": "Tianzhong, do you really like playing basketball?" },
+        { "speaker": "陈天中", "cn": "没错。", "en": "Yes, I do." },
+        { "speaker": "安妮", "cn": "你还喜欢什么运动？", "en": "What other sports do you enjoy?" },
+        { "speaker": "陈天中", "cn": "我还喜欢踢足球，一到星期天就跟朋友们去踢球。", "en": "I also enjoy playing soccer. I play with my friends every Sunday." },
+        { "speaker": "安妮", "cn": "你踢得怎么样？", "en": "How well do you play?" },
+        { "speaker": "陈天中", "cn": "我踢得还可以。", "en": "Not bad." }
+      ],
+      "postQuestions": [
+        { "q": "陈天中喜欢什么运动？" },
+        { "q": "陈天中踢球踢得怎么样？" }
+      ],
+      "words": [
+        { "cn": "运动", "pos": "n./v.", "en": "sports; exercise" },
+        { "cn": "踢", "pos": "v.", "en": "kick" },
+        { "cn": "足球", "pos": "n.", "en": "soccer; football" },
+        { "cn": "球", "pos": "n.", "en": "ball" },
+        { "cn": "得", "pos": "part.", "en": "used between a verb or an adjective and its complement to indicate the result or degree" }
+      ]
+    },
+    {
+      "id": "07-03",
+      "title": { "cn": "在校园聊爱好", "en": "Talking about hobbies on campus", "emoji": "🏊" },
+      "intro": { "cn": "在校园，安妮和陈天中边走边聊。", "en": "On campus, Annie and Chen Tianzhong were chatting as they walked." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-07/7-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-07/7-6.mp3",
+      "questions": [
+        { "type": "choice", "q": "安妮打篮球打得怎么样？", "options": ["很好", "不好", "还可以"], "answer": "C" },
+        { "type": "choice", "q": "安妮喜欢做什么？", "options": ["游泳", "跑步", "踢球"], "answer": "A" }
+      ],
+      "lines": [
+        { "speaker": "陈天中", "cn": "你篮球打得怎么样？", "en": "How are your basketball skills?" },
+        { "speaker": "安妮", "cn": "打得还可以。", "en": "Not too bad." },
+        { "speaker": "陈天中", "cn": "跑步呢？你跑得快不快？", "en": "What about running? Are you fast?" },
+        { "speaker": "安妮", "cn": "我跑得不快，也不太喜欢跑步。", "en": "I'm not very fast, and I don't really like running, either." },
+        { "speaker": "陈天中", "cn": "那你喜欢游泳吗？", "en": "Do you like swimming, then?" },
+        { "speaker": "安妮", "cn": "喜欢，但我游泳游得不快。", "en": "I do, but I'm not very good at it, either." }
+      ],
+      "postQuestions": [
+        { "q": "安妮跑步跑得怎么样？" },
+        { "q": "安妮游泳游得怎么样？" }
+      ],
+      "words": [
+        { "cn": "跑步", "pos": "v.", "en": "run" },
+        { "cn": "游泳", "pos": "v.", "en": "swim" },
+        { "cn": "游", "pos": "v.", "en": "swim" }
+      ]
+    },
+    {
+      "id": "07-04",
+      "title": { "cn": "在房间写日记", "en": "Writing a diary in the room", "emoji": "📔" },
+      "intro": { "cn": "在房间，陈天中在写日记。", "en": "In the room, Chen Tianzhong was writing in his diary." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-07/7-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-07/7-8.mp3",
+      "questions": [
+        { "type": "choice", "q": "判断正误：陈天中非常喜欢运动。", "options": ["对", "错"], "answer": "A" },
+        { "type": "choice", "q": "判断正误：陈天中游泳游得不快。", "options": ["对", "错"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "", "cn": "我的爱好是运动。从上小学开始，我每天都跟爸爸去运动。", "en": "My hobby is doing sports. Since primary school, I've been exercising with my dad every day." },
+        { "speaker": "", "cn": "现在我篮球打得很好，足球踢得不错，游泳游得也很快。我一有时间就去运动。", "en": "Now I play basketball very well, play football quite well, and swim very fast. Whenever I have time, I go out to play sports." }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "爱好", "pos": "n./v.", "en": "hobby; be fond of" },
+        { "cn": "开始", "pos": "v./n.", "en": "start; beginning" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "7-g1",
+      "textId": "07-01",
+      "no": 1,
+      "cn": "紧缩复句“一……就……”",
+      "en": "Contracted Complex Sentence “一……就……”",
+      "note": "紧缩复句“一……就……”表示后一动作紧跟着前一动作发生，也表示前一动作是条件和原因，后一动作是结果。主语相同时，主语在“一”或“就”前面；主语不同时，两个主语分别在“一”和“就”前面。",
+      "noteEn": "The contracted complex sentence “一……就……” indicates that the second action occurs immediately after the first; it also means the first action serves as the condition or cause, and the second as the result. When the subjects are the same, the subject is placed before “一” or “就”; when the subjects are different, the two subjects are placed before “一” and “就” respectively.",
+      "items": [
+        { "c": "你怎么一下课就往外跑？", "en": "Why do you rush out as soon as class ends?" },
+        { "c": "我一到家，妈妈就打来电话了。", "en": "As soon as I got home, my mom called." },
+        { "c": "一到星期六，陈天中就跟同学去打篮球。", "en": "Whenever Saturday comes, Chen Tianzhong goes to play basketball with his classmates." }
+      ],
+      "practice": [
+        { "cn": "A：你今天早点儿回来。 B：好的，我____回来。", "en": "" },
+        { "cn": "A：我一下飞机，____。 B：因为我给她打电话了，让她去接你。", "en": "" },
+        { "cn": "A：你看，小猫____就过来了。 B：是啊，因为它爱吃鱼。", "en": "" }
+      ]
+    },
+    {
+      "id": "7-g2",
+      "textId": "07-02",
+      "no": 2,
+      "cn": "状态补语（1）",
+      "en": "Complement of State (1)",
+      "note": "状态补语是在动词后边补充说明动作进行的状态的。基本结构：动词＋得＋形容词性短语。否定形式是在形容词的前面加“不”。疑问形式有三种：句尾加“吗”；动词＋得＋形容词＋不＋形容词；动词＋得＋怎么样。",
+      "noteEn": "The complement of state follows a verb to supplement the state of the action. Basic structure: Verb + 得 + Adjectival Phrase. The negative form is to add “不” before the adjective. There are three interrogative forms: add “吗” at the end; Verb + 得 + Adjective + 不 + Adjective; and Verb + 得 + 怎么样.",
+      "items": [
+        { "c": "我踢得还可以。", "en": "I play not bad." },
+        { "c": "他们玩得很高兴。", "en": "They had a great time." },
+        { "c": "白家月跑得不快。", "en": "Bai Jiayue doesn't run fast." },
+        { "c": "你跑得快吗？", "en": "Do you run fast?" },
+        { "c": "他来得早不早？", "en": "Did he come early?" },
+        { "c": "他们玩得怎么样？", "en": "How did they enjoy themselves?" }
+      ],
+      "practice": [
+        { "cn": "A：你听，她唱得怎么样？ B：____", "en": "" },
+        { "cn": "A：妹妹喜欢吃这个菜吗？ B：不太喜欢，她____。", "en": "" },
+        { "cn": "A：你昨天晚上____？ B：____", "en": "" }
+      ]
+    },
+    {
+      "id": "7-g3",
+      "textId": "07-03",
+      "no": 3,
+      "cn": "状态补语（2）",
+      "en": "Complement of State (2)",
+      "note": "带状态补语的句子中，如果动词是离合词，需要重复动词性语素。如果动词有宾语，可以把宾语提前，或者重复动词。",
+      "noteEn": "In sentences with a complement of state: if the verb is a separable word, the verbal morpheme needs to be repeated; if the verb takes an object, the object can be placed before the verb or the verb can be repeated.",
+      "items": [
+        { "c": "我游泳游得不快。", "en": "I don't swim fast." },
+        { "c": "你篮球打得怎么样？", "en": "How are your basketball skills?" },
+        { "c": "白家月写汉字写得很好看。", "en": "Bai Jiayue writes Chinese characters beautifully." }
+      ],
+      "practice": [
+        { "cn": "A：安妮唱歌唱得好听吗？ B：____", "en": "" },
+        { "cn": "A：你足球踢得____？ B：____", "en": "" },
+        { "cn": "A：家月中文说得____？ B：____", "en": "" }
+      ]
+    }
+  ],
+  "tips": [],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["跑步", "运动", "从", "开始", "游泳"],
+        "items": [
+          { "cn": "你看过她游泳吗？游得怎么样？", "answer": "" },
+          { "cn": "我们9点上课，你别来晚了。", "answer": "" },
+          { "cn": "你跑得快不快？我想跟你一起去运动。", "answer": "" },
+          { "cn": "A：你喜欢什么运动？ B：足球、篮球什么的都喜欢。", "answer": "" },
+          { "cn": "A：你喜欢学中文吗？ B：喜欢，我8岁就开始学中文了。", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "小组调查",
+      "en": "Group Survey",
+      "description": "三人一组，互相询问喜欢什么运动、星期天做什么、做得怎么样，等等。完成下面的表格，然后向全班报告。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in groups of three. Ask one another about the sports you like, what you usually do on Sundays, how well you do them, and so on. Complete the table below and present your findings to the whole class. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}

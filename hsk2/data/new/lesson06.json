@@ -1,0 +1,215 @@
+{
+  "lesson": 6,
+  "key": "6",
+  "name": "L6 · 小雪，生日快乐！",
+  "titleCn": "小雪，生日快乐！",
+  "titleEn": "Happy birthday, Xiaoxue!",
+  "texts": [
+    {
+      "id": "06-01",
+      "title": { "cn": "商量生日礼物", "en": "Choosing a birthday gift", "emoji": "🎁" },
+      "intro": { "cn": "在家里，刘明和王一雪在聊天儿。", "en": "At home, Liu Ming and Wang Yixue were chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-06/6-1.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-06/6-2.mp3",
+      "questions": [
+        { "type": "choice", "q": "王一雪和刘明要准备什么礼物？", "options": ["画", "衣服", "画笔"], "answer": "C" },
+        { "type": "choice", "q": "王一雪什么时候去买礼物？", "options": ["明天早上", "明天上午", "明天晚上"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "王一雪", "cn": "明天就是女儿的生日了。", "en": "Tomorrow is our daughter's birthday." },
+        { "speaker": "刘明", "cn": "你不说，我还真忘了。我们给她准备个什么礼物呢？", "en": "I would have totally forgotten if you hadn't reminded me. What should we get her as a gift?" },
+        { "speaker": "王一雪", "cn": "她喜欢画画，你觉得画笔怎么样？", "en": "She likes drawing. How about some color pens?" },
+        { "speaker": "刘明", "cn": "就送画笔吧！", "en": "Let's get her color pens!" },
+        { "speaker": "王一雪", "cn": "那我明天上午就去买。", "en": "I'll go buy them tomorrow morning." },
+        { "speaker": "刘明", "cn": "好的！我再给她买个大大的生日蛋糕。", "en": "Sure! I'll also get her a big birthday cake." }
+      ],
+      "postQuestions": [
+        { "q": "明天是谁的生日？" },
+        { "q": "他们为什么觉得画笔是很好的礼物？" }
+      ],
+      "words": [
+        { "cn": "生日", "pos": "n.", "en": "birthday" },
+        { "cn": "忘", "pos": "v.", "en": "forget" },
+        { "cn": "画", "pos": "v./n.", "en": "draw; painting" },
+        { "cn": "画笔", "pos": "n.", "en": "color pen; paintbrush" },
+        { "cn": "蛋糕", "pos": "n.", "en": "cake" }
+      ]
+    },
+    {
+      "id": "06-02",
+      "title": { "cn": "在客厅送礼物", "en": "Giving the gift in the living room", "emoji": "🎂" },
+      "intro": { "cn": "在客厅，刘明一家人在聊天。", "en": "In the living room, Liu Ming and his family were chatting." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-06/6-3.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-06/6-4.mp3",
+      "questions": [
+        { "type": "choice", "q": "刘小雪想画什么？", "options": ["黑色的狗", "黑色的猫", "白色的衣服"], "answer": "A" },
+        { "type": "choice", "q": "刘小明想画什么？", "options": ["爸爸", "妈妈", "姐姐"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "刘明", "cn": "小雪，生日快乐！", "en": "Happy birthday, Xiaoxue!" },
+        { "speaker": "刘小明", "cn": "姐姐，生日快乐！", "en": "Happy birthday, sister!" },
+        { "speaker": "王一雪", "cn": "小雪，这是爸爸、妈妈送你的礼物。", "en": "Xiaoxue, here's a gift from dad and mom." },
+        { "speaker": "刘明", "cn": "你打开看看喜欢不喜欢。", "en": "Go ahead and open it—see if you like it." },
+        { "speaker": "刘小雪", "cn": "画笔！我很喜欢！", "en": "Color pens! I love them!" },
+        { "speaker": "王一雪", "cn": "那你想画点儿什么？", "en": "What would you like to draw?" },
+        { "speaker": "刘小雪", "cn": "画我们的家！有爸爸、妈妈、弟弟，还有黑色的狗、白色的猫什么的。", "en": "Our home! With dad, mom, my little brother, and our black dog, white cat, and all the others." },
+        { "speaker": "刘小明", "cn": "那我要画一个穿白色衣服的姐姐。", "en": "Then I'll draw a sister in white clothes." }
+      ],
+      "postQuestions": [
+        { "q": "爸爸、妈妈送了小雪什么礼物？" },
+        { "q": "小雪喜欢这个礼物吗？" }
+      ],
+      "words": [
+        { "cn": "快乐", "pos": "adj.", "en": "happy" },
+        { "cn": "打开", "pos": "v.", "en": "open" }
+      ]
+    },
+    {
+      "id": "06-03",
+      "title": { "cn": "一家人过生日", "en": "Celebrating a birthday", "emoji": "🍜" },
+      "intro": { "cn": "在客厅，刘明一家人在给刘小雪过生日。", "en": "In the living room, Liu Ming and his family were celebrating Liu Xiaoxue's birthday." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-06/6-5.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-06/6-6.mp3",
+      "questions": [
+        { "type": "choice", "q": "今天的东西都是谁爱吃的？", "options": ["爸爸", "妈妈", "小雪"], "answer": "C" },
+        { "type": "choice", "q": "他们吃完饭要做什么？", "options": ["休息", "买蛋糕", "出去玩"], "answer": "C" }
+      ],
+      "lines": [
+        { "speaker": "刘明", "cn": "小雪，看看今天有什么好吃的。", "en": "Xiaoxue, take a look at all the delicious food we have today." },
+        { "speaker": "刘小雪", "cn": "长长的面条儿，大大的蛋糕。", "en": "Long noodles and a big cake." },
+        { "speaker": "刘明", "cn": "你看，还有鱼啊肉啊什么的，都是你喜欢吃的。", "en": "Look, there's fish, meat, and other dishes too. They're all your favorites." },
+        { "speaker": "刘小雪", "cn": "谢谢爸爸、妈妈！", "en": "Thank you, Dad and Mom!" },
+        { "speaker": "王一雪", "cn": "快去叫弟弟过来吃饭吧，吃完饭我们还要出去玩呢。", "en": "Go call your little brother to come and eat. After dinner, we'll go out and have some fun!" },
+        { "speaker": "刘小雪", "cn": "过生日真好啊！", "en": "Birthdays are so wonderful!" },
+        { "speaker": "王一雪", "cn": "是的，过生日就要吃好吃的，还要高高兴兴地玩。", "en": "That's right! On your birthday, you should enjoy good food and have lots of fun." }
+      ],
+      "postQuestions": [
+        { "q": "刘明和王一雪准备了哪些吃的？" },
+        { "q": "刘小雪为什么觉得过生日真好？" }
+      ],
+      "words": [
+        { "cn": "长", "pos": "adj.", "en": "long" },
+        { "cn": "鱼", "pos": "n.", "en": "fish" },
+        { "cn": "肉", "pos": "n.", "en": "meat" },
+        { "cn": "过", "pos": "v.", "en": "spend time" },
+        { "cn": "地", "pos": "part.", "en": "used with an adverb or adverbial phrase" }
+      ]
+    },
+    {
+      "id": "06-04",
+      "title": { "cn": "在房间写日记", "en": "Writing a diary in the room", "emoji": "📔" },
+      "intro": { "cn": "在房间，王一雪在写日记。", "en": "In the room, Wang Yixue was writing in her diary." },
+      "audio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-06/6-7.mp3",
+      "wordAudio": "https://cdn.baulchino.com/new-hsk-books-audios/hsk-2-textbook/lesson-06/6-8.mp3",
+      "questions": [
+        { "type": "choice", "q": "判断正误：女儿学会做面条儿了。", "options": ["对", "错"], "answer": "B" },
+        { "type": "choice", "q": "判断正误：王一雪今天高高兴兴地过了个生日。", "options": ["对", "错"], "answer": "B" }
+      ],
+      "lines": [
+        { "speaker": "", "cn": "今天是女儿的生日。我们买了蛋糕，做了面条儿，还做了鱼啊肉啊什么的。", "en": "Today was our daughter's birthday. We bought a cake, made noodles, and prepared dishes such as fish, meat, and others." },
+        { "speaker": "", "cn": "吃完晚饭，一家人去看了个电影。回家后，孩子们早早地就上床了。", "en": "After dinner, our whole family went to watch a movie. When we got home, the children went to bed early." },
+        { "speaker": "", "cn": "明天不上学，他们说要舒舒服服地睡一觉，让我们晚点儿叫他们起床。这是很忙、很累，但很快乐的一天。", "en": "Since there's no school tomorrow, they said they wanted to sleep soundly and comfortably, and asked us to wake them up later. It was a busy and tiring day, but full of joy." }
+      ],
+      "postQuestions": [],
+      "words": [
+        { "cn": "床", "pos": "n.", "en": "bed" },
+        { "cn": "舒服", "pos": "adj.", "en": "comfortable" }
+      ]
+    }
+  ],
+  "grammar": [
+    {
+      "id": "6-g1",
+      "textId": "06-01",
+      "no": 1,
+      "cn": "形容词重叠",
+      "en": "Adjective Reduplication",
+      "note": "单音节形容词“A”的重叠形式为“AA”，双音节形容词“AB”的重叠形式一般为“AABB”。形容词重叠表示程度深或者表达喜爱的情感。",
+      "noteEn": "The reduplicated form of a monosyllabic adjective “A” is “AA”, while the reduplicated form of a disyllabic adjective “AB” is generally “AABB”. Adjective reduplication is often used to intensify the degree of the adjective or to express feelings of fondness or affection.",
+      "items": [
+        { "c": "我再给她买个大大的生日蛋糕。", "en": "I'll also get her a big birthday cake." },
+        { "c": "这只猫小小的，真让人喜欢。", "en": "This cat is so small and really lovely." },
+        { "c": "一雪的女儿每天都漂漂亮亮的。", "en": "Yixue's daughter is pretty every day." }
+      ],
+      "practice": [
+        { "cn": "A：今天买的苹果____。 B：我吃了一个，也很好吃。", "en": "" },
+        { "cn": "A：这家饭店的饺子____，我一次能吃二十个。 B：吃吧，我知道你爱吃饺子。", "en": "" },
+        { "cn": "A：这几天你在家____休息，别出去了。 B：好的，我也觉得太累了。", "en": "" }
+      ]
+    },
+    {
+      "id": "6-g2",
+      "textId": "06-02",
+      "no": 2,
+      "cn": "固定短语“什么的”",
+      "en": "Set Phrase “什么的”",
+      "note": "固定短语“什么的”表示“……之类”的意思。基本结构：……什么的。",
+      "noteEn": "The set phrase “什么的” indicates “and so on” or “and the like”. Basic structure: ……什么的.",
+      "items": [
+        { "c": "画我们的家！有爸爸、妈妈、弟弟，还有黑色的狗、白色的猫什么的。", "en": "Our home! With dad, mom, my little brother, and our black dog, white cat, and all the others." },
+        { "c": "桌子上有电脑、杯子、书和画笔什么的。", "en": "There are things like a computer, a cup, books, and color pens on the table." },
+        { "c": "她拿来了一些水、面包和苹果什么的。", "en": "She brought some water, bread, apples, and so on." }
+      ],
+      "practice": [
+        { "cn": "A：你爱吃什么？ B：____，我都爱吃。", "en": "" },
+        { "cn": "A：那间教室里有些什么？ B：____", "en": "" },
+        { "cn": "A：休息的时候，你喜欢做些什么？ B：____", "en": "" }
+      ]
+    },
+    {
+      "id": "6-g3",
+      "textId": "06-03",
+      "no": 3,
+      "cn": "结构助词“地”",
+      "en": "Structural Particle “地”",
+      "note": "结构助词“地”一般用在形容词和动词中间，表示动作行为的状态或方式。",
+      "noteEn": "The structural particle “地” is generally placed between an adjective and a verb to indicate the manner or state in which an action is performed.",
+      "items": [
+        { "c": "过生日就要吃好吃的，还要高高兴兴地玩。", "en": "On your birthday, you should enjoy good food and have lots of fun." },
+        { "c": "老师早早地到了教室。", "en": "The teacher arrived at the classroom early." },
+        { "c": "爸爸很快地吃完早饭，就去上班了。", "en": "Dad finished breakfast quickly and then went to work." }
+      ],
+      "practice": [
+        { "cn": "A：你姐姐去哪儿了？ B：她生病了，____回房间休息了。", "en": "" },
+        { "cn": "A：你回家____睡一觉，明天也别来上班了。 B：好的，您也别太累了。", "en": "" },
+        { "cn": "A：小明喜欢你送的礼物吗？ B：____喜欢，他拿到礼物说：“这个礼物太好了！”", "en": "" }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "id": "6-t1",
+      "textId": "06-03",
+      "no": 4,
+      "cn": "生日吃面条儿",
+      "en": "Birthday Noodles",
+      "note": "中国人过生日的时候一般要吃面条儿，因为面条儿长长的，寓意“长寿”。",
+      "noteEn": "When celebrating birthdays, Chinese people usually eat noodles, as their length symbolizes longevity.",
+      "items": [],
+      "practice": []
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": {
+      "group1": {
+        "options": ["忘", "快乐", "打开", "画", "床"],
+        "items": [
+          { "cn": "明天10点去小雪家，你别____了。", "answer": "" },
+          { "cn": "衣服在____上，你看看想穿哪一件？", "answer": "" },
+          { "cn": "看，这是我妹妹____的，漂亮不漂亮？", "answer": "" },
+          { "cn": "A：这是什么？ B：送你的礼物，快____看看。", "answer": "" },
+          { "cn": "A：今天我过了一个非常____的生日，谢谢爸爸、妈妈！ B：不客气！我们都很爱你！", "answer": "" }
+        ]
+      },
+      "group2": { "options": [], "items": [] }
+    },
+    "describePictures": [],
+    "classroomActivity": {
+      "cn": "角色扮演",
+      "en": "Role-Play",
+      "description": "三人一组，一人扮演过生日的人，两人扮演朋友，三人一起庆祝生日。朋友们说生日祝福、送礼物、问生日愿望。过生日的人表达想吃什么、想去哪儿玩，等等。尽可能使用本课所学生词和语法。",
+      "descriptionEn": "Work in groups of three. One student plays the birthday person, and the other two play friends. The three celebrate the birthday together. The friends give birthday wishes, present gifts, and ask about the birthday person's wishes. The birthday person talks about what they'd like to eat, where they want to go, and other ideas. Try to use the vocabulary and grammar learned in this lesson as much as possible.",
+      "topics": []
+    }
+  }
+}
